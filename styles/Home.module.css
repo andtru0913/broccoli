@@ -12,24 +12,16 @@
   align-items: center;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+.bgWrap {
+  height: 70vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
 
 .title a {
-  color: #0070f3;
+  color: #AF929D;
   text-decoration: none;
 }
 
@@ -70,7 +62,6 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
 }
 
 .card {
@@ -88,8 +79,8 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #AF929D;
+  border-color: #AF929D;
 }
 
 .card h2 {
