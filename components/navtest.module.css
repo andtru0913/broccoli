@@ -1,0 +1,123 @@
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #f1f1f1;
+  opacity: 0.8;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 35px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #222222;
+}
+
+.navmenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navitem {
+  margin-left: 5rem;
+}
+
+.navlink{
+  transition: all 0.2s;
+  opacity: 0.8;
+  left: 0;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #6e6e6e;
+  text-transform: uppercase;
+}
+
+.navlink:hover{
+  color: #482ff7;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.navlink::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  bottom: -16px;
+  left: 0;
+  background-color: blueviolet;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.navlink:hover:before{
+  width: 100%;
+ }
+
+.navlogo {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #482ff7;
+}
+
+@media only screen and (max-width: 768px) {
+  .navmenu {
+      position: fixed;
+      left: -100%;
+      top: 5rem;
+      flex-direction: column;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .navlink:hover{
+    color: #482ff7;
+    font-weight: bold;
+    opacity: 1;
+  }
+
+
+
+  .navmenu.active {
+      left: 0;
+  }
+
+  .navitem {
+      margin: 2.5rem 0;
+  }
+
+  .hamburger {
+      display: block;
+      cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+      -webkit-transform: translateY(8px) rotate(45deg);
+      transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+      -webkit-transform: translateY(-8px) rotate(-45deg);
+      transform: translateY(-8px) rotate(-45deg);
+  }
+}

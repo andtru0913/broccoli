@@ -35,7 +35,7 @@ const NavBar = () => {
                     <div></div>
                     <div></div>  
                 </div>
-            <div className={styles[`nav__menu-list${navActive ? "active": ""}`]}>
+                <div className={styles[`nav__menu-list${navActive ? "active": ""}`]}>
                     {MENU_LIST.map((menu, idx)=> (
                         <div
                             onClick={()=>{

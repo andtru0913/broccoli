@@ -27,7 +27,7 @@ export default function Home() {
           <div className={styles.grid}>
             <Link href="/carreer">
               <a  className={styles.card}>
-                <h2>KARRIÄR &rarr;</h2>
+                <h2>KARRIÄR</h2>
                 <p>Find in-depth information about Next.js features and API.</p>
               </a>
             </Link>

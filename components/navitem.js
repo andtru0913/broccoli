@@ -4,7 +4,7 @@ import styles from './navbar.module.css'
 const NavItem = ({text, href, active}) => {
     return (
         <Link href={href}>
-            <a className={styles[`nav__link${active ? "active" : ""}`]}>
+            <a className={active === false ? styles.navlink : styles.navlink + ' ' + styles.active}>
                 {text}
             </a>
         </Link>
