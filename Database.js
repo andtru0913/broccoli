@@ -3,10 +3,6 @@ const bcrypt = require ('bcrypt');
 const prisma = new PrismaClient()
 
 export async function createNewUser(username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
-    let a = false
-    if (admin === "true") {
-        a = true;
-    }
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
@@ -20,7 +16,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             privatenumber: privatenumber,
             worknumber: worknumber,
             company: company,
-            admin: a,
+            admin: admin === null,
             salt: salt,
         },
     })
