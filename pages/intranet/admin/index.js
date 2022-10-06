@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
-
+import * as Database from "../../../Database";
 
 export async function getServerSideProps() {
+    let firstname = await Database.getFirstname('633d5c12e0bf4ed28b2c3428')
     return {
-        props: {firstname: name}
+        props: {firstname}
     }
 }
 
@@ -20,7 +21,7 @@ export default function Home({firstname}) {
             <main className={styles.main}>
                 <div>
                     <h1>
-                        Welcome to {firstname}
+                        Welcome {firstname}
                     </h1>
                 </div>
 
