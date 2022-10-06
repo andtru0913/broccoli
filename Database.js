@@ -49,15 +49,22 @@ export async function login(input_username, input_password) {
     }
 }
 
-export async function getFirstname(userid) {
+export async function getUserinfo(userid) {
     const query = await prisma.user.findMany({
         where: {
             id: userid
         },
         select: {
-            firstname: true,
+            username:true,
+            password:true,
+            firstname:true,
+            lastname:true,
+            address:true,
+            privatenumber:true,
+            worknumber:true,
+            company:true,
+            admin:true,
         }
     })
-    let firstname = query[0].firstname
-    return firstname
+    return query[0]
 }

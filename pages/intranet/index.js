@@ -1,7 +1,8 @@
 import Head from 'next/head'
 //import * as Database from '../scripts'
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
+
     return {
         props: {}
     }
