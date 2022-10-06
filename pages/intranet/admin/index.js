@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
-//import * as Database from '../scripts'
+import * as Database from "../../../Database";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
+    let firstname = await Database.getFirstname('633d5c12e0bf4ed28b2c3428')
     return {
-        props: {}
+        props: {firstname}
     }
 }
 
-export default function Home() {
+export default function Home({firstname}) {
     return (
         <div className={styles.container}>
             <Head>
@@ -20,7 +21,7 @@ export default function Home() {
             <main className={styles.main}>
                 <div>
                     <h1>
-                        Welcome to admin
+                        Welcome {firstname}
                     </h1>
                 </div>
 
