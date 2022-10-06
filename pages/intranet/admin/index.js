@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
-//import * as Database from '../scripts'
 
-export async function getStaticProps() {
+
+export async function getServerSideProps() {
     return {
-        props: {}
+        props: {firstname: name}
     }
 }
 
-export default function Home() {
+export default function Home({firstname}) {
     return (
         <div className={styles.container}>
             <Head>
@@ -20,7 +20,7 @@ export default function Home() {
             <main className={styles.main}>
                 <div>
                     <h1>
-                        Welcome to admin
+                        Welcome to {firstname}
                     </h1>
                 </div>
 
