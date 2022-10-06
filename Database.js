@@ -16,7 +16,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             privatenumber: privatenumber,
             worknumber: worknumber,
             company: company,
-            admin: admin === null,
+            admin: admin !== null,
             salt: salt,
         },
     })
