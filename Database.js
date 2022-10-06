@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
 const bcrypt = require ('bcrypt');
-const prisma = new PrismaClient()
+
 
 export async function createNewUser(username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
     let a = false
@@ -20,7 +21,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             privatenumber: privatenumber,
             worknumber: worknumber,
             company: company,
-            admin: a,
+            admin: (admin === "true" ? true : false),
             salt: salt,
         },
     })
@@ -47,4 +48,16 @@ export async function login(input_username, input_password) {
     else {
         return null
     }
+}
+
+export async function getFirstname(userid) {
+    const query = await prisma.user.findMany({
+        where: {
+            id: userid
+        },
+        select: {
+            firstname: true,
+        }
+    })
+    return query;
 }
