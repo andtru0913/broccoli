@@ -21,11 +21,6 @@ export default function Home() {
                     <h1>
                         Please log in
                     </h1>
-                    <form className="form" action="../../api/login" method="POST">
-                        <input type="text" name="username" placeholder="Användarnamn"/>
-                        <input type="text" name="password" placeholder="Lösenord"/>
-                        <button type="submit">Log in</button>
-                    </form>
                 </div>
 
             </main>
