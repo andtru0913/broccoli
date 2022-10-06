@@ -2,14 +2,16 @@ import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
 import * as Database from "../../../Database";
 
-export async function getServerSideProps() {
-    let firstname = await Database.getFirstname('633d5c12e0bf4ed28b2c3428')
+export async function getServerSideProps(context) {
+    let cookies = await context.req.cookies['userid']
+    console.log(cookies)
+    let user = await Database.getUserinfo(cookies)
     return {
-        props: {firstname}
+        props: {user: user}
     }
 }
 
-export default function Home({firstname}) {
+export default function Home({user}) {
     return (
         <div className={styles.container}>
             <Head>
@@ -21,7 +23,7 @@ export default function Home({firstname}) {
             <main className={styles.main}>
                 <div>
                     <h1>
-                        Welcome {firstname}
+                        Welcome {user.firstname} to admin
                     </h1>
                 </div>
 

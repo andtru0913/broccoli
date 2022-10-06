@@ -31,7 +31,7 @@ export default function Home() {
                             <input type="checkbox" name="admin" value="true"/>
                         </div>
 
-                        <button type="submit">Lägg till anställd</button>
+                            <button type="submit">Lägg till anställd</button>
                     </form>
                 </div>
             </main>
