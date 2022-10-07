@@ -3,7 +3,8 @@ import NavBar from './navbar';
 
 import Head from 'next/head'
 import Footer from './footer';
-export default function Layout({children}) {
+import Image from 'next/image';
+export default function LayoutHome({children}) {
     return (
         <>
             <Head>
@@ -12,6 +13,7 @@ export default function Layout({children}) {
                 <link rel="icon" href="/favicon.ico" />    
             </Head>
             <NavBar  className={styles.navbar} />
+            
             <div className={styles.container}> 
             
                 {children} 

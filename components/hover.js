@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import styles from './hover.module.css'
 
 const Hover = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const openmenu = ()=> setIsOpen(!isOpen)
     return (
         <div className={styles.nav}>
             <div className={styles.nav__logo}>
@@ -20,6 +23,15 @@ const Hover = () => {
                 </div>
 
             </div>
+            <button className={
+                isOpen === false ? 
+                styles.hamburger : styles.hamburger + ' ' + styles.active}
+                onClick={openmenu}
+                >
+                <span className={styles.bar}></span>
+                <span className={styles.bar}></span>
+                <span className={styles.bar}></span>
+            </button>
 
 
         </div>

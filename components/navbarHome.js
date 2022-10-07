@@ -44,6 +44,18 @@ const NavBar = () => {
                   <span className={styles.bar}></span>
               </button>
           </nav>
+        <header>
+            <h1 className={styles.title}> BROCCOLI </h1>
+        </header>
+        <div className={styles.bgWrap}>
+          
+          <Image 
+              src="/images/gothenburg.jfif"
+              layout="fill"
+              objectFit='cover'
+              alt="Siluette of Gothenburg"
+            />
+        </div>
     </header>
     );
 }

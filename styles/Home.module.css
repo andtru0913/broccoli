@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  background-color: #7C8076;
 }
 
 .main {
@@ -11,6 +12,7 @@
   justify-content: center;
   align-items: center;
 }
+
 
 .bgWrap {
   height: 80vh;
@@ -69,8 +71,9 @@
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
-  color: inherit;
+  color: #AEB0AA ;
   text-decoration: none;
+  background-color: #3b3d38;
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;

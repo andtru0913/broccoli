@@ -2,27 +2,26 @@
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import NavBar from '../components/navbar'
-import Layout from '../components/layout'
+import Layout from '../components/layout';
 
 export default function Home() {
   return (
     <Layout>
       <main className={styles.main}>
-        <header>
-          <h1 className={styles.title}> BROCCOLI </h1>
-        </header>
-        <div className={styles.bgWrap}>
-          
-          <Image 
-              src="/images/gothenburg.jfif"
-              layout="fill"
-              objectFit='cover'
-              alt="Siluette of Gothenburg"
-            />
-        </div>
+          <header>
+                <h1 className={styles.title}> BROCCOLI </h1>
+            </header>
+            <div className={styles.bgWrap}>
+            
+            <Image 
+                src="/images/gothenburg.jfif"
+                layout="fill"
+                objectFit='cover'
+                alt="Siluette of Gothenburg"
+                />
+            </div>
 
-        <div>
+        <div className={styles.pages}>
 
           <div className={styles.grid}>
             <Link href="/carreer">
@@ -76,6 +75,11 @@ export default function Home() {
               </p>
             </a>
           </div>
+
+        </div>
+
+
+        <div className={styles.instafeed}>
 
         </div>
         
