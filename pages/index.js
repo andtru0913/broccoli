@@ -3,13 +3,21 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Layout from '../components/layout';
 
-export async function getStaticProps() {
-  return {
-    props: {}
-  }
-}
+export const getStaticProps = async () => {
 
-export default function Home() {
+  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
+  const data = await fetch(url);
+  const feed = await data.json();
+  console.log(feed)
+  return{
+    props: {
+      feed
+    }
+  }
+} 
+
+export default function Home({feed}) {
+  const insta_images = feed.data;
   return (
     <Layout>
       <main className={styles.main}>
@@ -85,6 +93,9 @@ export default function Home() {
 
 
         <div className={styles.instafeed}>
+          {insta_images && insta_images.map(image =>(
+            <div key={image.id}><img src={image.media_url} alt={image.caption} /></div>
+          ))}
 
         </div>
         
