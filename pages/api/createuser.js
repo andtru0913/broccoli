@@ -8,6 +8,6 @@ export default function handler(req, res) {
       .catch(e => {
         console.error(e.message)
       })
-  res.redirect(302, '../intranet/admin/');
+  res.redirect(302, '../intranet/admin/users');
 }
 

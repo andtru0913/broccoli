@@ -16,6 +16,7 @@ model user {
     password        String
     firstname       String?
     lastname        String?
+    email           String?
     address         String?
     privatenumber   String?
     worknumber      String?

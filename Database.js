@@ -5,7 +5,6 @@ const prisma = new PrismaClient()
 export async function createNewUser(username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
-
     await prisma.user.create({
         data: {
             username: username,
@@ -16,7 +15,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             privatenumber: privatenumber,
             worknumber: worknumber,
             company: company,
-            admin: admin !== null,
+            admin: admin !== undefined,
             salt: salt,
         },
     })
@@ -33,16 +32,21 @@ export async function login(input_username, input_password) {
             salt: true,
         }
     })
-    let salt = query[0].salt
-    let id = query[0].id
-    let account_password = query[0].password
-    const hashedPassword = await bcrypt.hash(input_password, salt)
-    if (hashedPassword === account_password) {
-        return id
-    }
-    else {
+    try {
+        let salt = query[0].salt
+        let id = query[0].id
+        let account_password = query[0].password
+        const hashedPassword = await bcrypt.hash(input_password, salt)
+        if (hashedPassword === account_password) {
+            return id
+        }
+        else {
+            return null
+        }
+    } catch {
         return null
     }
+
 }
 
 export async function getUserinfo(userid) {
@@ -68,5 +72,37 @@ export async function getUserinfo(userid) {
     } catch(e) {
         return null
     }
+}
 
+export async function getAllUsers() {
+    return await prisma.user.findMany({
+        select: {
+            username:true,
+            firstname:true,
+            lastname:true,
+            email: true,
+            address:true,
+            privatenumber:true,
+            worknumber:true,
+            company:true,
+            admin:true,
+        }
+    })
+}
+
+export async function isAdmin(userid) {
+    if (userid === undefined) return null;
+    try {
+        const query = await prisma.user.findMany({
+            where: {
+                id: userid
+            },
+            select: {
+                admin:true,
+            }
+        })
+        return query[0].admin
+    } catch(e) {
+        return null
+    }
 }

@@ -6,12 +6,12 @@ export async function getServerSideProps(context) {
     let cookies = context.req.cookies['userid']
     let user = await Database.getUserinfo(cookies)
     return {
-        props: {user: user}
+        props: {user: user === undefined ? null : user}
     }
 }
 
 export default function Home({user}) {
-    if (user == null) {
+    if (user === undefined) {
         return (
             <div>
                 <Head>
@@ -27,7 +27,7 @@ export default function Home({user}) {
                         </h1>
                         <form className="form" action="../../api/login" method="POST">
                             <input type="text" name="username" placeholder="Användarnamn"/>
-                            <input type="text" name="password" placeholder="Lösenord"/>
+                            <input type="password" name="password" placeholder="Lösenord"/>
                             <button type="submit">Log in</button>
                         </form>
                     </div>
@@ -50,8 +50,8 @@ export default function Home({user}) {
                             Welcome {user.firstname}
                         </h1>
                         <a href='../api/logout'>log out</a>
+                        <a href='./intranet/admin'>admin</a>
                     </div>
-
                 </main>
             </div>
         )
