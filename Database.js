@@ -91,7 +91,7 @@ export async function getAllUsers() {
 }
 
 export async function isAdmin(userid) {
-    if (userid === undefined) return null;
+    if (userid === undefined) return false;
     try {
         const query = await prisma.user.findMany({
             where: {
@@ -103,6 +103,52 @@ export async function isAdmin(userid) {
         })
         return query[0].admin
     } catch(e) {
-        return null
+        return false
     }
+}
+
+export async function createEvent(title, description, start, end) {
+    await prisma.event.create({
+        data: {
+            title: title,
+            description: description,
+            start: start,
+            end: end,
+        },
+    })
+}
+
+export async function getEvents(id) {
+    return await prisma.event.findMany({
+        where: {
+            id: id
+        },
+        select: {
+            id:true,
+            title:true,
+            description:true,
+            start:true,
+            end:true,
+        }
+    })
+}
+
+export async function deleteEvent(id) {
+    return await prisma.event.delete({
+        where: {
+            id:id
+        }
+    })
+}
+
+export async function updateEventDesc(id, title, description) {
+    return await prisma.event.update({
+        where: {
+            id: id,
+        },
+        data: {
+            title: title,
+            description: description,
+        },
+    })
 }

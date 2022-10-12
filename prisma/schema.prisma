@@ -27,6 +27,8 @@ model user {
 
 model event {
     id              String @id @default(auto()) @map("_id") @db.ObjectId
-    date            String
-    description     String
+    title           String
+    start           String
+    end             String
+    description     String?
 }

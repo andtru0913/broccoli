@@ -3,6 +3,6 @@
     flex-direction: column;
 }
 
-.form input, button {
+.form input, .form button {
     width: 200px;
 }
