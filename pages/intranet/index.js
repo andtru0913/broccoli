@@ -52,7 +52,7 @@ export default function Home({user}) {
                         </h1>
                         <a href='../api/logout'>log out</a>
                         <a href='./intranet/admin'>admin</a>
-                        <a href='./intranet/calendar'>admin</a>
+                        <a href='./intranet/calendar'>calendar</a>
                     </div>
                 </main>
             </div>

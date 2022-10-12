@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
 import * as Database from "../../../Database";
 import {authenticate} from "./authenticate";
+import popupStyles from "../popup.module.css"
+import formStyles from "../form.module.css";
 
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)
@@ -23,6 +25,32 @@ export default function Home({user}) {
             </Head>
 
             <main className={styles.main}>
+                <div id="popup" className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
+                    document.getElementById("popup").classList.add(popupStyles.hide)
+                    document.getElementById("createuser").classList.add(popupStyles.hide)
+                }}>
+                </div>
+                <div id="createuser" className={`${popupStyles.window} ${popupStyles.hide}`}>
+                    <form className={formStyles.form} action="../../api/createuser" method="POST">
+                        <input type="text" name="username" placeholder="Användarnamn"/>
+                        <input type="text" name="password" placeholder="Lösenord"/>
+                        <input type="text" name="firstname" placeholder="Förnamn"/>
+                        <input type="text" name="lastname" placeholder="Efternamn"/>
+                        <input type="text" name="email" placeholder="Email"/>
+                        <input type="text" name="address" placeholder="Address"/>
+                        <input type="text" name="privatenumber" placeholder="Privattelefon"/>
+                        <input type="text" name="worknumber" placeholder="Arbetstelefon"/>
+                        <input type="text" name="company" placeholder="Bolag"/>
+                        <div>
+                            <label> Administratör</label>
+                            <input type="checkbox" name="admin" value="true"/>
+                        </div>
+
+                        <button type="submit">Lägg till anställd</button>
+                    </form>
+                </div>
+
+
                 <div>
                     <table>
                         <thead>
@@ -54,7 +82,10 @@ export default function Home({user}) {
                         )}
                         </tbody>
                     </table>
-                    <a href={"./createuser"}> Ny anställd</a>
+                    <button onClick={function() {
+                        document.getElementById("popup").classList.remove(popupStyles.hide)
+                        document.getElementById("createuser").classList.remove(popupStyles.hide)
+                    }}> Ny anställd</button>
                 </div>
 
             </main>

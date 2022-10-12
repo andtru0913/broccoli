@@ -5,6 +5,7 @@ import calendarStyles from "./calendar.module.css";
 import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import * as Database from "../../Database";
+import popupStyles from "./popup.module.css"
 
 export async function getServerSideProps(context) {
     let cookies = context.req.cookies['userid']
@@ -40,8 +41,8 @@ const Calendar = ({user, allEvents}) => {
                     e.start.setDate(e.start.getDate()+1)
                     let background = document.getElementById('popup')
                     let window = document.getElementById('createevent')
-                    background.classList.remove(calendarStyles.hide)
-                    window.classList.remove(calendarStyles.hide)
+                    background.classList.remove(popupStyles.hide)
+                    window.classList.remove(popupStyles.hide)
                     window.getElementsByClassName('start')[0].valueAsDate = e.start
                     window.getElementsByClassName('end')[0].valueAsDate = e.end
                 }
@@ -53,18 +54,18 @@ const Calendar = ({user, allEvents}) => {
                 let description = e.event._def.extendedProps.description
                 let title = e.event._def.title
                 let id = e.event._def.publicId
-                background.classList.remove(calendarStyles.hide)
+                background.classList.remove(popupStyles.hide)
                 if (user.admin) {
                     modifyevent.getElementsByClassName('title')[0].value = title
                     modifyevent.getElementsByClassName('description')[0].value = description
                     modifyevent.getElementsByClassName('id')[0].value = id
                     modifyevent.getElementsByClassName('id')[1].value = id
-                    modifyevent.classList.remove(calendarStyles.hide)
+                    modifyevent.classList.remove(popupStyles.hide)
 
                 } else {
                     checkevent.getElementsByClassName('title')[0].innerText = title
                     checkevent.getElementsByClassName('description')[0].innerText = description
-                    checkevent.classList.remove(calendarStyles.hide)
+                    checkevent.classList.remove(popupStyles.hide)
                 }
             }}
             events={allEvents}
@@ -75,17 +76,17 @@ const Calendar = ({user, allEvents}) => {
 export default function Home({user,allEvents}) {
     return (
         <div className={styles.container}>
-            <div id='popup' className={`${calendarStyles.popUp} ${calendarStyles.hide}`} onClick={function() {
-                document.getElementById('popup').classList.add(calendarStyles.hide);
-                document.getElementById('checkevent').classList.add(calendarStyles.hide);
-                document.getElementById('modifyevent').classList.add(calendarStyles.hide);
-                document.getElementById('createevent').classList.add(calendarStyles.hide);
+            <div id='popup' className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
+                document.getElementById('popup').classList.add(popupStyles.hide);
+                document.getElementById('checkevent').classList.add(popupStyles.hide);
+                document.getElementById('modifyevent').classList.add(popupStyles.hide);
+                document.getElementById('createevent').classList.add(popupStyles.hide);
             }}>
             </div>
-            <div id='createevent' className={`${calendarStyles.window}  ${calendarStyles.hide}`}>
+            <div id='createevent' className={`${popupStyles.window}  ${popupStyles.hide}`}>
                 <h1> Create Event</h1>
                 <form action="../../api/createEvent" method="POST">
-                    <div className={calendarStyles.dateForm}>
+                    <div className={popupStyles.dateForm}>
                         Från <input className='start' type="date" name="start"/> till <input className='end' type="date" name="end"/>
                     </div>
                     <input type="text" name="title" placeholder="Titel"/>
@@ -93,20 +94,20 @@ export default function Home({user,allEvents}) {
                     <button type="submit"> Skapa </button>
                 </form>
             </div>
-            <div id='modifyevent' className={`${calendarStyles.window} ${calendarStyles.hide}`}>
+            <div id='modifyevent' className={`${popupStyles.window} ${popupStyles.hide}`}>
                 <h1> Modify Event</h1>
                 <form action="../../api/modifyEvent" method="POST">
-                    <input className={`id  ${calendarStyles.hide}`} type="text" name="id"/>
+                    <input className={`id  ${popupStyles.hide}`} type="text" name="id"/>
                     <input className="title" type="text" name="title" placeholder="Titel"/>
                     <input className="description" type="text" name="description" placeholder="Beskrivning"/>
                     <button type="submit"> Ändra händelse</button>
                 </form>
                 <form action="../../api/deleteEvent" method="POST">
-                    <input className={`id  ${calendarStyles.hide}`} type="text" name="id"/>
+                    <input className={`id  ${popupStyles.hide}`} type="text" name="id"/>
                     <button type="submit"> Radera händelse</button>
                 </form>
             </div>
-            <div id='checkevent' className={`${calendarStyles.window} ${calendarStyles.hide}`}>
+            <div id='checkevent' className={`${popupStyles.window} ${popupStyles.hide}`}>
                 <h1> Check Event</h1>
                 <h2 className={'title'}></h2>
                 <p className={'description'}></p>
