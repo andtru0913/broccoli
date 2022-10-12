@@ -1,4 +1,4 @@
-import { serialize } from 'cookie';
+import {serialize} from "swr/dist/utils/serialize";
 
 export default async function handler(req, res) {
     res.setHeader('Set-Cookie', serialize('userid', '', {

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-//import {authenticate} from "./authenticate";
+import {authenticate} from "./authenticate";
 
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)

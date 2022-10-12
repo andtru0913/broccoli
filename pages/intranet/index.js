@@ -11,7 +11,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({user}) {
-    if (user === undefined) {
+    if (user === null) {
         return (
             <div>
                 <Head>
