@@ -12,7 +12,7 @@ export default function Layout({children}) {
                 <link rel="icon" href="/favicon.ico" />    
             </Head>
             <NavBar  className={styles.navbar} />
-            <div className={styles.container}> 
+            <div > 
             
                 {children} 
             </div>

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Layout from '../components/layout';
+import Carousel from '../components/carousel';
 
 export const getStaticProps = async () => {
 
@@ -20,11 +21,14 @@ export default function Home({feed}) {
   const insta_images = feed.data;
   return (
     <Layout>
-      <main className={styles.main}>
-          <header>
-                <h1 className={styles.title}> BROCCOLI </h1>
-            </header>
-            <div className={styles.bgWrap}>
+      <main className=" flex flex-1 flex-col justify-center align-middle">
+      <section className='flex'>
+          <div className="w-80 ml-16 mt-60 bg-black bg-opacity-50 p-5 rounded-lg">
+                <h1 className="text-amethyst text-6xl leading-tight mb-3"> BROCCOLI </h1>
+                <p className='text-slate-200 text-xs text-wrap leading-tight'> Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi fokuserar på konsulter som är vår huvudgren där vi hjälper våra kunder att utveckla spännande teknik, och utbildning eftersom det är roligt att sprida kunskap om det vi brinner för. </p>
+            </div>
+
+            <div className=" w-full h-96 bg-cover bg-center -z-10 ">
             
             <Image 
                 src="/images/gothenburg.jfif"
@@ -34,70 +38,100 @@ export default function Home({feed}) {
                 />
             </div>
 
-        <div className={styles.pages}>
+        </section>
 
-          <div className={styles.grid}>
+
+
+
+
+        <section className="">
+
+          <div className="grid grid-flow min-w-fit lg:grid-cols-3  md:grid-cols-2 gap-4 lg:px-40 ">
             <Link href="/carreer">
-              <a  className={styles.card}>
-                <h2>KARRIÄR</h2>
-                <p>Find in-depth information about Next.js features and API.</p>
+              <a  className=" m-4 p-6 text-left bg-slate-400 rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-slate-50 shadow-gray-500 shadow-md">
+                <h2 className="text-2xl mb-4">KARRIÄR</h2>
+                <p className="text-xl leading-5">Find in-depth information about Next.js features and API.</p>
               </a>
             </Link>
 
+            <Link href="/carreer">
+              <a  className="basis-1/3 m-4 p-6 text-left bg-slate-400 rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-slate-50 shadow-gray-500 shadow-md">
+                <h2 className="text-2xl mb-4">UNDERKONSULT</h2>
+                <p className="text-xl leading-5">Find in-depth information about Next.js features and API.</p>
+              </a>
+            </Link>
 
-            <a href="/underconsultants" className={styles.card}>
-              <h2>UNDERKONSULT &rarr;</h2>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
+            <Link href="/carreer">
+              <a  className="basis-1/3 m-4 p-6 text-left bg-slate-400 rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-slate-50 shadow-gray-500 shadow-md">
+                <h2 className="text-2xl mb-4">TJÄNSTER</h2>
+                <p className="text-xl leading-5">Find in-depth information about Next.js features and API.</p>
+              </a>
+            </Link>
 
-            <a
-              href="/our_services"
-              className={styles.card}
-            >
-              <h2>TJÄNSTER &rarr;</h2>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
+            <Link href="/carreer">
+              <a  className="basis-1/3 m-4 p-6 text-left bg-slate-400 rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-slate-50 shadow-gray-500 shadow-md">
+                <h2 className="text-2xl mb-4">ATT JOBBA HOS BROCCOLI</h2>
+                <p className="text-xl leading-5">Find in-depth information about Next.js features and API.</p>
+              </a>
+            </Link>
 
-            <a
-              href="/about"
-              className={styles.card}
-            >
-              <h2>ATT JOBBA HOS BROCCOLI &rarr;</h2>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
+            <Link href="/carreer">
+              <a  className="basis-1/3 m-4 p-6 text-left bg-slate-400 rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-slate-50 shadow-gray-500 shadow-md">
+                <h2 className="text-2xl mb-4">BROCCOLIGÅRDEN</h2>
+                <p className="text-xl leading-5">Find in-depth information about Next.js features and API.</p>
+              </a>
+            </Link>
 
-            <a
-              href="/"
-              className={styles.card}
-            >
-              <h2>BROCCOLIGÅRDEN &rarr;</h2>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
+            <Link href="/carreer">
+              <a  className="basis-1/3 m-4 p-6 text-left bg-slate-400 rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-slate-50 shadow-gray-500 shadow-md">
+                <h2 className="text-2xl mb-4">HISTORIA</h2>
+                <p className="text-xl leading-5">Find in-depth information about Next.js features and API.</p>
+              </a>
+            </Link>
 
-            <a
-              href="/abput"
-              className={styles.card}
-            >
-              <h2>HISTORIA &rarr;</h2>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
           </div>
 
-        </div>
+        </section>
 
 
-        <div className={styles.instafeed}>
-          {insta_images && insta_images.map(image =>(
-            <div key={image.id}><img src={image.media_url} alt={image.caption} /></div>
+          
+
+        <div className="flex align-middle justify-center flex-nowrap bg-theme-green py-10">
+          {insta_images && insta_images.slice(0, 6).map(image =>(
+            
+            <div className="my-8 mx-4" key={image.id}>
+              <img 
+                className="shadow-gray-600 shadow-md" 
+                src={image.media_url} 
+                alt={image.caption} 
+              />
+              <div className="text-center px-6 py-5 text-xs break-words">
+                <p className=' text-xs h-8 text-ellipsis overflow-clip'> {image.caption} </p>
+              </div>
+              
+            </div>
+            
+
           ))}
 
         </div>
+
+
+        {/**<div className={styles.insta__feed}>
+          {insta_images && insta_images.map(image =>(
+            <div className={styles.insta__post} key={image.id}>
+              <img 
+                className={styles.insta__image} 
+                src={image.media_url} 
+                alt={image.caption} 
+              />
+              
+            </div>
+          ))}
+
+        </div> */}
+
+      
         
 
       </main>
