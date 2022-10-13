@@ -2,7 +2,7 @@
 
 import styles from './footer.module.css'
 import Image from 'next/image';
-import {BsInstagram, BsFacebook, BsLinkedin} from 'react-icons/bs'
+import { BsInstagram, BsFacebook, BsLinkedin } from 'react-icons/bs'
 import Link from 'next/link';
 const Footer = () => {
     return (
@@ -13,15 +13,15 @@ const Footer = () => {
                 <div className={styles.section}>
 
                     <a className={styles.socialmedia}>
-                        <BsInstagram size={30}/>
+                        <BsInstagram size={30} />
                     </a>
 
                     <a className={styles.socialmedia}>
-                        <BsFacebook size={30}/>
+                        <BsFacebook size={30} />
                     </a>
 
                     <a className={styles.socialmedia}>
-                        <BsLinkedin size={30}/>
+                        <BsLinkedin size={30} />
                     </a>
 
                 </div>
@@ -34,15 +34,15 @@ const Footer = () => {
 
                 </div>
 
-                
+
                 <Link href={"/"}>
-                <a>
+                    <a>
                         <Image src="/images/BroccoliBlack.png" alt="Broccoli Logo" width={72} height={16} />
-                </a>
+                    </a>
                 </Link>
             </div>
-            
-      </footer>
+
+        </footer>
     );
 }
 
