@@ -152,3 +152,15 @@ export async function updateEventDesc(id, title, description) {
         },
     })
 }
+
+export async function updateEventDate(id, start, end) {
+    return await prisma.event.update({
+        where: {
+            id: id,
+        },
+        data: {
+            start: start,
+            end: end,
+        },
+    })
+}

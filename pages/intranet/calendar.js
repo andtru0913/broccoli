@@ -35,6 +35,7 @@ const Calendar = ({user, allEvents}) => {
         <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}
             selectable
+            editable={user.admin}
             height={'80vh'}
             select={function (e) {
                 if(user.admin) {
@@ -61,12 +62,36 @@ const Calendar = ({user, allEvents}) => {
                     modifyevent.getElementsByClassName('id')[0].value = id
                     modifyevent.getElementsByClassName('id')[1].value = id
                     modifyevent.classList.remove(popupStyles.hide)
-
                 } else {
                     checkevent.getElementsByClassName('title')[0].innerText = title
                     checkevent.getElementsByClassName('description')[0].innerText = description
                     checkevent.classList.remove(popupStyles.hide)
                 }
+            }}
+            eventDrop={function(e) {
+                let id = e.event._def.publicId
+                let delta = e.delta.days
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "../../api/modifyEventDate", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    id: id,
+                    delta: delta
+                }));
+                }
+
+            }
+            eventResize={function (e) {
+                let id = e.event._def.publicId
+                let delta = e.endDelta.days
+                console.log(delta);
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "../../api/resizeEvent", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    id: id,
+                    delta: delta
+                }));
             }}
             events={allEvents}
         />
