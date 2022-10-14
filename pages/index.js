@@ -1,35 +1,53 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Card from '../components/card';
-import Layout from '../components/layout';
-import menu_list from "../components/navmenuList"
+import Layout from '../components/layout/layout';
+import menu_list from "../components/navbar/navmenuList"
+import styles from '../styles/Home.module.css'
 
 export const getStaticProps = async () => {
-
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
   const feed = await data.json();
+
   console.log(feed)
   return {
     props: {
-      feed
+      feed,
     }
   }
 }
 
-export default function Home({ feed }) {
+export default function Home({ feed, }) {
   const insta_images = feed.data;
   return (
     <Layout>
-      <main className=" flex flex-1 flex-col justify-center align-middle">
+      <main className=" flex flex-1 flex-col justify-center align-middle bg-theme-green">
         <header className="">
-          <div className='relative w-full bg-center bg-cover'>
-            <img
-              className='relative '
-              src='/images/gothenburg.jfif'
+
+        <div className=" overflow-hidden h-screen bg-center">
+          
+          <Image 
+              src="/images/gothenburg.jfif"
+              layout="fill"
+              objectFit='cover'
+              alt="Siluette of Gothenburg"
             />
+        </div>
+          <div className='relative overflow-hidden'>
+            
 
             {/** 
+             * 
+             * <Image
+              src="/images/gothenburg.jfif"
+              alt="Siluette of Gothenburg"
+              width={100}
+              height={100}
+              layout="responsive"
+              object-fit="cover"
+
+            />
             <div className="absolute left-0 bottom-40 p-6 w-1/3 h-1/3 opacity-60 bg-black"></div>
             <div className='absolute left-0 bottom-40 p-6 w-1/3 h-1/3  '>
               <p className='text-white text-2xl text-center p-5'> BROCCOLI </p>
