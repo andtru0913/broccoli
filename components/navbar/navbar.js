@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 import { useState } from "react";
 import NavItem from "./navitem";
 import styles from '../../styles/navbar.module.css'
@@ -21,7 +21,7 @@ const NavBar = () => {
     const openmenu = () => setIsOpen(!isOpen)
     const hamburgerLine = " w-6 h-0.5 bg-darkest my-1 transition-all duration-300 ease-in-out md:hidden";
     return (
-        <header className="sticky top-0 z-10">
+        <header className="sticky top-0 z-50">
             <nav className="flex justify-between align-middle py-2 px-7 bg-theme-creme opacity-90">
                 <div className="text-lg flex justify-start">
                     <Link href="/">
@@ -45,6 +45,8 @@ const NavBar = () => {
                                     }}
                                     key={menu.text}
                                 >
+
+
                                     <NavItem active={activeIdx === idx} {...menu} />
 
                                 </li>
