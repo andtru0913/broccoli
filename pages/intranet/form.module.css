@@ -1,8 +1,1 @@
-.form {
-    display: flex;
-    flex-direction: column;
-}
 
-.form input, .form button {
-    width: 200px;
-}
