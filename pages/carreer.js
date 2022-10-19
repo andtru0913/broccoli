@@ -33,7 +33,10 @@ export default function Career() {
             </section>
             <section className="bg-beige-1">
                 <div className="layout py-12 md:w-1/2">
-                    <Form />
+                    <form method="POST" action="./api/send_email">
+                        <Form />
+                    </form>
+
                 </div>
             </section>
         </Layout>
