@@ -1,4 +1,5 @@
 import * as Database from "../../Database";
+import {SMTPClient} from "emailjs";
 
 export default async function handler(req, res) {
     if (await Database.isAdmin(req.cookies['userid'])) {
@@ -11,6 +12,28 @@ export default async function handler(req, res) {
                     console.error(e.message)
                 })
         }
+        /*
+        const client = new SMTPClient({
+            user: 'anders.truong@broccoli.se',
+            password: 'gFga2mDGz&',
+            host: 'smtp01.levonline.com',
+            tsl: true,
+            port: 587
+        });
+
+        client.send(
+            {
+                text: "<p style=\"font-family: times, serif;\">"+req.body.description+"</p>",
+                from: 'anders.truong@broccoli.se',
+                to: 'andtru0913@gmail.com',
+                subject: req.body.title
+            },
+            (err, message) => {
+                //console.log(err || message);
+            }
+        )
+        */
+
     }
     res.redirect(302, '../intranet/calendar');
 }

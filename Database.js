@@ -17,6 +17,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             company: company,
             admin: admin !== undefined,
             salt: salt,
+            lunchgroupID: '634e9876bf1fe7084e06634c',
         },
     })
 }
@@ -77,6 +78,7 @@ export async function getUserinfo(userid) {
 export async function getAllUsers() {
     return await prisma.user.findMany({
         select: {
+            id:true,
             username:true,
             firstname:true,
             lastname:true,
@@ -164,3 +166,56 @@ export async function updateEventDate(id, start, end) {
         },
     })
 }
+
+export async function createGroup(name) {
+    await prisma.lunchgroup.create({
+        data: {
+            title: name,
+        },
+    })
+}
+
+export async function getGroups(id) {
+    return await prisma.lunchgroup.findMany({
+        where: {
+            id: id
+        },
+        select: {
+            id:true,
+            title:true,
+            users:true,
+        }
+    })
+}
+
+export async function setLunchgroup(userid, lunchgroupid) {
+    return await prisma.lunchgroup.update({
+        where: {
+            id: lunchgroupid,
+        },
+        data: {
+            users: {
+                connect: {
+                    id: userid,
+                }
+            }
+        },
+    })
+}
+
+export async function deleteLunchgroup(id) {
+    await prisma.lunchgroup.delete({
+        where: {
+            id: id
+        }
+    })
+    return await prisma.user.updateMany({
+            where: {
+                lunchgroupID: null,
+            },
+            data: {
+                lunchgroupID: '634e9876bf1fe7084e06634c',
+            },
+    })
+}
+

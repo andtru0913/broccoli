@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
+model User {
     id              String @id @default(auto()) @map("_id") @db.ObjectId
     username        String
     password        String
@@ -23,12 +23,21 @@ model user {
     company         String?
     admin           Boolean @default(false)
     salt            String
+    lunchgroup      Lunchgroup? @relation(fields: [lunchgroupID], references: [id])
+    lunchgroupID    String? @db.ObjectId
 }
 
-model event {
+model Event {
     id              String @id @default(auto()) @map("_id") @db.ObjectId
     title           String
     start           String
     end             String
     description     String?
 }
+
+model Lunchgroup {
+    id              String @id @default(auto()) @map("_id") @db.ObjectId
+    title           String
+    users           User[]
+}
+
