@@ -2,58 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/*
-a {
-  color: inherit;
-  text-decoration: none;
+:root {
+  /* #region  /**=========== Primary Color =========== */
+  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  --tw-color-primary-50: 253 244 255;
+  --tw-color-primary-100: 250 232 255;
+  --tw-color-primary-200: 245 208 254;
+  --tw-color-primary-300: 240 171 252;
+  --tw-color-primary-400: 232 121 249;
+  --tw-color-primary-500: 217 70 239;
+  --tw-color-primary-600: 192 38 211;
+  --tw-color-primary-700: 162 28 175;
+  --tw-color-primary-800: 134 25 143;
+  --tw-color-primary-900: 112 26 117;
+  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #fdf4ff */
+  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #fae8ff */
+  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #f5d0fe */
+  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #f0abfc */
+  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #e879f9 */
+  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #d946ef */
+  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #c026d3 */
+  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #a21caf */
+  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #86198f */
+  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #701a75 */
+  /* #endregion  /**======== Primary Color =========== */
 }
 
+@layer base {
 
-@media (prefers-color-scheme: dark) {
-  html {
-    
-    color-scheme: dark;
+
+  .cursor-newtab {
+    cursor: url('/images/new-tab.png') 10 10, pointer;
   }
-  body {
-    color: white;
-    background-color: #7C8076;
+
+  /* #region  /**=========== Typography =========== */
+  .h0 {
+    @apply text-3xl md:text-5xl;
+  }
+
+  h1,
+  .h1 {
+    @apply text-2xl md:text-4xl uppercase;
+  }
+
+  h2,
+  .h2 {
+    @apply text-xl md:text-3xl;
+  }
+
+  h3,
+  .h3 {
+    @apply text-lg md:text-2xl;
+  }
+
+  h4,
+  .h4 {
+    @apply text-base md:text-lg;
+  }
+
+  body,
+  .p {
+    @apply text-sm md:text-base;
+  }
+  /* #endregion  /**======== Typography =========== */
+
+.layout {
+    /* 1100px */
+    max-width: 68.75rem;
+    @apply mx-auto w-11/12;
+  }
+
+  .bg-dark a.custom-link {
+    @apply border-gray-200 hover:border-gray-200/0;
+  }
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(
+        to right,
+        var(--color-primary-400),
+        var(--color-primary-500)
+      );
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .animated-underline {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+  }
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 0 2px, 100% 2px;
+  }
 }
-
-html,body, body * { 
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color:inherit;
-  background-color:inherit;
-
-
-}
-
-li {
-  list-style: none;
-}
-
-button {
-background: transparent;
-border: none;
-cursor: pointer;
-padding: 0;
-}
-
-button:hover,
-button:focus {
-  background:transparent;
-}
-
-button:focus {
-  outline: none;
-
-}
-*/

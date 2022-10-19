@@ -1,25 +1,28 @@
-import Link from "next/link";
+import Link from 'next/link'
 import { useState } from "react";
 import NavItem from "./navitem";
-import styles from './navbar.module.css'
+import styles from '../../styles/navbar.module.css'
+
 import Image from "next/image";
-import menu_list from "./navmenuList"
 
 
 const MENU_LIST = [
-    { text: "Home", href: "/" },
-    { text: "About Us", href: "/about" },
-    { text: "Contact", href: "/contact" },
+    { text: "Hem", href: "/"},
+    { text: "Tjänster", href: "/"},
+    { text: "Karriär", href: "/carreer"},
+    { text: "Underkonsult", href: "/underconsultants"},
+    { text: "Om oss", href: "/about"},
+    { text: "Kontakt", href: "/contact"},
 ];
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeIdx, setActiveIdx] = useState(null);
     const openmenu = () => setIsOpen(!isOpen)
-    const hamburgerLine = "block w-6 h-0.5 bg-darkest my-1 transition-all duration-300 ease-in-out";
+    const hamburgerLine = " w-6 h-0.5 bg-darkest my-1 transition-all duration-300 ease-in-out md:hidden";
     return (
-        <header className="relative z-10">
-            <nav className="flex justify-between align-middle py-2 px-7 bg-white opacity-90">
+        <header className="sticky top-0 z-50">
+            <nav className="flex justify-between align-middle py-2 px-7 bg-theme-creme opacity-90">
                 <div className="text-lg flex justify-start">
                     <Link href="/">
                         <a>
@@ -31,11 +34,9 @@ const NavBar = () => {
 
                     </Link>
                 </div>
-                <div className="flex justify-end">
+                <div className="flex justify-end absolute right-10 top-3.5">
                     <ul className={isOpen === false ? styles.navmenu : styles.navmenu + ' ' + styles.active}>
-                        {
-
-                            menu_list.map((menu, idx) => (
+                        {MENU_LIST.map((menu, idx) => (
 
                                 <li className={styles.navitem}
                                     onClick={() => {
@@ -44,6 +45,8 @@ const NavBar = () => {
                                     }}
                                     key={menu.text}
                                 >
+
+
                                     <NavItem active={activeIdx === idx} {...menu} />
 
                                 </li>

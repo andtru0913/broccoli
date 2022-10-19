@@ -22,7 +22,7 @@ module.exports = {
         'green-1' : '#80A490',
         'green-2' : '#55796D',
         'green-3' : '#294D4A',
-        'pruple-1': '#AF929D',
+        'purple-1': '#AF929D',
         'purple-2': '#846376',
         'purple-3': '#59344F',
         'darkest': '#472D30',
@@ -33,5 +33,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  ]
 }

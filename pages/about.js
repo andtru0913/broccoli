@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Layout from "../components/layout";
+import Layout from "../components/layout/layout";
 
 
 export default function About() {
@@ -7,13 +7,16 @@ export default function About() {
     return (
         <Layout>
             About us!
-            <section className='flex'>
-                <div className="w-80 ml-16 mt-60 bg-black bg-opacity-50 p-5 rounded-lg">
-                    <h1 className="text-amethyst text-6xl leading-tight mb-3"> BROCCOLI </h1>
-                    <p className='text-slate-200 text-xs text-wrap leading-tight'> Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi fokuserar på konsulter som är vår huvudgren där vi hjälper våra kunder att utveckla spännande teknik, och utbildning eftersom det är roligt att sprida kunskap om det vi brinner för. </p>
+            <section className=' flex'>
+                <div className="relative">
+                    <div className="absolute bottom-0 z-10 w-80 ml-16 mt-60 bg-black bg-opacity-50 p-5 rounded-lg">
+                        <h1 className="absolute bottom-0 z-10 text-amethyst text-6xl leading-tight mb-3"> BROCCOLI </h1>
+                        <p className='absolute bottom-0 z-10 text-slate-200 text-xs text-wrap leading-tight'> Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi fokuserar på konsulter som är vår huvudgren där vi hjälper våra kunder att utveckla spännande teknik, och utbildning eftersom det är roligt att sprida kunskap om det vi brinner för. </p>
+                    </div>
+                
                 </div>
 
-                <div className=" w-full h-96 bg-cover bg-center -z-10 ">
+                <div className=" w-full h-96 bg-cover bg-center ">
 
                     <Image
                         src="/images/gothenburg.jfif"
@@ -22,6 +25,7 @@ export default function About() {
                         alt="Siluette of Gothenburg"
                     />
                 </div>
+               
 
             </section>
 
