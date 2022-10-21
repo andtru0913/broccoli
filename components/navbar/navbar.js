@@ -8,10 +8,11 @@ import Image from "next/image";
 
 const MENU_LIST = [
     { text: "Hem", href: "/"},
-    { text: "Tjänster", href: "/"},
+    { text: "Tjänster", href: "/posts"},
     { text: "Karriär", href: "/carreer"},
     { text: "Underkonsult", href: "/underconsultants"},
     { text: "Om oss", href: "/about"},
+    { text: "Historia", href: "/about/history", tag: true },
     { text: "Kontakt", href: "/contact"},
 ];
 

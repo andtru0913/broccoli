@@ -1,5 +1,4 @@
 
-
 export default function Form() {
     return (
         <>
@@ -21,11 +20,11 @@ export default function Form() {
 
                         <div className="flex flex-1 flex-col p-2">
                             <label className="text-sm pb-1" htmlFor="first">First Name</label>
-                            <input className="  p-2 border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1 autofill:bg-theme-green autofill:focus:bg-black" type="text" id="first" name="first" placeholder="Firstname.. " required />
+                            <input className="  p-2 border border-zinc-200 appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1 autofill:bg-theme-green autofill:focus:bg-black" type="text" id="first" name="first" placeholder="Firstname.. " required />
                         </div>
                         <div className="flex flex-1 flex-col p-2">
                             <label className="text-sm pb-1" htmlFor="last">Last Name</label>
-                            <input className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" autoComplete="on" type="text" id="last" name="last" placeholder="Lastname.. " required />
+                            <input className="  p-2 border border-zinc-200 appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" autoComplete="on" type="text" id="last" name="last" placeholder="Lastname.. " required />
 
                         </div>
 
@@ -35,11 +34,11 @@ export default function Form() {
 
                         <div className="flex flex-1 flex-col p-2">
                             <label className="text-sm pb-1" htmlFor="first">Mail</label>
-                            <input className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="email" id="email" name="email" placeholder="example@mail.com " required />
+                            <input className="  p-2 border border-zinc-200  appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="email" id="email" name="email" placeholder="example@mail.com " required />
                         </div>
                         <div className="flex flex-1 flex-col p-2">
                             <label className="text-sm pb-1" htmlFor="last">Phone</label>
-                            <input className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="tel" id="phone" name="phone" placeholder="07xxxxxxxx " required />
+                            <input className="  p-2 border border-zinc-200  appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="tel" id="phone" name="phone" placeholder="07xxxxxxxx " required />
 
                         </div>
 
@@ -50,7 +49,7 @@ export default function Form() {
 
                         <div className="flex flex-1 flex-col p-2">
                             <label className="text-sm pb-1" htmlFor="first">Free text</label>
-                            <textarea className="  p-2 border appearance-none  rounded-md shadow leading-tight text-wrap focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="text" id="freetext" name="freetext" placeholder="Tell us something about yourself.. " />
+                            <textarea className="  p-2 border border-zinc-200  appearance-none  rounded-md shadow leading-tight text-wrap focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="text" id="freetext" name="freetext" placeholder="Tell us something about yourself.. " />
                         </div>
 
 
@@ -62,7 +61,7 @@ export default function Form() {
 
                         <div className="flex flex-1 flex-col p-2">
                             <label className="text-sm pb-1" htmlFor="first">Insert attachement (CV or/and personal letter)</label>
-                            <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile" />
+                            <input className="form-control block w-full py-1.5 text-base font-normal text-gray-700  bg-clip-padding border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-2 focus:outline-none" type="file" id="formFile" />
 
                         </div>
 
@@ -83,7 +82,7 @@ export default function Form() {
                     <div className="relative flex justify-end flex-row  ">
 
                         <div className=" p-2 ">
-                            <button className="shadow bg-purple-3 hover:bg-purple-2 focus:shadow-outline focus:outline-none text-white font-semibold py-2 px-4 rounded" type="button">
+                            <button  className="shadow bg-purple-3 hover:bg-purple-2 focus:shadow-outline focus:outline-none text-white font-semibold py-2 px-4 rounded" type="button">
                                 Skicka
                             </button>
                         </div>
