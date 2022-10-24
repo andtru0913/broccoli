@@ -1,5 +1,4 @@
 
-
 export default function Form() {
     return (
         <>
@@ -19,13 +18,13 @@ export default function Form() {
                         {/**first and last name */}
                         <div className="relative flex flex-wrap flex-col md:flex-row  ">
 
-                            <div className="flex flex-1 flex-col p-2">
-                                <label className="text-sm pb-1" htmlFor="first">First Name</label>
-                                <input className="  p-2 border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1 autofill:bg-theme-green autofill:focus:bg-black" type="text" id="first" name="first" placeholder="Firstname.. " required />
-                            </div>
-                            <div className="flex flex-1 flex-col p-2">
-                                <label className="text-sm pb-1" htmlFor="last">Last Name</label>
-                                <input className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" autoComplete="on" type="text" id="last" name="last" placeholder="Lastname.. " required />
+                        <div className="flex flex-1 flex-col p-2">
+                            <label className="text-sm pb-1" htmlFor="first">First Name</label>
+                            <input className="  p-2 border border-zinc-200 appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1 autofill:bg-theme-green autofill:focus:bg-black" type="text" id="first" name="first" placeholder="Firstname.. " required />
+                        </div>
+                        <div className="flex flex-1 flex-col p-2">
+                            <label className="text-sm pb-1" htmlFor="last">Last Name</label>
+                            <input className="  p-2 border border-zinc-200 appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" autoComplete="on" type="text" id="last" name="last" placeholder="Lastname.. " required />
 
                             </div>
 
@@ -33,13 +32,13 @@ export default function Form() {
                         {/**mail and phone*/}
                         <div className="relative flex flex-wrap flex-col md:flex-row  ">
 
-                            <div className="flex flex-1 flex-col p-2">
-                                <label className="text-sm pb-1" htmlFor="first">Mail</label>
-                                <input className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="email" id="email" name="email" placeholder="example@mail.com " required />
-                            </div>
-                            <div className="flex flex-1 flex-col p-2">
-                                <label className="text-sm pb-1" htmlFor="last">Phone</label>
-                                <input className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="tel" id="phone" name="phone" placeholder="07xxxxxxxx " required />
+                        <div className="flex flex-1 flex-col p-2">
+                            <label className="text-sm pb-1" htmlFor="first">Mail</label>
+                            <input className="  p-2 border border-zinc-200  appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="email" id="email" name="email" placeholder="example@mail.com " required />
+                        </div>
+                        <div className="flex flex-1 flex-col p-2">
+                            <label className="text-sm pb-1" htmlFor="last">Phone</label>
+                            <input className="  p-2 border border-zinc-200  appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="tel" id="phone" name="phone" placeholder="07xxxxxxxx " required />
 
                             </div>
 
@@ -48,10 +47,10 @@ export default function Form() {
                         {/**free text */}
                         <div className="relative flex flex-wrap flex-col md:flex-row">
 
-                            <div className="flex flex-1 flex-col p-2">
-                                <label className="text-sm pb-1" htmlFor="first">Free text</label>
-                                <textarea className="  p-2 border appearance-none  rounded-md shadow leading-tight text-wrap focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" id="freetext" name="freetext" placeholder="Tell us something about yourself.. " />
-                            </div>
+                        <div className="flex flex-1 flex-col p-2">
+                            <label className="text-sm pb-1" htmlFor="first">Free text</label>
+                            <textarea className="  p-2 border border-zinc-200  appearance-none  rounded-md shadow leading-tight text-wrap focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1" type="text" id="freetext" name="freetext" placeholder="Tell us something about yourself.. " />
+                        </div>
 
 
                         </div>

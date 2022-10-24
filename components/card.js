@@ -3,7 +3,7 @@ import Link from "next/link";
 const Card = ({ title, icon, image, text, href }) => {
     return (
         !image ?
-            <Link href={href ?? "/"}>
+            <Link href={href }>
                 <a className=" m-4 p-4 text-left md:p-8 bg-theme-creme rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-theme-green shadow-green-dark shadow-md">
 
                     <div className="flex flex-1 p-2 md:p-4">
@@ -15,7 +15,7 @@ const Card = ({ title, icon, image, text, href }) => {
                 </a>
             </Link>
             :
-            <Link href={href ?? "/"}>
+            <Link href={href }>
                 <a className="relative m-4 text-left  bg-theme-creme rounded-xl transition-all duration-150 ease-in-out hover:scale-105 hover:text-theme-green shadow-green-dark shadow-md">
 
                     <div className="h-1/2 overflow-hidden">
