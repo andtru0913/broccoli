@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-const Calendar = ({user, allEvents}) => {
+const Calender = ({user, allEvents}) => {
     return (
         <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}
@@ -145,7 +145,7 @@ export default function Home({user,allEvents}) {
             </Head>
             <main className={styles.main}>
                 <div className={calendarStyles.main}>
-                    {Calendar({user, allEvents})}
+                    {Calender({user, allEvents})}
                 </div>
             </main>
         </div>

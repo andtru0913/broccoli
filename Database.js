@@ -23,6 +23,9 @@ export async function createNewUser(username, password, firstname, lastname, add
 }
 
 export async function login(input_username, input_password) {
+
+console.log("user " +input_username)
+
     const query = await prisma.user.findMany({
         where: {
             username: input_username
@@ -34,10 +37,12 @@ export async function login(input_username, input_password) {
         }
     })
     try {
+        console.log("hej")
         let salt = query[0].salt
         let id = query[0].id
         let account_password = query[0].password
         const hashedPassword = await bcrypt.hash(input_password, salt)
+        console.log(hashedPassword)
         if (hashedPassword === account_password) {
             return id
         }
@@ -180,6 +185,17 @@ export async function getGroups(id) {
         where: {
             id: id
         },
+        select: {
+            id:true,
+            title:true,
+            users:true,
+        }
+    })
+}
+
+export async function getAllLunchGroups() {
+    return await prisma.lunchgroup.findMany({
+        
         select: {
             id:true,
             title:true,

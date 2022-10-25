@@ -41,3 +41,11 @@ model Lunchgroup {
     users           User[]
 }
 
+model Posts {
+    id              String @id @default(auto()) @map("_id") @db.ObjectId
+    slug            String @unique
+    title           String
+    body            String
+    timestamp       DateTime
+}
+

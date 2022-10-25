@@ -5,14 +5,9 @@ import Layout from '../components/layout/layout';
 import menu_list from "../components/navbar/navmenuList"
 import styles from '../styles/Home.module.css'
 
-import dynamic from "next/dynamic";
-const Animator = dynamic(
-  import("react-scroll-motion").then((it) => it.Animator),
-  { ssr: false }
-);
 
 
-import { ScrollContainer, ScrollPage, batch, Fade, FadeIn, FadeOut, Move, MoveIn, MoveOut, Sticky, StickyIn, StickyOut, Zoom, ZoomIn, ZoomOut } from "react-scroll-motion";
+
 import Accordion from '../components/accordion';
 import { useState } from 'react';
 
@@ -66,8 +61,6 @@ export default function Home({ feed, }) {
   setVal(val=> val +1):
   ""
 }
-  const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
-  const FadeUp = batch(Fade(), Move());
   return (
     <Layout>
       <main>
