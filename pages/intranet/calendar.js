@@ -122,13 +122,13 @@ export default function Home({user,allEvents}) {
             <div id='modifyevent' className={`${popupStyles.window} ${popupStyles.hide}`}>
                 <h1> Modify Event</h1>
                 <form action="../../api/modifyEvent" method="POST">
-                    <input className={`id  ${popupStyles.hide}`} type="text" name="id"/>
+                    <input className={"id"} type="hidden" name="id"/>
                     <input className="title" type="text" name="title" placeholder="Titel"/>
                     <input className="description" type="text" name="description" placeholder="Beskrivning"/>
                     <button type="submit"> Ändra händelse</button>
                 </form>
                 <form action="../../api/deleteEvent" method="POST">
-                    <input className={`id  ${popupStyles.hide}`} type="text" name="id"/>
+                    <input className={"id"} type="hidden" name="id"/>
                     <button type="submit"> Radera händelse</button>
                 </form>
             </div>

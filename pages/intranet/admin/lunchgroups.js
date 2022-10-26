@@ -8,7 +8,7 @@ import styles from "../../../styles/Home.module.css";
 import popupStyles from "../popup.module.css";
 import formStyles from "../form.module.css";
 
-const Column = dynamic(() => import("../../../src/Column"), { ssr: false });
+const Column = dynamic(() => import("../../../components/Column"), { ssr: false });
 
 const reorderColumnList = (sourceCol, startIndex, endIndex) => {
     const newusers = Array.from(sourceCol.users);
