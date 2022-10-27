@@ -1,12 +1,12 @@
 const NewsSection = ({ id, slug, title, body, timestamp, img_path }) => {
     return (
-        <div className="cursor-pointer transition-all duration-300 ease-in-out hover:scale-x-105">
-            <div className=' flex flex-1 bg-beige-1 m-2'>
-                <div className='w-1/6 p-4 '>
+        <div className="cursor-pointer transition-all duration-300 ease-in-out hover:scale-x-105 border shadow rounded my-2 md:mx-2">
+            <div className=' flex flex-1 m-2 '>
+                <div className='w-1/3 md:w-1/6  '>
                     <img src={img_path} alt={title} />
                 </div>
 
-                <div className='flex flex-col p-4'>
+                <div className='flex flex-col ml-2'>
 
                     <h4>
                         {title}
@@ -18,11 +18,11 @@ const NewsSection = ({ id, slug, title, body, timestamp, img_path }) => {
                 </div>
 
             </div>
-            <div className='bg-beige-1'>
+            <div className=''>
 
 
             </div>
-            <div className='bg-beige-1'>
+            <div className=''>
 
 
             </div>

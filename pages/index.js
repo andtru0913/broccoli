@@ -45,22 +45,22 @@ async function handleOnSubmit(e) {
 
 export default function Home({ feed, }) {
   const insta_images = feed.data;
-  const animationData = [{ id: 1, color: 'bg-green-300', text: 'hållbar utveckling'}, { id: 2, color: 'bg-red-300', text: 'relationer'}, { id: 3, color: 'bg-yellow-300', text: 'proffessionalism'}]
+  const animationData = [{ id: 1, color: 'bg-green-300', text: 'hållbar utveckling' }, { id: 2, color: 'bg-red-300', text: 'relationer' }, { id: 3, color: 'bg-yellow-300', text: 'proffessionalism' }]
   const [val, setVal] = useState(0)
- const upValue = () => {
-  console.log(val)
-  val > 0 ?
-    setVal(val => val -1) :
-    setVal(val) 
+  const upValue = () => {
+    console.log(val)
+    val > 0 ?
+      setVal(val => val - 1) :
+      setVal(val)
 
-  console.log(val)
-}
- const downValue = () => {
-  console.log(val)
-  val <= 2 ?
-  setVal(val=> val +1):
-  ""
-}
+    console.log(val)
+  }
+  const downValue = () => {
+    console.log(val)
+    val <= 2 ?
+      setVal(val => val + 1) :
+      ""
+  }
   return (
     <Layout>
       <main>
@@ -115,7 +115,30 @@ export default function Home({ feed, }) {
 
         </section>
 
-        <section className="bg-theme-green">
+        <section className="bg-theme-green py-12">
+          <h2 className='text-center'>Våra kärnvärden</h2>
+          <div className="layout grid grid-flow min-w-fit  py-12 lg:grid-cols-3 gap-4 md:gap-12 lg:px-40 cursor-default">
+
+            <div className='flex flex-col flex-1  border rounded p-4'>
+              <h3 className='py-2'>RELATIONER</h3>
+
+              <p>På Broccoli arbetar vi inkluderande, visar ömsesidig respekt och bjuder aktivt in berörda i dialogen. Genom våra olikheter bygger vi en stark gemenskap. Vi eftersträvar olikheter då det stärker oss som grupp och utvecklar oss som individer. Vi lär oss även kontinuerligt genom kunskapsdelning och inspiration av varandra vilket leder till vår trevliga företagskultur.
+              </p>    </div>
+            <div className='flex flex-col flex-1 border rounded p-4'>
+              <h3 className='py-2'>PROFESSIONALISM</h3>
+
+              <p>På Broccoli arbetar vi inkluderande, visar ömsesidig respekt och bjuder aktivt in berörda i dialogen. Genom våra olikheter bygger vi en stark gemenskap. Vi eftersträvar olikheter då det stärker oss som grupp och utvecklar oss som individer. Vi lär oss även kontinuerligt genom kunskapsdelning och inspiration av varandra vilket leder till vår trevliga företagskultur.
+              </p>    </div>
+            <div className='flex flex-col flex-1 border rounded p-4'>
+              <h3 className='py-2'>HÅLLBAR UTVECKLING</h3>
+
+              <p>På Broccoli arbetar vi inkluderande, visar ömsesidig respekt och bjuder aktivt in berörda i dialogen. Genom våra olikheter bygger vi en stark gemenskap. Vi eftersträvar olikheter då det stärker oss som grupp och utvecklar oss som individer. Vi lär oss även kontinuerligt genom kunskapsdelning och inspiration av varandra vilket leder till vår trevliga företagskultur.
+              </p>    </div>
+          </div>
+
+        </section>
+
+        {/**<section className="bg-theme-green">
 
           <div className="layout grid grid-flow min-w-fit  py-12 lg:grid-cols-3  md:grid-cols-2 gap-4 md:gap-12 lg:px-40 ">
 
@@ -131,7 +154,7 @@ export default function Home({ feed, }) {
 
           </div>
 
-        </section>
+              </section>*/}
 
 
         <section className="bg-beige-1">
@@ -186,14 +209,14 @@ export default function Home({ feed, }) {
 }
 
 
-function BrocAnimation({id, setVal, val}) {
+function BrocAnimation({ id, setVal, val }) {
   const handleValue = () => {
     console.log("click " + id)
     val < 2 ?
-      
-      setVal(id):
+
+      setVal(id) :
       ""
-    }
+  }
 
   return (
     <div onClick={handleValue} className='h-8 w-8 text-center m-2 bg-beige-2 rounded-md hover:opacity-80 hover:text-white cursor-pointer'> <p className=''>{id}</p> </div>

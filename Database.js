@@ -72,6 +72,7 @@ export async function getUserinfo(userid) {
                 worknumber:true,
                 company:true,
                 admin:true,
+                lunchgroupID: true
             }
         })
         return query[0]
@@ -192,6 +193,8 @@ export async function getGroups(id) {
         }
     })
 }
+
+
 
 export async function getAllLunchGroups() {
     return await prisma.lunchgroup.findMany({

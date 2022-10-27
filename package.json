@@ -19,6 +19,8 @@
     "bcrypt": "^5.0.1",
     "cookie": "^0.5.0",
     "emailjs": "^4.0.1",
+    "flowbite": "^1.5.3",
+    "flowbite-react": "^0.3.2",
     "next": "^12.3.1",
     "next-transpile-modules": "^9.1.0",
     "nodemon": "^2.0.20",

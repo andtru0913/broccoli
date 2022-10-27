@@ -3,9 +3,10 @@
 
 import Head from 'next/head'
 import Image from 'next/image';
+import { userAgentFromString } from 'next/server';
 import Footer from '../footer';
 import NavbarIntranet from '../intranet/navbar';
-export default function LayoutIntranet({ children }) {
+export default function LayoutIntranet({ children, user }) {
     return (
         <>
         <Head>
@@ -15,7 +16,7 @@ export default function LayoutIntranet({ children }) {
         </Head>
       
 
-        <NavbarIntranet />
+        <NavbarIntranet user={user}/>
         <section>
             
             <div className="">
