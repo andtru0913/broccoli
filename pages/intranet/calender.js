@@ -104,7 +104,7 @@ const Calender = ({ user, allEvents }) => {
 export default function Home({ user, allEvents }) {
     const popUpstyle = "h-full w-screen bg-black absolute z-20 bg-opacity-60"
     const windowstyle = "z-30 absolute w-screen p-4  top-1/3 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 "
-   
+
     return (
         <div className="">
             <div id='popup' className={`${popUpstyle} ${popupStyles.hide}`} onClick={function () {
@@ -116,58 +116,58 @@ export default function Home({ user, allEvents }) {
             </div>
             <div id='createevent' className={`${windowstyle}  ${popupStyles.hide}`}>
                 <div className="bg-white rounded p-5">
-                <h3 className="text-darkest"> Create Event</h3>
-                <form action="../../api/createEvent" method="POST">
-                    <div className="flex flex-row py-4">
-                    <div className="flex flex-row">
-                            
-                        
-                        <p className="pr-2"> Från</p>
-                         <input className='start hover:bg-zinc-300 rounded' type="date" name="start" /> 
-                         </div>
-                       
-                      
-                         <div className="flex flex-row px-2">
-                         <p className="px-2">till </p> 
-                         <input datepicker datepicker-orientation="bottom right" type="date" name="end" />
-                         </div>
-                        
-                    </div>
-                    <div className="flex flex-col">
-                    <input className="p-2 border rounded mb-2" type="text" name="title" placeholder="Titel" />
-                    <input datepicker className="p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
-        <button className="shadow btn btn-create" type="submit"> Skapa </button>
-                    </div>
-                    
-                   
-                </form>
+                    <h3 className="text-darkest"> Create Event</h3>
+                    <form action="../../api/createEvent" method="POST">
+                        <div className="flex flex-row py-4">
+                            <div className="flex flex-row">
+
+
+                                <p className="pr-2"> Från</p>
+                                <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
+                            </div>
+
+
+                            <div className="flex flex-row px-2">
+                                <p className="px-2">till </p>
+                                <input className='end hover:bg-zinc-300 rounded' type="date" name="end" />
+                            </div>
+
+                        </div>
+                        <div className="flex flex-col">
+                            <input className="p-2 border rounded mb-2" type="text" name="title" placeholder="Titel" />
+                            <input className="p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
+                            <button className="shadow btn btn-create" type="submit"> Skapa </button>
+                        </div>
+
+
+                    </form>
                 </div>
-               
+
             </div>
             <div id='modifyevent' className={`${windowstyle} ${popupStyles.hide}`}>
-            <div className="bg-white rounded p-5">
-                <h1> Modify Event</h1>
-                <form action="../../api/modifyEvent" method="POST">
-                    <div className="flex flex-row">
-                        Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
-                    </div>
-                    <input className={`id p-2 ${popupStyles.hide}`} type="text" name="id" />
-                    <input className="title p-2 " type="text" name="title" placeholder="Titel" />
-                    <input className="description p-2" type="text" name="description" placeholder="Beskrivning" />
-                    <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
-                </form>
-                <form action="../../api/deleteEvent" method="POST">
-                    <input className={`id  ${popupStyles.hide}`} type="text" name="id" />
-                    <button className="btn btn-delete" type="submit"> Radera händelse</button>
-                </form>
+                <div className="bg-white rounded p-5">
+                    <h1> Modify Event</h1>
+                    <form action="../../api/modifyEvent" method="POST">
+                        <div className="flex flex-row">
+                            Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
+                        </div>
+                        <input className={`id p-2 ${popupStyles.hide}`} type="text" name="id" />
+                        <input className="title p-2 " type="text" name="title" placeholder="Titel" />
+                        <input className="description p-2" type="text" name="description" placeholder="Beskrivning" />
+                        <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
+                    </form>
+                    <form action="../../api/deleteEvent" method="POST">
+                        <input className={`id  ${popupStyles.hide}`} type="text" name="id" />
+                        <button className="btn btn-delete" type="submit"> Radera händelse</button>
+                    </form>
                 </div>
-               
+
             </div>
             <div id='checkevent' className={`${windowstyle} ${popupStyles.hide}`}>
-            <div className="bg-white rounded p-5">
-                <h1> Check Event</h1>
-                <h2 className={'title'}></h2>
-                <p className={'description'}></p>
+                <div className="bg-white rounded p-5">
+                    <h1> Check Event</h1>
+                    <h2 className={'title'}></h2>
+                    <p className={'description'}></p>
                 </div>
             </div>
 
