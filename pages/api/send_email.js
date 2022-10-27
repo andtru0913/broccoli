@@ -26,7 +26,7 @@ export default async function handler(req, res) {
             attachment: [{
                 data: base64String,
                 encoded: true,
-                name: "file.pdf"
+                name: req.body.file
             }]
         },
         (err, message) => {

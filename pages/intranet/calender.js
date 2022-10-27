@@ -148,6 +148,10 @@ export default function Home({ user, allEvents }) {
                 <div className="bg-white rounded p-5">
                     <h1> Modify Event</h1>
                     <form action="../../api/modifyEvent" method="POST">
+                    <input className={"id"} type="hidden" name="id"/>
+                    <input className="title" type="text" name="title" placeholder="Titel"/>
+                    <input className="description" type="text" name="description" placeholder="Beskrivning"/>
+                    <button type="submit"> Ändra händelse</button>
                         <div className="flex flex-row">
                             Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
                         </div>
@@ -157,6 +161,8 @@ export default function Home({ user, allEvents }) {
                         <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
                     </form>
                     <form action="../../api/deleteEvent" method="POST">
+                    <input className={"id"} type="hidden" name="id"/>
+                    <button type="submit"> Radera händelse</button>
                         <input className={`id  ${popupStyles.hide}`} type="text" name="id" />
                         <button className="btn btn-delete" type="submit"> Radera händelse</button>
                     </form>

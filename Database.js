@@ -1,6 +1,9 @@
+
 const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
+
 const bcrypt = require ('bcrypt');
-const prisma = new PrismaClient()
+
 
 export async function createNewUser(username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
     const salt = await bcrypt.genSalt(10)
@@ -238,3 +241,64 @@ export async function deleteLunchgroup(id) {
     })
 }
 
+export async function createCard(pageId, title, description, image) {
+    await prisma.card.create({
+        data: {
+            title: title,
+            description: description,
+            page: {
+                connect: {
+                    id: pageId
+                }
+            },
+            image: image,
+        },
+    })
+}
+
+export async function getPage(id) {
+    return await prisma.page.findMany({
+        where: {
+            id: id
+        },
+        select: {
+            id: true,
+            title:true,
+            description:true,
+            cards: true,
+        }
+    })
+}
+
+export async function deleteCard(id) {
+    return await prisma.card.delete({
+        where: {
+            id:id
+        }
+    })
+}
+
+export async function updateCard(id, title, description, image) {
+    return await prisma.card.update({
+        where: {
+            id: id,
+        },
+        data: {
+            title: title,
+            description: description,
+            image: image
+        },
+    })
+}
+
+export async function updatePage(id, title, description) {
+    return await prisma.page.update({
+        where: {
+            id: id,
+        },
+        data: {
+            title: title,
+            description: description,
+        },
+    })
+}

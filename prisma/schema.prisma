@@ -41,6 +41,21 @@ model Lunchgroup {
     users           User[]
 }
 
+model Page {
+    id              String @id @default(auto()) @map("_id") @db.ObjectId
+    title           String
+    description     String?
+    cards           Card[]
+}
+
+model Card {
+    id              String  @id @default(auto()) @map("_id") @db.ObjectId
+    title           String
+    description     String?
+    image           String?
+    page            Page    @relation(fields: [pageID], references: [id])
+    pageID          String  @db.ObjectId
+}
 model Posts {
     id              String @id @default(auto()) @map("_id") @db.ObjectId
     slug            String @unique
