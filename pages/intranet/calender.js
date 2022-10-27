@@ -6,6 +6,7 @@ import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import * as Database from "../../Database";
 import popupStyles from "./popup.module.css"
+import LayoutIntranet from "../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
     let cookies = context.req.cookies['userid']
@@ -17,7 +18,7 @@ export async function getServerSideProps(context) {
                 permanent: false,
                 destination: "/intranet",
             },
-            props:{},
+            props: {},
         };
     }
     else {
@@ -30,16 +31,17 @@ export async function getServerSideProps(context) {
     }
 }
 
-const Calendar = ({user, allEvents}) => {
+const Calender = ({ user, allEvents }) => {
     return (
         <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}
             selectable
             editable={user.admin}
             height={'80vh'}
+            longPressDelay={1}
             select={function (e) {
-                if(user.admin) {
-                    e.start.setDate(e.start.getDate()+1)
+                if (user.admin) {
+                    e.start.setDate(e.start.getDate() + 1)
                     let background = document.getElementById('popup')
                     let window = document.getElementById('createevent')
                     background.classList.remove(popupStyles.hide)
@@ -68,7 +70,7 @@ const Calendar = ({user, allEvents}) => {
                     checkevent.classList.remove(popupStyles.hide)
                 }
             }}
-            eventDrop={function(e) {
+            eventDrop={function (e) {
                 let id = e.event._def.publicId
                 let delta = e.delta.days
                 let xhr = new XMLHttpRequest();
@@ -78,7 +80,7 @@ const Calendar = ({user, allEvents}) => {
                     id: id,
                     delta: delta
                 }));
-                }
+            }
 
             }
             eventResize={function (e) {
@@ -95,47 +97,84 @@ const Calendar = ({user, allEvents}) => {
             }}
             events={allEvents}
         />
+
     );
 };
 
-export default function Home({user,allEvents}) {
+export default function Home({ user, allEvents }) {
+    const popUpstyle = "h-full w-screen bg-black absolute z-20 bg-opacity-60"
+    const windowstyle = "z-30 absolute w-screen p-4  top-1/3 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 "
+
     return (
-        <div className={styles.container}>
-            <div id='popup' className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
+        <div className="">
+            <div id='popup' className={`${popUpstyle} ${popupStyles.hide}`} onClick={function () {
                 document.getElementById('popup').classList.add(popupStyles.hide);
                 document.getElementById('checkevent').classList.add(popupStyles.hide);
                 document.getElementById('modifyevent').classList.add(popupStyles.hide);
                 document.getElementById('createevent').classList.add(popupStyles.hide);
             }}>
             </div>
-            <div id='createevent' className={`${popupStyles.window}  ${popupStyles.hide}`}>
-                <h1> Create Event</h1>
+            <div id='createevent' className={`${windowstyle}  ${popupStyles.hide}`}>
+                <div className="bg-white rounded p-5">
+                <h3 className="text-darkest"> Create Event</h3>
                 <form action="../../api/createEvent" method="POST">
-                    <div className={popupStyles.dateForm}>
-                        Från <input className='start' type="date" name="start"/> till <input className='end' type="date" name="end"/>
+                    <div className="flex flex-row py-4">
+                    <div className="flex flex-row">
+
+
+                        <p className="pr-2"> Från</p>
+                         <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
+                         </div>
+
+
+                         <div className="flex flex-row px-2">
+                         <p className="px-2">till </p>
+                         <input datepicker datepicker-orientation="bottom right" type="date" name="end" />
+                         </div>
+
                     </div>
-                    <input type="text" name="title" placeholder="Titel"/>
-                    <input type="text" name="description" placeholder="Beskrivning"/>
-                    <button type="submit"> Skapa </button>
+                    <div className="flex flex-col">
+                    <input className="p-2 border rounded mb-2" type="text" name="title" placeholder="Titel" />
+                    <input datepicker className="p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
+        <button className="shadow btn btn-create" type="submit"> Skapa </button>
+                    </div>
+
+
                 </form>
+                </div>
+
             </div>
-            <div id='modifyevent' className={`${popupStyles.window} ${popupStyles.hide}`}>
+            <div id='modifyevent' className={`${windowstyle} ${popupStyles.hide}`}>
+            <div className="bg-white rounded p-5">
                 <h1> Modify Event</h1>
                 <form action="../../api/modifyEvent" method="POST">
                     <input className={"id"} type="hidden" name="id"/>
                     <input className="title" type="text" name="title" placeholder="Titel"/>
                     <input className="description" type="text" name="description" placeholder="Beskrivning"/>
                     <button type="submit"> Ändra händelse</button>
+                    <div className="flex flex-row">
+                        Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
+                    </div>
+                    <input className={`id p-2 ${popupStyles.hide}`} type="text" name="id" />
+                    <input className="title p-2 " type="text" name="title" placeholder="Titel" />
+                    <input className="description p-2" type="text" name="description" placeholder="Beskrivning" />
+                    <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
                 </form>
                 <form action="../../api/deleteEvent" method="POST">
                     <input className={"id"} type="hidden" name="id"/>
                     <button type="submit"> Radera händelse</button>
+                    <input className={`id  ${popupStyles.hide}`} type="text" name="id" />
+                    <button className="btn btn-delete" type="submit"> Radera händelse</button>
                 </form>
+                </div>
+
             </div>
-            <div id='checkevent' className={`${popupStyles.window} ${popupStyles.hide}`}>
+            <div id='checkevent' className={`${windowstyle} ${popupStyles.hide}`}>
+            <div className="bg-white rounded p-5">
                 <h1> Check Event</h1>
                 <h2 className={'title'}></h2>
                 <p className={'description'}></p>
+                </div>
             </div>
 
             <Head>
@@ -143,11 +182,19 @@ export default function Home({user,allEvents}) {
                 <meta name="description" content="Generated by create next app" />
                 <link rel="icon" href="/public/favicon.ico" />
             </Head>
-            <main className={styles.main}>
-                <div className={calendarStyles.main}>
-                    {Calendar({user, allEvents})}
-                </div>
-            </main>
+
+
+            <LayoutIntranet>
+
+                <main >
+                    <div className='layout py-12  flex flex-col items-center'>
+
+                        <div className="w-screen p-2 md:w-4/5">
+                            {Calender({ user, allEvents })}
+                        </div>
+                    </div>
+                </main>
+            </LayoutIntranet>
         </div>
     )
 }

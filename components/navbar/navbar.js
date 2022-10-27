@@ -3,6 +3,7 @@ import { useState } from "react";
 import NavItem from "./navitem";
 import styles from '../../styles/navbar.module.css'
 
+
 import Image from "next/image";
 
 
@@ -12,7 +13,7 @@ const MENU_LIST = [
     { text: "Karriär", href: "/carreer"},
     { text: "Underkonsult", href: "/underconsultants"},
     { text: "Om oss", href: "/about"},
-    { text: "Historia", href: "/about/history", tag: true },
+    { text: "Historia", href: "/about#history", tag: true },
     { text: "Kontakt", href: "/contact"},
 ];
 
@@ -48,7 +49,7 @@ const NavBar = () => {
                                 >
 
 
-                                    <NavItem active={activeIdx === idx} {...menu} />
+                                    <NavItem theme={"n"} active={activeIdx === idx} {...menu} />
 
                                 </li>
                             ))}

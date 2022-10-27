@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
 import * as Database from "../../../Database";
 import {authenticate} from "./authenticate";
+import LayoutIntranet from '../../../components/layout/layoutIntranet';
 
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)
@@ -16,6 +17,8 @@ export async function getServerSideProps(context) {
 
 export default function Home({user}) {
     return (
+
+        <LayoutIntranet>
             <div className={styles.container}>
                 <Head>
                     <title>Admin</title>
@@ -33,5 +36,6 @@ export default function Home({user}) {
 
                 </main>
             </div>
+            </LayoutIntranet>
     )
 }
