@@ -262,6 +262,7 @@ export async function getPage(id) {
             id: id
         },
         select: {
+            id: true,
             title:true,
             description:true,
             cards: true,
