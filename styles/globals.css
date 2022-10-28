@@ -2,35 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* #region  /**=========== Primary Color =========== */
-  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
-  --tw-color-primary-50: 253 244 255;
-  --tw-color-primary-100: 250 232 255;
-  --tw-color-primary-200: 245 208 254;
-  --tw-color-primary-300: 240 171 252;
-  --tw-color-primary-400: 232 121 249;
-  --tw-color-primary-500: 217 70 239;
-  --tw-color-primary-600: 192 38 211;
-  --tw-color-primary-700: 162 28 175;
-  --tw-color-primary-800: 134 25 143;
-  --tw-color-primary-900: 112 26 117;
-  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #fdf4ff */
-  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #fae8ff */
-  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #f5d0fe */
-  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #f0abfc */
-  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #e879f9 */
-  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #d946ef */
-  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #c026d3 */
-  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #a21caf */
-  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #86198f */
-  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #701a75 */
-  /* #endregion  /**======== Primary Color =========== */
-}
 
 @layer base {
 
+  :root {
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 199, 210, 254;
+    --color-text-inverted: 79, 70, 229;
+    --color-fill: 67, 56, 202;
+    --color-button-accent: 255, 255, 255;
+    --color-button-accent-hover: 238, 242, 255;
+    --color-button-muted: 99, 102, 241;
+  }
+  .theme-swiss {
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 254, 202, 202;
+    --color-text-inverted: 220, 38, 38;
+    --color-fill: 185, 28, 28;
+    --color-button-accent: 255, 255, 255;
+    --color-button-accent-hover: 254, 242, 242;
+    --color-button-muted: 239, 68, 68;
+  }
+  .theme-neon {
+    --color-text-base: 3, 70, 75;
+    --color-text-muted: 5, 86, 92;
+    --color-text-inverted: 237, 246, 249;
+    --color-fill: 131, 197, 190;
+    --color-button-accent:0, 109, 119;
+    --color-button-accent-hover: 2, 126, 138;
+    --color-button-muted: 197, 225, 235;
+  }
+  .theme-test {
+    --color-text-base: 224, 225, 221;
+    --color-text-muted:210, 211, 207;
+    --color-text-inverted:27, 38, 59;
+    --color-fill:91, 128, 107;
+    --color-first:255, 232, 209;
+    --color-secondary:239, 166, 169;
+    --color-third:183, 159, 173;
+    --color-button-accent:224, 225, 221;
+    --color-button-accent-hover:238, 228, 225;
+    --color-button-muted:13, 27, 42;
+  }
 
+/*
+rgb(44, 7, 3)
+rgb(137, 6, 32)
+rgb(182, 70, 95)
+rgb(218, 159, 147)
+rgb(235, 212, 203)
+rgb(238, 228, 225)
+
+2c0703 
+890620
+b6465f
+da9f93
+ebd4cb
+eee4e1
+
+rgb(224, 225, 221)
+rgb(119, 141, 169)
+rgb(65, 90, 119)
+rgb(27, 38, 59)
+rgb(13, 27, 42)
+e0e1dd
+778da9
+415a77
+1b263b
+0d1b2a
+
+*/
   .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }
