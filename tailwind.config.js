@@ -15,9 +15,24 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js"
   ],
+  variants: {
+    animation: ["motion-safe"]
+  },
   theme: {
 
     extend: {
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-out forwards"
+      },
+      keyframes: {
+        
+        
+        fadeIn: {
+          "0%": { opacity: 0,  },
+          "100%": { opacity: 1, transform: 'translate(-75%, -25%)'}
+        }
+      },
+     
       textColor: {
         skin: {
           base: withOpacity('--color-text-base'),
@@ -72,6 +87,7 @@ module.exports = {
         'baby': '#FFE8D1',
         'delete': '#e63946',
         'create': '#457b9d',
+        'dark-blue': '#324149',
 
       },
     },

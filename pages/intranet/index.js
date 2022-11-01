@@ -18,8 +18,8 @@ export async function getServerSideProps(context) {
             let fullName = usr.firstname + usr.lastname
             people.push(fullName)
 
-        }) 
-        let object = { title: data.title, people: people }
+        })
+        let object = { id: data.id, title: data.title, people: people }
         lunchgroups.push(object)
     })
     return {
@@ -27,10 +27,53 @@ export async function getServerSideProps(context) {
         props: {
             user: user === undefined ? null : user,
             lunchgroups: lunchgroups
-            
+
         }
     }
 }
+
+const lunchfuldata = [
+    {
+        id: "00",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    },
+    {
+        id: "12",
+        title: "Lundby",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    },
+    {
+        id: "23",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    },
+    {
+        id: "634e9876bf1fe7084e06634c",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    },
+    {
+        id: "34",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    },
+    {
+        id: "je",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    },
+    {
+        id: "78",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    }, 
+    {
+        id: "98",
+        title: "Arendal",
+        people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
+    }
+];
 
 export default function Home({ user, lunchgroups }) {
     if (user === null) {
@@ -75,77 +118,58 @@ export default function Home({ user, lunchgroups }) {
                 </div>
 
 
-               
+
             </main>
 
 
 
 
-        )
+        );
     } else {
-        const lunchfuldata = [
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Lundby",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            }, {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            }
-        ]
+       
         return (
 
             <LayoutIntranet>
                 <main className=''>
 
-                    <div className='layout py-12  flex flex-col items-center'>
+                    <div className='layout py-20 md:py-12  flex flex-col items-center'>
 
                         <h1>
                             Welcome {user.firstname}
                         </h1>
 
                         <section>
-                            <div className='flex flex-1 flex-col lg:flex-row justify-center py-12'>
+                            <div className='theme-test flex flex-1 flex-col lg:flex-row justify-center py-12'>
                                 <Nyheter />
 
-                                <div className='flex flex-col bg-purple-1 bg-opacity-30 p-4 '>
+                                <div className='flex flex-col bg-purple-1 bg-opacity-30 p-4 shadow-sm'>
                                     <h3>Lunchgrupper</h3>
                                     <div className='flex flex-1 flex-wrap flex-row justify-around md:justify-start '>
                                         {lunchfuldata.map((pp) => {
+                                            console.log("lunch id " + pp.id + "user lunch id "+ user.lunchgroupID)
                                             return (
-                                                <div className='flex flex-col p-4 lg:p-5'>
-                                                    <h4 className='font-semibold'>{pp.title}</h4>
-                                                    {pp.people.map((i) => {
-                                                        return (
+                                                pp.id === user.lunchgroupID ?
+                                                    <div className='relative flex flex-col bg-skin-sec p-4 lg:p-5'>
+                                                        <h4 className='font-semibold'>{pp.title}</h4>
+                                                        {pp.people.map((i) => {
+                                                            return (
 
-                                                            <p>{i}</p>
-                                                        )
-                                                    })}
+                                                                <p>{i}</p>
+                                                            )
+                                                        })}
 
-                                                </div>
+                                                    </div>
+                                                    :
+                                                    <div className='flex flex-col p-4 lg:p-5'>
+                                                        <h4 className='font-semibold'>{pp.title}</h4>
+                                                        {pp.people.map((i) => {
+                                                            return (
+
+                                                                <p>{i}</p>
+                                                            )
+                                                        })}
+
+                                                    </div>
                                             )
                                         })}
                                     </div>
@@ -158,6 +182,6 @@ export default function Home({ user, lunchgroups }) {
 
             </LayoutIntranet>
 
-        )
+        );
     }
 }

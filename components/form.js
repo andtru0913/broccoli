@@ -62,7 +62,7 @@ export default function Form() {
                             <div className="flex flex-1 flex-col p-2">
                                 <label className="text-sm pb-1" htmlFor="first">Insert attachement (CV or/and personal letter)</label>
                                 <input  style={{display: "none"}} id="base64" name="base64"/>
-                                <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile" name="file" onChange={async function() {
+                                <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-1 focus:outline-none" type="file" id="formFile" name="file" onChange={async function() {
                                     let submit = document.getElementById("formSubmit")
                                     submit.disabled = true;
                                     const convertBase64 = (file) => {

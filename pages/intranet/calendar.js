@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-const Calender = ({ user, allEvents }) => {
+const Calendar = ({ user, allEvents }) => {
     return (
         <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}
@@ -103,7 +103,7 @@ const Calender = ({ user, allEvents }) => {
 
 export default function Home({ user, allEvents }) {
     const popUpstyle = "h-full w-screen bg-black absolute z-20 bg-opacity-60"
-    const windowstyle = "z-30 absolute w-screen p-4  top-1/3 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 "
+    const windowstyle = "z-30 absolute w-screen p-4  top-1/4 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 "
 
     return (
         <div className="">
@@ -118,7 +118,7 @@ export default function Home({ user, allEvents }) {
                 <div className="bg-white rounded p-5">
                     <h3 className="text-darkest"> Create Event</h3>
                     <form action="../../api/createEvent" method="POST">
-                        <div className="flex flex-row py-4">
+                        <div className="flex flex-col md:flex-row py-4">
                             <div className="flex flex-row">
 
 
@@ -148,19 +148,37 @@ export default function Home({ user, allEvents }) {
                 <div className="bg-white rounded p-5">
                     <h1> Modify Event</h1>
                     <form action="../../api/modifyEvent" method="POST">
-                   
+                    <div className="flex flex-col md:flex-row py-4">
+                          
+                        
                         <div className="flex flex-row">
-                            Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
+
+
+                                <p className="pr-2"> Från</p>
+                                <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
+                            </div>
+
+
+                            <div className="flex flex-row px-2">
+                                <p className="px-2">till </p>
+                                <input className='end hover:bg-zinc-300 rounded' type="date" name="end" />
+                            </div>
+
                         </div>
+                        <div className="flex flex-col">
                         <input className="id p-2" type="hidden" name="id" />
-                        <input className="title p-2 " type="text" name="title" placeholder="Titel" />
-                        <input className="description p-2" type="text" name="description" placeholder="Beskrivning" />
-                        <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
+                        <input className="title p-2 border rounded mb-2" type="text" name="title" placeholder="Titel" />
+                        <input className="description p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
+                        <button className="shadow btn btn-create mb-2" type="submit"> Ändra händelse</button>
+                        </div>
+                       
                     </form>
                     <form action="../../api/deleteEvent" method="POST">
-                    
-                        <input className="id p-2 border rounded mb-2" type="hidden"  name="id" />
+                    <div className="flex flex-col">
+                    <input className="id p-2 border rounded mb-2" type="hidden"  name="id" />
                         <button className="btn btn-delete" type="submit"> Radera händelse</button>
+                        </div>
+                        
                     </form>
                 </div>
 
@@ -186,7 +204,7 @@ export default function Home({ user, allEvents }) {
                     <div className='layout py-12  flex flex-col items-center'>
 
                         <div className="w-screen p-2 md:w-4/5">
-                            {Calender({ user, allEvents })}
+                            {Calendar({ user, allEvents })}
                         </div>
                     </div>
                 </main>

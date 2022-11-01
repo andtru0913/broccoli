@@ -8,13 +8,13 @@ import styles from '../../styles/navbar.module.css'
 
 
 const MENU_LIST = [
-    { text: "Hem", href: "/"},
-    { text: "Tjänster", href: "/posts"},
-    { text: "Karriär", href: "/carreer"},
-    { text: "Underkonsult", href: "/underconsultants"},
-    { text: "Om oss", href: "/about"},
+    { text: "Hem", href: "/" },
+    { text: "Tjänster", href: "/posts" },
+    { text: "Karriär", href: "/carreer" },
+    { text: "Underkonsult", href: "/underconsultants" },
+    { text: "Om oss", href: "/about" },
     { text: "Historia", href: "/about#history", tag: true },
-    { text: "Kontakt", href: "/contact"},
+    { text: "Kontakt", href: "/contact" },
 ];
 
 const NavBar = () => {
@@ -27,39 +27,76 @@ const NavBar = () => {
     const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
     const [padding, setPadding] = useState(30);
     const [boxShadow, setBoxShadow] = useState(0);
-  
-    useEffect(() => {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, );
-  
-    const handleScroll = () => {
-      setClientWindowHeight(window.scrollY);
+
+
+    const MyList = ({ items }) => {
+        const renderListItems = (item, index) => {
+            const isFirst = index === 0;
+            const isSecond = index === 1;
+            const isThird = index === 2;
+            const classNames = [
+                isFirst && "translate-y-12 rotate-45",
+                isSecond && "opacity-0",
+                isThird && "-translate-y-12 -rotate-45"
+            ].join(" ");
+            return <li className={classNames}>{item.text}</li>;
+        };
+        return <ul>{items.map(renderListItems)}</ul>;
     };
-  
+
     useEffect(() => {
-      let backgroundTransparacyVar = clientWindowHeight / 600;
-  
-      if (backgroundTransparacyVar < 1) {
-        let paddingVar = 30 - backgroundTransparacyVar * 20;
-      
-        let boxShadowVar = backgroundTransparacyVar * 0.1;
-       
-        setBackgroundTransparacy(Math.round((backgroundTransparacyVar + Number.EPSILON) * 100) / 100);
-        console.log(backgroundTransparacy)
-        setPadding(Math.floor(paddingVar));
-        console.log("padding" + padding)
-        setBoxShadow( Math.round((boxShadowVar + Number.EPSILON) * 100) / 100);
-        console.log("shadow" + boxShadow)
-      }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    },);
+
+    const handleScroll = () => {
+        setClientWindowHeight(window.scrollY);
+    };
+
+    useEffect(() => {
+        let backgroundTransparacyVar = clientWindowHeight / 600;
+        console.log("height" + clientWindowHeight)
+        if (backgroundTransparacyVar < 1) {
+            let paddingVar = 30 - backgroundTransparacyVar * 20;
+
+            let boxShadowVar = backgroundTransparacyVar * 0.1;
+
+            setBackgroundTransparacy(Math.round((backgroundTransparacyVar + Number.EPSILON) * 100) / 100);
+            console.log(backgroundTransparacy)
+            setPadding(Math.floor(paddingVar));
+            console.log("padding" + padding)
+            setBoxShadow(Math.round((boxShadowVar + Number.EPSILON) * 100) / 100);
+            console.log("shadow" + boxShadow)
+        }
     }, [clientWindowHeight]);
+
+
+    const navmenuClassNames = [
+        'flex',
+        'flex-row',
+        'space-between',
+        'align-middle',
+        'sm:fixed',
+        'sm:-left-full',
+        'sm:top-14',
+        'sm:flex-col',
+        'sm:w-full',
+        'sm:rounded-lg',
+        'sm:text-center',
+        'sm:transition-all',
+        'sm:duration-300',
+        'sm:shadow',
+        'sm:bg-theme-creme',
+        isOpen ? 'sm:left-0' : '',
+    ].join(' ')
     return (
+
         <header className="sticky top-0 z-50">
-            <nav className={`flex justify-between align-middle py-2 px-7  bg-blue-500  `} style={{
-        background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
-        
-        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
-      }}>
+            <nav className="flex justify-between align-middle py-2 px-7" style={{
+                background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+
+                boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+            }}>
                 <div className="text-lg flex justify-start">
                     <Link href="/">
                         <a>
@@ -71,23 +108,28 @@ const NavBar = () => {
 
                     </Link>
                 </div>
+
+
+
                 <div className="flex justify-end absolute right-10 top-3.5">
-                    <ul className={isOpen === false ? styles.navmenu : styles.navmenu + ' ' + styles.active}>
-                        {MENU_LIST.map((menu, idx) => (
+                    <ul className={isOpen === false ? "flex flex-row justify-between align-middle" :"fixed -left-full top-14 flex flex-col w-full rounded-lg text-center duration-300 shadow-sm bg-theme-creme"}>
+                        {MENU_LIST.map((menu, idx) => {
 
-                                <li className={styles.navitem}
-                                    onClick={() => {
-                                        setActiveIdx(idx);
-                                        openmenu;
-                                    }}
-                                    key={menu.text}
-                                >
+                            
+                            return (<li className="my-2"
+                                onClick={() => {
+                                    setActiveIdx(idx);
+                                    openmenu;
+                                }}
+                                key={menu.text}
+                            >
 
 
-                                    <NavItem theme={"n"} active={activeIdx === idx} {...menu} />
+                                <NavItem theme={"n"} active={activeIdx === idx} {...menu} />
 
-                                </li>
-                            ))}
+                            </li>)
+
+                        })}
                     </ul>
                 </div>
 
