@@ -32,6 +32,8 @@ export async function login(input_username, input_password) {
         },
         select: {
             id: true,
+            firstname: true,
+            lastname: true,
             password: true,
             salt: true,
         }
@@ -42,7 +44,7 @@ export async function login(input_username, input_password) {
         let account_password = query[0].password
         const hashedPassword = await bcrypt.hash(input_password, salt)
         if (hashedPassword === account_password) {
-            return id
+            return {id: id, firstname: query[0].firstname, lastname: query[0].lastname}
         }
         else {
             return null

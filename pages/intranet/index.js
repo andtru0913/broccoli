@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import * as Database from "../../Database";
 import styles from "../../styles/Home.module.css";
 import formStyles from "./form.module.css"
 
 export async function getServerSideProps(context) {
-    let cookies = context.req.cookies['userid']
-    let user = await Database.getUserinfo(cookies)
+    let cookies = JSON.parse(context.req.cookies['user'] || null)
     return {
-        props: {user: user === undefined ? null : user}
+        props: {user: cookies}
     }
 }
 

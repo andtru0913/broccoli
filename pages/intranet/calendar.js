@@ -8,37 +8,35 @@ import * as Database from "../../Database";
 import popupStyles from "./popup.module.css"
 
 export async function getServerSideProps(context) {
-    let cookies = context.req.cookies['userid']
-    let user = await Database.getUserinfo(cookies)
-    let events = await Database.getEvents(undefined);
-    if (user === undefined || user === null) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: "/intranet",
-            },
-            props:{},
-        };
-    }
-    else {
+    let cookies = JSON.parse(context.req.cookies['user'] || null)
+    let admin = await Database.isAdmin(cookies.id)
+    if (cookies !== {}) {
+        let events = await Database.getEvents(undefined);
         return {
             props: {
-                user: user,
+                admin: admin,
                 allEvents: events
             }
         }
     }
+    return {
+        redirect: {
+            permanent: false,
+            destination: "/intranet",
+        },
+        props:{},
+    };
 }
 
-const Calendar = ({user, allEvents}) => {
+const Calendar = ({admin, allEvents}) => {
     return (
         <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}
             selectable
-            editable={user.admin}
+            editable={admin}
             height={'80vh'}
             select={function (e) {
-                if(user.admin) {
+                if(admin) {
                     e.start.setDate(e.start.getDate()+1)
                     let background = document.getElementById('popup')
                     let window = document.getElementById('createevent')
@@ -56,7 +54,7 @@ const Calendar = ({user, allEvents}) => {
                 let title = e.event._def.title
                 let id = e.event._def.publicId
                 background.classList.remove(popupStyles.hide)
-                if (user.admin) {
+                if (admin) {
                     modifyevent.getElementsByClassName('title')[0].value = title
                     modifyevent.getElementsByClassName('description')[0].value = description
                     modifyevent.getElementsByClassName('id')[0].value = id
@@ -98,7 +96,7 @@ const Calendar = ({user, allEvents}) => {
     );
 };
 
-export default function Home({user,allEvents}) {
+export default function Home({admin,allEvents}) {
     return (
         <div className={styles.container}>
             <div id='popup' className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
@@ -145,7 +143,7 @@ export default function Home({user,allEvents}) {
             </Head>
             <main className={styles.main}>
                 <div className={calendarStyles.main}>
-                    {Calendar({user, allEvents})}
+                    {Calendar({admin, allEvents})}
                 </div>
             </main>
         </div>
