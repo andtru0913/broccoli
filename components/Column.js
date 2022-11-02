@@ -3,6 +3,7 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
 import popupStyles from "../pages/intranet/popup.module.css";
+import {lunchgroup} from "../defaultIDs";
 
 const Column = ({ column, tasks }) => {
     return (
@@ -16,7 +17,7 @@ const Column = ({ column, tasks }) => {
                 mb="1.5rem"
             >
                 <Text fontSize="17px" fontWeight={600} color="subtle-text" onClick={function() {
-                    if (column.id !== '634e9876bf1fe7084e06634c') {
+                    if (column.id !== lunchgroup) {
                         let modifyLunchgroup = document.getElementById("modifyLunchgroup")
                         modifyLunchgroup.getElementsByClassName('title')[0].value = column.title
                         modifyLunchgroup.getElementsByClassName('id')[0].value = column.id

@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
         return {
 
             props: {
-                user: user,
+                user: user !== undefined ? user : null,
                 lunchgroups: lunchgroups
 
             }

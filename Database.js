@@ -1,3 +1,4 @@
+import {lunchgroup} from "./defaultIDs";
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient();
@@ -234,7 +235,7 @@ export async function deleteLunchgroup(id) {
                 lunchgroupID: null,
             },
             data: {
-                lunchgroupID: '634e9876bf1fe7084e06634c',
+                lunchgroupID: lunchgroup
             },
     })
 }

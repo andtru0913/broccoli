@@ -8,9 +8,9 @@ import LayoutIntranet from '../../../components/layout/layoutIntranet';
 
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)
-    if (authentication !== undefined) return authentication
-    let userid = context.req.cookies['userid']
-    let user = await Database.getUserinfo(userid)
+    if (authentication !== undefined) return authenticationlet
+    let cookies = JSON.parse(context.req.cookies['user'] || null)
+    let user = await Database.getUserinfo(cookies.id)
     return {
         props: {user: user}
     }
@@ -33,6 +33,7 @@ export default function Home({user}) {
                             Welcome {user.firstname} to admin
                         </h1>
                         <a href="./admin/users">Anställda</a>
+                        <a href="./admin/lunchgroups">Lunchgrupper</a>
                     </div>
 
                 </main>

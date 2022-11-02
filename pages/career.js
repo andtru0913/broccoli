@@ -1,9 +1,10 @@
 import {authenticate} from "./intranet/admin/authenticate";
 import {getPage} from "../Database";
 import Page from "../components/page";
+import {career} from "../defaultIDs";
 
 export async function getServerSideProps(context) {
-    const pageId = "63565f0c84e06df6ad9d4c43"
+    const pageId = career
     const redirect = "../career"
     let authentication = await authenticate(context)
     const page = (await getPage(pageId))[0];

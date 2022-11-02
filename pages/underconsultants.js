@@ -1,9 +1,10 @@
 import Page from "../components/page";
 import {authenticate} from "./intranet/admin/authenticate";
 import {getPage} from "../Database";
+import {underconsultants} from "../defaultIDs";
 
 export async function getServerSideProps(context) {
-    const pageId = "63565f0d84e06df6ad9d4c44"
+    const pageId = underconsultants
     let authentication = await authenticate(context)
     const page = (await getPage(pageId))[0];
     return {

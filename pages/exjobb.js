@@ -1,9 +1,10 @@
 import Page from "../components/page";
 import {authenticate} from "./intranet/admin/authenticate";
 import {getPage} from "../Database";
+import {exjobb} from "../defaultIDs";
 
 export async function getServerSideProps(context) {
-    const pageId = "635a8ee6e3adbba25c8b22ec"
+    const pageId = exjobb
     let authentication = await authenticate(context)
     const page = (await getPage(pageId))[0];
     return {
