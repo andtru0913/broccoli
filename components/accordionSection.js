@@ -1,7 +1,5 @@
 export default function ({ img_path, id, author, children, index, setIndex }) {
     const handleSetIndex = () => {
-        console.log("id " + id)
-        console.log(index !== id)
         index !== id ? setIndex(id) : setIndex(false)
     };
     return (
@@ -11,13 +9,12 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
 
                     <div className="  ">
                         <div className="m-2 w-12 md:w-24 h-12 md:h-24  rounded-md md:rounded-xl  overflow-hidden">
-                            <img src={img_path} />
+                            <img src={img_path} alt={img_path}/>
                         </div>
 
 
 
                     </div>
-                    {console.log("index " + index + " id " + id)}
                     {index !== id ? (
                         <div className="flex flex-col justify-between p-2 max-h-40 md:w-96 w-52">
                             <div>

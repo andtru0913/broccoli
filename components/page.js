@@ -123,7 +123,6 @@ const Page = ({ authentication, page, redirect}) => {
                                 if (authentication === null) {
                                     let background = document.getElementById('popup')
                                     let modifyCard = document.getElementById('modifyCard')
-                                    console.log(card.title)
                                     background.classList.remove(popupStyles.hide)
                                     modifyCard.getElementsByClassName('id')[0].value = card.id
                                     modifyCard.getElementsByClassName('id')[1].value = card.id

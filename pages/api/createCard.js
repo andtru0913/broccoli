@@ -1,9 +1,10 @@
-import * as Database from "../../Database";
+import checkAdmin from "./checkAdmin";
+import {createCard} from "../../Database";
 
 export default async function handler(req, res) {
-    if (await Database.isAdmin(req.cookies['userid'])) {
+    if (await checkAdmin(req.cookies['user'])) {
         if (req.body.name !== "") {
-            await Database.createCard(req.body.pageId, req.body.title, req.body.description, req.body.base64)
+            await createCard(req.body.pageId, req.body.title, req.body.description, req.body.base64)
                 .catch(e => {
                     console.error(e.message)
                 })

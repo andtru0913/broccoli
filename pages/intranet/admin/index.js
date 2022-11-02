@@ -4,10 +4,11 @@ import * as Database from "../../../Database";
 import {authenticate} from "./authenticate";
 import LayoutIntranet from '../../../components/layout/layoutIntranet';
 
+
+
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)
     if (authentication !== undefined) return authentication
-
     let userid = context.req.cookies['userid']
     let user = await Database.getUserinfo(userid)
     return {

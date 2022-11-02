@@ -1,7 +1,8 @@
 import * as Database from "../../Database";
+import checkAdmin from "./checkAdmin";
 
 export default async function handler(req, res) {
-    if (await Database.isAdmin(req.cookies['userid'])) {
+    if (await checkAdmin(req.cookies['user'])) {
         if (req.body.name !== "") {
             await Database.createGroup(req.body.name)
                 .catch(e => {

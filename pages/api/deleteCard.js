@@ -1,8 +1,9 @@
-import * as Database from "../../Database";
+import checkAdmin from "./checkAdmin";
+import {deleteCard} from "../../Database";
 
 export default async function handler(req, res) {
-    if (await Database.isAdmin(req.cookies['userid'])) {
-        await Database.deleteCard(req.body.id)
+    if (await checkAdmin(req.cookies['user'])) {
+        await deleteCard(req.body.id)
             .catch(e => {
                 console.error(e.message)
             })

@@ -1,30 +1,38 @@
-import Head from 'next/head'
 import * as Database from "../../Database";
-import styles from "../../styles/Home.module.css";
-import formStyles from "./form.module.css"
+import Image from "next/image";
+import LayoutIntranet from "../../components/layout/layoutIntranet";
+import Nyheter from "../../components/intranet/newsItem";
 
 export async function getServerSideProps(context) {
     let cookies = JSON.parse(context.req.cookies['user'] || null)
-    let user = await Database.getUserinfo(cookies)
-    let groups = await Database.getAllLunchGroups()
-    let lunchgroups = []
-    groups.slice(1).map((data) => {
-        let people = []
-        data.users.map((usr) => {
-            let fullName = usr.firstname + usr.lastname
-            people.push(fullName)
+    if (cookies !== null) {
+        let user = await Database.getUserinfo(cookies.id)
+        let groups = await Database.getAllLunchGroups()
+        let lunchgroups = []
+        groups.slice(1).map((data) => {
+            let people = []
+            data.users.map((usr) => {
+                let fullName = usr.firstname + usr.lastname
+                people.push(fullName)
 
+            })
+            let object = { title: data.title, people: people }
+            lunchgroups.push(object)
         })
-        let object = { title: data.title, people: people }
-        lunchgroups.push(object)
-    })
 
+        return {
+
+            props: {
+                user: user,
+                lunchgroups: lunchgroups
+
+            }
+        }
+    }
     return {
 
         props: {
-            user: user,
-            lunchgroups: lunchgroups
-
+            user: null,
         }
     }
 }
@@ -49,6 +57,7 @@ export default function Home({ user, lunchgroups }) {
                     <div className=" w-1/2  absolute top-0 left-1/4 flex justify-center lg:justify-start p-4 lg:left-0"><img
                         className=" h-8  sm:h-10"
                         src="/images/BroccoliBlack.png"
+                        alt="broccoli img"
                     /></div>
 
 
@@ -98,7 +107,7 @@ export default function Home({ user, lunchgroups }) {
                                 <div className='flex flex-col bg-purple-1 bg-opacity-30 p-4 '>
                                     <h3>Lunchgrupper</h3>
                                     <div className='flex flex-1 flex-wrap flex-row justify-around md:justify-start '>
-                                        {lunchfuldata.map((pp) => {
+                                        {lunchgroups.map((pp) => {
                                             return (
                                                 <div className='flex flex-col p-4 lg:p-5'>
                                                     <h4 className='font-semibold'>{pp.title}</h4>

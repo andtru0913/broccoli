@@ -1,15 +1,11 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import Card from '../components/card';
 import Layout from '../components/layout/layout';
-import menu_list from "../components/navbar/navmenuList"
-import styles from '../styles/Home.module.css'
+
 
 
 
 
 import Accordion from '../components/accordion';
-import { useState } from 'react';
 
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
@@ -27,40 +23,8 @@ export const getStaticProps = async () => {
 }
 
 
-async function handleOnSubmit(e) {
-  e.preventDefault();
-
-  const formData = {};
-
-  Array.from(e.currentTarget.elements).forEach(field => {
-    if (!field.name) return;
-    formData[field.name] = field.value;
-  });
-
-  await fetch('/api/mail', {
-    method: 'POST',
-    body: JSON.stringify(formData)
-  });
-}
-
 export default function Home({ feed, }) {
   const insta_images = feed.data;
-  const animationData = [{ id: 1, color: 'bg-green-300', text: 'hållbar utveckling' }, { id: 2, color: 'bg-red-300', text: 'relationer' }, { id: 3, color: 'bg-yellow-300', text: 'proffessionalism' }]
-  const [val, setVal] = useState(0)
-  const upValue = () => {
-    console.log(val)
-    val > 0 ?
-      setVal(val => val - 1) :
-      setVal(val)
-
-    console.log(val)
-  }
-  const downValue = () => {
-    console.log(val)
-    val <= 2 ?
-      setVal(val => val + 1) :
-      ""
-  }
   return (
     <Layout>
       <main>
@@ -174,7 +138,7 @@ export default function Home({ feed, }) {
                   <img
                     className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                     src={image.media_url}
-
+                    alt="instagram img"
                   />
                   <div className="absolute right-0 top-0  p-3">
                     <a href={image.permalink}>
@@ -206,21 +170,4 @@ export default function Home({ feed, }) {
       </main>
     </Layout>
   );
-}
-
-
-function BrocAnimation({ id, setVal, val }) {
-  const handleValue = () => {
-    console.log("click " + id)
-    val < 2 ?
-
-      setVal(id) :
-      ""
-  }
-
-  return (
-    <div onClick={handleValue} className='h-8 w-8 text-center m-2 bg-beige-2 rounded-md hover:opacity-80 hover:text-white cursor-pointer'> <p className=''>{id}</p> </div>
-
-  );
-
 }

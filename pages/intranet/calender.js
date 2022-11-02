@@ -1,7 +1,6 @@
 import FullCalendar from "@fullcalendar/react";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from '@fullcalendar/daygrid';
-import calendarStyles from "./calendar.module.css";
 import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import * as Database from "../../Database";
@@ -13,6 +12,7 @@ export async function getServerSideProps(context) {
     let admin = await Database.isAdmin(cookies.id)
     if (cookies !== {}) {
         let events = await Database.getEvents(undefined);
+
         return {
             props: {
                 admin: admin,
@@ -83,7 +83,6 @@ const Calender = ({ admin, allEvents }) => {
             eventResize={function (e) {
                 let id = e.event._def.publicId
                 let delta = e.endDelta.days
-                console.log(delta);
                 let xhr = new XMLHttpRequest();
                 xhr.open("POST", "../../api/resizeEvent", true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
@@ -99,7 +98,6 @@ const Calender = ({ admin, allEvents }) => {
 };
 
 export default function Home({admin,allEvents}) {
-    const popUpstyle = "h-full w-screen bg-black absolute z-20 bg-opacity-60"
     const windowstyle = "z-30 absolute w-screen p-4  top-1/3 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 "
 
     return (
@@ -126,14 +124,14 @@ export default function Home({admin,allEvents}) {
 
                          <div className="flex flex-row px-2">
                          <p className="px-2">till </p>
-                         <input datepicker datepicker-orientation="bottom right" type="date" name="end" />
+                         <input className='end hover:bg-zinc-300 rounded' type="date" name="end" />
                          </div>
 
                     </div>
                     <div className="flex flex-col">
                     <input className="p-2 border rounded mb-2" type="text" name="title" placeholder="Titel" />
-                    <input datepicker className="p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
-        <button className="shadow btn btn-create" type="submit"> Skapa </button>
+                    <input  className="p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
+                    <button className="shadow btn btn-create" type="submit"> Skapa </button>
                     </div>
 
 
@@ -187,7 +185,7 @@ export default function Home({admin,allEvents}) {
                     <div className='layout py-12  flex flex-col items-center'>
 
                         <div className="w-screen p-2 md:w-4/5">
-                            {Calender({ user, allEvents })}
+                            {Calender({ admin, allEvents })}
                         </div>
                     </div>
                 </main>
