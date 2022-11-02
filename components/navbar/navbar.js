@@ -4,16 +4,13 @@ import NavItem from "./navitem";
 import styles from '../../styles/navbar.module.css'
 
 
-import Image from "next/image";
-
-
 const MENU_LIST = [
     { text: "Hem", href: "/"},
+    { text: "Jobba hos oss", href: "/career"},
     { text: "Tjänster", href: "/posts"},
-    { text: "Karriär", href: "/carreer"},
+    { text: "Exjobb", href: "/exjobb"},
     { text: "Underkonsult", href: "/underconsultants"},
     { text: "Om oss", href: "/about"},
-    { text: "Historia", href: "/about#history", tag: true },
     { text: "Kontakt", href: "/contact"},
 ];
 
@@ -31,6 +28,7 @@ const NavBar = () => {
                             <img
                                 className="h-8 w-auto sm:h-10"
                                 src="/images/BroccoliBlack.png"
+                                alt="Broccoli"
                             />
                         </a>
 

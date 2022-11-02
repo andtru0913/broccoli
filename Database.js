@@ -35,6 +35,8 @@ console.log("user " +input_username)
         },
         select: {
             id: true,
+            firstname: true,
+            lastname: true,
             password: true,
             salt: true,
         }
@@ -47,7 +49,7 @@ console.log("user " +input_username)
         const hashedPassword = await bcrypt.hash(input_password, salt)
         console.log(hashedPassword)
         if (hashedPassword === account_password) {
-            return id
+            return {id: id, firstname: query[0].firstname, lastname: query[0].lastname}
         }
         else {
             return null

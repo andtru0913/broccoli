@@ -1,14 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image';
-import Nyheter from '../../components/intranet/newsItem';
-import LayoutIntranet from '../../components/layout/layoutIntranet';
 import * as Database from "../../Database";
 import styles from "../../styles/Home.module.css";
 import formStyles from "./form.module.css"
 
 export async function getServerSideProps(context) {
-    let cookies = context.req.cookies['userid']
-
+    let cookies = JSON.parse(context.req.cookies['user'] || null)
     let user = await Database.getUserinfo(cookies)
     let groups = await Database.getAllLunchGroups()
     let lunchgroups = []
@@ -18,16 +14,17 @@ export async function getServerSideProps(context) {
             let fullName = usr.firstname + usr.lastname
             people.push(fullName)
 
-        }) 
+        })
         let object = { title: data.title, people: people }
         lunchgroups.push(object)
     })
+
     return {
 
         props: {
-            user: user === undefined ? null : user,
+            user: user,
             lunchgroups: lunchgroups
-            
+
         }
     }
 }
@@ -75,7 +72,7 @@ export default function Home({ user, lunchgroups }) {
                 </div>
 
 
-               
+
             </main>
 
 
@@ -83,39 +80,6 @@ export default function Home({ user, lunchgroups }) {
 
         )
     } else {
-        const lunchfuldata = [
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Lundby",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            },
-            {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            }, {
-                title: "Arendal",
-                people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"]
-            }
-        ]
         return (
 
             <LayoutIntranet>
