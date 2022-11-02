@@ -1,7 +1,10 @@
 import Link from 'next/link'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavItem from "./navitem";
 import styles from '../../styles/navbar.module.css'
+
+
+
 
 
 const MENU_LIST = [
@@ -19,9 +22,44 @@ const NavBar = () => {
     const [activeIdx, setActiveIdx] = useState(null);
     const openmenu = () => setIsOpen(!isOpen)
     const hamburgerLine = " w-6 h-0.5 bg-darkest my-1 transition-all duration-300 ease-in-out md:hidden";
+    const [clientWindowHeight, setClientWindowHeight] = useState("");
+
+    const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
+    const [padding, setPadding] = useState(30);
+    const [boxShadow, setBoxShadow] = useState(0);
+
+    useEffect(() => {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, );
+
+    const handleScroll = () => {
+      setClientWindowHeight(window.scrollY);
+    };
+
+    useEffect(() => {
+      let backgroundTransparacyVar = clientWindowHeight / 600;
+
+      if (backgroundTransparacyVar < 1) {
+        let paddingVar = 30 - backgroundTransparacyVar * 20;
+
+        let boxShadowVar = backgroundTransparacyVar * 0.1;
+
+        setBackgroundTransparacy(Math.round((backgroundTransparacyVar + Number.EPSILON) * 100) / 100);
+        console.log(backgroundTransparacy)
+        setPadding(Math.floor(paddingVar));
+        console.log("padding" + padding)
+        setBoxShadow( Math.round((boxShadowVar + Number.EPSILON) * 100) / 100);
+        console.log("shadow" + boxShadow)
+      }
+    }, [clientWindowHeight]);
     return (
         <header className="sticky top-0 z-50">
-            <nav className="flex justify-between align-middle py-2 px-7 bg-theme-creme opacity-90">
+            <nav className={`flex justify-between align-middle py-2 px-7  bg-blue-500  `} style={{
+        background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+
+        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+      }}>
                 <div className="text-lg flex justify-start">
                     <Link href="/">
                         <a>

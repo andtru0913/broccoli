@@ -111,15 +111,15 @@ export default function Home({admin,allEvents}) {
             </div>
             <div id='createevent' className={`${windowstyle}  ${popupStyles.hide}`}>
                 <div className="bg-white rounded p-5">
-                <h3 className="text-darkest"> Create Event</h3>
-                <form action="../../api/createEvent" method="POST">
-                    <div className="flex flex-row py-4">
-                    <div className="flex flex-row">
+                    <h3 className="text-darkest"> Create Event</h3>
+                    <form action="../../api/createEvent" method="POST">
+                        <div className="flex flex-row py-4">
+                            <div className="flex flex-row">
 
 
-                        <p className="pr-2"> Från</p>
-                         <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
-                         </div>
+                                <p className="pr-2"> Från</p>
+                                <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
+                            </div>
 
 
                          <div className="flex flex-row px-2">
@@ -135,40 +135,36 @@ export default function Home({admin,allEvents}) {
                     </div>
 
 
-                </form>
+                    </form>
                 </div>
 
             </div>
             <div id='modifyevent' className={`${windowstyle} ${popupStyles.hide}`}>
-            <div className="bg-white rounded p-5">
-                <h1> Modify Event</h1>
-                <form action="../../api/modifyEvent" method="POST">
-                    <input className={"id"} type="hidden" name="id"/>
-                    <input className="title" type="text" name="title" placeholder="Titel"/>
-                    <input className="description" type="text" name="description" placeholder="Beskrivning"/>
-                    <button type="submit"> Ändra händelse</button>
-                    <div className="flex flex-row">
-                        Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
-                    </div>
-                    <input className={`id p-2 ${popupStyles.hide}`} type="text" name="id" />
-                    <input className="title p-2 " type="text" name="title" placeholder="Titel" />
-                    <input className="description p-2" type="text" name="description" placeholder="Beskrivning" />
-                    <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
-                </form>
-                <form action="../../api/deleteEvent" method="POST">
-                    <input className={"id"} type="hidden" name="id"/>
-                    <button type="submit"> Radera händelse</button>
-                    <input className={`id  ${popupStyles.hide}`} type="text" name="id" />
-                    <button className="btn btn-delete" type="submit"> Radera händelse</button>
-                </form>
+                <div className="bg-white rounded p-5">
+                    <h1> Modify Event</h1>
+                    <form action="../../api/modifyEvent" method="POST">
+
+                        <div className="flex flex-row">
+                            Från <input className='start' type="date" name="start" /> till <input className='end' type="date" name="end" />
+                        </div>
+                        <input className="id p-2" type="hidden" name="id" />
+                        <input className="title p-2 " type="text" name="title" placeholder="Titel" />
+                        <input className="description p-2" type="text" name="description" placeholder="Beskrivning" />
+                        <button className="shadow btn btn-create" type="submit"> Ändra händelse</button>
+                    </form>
+                    <form action="../../api/deleteEvent" method="POST">
+
+                        <input className="id p-2 border rounded mb-2" type="hidden"  name="id" />
+                        <button className="btn btn-delete" type="submit"> Radera händelse</button>
+                    </form>
                 </div>
 
             </div>
             <div id='checkevent' className={`${windowstyle} ${popupStyles.hide}`}>
-            <div className="bg-white rounded p-5">
-                <h1> Check Event</h1>
-                <h2 className={'title'}></h2>
-                <p className={'description'}></p>
+                <div className="bg-white rounded p-5">
+                    <h1> Check Event</h1>
+                    <h2 className={'title'}></h2>
+                    <p className={'description'}></p>
                 </div>
             </div>
 
