@@ -1,3 +1,8 @@
+import { useTheme } from 'next-themes';
+import Head from 'next/head'
+import Image from 'next/image';
+import Nyheter from '../../components/intranet/newsItem';
+import LayoutIntranet from '../../components/layout/layoutIntranet';
 import * as Database from "../../Database";
 import Image from "next/image";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
@@ -28,6 +33,8 @@ export async function getServerSideProps(context) {
         }
     }
 }
+}
+
 
 const lunchfuldata = [
     {
@@ -74,6 +81,8 @@ const lunchfuldata = [
 
 export default function Home({ user, lunchgroups }) {
     if (user === null) {
+        
+    const {theme, setTheme} = useTheme()
         return (
 
 
@@ -109,7 +118,7 @@ export default function Home({ user, lunchgroups }) {
                                 <input className='p-4 text-2xl lg:text-base lg:p-2 m-2 border border-zinc-200 appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1 autofill:bg-theme-green autofill:focus:bg-black' type="text" name="username" placeholder="Användarnamn" />
 
                                 <input className='p-4 text-2xl lg:text-base lg:p-2 m-2 border border-zinc-200 appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-purple-1 autofill:bg-theme-green autofill:focus:bg-black' type="password" name="password" placeholder="Lösenord" />
-                                <button className="shadow bg-purple-3 hover:bg-purple-2 focus:shadow-outline focus:outline-none text-white font-semibold p-2 m-2  rounded" type="submit">Log in</button>
+                                <button onClick={() => setTheme(intranet)} className="shadow bg-purple-3 hover:bg-purple-2 focus:shadow-outline focus:outline-none text-white font-semibold p-2 m-2  rounded" type="submit">Log in</button>
                             </form>
                         </div>
                     </div>

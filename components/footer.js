@@ -6,10 +6,10 @@ import {  BsInstagram, BsFacebook, BsLinkedin  } from 'react-icons/bs'
 import Link from 'next/link';
 const Footer = () => {
     return (
-        <footer className="py-12 bg-skin-fill theme-test">
+        <footer className="py-12 bg-skin-fill">
 
 
-            <div className='flex flex-1 justify-center'>
+            <div className='flex flex-1 justify-center cursor-pointer'>
                 <div className='flex-col'>
                     <div className='flex justify-center'>
                         <Link href="/">
@@ -26,7 +26,7 @@ const Footer = () => {
                     <div className="flex align-middle pt-8 flex-col md:flex-row md:justify-between lg:justify-evenly">
 
                         <div className=' flex-col px-5 text-center'>
-                            <h1 className='pb-2 text-lg  text-skin-base font-bold'>Följ oss</h1>
+                            <h1 className='pb-2 text-lg  text-skin-base font-bold cursor-default'>Följ oss</h1>
                             <div className="flex flex-row justify-center md:text-left bg-inherit">
 
                                 <a className="p-2 hover:scale-105 ">
@@ -46,8 +46,8 @@ const Footer = () => {
                         </div>
 
                         <div className=' flex-col  px-5 '>
-                            <h1 className='pb-2 text-lg text-center text-skin-base font-bold'>Kontakt</h1>
-                            <div className="  md:text-left bg-inherit">
+                            <h1 className='pb-2 text-lg text-center text-skin-base font-bold cursor-default'>Kontakt</h1>
+                            <div className=" flex flex-col items-start md:text-left bg-inherit">
 
                                 
                                 <a className='hover:text-skin-muted' href='tel:031-151480'>
@@ -93,14 +93,14 @@ const Footer = () => {
 
                         </div>
                         <div className=' flex-col px-5 text-center'>
-                        <h1 className='pb-2 text-lg  text-skin-base font-bold'>Medarbetare</h1>
-                            <a className='hover:text-skin-muted py-2'>
+                        <h1 className='pb-2 text-lg  text-skin-base font-bold cursor-default'>Medarbetare</h1>
+                            <a href='./intranet' className='hover:text-skin-muted py-2'>
 
                                 <p className='text-xs'>Intranät</p>
                             </a>
 
 
-                            <a className='hover:text-skin-muted py-2'>
+                            <a href='https://www.broccoli.be/tid/' className='hover:text-skin-muted py-2'>
 
                                 <p className='text-xs'>Tidrapport</p>
                             </a>

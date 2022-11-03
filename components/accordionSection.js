@@ -4,7 +4,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
     };
     return (
         <>
-            <div onClick={handleSetIndex} className="relative flex group cursor-pointer justify-between items-center  p-2 m-2 rounded-md border hover:border-zinc-300 hover:bg-zinc-300 hover:shadow-lg focus:bg-salmone">
+            <div onClick={handleSetIndex} className="relative flex group cursor-pointer justify-between items-center  p-2 m-2 rounded-md  hover:border-none hover:bg-skin-primary shadow-lg shadow-shadow">
                 <div className="flex group flex-row  p-3 ">
 
                     <div className="  ">

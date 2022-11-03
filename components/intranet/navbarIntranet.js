@@ -1,25 +1,20 @@
 import Link from "next/link";
 import { useState } from "react";
-import styles from '../../styles/navbar.module.css'
-import NavItem from "../navbar/navitem";
 import { HiHome, HiBookOpen, HiUserCircle, HiCalendarDays, HiClock, HiArrowLeftOnRectangle } from "react-icons/hi2";
 import ActiveLink from "../activeLink";
 
-const MENU_LIST = [
-    { text: "Hem", icon: <HiHome size={40}/>, href: "/intranet" },
-    { text: "Handbook", icon: <HiBookOpen size={40}/>, href: "../intranet/handbook" },
-    { text: "Employees", icon: <HiClock size={40}/>, href: "../intranet" },
-    { text: "News", icon: <HiCalendarDays size={40}/>, href: "/intranet" },
+const INTRA_MENU_LIST = [
+    { text: "Hem", bottom: true, icon: <HiHome size={40}/>, href: "/intranet" },
+    { text: "Handbook", bottom: true, icon: <HiBookOpen size={40}/>, href: "../intranet/handbook" },
+    { text: "Employees", bottom: false, icon: <HiClock size={40}/>, href: "../intranet" },
+    { text: "News", bottom: false, icon: <HiCalendarDays size={40}/>, href: "/intranet" },
+    { text: "Timereporting", bottom: true, icon: <HiClock size={40}/>, href: "https://www.broccoli.be/tid/" },
+    { text: "Calendar", bottom: true, icon: <HiCalendarDays size={40}/>, href: "/intranet/calendar" },
+    { text: "Profile", bottom: true, icon: <HiUserCircle size={40}/>, href: "../intranet/profile" },
 ];
 
 
-const BOTTOM_MENU_LIST = [
-    { text: "Hem", icon: <HiHome size={40}/>, href: "/intranet" },
-    { text: "Handbook", icon: <HiBookOpen size={40}/>, href: "../intranet/handbook" },
-    { text: "Timereporting", icon: <HiClock size={40}/>, href: "https://www.broccoli.be/tid/" },
-    { text: "Calendar", icon: <HiCalendarDays size={40}/>, href: "/intranet/calendar" },
-    { text: "Profile", icon: <HiUserCircle size={40}/>, href: "../intranet/profile" },
-];
+
 
 {/**
 
@@ -33,7 +28,6 @@ const NavbarIntranet = ({ user }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeIdx, setActiveIdx] = useState(null);
     const openmenu = () => setIsOpen(!isOpen)
-    const hamburgerLine = " w-6 h-0.5 bg-darkest my-1 transition-all duration-300 ease-in-out md:hidden";
     return (
        <>
         <header className="fixed w-screen top-0 md:sticky  z-50">
@@ -69,25 +63,36 @@ const NavbarIntranet = ({ user }) => {
 
 
            
-            <div className="hidden md:flex absolute text-white right-10 top-3.5">
-                <ul className={isOpen === false ? styles.navmenu : styles.navmenu + ' ' + styles.active}>
-                    {MENU_LIST.map((menu, idx) => (
-
-                        <li className={styles.navitem}
-                            onClick={() => {
-                                setActiveIdx(idx);
-                                openmenu;
-                            }}
-                            key={menu.text}
-                        >
+            <div className="flex justify-center absolute right-10">
+                    <ul className={
+                        `md:flex md:flex-row md:justify-between md:align-middle 
+                        ${isOpen === false ? 
+                            'mobile:fixed mobile:-left-full mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill' : 
+                            'mobile:fixed mobile:left-0 mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill'}`}>
+                        {MENU_LIST.map((menu, idx) => {
 
 
-                            <NavItem theme={"intranet"} active={activeIdx === idx} {...menu} />
+                            return (<li className="my-2"
+                                onClick={() => {
+                                    setActiveIdx(idx);
+                                    openmenu;
+                                }}
+                                key={menu.text}
+                            >
 
-                        </li>
-                    ))}
-                </ul>
-            </div>
+
+                                <ActiveLink href={menu.href} activeClassName="w-full text-xs font-medium md:ml-8 text-skin-navlink-active uppercase opacity-80 transition-all duration-200">
+                                    <a className="w-full text-xs md:ml-8 font-medium  text-skin-muted uppercase opacity-80 transition-all duration-200 hover:text-skin-navlink-hover"
+
+                                    >
+                                        {menu.text}
+                                    </a>
+                                </ActiveLink>
+                            </li>)
+
+                        })}
+                    </ul>
+                </div>
 
 
         </nav>
@@ -123,7 +128,7 @@ const NavbarIntranet = ({ user }) => {
 
             <div className=" w-full">
                 <ul className=" grid grid-cols-5 gap-4 justify-items-center align-middle">
-                    {BOTTOM_MENU_LIST.map((menu, idx) => (
+                    {INTRA_MENU_LIST.map((menu, idx) => (
 
                         <li className="flex flex-row"
                             onClick={() => {

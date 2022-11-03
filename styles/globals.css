@@ -6,74 +6,91 @@
 @layer base {
 
   :root {
-    --color-text-base: 255, 255, 255;
-    --color-text-muted: 199, 210, 254;
-    --color-text-inverted: 79, 70, 229;
-    --color-fill: 67, 56, 202;
-    --color-button-accent: 255, 255, 255;
-    --color-button-accent-hover: 238, 242, 255;
-    --color-button-muted: 99, 102, 241;
+    --background: 242, 242, 242;
+    --color-text-base: 38, 38, 38;
+    --color-text-muted: 64, 64, 64;
+    --color-text-inverted: 255, 255, 255;
+    --color-text-inverted-muted: 242, 242, 242;
+    --color-fill: 242, 242, 242;
+    --color-shadow: 38, 38, 38;
+    --color-border: 64, 64, 64;
+    --color-primary: 212, 226, 223;
+    --color-secondary: 174, 202, 197;
+    --color-error: 242, 100, 130;
+    --color-error-hover: 238, 54, 93;
+    --color-approve: 120, 202, 163;
+    --color-approve-hover: 73, 183, 131;
+    --color-link: 195, 162, 218;
+    --color-link-hover: 167, 118, 200;
+    --color-navlink-active: 243, 165, 117;
+    --color-navlink-hover: 239, 135, 71;
+    --color-button-accent: 76, 116, 108;
+    --color-button-accent-hover: 76, 116, 108;
+    --color-button-secondary: 111, 174, 191;
+    --color-button-secondary-hover: 79, 156, 177;
   }
-  .theme-swiss {
+
+  [data-theme='dark'] {
+    --background: 50, 76, 71;
     --color-text-base: 255, 255, 255;
-    --color-text-muted: 254, 202, 202;
-    --color-text-inverted: 220, 38, 38;
-    --color-fill: 185, 28, 28;
-    --color-button-accent: 255, 255, 255;
-    --color-button-accent-hover: 254, 242, 242;
-    --color-button-muted: 239, 68, 68;
+    --color-text-muted: 242, 242, 242;
+    --color-text-inverted: 38, 38, 38;
+    --color-text-inverted-muted: 64, 64, 64;
+    --color-fill: 23, 35, 33;
+    --color-shadow: 255, 255, 255;
+    --color-border: 242, 242, 242;
+    --color-primary: 76, 116, 108;
+    --color-secondary: 107, 157, 147;
+    --color-error: 238, 54, 93;
+    --color-error-hover: 242, 100, 130;
+    --color-approve: 73, 183, 131;
+    --color-approve-hover: 120, 202, 163;
+    --color-link: 167, 118, 200;
+    --color-link-hover: 195, 162, 218;
+    --color-navlink-active: 243, 165, 117;
+    --color-navlink-hover: 239, 135, 71;
+    --color-button-accent: 174, 202, 197;
+    --color-button-accent-hover: 212, 226, 223;
+    --color-button-secondary: 79, 156, 177;
+    --color-button-secondary-hover: 111, 174, 191;
+
   }
-  .theme-neon {
-    --color-text-base: 3, 70, 75;
-    --color-text-muted: 5, 86, 92;
-    --color-text-inverted: 237, 246, 249;
-    --color-fill: 131, 197, 190;
-    --color-button-accent:0, 109, 119;
+
+  [data-theme='intranet'] {
+    --color-text-base: #262626;
+    --color-text-muted: #404040;
+    --color-text-inverted: #FFFFFF;
+    --color-text-inverted-muted: #F2F2F2;
+    --color-fill: #F2F2F2;
+    --color-shadow: #262626;
+    --color-border: #404040;
+    --color-primary: #B9C8CF;
+    --color-secondary: #99AEB9;
+    --color-error: #F26482;
+    --color-error-hover: #EE365D;
+    --color-approve: #78CAA3;
+    --color-approve-hover: #49B783;
+    --color-link: #C3A2DA;
+    --color-link-hover: #A776C8;
+    --color-navlink-active: #F3A575;
+    --color-navlink-hover: #EF8747;
+    --color-button-accent: #506774;
+    --color-button-accent-hover: #324149;
+    --color-button-secondary: #6FAEBF;
+    --color-button-secondary-hover: #4F9CB1;
+  }
+
+  [data-theme='intranet-dark'] {
+    --color-text-base: 224, 225, 221;
+    --color-text-muted: 210, 211, 207;
+    --color-text-inverted: 27, 38, 59;
+    --color-fill: 50, 65, 73;
+    --color-first: 255, 232, 209;
+    --color-secondary: 239, 166, 169;
+    --color-third: 183, 159, 173;
+    --color-button-accent: 0, 109, 119;
     --color-button-accent-hover: 2, 126, 138;
     --color-button-muted: 197, 225, 235;
-  }
-  .theme-test {
-    --color-text-base: 224, 225, 221;
-    --color-text-muted:210, 211, 207;
-    --color-text-inverted:27, 38, 59;
-    --color-fill:91, 128, 107;
-    --color-first:255, 232, 209;
-    --color-secondary:239, 166, 169;
-    --color-third:183, 159, 173;
-    --color-button-accent:224, 225, 221;
-    --color-button-accent-hover:238, 228, 225;
-    --color-button-muted:13, 27, 42;
-  }
-
-/*
-rgb(44, 7, 3)
-rgb(137, 6, 32)
-rgb(182, 70, 95)
-rgb(218, 159, 147)
-rgb(235, 212, 203)
-rgb(238, 228, 225)
-
-2c0703 
-890620
-b6465f
-da9f93
-ebd4cb
-eee4e1
-
-rgb(224, 225, 221)
-rgb(119, 141, 169)
-rgb(65, 90, 119)
-rgb(27, 38, 59)
-rgb(13, 27, 42)
-e0e1dd
-778da9
-415a77
-1b263b
-0d1b2a
-
-*/
-  .cursor-newtab {
-    cursor: url('/images/new-tab.png') 10 10, pointer;
   }
 
   /* #region  /**=========== Typography =========== */
@@ -105,17 +122,15 @@ e0e1dd
   .p {
     @apply text-xl md:text-base;
   }
+
   /* #endregion  /**======== Typography =========== */
 
-.layout {
+  .layout {
     /* 1100px */
     max-width: 68.75rem;
     @apply mx-auto w-11/12;
   }
 
-  .bg-dark a.custom-link {
-    @apply border-gray-200 hover:border-gray-200/0;
-  }
 
   /* Class to adjust with sticky footer */
   .min-h-main {
@@ -123,22 +138,26 @@ e0e1dd
   }
 
 
-  
-.btn {
-  @apply text-white font-semibold py-2 px-4 rounded;
-}
-.btn-purple {
-  @apply bg-purple-3 ;
-}
-.btn-delete {
-  @apply bg-delete ;
-}
-.btn-create {
-  @apply bg-create ;
-}
-.btn:hover {
-  @apply bg-opacity-70;
-}
+
+  .btn {
+    @apply text-white font-semibold py-2 px-4 rounded;
+  }
+
+  .btn-purple {
+    @apply bg-purple-3;
+  }
+
+  .btn-delete {
+    @apply bg-delete;
+  }
+
+  .btn-create {
+    @apply bg-create;
+  }
+
+  .btn:hover {
+    @apply bg-opacity-70;
+  }
 }
 
 
@@ -146,15 +165,14 @@ e0e1dd
 @layer utilities {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(
-        to right,
+      linear-gradient(to right,
         var(--color-primary-400),
-        var(--color-primary-500)
-      );
+        var(--color-primary-500));
     background-size: 100% 2px, 0 2px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
   }
+
   @media (prefers-reduced-motion: no-preference) {
     .animated-underline {
       transition: 0.3s ease;
@@ -162,6 +180,7 @@ e0e1dd
         border-color;
     }
   }
+
   .animated-underline:hover,
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;

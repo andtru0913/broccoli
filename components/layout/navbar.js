@@ -1,11 +1,7 @@
+import { useTheme } from 'next-themes';
 import Link from 'next/link'
 import { useEffect, useState } from "react";
-import NavItem from "./navitem";
-import styles from '../../styles/navbar.module.css'
-
-
-
-
+import ActiveLink from '../activeLink';
 
 const MENU_LIST = [
     { text: "Hem", href: "/"},
@@ -19,9 +15,8 @@ const MENU_LIST = [
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeIdx, setActiveIdx] = useState(null);
     const openmenu = () => setIsOpen(!isOpen)
-    const hamburgerLine = " w-6 h-0.5 bg-darkest my-1 transition-all duration-300 ease-in-out md:hidden";
+    const hamburgerLine = " w-6 h-0.5 bg-skin-navlink-hover my-1 transition-all duration-300 ease-in-out md:hidden";
     const [clientWindowHeight, setClientWindowHeight] = useState("");
 
     const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
@@ -70,32 +65,15 @@ const NavBar = () => {
         }
     }, [clientWindowHeight]);
 
+const theme = useTheme()
 
-    const navmenuClassNames = [
-        'flex',
-        'flex-row',
-        'space-between',
-        'align-middle',
-        'sm:fixed',
-        'sm:-left-full',
-        'sm:top-14',
-        'sm:flex-col',
-        'sm:w-full',
-        'sm:rounded-lg',
-        'sm:text-center',
-        'sm:transition-all',
-        'sm:duration-300',
-        'sm:shadow',
-        'sm:bg-theme-creme',
-        isOpen ? 'sm:left-0' : '',
-    ].join(' ')
     return (
 
-        <header className="sticky top-0 z-50">
-            <nav className="flex justify-between align-middle py-2 px-7" style={{
-                background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+        <header className="sticky top-0 z-50 ">
+            <nav className={`flex justify-between align-middle py-2 px-7 bg-skin-fill shadow`} style={{
+                background: `rgb(var(--color-fill), ${backgroundTransparacy}) `,
 
-                boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+                boxShadow: `rgb(100 100 100 / ${boxShadow}) 0px 0px 20px 6px`,
             }}>
                 <div className="text-lg flex justify-start">
                     <Link href="/">
@@ -112,22 +90,30 @@ const NavBar = () => {
 
 
 
-                <div className="flex justify-end absolute right-10 top-3.5">
-                    <ul className={isOpen === false ? "flex flex-row justify-between align-middle" :"fixed -left-full top-14 flex flex-col w-full rounded-lg text-center duration-300 shadow-sm bg-theme-creme"}>
+                <div className="flex justify-center absolute right-10 text-skin-muted">
+                    <ul className={
+                        `md:flex md:flex-row md:justify-between md:align-middle 
+                        ${isOpen === false ? 
+                            'mobile:fixed mobile:-left-full mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill' : 
+                            'mobile:fixed mobile:left-0 mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill'}`}>
                         {MENU_LIST.map((menu, idx) => {
 
-                            
+
                             return (<li className="my-2"
                                 onClick={() => {
-                                    setActiveIdx(idx);
                                     openmenu;
                                 }}
                                 key={menu.text}
                             >
 
 
-                                <NavItem theme={"n"} active={activeIdx === idx} {...menu} />
+                                <ActiveLink href={menu.href} className="" activeClassName="w-full text-xs font-medium md:ml-8 text-skin-navlink-active uppercase opacity-80 transition-all duration-200">
+                                    <a className="w-full text-xs md:ml-8 font-medium  uppercase opacity-80 transition-all duration-200 hover:text-skin-navlink-hover"
 
+                                    >
+                                        {menu.text}
+                                    </a>
+                                </ActiveLink>
                             </li>)
 
                         })}

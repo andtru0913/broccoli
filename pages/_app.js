@@ -3,9 +3,13 @@ import "@fullcalendar/common/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 
+import { ThemeProvider } from 'next-themes'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider enableSystem={true} value={{intranet: 'intranet'}} >
+      <Component {...pageProps} />
+    </ThemeProvider>)
 }
 
 export default MyApp

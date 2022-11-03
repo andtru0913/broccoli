@@ -21,11 +21,11 @@ export const getStaticProps = async () => {
 export default function Home({ feed, }) {
   const insta_images = feed.data;
   return (
-    <Layout>
+    <Layout className="">
       <main>
-        <header className="  ">
+        <header className=" ">
 
-          <div className=" overflow-hidden h-screen bg-center">
+          <div className=" overflow-hidden h-screen bg-center ">
 
             <Image
               src="/images/gothenburg.jfif"
@@ -37,16 +37,6 @@ export default function Home({ feed, }) {
           <div className='relative overflow-hidden'>
 
 
-            {/** 
-             * 
-
-            />
-            <div className="absolute left-0 bottom-40 p-6 w-1/3 h-1/3 opacity-60 bg-black"></div>
-            <div className='absolute left-0 bottom-40 p-6 w-1/3 h-1/3  '>
-              <p className='text-white text-2xl text-center p-5'> BROCCOLI </p>
-            </div>
-
-            */}
           </div>
         </header>
 
@@ -74,15 +64,15 @@ export default function Home({ feed, }) {
 
         </section>
 
-        <section className=" py-12 theme-test text-center">
+        <section className=" py-12 text-center text-skin-base overflow-hidden">
           <h2 className=' '>Våra kärnvärden</h2>
-          <div className=" layout flex flex-row justify-center gap-4 py-8 lg:px-40 cursor-default">
+          <div className=" layout grid grid-cols-1 md:grid-cols-3 justify-center gap-4 py-8 lg:px-40 cursor-default">
 
-            <div className='relative  rounded w-1/3'>
+            <div className='relative  rounded '>
               <div className='flex w-full h-full justify-center z-10 '>
                 <img className=" object-cover" src='/images/underkonsult.jpg' />
               </div>
-              <div className='absolute top-0 flex flex-col bg-skin-first bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
+              <div className='absolute top-0 flex flex-col bg-skin-primary bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
                 <h3 className='py-2'>RELATIONER</h3>
 
                 <p className=''>
@@ -91,11 +81,11 @@ export default function Home({ feed, }) {
               </div>
 
             </div>
-            <div className='relative w-1/3 rounded '>
+            <div className='relative rounded'>
               <div className='flex w-full h-full justify-center   z-10 '>
                 <img className=" object-cover" src='/images/tjanster.jfif' />
               </div>
-              <div className='absolute top-0 flex flex-col  bg-skin-sec bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
+              <div className='absolute top-0 flex flex-col  bg-skin-primary bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
                 <h3 className='py-2'>PROFESSIONALISM</h3>
 
                 <p>
@@ -103,11 +93,11 @@ export default function Home({ feed, }) {
                 </p>
               </div>
             </div>
-            <div className='relative w-1/3 rounded '>
+            <div className='relative rounded'>
               <div className='flex w-full h-full justify-center   z-10 '>
                 <img className=" object-cover" src='/images/gothenburg.jfif' />
               </div>
-              <div className='absolute top-0 flex flex-col bg-skin-third bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
+              <div className='absolute top-0 flex flex-col bg-skin-primary bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
                 <h3 className='py-2'>HÅLLBAR UTVECKLING</h3>
 
                 <p>
@@ -126,12 +116,12 @@ export default function Home({ feed, }) {
           <div className="layout  py-12">
 
             <h1 className="  text-center md:ml-12 md:text-left"> FÖLJ OSS PÅ INSTAGRAM  </h1>
-            <a className='text-white hover:opacity-50' href='https://www.instagram.com/broccoliengineering/'> <p className=" text-center md:ml-12 md:text-left">@broccoliengineering</p>  </a>
+            <a className='text-skin-muted hover:opacity-50' href='https://www.instagram.com/broccoliengineering/'> <p className=" text-center md:ml-12 md:text-left">@broccoliengineering</p>  </a>
             <div className=" flex flex-1 align-middle justify-center flex-col md:flex-row">
 
               {insta_images && insta_images.slice(0, 4).map(image => (
 
-                <div className=" relative basis-1/5 bg-slate-500 m-5 shadow-lg shadow-zinc-700" key={image.id}>
+                <div className=" relative basis-1/5 m-5 shadow-lg shadow-skin-shadow" key={image.id}>
 
                   <a href={image.permalink}>
                     <img
@@ -139,19 +129,8 @@ export default function Home({ feed, }) {
                       src={image.media_url}
 
                     />
-                    <div className="absolute right-0 top-0  p-3">
+                  </a>
 
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" color='white' viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 hover:scale-105">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                      </svg>
-
-
-
-                    </div> </a>
-                  {/**
-              <div className="absolute left-1/2 bottom-0 -translate-x-1/2 p-6 w-full bg-zinc-600 opacity-60"></div>
-              <p className="absolute text-xs bottom-4 left-1/2 -translate-x-1/2 text-white"> inlägg.. </p>
-              */}
 
                 </div>
 
