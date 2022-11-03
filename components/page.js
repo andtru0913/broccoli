@@ -3,7 +3,7 @@ import Layout from "./layout/layout";
 import Form from "./form";
 import Card from "./card";
 
-const Page = ({ authentication, page}) => {
+const Page = ({ authentication, page, redirect}) => {
     let popup = {}
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -45,7 +45,7 @@ const Page = ({ authentication, page}) => {
                         <input type="text" name="description" placeholder="Text"/>
                         <input type="hidden" id="createBase64" name="base64"/>
                         <input type="hidden" name="pageId" value={page.id}/>
-                        <input type="hidden" name="redirect" value="../carreer"/>
+                        <input type="hidden" name="redirect" value={redirect}/>
                         <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="createFormFile" name="file" onChange={async function() {
                             let submit = document.getElementById("createCardSubmit")
                             submit.disabled = true;
@@ -70,12 +70,12 @@ const Page = ({ authentication, page}) => {
                         submit.disabled = false;
                     }}/>
                     <input type="hidden" id="modifyBase64" name="base64"/>
-                    <input type="hidden" name="redirect" value="../carreer"/>
+                    <input type="hidden" name="redirect" value={redirect}/>
                     <button type="submit" id="modifyCardSubmit"> Ändra kort</button>
                 </form>
                 <form action="../../api/deleteCard" method="POST">
                     <input className="id" type="hidden" name="id"/>
-                    <input type="hidden" name="redirect" value="../carreer"/>
+                    <input type="hidden" name="redirect" value={redirect}/>
                     <button type="submit"> Radera kort</button>
                 </form>
             </div>),
@@ -84,7 +84,7 @@ const Page = ({ authentication, page}) => {
                 <form action="../../api/modifyPage" method="POST">
                     <input className="title" type="text" name="title" placeholder="Rubrik"/>
                     <input className="description" type="text" name="description" placeholder="Text"/>
-                    <input type="hidden" name="redirect" value="../carreer"/>
+                    <input type="hidden" name="redirect" value={redirect}/>
                     <input type="hidden" name="id" value={page.id}/>
                     <button type="submit"> Ändra sida</button>
                 </form>
@@ -123,7 +123,6 @@ const Page = ({ authentication, page}) => {
                                 if (authentication === null) {
                                     let background = document.getElementById('popup')
                                     let modifyCard = document.getElementById('modifyCard')
-                                    console.log(card.title)
                                     background.classList.remove(popupStyles.hide)
                                     modifyCard.getElementsByClassName('id')[0].value = card.id
                                     modifyCard.getElementsByClassName('id')[1].value = card.id

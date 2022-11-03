@@ -1,15 +1,6 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import Card from '../components/card';
 import Layout from '../components/layout/layout';
-import menu_list from "../components/navbar/navmenuList"
-import styles from '../styles/Home.module.css'
-
-
-
-
 import Accordion from '../components/accordion';
-import { useState } from 'react';
 
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
@@ -27,43 +18,8 @@ export const getStaticProps = async () => {
 }
 
 
-async function handleOnSubmit(e) {
-  e.preventDefault();
-
-  const formData = {};
-
-  Array.from(e.currentTarget.elements).forEach(field => {
-    if (!field.name) return;
-    formData[field.name] = field.value;
-  });
-
-  await fetch('/api/mail', {
-    method: 'POST',
-    body: JSON.stringify(formData)
-  });
-
-
-
-}
-
 export default function Home({ feed, }) {
   const insta_images = feed.data;
-  const [val, setVal] = useState(0)
-  const upValue = () => {
-    console.log(val)
-    val > 0 ?
-      setVal(val => val - 1) :
-      setVal(val)
-
-    console.log(val)
-  }
-  const downValue = () => {
-    console.log(val)
-    val <= 2 ?
-      setVal(val => val + 1) :
-      ""
-  }
-
   return (
     <Layout>
       <main>
@@ -163,24 +119,6 @@ export default function Home({ feed, }) {
 
         </section>
 
-        {/**<section className="bg-theme-green">
-
-          <div className="layout grid grid-flow min-w-fit  py-12 lg:grid-cols-3  md:grid-cols-2 gap-4 md:gap-12 lg:px-40 ">
-
-            {
-              menu_list.map((menu, idx) => (
-                menu.tag ?
-                  <Card href={menu.href} title={menu.text} icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-                  </svg>} />
-                  : ""
-              ))}
-
-
-          </div>
-
-              </section>*/}
-
 
         <section className="">
 
@@ -231,21 +169,4 @@ export default function Home({ feed, }) {
       </main>
     </Layout>
   );
-}
-
-
-function BrocAnimation({ id, setVal, val }) {
-  const handleValue = () => {
-    console.log("click " + id)
-    val < 2 ?
-
-      setVal(id) :
-      ""
-  }
-
-  return (
-    <div onClick={handleValue} className='h-8 w-8 text-center m-2 bg-beige-2 rounded-md hover:opacity-80 hover:text-white cursor-pointer'> <p className=''>{id}</p> </div>
-
-  );
-
 }

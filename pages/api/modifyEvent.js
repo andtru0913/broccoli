@@ -1,8 +1,9 @@
-import * as Database from "../../Database";
+import checkAdmin from "./checkAdmin";
+import {updateEventDesc} from "../../Database";
 
 export default async function handler(req, res) {
-    if (await Database.isAdmin(req.cookies['userid']) && req.body.title !== "") {
-        await Database.updateEventDesc(req.body.id, req.body.title, req.body.description)
+    if (await checkAdmin(req.cookies['user']) && req.body.title !== "") {
+        await updateEventDesc(req.body.id, req.body.title, req.body.description)
             .catch(e => {
                 console.error(e.message)
             })

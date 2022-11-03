@@ -8,13 +8,13 @@ import styles from '../../styles/navbar.module.css'
 
 
 const MENU_LIST = [
-    { text: "Hem", href: "/" },
-    { text: "Tjänster", href: "/posts" },
-    { text: "Karriär", href: "/carreer" },
-    { text: "Underkonsult", href: "/underconsultants" },
-    { text: "Om oss", href: "/about" },
-    { text: "Historia", href: "/about#history", tag: true },
-    { text: "Kontakt", href: "/contact" },
+    { text: "Hem", href: "/"},
+    { text: "Jobba hos oss", href: "/career"},
+    { text: "Tjänster", href: "/posts"},
+    { text: "Exjobb", href: "/exjobb"},
+    { text: "Underkonsult", href: "/underconsultants"},
+    { text: "Om oss", href: "/about"},
+    { text: "Kontakt", href: "/contact"},
 ];
 
 const NavBar = () => {
@@ -25,7 +25,7 @@ const NavBar = () => {
     const [clientWindowHeight, setClientWindowHeight] = useState("");
 
     const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
-    const [padding, setPadding] = useState(30);
+    const [setPadding] = useState(30);
     const [boxShadow, setBoxShadow] = useState(0);
 
 
@@ -103,6 +103,7 @@ const NavBar = () => {
                             <img
                                 className="h-8 w-auto sm:h-10"
                                 src="/images/BroccoliBlack.png"
+                                alt="Broccoli"
                             />
                         </a>
 

@@ -52,6 +52,7 @@ export default function Home({user}) {
 
 
                 <div>
+
                     <table>
                         <thead>
                             <tr>
@@ -82,6 +83,7 @@ export default function Home({user}) {
                         )}
                         </tbody>
                     </table>
+
                     <button onClick={function() {
                         document.getElementById("popup").classList.remove(popupStyles.hide)
                         document.getElementById("createuser").classList.remove(popupStyles.hide)

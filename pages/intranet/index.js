@@ -1,22 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image';
-import Nyheter from '../../components/intranet/newsItem';
-import LayoutIntranet from '../../components/layout/layoutIntranet';
 import * as Database from "../../Database";
-import styles from "../../styles/Home.module.css";
-import formStyles from "./form.module.css"
+import Image from "next/image";
+import LayoutIntranet from "../../components/layout/layoutIntranet";
+import Nyheter from "../../components/intranet/newsItem";
 
 export async function getServerSideProps(context) {
-    let cookies = context.req.cookies['userid']
-
-    let user = await Database.getUserinfo(cookies)
-    let groups = await Database.getAllLunchGroups()
-    let lunchgroups = []
-    groups.slice(1).map((data) => {
-        let people = []
-        data.users.map((usr) => {
-            let fullName = usr.firstname + usr.lastname
-            people.push(fullName)
+    let cookies = JSON.parse(context.req.cookies['user'] || null)
+    if (cookies !== null) {
+        let user = await Database.getUserinfo(cookies.id)
+        let groups = await Database.getAllLunchGroups()
+        let lunchgroups = []
+        groups.slice(1).map((data) => {
+            let people = []
+            data.users.map((usr) => {
+                let fullName = usr.firstname + usr.lastname
+                people.push(fullName)
 
         })
         let object = { id: data.id, title: data.title, people: people }
@@ -25,7 +22,7 @@ export async function getServerSideProps(context) {
     return {
 
         props: {
-            user: user === undefined ? null : user,
+            user: user !== undefined ? user : null,
             lunchgroups: lunchgroups
 
         }
@@ -95,6 +92,7 @@ export default function Home({ user, lunchgroups }) {
                     <div className=" w-1/2  absolute top-0 left-1/4 flex justify-center lg:justify-start p-4 lg:left-0"><img
                         className=" h-8  sm:h-10"
                         src="/images/BroccoliBlack.png"
+                        alt="broccoli img"
                     /></div>
 
 

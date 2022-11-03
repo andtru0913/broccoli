@@ -1,7 +1,7 @@
 import {serialize} from "cookie"
 
 export default async function handler(req, res) {
-    res.setHeader('Set-Cookie', serialize('userid', '', {
+    res.setHeader('Set-Cookie', serialize('user', '{}', {
         path: '/',
         maxAge: -1
     }));

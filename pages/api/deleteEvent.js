@@ -1,8 +1,9 @@
-import * as Database from "../../Database";
+import checkAdmin from "./checkAdmin";
+import {deleteEvent} from "../../Database";
 
 export default async function handler(req, res) {
-    if (await Database.isAdmin(req.cookies['userid'])) {
-        await Database.deleteEvent(req.body.id)
+    if (await checkAdmin(req.cookies['user'])) {
+        await deleteEvent(req.body.id)
             .catch(e => {
                 console.error(e.message)
             })

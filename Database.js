@@ -1,3 +1,4 @@
+import {lunchgroup} from "./defaultIDs";
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient();
@@ -26,28 +27,26 @@ export async function createNewUser(username, password, firstname, lastname, add
 }
 
 export async function login(input_username, input_password) {
-
-console.log("user " +input_username)
-
     const query = await prisma.user.findMany({
         where: {
             username: input_username
         },
         select: {
             id: true,
+            firstname: true,
+            lastname: true,
             password: true,
             salt: true,
         }
     })
     try {
-        console.log("hej")
         let salt = query[0].salt
         let id = query[0].id
         let account_password = query[0].password
         const hashedPassword = await bcrypt.hash(input_password, salt)
         console.log(hashedPassword)
         if (hashedPassword === account_password) {
-            return id
+            return {id: id, firstname: query[0].firstname, lastname: query[0].lastname}
         }
         else {
             return null
@@ -236,7 +235,7 @@ export async function deleteLunchgroup(id) {
                 lunchgroupID: null,
             },
             data: {
-                lunchgroupID: '634e9876bf1fe7084e06634c',
+                lunchgroupID: lunchgroup
             },
     })
 }

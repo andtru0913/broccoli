@@ -32,6 +32,7 @@ const Accordion = () => {
            {data.map((data)=>{
             return(
                 <AccordionSection
+                key={data.id}
                 img_path={data.img_path}
                 id={data.id}
                 author={data.author}
