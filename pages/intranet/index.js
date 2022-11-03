@@ -4,9 +4,6 @@ import Image from 'next/image';
 import Nyheter from '../../components/intranet/newsItem';
 import LayoutIntranet from '../../components/layout/layoutIntranet';
 import * as Database from "../../Database";
-import Image from "next/image";
-import LayoutIntranet from "../../components/layout/layoutIntranet";
-import Nyheter from "../../components/intranet/newsItem";
 
 export async function getServerSideProps(context) {
     let cookies = JSON.parse(context.req.cookies['user'] || null)
@@ -20,19 +17,20 @@ export async function getServerSideProps(context) {
                 let fullName = usr.firstname + usr.lastname
                 people.push(fullName)
 
+            })
+            let object = { title: data.title, people: people }
+            lunchgroups.push(object)
         })
-        let object = { id: data.id, title: data.title, people: people }
-        lunchgroups.push(object)
-    })
-    return {
 
-        props: {
-            user: user !== undefined ? user : null,
-            lunchgroups: lunchgroups
+        return {
 
+            props: {
+                user: user !== undefined ? user : null,
+                lunchgroups: lunchgroups
+
+            }
         }
     }
-}
 }
 
 
