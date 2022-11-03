@@ -1,7 +1,6 @@
 import FullCalendar from "@fullcalendar/react";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from '@fullcalendar/daygrid';
-import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import * as Database from "../../Database";
 import popupStyles from "./popup.module.css"
@@ -102,7 +101,7 @@ export default function Home({admin,allEvents}) {
     const windowstyle = "z-30 absolute w-screen p-4  top-1/4 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 "
 
     return (
-        <div className={styles.container}>
+        <div className="">
              <div id='popup' className={`${popUpstyle} ${popupStyles.hide}`} onClick={function () {
                 document.getElementById('popup').classList.add(popupStyles.hide);
                 document.getElementById('checkevent').classList.add(popupStyles.hide);
@@ -111,21 +110,21 @@ export default function Home({admin,allEvents}) {
             }}>
             </div>
             <div id='createevent' className={`${windowstyle}  ${popupStyles.hide}`}>
-                <div className="bg-white rounded p-5">
-                    <h3 className="text-darkest"> Create Event</h3>
+                <div className="bg-skin-fill rounded p-5">
+                    <h3 className="text-skin-base"> Create Event</h3>
                     <form action="../../api/createEvent" method="POST">
                         <div className="flex flex-col md:flex-row py-4">
                             <div className="flex flex-row">
 
 
                                 <p className="pr-2"> Från</p>
-                                <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
+                                <input className='start hover:bg-skin-primary rounded' type="date" name="start" />
                             </div>
 
 
                          <div className="flex flex-row px-2">
                          <p className="px-2">till </p>
-                         <input className='end hover:bg-zinc-300 rounded' type="date" name="end" />
+                         <input className='end hover:bg-skin-primary rounded' type="date" name="end" />
                          </div>
 
                     </div>
@@ -141,7 +140,7 @@ export default function Home({admin,allEvents}) {
 
             </div>
             <div id='modifyevent' className={`${windowstyle} ${popupStyles.hide}`}>
-                <div className="bg-white rounded p-5">
+                <div className="bg-skin-fill rounded p-5">
                     <h1> Modify Event</h1>
                     <form action="../../api/modifyEvent" method="POST">
                     <div className="flex flex-col md:flex-row py-4">
@@ -151,13 +150,13 @@ export default function Home({admin,allEvents}) {
 
 
                                 <p className="pr-2"> Från</p>
-                                <input className='start hover:bg-zinc-300 rounded' type="date" name="start" />
+                                <input className='start hover:bg-skin-primary rounded' type="date" name="start" />
                             </div>
 
 
                             <div className="flex flex-row px-2">
                                 <p className="px-2">till </p>
-                                <input className='end hover:bg-zinc-300 rounded' type="date" name="end" />
+                                <input className='end hover:bg-skin-primary rounded' type="date" name="end" />
                             </div>
 
                         </div>
@@ -180,7 +179,7 @@ export default function Home({admin,allEvents}) {
 
             </div>
             <div id='checkevent' className={`${windowstyle} ${popupStyles.hide}`}>
-                <div className="bg-white rounded p-5">
+                <div className="bg-skin-fill rounded p-5">
                     <h1> Check Event</h1>
                     <h2 className={'title'}></h2>
                     <p className={'description'}></p>

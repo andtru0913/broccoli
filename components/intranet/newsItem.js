@@ -19,7 +19,7 @@ const Nyheter = () => {
         img_path: "./images/BjornB.jfif"
     }]
     return (
-        <div className='flex flex-col bg-theme-creme bg-opacity-30 p-4 '>
+        <div className='flex flex-col bg-skin-primary bg-opacity-30 p-4 '>
         <h3>Senaste Nytt</h3>
         
             {data.map((data) => {

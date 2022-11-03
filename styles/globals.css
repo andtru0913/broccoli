@@ -57,40 +57,52 @@
   }
 
   [data-theme='intranet'] {
-    --color-text-base: #262626;
-    --color-text-muted: #404040;
-    --color-text-inverted: #FFFFFF;
-    --color-text-inverted-muted: #F2F2F2;
-    --color-fill: #F2F2F2;
-    --color-shadow: #262626;
-    --color-border: #404040;
-    --color-primary: #B9C8CF;
-    --color-secondary: #99AEB9;
-    --color-error: #F26482;
-    --color-error-hover: #EE365D;
-    --color-approve: #78CAA3;
-    --color-approve-hover: #49B783;
-    --color-link: #C3A2DA;
-    --color-link-hover: #A776C8;
-    --color-navlink-active: #F3A575;
-    --color-navlink-hover: #EF8747;
-    --color-button-accent: #506774;
-    --color-button-accent-hover: #324149;
-    --color-button-secondary: #6FAEBF;
-    --color-button-secondary-hover: #4F9CB1;
+    --color-text-base: 38, 38, 38;
+    --color-text-muted: 64, 64, 64;
+    --color-text-inverted: 255, 255, 255;
+    --color-text-inverted-muted: 242, 242, 242;
+    --color-fill: 242, 242, 242;
+    --color-shadow: 38, 38, 38;
+    --color-border: 64, 64, 64;
+    --color-primary: 185, 200, 207;
+    --color-secondary: 153, 174, 185;
+    --color-error: 242, 100, 130;
+    --color-error-hover: 238, 54, 93;
+    --color-approve: 120, 202, 163;
+    --color-approve-hover: 73, 183, 131;
+    --color-link: 195, 162, 218;
+    --color-link-hover: 167, 118, 200;
+    --color-navlink-active: 243, 165, 117;
+    --color-navlink-hover: 239, 135, 71;
+    --color-button-accent: 80, 103, 116;
+    --color-button-accent-hover: 50, 65, 73;
+    --color-button-secondary: 111, 174, 191;
+    --color-button-secondary-hover: 79, 156, 177;
   }
 
-  [data-theme='intranet-dark'] {
-    --color-text-base: 224, 225, 221;
-    --color-text-muted: 210, 211, 207;
-    --color-text-inverted: 27, 38, 59;
-    --color-fill: 50, 65, 73;
-    --color-first: 255, 232, 209;
-    --color-secondary: 239, 166, 169;
-    --color-third: 183, 159, 173;
-    --color-button-accent: 0, 109, 119;
-    --color-button-accent-hover: 2, 126, 138;
-    --color-button-muted: 197, 225, 235;
+  [data-theme='dark-intranet'] {
+    --background: 50, 76, 71;
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 242, 242, 242;
+    --color-text-inverted: 38, 38, 38;
+    --color-text-inverted-muted: 64, 64, 64;
+    --color-fill: 23, 35, 33;
+    --color-shadow: 255, 255, 255;
+    --color-border: 242, 242, 242;
+    --color-primary: 76, 116, 108;
+    --color-secondary: 107, 157, 147;
+    --color-error: 238, 54, 93;
+    --color-error-hover: 242, 100, 130;
+    --color-approve: 73, 183, 131;
+    --color-approve-hover: 120, 202, 163;
+    --color-link: 167, 118, 200;
+    --color-link-hover: 195, 162, 218;
+    --color-navlink-active: 243, 165, 117;
+    --color-navlink-hover: 239, 135, 71;
+    --color-button-accent: 174, 202, 197;
+    --color-button-accent-hover: 212, 226, 223;
+    --color-button-secondary: 79, 156, 177;
+    --color-button-secondary-hover: 111, 174, 191;
   }
 
   /* #region  /**=========== Typography =========== */
