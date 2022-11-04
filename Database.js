@@ -316,3 +316,68 @@ export async function joinEvent(userid, eventid) {
         },
     })
 }
+
+export async function leaveEvent(userid, eventid) {
+    return await prisma.event.update({
+        where: {
+            id: eventid,
+        },
+        data: {
+            users: {
+                disconnect: {
+                    id: userid,
+                }
+            }
+        },
+    })
+}
+
+
+export async function deleteUser(id) {
+    return await prisma.user.delete({
+        where: {
+            id:id
+        }
+    })
+}
+
+export async function modifyUser(id, username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
+    if (password !== undefined) {
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+        await prisma.user.update({
+            where: {
+                id: id
+            },
+            data: {
+                username: username,
+                password: hashedPassword,
+                firstname: firstname,
+                lastname: lastname,
+                address: address,
+                privatenumber: privatenumber,
+                worknumber: worknumber,
+                company: company,
+                admin: admin !== undefined,
+                salt: salt,
+            },
+        })
+    }
+    else {
+        await prisma.user.update({
+            where: {
+                id: id
+            },
+            data: {
+                username: username,
+                firstname: firstname,
+                lastname: lastname,
+                address: address,
+                privatenumber: privatenumber,
+                worknumber: worknumber,
+                company: company,
+                admin: admin !== undefined,
+            },
+        })
+    }
+}

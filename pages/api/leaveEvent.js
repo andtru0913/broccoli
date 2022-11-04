@@ -1,4 +1,4 @@
-import {joinEvent} from "../../Database";
+import {leaveEvent} from "../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     }
     let user = JSON.parse(req.cookies['user'] || null)
     if (req.body.eventid !== "" && user !== null) {
-        await joinEvent(user.id, req.body.eventid)
+        await leaveEvent(user.id, req.body.eventid)
     }
     res.redirect(302, '../intranet/calender');
 }

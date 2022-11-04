@@ -8,7 +8,7 @@ import LayoutIntranet from '../../../components/layout/layoutIntranet';
 
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)
-    if (authentication !== undefined) return authenticationlet
+    if (authentication !== undefined) return authentication
     let cookies = JSON.parse(context.req.cookies['user'] || null)
     let user = await Database.getUserinfo(cookies.id)
     return {

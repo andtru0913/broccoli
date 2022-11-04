@@ -64,7 +64,8 @@ const Calender = ({ admin, allEvents }) => {
                 } else {
                     checkevent.getElementsByClassName('title')[0].innerText = title
                     checkevent.getElementsByClassName('description')[0].innerText = description
-                    checkevent.getElementsByClassName('id')[0].value = id
+                    checkevent.getElementsByClassName('eventid')[0].value = id
+                    checkevent.getElementsByClassName('eventid')[1].value = id
                     checkevent.classList.remove(popupStyles.hide)
                 }
             }}
@@ -134,8 +135,6 @@ export default function Home({admin,allEvents}) {
                     <input  className="p-2 border rounded mb-2" type="text" name="description" placeholder="Beskrivning" />
                     <button className="shadow btn btn-create" type="submit"> Skapa </button>
                     </div>
-
-
                     </form>
                 </div>
 
@@ -167,8 +166,12 @@ export default function Home({admin,allEvents}) {
                     <h2 className={'title'}></h2>
                     <p className={'description'}></p>
                     <form action="../../api/joinEvent" method="POST">
-                        <input className="id" type="hidden"/>
+                        <input className="eventid" type="hidden" name="eventid"/>
                         <button type="Submit">Gå med</button>
+                    </form>
+                    <form action="../../api/leaveEvent" method="POST">
+                        <input className="eventid" type="hidden" name="eventid"/>
+                        <button type="Submit">Lämna</button>
                     </form>
                 </div>
             </div>
