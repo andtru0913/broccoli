@@ -147,8 +147,8 @@ const NavbarIntranet = ({ user }) => {
                                                 key={menu.text}
                                             >
 
-                                                <ActiveLink href={menu.href} activeClassName="text-white" className="">
-                                                    <a className="text-center flex flex-col items-center align-middle text-dark-blue">
+                                                <ActiveLink href={menu.href} activeClassName="text-skin-primary" className="">
+                                                    <a className="text-center flex flex-col items-center align-middle text-skin-base">
                                                         {menu.icon}
                                                         <p className="text-xs">{menu.text}</p>
                                                     </a>

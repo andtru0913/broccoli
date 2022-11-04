@@ -132,7 +132,7 @@
 
   body,
   .p {
-    @apply text-xl md:text-base;
+    @apply text-xs md:text-base;
   }
 
   /* #endregion  /**======== Typography =========== */

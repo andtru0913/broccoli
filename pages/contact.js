@@ -19,7 +19,7 @@ export default function Contact() {
                     </div>
                     <div className='relative rounded'>
 
-                        <div className=' flex flex-col bg-skin-primary bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
+                        <div className=' flex flex-col bg-skin-primary bg-opacity-80 p-4 md:px-8 z-20 h-full overflow-hidden justify-center'>
                             <h4 className="pb-4 md:pb-8 md:text-3xl">Broccoli Engineering AB</h4>
                             <div className=" flex flex-col gap-4">
 
@@ -63,6 +63,7 @@ export default function Contact() {
                                     <iframe
                                         className="w-full h-80"
                                         id="gmap_canvas"
+                                        href='https://goo.gl/maps/p9sa1f82ZyN3FdAH9'
                                         src="https://maps.google.com/maps?q=Tillg%C3%A4ngligheten%203,%20417%2001%20G%C3%B6teborg&t=&z=13&ie=UTF8&iwloc=&output=embed"
                                         frameborder="0"
                                         scrolling="no"

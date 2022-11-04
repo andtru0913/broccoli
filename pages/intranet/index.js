@@ -83,11 +83,10 @@ export default function Home({ user, lunchgroups }) {
     useEffect(() => {
         let currentTheme = theme
         console.log("theme" + theme)
-        currentTheme = useTheme()
         console.log(currentTheme)
         theme === 'dark' ?
-        setTheme(dark_intranet):
-        setTheme(intranet)
+        setTheme('dark_intranet'):
+        setTheme('intranet')
       }, [])
     if (user === null) {
        

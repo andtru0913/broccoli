@@ -23,14 +23,24 @@ module.exports = {
 
     extend: {
       animation: {
-        fadeIn: "fadeIn 0.5s ease-out forwards"
+        fadeInRight: "fadeInRight 0.5s ease-out forwards",
+        fadeInRightOut: "fadeInRightOut 0.5s ease-out forwards",
+        fadeInLeft: "fadeInLeft 0.5s ease-out forwards"
       },
       keyframes: {
         
         
-        fadeIn: {
+        fadeInRight: {
           "0%": { opacity: 0,  },
-          "100%": { opacity: 1, transform: 'translate(-75%, -25%)'}
+          "100%": { opacity: 1, transform: 'translate(-75%,0)'}
+        },
+        fadeInRightOut: {
+          "0%":  { opacity: 1, transform: 'translate(75%, 25%)'},
+          "100%":{ opacity: 0,  },
+        },
+        fadeInLeft: {
+          "0%": { opacity: 0,  },
+          "100%": { opacity: 1, transform: 'translate(75%, -75%)'}
         }
       },
      
