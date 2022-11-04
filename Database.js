@@ -301,3 +301,18 @@ export async function updatePage(id, title, description) {
         },
     })
 }
+
+export async function joinEvent(userid, eventid) {
+    return await prisma.event.update({
+        where: {
+            id: eventid,
+        },
+        data: {
+            users: {
+                connect: {
+                    id: userid,
+                }
+            }
+        },
+    })
+}

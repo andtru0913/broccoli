@@ -3,6 +3,9 @@ import checkAdmin from "./checkAdmin";
 import {createEvent} from "../../Database";
 
 export default async function handler(req, res) {
+    if(req.method !== 'POST') {
+        res.redirect(302, '../intranet')
+    }
     if (await checkAdmin(req.cookies['user'])) {
         let start = Date.parse(req.body.start)
         let end = new Date(req.body.end)

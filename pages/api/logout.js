@@ -6,4 +6,6 @@ export default async function handler(req, res) {
         maxAge: -1
     }));
     res.redirect(302, '../intranet/')
+
+
 }

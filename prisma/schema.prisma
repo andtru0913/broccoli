@@ -25,6 +25,9 @@ model User {
     salt            String
     lunchgroup      Lunchgroup? @relation(fields: [lunchgroupID], references: [id])
     lunchgroupID    String? @db.ObjectId
+    eventIDs        String[] @db.ObjectId
+    events          Event[] @relation(fields: [eventIDs], references: [id])
+
 }
 
 model Event {
@@ -33,6 +36,8 @@ model Event {
     start           String
     end             String
     description     String?
+    userIDs         String[] @db.ObjectId
+    users           User[] @relation(fields: [userIDs], references: [id])
 }
 
 model Lunchgroup {

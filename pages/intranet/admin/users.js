@@ -25,9 +25,29 @@ export default function Home({user}) {
             </Head>
 
             <main className={styles.main}>
+                <div id="modifyuser" className={`${popupStyles.window} ${popupStyles.hide}`}>
+                    <form className={formStyles.form} action="../../api/modify" method="POST">
+                        <input type="text" name="username" placeholder="Användarnamn"/>
+                        <input type="text" name="password" placeholder="Lösenord"/>
+                        <input type="text" name="firstname" placeholder="Förnamn"/>
+                        <input type="text" name="lastname" placeholder="Efternamn"/>
+                        <input type="text" name="email" placeholder="Email"/>
+                        <input type="text" name="address" placeholder="Address"/>
+                        <input type="text" name="privatenumber" placeholder="Privattelefon"/>
+                        <input type="text" name="worknumber" placeholder="Arbetstelefon"/>
+                        <input type="text" name="company" placeholder="Bolag"/>
+                        <div>
+                            <label> Administratör</label>
+                            <input type="checkbox" name="admin" value="true"/>
+                        </div>
+
+                        <button type="submit">Ändra anställd</button>
+                    </form>
+                </div>
                 <div id="popup" className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
                     document.getElementById("popup").classList.add(popupStyles.hide)
                     document.getElementById("createuser").classList.add(popupStyles.hide)
+                    document.getElementById("modifyuser").classList.add(popupStyles.hide)
                 }}>
                 </div>
                 <div id="createuser" className={`${popupStyles.window} ${popupStyles.hide}`}>
