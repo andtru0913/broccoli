@@ -103,7 +103,7 @@ export default function Form() {
                         <div className="relative flex justify-end flex-row  ">
 
                             <div className=" p-2 ">
-                                <button id="formSubmit" type="submit" className="shadow bg-skin-button-accent hover:bg-skin-button-accent-hover focus:shadow-outline focus:outline-none text-skin-base font-semibold py-2 px-4 rounded">
+                                <button id="formSubmit" type="submit" className="shadow bg-skin-button-accent hover:bg-skin-button-accent-hover focus:shadow-outline focus:outline-none text-skin-inverted font-semibold py-2 px-4 rounded">
                                     Skicka
                                 </button>
                             </div>

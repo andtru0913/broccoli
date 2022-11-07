@@ -15,7 +15,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js"
   ],
-  
+
   variants: {
     animation: ["motion-safe"]
   },
@@ -23,27 +23,31 @@ module.exports = {
 
     extend: {
       animation: {
-        fadeInRight: "fadeInRight 0.5s ease-out forwards",
-        fadeInRightOut: "fadeInRightOut 0.5s ease-out forwards",
-        fadeInLeft: "fadeInLeft 0.5s ease-out forwards"
+        fadeIn: "fadeIn 3s ease-in-out forwards",
+        fadeInRight: "fadeInRight 1s ease-in-out forwards",
+        fadeInRightOut: "fadeInRightOut 1s ease-in-out forwards",
+        fadeInLeft: "fadeInLeft 1s ease-in-out forwards"
       },
       keyframes: {
-        
-        
+
+        fadeIn: {
+          "0%": { opacity: 0, },
+          "100%": { opacity: 1, }
+        },
         fadeInRight: {
-          "0%": { opacity: 0,  },
-          "100%": { opacity: 1, transform: 'translate(-75%,0)'}
+          "0%": { opacity: 0, transform: 'translate(75%,0)' },
+          "100%": { opacity: 1, }
         },
         fadeInRightOut: {
-          "0%":  { opacity: 1, transform: 'translate(75%, 25%)'},
-          "100%":{ opacity: 0,  },
+          "0%": { opacity: 1, },
+          "100%": { opacity: 0, transform: 'translate(75%, 25%)' },
         },
         fadeInLeft: {
-          "0%": { opacity: 0,  },
-          "100%": { opacity: 1, transform: 'translate(75%, -75%)'}
+          "0%": { opacity: 0, transform: 'translate(-75%,75%)' },
+          "100%": { opacity: 1, }
         }
       },
-     
+
       textColor: {
         skin: {
           base: withOpacity('--color-text-base'),
@@ -77,11 +81,12 @@ module.exports = {
       },
       gradientColorStops: {
         skin: {
-          hue: withOpacity('--color-fill'),
+          hue: withOpacity('--color-primary'),
+          no: withOpacity('--color-secondary'),
         },
       },
       screens: {
-        'mobile': {'max': '767px'},
+        'mobile': { 'max': '767px' },
         'md': '767px',
         // => @media (min-width: 640px) { ... }
       },
@@ -118,5 +123,6 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
   ]
 }

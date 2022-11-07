@@ -97,7 +97,7 @@ const Page = ({ authentication, page, redirect}) => {
             {popup.createCard}
             {popup.modifyCard}
             {popup.modifyPage}
-            <section className="bg-green-dark" onClick={function() {
+            <section className="bg-skin-fill" onClick={function() {
                 if (authentication === null) {
                     let background = document.getElementById('popup')
                     let modifyPage = document.getElementById('modifyPage')

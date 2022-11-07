@@ -23,21 +23,21 @@ const Footer = () => {
 
                         </Link>
                     </div>
-                    <div className="flex align-middle pt-8 flex-col md:flex-row md:justify-between lg:justify-evenly">
+                    <div className="grid md:grid-cols-3 pt-8 gap-4  md:justify-between lg:justify-evenly">
 
                         <div className=' flex-col px-5 text-center'>
                             <h1 className='pb-2 text-lg  text-skin-base font-bold cursor-default'>Följ oss</h1>
                             <div className="flex flex-row justify-center md:text-left bg-inherit">
 
-                                <a className="p-2 hover:scale-105 ">
+                                <a href='/' className="p-2 hover:scale-105 ">
                                     <BsInstagram className='fill-skin-button-accent hover:fill-skin-button-accent' size={20} />
                                 </a>
 
-                                <a className="p-2 hover:scale-105">
+                                <a href='/' className="p-2 hover:scale-105">
                                     <BsFacebook size={20} />
                                 </a>
 
-                                <a className="p-2 hover:scale-105">
+                                <a href='/' className="p-2 hover:scale-105">
                                     <BsLinkedin size={20} />
                                 </a>
 

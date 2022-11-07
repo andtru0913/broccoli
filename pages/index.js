@@ -66,13 +66,20 @@ export default function Home({ feed, }) {
 
         <section className=" py-12 text-center text-skin-base overflow-hidden">
           <h2 className=' '>Våra kärnvärden</h2>
-          <div className=" layout grid grid-cols-1 md:grid-cols-3 justify-center gap-4 py-8 lg:px-40 cursor-default">
+          <div className=" layout grid grid-cols-1 grid-flow-row md:grid-cols-3 justify-center gap-4 py-8 lg:px-28 cursor-default">
 
-            <div className='relative  rounded '>
-              <div className='flex w-full h-full justify-center z-10 '>
+            <div className='relative '>
+              <div className=' flex w-full h-full justify-center overflow-hidden'>
                 <img className=" object-cover" src='/images/underkonsult.jpg' />
               </div>
-              <div className='absolute top-0 flex flex-col bg-skin-primary bg-opacity-80 p-4 z-20 h-full overflow-hidden'>
+              <div className='invisible flex flex-col bg-skin-primary bg-opacity-80 p-4 z-10 line-clamp-none'>
+                <h3 className='py-2'>RELATIONER</h3>
+
+                <p className=''>
+                  På Broccoli arbetar vi inkluderande, visar ömsesidig respekt och bjuder aktivt in berörda i dialogen. Genom våra olikheter bygger vi en stark gemenskap. Vi eftersträvar olikheter då det stärker oss som grupp och utvecklar oss som individer. Vi lär oss även kontinuerligt genom kunskapsdelning och inspiration av varandra vilket leder till vår trevliga företagskultur.
+                </p>
+              </div>
+              <div className='absolute top-0  flex flex-col bg-skin-primary bg-opacity-80 p-4 z-10 line-clamp-none'>
                 <h3 className='py-2'>RELATIONER</h3>
 
                 <p className=''>

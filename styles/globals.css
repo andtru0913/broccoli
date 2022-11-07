@@ -127,7 +127,7 @@
 
   h4,
   .h4 {
-    @apply text-2xl md:text-lg;
+    @apply text-xl md:text-lg;
   }
 
   body,

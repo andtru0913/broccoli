@@ -46,63 +46,83 @@ export default function About() {
     return (
 
         <Layout>
-            <section className="bg-skin-fill">
-                <div className="layout h-screen py-12 flex flex-1 justify-center">
-                    <h1>Om OSS</h1>
+          
+            <section className="  bg-gradient-to-br from-skin-hue to-skin-no">
+            
+
+                <div className="layout w-full text-skin-inverted text-center py-12  flex flex-col flex-1 items-center justify-center  md:gap-20 gap-8 ">
+                <h1>Om OSS</h1>
+                    <div className="w-full flex flex-col items-center ">
+                        <div className="md:w-1/3 w-3/4 border-2 h-32 flex-1 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
+                            <h4 className="font-bold">1993</h4>
+                            <p className=" ">Broccoli grundades av Björn Bergholm vid sidan om Chalmersstudierna. Genom åren har företaget vuxit och är numera ett väl utvecklat teknikkonsultbolag specialiserat inom elektronikutveckling.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div className=" w-full   flex flex-col items-center ">
+                        <div className="md:w-1/3 w-3/4 h-32  flex-1 border-2 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
+                            <h4 className="font-bold">2000</h4>
+                            <p className=" ">Genom åren har företaget vuxit och är numera ett väl utvecklat teknikkonsultbolag specialiserat inom elektronikutveckling.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+                    <div className=" w-full   flex flex-col items-center ">
+                        <div className="md:w-1/3 w-3/4 h-32  flex-1 border-2 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
+                            <h4 className="font-bold">2018</h4>
+                            <p className=" ">Broccoli köper Broccoligården
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div className=" w-full   flex flex-col items-center ">
+                        <div className="md:w-1/3 w-3/4 h-32  flex-1 border-2 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
+                            <h4 className="font-bold">Nutid</h4>
+                            <p className=" ">Med vår hårdvaru- och mjukvarukompetens kan vi erbjuda tjänster inom design, konstruktion och testning av inbyggda system. Vi hjälper till att täcka behov i gränslandet mellan hårdvara och mjukvara i flera olika branscher.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </section>
-            <section className="">
 
-
-                <div className="layout relative h-screen py-12 flex flex-col flex-1 items-center justify-center ">
-                    <div data-animate-type="motion-safe:animate-fadeInRight" className="rotate-45 my-12 js-show-on-scroll">
-                        <div className="-rotate-45 translate-x-52 bg-skin-link h-72 w-80 p-12 overflow-hidden"> </div>
+            <section className="bg-skin-fill">
+                <div className="layout h-screen py-12 grid md:grid-cols-2 grid-cols-1">
+                    <div className=" overflow-hidden">
+                    <Image
+              src="/images/gothenburg.jfif"
+              width={500}
+              height={400}
+              objectFit='cover'
+              alt="Siluette of Gothenburg"
+            />
                     </div>
+                    <div className="py-12 grid gap-4">
+                        
+                        <p>Merparten av våra konsultuppdrag är förlagda hos kund, och en mindre del är inhouse projekt av varierande storlek.
 
-                    <div data-animate-type="motion-safe:animate-fadeInLeft" className=" -translate-x-3/4 translate-y-1/4 h-24 w-24 my-12 bg-blue-400 js-show-on-scroll">
-                        FadeIn
+                            Våra kunder är ofta produktutvecklande företag som återfinns inom diverse olika branscher såsom fordon, automation, marin, medicin med flera. Gemensamt för alla är att de arbetar med elektronik av något slag i sin verksamhet.</p>
+
                     </div>
-
-                    <div className="absolute top-0 flex flex-row flex-1 md:w-1/2 w-full bg-red-500 text-skin-inverted text-center ">
-
-                        <div className="relative flex flex-col flex-1 m-4 bg-violet-500 items-center z-10">
-                            <div className="absolute top-20 flex flex-row justify-end">
-                            <div className=" w-full   flex flex-col items-center ">
-                                <div className="md:w-1/2 w-3/4 border-2 flex flex-col items-center">
-                                <h4 className="font-bold">1993</h4>
-                                <p className=" ">Broccoli grundades av Björn Bergholm vid sidan om Chalmersstudierna
-                                </p>
-                                </div>
-                                
-                            </div>
-
-                            <div className="  bg-blue-300 flex flex-col justify-center">
-                            <div className="  p-2 rounded-full bg-skin-fill"></div>
-                            </div>
-                            </div>
-                            
-                            <div className="absolute bottom-20 w-1/2 border-2 ">
-                                <h4 className="font-bold">2018</h4>
-                                <p className=" ">Broccoli köper Broccoligården
-
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <div className="relative">
-                            <div className="absolute right-6 h-screen w-1 bg-skin-approve">
-
-                            </div>
-                            <div className="flex flex-col items-around">
-                                <div className="absolute top-32  p-2 rounded-full bg-skin-fill"></div>
-                                <div className="absolute bottom-32 p-2 rounded-full bg-skin-fill"></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <Historia />
 
                 </div>
             </section>
