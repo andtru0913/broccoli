@@ -1,5 +1,5 @@
 
-export default function Form() {
+export default function Form({title}) {
     return (
         <>
                 <div className="flex flex-col">
@@ -10,7 +10,7 @@ export default function Form() {
                         <div className="relative flex  flex-row ">
 
                             <div className="flex-1 p-2 text-2xl">
-                                <p>Skicka in en spontanansökan!</p>
+                                <p>{title}</p>
                             </div>
 
                         </div>

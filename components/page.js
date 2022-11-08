@@ -145,7 +145,7 @@ const Page = ({ authentication, page, redirect}) => {
             <section id="form" className="bg-skin-fill">
                 <div className="layout py-12 md:w-1/2">
                     <form method="POST" action="./api/send_email">
-                        <Form />
+                        <Form title={"Spontanansökan"}/>
                     </form>
 
                 </div>
