@@ -1,4 +1,4 @@
-import popupStyles from "../pages/intranet/popup.module.css";
+import popupStyles from "./popup.module.css";
 import Layout from "./layout/layout";
 import Form from "./form";
 import Card from "./card";

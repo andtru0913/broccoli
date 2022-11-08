@@ -5,8 +5,9 @@ import { DragDropContext } from "react-beautiful-dnd";
 import {authenticate} from "./authenticate";
 import * as Database from "../../../Database";
 import styles from "../../../styles/Home.module.css";
-import popupStyles from "../popup.module.css";
+import popupStyles from "../../../components/popup.module.css";
 import formStyles from "../form.module.css";
+import LayoutIntranet from "../../../components/layout/layoutIntranet";
 
 const Column = dynamic(() => import("../../../components/Column"), { ssr: false });
 
@@ -119,57 +120,61 @@ export default function Home({lunchGroups,users}) {
     };
 
     return (
-        <main className={styles.main}>
-            <DragDropContext onDragEnd={onDragEnd}>
-                <Flex
-                    flexDir="column"
-                    bg="main-bg"
-                    minH="100vh"
-                    w="full"
-                    color="white-text"
-                    pb="2rem"
-                >
-                    <Flex py="4rem" flexDir="column" align="center">
-                        <Heading fontSize="3xl" fontWeight={600}>
-                            Lunchgrupper
-                        </Heading>
-                        <button onClick={function() {
-                            document.getElementById("popup").classList.remove(popupStyles.hide)
-                            document.getElementById("createuser").classList.remove(popupStyles.hide)
-                        }}> Ny lunchgrupp</button>
+        <LayoutIntranet>
 
-                    </Flex>
 
-                    <Flex justify="space-between" px="4rem">
-                        {state.columnOrder.map((columnId) => {
-                            const column = state.columns.columns[columnId];
-                            const tasks = column.users
-                            return <Column key={column.id} column={column} tasks={tasks} />;
-                        })}
+            <main className={styles.main}>
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Flex
+                        flexDir="column"
+                        bg="main-bg"
+                        minH="100vh"
+                        w="full"
+                        color="white-text"
+                        pb="2rem"
+                    >
+                        <Flex py="4rem" flexDir="column" align="center">
+                            <Heading fontSize="3xl" fontWeight={600}>
+                                Lunchgrupper
+                            </Heading>
+                            <button onClick={function() {
+                                document.getElementById("popup").classList.remove(popupStyles.hide)
+                                document.getElementById("createuser").classList.remove(popupStyles.hide)
+                            }}> Ny lunchgrupp</button>
+
+                        </Flex>
+
+                        <Flex justify="space-between" px="4rem">
+                            {state.columnOrder.map((columnId) => {
+                                const column = state.columns.columns[columnId];
+                                const tasks = column.users
+                                return <Column key={column.id} column={column} tasks={tasks} />;
+                            })}
+                        </Flex>
                     </Flex>
-                </Flex>
-            </DragDropContext>
-            <div id="popup" className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
-                document.getElementById("popup").classList.add(popupStyles.hide)
-                document.getElementById("createuser").classList.add(popupStyles.hide)
-                document.getElementById("modifyLunchgroup").classList.add(popupStyles.hide)
-            }}>
-            </div>
-            <div id="createuser" className={`${popupStyles.window} ${popupStyles.hide}`}>
-                <form className={formStyles.form} action="../../api/createGroup" method="POST">
-                    <input type="text" name="name" placeholder="Gruppnamn"/>
-                    <button type="submit">Lägg till lunchgrupp</button>
-                </form>
-            </div>
-            <div id='modifyLunchgroup' className={`${popupStyles.window} ${popupStyles.hide}`}>
-                <h1> Modify Event</h1>
-                <form action="../../api/deleteLunchgroup" method="POST">
-                    <input className="title" type="text" name="title" placeholder="Titel"/>
-                    <input className={`id ${popupStyles.hide}`} type="text" name="id"/>
-                    <button type="submit"> Radera händelse</button>
-                </form>
-            </div>
-        </main>
+                </DragDropContext>
+                <div id="popup" className={`${popupStyles.popUp} ${popupStyles.hide}`} onClick={function() {
+                    document.getElementById("popup").classList.add(popupStyles.hide)
+                    document.getElementById("createuser").classList.add(popupStyles.hide)
+                    document.getElementById("modifyLunchgroup").classList.add(popupStyles.hide)
+                }}>
+                </div>
+                <div id="createuser" className={`${popupStyles.window} ${popupStyles.hide}`}>
+                    <form className={formStyles.form} action="../../api/createGroup" method="POST">
+                        <input type="text" name="name" placeholder="Gruppnamn"/>
+                        <button type="submit">Lägg till lunchgrupp</button>
+                    </form>
+                </div>
+                <div id='modifyLunchgroup' className={`${popupStyles.window} ${popupStyles.hide}`}>
+                    <h1> Modify Event</h1>
+                    <form action="../../api/deleteLunchgroup" method="POST">
+                        <input className="title" type="text" name="title" placeholder="Titel"/>
+                        <input className={`id ${popupStyles.hide}`} type="text" name="id"/>
+                        <button type="submit"> Radera händelse</button>
+                    </form>
+                </div>
+            </main>
+        </LayoutIntranet>
     );
 }
 

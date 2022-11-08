@@ -303,35 +303,72 @@ export async function updatePage(id, title, description) {
 }
 
 export async function joinEvent(userid, eventid) {
-    return await prisma.event.update({
-        where: {
-            id: eventid,
-        },
-        data: {
-            users: {
-                connect: {
-                    id: userid,
-                }
+    try {
+        return await prisma.UserOnEvent.upsert({
+            where: {
+                userId_eventId: {userId: userid, eventId: eventid}
+            },
+            update: {
+                coming: true
+            },
+            create: {
+                user: {
+                    connect: {
+                        id: userid,
+                    }
+                },
+                event: {
+                    connect: {
+                        id: eventid
+                    }
+                },
+                coming: true
             }
-        },
-    })
+        })
+    }
+    catch (_) {
+    }
 }
 
 export async function leaveEvent(userid, eventid) {
-    return await prisma.event.update({
-        where: {
-            id: eventid,
-        },
-        data: {
-            users: {
-                disconnect: {
-                    id: userid,
-                }
+    try {
+        return await prisma.UserOnEvent.upsert({
+            where: {
+                userId_eventId: {userId: userid, eventId: eventid}
+            },
+            update: {
+                coming: false
+            },
+            create: {
+                user: {
+                    connect: {
+                        id: userid,
+                    }
+                },
+                event: {
+                    connect: {
+                        id: eventid
+                    }
+                },
+                coming: false
             }
-        },
-    })
+        })
+    }
+    catch (_) {
+    }
 }
 
+export async function maybeEvent(userid, eventid) {
+    try {
+        return await prisma.UserOnEvent.delete({
+            where: {
+                userId_eventId: {userId: userid, eventId: eventid}
+            },
+        })
+    }
+    catch (_) {
+    }
+}
 
 export async function deleteUser(id) {
     return await prisma.user.delete({
@@ -380,4 +417,24 @@ export async function modifyUser(id, username, password, firstname, lastname, ad
             },
         })
     }
+}
+
+export async function getUserEvents(id) {
+    return await prisma.event.findMany({
+        where: {
+            users: {
+                some: {
+                   AND: [{userId: id},{coming:true}]
+                }
+            }
+        },
+        select: {
+            id:true,
+            title:true,
+            description:true,
+            start:true,
+            end:true,
+        }
+    })
+
 }

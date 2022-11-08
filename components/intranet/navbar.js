@@ -5,9 +5,9 @@ import NavItem from "../navbar/navitem";
 
 const MENU_LIST = [
     { text: "Hem", href: "/intranet" },
-    { text: "Calender", href: "/intranet/calender" },
-    { text: "Logout", href: "../api/logout" },
-    { text: "Admin", href: "../intranet/admin" },
+    { text: "Calender", href: "/intranet/fullcalender" },
+    { text: "Logout", href: "/api/logout" },
+    { text: "Admin", href: "/intranet/admin" },
 ];
 
 
@@ -26,6 +26,7 @@ const NavbarIntranet = ({ user }) => {
                             <img
                                 className="h-8 w-auto sm:h-10"
                                 src="/images/BroccoliBlack.png"
+                                alt="Bild"
                             />
                         </a>
 
@@ -42,6 +43,7 @@ const NavbarIntranet = ({ user }) => {
                                 <img
                                     className="h-8 w-auto sm:h-10"
                                     src="/images/BroccoliBlack.png"
+                                    alt="bild"
                                 />
                             </a>
 

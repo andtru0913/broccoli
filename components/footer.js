@@ -1,7 +1,3 @@
-
-
-
-import Image from 'next/image';
 import {  BsInstagram, BsFacebook, BsLinkedin  } from 'react-icons/bs'
 import Link from 'next/link';
 const Footer = () => {
@@ -74,7 +70,7 @@ const Footer = () => {
                                 </a>
                                 <a className='hover:text-skin-muted' href='https://goo.gl/maps/p9sa1f82ZyN3FdAH9'>
 
-                                    <div className='flex flex-row justify-center align-middle  md:justify-start py-1' href="">
+                                    <div className='flex flex-row justify-center align-middle  md:justify-start py-1'>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-4 ">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -94,13 +90,13 @@ const Footer = () => {
                         </div>
                         <div className=' flex-col px-5 text-center'>
                         <h1 className='pb-2 text-lg  text-skin-base font-bold'>Medarbetare</h1>
-                            <a className='hover:text-skin-muted py-2'>
+                            <a href="./intranet" className='hover:text-skin-muted py-2'>
 
                                 <p className='text-xs'>Intranät</p>
                             </a>
 
 
-                            <a className='hover:text-skin-muted py-2'>
+                            <a href="https://www.broccoli.be/tid/" className='hover:text-skin-muted py-2'>
 
                                 <p className='text-xs'>Tidrapport</p>
                             </a>

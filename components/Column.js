@@ -2,7 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
-import popupStyles from "../pages/intranet/popup.module.css";
+import popupStyles from "./popup.module.css";
 import {lunchgroup} from "../defaultIDs";
 
 const Column = ({ column, tasks }) => {

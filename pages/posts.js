@@ -14,6 +14,6 @@ export async function getServerSideProps(context) {
 
 export default function Exjobb({authentication, page}) {
     return (
-        <Page authentication={authentication} page={page} redirect="../exjobb"></Page>
+        <Page authentication={authentication} page={page} redirect="../posts"></Page>
     );
 }

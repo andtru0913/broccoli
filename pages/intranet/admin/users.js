@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
 import * as Database from "../../../Database";
 import {authenticate} from "./authenticate";
-import popupStyles from "../popup.module.css"
+import popupStyles from "../../../components/popup.module.css"
 
 export async function getServerSideProps(context) {
     let authentication = await authenticate(context)
