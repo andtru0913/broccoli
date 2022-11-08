@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { userAgentFromString } from 'next/server';
 import Footer from '../footer';
-import NavbarIntranet from '../intranet/navbar';
+import NavbarIntranet from '../intranet/navbarIntranet';
 export default function LayoutIntranet({ children, user }) {
     return (
         <>

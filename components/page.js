@@ -46,7 +46,7 @@ const Page = ({ authentication, page, redirect}) => {
                         <input type="hidden" id="createBase64" name="base64"/>
                         <input type="hidden" name="pageId" value={page.id}/>
                         <input type="hidden" name="redirect" value={redirect}/>
-                        <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="createFormFile" name="file" onChange={async function() {
+                        <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none" type="file" id="createFormFile" name="file" onChange={async function() {
                             let submit = document.getElementById("createCardSubmit")
                             submit.disabled = true;
                             const f = document.querySelector('#createFormFile').files[0];
@@ -62,7 +62,7 @@ const Page = ({ authentication, page, redirect}) => {
                     <input className="id" type="hidden" name="id"/>
                     <input className="title" type="text" name="title" placeholder="Rubrik"/>
                     <input className="description" type="text" name="description" placeholder="Text"/>
-                    <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="modifyFormFile" name="file" onChange={async function() {
+                    <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none" type="file" id="modifyFormFile" name="file" onChange={async function() {
                         let submit = document.getElementById("modifyCardSubmit")
                         submit.disabled = true;
                         const f = document.querySelector('#modifyFormFile').files[0];
@@ -97,7 +97,7 @@ const Page = ({ authentication, page, redirect}) => {
             {popup.createCard}
             {popup.modifyCard}
             {popup.modifyPage}
-            <section className="bg-green-dark" onClick={function() {
+            <section className="bg-skin-fill" onClick={function() {
                 if (authentication === null) {
                     let background = document.getElementById('popup')
                     let modifyPage = document.getElementById('modifyPage')
@@ -107,7 +107,7 @@ const Page = ({ authentication, page, redirect}) => {
                     modifyPage.classList.remove(popupStyles.hide)
                 }
             }}>
-                <div className="layout py-12 text-white text-center max-w-prose">
+                <div className="layout py-12 text-skin-base text-center max-w-prose">
                     <h1 className="pb-8"> {page.title}</h1>
                     <p> {page.description}</p>
 
@@ -115,7 +115,7 @@ const Page = ({ authentication, page, redirect}) => {
             </section>
 
 
-            <section className="bg-theme-green  ">
+            <section className="bg-skin-fill  ">
                 <div className=" layout py-12 md:w-1/2">
                     <div className="grid md:grid-cols-2  md:gap-12 ">
                         {page.cards.map((card) =>
@@ -142,7 +142,7 @@ const Page = ({ authentication, page, redirect}) => {
             </section>
 
 
-            <section id="form" className="bg-beige-1">
+            <section id="form" className="bg-skin-fill">
                 <div className="layout py-12 md:w-1/2">
                     <form method="POST" action="./api/send_email">
                         <Form />

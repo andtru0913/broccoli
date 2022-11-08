@@ -11,5 +11,5 @@ export default async function handler(req, res) {
         end.setDate(end.getDate() + req.body.delta)
         await Database.updateEventDate(req.body.id, event.start, end.toISOString().split('T')[0]).then()
     }
-    res.redirect(302, '../intranet/calender');
+    res.redirect(302, '../intranet/calendar');
 }

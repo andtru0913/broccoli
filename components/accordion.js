@@ -9,26 +9,26 @@ const Accordion = () => {
             id: 1,
             img_path: "./images/AnnaM.JPG",
             author: "Anna Manfredsson",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            text: "I’ve used CD Keys for GTA Shark cards, fifa 23 and now the new MW2. Never had a single issue. Always cheaper than Amazon/Xbox or PSN marketplace. MW2 is £70 on ..."
         },
         {
             id: 2,
             img_path: "./images/AsaV.jfif",
             author: "Åsa Vikström",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            text: "Their products are of nice quality. I have ordered double Ottoman bed and really happy with it. I have also ordered Kensington Cashmere 1000 Pocket Sprung Luxu..."
         },
         {
             id: 3,
             img_path: "./images/BjornB.jfif",
             author: "Björn Bergholm",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            text: "It was the best experience of my life with such a hard-working, diligent, and helpful team of professionals. The MechESol Team knows how to get the best possibl..."
         },
 
 
     ];
 
     return (
-        <div className="flex flex-col  items-center rounded-md p-2 h-auto ">
+        <div className="flex flex-col  items-center rounded-md py-2 h-auto ">
            {data.map((data)=>{
             return(
                 <AccordionSection
