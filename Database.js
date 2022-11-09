@@ -139,6 +139,17 @@ export async function getEvents(id) {
             description:true,
             start:true,
             end:true,
+            users: {
+                select: {
+                    user: {
+                        select: {
+                            firstname: true,
+                            lastname: true,
+                        }
+                    },
+                    coming:true,
+                }
+            }
         }
     })
 }
@@ -195,8 +206,6 @@ export async function getGroups(id) {
         }
     })
 }
-
-
 
 export async function getAllLunchGroups() {
     return await prisma.lunchgroup.findMany({
@@ -434,7 +443,17 @@ export async function getUserEvents(id) {
             description:true,
             start:true,
             end:true,
+            users: {
+                select: {
+                    user: {
+                        select: {
+                            firstname: true,
+                            lastname: true,
+                        }
+                    },
+                    coming:true
+                }
+            }
         }
     })
-
 }

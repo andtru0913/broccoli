@@ -6,7 +6,6 @@ export async function getServerSideProps(context) {
     let admin = await Database.isAdmin(cookies.id)
     if (cookies !== {}) {
         let events = await Database.getUserEvents(cookies.id);
-
         return {
             props: {
                 admin: admin,

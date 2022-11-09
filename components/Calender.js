@@ -3,8 +3,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import LayoutIntranet from "./layout/layoutIntranet";
 import popupStyles from "./popup.module.css"
-
-
+import List from "./userlist";
+import ReactDOM from "react-dom/client";
 
 
 const Component = ({ admin, allEvents }) => {
@@ -30,6 +30,7 @@ const Component = ({ admin, allEvents }) => {
                 let description = e.event._def.extendedProps.description
                 let title = e.event._def.title
                 let id = e.event._def.publicId
+                let users = e.event._def.extendedProps.users
                 background.classList.remove(popupStyles.hide)
                 if (admin) {
                     let modifyevent = document.getElementById('modifyevent')
@@ -40,6 +41,8 @@ const Component = ({ admin, allEvents }) => {
                     modifyevent.getElementsByClassName('eventid')[0].value = id
                     modifyevent.getElementsByClassName('eventid')[1].value = id
                     modifyevent.getElementsByClassName('eventid')[2].value = id
+                    const root = ReactDOM.createRoot(document.getElementById('modifyRoot'))
+                    root.render(<List key={id} users={users}/>)
                     modifyevent.classList.remove(popupStyles.hide)
                 } else {
                     let checkevent = document.getElementById('checkevent')
@@ -48,6 +51,8 @@ const Component = ({ admin, allEvents }) => {
                     checkevent.getElementsByClassName('eventid')[0].value = id
                     checkevent.getElementsByClassName('eventid')[1].value = id
                     checkevent.getElementsByClassName('eventid')[2].value = id
+                    const root = ReactDOM.createRoot(document.getElementById('checkRoot'))
+                    root.render(<List key={id} users={users}/>)
                     checkevent.classList.remove(popupStyles.hide)
                 }
             }}
@@ -149,10 +154,11 @@ const Calender = ({admin, allEvents}) => {
                     <input className="eventid" type="hidden" name="eventid"/>
                     <button type="Submit">Lämna</button>
                 </form>
-                <form action="../../api/maybeEvent" method="POST">
+                    <form action="../../api/maybeEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid"/>
                     <button type="Submit">Kanske</button>
                 </form>
+                <div id="modifyRoot"/>
             </div>
 
         </div>
@@ -177,7 +183,7 @@ const Calender = ({admin, allEvents}) => {
         </div>
             <div className='layout py-12  flex flex-col items-center'>
                 <div className="w-screen p-2 md:w-4/5">
-                    {Component({ admin, allEvents })}
+                    {Component({ admin, allEvents})}
                 </div>
             </div>
         </LayoutIntranet>

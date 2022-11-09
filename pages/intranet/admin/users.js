@@ -16,6 +16,7 @@ export async function getServerSideProps(context) {
 
 export default function Home({user}) {
     return (
+        <layoutIntranet>
         <div className={styles.container}>
             <Head>
                 <title>Anställda</title>
@@ -145,5 +146,6 @@ export default function Home({user}) {
 
             </main>
         </div>
+        </layoutIntranet>
     )
 }
