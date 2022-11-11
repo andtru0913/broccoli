@@ -7,7 +7,7 @@ import { ThemeProvider } from 'next-themes'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider enableSystem={true} value={{light: 'light', dark: 'dark', intranet: 'intranet', dark_intranet: 'dark-intranet'}} >
+    <ThemeProvider enableSystem={true} value={{dark: 'dark',}} >
       <Component {...pageProps} />
     </ThemeProvider>)
 }

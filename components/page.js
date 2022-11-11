@@ -11,9 +11,9 @@ const Page = ({ authentication, page, redirect}) => {
                 const fileReader = new FileReader();
                 fileReader.readAsDataURL(file);
 
-                fileReader.onload = () => {
-                    resolve(fileReader.result);
-                };
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          };
 
                 fileReader.onerror = (error) => {
                     reject(error);
@@ -31,7 +31,7 @@ const Page = ({ authentication, page, redirect}) => {
                 </div>
             ),
             button : (
-                <Card title="Ny Kort" click={function() {
+                <Card title="Nytt Kort" click={function() {
                     document.getElementById("popup").classList.remove(popupStyles.hide)
                     document.getElementById("createCard").classList.remove(popupStyles.hide)
                 }
@@ -114,44 +114,46 @@ const Page = ({ authentication, page, redirect}) => {
                 </div>
             </section>
 
+      <section className="bg-skin-fill  ">
+        <div className=" layout py-12 md:w-1/2">
+          <div className="grid md:grid-cols-2  md:gap-12 ">
+            {page.cards.map((card) => (
+              <Card
+                key={card.id}
+                title={card.title}
+                text={card.description}
+                image={card.image}
+                click={function () {
+                  if (authentication === null) {
+                    let background = document.getElementById("popup");
+                    let modifyCard = document.getElementById("modifyCard");
+                    background.classList.remove(popupStyles.hide);
+                    modifyCard.getElementsByClassName("id")[0].value = card.id;
+                    modifyCard.getElementsByClassName("id")[1].value = card.id;
+                    modifyCard.getElementsByClassName("title")[0].value =
+                      card.title;
+                    modifyCard.getElementsByClassName("description")[0].value =
+                      card.description;
+                    document.getElementById("modifyBase64").value = card.image;
+                    modifyCard.classList.remove(popupStyles.hide);
+                  }
+                }}
+              />
+            ))}
+            {popup.button}
+          </div>
+        </div>
+      </section>
 
-            <section className="bg-skin-fill  ">
-                <div className=" layout py-12 md:w-1/2">
-                    <div className="grid md:grid-cols-2  md:gap-12 ">
-                        {page.cards.map((card) =>
-                            <Card key={card.id} title={card.title} text={card.description} image={card.image}  click={function() {
-                                if (authentication === null) {
-                                    let background = document.getElementById('popup')
-                                    let modifyCard = document.getElementById('modifyCard')
-                                    background.classList.remove(popupStyles.hide)
-                                    modifyCard.getElementsByClassName('id')[0].value = card.id
-                                    modifyCard.getElementsByClassName('id')[1].value = card.id
-                                    modifyCard.getElementsByClassName('title')[0].value = card.title
-                                    modifyCard.getElementsByClassName('description')[0].value = card.description
-                                    document.getElementById('modifyBase64').value = card.image
-                                    modifyCard.classList.remove(popupStyles.hide)
-                                }
-                            }
-                            }/>
-
-                        )}
-                        {popup.button}
-                    </div>
-
-                </div>
-            </section>
-
-
-            <section id="form" className="bg-skin-fill">
-                <div className="layout py-12 md:w-1/2">
-                    <form method="POST" action="./api/send_email">
-                        <Form title={"Spontanansökan"}/>
-                    </form>
-
-                </div>
-            </section>
-        </Layout>
-    );
-}
+      <section id="form" className="bg-skin-fill">
+        <div className="layout py-12 md:w-1/2">
+          <form method="POST" action="./api/send_email">
+            <Form title={"Spontanansökan"} />
+          </form>
+        </div>
+      </section>
+    </>
+  );
+};
 
 export default Page;
