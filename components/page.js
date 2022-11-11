@@ -5,21 +5,21 @@ import Card from "./card";
 
 const Page = ({ authentication, page, redirect }) => {
   let popup = {};
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
   if (authentication === null) {
+    const convertBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    };
     popup = {
       background: (
         <div
@@ -41,7 +41,7 @@ const Page = ({ authentication, page, redirect }) => {
       ),
       button: (
         <Card
-          title="Ny Kort"
+          title="Nytt Kort"
           click={function () {
             document.getElementById("popup").classList.remove(popupStyles.hide);
             document
@@ -159,7 +159,7 @@ const Page = ({ authentication, page, redirect }) => {
     };
   }
   return (
-    <>
+    <Layout>
       {popup.background}
       {popup.createCard}
       {popup.modifyCard}
@@ -222,7 +222,7 @@ const Page = ({ authentication, page, redirect }) => {
           </form>
         </div>
       </section>
-    </>
+    </Layout>
   );
 };
 
