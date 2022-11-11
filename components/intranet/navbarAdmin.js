@@ -31,7 +31,7 @@ const NavbarAdmin = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   return (
-    <nav className="w-screen bg-skin-error flex justify-end p-2 md:p-0">
+    <nav className="bg-skin-error flex justify-end p-2 md:p-0">
       <div className="flex justify-center  text-skin-muted bg-skin-error">
         <ul
           className={`md:flex md:flex-row md:justify-between md:align-middle 
