@@ -3,8 +3,6 @@ import Link from 'next/link';
 const Footer = () => {
     return (
         <footer className="py-12 bg-skin-fill">
-
-
             <div className='flex flex-1 justify-center cursor-pointer'>
                 <div className='flex-col'>
                     <div className='flex justify-center'>
@@ -97,7 +95,6 @@ const Footer = () => {
 
 
                             <a href="https://www.broccoli.be/tid/" className='hover:text-skin-muted py-2'>
-                            <a href='https://www.broccoli.be/tid/' className='hover:text-skin-muted py-2'>
 
                                 <p className='text-xs'>Tidrapport</p>
                             </a>

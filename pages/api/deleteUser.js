@@ -11,5 +11,5 @@ export default async function handler(req, res) {
                 console.error(e.message)
             })
     }
-    res.redirect(302, '../intranet/admin/users');
+    res.redirect(302, '../intranet/admin/employees');
 }

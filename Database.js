@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const bcrypt = require ('bcrypt');
 
 
-export async function createNewUser(username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
+export async function createNewUser(username, password, firstname, lastname, email, address, privatenumber, worknumber, company, admin) {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
     await prisma.user.create({
@@ -15,6 +15,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             password: hashedPassword,
             firstname: firstname,
             lastname: lastname,
+            email: email,
             address: address,
             privatenumber: privatenumber,
             worknumber: worknumber,
@@ -22,6 +23,7 @@ export async function createNewUser(username, password, firstname, lastname, add
             admin: admin !== undefined,
             salt: salt,
             lunchgroupID: '634e9876bf1fe7084e06634c',
+            image: null
         },
     })
 }
@@ -69,12 +71,36 @@ export async function getUserinfo(userid) {
                 password:true,
                 firstname:true,
                 lastname:true,
+                email:true,
                 address:true,
                 privatenumber:true,
                 worknumber:true,
                 company:true,
                 admin:true,
                 lunchgroupID: true
+            }
+        })
+        return query[0]
+    } catch(e) {
+        return null
+    }
+}
+
+export async function getUserByEmail(email) {
+    if (email === undefined) return null;
+    try {
+        const query = await prisma.user.findMany({
+            where: {
+                email: email
+            },
+            select: {
+                firstname:true,
+                lastname:true,
+                address:true,
+                privatenumber:true,
+                worknumber:true,
+                company:true,
+                image:true
             }
         })
         return query[0]
@@ -455,5 +481,52 @@ export async function getUserEvents(id) {
                 }
             }
         }
+    })
+}
+
+
+export async function createDocument(title, filename, base64, date) {
+    await prisma.document.create({
+        data: {
+            title: title,
+            filename: filename,
+            base64: base64,
+            date: date
+        },
+    })
+}
+
+export async function getAllDocuments() {
+    return await prisma.document.findMany({
+        select: {
+            id:true,
+            title: true,
+            date: true
+        },
+    })
+}
+
+export async function getDocument(id) {
+    return (await prisma.document.findMany({
+        where: {
+            id: id
+        },
+        select: {
+            id:true,
+            title: true,
+            base64:true,
+            date: true
+        },
+    }))[0]
+}
+
+export async function getUserOverview() {
+    return await prisma.user.findMany({
+        select: {
+            firstname: true,
+            lastname:true,
+            image: true,
+            email: true
+        },
     })
 }

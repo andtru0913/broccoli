@@ -31,6 +31,11 @@ export async function getServerSideProps(context) {
             }
         }
     }
+    return {
+        props: {
+            user: null
+        }
+    }
 }
 
 
@@ -82,8 +87,6 @@ export default function Home({ user, lunchgroups }) {
     const {theme, setTheme} = useTheme()
     useEffect(() => {
         let currentTheme = theme
-        console.log("theme" + theme)
-        console.log(currentTheme)
         theme === 'dark' ?
         setTheme('dark_intranet'):
         setTheme('intranet')
@@ -152,7 +155,6 @@ export default function Home({ user, lunchgroups }) {
                         <h1>
                             Welcome {user.firstname}
                         </h1>
-
                         <section>
                             <div className='theme-test flex flex-1 flex-col lg:flex-row justify-center py-12'>
                                 <Nyheter />
@@ -161,7 +163,6 @@ export default function Home({ user, lunchgroups }) {
                                     <h3>Lunchgrupper</h3>
                                     <div className='flex flex-1 flex-wrap flex-row justify-around md:justify-start '>
                                         {lunchfuldata.map((pp) => {
-                                            console.log("lunch id " + pp.id + "user lunch id "+ user.lunchgroupID)
                                             return (
                                                 pp.id === user.lunchgroupID ?
                                                     <div className='relative flex flex-col bg-skin-sec p-4 lg:p-5'>

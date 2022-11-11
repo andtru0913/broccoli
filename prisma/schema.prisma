@@ -16,7 +16,7 @@ model User {
     password        String
     firstname       String?
     lastname        String?
-    email           String?
+    email           String @unique
     address         String?
     privatenumber   String?
     worknumber      String?
@@ -26,7 +26,7 @@ model User {
     lunchgroup      Lunchgroup? @relation(fields: [lunchgroupID], references: [id])
     lunchgroupID    String? @db.ObjectId
     events          UserOnEvent[]
-
+    image           String?
 }
 
 model Event {
@@ -75,4 +75,12 @@ model UserOnEvent {
     eventId     String  @db.ObjectId
     coming      Boolean?
     @@unique([userId, eventId])
+}
+
+model Document {
+    id          String  @id @default(auto()) @map("_id") @db.ObjectId
+    title       String
+    filename    String
+    base64      String
+    date        String
 }

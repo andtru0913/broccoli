@@ -1,14 +1,15 @@
-import {getEvents,isAdmin} from "../../Database";
+import {getEvents} from "../../Database";
 import Calender from "../../components/Calender";
+import * as Database from "../../Database";
 
 export async function getServerSideProps(context) {
     let cookies = JSON.parse(context.req.cookies['user'] || null)
-    let admin = await isAdmin(cookies.id)
-    if (cookies !== {}) {
+    let user = await Database.getUserinfo(cookies.id)
+    if (cookies !== {} || user !== null) {
         let events = await getEvents(undefined);
         return {
             props: {
-                admin: admin,
+                admin: user.admin,
                 allEvents: events
             }
         }
