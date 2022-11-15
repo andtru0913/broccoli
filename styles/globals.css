@@ -4,6 +4,11 @@
 
 @layer base {
   :root {
+    --fc-event-bg-color: #31aca1;
+    --fc-event-border-color: #48bdb3;
+    --fc-event-text-color: #fff;
+    --fc-event-selected-overlay-color: rgba(92, 67, 67, 0.25);
+    --fc-today-bg-color: rgba(255, 223, 40, 0.15);
     --background: 242, 242, 242;
     --color-text-base: 38, 38, 38;
     --color-text-muted: 64, 64, 64;
@@ -85,7 +90,9 @@
   .btn-delete {
     @apply bg-delete;
   }
-
+  .btn-modify {
+    @apply bg-modify;
+  }
   .btn-create {
     @apply bg-create;
   }
@@ -96,6 +103,23 @@
 }
 
 @layer utilities {
+  .fc .fc-col-header-cell-cushion {
+    /* needs to be same precedence */
+    padding-top: 5px; /* an override! */
+    padding-bottom: 5px; /* an override! */
+    background-color: blue;
+  }
+
+  .popup {
+    @apply h-screen top-0 w-screen bg-black absolute z-20 bg-opacity-60;
+  }
+  .popup-hide {
+    display: none !important;
+  }
+  .window-pop {
+    @apply z-30 absolute text-skin-base top-1/4 flex flex-col w-screen items-center;
+  }
+
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
       linear-gradient(
