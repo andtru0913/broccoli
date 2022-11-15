@@ -1,19 +1,30 @@
-import {authenticate} from "./intranet/admin/authenticate";
-import {getPage} from "../Database";
+import { authenticate } from "./intranet/admin/authenticate";
+import { getPage } from "../Database";
 import Page from "../components/page";
-import {posts} from "../defaultIDs";
+import { posts } from "../defaultIDs";
+import Layout from "../components/layout/layout";
 
 export async function getServerSideProps(context) {
-    const pageId = posts
-    let authentication = await authenticate(context)
-    const page = (await getPage(pageId))[0];
-    return {
-        props: {authentication: authentication === undefined ? null : authentication, pageId: pageId, page: page}
-    }
+  const pageId = posts;
+  let authentication = await authenticate(context);
+  const page = (await getPage(pageId))[0];
+  return {
+    props: {
+      authentication: authentication === undefined ? null : authentication,
+      pageId: pageId,
+      page: page,
+    },
+  };
 }
 
-export default function Exjobb({authentication, page}) {
-    return (
-        <Page authentication={authentication} page={page} redirect="../posts"></Page>
-    );
+export default function Posts({ authentication, page }) {
+  return (
+    <Layout>
+      <Page
+        authentication={authentication}
+        page={page}
+        redirect="../posts"
+      ></Page>
+    </Layout>
+  );
 }

@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-
   :root {
     --background: 242, 242, 242;
     --color-text-base: 38, 38, 38;
@@ -25,84 +23,9 @@
     --color-navlink-active: 243, 165, 117;
     --color-navlink-hover: 239, 135, 71;
     --color-button-accent: 76, 116, 108;
-    --color-button-accent-hover: 76, 116, 108;
+    --color-button-accent-hover: 88, 132, 123;
     --color-button-secondary: 111, 174, 191;
     --color-button-secondary-hover: 79, 156, 177;
-  }
-
-  [data-theme='dark'] {
-    --background: 50, 76, 71;
-    --color-text-base: 255, 255, 255;
-    --color-text-muted: 242, 242, 242;
-    --color-text-inverted: 38, 38, 38;
-    --color-text-inverted-muted: 64, 64, 64;
-    --color-fill: 23, 35, 33;
-    --color-shadow: 255, 255, 255;
-    --color-border: 242, 242, 242;
-    --color-primary: 76, 116, 108;
-    --color-secondary: 107, 157, 147;
-    --color-error: 238, 54, 93;
-    --color-error-hover: 242, 100, 130;
-    --color-approve: 73, 183, 131;
-    --color-approve-hover: 120, 202, 163;
-    --color-link: 167, 118, 200;
-    --color-link-hover: 195, 162, 218;
-    --color-navlink-active: 243, 165, 117;
-    --color-navlink-hover: 239, 135, 71;
-    --color-button-accent: 174, 202, 197;
-    --color-button-accent-hover: 212, 226, 223;
-    --color-button-secondary: 79, 156, 177;
-    --color-button-secondary-hover: 111, 174, 191;
-
-  }
-
-  [data-theme='intranet'] {
-    --color-text-base: 38, 38, 38;
-    --color-text-muted: 64, 64, 64;
-    --color-text-inverted: 255, 255, 255;
-    --color-text-inverted-muted: 242, 242, 242;
-    --color-fill: 242, 242, 242;
-    --color-shadow: 38, 38, 38;
-    --color-border: 64, 64, 64;
-    --color-primary: 185, 200, 207;
-    --color-secondary: 153, 174, 185;
-    --color-error: 242, 100, 130;
-    --color-error-hover: 238, 54, 93;
-    --color-approve: 120, 202, 163;
-    --color-approve-hover: 73, 183, 131;
-    --color-link: 195, 162, 218;
-    --color-link-hover: 167, 118, 200;
-    --color-navlink-active: 243, 165, 117;
-    --color-navlink-hover: 239, 135, 71;
-    --color-button-accent: 80, 103, 116;
-    --color-button-accent-hover: 50, 65, 73;
-    --color-button-secondary: 111, 174, 191;
-    --color-button-secondary-hover: 79, 156, 177;
-  }
-
-  [data-theme='dark-intranet'] {
-    --background: 50, 76, 71;
-    --color-text-base: 255, 255, 255;
-    --color-text-muted: 242, 242, 242;
-    --color-text-inverted: 38, 38, 38;
-    --color-text-inverted-muted: 64, 64, 64;
-    --color-fill: 23, 35, 33;
-    --color-shadow: 255, 255, 255;
-    --color-border: 242, 242, 242;
-    --color-primary: 76, 116, 108;
-    --color-secondary: 107, 157, 147;
-    --color-error: 238, 54, 93;
-    --color-error-hover: 242, 100, 130;
-    --color-approve: 73, 183, 131;
-    --color-approve-hover: 120, 202, 163;
-    --color-link: 167, 118, 200;
-    --color-link-hover: 195, 162, 218;
-    --color-navlink-active: 243, 165, 117;
-    --color-navlink-hover: 239, 135, 71;
-    --color-button-accent: 174, 202, 197;
-    --color-button-accent-hover: 212, 226, 223;
-    --color-button-secondary: 79, 156, 177;
-    --color-button-secondary-hover: 111, 174, 191;
   }
 
   /* #region  /**=========== Typography =========== */
@@ -143,16 +66,16 @@
     @apply mx-auto w-11/12;
   }
 
-
   /* Class to adjust with sticky footer */
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
   }
 
-
-
   .btn {
-    @apply text-white font-semibold py-2 px-4 rounded;
+    @apply text-skin-inverted font-semibold py-2 px-4 rounded;
+  }
+  .btn-misc {
+    @apply text-sm py-1 text-skin-muted border-2 hover:bg-skin-primary;
   }
 
   .btn-purple {
@@ -172,14 +95,14 @@
   }
 }
 
-
-
 @layer utilities {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(to right,
+      linear-gradient(
+        to right,
         var(--color-primary-400),
-        var(--color-primary-500));
+        var(--color-primary-500)
+      );
     background-size: 100% 2px, 0 2px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
