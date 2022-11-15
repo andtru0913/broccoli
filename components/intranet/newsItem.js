@@ -23,7 +23,7 @@ const Nyheter = () => {
         <h3>Senaste Nytt</h3>
         
             {data.map((data) => {
-                return (<NewsSection
+                return (<NewsSection key ={data.id}
                     id={data.id} slug={data.slug} title={data.title} body={data.body} timestamp={data.timestamp} img_path={data.img_path}
                 />)
             })}
