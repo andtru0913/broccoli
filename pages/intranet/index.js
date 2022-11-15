@@ -193,7 +193,7 @@ export default function Home({ user, lunchgroups }) {
                         </div>
                       ) : (
                         <div className="flex flex-col md:flex-row justify-center">
-                          <div className="flex-auto bg-skin-secondary rounded-sm p-2">
+                          <div className="flex-auto bg-skin-primary rounded-sm p-2">
                             <h4 className="font-semibold">{pp.title}</h4>
                             {pp.people.map((i) => {
                               return <p>{i}</p>;

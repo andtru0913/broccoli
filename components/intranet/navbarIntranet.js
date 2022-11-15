@@ -10,9 +10,9 @@ const NavbarIntranet = ({ user }) => {
   const openmenu = () => setIsOpen(!isOpen);
   return (
     <>
-      <header className="fixed top-0 md:sticky">
+      <header className="fixed top-0 md:sticky z-50">
         {user === null ? (
-          <nav className="hidden md:flex justify-between align-middle  px-4">
+          <nav className="hidden md:flex justify-between align-middle px-4">
             <div className="text-lg flex justify-start">
               <Link href="/intranet">
                 <a>
@@ -27,7 +27,7 @@ const NavbarIntranet = ({ user }) => {
           </nav>
         ) : (
           <>
-            <nav className=" hidden md:flex justify-between align-middle px-4 shadow-md">
+            <nav className=" hidden md:flex justify-between align-middle px-4 py-2 shadow-md">
               <div className="text-lg flex justify-start">
                 <Link href="/intranet">
                   <a>
@@ -51,7 +51,7 @@ const NavbarIntranet = ({ user }) => {
                   {INTRA_MENU_LIST.map((menu) => {
                     return (
                       <li
-                        className="my-2 flex align-middle"
+                        className="my-2 flex items-center"
                         onClick={() => {
                           openmenu;
                         }}

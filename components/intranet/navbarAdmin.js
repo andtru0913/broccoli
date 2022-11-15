@@ -31,14 +31,14 @@ const NavbarAdmin = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   return (
-    <nav className="bg-skin-error flex justify-end p-2 md:p-0">
-      <div className="flex justify-center  text-skin-muted bg-skin-error">
+    <nav className="bg-skin-button-accent flex justify-end p-2 md:p-0">
+      <div className="flex justify-center  text-skin-muted ">
         <ul
           className={`md:flex md:flex-row md:justify-between md:align-middle 
                         ${
                           isOpen === false
-                            ? "mobile:fixed mobile:-left-full mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-error"
-                            : "mobile:fixed mobile:left-0 mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-error"
+                            ? "mobile:fixed mobile:-left-full mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-button-accent "
+                            : "mobile:fixed mobile:left-0 mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-button-accent "
                         }`}
         >
           {ADMIN_MENU_LIST.map((menu) => {
