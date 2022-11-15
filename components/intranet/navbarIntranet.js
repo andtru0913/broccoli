@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { HiHome, HiBookOpen, HiUserCircle, HiCalendarDays, HiClock, HiArrowLeftOnRectangle } from "react-icons/hi2";
+import { HiHome, HiBookOpen, HiUserCircle, HiCalendarDays, HiClock} from "react-icons/hi2";
 import ActiveLink from "../activeLink";
 
 const INTRA_MENU_LIST = [
@@ -26,7 +26,7 @@ const INTRA_MENU_LIST = [
 
 const NavbarIntranet = ({ user }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeIdx, setActiveIdx] = useState(null);
+    const [_, setActiveIdx] = useState(null);
     const openmenu = () => setIsOpen(!isOpen)
     return (
         <>
@@ -39,6 +39,7 @@ const NavbarIntranet = ({ user }) => {
                                 <img
                                     className="h-8 w-auto sm:h-10"
                                     src="/images/BroccoliBlack.png"
+                                    alt="broccoli"
                                 />
                             </a>
 
@@ -55,6 +56,7 @@ const NavbarIntranet = ({ user }) => {
                                         <img
                                             className="h-8 w-auto sm:h-10"
                                             src="/images/BroccoliBlack.png"
+                                            alt="broccoli"
                                         />
                                     </a>
 
@@ -121,6 +123,7 @@ const NavbarIntranet = ({ user }) => {
                                 <img
                                     className="h-8 w-auto sm:h-10"
                                     src="/images/BroccoliBlack.png"
+                                    alt="broccoli"
                                 />
                             </a>
 

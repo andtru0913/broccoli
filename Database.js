@@ -100,7 +100,8 @@ export async function getUserByEmail(email) {
                 privatenumber:true,
                 worknumber:true,
                 company:true,
-                image:true
+                image:true,
+                email:true
             }
         })
         return query[0]
