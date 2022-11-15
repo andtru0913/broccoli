@@ -1,8 +1,6 @@
-import Head from "next/head";
-import styles from "../../../styles/Home.module.css";
 import * as Database from "../../../Database";
 import { authenticate } from "./authenticate";
-import popupStyles from "../popup.module.css";
+import popupStyles from "../../../components/popup.module.css";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
@@ -18,7 +16,7 @@ export async function getServerSideProps(context) {
 export default function Home({ user }) {
   const popUpstyle = "h-screen w-screen bg-black absolute z-20 bg-opacity-60";
   const windowstyle =
-    "z-30 absolute w-screen bg-skin-fill p-8 rounded top-1/3 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 ";
+    "z-30 absolute w-screen bg-skin-fill p-8 rounded top-inledning/3 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 ";
   return (
     <LayoutIntranet>
       <main className="">

@@ -67,17 +67,10 @@ export async function getUserinfo(userid) {
                 id: userid
             },
             select: {
-                username:true,
-                password:true,
                 firstname:true,
                 lastname:true,
-                email:true,
-                address:true,
-                privatenumber:true,
-                worknumber:true,
-                company:true,
                 admin:true,
-                lunchgroupID: true
+
             }
         })
         return query[0]
@@ -516,6 +509,7 @@ export async function getDocument(id) {
             id:true,
             title: true,
             base64:true,
+            filename:true,
             date: true
         },
     }))[0]
@@ -529,5 +523,13 @@ export async function getUserOverview() {
             image: true,
             email: true
         },
+    })
+}
+
+export async function deleteDocument(id) {
+    return await prisma.document.delete({
+        where: {
+            id:id
+        }
     })
 }

@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ActiveLink from "../activeLink";
@@ -8,7 +7,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   const hamburgerLine =
-    " w-6 h-0.5 bg-skin-navlink-hover my-1 transition-all duration-300 ease-in-out md:hidden";
+    " w-6 h-0.5 bg-skin-navlink-hover my-inledning transition-all duration-300 ease-in-out md:hidden";
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
@@ -107,7 +106,7 @@ const NavBar = () => {
             className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "rotate-45 translate-y-1 opacity-50 group-hover:opacity-100 "
+                            ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
                             : "opacity-50 group-hover:opacity-100 "
                         } `}
           />
@@ -124,7 +123,7 @@ const NavBar = () => {
             className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "-rotate-45 -translate-y-1 opacity-50 group-hover:opacity-100"
+                            ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
                             : "opacity-50 group-hover:opacity-100"
                         }`}
           />

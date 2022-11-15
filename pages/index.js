@@ -1,4 +1,4 @@
-import Image from "next/image";
+  import Image from "next/image";
 import Layout from "../components/layout/layout";
 import Accordion from "../components/accordion";
 

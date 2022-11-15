@@ -1,5 +1,4 @@
 import popupStyles from "./popup.module.css";
-import Layout from "./layout/layout";
 import Form from "./form";
 import Card from "./card";
 
@@ -159,7 +158,7 @@ const Page = ({ authentication, page, redirect }) => {
     };
   }
   return (
-    <Layout>
+    <>
       {popup.background}
       {popup.createCard}
       {popup.modifyCard}
@@ -222,7 +221,7 @@ const Page = ({ authentication, page, redirect }) => {
           </form>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

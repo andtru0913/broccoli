@@ -1,18 +1,8 @@
-import Link from "next/link";
 import { useState } from "react";
-import {
-  HiHome,
-  HiBookOpen,
-  HiUserCircle,
-  HiCalendarDays,
-  HiClock,
-  HiArrowLeftOnRectangle,
-} from "react-icons/hi2";
 import ActiveLink from "../activeLink";
 
 const ADMIN_MENU_LIST = [
-  { text: "Admin", href: "/intranet/admin" },
-  { text: "Anställda", href: "/intranet/admin/users" },
+  { text: "Anställda", href: "/intranet/admin/employees" },
   { text: "Lunchgrupper", href: "/intranet/admin/lunchgroups" },
 ];
 
@@ -26,81 +16,88 @@ const ADMIN_MENU_LIST = [
 }
 
 const NavbarAdmin = ({ user }) => {
-  const hamburgerLine =
-    " w-4 h-0.5 bg-skin-fill my-0.5 transition-all duration-300 ease-in-out md:hidden";
-  const [isOpen, setIsOpen] = useState(false);
-  const openmenu = () => setIsOpen(!isOpen);
-  return (
-    <nav className="w-screen bg-skin-error flex justify-end p-2 md:p-0">
-      <div className="flex justify-center  text-skin-muted bg-skin-error">
-        <ul
-          className={`md:flex md:flex-row md:justify-between md:align-middle 
-                        ${
-                          isOpen === false
-                            ? "mobile:fixed mobile:-left-full mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-error"
-                            : "mobile:fixed mobile:left-0 mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-error"
-                        }`}
-        >
-          {ADMIN_MENU_LIST.map((menu) => {
+    try {
+        if (user.admin) {
+            const hamburgerLine =
+                " w-4 h-0.5 bg-skin-fill my-0.5 transition-all duration-300 ease-in-out md:hidden";
+            const [isOpen, setIsOpen] = useState(false);
+            const openmenu = () => setIsOpen(!isOpen);
             return (
-              <li
-                className="m-2"
-                onClick={() => {
-                  openmenu;
-                }}
-                key={menu.text}
-              >
-                <ActiveLink
-                  href={menu.href}
-                  activeClassName="w-full text-xs text-skin-muted opacity-80 transition-all duration-200"
-                >
-                  <a className="w-full font-bold text-xs  text-skin-inverted  opacity-80 transition-all duration-200 hover:text-skin-muted">
-                    {menu.text}
-                  </a>
-                </ActiveLink>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <button
-        className={` ${
-          isOpen
-            ? "block cursor-pointer justify-center items-center group md:none lg:none"
-            : "none"
-        }
+                <nav className="w-screen bg-skin-error flex justify-end p-2 md:p-0">
+                    <div className="flex justify-center  text-skin-muted bg-skin-error">
+                        <ul
+                            className={`md:flex md:flex-row md:justify-between md:align-middle 
+                        ${
+                                isOpen === false
+                                    ? "mobile:fixed mobile:-left-full mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-error"
+                                    : "mobile:fixed mobile:left-0 mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-error"
+                            }`}
+                        >
+                            {ADMIN_MENU_LIST.map((menu) => {
+                                return (
+                                    <li
+                                        className="m-2"
+                                        onClick={() => {
+                                            openmenu;
+                                        }}
+                                        key={menu.text}
+                                    >
+                                        <ActiveLink
+                                            href={menu.href}
+                                            activeClassName="w-full text-xs text-skin-muted opacity-80 transition-all duration-200"
+                                        >
+                                            <a className="w-full font-bold text-xs  text-skin-inverted  opacity-80 transition-all duration-200 hover:text-skin-muted">
+                                                {menu.text}
+                                            </a>
+                                        </ActiveLink>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    <button
+                        className={` ${
+                            isOpen
+                                ? "block cursor-pointer justify-center items-center group md:none lg:none"
+                                : "none"
+                        }
                  `}
-        onClick={openmenu}
-      >
-        <div
-          className={`${hamburgerLine}
+                        onClick={openmenu}
+                    >
+                        <div
+                            className={`${hamburgerLine}
                         ${
-                          isOpen
-                            ? "rotate-45 translate-y-1 opacity-50 group-hover:opacity-100 "
-                            : "opacity-50 group-hover:opacity-100 "
-                        } `}
-        />
-        <div
-          className={`${hamburgerLine}
+                                isOpen
+                                    ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
+                                    : "opacity-50 group-hover:opacity-100 "
+                            } `}
+                        />
+                        <div
+                            className={`${hamburgerLine}
                         ${
-                          isOpen
-                            ? "opacity-0"
-                            : "opacity-50 group-hover:opacity-100"
-                        }`}
-        />
+                                isOpen
+                                    ? "opacity-0"
+                                    : "opacity-50 group-hover:opacity-100"
+                            }`}
+                        />
 
-        <div
-          className={`${hamburgerLine}
+                        <div
+                            className={`${hamburgerLine}
                         ${
-                          isOpen
-                            ? "-rotate-45 -translate-y-1 opacity-50 group-hover:opacity-100"
-                            : "opacity-50 group-hover:opacity-100"
-                        }`}
-        />
-      </button>
-    </nav>
-  );
-};
+                                isOpen
+                                    ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
+                                    : "opacity-50 group-hover:opacity-100"
+                            }`}
+                        />
+                    </button>
+                </nav>)
+        }
+    }
+    catch {
+        return null
+    }
+    return null
+}
 
 export default NavbarAdmin;
 
@@ -209,7 +206,7 @@ export default NavbarAdmin;
                         <div
                             className={`${hamburgerLine}
                             ${isOpen
-                                    ? "rotate-45 translate-y-1 opacity-50 group-hover:opacity-100 "
+                                    ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
                                     : "opacity-50 group-hover:opacity-100 "
                                 } `}
                         />
@@ -222,7 +219,7 @@ export default NavbarAdmin;
                         <div
                             className={`${hamburgerLine}
                             ${isOpen
-                                    ? "-rotate-45 -translate-y-1 opacity-50 group-hover:opacity-100"
+                                    ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
                                     : "opacity-50 group-hover:opacity-100"
                                 }`}
                         />

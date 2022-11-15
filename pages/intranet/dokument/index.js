@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ admin,data }) {
-    let button = {}
+    let button = ""
     if (admin) {
         const convertBase64 = (file) => {
             return new Promise((resolve, reject) => {
