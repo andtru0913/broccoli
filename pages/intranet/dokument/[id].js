@@ -32,10 +32,10 @@ export default function Home ({doc, admin}) {
     }
     return (
         <LayoutIntranet>
-            <p>{doc.title}</p>
+            <p>{JSON.stringify(doc)}</p>
             <p>{doc.date}</p>
-            <embed style={{height: "500px", width: "500px"}} src={doc.base64} id={doc.id}/>
-            <a download={doc.filename} href={doc.base64}>Ladda ner</a>
+            <embed style={{height: "500px", width: "500px"}} src={`/uploads/dokument/${doc.filename}`} id={doc.id}/>
+            <a download={doc.filename} href={`/uploads/dokument/${doc.filename}`}>Ladda ner</a>
             {button}
          </LayoutIntranet>
     );

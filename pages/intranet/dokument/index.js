@@ -1,11 +1,13 @@
 import LayoutIntranet from '../../../components/layout/layoutIntranet';
-import * as Database from "../../../Database";
+import {getAllDocuments, getUserinfo} from "../../../Database";
+import {FileAdder} from '../../../components/FileAdder'
+
 
 export async function getServerSideProps(context) {
     let cookies = JSON.parse(context.req.cookies['user'] || null)
-    let user = await Database.getUserinfo(cookies.id)
+    let user = await getUserinfo(cookies.id)
     if (cookies !== {} || user !== null) {
-        let data = await Database.getAllDocuments()
+        let data = await getAllDocuments()
         return {
             props: {
                 admin: user.admin,
@@ -25,35 +27,61 @@ export async function getServerSideProps(context) {
 export default function Home({ admin,data }) {
     let button = ""
     if (admin) {
-        const convertBase64 = (file) => {
-            return new Promise((resolve, reject) => {
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(file);
-
-                fileReader.onload = () => {
-                    resolve(fileReader.result);
+        const file = new FileAdder()
+        const uploadToDatabase = () => {
+            return new Promise(function (resolve, reject) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "../../api/createDocument");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(
+                    JSON.stringify({
+                        title: document.getElementById("title").value,
+                        filename: document.getElementById("file").value.split(/([\\/])/g).pop(),
+                    }))
+                xhr.onload = function () {
+                    if (this.status >= 200 && this.status < 300) {
+                        resolve(xhr.response);
+                    } else {
+                        reject({
+                            status: this.status,
+                            statusText: xhr.statusText
+                        });
+                    }
                 };
-
-                fileReader.onerror = (error) => {
-                    reject(error);
+                xhr.onerror = function () {
+                    reject({
+                        status: this.status,
+                        statusText: xhr.statusText
+                    });
                 };
             });
-        };
+            }
         button = (
-            <form method={"POST"} action={"../api/createDocument"}>
-                <input type="hidden" id="base64" name="base64"/>
-                <input type="text" placeholder="Titel" name="title"/>
-                <input className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none" type="file" id="file" name="file" onChange={async function() {
-                    let submit = document.getElementById("submit")
-                    submit.disabled = true;
-                    const f = document.querySelector('#file').files[0];
-                    document.getElementById("base64").value = await convertBase64(f)
-                    submit.disabled = false;
-                }}/>
-                <button id="submit" type="submit">
-                    Nytt inlägg
+            <div>
+                <input id={"title"} type={"text"} name={"title"} placeholder={"Titel"}/>
+                <input id={"file"} type="file" name="myImage" onChange={file.uploadToClient} />
+                <button
+                    className=""
+                    type="submit"
+                    onClick={
+                        async function() {
+                            try {
+                                file.uploadToServer(`dokument/${document.getElementById("file").value.split(/([\\/])/g).pop()}`).then(
+                                    _ => {
+                                    }
+                                );
+                                await uploadToDatabase();
+                                window.location.reload();
+                            } catch (e) {
+                            }
+
+                        }
+
+                    }
+                >
+                    Ladda upp
                 </button>
-            </form>
+            </div>
             )
         }
         return (

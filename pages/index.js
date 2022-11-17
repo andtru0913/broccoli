@@ -1,4 +1,4 @@
-  import Image from "next/image";
+import Image from "next/image";
 import Layout from "../components/layout/layout";
 import Accordion from "../components/accordion";
 
@@ -113,6 +113,7 @@ export default function Home({ feed }) {
                       <img
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                         src={image.media_url}
+                        alt={"image"}
                       />
                     </a>
                   </div>

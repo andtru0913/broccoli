@@ -479,12 +479,11 @@ export async function getUserEvents(id) {
 }
 
 
-export async function createDocument(title, filename, base64, date) {
+export async function createDocument(title, filename, date) {
     await prisma.document.create({
         data: {
             title: title,
             filename: filename,
-            base64: base64,
             date: date
         },
     })
@@ -508,7 +507,6 @@ export async function getDocument(id) {
         select: {
             id:true,
             title: true,
-            base64:true,
             filename:true,
             date: true
         },

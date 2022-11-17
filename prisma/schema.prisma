@@ -81,6 +81,5 @@ model Document {
     id          String  @id @default(auto()) @map("_id") @db.ObjectId
     title       String
     filename    String
-    base64      String
     date        String
 }
