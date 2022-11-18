@@ -1,24 +1,12 @@
 import popupStyles from "./popup.module.css";
 import Form from "./form";
 import Card from "./card";
+import {FileAdder} from "./FileAdder"
 
 const Page = ({ authentication, page, redirect }) => {
   let popup = {};
   if (authentication === null) {
-    const convertBase64 = (file) => {
-      return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-
-        fileReader.onload = () => {
-          resolve(fileReader.result);
-        };
-
-        fileReader.onerror = (error) => {
-          reject(error);
-        };
-      });
-    };
+      const file = new FileAdder()
     popup = {
       background: (
         <div
@@ -58,24 +46,11 @@ const Page = ({ authentication, page, redirect }) => {
           <form action="../../api/createCard" method="POST">
             <input type="text" name="title" placeholder="Rubrik" />
             <input type="text" name="description" placeholder="Text" />
-            <input type="hidden" id="createBase64" name="base64" />
             <input type="hidden" name="pageId" value={page.id} />
             <input type="hidden" name="redirect" value={redirect} />
-            <input
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"
-              type="file"
-              id="createFormFile"
-              name="file"
-              onChange={async function () {
-                let submit = document.getElementById("createCardSubmit");
-                submit.disabled = true;
-                const f = document.querySelector("#createFormFile").files[0];
-                document.getElementById("createBase64").value =
-                  await convertBase64(f);
-                submit.disabled = false;
-              }}
-            />
-            <button id="createCardSubmit" type="submit">
+            <input className={"form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"}
+                   id={"createCardFile"} type="file" name="myImage" onChange={file.uploadToClient} />
+            <button onClick={function() {file.uploadToServer(`cards/${document.getElementById("createCardFile").files[0].name}`).then(_ => {})}} id="createCardSubmit" type="submit">
               {" "}
               Skapa{" "}
             </button>
@@ -102,23 +77,19 @@ const Page = ({ authentication, page, redirect }) => {
               name="description"
               placeholder="Text"
             />
+
             <input
               className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"
               type="file"
               id="modifyFormFile"
-              name="file"
-              onChange={async function () {
-                let submit = document.getElementById("modifyCardSubmit");
-                submit.disabled = true;
-                const f = document.querySelector("#modifyFormFile").files[0];
-                document.getElementById("modifyBase64").value =
-                  await convertBase64(f);
-                submit.disabled = false;
+              name="myImage"
+              onChange={async function (event) {
+                file.uploadToClient(event)
               }}
             />
-            <input type="hidden" id="modifyBase64" name="base64" />
+            <input type="hidden" name="filename" value={redirect} />
             <input type="hidden" name="redirect" value={redirect} />
-            <button type="submit" id="modifyCardSubmit">
+            <button onClick={function () {file.uploadToServer(`cards/${document.getElementById("modifyFormFile").files[0].name}`).then(_ => {})}} type="submit" id="modifyCardSubmit">
               {" "}
               Ändra kort
             </button>
@@ -171,8 +142,7 @@ const Page = ({ authentication, page, redirect }) => {
             let modifyPage = document.getElementById("modifyPage");
             background.classList.remove(popupStyles.hide);
             modifyPage.getElementsByClassName("title")[0].value = page.title;
-            modifyPage.getElementsByClassName("description")[0].value =
-              page.description;
+            modifyPage.getElementsByClassName("description")[0].value = page.description;
             modifyPage.classList.remove(popupStyles.hide);
           }
         }}
@@ -191,7 +161,7 @@ const Page = ({ authentication, page, redirect }) => {
                 key={card.id}
                 title={card.title}
                 text={card.description}
-                image={card.image}
+                image={`./uploads/cards/${card.image}`}
                 click={function () {
                   if (authentication === null) {
                     let background = document.getElementById("popup");
@@ -199,11 +169,8 @@ const Page = ({ authentication, page, redirect }) => {
                     background.classList.remove(popupStyles.hide);
                     modifyCard.getElementsByClassName("id")[0].value = card.id;
                     modifyCard.getElementsByClassName("id")[1].value = card.id;
-                    modifyCard.getElementsByClassName("title")[0].value =
-                      card.title;
-                    modifyCard.getElementsByClassName("description")[0].value =
-                      card.description;
-                    document.getElementById("modifyBase64").value = card.image;
+                    modifyCard.getElementsByClassName("title")[0].value = card.title;
+                    modifyCard.getElementsByClassName("description")[0].value = card.description;
                     modifyCard.classList.remove(popupStyles.hide);
                   }
                 }}

@@ -12,6 +12,7 @@ export class FileAdder {
     }
 
     uploadToClient = (event) => {
+        console.log(event)
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0];
             this.setImage(i);

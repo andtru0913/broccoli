@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     if (await checkAdmin(req.cookies['user']) && req.body.title !== "") {
-        await updateCard(req.body.id, req.body.title, req.body.description, req.body.base64)
+        await updateCard(req.body.id, req.body.title, req.body.description, req.body.myImage)
             .catch(e => {
                 console.error(e.message)
             })

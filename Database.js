@@ -307,6 +307,17 @@ export async function deleteCard(id) {
 }
 
 export async function updateCard(id, title, description, image) {
+    if (image.length === 0) {
+        return await prisma.card.update({
+            where: {
+                id: id,
+            },
+            data: {
+                title: title,
+                description: description,
+            },
+        })
+    }
     return await prisma.card.update({
         where: {
             id: id,
@@ -314,9 +325,10 @@ export async function updateCard(id, title, description, image) {
         data: {
             title: title,
             description: description,
-            image: image
+            image:image
         },
     })
+
 }
 
 export async function updatePage(id, title, description) {
