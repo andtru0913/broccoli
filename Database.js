@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const bcrypt = require ('bcrypt');
 
 
-export async function createNewUser(username, password, firstname, lastname, email, address, privatenumber, worknumber, company, admin) {
+export async function createNewUser(username, password, firstname, lastname, gender, email, address, privatenumber, worknumber, company, admin) {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
     await prisma.user.create({
@@ -15,6 +15,7 @@ export async function createNewUser(username, password, firstname, lastname, ema
             password: hashedPassword,
             firstname: firstname,
             lastname: lastname,
+            gender: gender,
             email: email,
             address: address,
             privatenumber: privatenumber,
@@ -419,7 +420,7 @@ export async function deleteUser(id) {
     })
 }
 
-export async function modifyUser(id, username, password, firstname, lastname, address, privatenumber, worknumber, company, admin) {
+export async function modifyUser(id, username, password, firstname, lastname, gender, address, privatenumber, worknumber, company, admin) {
     if (password !== undefined) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
@@ -432,11 +433,12 @@ export async function modifyUser(id, username, password, firstname, lastname, ad
                 password: hashedPassword,
                 firstname: firstname,
                 lastname: lastname,
+                gender: gender,
                 address: address,
                 privatenumber: privatenumber,
                 worknumber: worknumber,
                 company: company,
-                admin: admin !== undefined,
+                admin: admin !== undefined ? admin : false,
                 salt: salt,
             },
         })
@@ -450,11 +452,12 @@ export async function modifyUser(id, username, password, firstname, lastname, ad
                 username: username,
                 firstname: firstname,
                 lastname: lastname,
+                gender: gender,
                 address: address,
                 privatenumber: privatenumber,
                 worknumber: worknumber,
                 company: company,
-                admin: admin !== undefined,
+                admin: admin !== undefined
             },
         })
     }
@@ -489,7 +492,6 @@ export async function getUserEvents(id) {
         }
     })
 }
-
 
 export async function createDocument(title, filename, date) {
     await prisma.document.create({
@@ -542,4 +544,13 @@ export async function deleteDocument(id) {
             id:id
         }
     })
+}
+
+export async function getGenderCount() {
+    const query = await prisma.user.findMany({
+        select: {
+            gender: true
+        }
+    })
+    return [query.filter(user => user.gender === "man").length, query.filter(user => user.gender === "woman").length]
 }

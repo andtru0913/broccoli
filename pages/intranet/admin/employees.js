@@ -68,6 +68,12 @@ export default function Home({ user }) {
                   name="lastname"
                   placeholder="Efternamn"
                 />
+                <input type="radio" id="man" name="gender" value="man"/>
+                <label htmlFor="man">Man</label>
+                <input type="radio" id="woman" name="gender" value="woman"/>
+                <label htmlFor="woman">Kvinna</label>
+                <input type="radio" id="none" name="gender" value=""/>
+                <label htmlFor="none">Vill ej ange</label>
                 <input
                   className="email"
                   type="text"
@@ -149,6 +155,12 @@ export default function Home({ user }) {
                 <input type="text" name="password" placeholder="Lösenord" />
                 <input type="text" name="firstname" placeholder="Förnamn" />
                 <input type="text" name="lastname" placeholder="Efternamn" />
+                <input type="radio" id="man" name="gender" value="man"/>
+                <label htmlFor="man">Man</label>
+                <input type="radio" id="woman" name="gender" value="woman"/>
+                <label htmlFor="woman">Kvinna</label>
+                <input type="radio" id="none" name="gender" value=""/>
+                <label htmlFor="none">Vill ej ange</label>
                 <input type="text" name="email" placeholder="Email" />
                 <input type="text" name="address" placeholder="Address" />
                 <input
@@ -227,9 +239,9 @@ export default function Home({ user }) {
                 </div>
               </div>
 
-              <div class="hidden md:block overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                  <div class="overflow-hidden"></div>
+              <div className="hidden md:block overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div className="overflow-hidden"></div>
 
                   <table className="min-w-full">
                     <thead className="border-b-2 border-skin-secondary">
