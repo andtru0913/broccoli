@@ -90,7 +90,7 @@ export default function Home({ user, lunchgroups }) {
   if (user === null) {
     return (
       <main className="">
-        <div className=" mx-auto bg-skin-fill w-screen h-screen p-4 relative">
+        <div className=" mx-auto bg-fill w-screen h-screen p-4 relative">
           <Image
             src="/images/gothenburg.jfif"
             layout="fill"
@@ -110,7 +110,7 @@ export default function Home({ user, lunchgroups }) {
             </Link>
           </div>
 
-          <div className=" layout md:left-1/4 md:w-1/2 absolute top-1/4  shadow-lg rounded-md lg:rounded-3xl py-4 lg:py-12 bg-skin-fill bg-opacity-70 lg:w-1/3 lg:left-1/3">
+          <div className=" layout md:left-1/4 md:w-1/2 absolute top-1/4  shadow-lg rounded-md lg:rounded-3xl py-4 lg:py-12 bg-fill bg-opacity-70 lg:w-1/3 lg:left-1/3">
             <div className="flex flex-1 justify-center flex-col items-center  ">
               <h1>Logga in</h1>
               <form
@@ -119,20 +119,20 @@ export default function Home({ user, lunchgroups }) {
                 method="POST"
               >
                 <input
-                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-skin-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-skin-link autofill:bg-skin-primary autofill:focus:bg-skin-secondary"
+                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
                   type="text"
                   name="username"
                   placeholder="Användarnamn"
                 />
 
                 <input
-                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border  border-skin-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-skin-link autofill:bg-skin-primary autofill:focus:bg-skin-secondary"
+                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border  border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
                   type="password"
                   name="password"
                   placeholder="Lösenord"
                 />
                 <button
-                  className="shadow bg-skin-button-accent hover:bg-skin-button-accent-hover focus:shadow-outline focus:outline-none text-skin-inverted font-semibold p-2 m-2  rounded"
+                  className="shadow bg-button-accent hover:bg-button-accent-hover focus:shadow-outline focus:outline-none text-inverted font-semibold p-2 m-2  rounded"
                   type="submit"
                 >
                   Logga in
@@ -156,11 +156,11 @@ export default function Home({ user, lunchgroups }) {
                   {INTRA_MENU_LIST.map((menu) => {
                     return menu.bottom === false ? (
                       <div
-                        className=" bg-skin-primary bg-opacity-60 p-4 rounded-sm"
-                        key={menu.text}
+                        className=" bg-primary bg-opacity-60 p-4 rounded-sm"
+                        key={menu.text ?? "menu"}
                       >
                         <Link href={menu.href} className="custom-tap-highlight">
-                          <a className="w-full text-base uppercase md:ml-8 font-medium text-center text-skin-muted opacity-80 focus:bg-opacity-80 ">
+                          <a className="w-full text-base uppercase md:ml-8 font-medium text-center text-muted opacity-80 focus:bg-opacity-80 ">
                             <p>{menu.text}</p>
                           </a>
                         </Link>
@@ -193,7 +193,7 @@ export default function Home({ user, lunchgroups }) {
                         </div>
                       ) : (
                         <div className="flex flex-col md:flex-row justify-center">
-                          <div className="flex-auto bg-skin-primary rounded-sm p-2">
+                          <div className="flex-auto bg-primary rounded-sm p-2">
                             <h4 className="font-semibold">{pp.title}</h4>
                             {pp.people.map((i) => {
                               return <p>{i}</p>;

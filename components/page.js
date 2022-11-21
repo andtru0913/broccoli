@@ -63,7 +63,7 @@ const Page = ({ authentication, page, redirect }) => {
             <input type="hidden" name="pageId" value={page.id} />
             <input type="hidden" name="redirect" value={redirect} />
             <input
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"
+              className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid border-border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
               type="file"
               id="createFormFile"
               name="file"
@@ -104,7 +104,7 @@ const Page = ({ authentication, page, redirect }) => {
               placeholder="Text"
             />
             <input
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"
+              className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid border-border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
               type="file"
               id="modifyFormFile"
               name="file"
@@ -159,13 +159,13 @@ const Page = ({ authentication, page, redirect }) => {
     };
   }
   return (
-    <Layout>
+    <>
       {popup.background}
       {popup.createCard}
       {popup.modifyCard}
       {popup.modifyPage}
       <section
-        className="bg-skin-fill"
+        className="bg-fill"
         onClick={function () {
           if (authentication === null) {
             let background = document.getElementById("popup");
@@ -178,13 +178,13 @@ const Page = ({ authentication, page, redirect }) => {
           }
         }}
       >
-        <div className="layout py-12 text-skin-base text-center max-w-prose">
+        <div className="layout py-12 text-base text-center max-w-prose">
           <h1 className="pb-8"> {page.title}</h1>
           <p> {page.description}</p>
         </div>
       </section>
 
-      <section className="bg-skin-fill  ">
+      <section className="bg-fill  ">
         <div className=" layout py-12 md:w-1/2">
           <div className="grid md:grid-cols-2  md:gap-12 ">
             {page.cards.map((card) => (
@@ -215,14 +215,14 @@ const Page = ({ authentication, page, redirect }) => {
         </div>
       </section>
 
-      <section id="form" className="bg-skin-fill">
+      <section id="form" className="bg-fill">
         <div className="layout py-12 md:w-1/2">
           <form method="POST" action="./api/send_email">
             <Form title={"Spontanansökan"} />
           </form>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

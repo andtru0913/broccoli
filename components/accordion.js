@@ -26,7 +26,7 @@ const Accordion = () => {
   ];
 
   return (
-    <div className="flex flex-col  items-center rounded-md py-2 h-auto ">
+    <div className=" rounded-md py-2 h-auto transition-all duration-500">
       {data.map((data) => {
         return (
           <AccordionSection

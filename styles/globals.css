@@ -4,11 +4,39 @@
 
 @layer base {
   :root {
+    --fc-event-bg-color: #4b925b;
+    --fc-event-border-color: #4b925b;
+    --fc-event-text-color: #fff;
+    --fc-event-selected-overlay-color: 92, 67, 67;
+    --fc-today-bg-color: #e9dcba;
+    --background: 242, 242, 242;
+    --color-text-base: 38, 38, 38;
+    --color-text-muted: 64, 64, 64;
+    --color-text-inverted: 255, 255, 255;
+    --color-text-inverted-muted: 242, 242, 242;
+    --color-fill: 255, 255, 255;
+    --color-primary-1: 75, 146, 91;
+    --color-primary-l1: 104, 183, 122; /*light-1*/
+    --color-primary-l2: 155, 215, 168; /*lightest*/
+    --color-primary-d1: 48, 104, 61; /*dark-1*/
+    --color-primary-d2: 37, 74, 45; /*darkest*/
+    --color-secondary-1: 245, 241, 226;
+    --color-secondary-l1: 255, 253, 244;
+    --color-secondary-l2: 255, 254, 249;
+    --color-secondary-d1: 201, 196, 177;
+    --color-secondary-d2: 139, 134, 117;
+    --color-tertiary-1: 23, 20, 39;
+    --color-tertiary-l1: 40, 35, 64;
+    --color-tertiary-l2: 76, 71, 102;
+    --color-tertiary-d1: 19, 16, 33;
+    --color-tertiary-d2: 9, 7, 16;
+  }
+  .dark {
     --fc-event-bg-color: #31aca1;
     --fc-event-border-color: #48bdb3;
     --fc-event-text-color: #fff;
-    --fc-event-selected-overlay-color: rgba(92, 67, 67, 0.25);
-    --fc-today-bg-color: rgba(255, 223, 40, 0.15);
+    --fc-event-selected-overlay-color: 92, 67, 67;
+    --fc-today-bg-color: 255, 223, 40;
     --background: 242, 242, 242;
     --color-text-base: 38, 38, 38;
     --color-text-muted: 64, 64, 64;
@@ -17,7 +45,8 @@
     --color-fill: 242, 242, 242;
     --color-shadow: 38, 38, 38;
     --color-border: 64, 64, 64;
-    --color-primary: 212, 226, 223;
+    --color-footer: 89, 124, 100;
+    --color-primary: #e97aeb;
     --color-secondary: 174, 202, 197;
     --color-error: 242, 100, 130;
     --color-error-hover: 238, 54, 93;
@@ -77,10 +106,10 @@
   }
 
   .btn {
-    @apply text-skin-inverted font-semibold py-2 px-4 rounded;
+    @apply text-inverted font-semibold py-2 px-4 rounded;
   }
   .btn-misc {
-    @apply text-sm py-1 text-skin-muted border-2 hover:bg-skin-primary;
+    @apply text-sm py-1 text-muted border-2 hover:bg-primary-1;
   }
 
   .btn-purple {
@@ -88,13 +117,13 @@
   }
 
   .btn-delete {
-    @apply bg-delete;
+    @apply bg-primary-l2;
   }
   .btn-modify {
-    @apply bg-modify;
+    @apply bg-primary-d2;
   }
   .btn-create {
-    @apply bg-create;
+    @apply bg-primary-1;
   }
 
   .btn:hover {
@@ -117,7 +146,7 @@
     display: none !important;
   }
   .window-pop {
-    @apply z-30 absolute text-skin-base top-1/4 flex flex-col w-screen items-center;
+    @apply z-30 absolute text-base top-1/4 flex flex-col w-screen items-center;
   }
 
   .animated-underline {

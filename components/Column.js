@@ -7,10 +7,10 @@ import { lunchgroup } from "../defaultIDs";
 
 const Column = ({ column, tasks }) => {
   return (
-    <div className="rounded-lg bg-skin-primary  flex flex-col">
-      <div className="align-middle text-center bg-skin-secondary rounded-t-lg px-2 mb-2 md:px-6 md:mb-6">
+    <div className="rounded-lg bg-primary-1  flex flex-col">
+      <div className="align-middle text-center bg-secondary-1 rounded-t-lg px-2 mb-2 md:px-6 md:mb-6">
         <h5
-          className="font-medium text-xs md:text-lg text-skin-muted"
+          className="font-medium text-xs md:text-lg text-muted"
           onClick={function () {
             if (column.id !== lunchgroup) {
               let modifyLunchgroup =
@@ -41,7 +41,7 @@ const Column = ({ column, tasks }) => {
               <Draggable key={task.id} draggableId={`${task.id}`} index={index}>
                 {(draggableProvided, draggableSnapshot) => (
                   <div
-                    className="flex mb-4 rounded-lg bg-skin-button-accent text-skin-inverted-muted justify-center rounded-sm p-2 md:p-6 outline-2 outline-white "
+                    className="flex mb-4 rounded-lg bg-primary-1 text-inverted-muted justify-center p-2 md:p-6 outline-2 outline-white "
                     outlineColor={
                       draggableSnapshot.isDragging
                         ? "card-border"

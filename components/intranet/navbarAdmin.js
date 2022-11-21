@@ -27,18 +27,18 @@ const ADMIN_MENU_LIST = [
 
 const NavbarAdmin = ({ user }) => {
   const hamburgerLine =
-    " w-4 h-0.5 bg-skin-fill my-0.5 transition-all duration-300 ease-in-out md:hidden";
+    " w-4 h-0.5 bg-fill my-0.5 transition-all duration-300 ease-in-out  lg:hidden";
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   return (
-    <nav className="bg-skin-button-accent flex justify-end p-2 md:p-0">
-      <div className="flex justify-center  text-skin-muted ">
+    <nav className="bg-primary-1 flex justify-end p-2  lg:p-0">
+      <div className="flex justify-center  text-muted ">
         <ul
-          className={`md:flex md:flex-row md:justify-between md:align-middle 
+          className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle 
                         ${
                           isOpen === false
-                            ? "mobile:fixed mobile:-left-full mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-button-accent "
-                            : "mobile:fixed mobile:left-0 mobile:py-4 mobile:top-10 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-button-accent "
+                            ? "lg:static fixed  -left-full  py-4  top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm    bg-primary-1 "
+                            : "lg:static fixed  left-0  py-4  top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 "
                         }`}
         >
           {ADMIN_MENU_LIST.map((menu) => {
@@ -52,9 +52,9 @@ const NavbarAdmin = ({ user }) => {
               >
                 <ActiveLink
                   href={menu.href}
-                  activeClassName="w-full text-xs text-skin-muted opacity-80 transition-all duration-200"
+                  activeClassName="w-full text-xs text-muted opacity-80 transition-all duration-200"
                 >
-                  <a className="w-full font-bold text-xs  text-skin-inverted  opacity-80 transition-all duration-200 hover:text-skin-muted">
+                  <a className="w-full font-bold text-xs  text-inverted  opacity-80 transition-all duration-200 hover:text-muted">
                     {menu.text}
                   </a>
                 </ActiveLink>
@@ -66,7 +66,7 @@ const NavbarAdmin = ({ user }) => {
       <button
         className={` ${
           isOpen
-            ? "block cursor-pointer justify-center items-center group md:none lg:none"
+            ? "block cursor-pointer justify-center items-center group  lg:none lg:none"
             : "none"
         }
                  `}
@@ -103,134 +103,3 @@ const NavbarAdmin = ({ user }) => {
 };
 
 export default NavbarAdmin;
-
-{
-  /**
-
-
-<>
-                <nav className=" bg-skin-error flex justify-end px-2 ">
-                    <div className="flex justify-center absolute right-10 text-skin-muted">
-                        <ul className={
-                            `md:flex md:flex-row md:justify-between md:align-middle 
-                        ${isOpen === false ?
-                                'mobile:fixed mobile:-left-full mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill' :
-                                'mobile:fixed mobile:left-0 mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill'}`}>
-                            {ADMIN_MENU_LIST.map((menu) => {
-
-
-                                return (
-
-                                    <li className="my-2"
-                                        onClick={() => {
-                                            openmenu;
-                                        }}
-                                        key={menu.text}
-                                    >
-
-
-                                        <ActiveLink href={menu.href} activeClassName="w-full text-xs  md:ml-8 text-skin-navlink-active opacity-80 transition-all duration-200">
-                                            <a className="w-full font-bold text-xs md:ml-8  text-skin-inverted  opacity-80 transition-all duration-200 hover:text-skin-muted"
-
-                                            >
-                                                {menu.top === true ?
-                                                    menu.text
-                                                    :
-                                                    menu.icon
-                                                }
-                                            </a>
-                                        </ActiveLink>
-                                    </li>
-
-                                )
-
-                            })}
-                        </ul>
-                    </div>
-                </nav>
-
-        </>
-        
-        <header className="sticky top-0 z-50">
-
-            {user === null ? <nav className="flex justify-between align-middle py-2 px-7  ">
-                <div className="text-lg flex justify-start">
-                    <Link href="/intranet">
-                        <a>
-                            <img
-                                className="h-8 w-auto sm:h-10"
-                                src="/images/BroccoliBlack.png"
-                            />
-                        </a>
-
-                    </Link>
-                </div>:
-                
-                </nav>
-                :
-                <>
-                <nav className="flex justify-between align-middle py-2 px-7 bg-theme-green ">
-                    <div className="text-lg flex justify-start">
-                        <Link href="/intranet">
-                            <a>
-                                <img
-                                    className="h-8 w-auto sm:h-10"
-                                    src="/images/BroccoliBlack.png"
-                                />
-                            </a>
-
-                        </Link>
-                    </div>
-
-                    <div className="flex md:justify-end absolute text-white right-10 top-3.5">
-                        <ul className={isOpen === false ? styles.navmenu : styles.navmenu + ' ' + styles.active}>
-                            {MENU_LIST.map((menu, idx) => (
-
-                                <li className={styles.navitem}
-                                    onClick={() => {
-                                        setActiveIdx(idx);
-                                        openmenu;
-                                    }}
-                                    key={menu.text}
-                                >
-
-
-                                    <NavItem theme={"intranet"} active={activeIdx === idx} {...menu} />
-
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <button aria-label="hamburger_menu button" className={` ${isOpen ? "block cursor-pointer justify-center items-center group  lg:none" : "none"}
-                     `}
-                        onClick={openmenu}
-                    >
-                        <div
-                            className={`${hamburgerLine}
-                            ${isOpen
-                                    ? "rotate-45 translate-y-1 opacity-50 group-hover:opacity-100 "
-                                    : "opacity-50 group-hover:opacity-100 "
-                                } `}
-                        />
-                        <div
-                            className={`${hamburgerLine}
-                            ${isOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
-                                }`}
-                        />
-
-                        <div
-                            className={`${hamburgerLine}
-                            ${isOpen
-                                    ? "-rotate-45 -translate-y-1 opacity-50 group-hover:opacity-100"
-                                    : "opacity-50 group-hover:opacity-100"
-                                }`}
-                        />
-                    </button>
-                    </nav>
-                </>
-
-                }
-
-            </header>*/
-}

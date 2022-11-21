@@ -2,7 +2,7 @@ import { BsInstagram, BsFacebook, BsLinkedin } from "react-icons/bs";
 import Link from "next/link";
 const Footer = () => {
   return (
-    <footer className="py-12 bg-skin-fill">
+    <footer className="py-12 bg-gradient-to-br from-hue to-no">
       <div className="flex flex-1 justify-center cursor-pointer">
         <div className="flex-col">
           <div className="flex justify-center">
@@ -18,13 +18,13 @@ const Footer = () => {
           </div>
           <div className="grid md:grid-cols-3 pt-8 gap-4  md:justify-between lg:justify-evenly">
             <div className=" flex-col px-5 text-center">
-              <h1 className="pb-2 text-lg  text-skin-base font-bold cursor-default">
+              <h1 className="pb-2 text-lg  text-base font-bold cursor-default">
                 Följ oss
               </h1>
               <div className="flex flex-row justify-center md:text-left bg-inherit">
                 <a href="/" className="p-2 hover:scale-105 ">
                   <BsInstagram
-                    className="fill-skin-button-accent hover:fill-skin-button-accent"
+                    className="fill-button-accent hover:fill-button-accent"
                     size={20}
                   />
                 </a>
@@ -40,11 +40,11 @@ const Footer = () => {
             </div>
 
             <div className=" flex-col  px-5 ">
-              <h1 className="pb-2 text-lg text-center text-skin-base font-bold cursor-default">
+              <h1 className="pb-2 text-lg text-center text-base font-bold cursor-default">
                 Kontakt
               </h1>
               <div className=" flex flex-col items-start md:text-left bg-inherit">
-                <a className="hover:text-skin-muted" href="tel:031-151480">
+                <a className="hover:text-muted" href="tel:031-151480">
                   <div className="flex flex-row justify-center align-middle md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ const Footer = () => {
                   </div>
                 </a>
                 <a
-                  className="hover:text-skin-muted"
+                  className="hover:text-muted"
                   href="mailto:engineering@broccoli.se"
                 >
                   <div className="flex flex-row justify-center  align-middle  md:justify-start py-1">
@@ -88,7 +88,7 @@ const Footer = () => {
                   </div>
                 </a>
                 <a
-                  className="hover:text-skin-muted"
+                  className="hover:text-muted"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                 >
                   <div className="flex flex-row justify-center align-middle  md:justify-start py-1">
@@ -121,16 +121,16 @@ const Footer = () => {
               </div>
             </div>
             <div className=" flex-col px-5 text-center">
-              <h1 className="pb-2 text-lg  text-skin-base font-bold cursor-default">
+              <h1 className="pb-2 text-lg  text-base font-bold cursor-default">
                 Medarbetare
               </h1>
-              <a href="./intranet" className="hover:text-skin-muted py-2">
+              <a href="./intranet" className="hover:text-muted py-2">
                 <p className="text-xs">Intranät</p>
               </a>
 
               <a
                 href="https://www.broccoli.be/tid/"
-                className="hover:text-skin-muted py-2"
+                className="hover:text-muted py-2"
               >
                 <p className="text-xs">Tidrapport</p>
               </a>

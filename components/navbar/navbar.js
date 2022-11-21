@@ -8,12 +8,13 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   const hamburgerLine =
-    " w-6 h-0.5 bg-skin-navlink-hover my-1 transition-all duration-300 ease-in-out md:hidden";
+    " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
   const [_, setPadding] = useState(30);
   const [boxShadow, setBoxShadow] = useState(0);
+  const [textColor, setTextColor] = useState(0);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -30,12 +31,16 @@ const NavBar = () => {
       let paddingVar = 30 - backgroundTransparacyVar * 20;
 
       let boxShadowVar = backgroundTransparacyVar * 0.1;
+      let textcolVar = 255 - backgroundTransparacyVar * 100;
 
       setBackgroundTransparacy(
         Math.round((backgroundTransparacyVar + Number.EPSILON) * 100) / 100
       );
       setPadding(Math.floor(paddingVar));
       setBoxShadow(Math.round((boxShadowVar + Number.EPSILON) * 100) / 100);
+
+      console.log(Math.round(textcolVar));
+      setTextColor(Math.round(textcolVar));
     }
   }, [clientWindowHeight]);
 
@@ -61,13 +66,13 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <div className="flex justify-center absolute right-10 text-skin-muted">
+        <div className="flex justify-center absolute right-10 text-muted">
           <ul
-            className={`md:flex md:flex-row md:justify-between md:align-middle 
+            className={`lg:flex lg:flex-row lg:justify-between lg:align-middle 
                         ${
                           isOpen === false
-                            ? "mobile:fixed mobile:-left-full mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill"
-                            : "mobile:fixed mobile:left-0 mobile:top-14 mobile:flex mobile:flex-col mobile:w-full mobile:rounded-lg mobile:text-center mobile:duration-300 mobile:shadow-sm mobile:shadow-skin-shadow mobile:bg-skin-fill"
+                            ? `lg:static lg:bg-transparent lg:shadow-none  fixed -left-full  top-14   flex   flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-fill`
+                            : "lg:static lg:bg-transparent lg:shadow-none  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-fill"
                         }`}
           >
             {MENU_LIST.map((menu) => {
@@ -82,9 +87,9 @@ const NavBar = () => {
                   <ActiveLink
                     href={menu.href}
                     className=""
-                    activeClassName="w-full text-xs font-medium md:ml-8 text-skin-navlink-active uppercase opacity-80 transition-all duration-200"
+                    activeClassName="w-full text-xs font-medium lg:ml-8 text-navlink-active uppercase transition-all duration-200"
                   >
-                    <a className="w-full text-xs md:ml-8 font-medium uppercase opacity-80 transition-all duration-200 hover:text-skin-navlink-hover">
+                    <a className="w-full text-xs lg:ml-8 font-medium uppercase  transition-all duration-200 hover:text-navlink-hover">
                       {menu.text}
                     </a>
                   </ActiveLink>
@@ -97,7 +102,7 @@ const NavBar = () => {
         <button
           className={` ${
             isOpen
-              ? "block cursor-pointer justify-center items-center group md:none lg:none"
+              ? "block cursor-pointer justify-center items-center group lg:none lg:none"
               : "none"
           }
                  `}

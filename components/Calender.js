@@ -5,8 +5,6 @@ import LayoutIntranet from "./layout/layoutIntranet";
 import popupStyles from "/styles/popup.module.css";
 import List from "./userlist";
 import ReactDOM from "react-dom/client";
-import { useState } from "react";
-import Modal from "./modal";
 import { HiXMark } from "react-icons/hi2";
 
 const Component = ({ admin, allEvents }) => {
@@ -116,7 +114,7 @@ const Calender = ({ admin, allEvents }) => {
       <div></div>
 
       <div id="createevent" className={`window-pop ${popupStyles.hide}`}>
-        <div className="relative bg-skin-fill rounded p-5 m-2 ">
+        <div className="relative bg-fill rounded p-5 m-2 ">
           <div className=" flex flex-row justify-between">
             <h3 className="uppercase text-lg md:h1"> Skapa Event</h3>
             <button
@@ -130,7 +128,7 @@ const Calender = ({ admin, allEvents }) => {
                   .classList.add(popupStyles.hide);
               }}
             >
-              <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
+              <div className="absolute top-0 right-0 p-3 hover:text-muted">
                 <HiXMark />
               </div>
             </button>
@@ -140,7 +138,7 @@ const Calender = ({ admin, allEvents }) => {
               <div className="flex flex-row">
                 <p className="pr-2"> Från</p>
                 <input
-                  className="start px-2 hover:bg-zinc-300 rounded"
+                  className="start px-2 hover:bg-tiertary-1 rounded"
                   type="date"
                   name="start"
                 />
@@ -149,7 +147,7 @@ const Calender = ({ admin, allEvents }) => {
               <div className="flex flex-row px-2">
                 <p className="px-2">till </p>
                 <input
-                  className="end px-2 hover:bg-zinc-300 rounded"
+                  className="end px-2 hover:bg-tiertary-1 rounded"
                   type="date"
                   name="end"
                 />
@@ -176,7 +174,7 @@ const Calender = ({ admin, allEvents }) => {
         </div>
       </div>
       <div id="modifyevent" className={`window-pop ${popupStyles.hide}`}>
-        <div className="relative bg-skin-fill rounded p-5 m-2 ">
+        <div className="relative bg-fill rounded p-5 m-2 ">
           <div className=" flex flex-row justify-between">
             <h4 className="uppercase text-lg md:h1"> Ändra Event</h4>
             <button
@@ -190,7 +188,7 @@ const Calender = ({ admin, allEvents }) => {
                   .classList.add(popupStyles.hide);
               }}
             >
-              <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
+              <div className="absolute top-0 right-0 p-3 hover:text-muted">
                 <HiXMark />
               </div>
             </button>
@@ -203,7 +201,7 @@ const Calender = ({ admin, allEvents }) => {
                     <div className="flex flex-row">
                       <p className="pr-2"> Från</p>
                       <input
-                        className="start px-2 hover:bg-zinc-300 rounded"
+                        className="start px-2 hover:bg-tiertary-1 rounded"
                         type="date"
                         name="start"
                       />
@@ -212,7 +210,7 @@ const Calender = ({ admin, allEvents }) => {
                     <div className="flex flex-row ">
                       <p className="px-2">Till </p>
                       <input
-                        className="end px-2 hover:bg-zinc-300 rounded"
+                        className="end px-2 hover:bg-tiertary-1 rounded"
                         type="date"
                         name="end"
                       />
@@ -232,6 +230,7 @@ const Calender = ({ admin, allEvents }) => {
                     </div>
 
                     <div className="flex flex-col ">
+                      border
                       <p>Beskrivning</p>
                       <input
                         className="description p-2 rounded"
@@ -285,7 +284,7 @@ const Calender = ({ admin, allEvents }) => {
         </div>
       </div>
       <div id="checkevent" className={`window-pop ${popupStyles.hide}`}>
-        <div className="bg-white rounded p-5">
+        <div className="bg-fill rounded p-5">
           <h1> Check Event</h1>
           <h2 className={"title"}></h2>
           <p className={"description"}></p>
@@ -307,14 +306,14 @@ const Calender = ({ admin, allEvents }) => {
       <div className="layout py-8 md:py-12  flex flex-col items-center">
         <div className="flex flex-row gap-4">
           <a
-            className="p-2 bg-skin-button-accent text-skin-inverted rounded-sm"
+            className="p-2 bg-primary-1 text-inverted rounded-sm"
             href={"./calendar"}
           >
             Mina händelser
           </a>
 
           <a
-            className="p-2 bg-skin-button-accent text-skin-inverted rounded-sm"
+            className="p-2 bg-primary-1 text-inverted rounded-sm"
             href={"./fullcalender"}
           >
             Alla händelser

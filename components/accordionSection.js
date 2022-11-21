@@ -6,14 +6,18 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
     <>
       <div onClick={handleSetIndex} className="">
         {index !== id ? (
-          <div className="flex group flex-row p-3 cursor-pointer w-full  my-2 rounded-md  hover:border-none hover:bg-skin-primary active:bg-skin-secondary shadow-lg shadow-shadow">
+          <div className="flex  flex-row p-2 cursor-pointer w-full transition-all duration-500 ease-in-out  my-2 rounded-md  hover:border-none hover:bg-primary-1 active:bg-secondary-1 shadow-lg shadow-shadow">
             {img_path != null}
-            <div className=" m-2 w-12 md:w-24 h-12 md:h-24  rounded-md md:rounded-xl  overflow-hidden">
-              <img src={img_path} alt={img_path} />
+            <div className=" m-2 w-12 md:w-24 h-12 md:h-24  ">
+              <img
+                className="object-cover w-12 md:w-24 h-12 md:h-24 rounded-md   md:rounded-xl"
+                src={img_path}
+                alt={img_path}
+              />
             </div>
-            <div className="flex flex-col p-2 max-h-40 md:w-96 w-52">
+            <div className="flex flex-col p-2 max-h-40 md:w-96 w-52  ">
               <h5 className="">{author}</h5>
-              <h4 className="line-clamp-2">{children}</h4>
+              <p className="line-clamp-2  text-base md:text-xl">{children}</p>
             </div>
             <div className="flex items-end ">
               <svg
@@ -33,17 +37,20 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
             </div>
           </div>
         ) : (
-          <div className="flex group flex-row p-3 cursor-pointer w-full  my-2 rounded-md  hover:border-none hover:bg-skin-primary active:bg-skin-secondary shadow-lg shadow-shadow">
-            <div className="m-2 w-12 md:w-24 h-12 md:h-24  rounded-md md:rounded-xl  overflow-hidden">
-              <img src={img_path} alt={img_path} />
+          <div className="flex  flex-row p-2 cursor-pointer w-full  transition-all duration-500 ease-in-out  hover:border-none hover:bg-primary-1 active:bg-secondary-1 shadow-lg shadow-shadow">
+            <div className="m-2 w-12 md:w-24 h-12 md:h-24 rounded-md">
+              <img
+                className="object-cover w-12 md:w-24 h-12 md:h-24 rounded-md   md:rounded-xl"
+                src={img_path}
+                alt={img_path}
+              />
             </div>
 
-            <div className=" flex flex-col flex-auto p-2  md:w-96  w-52">
+            <div className=" flex flex-col flex-auto p-2  md:w-96  w-52 ">
               <h5 className="">{author}</h5>
-              <h4 className="">{children}</h4>
+              <p className="text-base md:text-xl">{children}</p>
             </div>
             <div className="flex items-end ">
-              {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
