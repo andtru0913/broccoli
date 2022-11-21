@@ -60,41 +60,36 @@ const NavbarAdmin = ({ user }) => {
             : "none"
         }
                  `}
-                        onClick={openmenu}
-                    >
-                        <div
-                            className={`${hamburgerLine}
+        onClick={openmenu}
+      >
+        <div
+          className={`${hamburgerLine}
                         ${
-                                isOpen
-                                    ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
-                                    : "opacity-50 group-hover:opacity-100 "
-                            } `}
-                        />
-                        <div
-                            className={`${hamburgerLine}
+                          isOpen
+                            ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
+                            : "opacity-50 group-hover:opacity-100 "
+                        } `}
+        />
+        <div
+          className={`${hamburgerLine}
                         ${
-                                isOpen
-                                    ? "opacity-0"
-                                    : "opacity-50 group-hover:opacity-100"
-                            }`}
-                        />
+                          isOpen
+                            ? "opacity-0"
+                            : "opacity-50 group-hover:opacity-100"
+                        }`}
+        />
 
-                        <div
-                            className={`${hamburgerLine}
+        <div
+          className={`${hamburgerLine}
                         ${
-                                isOpen
-                                    ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
-                                    : "opacity-50 group-hover:opacity-100"
-                            }`}
-                        />
-                    </button>
-                </nav>)
-        }
-    }
-    catch {
-        return null
-    }
-    return null
-}
+                          isOpen
+                            ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
+                            : "opacity-50 group-hover:opacity-100"
+                        }`}
+        />
+      </button>
+    </nav>
+  );
+};
 
 export default NavbarAdmin;

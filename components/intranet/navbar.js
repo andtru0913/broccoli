@@ -102,21 +102,20 @@ const NavbarIntranet = ({ user }) => {
                             }`}
               />
 
-                        <div
-                            className={`${hamburgerLine}
-                            ${isOpen
-                                    ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
-                                    : "opacity-50 group-hover:opacity-100"
-                                }`}
-                        />
-                    </button>
-                    </nav>
-                </>
-
-                }
-
-            </header>
-    );
-}
+              <div
+                className={`${hamburgerLine}
+                            ${
+                              isOpen
+                                ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
+                                : "opacity-50 group-hover:opacity-100"
+                            }`}
+              />
+            </button>
+          </nav>
+        </>
+      )}
+    </header>
+  );
+};
 
 export default NavbarIntranet;
