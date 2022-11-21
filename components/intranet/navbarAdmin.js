@@ -1,18 +1,8 @@
-import Link from "next/link";
 import { useState } from "react";
-import {
-  HiHome,
-  HiBookOpen,
-  HiUserCircle,
-  HiCalendarDays,
-  HiClock,
-  HiArrowLeftOnRectangle,
-} from "react-icons/hi2";
 import ActiveLink from "../activeLink";
 
 const ADMIN_MENU_LIST = [
-  { text: "Admin", href: "/intranet/admin" },
-  { text: "Anställda", href: "/intranet/admin/users" },
+  { text: "Anställda", href: "/intranet/admin/employees" },
   { text: "Lunchgrupper", href: "/intranet/admin/lunchgroups" },
 ];
 
@@ -70,36 +60,41 @@ const NavbarAdmin = ({ user }) => {
             : "none"
         }
                  `}
-        onClick={openmenu}
-      >
-        <div
-          className={`${hamburgerLine}
+                        onClick={openmenu}
+                    >
+                        <div
+                            className={`${hamburgerLine}
                         ${
-                          isOpen
-                            ? "rotate-45 translate-y-1 opacity-50 group-hover:opacity-100 "
-                            : "opacity-50 group-hover:opacity-100 "
-                        } `}
-        />
-        <div
-          className={`${hamburgerLine}
+                                isOpen
+                                    ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
+                                    : "opacity-50 group-hover:opacity-100 "
+                            } `}
+                        />
+                        <div
+                            className={`${hamburgerLine}
                         ${
-                          isOpen
-                            ? "opacity-0"
-                            : "opacity-50 group-hover:opacity-100"
-                        }`}
-        />
+                                isOpen
+                                    ? "opacity-0"
+                                    : "opacity-50 group-hover:opacity-100"
+                            }`}
+                        />
 
-        <div
-          className={`${hamburgerLine}
+                        <div
+                            className={`${hamburgerLine}
                         ${
-                          isOpen
-                            ? "-rotate-45 -translate-y-1 opacity-50 group-hover:opacity-100"
-                            : "opacity-50 group-hover:opacity-100"
-                        }`}
-        />
-      </button>
-    </nav>
-  );
-};
+                                isOpen
+                                    ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
+                                    : "opacity-50 group-hover:opacity-100"
+                            }`}
+                        />
+                    </button>
+                </nav>)
+        }
+    }
+    catch {
+        return null
+    }
+    return null
+}
 
 export default NavbarAdmin;

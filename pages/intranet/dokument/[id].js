@@ -1,6 +1,5 @@
 import LayoutIntranet from '../../../components/layout/layoutIntranet';
 import {getDocument, getUserinfo} from "../../../Database";
-import Base64Downloader from 'react-base64-downloader';
 
 export async function getServerSideProps(context) {
     let cookies = JSON.parse(context.req.cookies['user'] || null)
@@ -9,7 +8,7 @@ export async function getServerSideProps(context) {
         const id = context.params.id
         let doc = await getDocument(id)
         return {
-            props: {doc: doc}
+            props: {doc: doc, admin: user.admin}
         }
     }
     return {
@@ -21,13 +20,23 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function Home ({doc}) {
+export default function Home ({doc, admin}) {
+    let button = ""
+    if (admin) {
+        button = (
+            <form method={"POST"} action={"../../api/deleteDocument"}>
+                <input name={"id"} type={"hidden"} value={doc.id}/>
+                    <button>&#10060;</button>
+                </form>
+            )
+    }
     return (
         <LayoutIntranet>
-            <p>{doc.title}</p>
+            <p>{JSON.stringify(doc)}</p>
             <p>{doc.date}</p>
-            <embed style={{height: "500px", width: "500px"}} src={doc.base64} id={doc.id}/>
-            <Base64Downloader base64={doc.base64} downloadName={doc.filename}>Ladda ner</Base64Downloader>
+            <embed style={{height: "500px", width: "500px"}} src={`/uploads/dokument/${doc.filename}`} id={doc.id}/>
+            <a download={doc.filename} href={`/uploads/dokument/${doc.filename}`}>Ladda ner</a>
+            {button}
          </LayoutIntranet>
     );
 }

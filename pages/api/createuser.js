@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     if (await checkAdmin(req.cookies['user'])) {
-        await createNewUser(req.body.username, req.body.password, req.body.firstname, req.body.lastname, req.body.email, req.body.address, req.body.privatenumber, req.body.worknumber, req.body.company, req.body.admin)
+        await createNewUser(req.body.username, req.body.password, req.body.firstname, req.body.lastname, req.body.gender, req.body.email, req.body.address, req.body.privatenumber, req.body.worknumber, req.body.company, req.body.admin)
             .catch(e => {
                 console.error(e.message)
             })

@@ -19,7 +19,7 @@ const INTRA_MENU_LIST = [
     bottom: true,
     top: true,
     icon: <HiBookOpen size={20} />,
-    href: "/intranet/handbook",
+    href: "/intranet/index",
   },
   {
     text: "Employees",
@@ -27,6 +27,13 @@ const INTRA_MENU_LIST = [
     top: true,
     icon: <HiClock size={20} />,
     href: "/intranet",
+  },
+  {
+    text: "Dokument",
+    bottom: false,
+    top: true,
+    icon: <HiArrowLeftOnRectangle size={20} />,
+    href: "/intranet/dokument ",
   },
   {
     text: "News",
@@ -63,6 +70,7 @@ const INTRA_MENU_LIST = [
     icon: <HiArrowLeftOnRectangle size={20} />,
     href: "/api/logout",
   },
+
 ];
 
 export default INTRA_MENU_LIST;

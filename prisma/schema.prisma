@@ -16,6 +16,7 @@ model User {
     password        String
     firstname       String?
     lastname        String?
+    gender          String?
     email           String @unique
     address         String?
     privatenumber   String?
@@ -81,6 +82,5 @@ model Document {
     id          String  @id @default(auto()) @map("_id") @db.ObjectId
     title       String
     filename    String
-    base64      String
     date        String
 }

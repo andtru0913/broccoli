@@ -5,20 +5,56 @@ import { HiHeart } from "react-icons/hi2";
 import { GiTie, GiStumpRegrowth } from "react-icons/gi";
 import { FaFacebookSquare } from "react-icons/fa";
 import broccoligarden from "../public/images/kranar.png";
+import { Doughnut } from "react-chartjs-2";
+// noinspection ES6UnusedImports
+import Chart from "chart.js/auto";
+import { getGenderCount } from "../Database";
 
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
   const feed = await data.json();
-
   return {
     props: {
-      feed,
+      feed: feed,
+      genderCount: await getGenderCount(),
     },
   };
 };
 
-export default function Home({ feed }) {
+export default function Home({ feed, genderCount }) {
+  const chartData = {
+    labels: ["Män", "Kvinnor"],
+    datasets: [
+      {
+        data: genderCount,
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              let label = context.label;
+              let value = context.formattedValue;
+
+              if (!label) label = "Unknown";
+
+              let sum = 0;
+              let dataArr = context.chart.data.datasets[0].data;
+              dataArr.map((data) => {
+                sum += Number(data);
+              });
+
+              let percentage = ((value * 100) / sum).toFixed(0) + "%";
+              return label + ": " + percentage;
+            },
+          },
+        },
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)"],
+        borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)"],
+        borderWidth: 1,
+        hoverBorderWidth: 8,
+        hoverBorderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)"],
+      },
+    ],
+  };
   const insta_images = feed.data;
   return (
     <Layout className="">
@@ -45,10 +81,13 @@ export default function Home({ feed }) {
             </div>
           </div>
         </section>
+        <section>
+          <Doughnut className="h-auto w-48" data={chartData}></Doughnut>
+        </section>
 
         <section className="relative">
           <svg
-            className="absolute top-14 fill-skin-primary-l2 w-1/2"
+            className="absolute top-14 fill-primary-l2 w-1/2"
             viewBox="0 0 721 805"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -56,11 +95,11 @@ export default function Home({ feed }) {
             <path d="M254 707C200 725.597 -72.2149 987.228 -74 565L-50 -11C-21.7366 14.3337 142 133 204 149C238.818 157.985 376.587 171 414 233C457.645 305.327 603.523 258.11 666 313C728.477 367.89 725.157 460.221 714 513C702.843 565.779 695.089 653.333 646 685C606.729 710.334 532 669 442 669C352 669 308 688.403 254 707Z" />
           </svg>
 
-          <div className="layout py-12 text-center text-skin-base overflow-hidden ">
+          <div className="layout py-12 text-center text-base overflow-hidden ">
             <h2 className=" ">Våra kärnvärden</h2>
             <div className="grid grid-cols-1 grid-flow-row  lg:grid-cols-3 justify-center gap-4 py-8   lg:px-40 cursor-default">
               <div className="relative rounded">
-                <div className="flex flex-col  flex-1 bg-gradient-to-br from-skin-hue to-skin-ho bg-opacity-60   p-4 z-20 h-full items-center ">
+                <div className="flex flex-col  flex-1 bg-gradient-to-br from-hue to-ho bg-opacity-60   p-4 z-20 h-full items-center ">
                   <div className="text-red-500 h-12  flex items-center">
                     <HiHeart size={30} />
                   </div>
@@ -138,6 +177,7 @@ export default function Home({ feed }) {
                       <img
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                         src={image.media_url}
+                        alt={"image"}
                       />
                     </a>
                   </div>
