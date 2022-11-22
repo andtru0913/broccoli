@@ -90,7 +90,7 @@ export default function Home({ user, lunchgroups }) {
   if (user === null) {
     return (
       <main className="">
-        <div className=" mx-auto bg-skin-fill w-screen h-screen p-4 relative">
+        <div className=" mx-auto bg-skin-fill w-screen h-screen p-4 relative ">
           <Image
             src="/images/gothenburg.jfif"
             layout="fill"
@@ -146,7 +146,7 @@ export default function Home({ user, lunchgroups }) {
   } else {
     return (
       <LayoutIntranet>
-        <main className="">
+        <main >
           <div className="layout py-20 md:py-12 flex flex-col items-center">
             <h1 className=" text-center">Välkommen {user.firstname}</h1>
 

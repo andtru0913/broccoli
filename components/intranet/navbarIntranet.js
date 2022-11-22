@@ -12,7 +12,7 @@ const NavbarIntranet = ({ user }) => {
     <>
       <header className="fixed top-0 md:sticky">
         {user === null ? (
-          <nav className="hidden md:flex justify-between align-middle  px-4">
+          <nav className="hidden md:flex justify-between align-middle  px-4 ">
             <div className="text-lg flex justify-start">
               <Link href="/intranet">
                 <a>
@@ -27,7 +27,7 @@ const NavbarIntranet = ({ user }) => {
           </nav>
         ) : (
           <>
-            <nav className=" hidden md:flex justify-between align-middle px-4 shadow-md">
+            <nav className=" hidden md:flex justify-between align-middle px-4 shadow-md ">
               <div className="text-lg flex justify-start">
                 <Link href="/intranet">
                   <a>
@@ -39,7 +39,7 @@ const NavbarIntranet = ({ user }) => {
                 </Link>
               </div>
 
-              <div className="flex justify-center absolute right-10 text-skin-muted ">
+              <div className="flex justify-center absolute right-10 text-skin-muted">
                 <ul
                   className={`md:flex md:flex-row md:justify-between md:align-middle
                                     ${

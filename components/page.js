@@ -159,7 +159,7 @@ const Page = ({ authentication, page, redirect }) => {
     };
   }
   return (
-    <Layout>
+    <>
       {popup.background}
       {popup.createCard}
       {popup.modifyCard}
@@ -222,7 +222,7 @@ const Page = ({ authentication, page, redirect }) => {
           </form>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 
