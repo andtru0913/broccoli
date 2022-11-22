@@ -27,6 +27,7 @@ const NavbarIntranet = ({ user }) => {
           </nav>
         ) : (
           <>
+            <NavbarAdmin user={user} />
             <nav className=" hidden  lg:flex justify-between align-middle px-4 py-2 shadow-md">
               <div className="text-lg flex justify-start">
                 <Link href="/intranet">

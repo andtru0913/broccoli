@@ -145,7 +145,7 @@ export default function Home({ user }) {
   } else {
     return (
       <LayoutIntranet user={user}>
-        <main className="">
+        <main>
           <div className="layout py-20 md:py-12 flex flex-col items-center">
             <h1 className=" text-center">Välkommen {user.firstname}</h1>
 
