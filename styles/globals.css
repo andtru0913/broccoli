@@ -129,12 +129,6 @@
   .btn:hover {
     @apply bg-opacity-70;
   }
-
-  input,
-  textarea,
-  .input {
-    @apply border focus:text-muted focus:bg-fill focus:border-primary-1 focus:outline-none;
-  }
 }
 
 @layer utilities {
@@ -146,13 +140,13 @@
   }
 
   .popup {
-    @apply h-full top-0 w-screen bg-black fixed z-40 bg-opacity-60;
+    @apply h-screen top-0 w-screen bg-black absolute z-20 bg-opacity-60;
   }
-  .pop-hide {
+  .popup-hide {
     display: none !important;
   }
   .window-pop {
-    @apply z-50 fixed text-base top-1/4 flex flex-col items-center;
+    @apply z-30 absolute text-base top-1/4 flex flex-col w-screen items-center;
   }
 
   @media (prefers-reduced-motion: no-preference) {

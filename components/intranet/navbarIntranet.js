@@ -10,7 +10,7 @@ const NavbarIntranet = ({ user }) => {
   const openmenu = () => setIsOpen(!isOpen);
   return (
     <>
-      <header className="fixed top-0  lg:sticky bg-fill z-30">
+      <header className="fixed top-0  lg:sticky z-50">
         {user === null ? (
           <nav className="hidden  lg:flex justify-between align-middle px-4">
             <div className="text-lg flex justify-start">
@@ -45,8 +45,8 @@ const NavbarIntranet = ({ user }) => {
                   className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
                                       isOpen === false
-                                        ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  "
-                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300 "
+                                        ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300    bg-fill "
+                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300    bg-fill"
                                     }`}
                 >
                   {INTRA_MENU_LIST.map((menu) => {
