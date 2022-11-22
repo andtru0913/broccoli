@@ -17,9 +17,13 @@ const post = async (req, res) => {
 };
 
 const saveFile = async (file, filename) => {
-    const data = fs.readFileSync(file.filepath);
-    fs.writeFileSync(`./public/uploads/${filename}`, data);
-    await fs.unlinkSync(file.filepath);
+    try {
+        const data = fs.readFileSync(file.filepath);
+        fs.writeFileSync(`./public/uploads/${filename}`, data);
+        await fs.unlinkSync(file.filepath);
+    } catch (_) {
+
+    }
 };
 
 export default async function handler(req, res) {

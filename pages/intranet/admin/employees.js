@@ -189,10 +189,9 @@ export default function Home({ user }) {
                   <div
                     key={i}
                     onClick={function () {
-                      document
-                        .getElementById("popup")
-                        .classList.remove(popupStyles.hide);
+                      document.getElementById("popup").classList.remove(popupStyles.hide);
                       let window = document.getElementById("modifyuser");
+
                       window.getElementsByClassName("id")[0].value = u.id;
                       window.getElementsByClassName("id")[1].value = u.id;
                       window.getElementsByClassName("password")[0].value = "";
@@ -213,7 +212,9 @@ export default function Home({ user }) {
                         u.company;
                       window.getElementsByClassName("admin")[0].checked =
                         u.admin;
-
+                      if(!!u.gender) {
+                        document.getElementById(u.gender).checked = true;
+                      }
                       window.classList.remove(popupStyles.hide);
                     }}
                     className="grid grid-flow-row gap-4 items-left text-sm p-4 rounded-lg shadow bg-skin-primary"
@@ -310,7 +311,9 @@ export default function Home({ user }) {
                               u.company;
                             window.getElementsByClassName("admin")[0].checked =
                               u.admin;
-
+                            if(!u.gender) {
+                              window.getElementById(u.gender).checked = true;
+                            }
                             window.classList.remove(popupStyles.hide);
                           }}
                         >

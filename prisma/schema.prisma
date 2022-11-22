@@ -16,7 +16,7 @@ model User {
     password        String
     firstname       String?
     lastname        String?
-    gender          String?
+    gender          String
     email           String @unique
     address         String?
     privatenumber   String?
