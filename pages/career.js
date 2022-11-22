@@ -52,11 +52,13 @@ export default function Career({ authentication, page, redirect }) {
   ];
   return (
     <Layout>
-      <Page
+      <Page 
         authentication={authentication}
         page={page}
         redirect={redirect}
-      ></Page>
+        formTitle="SPONTANANSÖKAN"
+      >
+      
       <section className="">
         <div className="layout py-12 flex flex-col items-center justify-center ">
           <h3>Förmåner hos broccoli</h3>
@@ -73,6 +75,10 @@ export default function Career({ authentication, page, redirect }) {
           </div>
         </div>
       </section>
+      
+      </Page>
+
+      
     </Layout>
   );
 }

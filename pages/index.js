@@ -59,7 +59,7 @@ export default function Home({ feed, genderCount }) {
   return (
     <Layout className="">
       <main>
-        <header className=" ">
+     
           <div className=" overflow-hidden h-screen bg-center ">
             <Image
               src="/images/gothenburg.jfif"
@@ -68,7 +68,6 @@ export default function Home({ feed, genderCount }) {
               alt="Siluette of Gothenburg"
             />
           </div>
-        </header>
 
         <section className="">
           <div className="layout py-12  flex flex-col justify-center">

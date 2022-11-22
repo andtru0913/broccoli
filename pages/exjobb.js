@@ -24,6 +24,7 @@ export default function Exjobb({ authentication, page }) {
         authentication={authentication}
         page={page}
         redirect="../exjobb"
+        formTitle="EXJOBBSANSÖKAN"
       ></Page>
     </Layout>
   );

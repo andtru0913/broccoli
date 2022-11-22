@@ -2,8 +2,9 @@ import popupStyles from "./popup.module.css";
 import Form from "./form";
 import Card from "./card";
 import { FileAdder } from "./FileAdder";
+import Image from "next/image";
 
-const Page = ({ authentication, page, redirect }) => {
+const Page = ({ authentication, page, redirect, formTitle, children}) => {
   let popup = {};
   if (authentication === null) {
     const file = new FileAdder();
@@ -166,7 +167,7 @@ const Page = ({ authentication, page, redirect }) => {
       {popup.modifyCard}
       {popup.modifyPage}
       <section
-        className="bg-fill"
+        className="bg-fill relative"
         onClick={function () {
           if (authentication === null) {
             let background = document.getElementById("popup");
@@ -179,10 +180,25 @@ const Page = ({ authentication, page, redirect }) => {
           }
         }}
       >
-        <div className="layout py-12 text-base text-center max-w-prose">
+          <svg className=" absolute z-10 right-0 -top-16 w-2/3  h-auto max-h- " width="818" height="895" viewBox="0 0 818 902" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" fill="#E97AEB" fill-opacity="0.38"/>
+          </svg>
+          <div className="relative overflow-hidden h-screen bg-center ">
+            <Image
+              src="/images/gothenburg.jfif"
+              layout="fill"
+              objectFit="cover"
+              alt="Siluette of Gothenburg"
+            />
+
+
+            
+          </div>
+          <div className="absolute right-0 bottom-0 z-10  py-12 text-base  max-w-prose">
           <h1 className="pb-8"> {page.title}</h1>
-          <p> {page.description}</p>
+          <h2> {page.description}</h2>
         </div>
+        
       </section>
 
       <section className="bg-fill  ">
@@ -214,11 +230,12 @@ const Page = ({ authentication, page, redirect }) => {
           </div>
         </div>
       </section>
+      {children}
 
-      <section id="form" className="bg-fill">
+      <section id="form" className="bg-secondary-1">
         <div className="layout py-12 md:w-1/2">
           <form method="POST" action="./api/send_email">
-            <Form title={"Spontanansökan"} />
+            <Form title={formTitle} />
           </form>
         </div>
       </section>

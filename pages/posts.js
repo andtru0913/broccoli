@@ -20,10 +20,11 @@ export async function getServerSideProps(context) {
 export default function Posts({ authentication, page }) {
   return (
     <Layout>
-      <Page
+      <Page classname=""
         authentication={authentication}
         page={page}
         redirect="../posts"
+        formTitle="ANSÖKAN"
       ></Page>
     </Layout>
   );

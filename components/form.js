@@ -1,7 +1,7 @@
 export default function Form({ title }) {
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <div className=" w-full  md:p-12">
           {/**title */}
 
@@ -12,31 +12,31 @@ export default function Form({ title }) {
           </div>
 
           {/**first and last name */}
-          <div className="relative flex flex-wrap flex-col md:flex-row  ">
+          <div className="relative flex flex-wrap flex-col md:flex-row ">
             <div className="flex flex-1 flex-col p-2">
-              <label className="text-sm pb-1" htmlFor="first">
-                First Name
+              <label className="text-base pb-1" htmlFor="first">
+                Förnamn
               </label>
               <input
-                className="  p-2 border  appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-secondary autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                className=" text-sm p-2 border border-slate-900 appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                 type="text"
                 id="first"
                 name="first"
-                placeholder="Firstname.. "
+                placeholder="Förnamn..."
                 required
               />
             </div>
             <div className="flex flex-1 flex-col p-2">
-              <label className="text-sm pb-1" htmlFor="last">
-                Last Name
+              <label className="text-base pb-1" htmlFor="last">
+                Efternamn
               </label>
               <input
-                className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-secondary "
+                className="text-sm p-2 border  border-slate-900 appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
                 autoComplete="on"
                 type="text"
                 id="last"
                 name="last"
-                placeholder="Lastname.. "
+                placeholder="Efternamn..."
                 required
               />
             </div>
@@ -44,11 +44,11 @@ export default function Form({ title }) {
           {/**mail and phone*/}
           <div className="relative flex flex-wrap flex-col md:flex-row  ">
             <div className="flex flex-1 flex-col p-2">
-              <label className="text-sm pb-1" htmlFor="first">
-                Mail
+              <label className="text-base pb-1" htmlFor="first">
+                E-post
               </label>
               <input
-                className="  p-2 border    appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-secondary"
+                className=" text-sm p-2 border  border-slate-900 appearance-none  leading-tight focus:border-dashed hover:border-dashed "
                 type="email"
                 id="email"
                 name="email"
@@ -57,11 +57,11 @@ export default function Form({ title }) {
               />
             </div>
             <div className="flex flex-1 flex-col p-2">
-              <label className="text-sm pb-1" htmlFor="last">
-                Phone
+              <label className="text-base pb-1" htmlFor="last">
+                Telefonnummer
               </label>
               <input
-                className="  p-2 border appearance-none  rounded-md shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-secondary"
+                className=" text-sm p-2 border border-slate-900 aappearance-none  leading-tight focus:border-dashed hover:border-dashed"
                 type="tel"
                 id="phone"
                 name="phone"
@@ -74,15 +74,15 @@ export default function Form({ title }) {
           {/**free text */}
           <div className="relative flex flex-wrap flex-col md:flex-row">
             <div className="flex flex-1 flex-col p-2">
-              <label className="text-sm pb-1" htmlFor="first">
-                Free text
+              <label className="text-base pb-1" htmlFor="first">
+                Egen text
               </label>
               <textarea
-                className="  p-2 border  zinc-200  appearance-none  rounded-md shadow leading-tight text-wrap focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-secondary"
+                className=" text-sm p-2 border  border-slate-900  appearance-none leading-tight text-wrap focus:border-dashed hover:border-dashed"
                 type="text"
                 id="freetext"
                 name="freetext"
-                placeholder="Tell us something about yourself.. "
+                placeholder="Berätta något om dig själv! :)"
               />
             </div>
           </div>
@@ -91,12 +91,13 @@ export default function Form({ title }) {
 
           <div className="relative flex flex-wrap flex-row  ">
             <div className="flex flex-1 flex-col p-2">
-              <label className="text-sm pb-1" htmlFor="first">
-                Insert attachement (CV or/and personal letter)
+              <label className="text-base pb-1" htmlFor="first">
+                Infoga fil (CV och/eller personligt brev)
               </label>
               <input style={{ display: "none" }} id="base64" name="base64" />
+             
               <input
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding  solid  border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:outline-secondary focus:outline-none"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
                 type="file"
                 id="formFile"
                 name="file"
@@ -130,8 +131,8 @@ export default function Form({ title }) {
 
           <div className="relative flex flex-wrap flex-row  ">
             <div className="flex flex-1 flex-row p-2">
-              <label className="text-xs pb-1" htmlFor="first">
-                By sending this form you accept your data to be saved
+              <label className="text-xs pb-1 text-gray-700" htmlFor="first">
+                Genom att skicka in detta formulär godkännder du att dina uppgifter sparas*
               </label>
             </div>
           </div>
@@ -139,10 +140,10 @@ export default function Form({ title }) {
 
           <div className="relative flex justify-end flex-row  ">
             <div className=" p-2 ">
-              <button
+              <button 
                 id="formSubmit"
                 type="submit"
-                className="shadow bg-primary-1 hover:bg-primary-d2 focus:shadow-outline focus:outline-none text-inverted font-semibold py-2 px-4 rounded"
+                className=" btn btn-primary "
               >
                 Skicka
               </button>
