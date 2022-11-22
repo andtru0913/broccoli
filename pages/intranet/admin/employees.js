@@ -1,8 +1,6 @@
-import Head from "next/head";
-import styles from "../../../styles/Home.module.css";
 import * as Database from "../../../Database";
 import { authenticate } from "./authenticate";
-import popupStyles from "../popup.module.css";
+import popupStyles from "../../../components/popup.module.css";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
@@ -18,7 +16,7 @@ export async function getServerSideProps(context) {
 export default function Home({ user }) {
   const popUpstyle = "h-screen w-screen bg-black absolute z-20 bg-opacity-60";
   const windowstyle =
-    "z-30 absolute w-screen bg-skin-fill p-8 rounded top-1/3 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 ";
+    "z-30 absolute w-screen bg-skin-fill p-8 rounded top-inledning/3 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 ";
   return (
     <LayoutIntranet>
       <main className="">
@@ -70,6 +68,12 @@ export default function Home({ user }) {
                   name="lastname"
                   placeholder="Efternamn"
                 />
+                <input type="radio" id="man" name="gender" value="man"/>
+                <label htmlFor="man">Man</label>
+                <input type="radio" id="woman" name="gender" value="woman"/>
+                <label htmlFor="woman">Kvinna</label>
+                <input type="radio" id="none" name="gender" value=""/>
+                <label htmlFor="none">Vill ej ange</label>
                 <input
                   className="email"
                   type="text"
@@ -151,6 +155,12 @@ export default function Home({ user }) {
                 <input type="text" name="password" placeholder="Lösenord" />
                 <input type="text" name="firstname" placeholder="Förnamn" />
                 <input type="text" name="lastname" placeholder="Efternamn" />
+                <input type="radio" id="man" name="gender" value="man"/>
+                <label htmlFor="man">Man</label>
+                <input type="radio" id="woman" name="gender" value="woman"/>
+                <label htmlFor="woman">Kvinna</label>
+                <input type="radio" id="none" name="gender" value=""/>
+                <label htmlFor="none">Vill ej ange</label>
                 <input type="text" name="email" placeholder="Email" />
                 <input type="text" name="address" placeholder="Address" />
                 <input
@@ -229,9 +239,9 @@ export default function Home({ user }) {
                 </div>
               </div>
 
-              <div class="hidden md:block overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                  <div class="overflow-hidden"></div>
+              <div className="hidden md:block overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div className="overflow-hidden"></div>
 
                   <table className="min-w-full">
                     <thead className="border-b-2 border-skin-secondary">

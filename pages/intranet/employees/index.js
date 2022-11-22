@@ -10,7 +10,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({user}) {
-    console.log(user)
     return (
         <LayoutIntranet>
             {user.map((u,i) =>

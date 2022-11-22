@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     text += req.body.email + "\n"
     text += req.body.phone + "\n"
     let data = req.body.base64.match(/base64,(.+)$/);
-    let base64String = data[1];
+    let base64String = data[inledning];
     client.send(
         {
             text: text,

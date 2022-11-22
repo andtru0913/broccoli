@@ -2,7 +2,6 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
-import ActiveLink from "../../components/activeLink";
 import INTRA_MENU_LIST from "../../components/intranet/navItemIntra";
 import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
@@ -81,7 +80,7 @@ const lunchfuldata = [
   },
 ];
 
-export default function Home({ user, lunchgroups }) {
+export default function Home({ user }) {
   const { theme, setTheme } = useTheme();
   useEffect(() => {
     let currentTheme = theme;
@@ -145,8 +144,8 @@ export default function Home({ user, lunchgroups }) {
     );
   } else {
     return (
-      <LayoutIntranet>
-        <main >
+      <LayoutIntranet user={user}>
+        <main>
           <div className="layout py-20 md:py-12 flex flex-col items-center">
             <h1 className=" text-center">Välkommen {user.firstname}</h1>
 

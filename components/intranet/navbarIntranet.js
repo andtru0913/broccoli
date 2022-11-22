@@ -27,6 +27,7 @@ const NavbarIntranet = ({ user }) => {
           </nav>
         ) : (
           <>
+            <NavbarAdmin user={user} />
             <nav className=" hidden md:flex justify-between align-middle px-4 shadow-md ">
               <div className="text-lg flex justify-start">
                 <Link href="/intranet">
@@ -191,7 +192,7 @@ export default NavbarIntranet;
                         <div
                             className={`${hamburgerLine}
                             ${isOpen
-                                    ? "rotate-45 translate-y-1 opacity-50 group-hover:opacity-100 "
+                                    ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
                                     : "opacity-50 group-hover:opacity-100 "
                                 } `}
                         />
@@ -204,7 +205,7 @@ export default NavbarIntranet;
                         <div
                             className={`${hamburgerLine}
                             ${isOpen
-                                    ? "-rotate-45 -translate-y-1 opacity-50 group-hover:opacity-100"
+                                    ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
                                     : "opacity-50 group-hover:opacity-100"
                                 }`}
                         />

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Layout from "../components/layout/layout";
 
 export default function Contact() {
@@ -12,7 +11,8 @@ export default function Contact() {
 
                     <div className='relative rounded '>
                         <div className='flex w-full h-full justify-center z-10 '>
-                            <img className=" object-cover" src="/images/broccoli-kontor.jpg" />
+                            <img className=" object-cover" src="/images/broccoli-kontor.jpg" alt={"image"}/>
+
                         </div>
 
 
@@ -63,12 +63,7 @@ export default function Contact() {
                                     <iframe
                                         className="w-full h-80"
                                         id="gmap_canvas"
-                                        href='https://goo.gl/maps/p9sa1f82ZyN3FdAH9'
-                                        src="https://maps.google.com/maps?q=Tillg%C3%A4ngligheten%203,%20417%2001%20G%C3%B6teborg&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0"
-                                        scrolling="no"
-                                        marginheight="0"
-                                        marginwidth="0">
+                                        src="https://maps.google.com/maps?q=Tillg%C3%A4ngligheten%203,%20417%2001%20G%C3%B6teborg&t=&z=13&ie=UTF8&iwloc=&output=embed">
                                     </iframe>  
                             </div>
                         </div>

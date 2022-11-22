@@ -1,20 +1,61 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
 import Accordion from "../components/accordion";
+import { Doughnut } from 'react-chartjs-2'
+// noinspection ES6UnusedImports
+import Chart from 'chart.js/auto'
+import {getGenderCount} from "../Database";
 
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
   const feed = await data.json();
-
   return {
     props: {
-      feed,
+      feed: feed,
+      genderCount: await getGenderCount()
     },
   };
 };
 
-export default function Home({ feed }) {
+export default function Home({ feed, genderCount }) {
+  const chartData = {
+    labels: ['Män', 'Kvinnor'],
+    datasets: [{
+      data: genderCount,
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            let label = context.label;
+            let value = context.formattedValue;
+
+            if (!label)
+              label = 'Unknown'
+
+            let sum = 0;
+            let dataArr = context.chart.data.datasets[0].data;
+            dataArr.map(data => {
+              sum += Number(data);
+            });
+
+            let percentage = (value * 100 / sum).toFixed(0) + '%';
+            return label + ": " + percentage;
+          }
+        }
+      },
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)'],
+      borderWidth: 1,
+      hoverBorderWidth: 8,
+      hoverBorderColor: ['rgb(255, 99, 132)',
+        'rgb(255, 159, 64)'],
+    }],
+  };
   const insta_images = feed.data;
   return (
     <Layout className="">
@@ -41,6 +82,9 @@ export default function Home({ feed }) {
               <Accordion />
             </div>
           </div>
+        </section>
+        <section>
+          <Doughnut className="h-auto w-48" data={chartData}></Doughnut>
         </section>
 
         <section className=" py-12 text-center text-skin-base overflow-hidden">
@@ -113,6 +157,7 @@ export default function Home({ feed }) {
                       <img
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                         src={image.media_url}
+                        alt={"image"}
                       />
                     </a>
                   </div>

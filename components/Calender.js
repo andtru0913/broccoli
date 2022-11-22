@@ -95,7 +95,7 @@ const Component = ({ admin, allEvents }) => {
 const Calender = ({ admin, allEvents }) => {
   const popUpstyle = "h-full w-screen bg-black absolute z-20 bg-opacity-60";
   const windowstyle =
-    "z-30 absolute w-screen p-4  top-1/4 md:left-1/4 flex flex-col md:w-1/2 -translate-1/2 bg-skin-fill rounded p-5";
+    "z-30 absolute w-screen p-4  top-inledning/4 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 bg-skin-fill rounded p-5";
   return (
     <LayoutIntranet>
       <div>
