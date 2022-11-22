@@ -1,12 +1,12 @@
 import popupStyles from "./popup.module.css";
 import Form from "./form";
 import Card from "./card";
-import {FileAdder} from "./FileAdder"
+import { FileAdder } from "./FileAdder";
 
 const Page = ({ authentication, page, redirect }) => {
   let popup = {};
   if (authentication === null) {
-      const file = new FileAdder()
+    const file = new FileAdder();
     popup = {
       background: (
         <div
@@ -48,9 +48,28 @@ const Page = ({ authentication, page, redirect }) => {
             <input type="text" name="description" placeholder="Text" />
             <input type="hidden" name="pageId" value={page.id} />
             <input type="hidden" name="redirect" value={redirect} />
-            <input className={"form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"}
-                   id={"createCardFile"} type="file" name="myImage" onChange={file.uploadToClient} />
-            <button onClick={function() {file.uploadToServer(`cards/${document.getElementById("createCardFile").files[0].name}`).then(_ => {})}} id="createCardSubmit" type="submit">
+            <input
+              className={
+                "form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid  rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
+              }
+              id={"createCardFile"}
+              type="file"
+              name="myImage"
+              onChange={file.uploadToClient}
+            />
+            <button
+              onClick={function () {
+                file
+                  .uploadToServer(
+                    `cards/${
+                      document.getElementById("createCardFile").files[0].name
+                    }`
+                  )
+                  .then((_) => {});
+              }}
+              id="createCardSubmit"
+              type="submit"
+            >
               {" "}
               Skapa{" "}
             </button>
@@ -79,17 +98,29 @@ const Page = ({ authentication, page, redirect }) => {
             />
 
             <input
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-skin-muted  bg-clip-padding border border-solid border-skin-border rounded transition ease-in-out m-0 focus:text-skin-muted focus:bg-skin-fill focus:border-skin-secondary focus:outline-none"
+              className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid border-border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
               type="file"
               id="modifyFormFile"
               name="myImage"
               onChange={async function (event) {
-                file.uploadToClient(event)
+                file.uploadToClient(event);
               }}
             />
             <input type="hidden" name="filename" value={redirect} />
             <input type="hidden" name="redirect" value={redirect} />
-            <button onClick={function () {file.uploadToServer(`cards/${document.getElementById("modifyFormFile").files[0].name}`).then(_ => {})}} type="submit" id="modifyCardSubmit">
+            <button
+              onClick={function () {
+                file
+                  .uploadToServer(
+                    `cards/${
+                      document.getElementById("modifyFormFile").files[0].name
+                    }`
+                  )
+                  .then((_) => {});
+              }}
+              type="submit"
+              id="modifyCardSubmit"
+            >
               {" "}
               Ändra kort
             </button>
@@ -135,25 +166,26 @@ const Page = ({ authentication, page, redirect }) => {
       {popup.modifyCard}
       {popup.modifyPage}
       <section
-        className="bg-skin-fill"
+        className="bg-fill"
         onClick={function () {
           if (authentication === null) {
             let background = document.getElementById("popup");
             let modifyPage = document.getElementById("modifyPage");
             background.classList.remove(popupStyles.hide);
             modifyPage.getElementsByClassName("title")[0].value = page.title;
-            modifyPage.getElementsByClassName("description")[0].value = page.description;
+            modifyPage.getElementsByClassName("description")[0].value =
+              page.description;
             modifyPage.classList.remove(popupStyles.hide);
           }
         }}
       >
-        <div className="layout py-12 text-skin-base text-center max-w-prose">
+        <div className="layout py-12 text-base text-center max-w-prose">
           <h1 className="pb-8"> {page.title}</h1>
           <p> {page.description}</p>
         </div>
       </section>
 
-      <section className="bg-skin-fill  ">
+      <section className="bg-fill  ">
         <div className=" layout py-12 md:w-1/2">
           <div className="grid md:grid-cols-2  md:gap-12 ">
             {page.cards.map((card) => (
@@ -169,8 +201,10 @@ const Page = ({ authentication, page, redirect }) => {
                     background.classList.remove(popupStyles.hide);
                     modifyCard.getElementsByClassName("id")[0].value = card.id;
                     modifyCard.getElementsByClassName("id")[1].value = card.id;
-                    modifyCard.getElementsByClassName("title")[0].value = card.title;
-                    modifyCard.getElementsByClassName("description")[0].value = card.description;
+                    modifyCard.getElementsByClassName("title")[0].value =
+                      card.title;
+                    modifyCard.getElementsByClassName("description")[0].value =
+                      card.description;
                     modifyCard.classList.remove(popupStyles.hide);
                   }
                 }}
@@ -181,7 +215,7 @@ const Page = ({ authentication, page, redirect }) => {
         </div>
       </section>
 
-      <section id="form" className="bg-skin-fill">
+      <section id="form" className="bg-fill">
         <div className="layout py-12 md:w-1/2">
           <form method="POST" action="./api/send_email">
             <Form title={"Spontanansökan"} />

@@ -2,15 +2,15 @@ import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
-import popupStyles from "./popup.module.css";
+import popupStyles from "/styles/popup.module.css";
 import { lunchgroup } from "../defaultIDs";
 
 const Column = ({ column, tasks }) => {
   return (
-    <div className="rounded-lg bg-skin-primary  flex flex-col">
-      <div className="align-middle text-center bg-skin-secondary  rounded-t-lg px-6 mb-6">
-        <h4
-          className="font-medium text-skin-muted"
+    <div className="rounded-lg bg-primary-1  flex flex-col">
+      <div className="align-middle text-center bg-secondary-1 rounded-t-lg px-2 mb-2 md:px-6 md:mb-6">
+        <h5
+          className="font-medium text-xs md:text-lg text-muted"
           onClick={function () {
             if (column.id !== lunchgroup) {
               let modifyLunchgroup =
@@ -27,13 +27,13 @@ const Column = ({ column, tasks }) => {
           }}
         >
           {column.title}
-        </h4>
+        </h5>
       </div>
 
       <Droppable droppableId={column.id}>
         {(droppableProvided) => (
           <div
-            className="flex flex-1 flex-col px-6"
+            className="flex flex-1 flex-col px-2 md:px-6"
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >
@@ -41,13 +41,7 @@ const Column = ({ column, tasks }) => {
               <Draggable key={task.id} draggableId={`${task.id}`} index={index}>
                 {(draggableProvided, draggableSnapshot) => (
                   <div
-                    className="flex mb-4 bg-skin-error rounded-sm p-6 outline-2 outline-white "
-                    mb="1rem"
-                    h="72px"
-                    bg="card-bg"
-                    rounded="3px"
-                    p="1.5rem"
-                    outline="2px solid"
+                    className="flex mb-4 rounded-lg bg-primary-1 text-inverted-muted justify-center p-2 md:p-6 outline-2 outline-white "
                     outlineColor={
                       draggableSnapshot.isDragging
                         ? "card-border"

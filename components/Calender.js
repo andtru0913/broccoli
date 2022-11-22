@@ -2,9 +2,10 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import LayoutIntranet from "./layout/layoutIntranet";
-import popupStyles from "./popup.module.css";
+import popupStyles from "/styles/popup.module.css";
 import List from "./userlist";
 import ReactDOM from "react-dom/client";
+import { HiXMark } from "react-icons/hi2";
 
 const Component = ({ admin, allEvents }) => {
   return (
@@ -98,33 +99,49 @@ const Calender = ({ admin, allEvents }) => {
     "z-30 absolute w-screen p-4  top-inledning/4 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 bg-skin-fill rounded p-5";
   return (
     <LayoutIntranet>
-      <div>
-        <a href={"./calendar"}>Mina händelser</a>
-        <a href={"./fullcalender"}>Alla händelser</a>
-      </div>
       <div
         id="popup"
-        className={`${popupStyles.popUp} ${popupStyles.hide}`}
+        className={`popup ${popupStyles.hide}`}
         onClick={function () {
-          document.getElementById("popup").classList.add(popupStyles.hide);
           document.getElementById("checkevent").classList.add(popupStyles.hide);
           document
             .getElementById("modifyevent")
             .classList.add(popupStyles.hide);
+
           document
             .getElementById("createevent")
             .classList.add(popupStyles.hide);
+          document.getElementById("popup").classList.add(popupStyles.hide);
         }}
       ></div>
-      <div id="createevent" className={`${windowstyle}  ${popupStyles.hide}`}>
-        <div className="bg-white rounded p-5">
-          <h3 className="text-darkest"> Create Event</h3>
+      <div></div>
+
+      <div id="createevent" className={`window-pop ${popupStyles.hide}`}>
+        <div className="relative bg-fill rounded p-5 m-2 ">
+          <div className=" flex flex-row justify-between">
+            <h3 className="uppercase text-lg md:h1"> Skapa Event</h3>
+            <button
+              type=""
+              onClick={function () {
+                document
+                  .getElementById("popup")
+                  .classList.add(popupStyles.hide);
+                document
+                  .getElementById("createevent")
+                  .classList.add(popupStyles.hide);
+              }}
+            >
+              <div className="absolute top-0 right-0 p-3 hover:text-muted">
+                <HiXMark />
+              </div>
+            </button>
+          </div>
           <form action="../../api/createEvent" method="POST">
-            <div className="flex flex-row py-4">
+            <div className="flex flex-col md:flex-row  py-4">
               <div className="flex flex-row">
                 <p className="pr-2"> Från</p>
                 <input
-                  className="start hover:bg-zinc-300 rounded"
+                  className="start px-2 hover:bg-tiertary-1 rounded"
                   type="date"
                   name="start"
                 />
@@ -133,7 +150,7 @@ const Calender = ({ admin, allEvents }) => {
               <div className="flex flex-row px-2">
                 <p className="px-2">till </p>
                 <input
-                  className="end hover:bg-zinc-300 rounded"
+                  className="end px-2 hover:bg-tiertary-1 rounded"
                   type="date"
                   name="end"
                 />
@@ -153,67 +170,124 @@ const Calender = ({ admin, allEvents }) => {
                 placeholder="Beskrivning"
               />
               <button className="shadow btn btn-create" type="submit">
-                {" "}
-                Skapa{" "}
+                Skapa
               </button>
             </div>
           </form>
         </div>
       </div>
-      <div id="modifyevent" className={`${windowstyle} ${popupStyles.hide}`}>
-        <div className="bg-white rounded p-5">
-          <h1> Modify Event</h1>
-          <form action="../../api/modifyEvent" method="POST">
-            <div className="flex flex-row">
-              Från <input className="start" type="date" name="start" /> till{" "}
-              <input className="end" type="date" name="end" />
+      <div id="modifyevent" className={`window-pop ${popupStyles.hide}`}>
+        <div className="relative bg-fill rounded p-5 m-2 ">
+          <div className=" flex flex-row justify-between">
+            <h4 className="uppercase text-lg md:h1"> Ändra Event</h4>
+            <button
+              type=""
+              onClick={function () {
+                document
+                  .getElementById("popup")
+                  .classList.add(popupStyles.hide);
+                document
+                  .getElementById("modifyevent")
+                  .classList.add(popupStyles.hide);
+              }}
+            >
+              <div className="absolute top-0 right-0 p-3 hover:text-muted">
+                <HiXMark />
+              </div>
+            </button>
+          </div>
+          <div className="flex flex-col md:flex-row flex-1 scroll-auto">
+            <div className="flex flex-col md:flex-row gap-2 py-4">
+              <div className="flex flex-col">
+                <form action="../../api/modifyEvent" method="POST">
+                  <div className="flex flex-col md:flex-row gap-2 py-4">
+                    <div className="flex flex-row">
+                      <p className="pr-2"> Från</p>
+                      <input
+                        className="start px-2 hover:bg-tiertary-1 rounded"
+                        type="date"
+                        name="start"
+                      />
+                    </div>
+
+                    <div className="flex flex-row ">
+                      <p className="px-2">Till </p>
+                      <input
+                        className="end px-2 hover:bg-tiertary-1 rounded"
+                        type="date"
+                        name="end"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col md:flex-row gap-2 py-4">
+                    <div className="flex flex-col ">
+                      <p>Titel</p>
+                      <input className="id p-2" type="hidden" name="id" />
+                      <input
+                        className="title p-2 rounded"
+                        type="text"
+                        name="title"
+                        placeholder="Titel"
+                      />
+                    </div>
+
+                    <div className="flex flex-col ">
+                      border
+                      <p>Beskrivning</p>
+                      <input
+                        className="description p-2 rounded"
+                        type="text"
+                        name="description"
+                        placeholder="Beskrivning"
+                      />
+                    </div>
+                  </div>
+                  <button className="shadow btn btn-modify" type="submit">
+                    Ändra händelse
+                  </button>
+                </form>
+                <div className="pt-2">
+                  <form action="../../api/deleteEvent" method="POST">
+                    <input
+                      className="id p-2 border rounded mb-2"
+                      type="hidden"
+                      name="id"
+                    />
+                    <button className="btn btn-delete" type="submit">
+                      Radera händelse
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <input className="id p-2" type="hidden" name="id" />
-            <input
-              className="title p-2 "
-              type="text"
-              name="title"
-              placeholder="Titel"
-            />
-            <input
-              className="description p-2"
-              type="text"
-              name="description"
-              placeholder="Beskrivning"
-            />
-            <button className="shadow btn btn-create" type="submit">
-              {" "}
-              Ändra händelse
-            </button>
-          </form>
-          <form action="../../api/deleteEvent" method="POST">
-            <input
-              className="id p-2 border rounded mb-2"
-              type="hidden"
-              name="id"
-            />
-            <button className="btn btn-delete" type="submit">
-              {" "}
-              Radera händelse
-            </button>
-          </form>
-          <form action="../../api/joinEvent" method="POST">
-            <input className="eventid" type="hidden" name="eventid" />
-            <button type="Submit">Gå med</button>
-          </form>
-          <form action="../../api/leaveEvent" method="POST">
-            <input className="eventid" type="hidden" name="eventid" />
-            <button type="Submit">Lämna</button>
-          </form>
-          <form action="../../api/maybeEvent" method="POST">
-            <input className="eventid" type="hidden" name="eventid" />
-            <button type="Submit">Kanske</button>
-          </form>
+            <div className="flex flex-col md:flex-row gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
+              <form action="../../api/joinEvent" method="POST">
+                <input className="eventid" type="hidden" name="eventid" />
+                <button className="btn btn-create" type="Submit">
+                  Kommer
+                </button>
+              </form>
+
+              <form action="../../api/maybeEvent" method="POST">
+                <input className="eventid" type="hidden" name="eventid" />
+                <button className="btn btn-modify" type="Submit">
+                  Kanske
+                </button>
+              </form>
+              <form action="../../api/leaveEvent" method="POST">
+                <input className="eventid" type="hidden" name="eventid" />
+                <button className="btn btn-delete" type="Submit">
+                  Kommer inte
+                </button>
+              </form>
+            </div>
+          </div>
           <div id="modifyRoot" />
         </div>
       </div>
-      <div id="checkevent" className={`${windowstyle} ${popupStyles.hide}`}>
-        <div className="bg-white rounded p-5">
+      <div id="checkevent" className={`window-pop ${popupStyles.hide}`}>
+        <div className="bg-fill rounded p-5">
           <h1> Check Event</h1>
           <h2 className={"title"}></h2>
           <p className={"description"}></p>
@@ -231,7 +305,23 @@ const Calender = ({ admin, allEvents }) => {
           </form>
         </div>
       </div>
-      <div className="layout py-12  flex flex-col items-center">
+
+      <div className="layout py-8 md:py-12  flex flex-col items-center">
+        <div className="flex flex-row gap-4">
+          <a
+            className="p-2 bg-primary-1 text-inverted rounded-sm"
+            href={"./calendar"}
+          >
+            Mina händelser
+          </a>
+
+          <a
+            className="p-2 bg-primary-1 text-inverted rounded-sm"
+            href={"./fullcalender"}
+          >
+            Alla händelser
+          </a>
+        </div>
         <div className="w-screen p-2 md:w-4/5">
           {Component({ admin, allEvents })}
         </div>

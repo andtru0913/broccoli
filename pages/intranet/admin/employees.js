@@ -1,6 +1,6 @@
 import * as Database from "../../../Database";
 import { authenticate } from "./authenticate";
-import popupStyles from "../../../components/popup.module.css";
+import popupStyles from "/styles/popup.module.css";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
@@ -68,11 +68,11 @@ export default function Home({ user }) {
                   name="lastname"
                   placeholder="Efternamn"
                 />
-                <input type="radio" id="man" name="gender" value="man"/>
+                <input type="radio" id="man" name="gender" value="man" />
                 <label htmlFor="man">Man</label>
-                <input type="radio" id="woman" name="gender" value="woman"/>
+                <input type="radio" id="woman" name="gender" value="woman" />
                 <label htmlFor="woman">Kvinna</label>
-                <input type="radio" id="none" name="gender" value=""/>
+                <input type="radio" id="none" name="gender" value="" />
                 <label htmlFor="none">Vill ej ange</label>
                 <input
                   className="email"
@@ -155,11 +155,11 @@ export default function Home({ user }) {
                 <input type="text" name="password" placeholder="Lösenord" />
                 <input type="text" name="firstname" placeholder="Förnamn" />
                 <input type="text" name="lastname" placeholder="Efternamn" />
-                <input type="radio" id="man" name="gender" value="man"/>
+                <input type="radio" id="man" name="gender" value="man" />
                 <label htmlFor="man">Man</label>
-                <input type="radio" id="woman" name="gender" value="woman"/>
+                <input type="radio" id="woman" name="gender" value="woman" />
                 <label htmlFor="woman">Kvinna</label>
-                <input type="radio" id="none" name="gender" value=""/>
+                <input type="radio" id="none" name="gender" value="" />
                 <label htmlFor="none">Vill ej ange</label>
                 <input type="text" name="email" placeholder="Email" />
                 <input type="text" name="address" placeholder="Address" />

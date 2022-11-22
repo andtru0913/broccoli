@@ -2,131 +2,194 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Layout from "../components/layout/layout";
 import Historia from "./historia";
+import data from "../public/computer.png";
+import broccoli from "../public/broccoli.png";
 const callback = function (entries) {
-    entries.forEach(entry => {
-        const animationType = entry.target.dataset.animateType
-        // Is the element in the viewport?
-        if (entry.isIntersecting) {
-
-            // Add the fadeIn class:
-            entry.target.classList.add(animationType);
-        } else {
-
-            // Otherwise remove the fadein class
-            entry.target.classList.remove(animationType);
-        }
-    });
+  entries.forEach((entry) => {
+    const animationType = entry.target.dataset.animateType;
+    // Is the element in the viewport?
+    if (entry.isIntersecting) {
+      // Add the fadeIn class:
+      entry.target.classList.add(animationType);
+    } else {
+      // Otherwise remove the fadein class
+      entry.target.classList.remove(animationType);
+    }
+  });
 };
-export default function About() {
+export default function About({ title, intro, year, timelinedesc }) {
+  // Get all the elements you want to show on scroll
 
-    // Get all the elements you want to show on scroll
+  const [animateHeader, setAnimateHeader] = useState(false);
 
-    const [animateHeader, setAnimateHeader] = useState(false);
+  useEffect(() => {
+    const targets = document.querySelectorAll(".js-show-on-scroll");
+    const observer = new IntersectionObserver(callback);
+    // Loop through each of the target
+    targets.forEach(function (target) {
+      // Hide the element
+      target.classList.add("opacity-0");
 
-    useEffect(() => {
-        const targets = document.querySelectorAll(".js-show-on-scroll");
-        const observer = new IntersectionObserver(callback);
-        // Loop through each of the target
-        targets.forEach(function (target) {
-            // Hide the element
-            target.classList.add("opacity-0");
+      // Add the element to the watcher
+      observer.observe(target);
+    });
 
-            // Add the element to the watcher
-            observer.observe(target);
-        });
+    // Callback for IntersectionObserver
+  }, []);
 
-        // Callback for IntersectionObserver
-
-    }, [])
-
-
-
-
-
-    return (
-
-        <Layout>
-          
-            <section className="  bg-gradient-to-br from-skin-hue to-skin-no">
-            
-
-                <div className="layout w-full text-skin-inverted text-center py-12  flex flex-col flex-1 items-center justify-center  md:gap-20 gap-8 ">
-                <h1>Om OSS</h1>
-                    <div className="w-full flex flex-col items-center ">
-                        <div className="md:w-1/3 w-3/4 border-2 h-32 flex-1 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
-                            <h4 className="font-bold">1993</h4>
-                            <p className=" ">Broccoli grundades av Björn Bergholm vid sidan om Chalmersstudierna. Genom åren har företaget vuxit och är numera ett väl utvecklat teknikkonsultbolag specialiserat inom elektronikutveckling.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div className=" w-full   flex flex-col items-center ">
-                        <div className="md:w-1/3 w-3/4 h-32  flex-1 border-2 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
-                            <h4 className="font-bold">2000</h4>
-                            <p className=" ">Genom åren har företaget vuxit och är numera ett väl utvecklat teknikkonsultbolag specialiserat inom elektronikutveckling.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-
-                    <div className=" w-full   flex flex-col items-center ">
-                        <div className="md:w-1/3 w-3/4 h-32  flex-1 border-2 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
-                            <h4 className="font-bold">2018</h4>
-                            <p className=" ">Broccoli köper Broccoligården
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div className=" w-full   flex flex-col items-center ">
-                        <div className="md:w-1/3 w-3/4 h-32  flex-1 border-2 md:p-4 p-4 flex flex-col items-center js-show-on-scroll" data-animate-type="motion-safe:animate-fadeInLeft" >
-                            <h4 className="font-bold">Nutid</h4>
-                            <p className=" ">Med vår hårdvaru- och mjukvarukompetens kan vi erbjuda tjänster inom design, konstruktion och testning av inbyggda system. Vi hjälper till att täcka behov i gränslandet mellan hårdvara och mjukvara i flera olika branscher.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
+  return (
+    <Layout>
+      <main>
+        <section className=" bg-fill">
+          <div className="layout  text-base text-center py-12  flex flex-col flex-1  items-center justify-center   lg:gap-20 gap-8 ">
+            <div className=" lg:max-w-readable flex flex-col gap-4 ">
+              <h1 className="">{title ?? "Om oss"}</h1>
+            </div>
+            <div className=" grid tablet:grid-cols-1 grid-cols-1  lg:grid-cols-3 tablet:grid-rows-1 grid-rows-1  lg:grid-rows-2 gap-2">
+              <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2">
+                <div className="  lg:max-w-readable flex  justify-center">
+                  <h4 className=" lg:w-3/4">
+                    Hos broccoli jobbar ingenjörer med olika inriktningar främst
+                    inom:
+                  </h4>
                 </div>
-            </section>
 
-            <section className="bg-skin-fill">
-                <div className="layout h-screen py-12 grid md:grid-cols-2 grid-cols-1">
-                    <div className=" overflow-hidden">
-                    <Image
-              src="/images/gothenburg.jfif"
-              width={500}
-              height={400}
-              objectFit='cover'
-              alt="Siluette of Gothenburg"
-            />
-                    </div>
-                    <div className="py-12 grid gap-4">
-                        
-                        <p>Merparten av våra konsultuppdrag är förlagda hos kund, och en mindre del är inhouse projekt av varierande storlek.
-
-                            Våra kunder är ofta produktutvecklande företag som återfinns inom diverse olika branscher såsom fordon, automation, marin, medicin med flera. Gemensamt för alla är att de arbetar med elektronik av något slag i sin verksamhet.</p>
-
+                <div className="flex flex-row flex-wrap flex-auto justify-center  gap-2">
+                  <div className="flex flex-col items-center ">
+                    <div className="w-12 h-auto">
+                      <Image src={data} />
                     </div>
 
+                    <div className="bg-primary-1 py-4 px-6 ">
+                      <p className="font-medium">Data</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center  ">
+                    <div className="w-12 h-auto">
+                      <Image src={data} />
+                    </div>
+
+                    <div className="bg-primary-1 py-4 px-6">
+                      <p className="font-medium">Mjukvara</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center ">
+                    <div className="w-12 h-auto">
+                      <Image src={data} />
+                    </div>
+
+                    <div className="bg-primary-1 py-4 px-6">
+                      <p className="font-medium">Elektronik</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center  ">
+                    <div className="w-12 h-auto">
+                      <Image src={data} />
+                    </div>
+
+                    <div className="bg-primary-1 py-4 px-6">
+                      <p className="font-medium">Mekatronik</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center ">
+                    <div className="w-12 h-auto">
+                      <Image src={data} />
+                    </div>
+
+                    <div className="bg-primary-1 py-4 px-6">
+                      <p className="font-medium">Teknisk Fysik</p>
+                    </div>
+                  </div>
                 </div>
-            </section>
+              </div>
+              <div className="hidden tablet:hidden  lg:flex  lg:row-span-2">
+                <div className="w-full h-auto relative">
+                  <Image src={broccoli} />
+                  <div className="absolute lg:text-sm xl:text-base lg:top-14 xl:top-16  lg:left-8 left-6 w-1/2 font-medium">
+                    <p>
+                      Merparten av våra konsulter är förlagda hos kund men vi
+                      har även inhouse projekt av olika storlekar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className=" lg:hidden tablet:flex   lg:col-span-2 flex flex-col justify-center items-center">
+                <div className="p-4 rounded-lg  tablet:w-3/4 bg-primary-l1 text-skin-inverted">
+                  <h4>
+                    Merparten av våra konsulter är förlagda hos kund men vi har
+                    även inhouse projekt av olika storlekar.
+                  </h4>
+                </div>
+              </div>
+              <div className="  lg:col-span-2 flex flex-col justify-center items-center">
+                <div className="p-4 rounded-lg tablet:w-3/4 bg-primary-l1 text-skin-inverted">
+                  <h4>
+                    Vi kan erbjuda tjänster inom Mjukvaruutveckling, design,
+                    konstruktion, testning och inbyggda system. Med vår
+                    kompetens kan vi fylla gränslandet mellan hårdvara och
+                    mjukvara.
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        </Layout>
-    );
+        <Historia />
+
+        <section className="bg-fill">
+          <div className="layout py-12 flex flex-col items-center">
+            <div className=" md:max-w-readable flex flex-col gap-4 text-center">
+              <h1>{title ?? "kvalitets- och miljöpolicy"}</h1>
+
+              <h4 className=" text-justify">
+                {intro ??
+                  "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
+              </h4>
+            </div>
+            <div className=" py-12 flex flex-col">
+              <div className=" py-12 grid  lg:grid-cols-2 grid-cols-1 place-items-center lg:justify-items-end  lg:gap-8 gap-4">
+                <div className=" overflow-hidden">
+                  <Image
+                    src="/images/gothenburg.jfif"
+                    width={300}
+                    height={200}
+                    objectFit="cover"
+                    alt="Siluette of Gothenburg"
+                  />
+                </div>
+                <div className="text-center lg:text-left md:w-1/2 lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start">
+                  <h3>{title ?? "VÅRT KVALITETSARBETE"}</h3>
+
+                  <p className=" text-justify">
+                    {intro ??
+                      "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
+                  </p>
+                </div>
+              </div>
+              <div className=" py-12 grid  lg:grid-cols-2 grid-cols-1 place-items-center lg:justify-items-end  lg:gap-8 gap-4">
+                <div className="overflow-hidden">
+                  <Image
+                    src="/images/gothenburg.jfif"
+                    width={300}
+                    height={200}
+                    objectFit="cover"
+                    alt="Siluette of Gothenburg"
+                  />
+                </div>
+                <div className="text-center lg:text-left  md:w-1/2 lg:max-w-readable flex flex-col  gap-4 lg:place-self-start">
+                  <h3>{title ?? "VÅRT MILJÖÅTAGANDE"}</h3>
+
+                  <p className=" text-justify">
+                    {intro ??
+                      "Vi vill skydda vår miljö och förhindra förorening genom medvetna val. Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster och produkter som är mer energieffektiva , samt reducera våra CO2 ekvivalenta utsläpp som påverkar växthuseffekten. Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår verksamhet."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </Layout>
+  );
 }
