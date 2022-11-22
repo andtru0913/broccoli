@@ -209,20 +209,23 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
       {popup.createCard}
       {popup.modifyCard}
       {popup.modifyPage}
-      <section
-        className="bg-fill relative"
-        onClick={function () {
-          if (authentication === null) {
-            let background = document.getElementById("popup");
-            let modifyPage = document.getElementById("modifyPage");
-            background.classList.remove(popHide);
-            modifyPage.getElementsByClassName("title")[0].value = page.title;
-            modifyPage.getElementsByClassName("description")[0].value =
-              page.description;
-            modifyPage.classList.remove(popHide);
-          }
-        }}
-      >
+      <section className="bg-fill relative">
+        <button
+          onClick={function () {
+            if (authentication === null) {
+              let background = document.getElementById("popup");
+              let modifyPage = document.getElementById("modifyPage");
+              background.classList.remove(popHide);
+              modifyPage.getElementsByClassName("title")[0].value = page.title;
+              modifyPage.getElementsByClassName("description")[0].value =
+                page.description;
+              modifyPage.classList.remove(popHide);
+            }
+          }}
+          className="btn btn-primary"
+        >
+          Edit page{" "}
+        </button>
         <svg
           className=" absolute z-10 right-0 -top-16 w-2/3  h-auto max-h- "
           width="818"
