@@ -142,13 +142,7 @@
     display: none;
   }
   ::-webkit-file-upload-button {
-    @apply bg-transparent border-solid text-sm text-gray-600  hover:border-dotted
-  
-  input,
-  textarea,
-  .input {
-      @apply border focus:text-muted focus:bg-fill focus:border-primary-1 focus:outline-none;
-    }
+    @apply bg-transparent border-solid text-sm text-gray-600  hover:border-dotted;
   }
 }
 
