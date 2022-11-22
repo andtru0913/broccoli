@@ -1,14 +1,14 @@
 const ProfilePicture = ({ image}) => {
     return (
-        !image ?
+        image == null ?
             <img className=" w-full  bg-cover bg-center rounded-t-sm"
                  src={"/images/silhouette.jpg"}
-                 alt={"silhouette"}
+                 alt={"profilbild"}
             />
             :
             <img className=" w-full  bg-cover bg-center rounded-t-sm"
-                 src={`/uploads/profiles/${image}`}
-                 alt={"can't find profile pic"}
+                 src={image}
+                 alt={"profilbild"}
             />
     );
 }

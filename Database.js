@@ -104,32 +104,6 @@ export async function getUserByEmail(email) {
     }
 }
 
-export async function getUserProfile(userid) {
-    try {
-        const query = await prisma.user.findMany({
-            where: {
-                id: userid
-            },
-            select: {
-                id:true,
-                username: true,
-                firstname:true,
-                lastname:true,
-                address:true,
-                privatenumber:true,
-                worknumber:true,
-                company:true,
-                image:true,
-                email:true
-            }
-        })
-        return query[0]
-    } catch(e) {
-        return null
-    }
-
-}
-
 export async function getAllUsers() {
     return await prisma.user.findMany({
         select: {
@@ -137,7 +111,6 @@ export async function getAllUsers() {
             username:true,
             firstname:true,
             lastname:true,
-            gender: true,
             email: true,
             address:true,
             privatenumber:true,
@@ -447,7 +420,7 @@ export async function deleteUser(id) {
     })
 }
 
-export async function modifyUser(id, username, email, password, firstname, lastname, gender, address, privatenumber, worknumber, company, admin) {
+export async function modifyUser(id, username, password, firstname, lastname, gender, address, privatenumber, worknumber, company, admin) {
     if (password !== undefined) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
@@ -460,7 +433,6 @@ export async function modifyUser(id, username, email, password, firstname, lastn
                 password: hashedPassword,
                 firstname: firstname,
                 lastname: lastname,
-                email: email,
                 gender: gender,
                 address: address,
                 privatenumber: privatenumber,
@@ -480,7 +452,6 @@ export async function modifyUser(id, username, email, password, firstname, lastn
                 username: username,
                 firstname: firstname,
                 lastname: lastname,
-                email: email,
                 gender: gender,
                 address: address,
                 privatenumber: privatenumber,
@@ -582,61 +553,4 @@ export async function getGenderCount() {
         }
     })
     return [query.filter(user => user.gender === "man").length, query.filter(user => user.gender === "woman").length]
-}
-
-export async function editProfile(userid, username, password, email, address, privatenumber, worknumber, image) {
-    if (!!password) {
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password, salt)
-        await prisma.user.update({
-            where: {
-                id: userid
-            },
-            data: {
-                username: username,
-                password: hashedPassword,
-                address: address,
-                email: email,
-                privatenumber: privatenumber,
-                worknumber: worknumber,
-                salt: salt,
-            },
-        })
-    }
-    else {
-        await prisma.user.update({
-            where: {
-                id: userid
-            },
-            data: {
-                username: username,
-                address: address,
-                email: email,
-                privatenumber: privatenumber,
-                worknumber: worknumber,
-            },
-        })
-    }
-    if(!!image) {
-        await prisma.user.update({
-            where: {
-                id: userid
-            },
-            data: {
-                image: userid,
-            },
-        })
-    }
-}
-
-
-export async function deleteProfilePic(id) {
-    return await prisma.user.update({
-        where: {
-            id: id,
-        },
-        data: {
-            image: null,
-        },
-    })
 }
