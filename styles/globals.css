@@ -64,32 +64,36 @@
 
   /* #region  /**=========== Typography =========== */
   .h0 {
-    @apply text-5xl md:text-5xl;
+    @apply text-5xl md:text-5xl uppercase font-bold;
   }
 
   h1,
   .h1 {
-    @apply text-4xl md:text-4xl uppercase;
+    @apply text-2xl lg:text-4xl uppercase;
   }
 
   h2,
   .h2 {
-    @apply text-4xl md:text-3xl;
+    @apply text-2xl lg:text-3xl font-bold uppercase;
   }
 
   h3,
   .h3 {
-    @apply text-3xl md:text-2xl;
+    @apply text-2xl lg:text-2xl uppercase;
   }
 
   h4,
   .h4 {
-    @apply text-xl md:text-lg;
+    @apply text-xl lg:text-xl uppercase font-bold;
+  }
+
+  .p1 {
+    @apply text-lg;
   }
 
   body,
   .p {
-    @apply text-xs md:text-base;
+    @apply text-base;
   }
 
   /* #endregion  /**======== Typography =========== */
@@ -106,18 +110,14 @@
   }
 
   .btn {
-    @apply text-inverted font-semibold py-2 px-4 rounded;
+    @apply text-inverted uppercase font-semibold py-2 px-4;
   }
-  .btn-misc {
-    @apply text-sm py-1 text-muted border-2 hover:bg-primary-1;
-  }
-
-  .btn-purple {
-    @apply bg-purple-3;
+  .btn-primary {
+    @apply bg-primary-1;
   }
 
   .btn-delete {
-    @apply bg-primary-l2;
+    @apply bg-primary-l2 text-base;
   }
   .btn-modify {
     @apply bg-primary-d2;
@@ -149,28 +149,11 @@
     @apply z-30 absolute text-base top-1/4 flex flex-col w-screen items-center;
   }
 
-  .animated-underline {
-    background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(
-        to right,
-        var(--color-primary-400),
-        var(--color-primary-500)
-      );
-    background-size: 100% 2px, 0 2px;
-    background-position: 100% 100%, 0 100%;
-    background-repeat: no-repeat;
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     .animated-underline {
       transition: 0.3s ease;
       transition-property: background-size, color, background-color,
         border-color;
     }
-  }
-
-  .animated-underline:hover,
-  .animated-underline:focus-visible {
-    background-size: 0 2px, 100% 2px;
   }
 }
