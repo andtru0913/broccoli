@@ -45,8 +45,8 @@ const NavbarIntranet = ({ user }) => {
                   className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
                                       isOpen === false
-                                        ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  shadow-shadow  bg-fill "
-                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  shadow-shadow  bg-fill"
+                                        ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300    bg-fill "
+                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300    bg-fill"
                                     }`}
                 >
                   {INTRA_MENU_LIST.map((menu) => {

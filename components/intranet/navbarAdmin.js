@@ -27,8 +27,8 @@ const NavbarAdmin = ({ user }) => {
           className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle 
                         ${
                           isOpen === false
-                            ? "lg:static fixed  -left-full  py-4  top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm    bg-primary-1 "
-                            : "lg:static fixed  left-0  py-4  top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 "
+                            ? "lg:static fixed  -left-full   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm    bg-primary-1 "
+                            : "lg:static fixed  left-0   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 "
                         }`}
         >
           {ADMIN_MENU_LIST.map((menu) => {
