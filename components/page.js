@@ -34,7 +34,7 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
       createCard: (
         <div className="flex justify-center">
           <div id="createCard" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill rounded p-5 m-2 ">
+            <div className="relative bg-fill  p-5 m-2 ">
               <div className=" flex flex-row justify-between">
                 <h1> Skapa kort</h1>
                 <button
@@ -104,7 +104,7 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
       modifyCard: (
         <div className="flex justify-center">
           <div id="modifyCard" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill rounded p-5 m-2 ">
+            <div className="relative bg-fill  p-5 m-2 ">
               <div className=" flex flex-row justify-between">
                 <h1> Ändra kort</h1>
                 <button
