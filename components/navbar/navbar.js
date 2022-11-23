@@ -11,7 +11,7 @@ const NavBar = () => {
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
-  const [_, setPadding] = useState(30);
+  const [padding, setPadding] = useState(30);
   const [boxShadow, setBoxShadow] = useState(0);
   const [textColor, setTextColor] = useState(0);
 
@@ -38,7 +38,6 @@ const NavBar = () => {
       setPadding(Math.floor(paddingVar));
       setBoxShadow(Math.round((boxShadowVar + Number.EPSILON) * 100) / 100);
 
-      console.log(Math.round(textcolVar));
       setTextColor(Math.round(textcolVar));
     }
   }, [clientWindowHeight]);

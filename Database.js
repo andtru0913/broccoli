@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const bcrypt = require ('bcrypt');
 
 
-export async function createNewUser(username, password, firstname, lastname, gender, email, address, privatenumber, worknumber, company, admin) {
+export async function createNewUser(username, password, firstname, lastname, gender, email, address, privatenumber, worknumber, company, admin, role) {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
     await prisma.user.create({
@@ -24,7 +24,8 @@ export async function createNewUser(username, password, firstname, lastname, gen
             admin: admin !== undefined,
             salt: salt,
             lunchgroupID: '634e9876bf1fe7084e06634c',
-            image: null
+            image: null,
+            role: role
         },
     })
 }
@@ -95,7 +96,9 @@ export async function getUserByEmail(email) {
                 worknumber:true,
                 company:true,
                 image:true,
-                email:true
+                email:true,
+                assignment:true,
+                role:true
             }
         })
         return query[0]
@@ -120,7 +123,8 @@ export async function getUserProfile(userid) {
                 worknumber:true,
                 company:true,
                 image:true,
-                email:true
+                email:true,
+                assignment:true
             }
         })
         return query[0]
@@ -144,6 +148,8 @@ export async function getAllUsers() {
             worknumber:true,
             company:true,
             admin:true,
+            assignment:true,
+            role:true
         }
     })
 }
@@ -447,7 +453,8 @@ export async function deleteUser(id) {
     })
 }
 
-export async function modifyUser(id, username, email, password, firstname, lastname, gender, address, privatenumber, worknumber, company, admin) {
+export async function modifyUser(id, username, email, password, firstname, lastname, gender, address, privatenumber, worknumber, company, admin, assignment,role) {
+    console.log(role)
     if (password !== undefined) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
@@ -468,6 +475,8 @@ export async function modifyUser(id, username, email, password, firstname, lastn
                 company: company,
                 admin: admin !== undefined ? admin : false,
                 salt: salt,
+                assignment: assignment,
+                role: role
             },
         })
     }
@@ -486,7 +495,9 @@ export async function modifyUser(id, username, email, password, firstname, lastn
                 privatenumber: privatenumber,
                 worknumber: worknumber,
                 company: company,
-                admin: admin !== undefined
+                admin: admin !== undefined,
+                assignment: assignment,
+                role:role
             },
         })
     }
@@ -562,7 +573,10 @@ export async function getUserOverview() {
             firstname: true,
             lastname:true,
             image: true,
-            email: true
+            email: true,
+            assignment:true,
+            role:true,
+            worknumber: true
         },
     })
 }
