@@ -26,7 +26,7 @@ const INTRA_MENU_LIST = [
     bottom: false,
     top: true,
     icon: <HiClock size={20} />,
-    href: "/intranet/employees/employee",
+    href: "/intranet/employees",
   },
   {
     text: "Dokument",

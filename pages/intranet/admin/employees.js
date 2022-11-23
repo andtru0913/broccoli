@@ -98,11 +98,18 @@ export default function Home({ user }) {
                   name="worknumber"
                   placeholder="Arbetstelefon"
                 />
+
                 <input
                   className="company"
                   type="text"
                   name="company"
                   placeholder="Bolag"
+                />
+                <input
+                    className="assignment"
+                    type="text"
+                    name="assignment"
+                    placeholder="Uppdrag"
                 />
                 <div>
                   <label> Administratör</label>
@@ -112,7 +119,14 @@ export default function Home({ user }) {
                     name="admin"
                     value="true"
                   />
+
                 </div>
+                <input
+                    className="role"
+                    type="text"
+                    name="role"
+                    placeholder="Roll"
+                />
 
                 <button type="submit">Ändra anställd</button>
               </form>
@@ -178,7 +192,7 @@ export default function Home({ user }) {
                   <label> Administratör</label>
                   <input type="checkbox" name="admin" value="true" />
                 </div>
-
+                <input type="text" name="role" placeholder="Roll" />
                 <button type="submit">Lägg till anställd</button>
               </form>
             </div>
@@ -213,7 +227,11 @@ export default function Home({ user }) {
                         u.company;
                       window.getElementsByClassName("admin")[0].checked =
                         u.admin;
-
+                      window.getElementsByClassName("assignment")[0].value = u.assignment
+                      window.getElementsByClassName("role")[0].value = u.role
+                      if(!!u.gender) {
+                        document.getElementById(u.gender).checked = true;
+                      }
                       window.classList.remove(popupStyles.hide);
                     }}
                     className="grid grid-flow-row gap-4 items-left text-sm p-4 rounded-lg shadow bg-skin-primary"
@@ -271,6 +289,12 @@ export default function Home({ user }) {
                           Bolag
                         </th>
                         <th className="text-sm font-medium text-skin-base px-6 py-4 text-left">
+                          Uppdrag
+                        </th>
+                        <th className="text-sm font-medium text-skin-base px-6 py-4 text-left">
+                          Roll
+                        </th>
+                        <th className="text-sm font-medium text-skin-base px-6 py-4 text-left">
                           Admin
                         </th>
                       </tr>
@@ -310,7 +334,11 @@ export default function Home({ user }) {
                               u.company;
                             window.getElementsByClassName("admin")[0].checked =
                               u.admin;
-
+                            window.getElementsByClassName("assignment")[0].value = u.assignment
+                            if(!u.gender) {
+                              window.getElementById(u.gender).checked = true;
+                            }
+                            window.getElementsByClassName("role")[0].value = u.role
                             window.classList.remove(popupStyles.hide);
                           }}
                         >
@@ -337,6 +365,12 @@ export default function Home({ user }) {
                           </td>
                           <td className="text-sm text-skin-muted px-6 py-4 whitespace-nowrap">
                             {u.company}
+                          </td>
+                          <td className="text-sm text-skin-muted px-6 py-4 whitespace-nowrap">
+                            {u.assignment}
+                          </td>
+                          <td className="text-sm text-skin-muted px-6 py-4 whitespace-nowrap">
+                            {u.role}
                           </td>
                           <td className="text-sm text-skin-muted px-6 py-4 whitespace-nowrap">
                             {String(u.admin)}

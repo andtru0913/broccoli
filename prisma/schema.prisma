@@ -22,6 +22,9 @@ model User {
     privatenumber   String?
     worknumber      String?
     company         String?
+    assignment      String?
+    description     String?
+    role            String?
     admin           Boolean @default(false)
     salt            String
     lunchgroup      Lunchgroup? @relation(fields: [lunchgroupID], references: [id])
