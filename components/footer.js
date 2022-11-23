@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className=" z-10 relative flex flex-1 md:py-12 lg:py12 py-6 bg-secondary-1 ">
 
 
-<svg className=" absolute bottom-0 fill-tertiary-d1 h-auto md:flex hidden  md:w-1/4  -z-10   overflow-hidden" 
+<svg className=" absolute bottom-0 fill-tertiary-1 h-auto md:flex hidden  md:w-1/4  -z-10   overflow-hidden" 
 width="425" 
 height="555" 
 viewBox="0 0 425 555" 
