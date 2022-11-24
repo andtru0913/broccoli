@@ -1,5 +1,5 @@
 import checkAdmin from "./checkAdmin";
-import {getEvents, updateEventDate} from "../../Database";
+import {getEvents, updateEventDate} from "../../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {

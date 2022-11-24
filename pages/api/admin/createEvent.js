@@ -1,6 +1,6 @@
 import {SMTPClient} from "emailjs";
 import checkAdmin from "./checkAdmin";
-import {createEvent} from "../../Database";
+import {createEvent} from "../../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {

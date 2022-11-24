@@ -1,11 +1,8 @@
-import { Flex, Heading } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { authenticate } from "./authenticate";
 import * as Database from "../../../Database";
-import popupStyles from "/styles/popup.module.css";
-import formStyles from "../form.module.css";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
 
@@ -121,7 +118,6 @@ export default function Home({ lunchGroups, users }) {
       })
     );
   };
-
   return (
     <LayoutIntranet>
       <main className="bg-skin-fill ">
@@ -135,10 +131,10 @@ export default function Home({ lunchGroups, users }) {
                   onClick={function () {
                     document
                       .getElementById("popup")
-                      .classList.remove(popupStyles.hide);
+                      .classList.remove("pop-hide");
                     document
                       .getElementById("creategroup")
-                      .classList.remove(popupStyles.hide);
+                      .classList.remove("pop-hide");
                   }}
                 >
                   Ny lunchgrupp
@@ -163,18 +159,18 @@ export default function Home({ lunchGroups, users }) {
           </DragDropContext>
           <div
             id="popup"
-            className={`popup ${popupStyles.hide}`}
-            yupoånClick={function () {
-              document.getElementById("popup").classList.add(popupStyles.hide);
+            className={`popup pop-hide`}
+            onClick={function () {
+              document.getElementById("popup").classList.add("pop-hide");
               document
                 .getElementById("creategroup")
-                .classList.add(popupStyles.hide);
+                .classList.add("pop-hide");
               document
                 .getElementById("modifyLunchgroup")
-                .classList.add(popupStyles.hide);
+                .classList.add("pop-hide");
             }}
           ></div>
-          <div id="creategroup" className={` window-pop ${popupStyles.hide}`}>
+          <div id="creategroup" className={` window-pop pop-hide`}>
             <div className="relative bg-skin-fill rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ny lunchgrupp</h4>
@@ -183,10 +179,10 @@ export default function Home({ lunchGroups, users }) {
                   onClick={function () {
                     document
                       .getElementById("popup")
-                      .classList.add(popupStyles.hide);
+                      .classList.add("pop-hide");
                     document
                       .getElementById("creategroup")
-                      .classList.add(popupStyles.hide);
+                      .classList.add("pop-hide");
                   }}
                 >
                   <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
@@ -197,7 +193,7 @@ export default function Home({ lunchGroups, users }) {
 
               <form
                 className="flex "
-                action="../../api/createGroup"
+                action="../../api/admin/createGroup"
                 method="POST"
               >
                 <div className="flex flex-col md:flex-row gap-4 py-4">
@@ -216,7 +212,7 @@ export default function Home({ lunchGroups, users }) {
           </div>
           <div
             id="modifyLunchgroup"
-            className={`window-pop ${popupStyles.hide}`}
+            className={`window-pop pop-hide`}
           >
             <div className="relative bg-skin-fill rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
@@ -226,10 +222,10 @@ export default function Home({ lunchGroups, users }) {
                   onClick={function () {
                     document
                       .getElementById("popup")
-                      .classList.add(popupStyles.hide);
+                      .classList.add("pop-hide");
                     document
                       .getElementById("modifyLunchgroup")
-                      .classList.add(popupStyles.hide);
+                      .classList.add("pop-hide");
                   }}
                 >
                   <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
@@ -251,14 +247,14 @@ export default function Home({ lunchGroups, users }) {
                     placeholder="Titel"
                   />
                   <input
-                    className={`id ${popupStyles.hide}`}
+                    className={`id pop-hide`}
                     type="text"
                     name="id"
                   />
                   <button className="shadow btn btn-create" type="submit">
                     Ändra händelse
                   </button>
-                  <form action="../../api/deleteLunchgroup" method="POST">
+                  <form action="../../api/admin/deleteLunchgroup" method="POST">
                     <input
                       className="id p-2 border rounded mb-2"
                       type="hidden"

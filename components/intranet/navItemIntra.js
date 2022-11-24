@@ -19,14 +19,14 @@ const INTRA_MENU_LIST = [
     bottom: true,
     top: true,
     icon: <HiBookOpen size={20} />,
-    href: "/intranet/index",
+    href: "/intranet",
   },
   {
     text: "Employees",
     bottom: false,
     top: true,
     icon: <HiClock size={20} />,
-    href: "/intranet/employees/employee",
+    href: "/intranet/employees",
   },
   {
     text: "Dokument",

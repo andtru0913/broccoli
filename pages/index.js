@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
 import Accordion from "../components/accordion";
-import { HiArrowLeft, HiArrowRight, HiHeart } from "react-icons/hi2";
-import { GiTie, GiStumpRegrowth } from "react-icons/gi";
+import { HiArrowRight } from "react-icons/hi2";
 import { FaBed, FaFacebookSquare, FaSwimmer } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
@@ -11,6 +10,7 @@ import { Doughnut } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { getGenderCount } from "../Database";
 import data from "../public/computer.png";
+import Reviews from "../components/toWorkAtBroccoli/reviews";
 
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
@@ -27,34 +27,30 @@ export const getStaticProps = async () => {
 export default function Home({ feed, genderCount }) {
   const chartData = {
     labels: ["Män", "Kvinnor"],
+
     datasets: [
       {
-        backgroundColor: ["rgb(var(--color-primary-1)", "rgb(255, 32, 120)"],
+        borderWidth: 2,
+        borderColor: ["rgb(75, 146, 91)", "rgb( 23, 20, 39)"],
+        backgroundColor: ["rgb(75, 146, 91)", "rgb( 23, 20, 39)"],
         data: genderCount,
+
         tooltip: {
           callbacks: {
             label: function (context) {
-              let label = context.label;
               let value = context.formattedValue;
-
-              if (!label) label = "Unknown";
-
               let sum = 0;
               let dataArr = context.chart.data.datasets[0].data;
               dataArr.map((data) => {
                 sum += Number(data);
               });
-
-              let percentage = ((value * 100) / sum).toFixed(0) + "%";
-              return label + ": " + percentage;
+              return ((value * 100) / sum).toFixed(0) + "%";
             },
           },
         },
 
-        borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)"],
-        borderWidth: 1,
-        hoverBorderWidth: 8,
-        hoverBorderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)"],
+        hoverBorderWidth: 5,
+        hoverBorderColor: ["rgb(104, 183, 122)", "rgb(40, 35, 64)"],
       },
     ],
   };
@@ -159,18 +155,23 @@ export default function Home({ feed, genderCount }) {
             <div className="py-2  lg:p-4 text-center">
               <h1>Att jobba hos broccoli</h1>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 lg:pt-12">
-              <div className="flex flex-col items-center gap-12">
-                <p className="text-center lg:max-w-xs">
+            <div className="grid grid-cols-1 md:flex md:flex-row md:justify-start lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12">
+              <div className="flex flex-col items-center gap-12 md:pt-12 lg:pt-0">
+                <p className="text-center lg:text-3xl lg:max-w-lg">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och bjuder aktivt in berörda i dialogen. Genom våra olikheter
                   bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
                   stärker oss som grupp och utvecklar oss som individer.
                 </p>
-                <Doughnut className="h-auto w-48" data={chartData}></Doughnut>
+                <div className="w-52 h-56">
+                  <Doughnut className="" data={chartData}></Doughnut>
+                </div>
+                <div>
+                  <p></p>
+                </div>
               </div>
-              <div className=" flex flex-col  lg:items-center">
-                <Accordion />
+              <div className="flex flex-col md:w-2/3 md:items-center lg:items-center">
+                <Reviews />
               </div>
             </div>
           </div>
@@ -321,18 +322,14 @@ export default function Home({ feed, genderCount }) {
                       <h4>100m till havet</h4>
                     </div>
                   </div>
-                  <div class="mapouter">
-                    <div class="gmap_canvas ">
+                  <div className="mapouter">
+                    <div className="gmap_canvas ">
                       <iframe
                         className="w-full h-64"
                         width={277}
                         height={595}
                         id="gmap_canvas"
                         src="https://maps.google.com/maps?q=Broccolig%C3%A5rden%20HALS%20550,%20472%2094%20Svanesund&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        frameborder="0"
-                        scrolling="no"
-                        marginheight="0"
-                        marginwidth="0 "
                       ></iframe>
                     </div>
                   </div>

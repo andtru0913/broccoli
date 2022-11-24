@@ -79,7 +79,7 @@ const NavbarIntranet = ({ user }) => {
               aria-label="hamburger_menu button"
               className={` ${
                 isOpen
-                  ? "block cursor-pointer justify-center items-center group  lg:none"
+                  ? " cursor-pointer justify-center items-center group  lg:none"
                   : "none"
               }
                      `}
