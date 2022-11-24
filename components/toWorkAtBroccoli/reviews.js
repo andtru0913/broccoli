@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReviewsSection from "./reviewsSection";
 
 const Reviews = () => {
+  const [index, setIndex] = useState(false);
   const data = [
     {
       id: 1,
@@ -24,7 +25,7 @@ const Reviews = () => {
   ];
 
   return (
-    <div className=" rounded-md py-2 h-auto transition-all duration-500">
+    <div className=" py-2 h-auto transition-all duration-500">
       {data.map((data) => {
         return (
           <ReviewsSection
@@ -33,6 +34,8 @@ const Reviews = () => {
             id={data.id}
             author={data.author}
             children={data.text}
+            index={index}
+            setIndex={setIndex}
           />
         );
       })}

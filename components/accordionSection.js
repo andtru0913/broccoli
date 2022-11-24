@@ -6,11 +6,18 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
     <>
       <div onClick={handleSetIndex} className="">
         {index !== id ? (
-          <div className="flex  flex-row p-2 cursor-pointer w-full transition-all duration-500 ease-in-out  my-2 rounded-md  hover:border-none hover:bg-primary-1 active:bg-secondary-1 shadow-lg shadow-shadow">
+          <div
+            className={`flex  flex-row cursor-pointer w-full transition-all duration-100 ease-in-out  my-2 hover:border-none
+            ${
+              id % 2
+                ? " bg-primary-1 hover:bg-primary-l1"
+                : "bg-secondary-1 hover:bg-secondary-d1"
+            } active:bg-secondary-1 shadow-lg shadow-shadow`}
+          >
             {img_path != null}
-            <div className=" m-2 w-12 md:w-24 h-12 md:h-24  ">
+            <div className=" ">
               <img
-                className="object-cover w-12 md:w-24 h-12 md:h-24 rounded-md   md:rounded-xl"
+                className="object-cover w-12 md:w-28 h-12 md:h-32"
                 src={img_path}
                 alt={img_path}
               />
@@ -37,10 +44,17 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
             </div>
           </div>
         ) : (
-          <div className="flex  flex-row p-2 cursor-pointer w-full  transition-all duration-500 ease-in-out  hover:border-none hover:bg-primary-1 active:bg-secondary-1 shadow-lg shadow-shadow">
-            <div className="m-2 w-12 md:w-24 h-12 md:h-24 rounded-md">
+          <div
+            className={`flex flex-row cursor-pointer w-full  transition-all duration-100 ease-in-out  hover:border-none 
+            ${
+              id % 2
+                ? " bg-primary-1 hover:bg-primary-l1"
+                : "bg-secondary-1 hover:bg-secondary-d1"
+            } active:bg-secondary-1 shadow-lg shadow-shadow`}
+          >
+            <div className="">
               <img
-                className="object-cover w-12 md:w-24 h-12 md:h-24 rounded-md   md:rounded-xl"
+                className="object-cover w-12 md:w-28 h-12 md:h-32"
                 src={img_path}
                 alt={img_path}
               />
