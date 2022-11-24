@@ -30,30 +30,30 @@ xmlns="http://www.w3.org/2000/svg">
             <Link href="/">
               <a>
                 <img
-                  className="h-8 w-auto sm:h-10"
+                  className="w-56 md:w-76"
                   src="/images/BroccoliBlack.png"
                   alt="Broccoli logo"
                 />
               </a>
             </Link>
           </div>
-          <div className=" grid grid-cols-2 pt-8 gap-4 z-2 ">
+          <div className=" grid grid-cols-1 grid-flow-row md:grid-cols-2 pt-8 gap-4 z-2 ">
 
 
             <div className=" flex-col  px-5  ">
-              <h1 className="pb-2 text-lg text-center text-base font-bold cursor-default">
+              <h3 className="pb-2 text-center font-bold cursor-default">
                 Kontakt
-              </h1>
-              <div className=" flex flex-col items-start md:text-left bg-inherit">
+              </h3>
+              <div className=" flex flex-col items-center md:text-left bg-inherit">
                 <a className="hover:text-muted" href="tel:031-151480">
-                  <div className="flex flex-row justify-center align-middle md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-inverted justify-center align-middle md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4"
+                      className="w-6 h-6"
                     >
                       <path
                         strokeLinecap="round"
@@ -62,21 +62,21 @@ xmlns="http://www.w3.org/2000/svg">
                       />
                     </svg>
 
-                    <p className="text-xs pl-4 ">031-151480</p>
+                    <p className="pl-2 ">031-151480</p>
                   </div>
                 </a>
                 <a
                   className="hover:text-muted"
                   href="mailto:engineering@broccoli.se"
                 >
-                  <div className="flex flex-row justify-center  align-middle  md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-inverted justify-center  align-middle  md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4"
+                      className="w-6 h-6"
                     >
                       <path
                         strokeLinecap="round"
@@ -85,21 +85,21 @@ xmlns="http://www.w3.org/2000/svg">
                       />
                     </svg>
 
-                    <p className="text-xs pl-4 ">engineering@broccoli.se</p>
+                    <p className="pl-2 ">engineering@broccoli.se</p>
                   </div>
                 </a>
                 <a
                   className="hover:text-muted"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                 >
-                  <div className="flex flex-row justify-center align-middle  md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-inverted justify-center align-middle  md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 mr-4 "
+                      className="w-6 h-6 mr-2 "
                     >
                       <path
                         strokeLinecap="round"
@@ -114,8 +114,8 @@ xmlns="http://www.w3.org/2000/svg">
                     </svg>
 
                     <div className="flex flex-col ">
-                      <p className="text-xs ">Tillgängligheten 3</p>
-                      <p className="text-xs ">417 01 Göteborg</p>
+                      <p className=" ">Tillgängligheten 3</p>
+                      <p className=" ">417 01 Göteborg</p>
                     </div>
                   </div>
                 </a>
@@ -123,38 +123,38 @@ xmlns="http://www.w3.org/2000/svg">
             </div>
             
             <div className=" flex-col px-5 text-center">
-              <h1 className="pb-2 text-lg  text-base font-bold cursor-default">
+              <h3 className="pb-2 font-bold cursor-default">
                 Medarbetare
-              </h1>
+              </h3>
               <a href="./intranet" className="hover:text-muted py-2">
-                <p className="text-xs">Intranät</p>
+                <p className="text-sm hover:text-inverted">Intranät</p>
               </a>
 
               <a
                 href="https://www.broccoli.be/tid/"
-                className="hover:text-muted py-2"
-              >
-                <p className="text-xs">Tidrapport</p>
+                className="hover:text-inverted py-2">
+                <p className="text-sm p-1 ">Tidrapport</p>
               </a>
+
             </div>
-            <div className=" col-span-2 pb-7 text-center justify-center " >
-              <h1 className="pb-2 text-lg  text-base font-bold cursor-default">
+            <div className=" md:col-span-2 pb-7 text-center justify-center " >
+              <h3 className="pb-2 font-bold cursor-default">
                 Följ oss
-              </h1>
+              </h3>
               <div className="flex flex-row justify-center md:text-left bg-inherit">
-                <a href="/" className="p-2 hover:scale-105 ">
+                <a href="/" className="p-2 hover:text-inverted ">
                   <BsInstagram
                     className="fill-button-accent hover:fill-button-accent"
-                    size={20}
+                    size={25}
                   />
                 </a>
 
-                <a href="/" className="p-2 hover:scale-105">
-                  <BsFacebook size={20} />
+                <a href="/" className="p-2  hover:text-inverted">
+                  <BsFacebook size={25} />
                 </a>
 
-                <a href="/" className="p-2 hover:scale-105">
-                  <BsLinkedin size={20} />
+                <a href="/" className="p-2  hover:text-inverted">
+                  <BsLinkedin size={25} />
                 </a>
               </div>
             </div>

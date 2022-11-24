@@ -1,12 +1,12 @@
 import checkAdmin from "./checkAdmin";
-import {updateCard} from "../../Database";
+import {deleteCard} from "../../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
         res.redirect(302, '../intranet')
     }
-    if (await checkAdmin(req.cookies['user']) && req.body.title !== "") {
-        await updateCard(req.body.id, req.body.title, req.body.description, req.body.myImage)
+    if (await checkAdmin(req.cookies['user'])) {
+        await deleteCard(req.body.id)
             .catch(e => {
                 console.error(e.message)
             })

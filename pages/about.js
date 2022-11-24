@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Layout from "../components/layout/layout";
-import Historia from "./historia";
 import data from "../public/computer.png";
 import broccoli from "../public/broccoli.png";
+import TimelineComponent from "../components/TimelineComponent";
 const callback = function (entries) {
   entries.forEach((entry) => {
     const animationType = entry.target.dataset.animateType;
@@ -135,7 +135,7 @@ export default function About({ title, intro, year, timelinedesc }) {
           </div>
         </section>
 
-        <Historia />
+        <TimelineComponent/>
 
         <section className="bg-fill">
           <div className="layout py-12 flex flex-col items-center">

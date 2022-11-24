@@ -1,5 +1,5 @@
 import checkAdmin from "./checkAdmin";
-import {setLunchgroup} from "../../Database";
+import {setLunchgroup} from "../../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {

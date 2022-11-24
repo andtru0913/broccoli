@@ -3,11 +3,11 @@ const Card = ({ title, icon, image, text, click }) => {
   return !image ? (
     <a
       onClick={click}
-      className=" m-4 p-4 text-left md:p-8 bg-secondary-1 text-inverted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted shadow-shadow shadow-md"
+      className=" text-center  bg-secondary-1 p-14 md:p-12 md:mx-4 lg:p-14 text-inverted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted "
     >
-      <div className="flex flex-1 p-2 md:p-4">
+      <div className="flex flex-1 p-12  md:p-4">
         
-        <h2 className=" text-xl uppercase">{title}</h2>
+        <h2 className="justify-self-center">{title}</h2>
       </div>
 
       <p className="text-sm leading-5"> {text}</p>
@@ -15,16 +15,16 @@ const Card = ({ title, icon, image, text, click }) => {
   ) : (
     <a
       onClick={click}
-      className="relative m-4 text-left  bg-fill text-muted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted shadow-shadow shadow-md"
+      className="relative md:mx-4 mb-4 md:mb-0 text-left bg-secondary-1 text-muted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted "
     > 
 {  /*  <div className="h-1/2 overflow-hidden">
         <img className=" w-full  bg-cover bg-center " src={image} />
       </div>*/
      }
 
-      <div className="flex flex-col items-center p-2 md:p-4 ">
-        <h2 className=" text-xl uppercase">{title}</h2>
-        <p className=" text-xs leading-2">{text}</p>
+      <div className="flex flex-col items-left  p-14 md:p-12 lg:p-14  ">
+        <h2 className=" pb-3">{title}</h2>
+        <p className="  text-justify">{text}</p>
       </div>
     </a>
   );
