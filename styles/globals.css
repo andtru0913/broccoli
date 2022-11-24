@@ -70,8 +70,9 @@
 */
 
   /* #region  /**=========== Typography =========== */
+
   .h0 {
-    @apply text-5xl md:text-5xl uppercase font-bold xl:text-7xl;
+    @apply text-5xl md:text-5xl uppercase font-bold xl:text-8xl;
   }
 
   h1,

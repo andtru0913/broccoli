@@ -160,83 +160,55 @@ export default function Home({ user }) {
               />
 
 
-              <svg className="absolute h-screen fill-secondary-1 -z-10 lg:w-4/6 -left-10 top-0 opacity-70"
+              <svg className="absolute h-screen fill-secondary-1 -z-10 lg:w-4/6 -left-10 top-0 opacity-60 md:flex hidden   "
                 width="832" height="557" viewBox="0 0 832 557" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M450.638 555.955C391.972 558.622 380.138 511.955 226.638 455.955C226.638 455.955 61.0384 395.955 6.6384 395.955C-61.3616 395.955 -45.3616 259.955 -45.3616 231.955C-45.3616 203.955 -13.3616 -36.0449 26.6384 -132.045C66.6384 -228.045 162.638 -188.045 226.638 -132.045C290.638 -76.0449 394.638 -140.045 450.638 -132.045C506.638 -124.045 574.638 -92.0449 606.638 -0.0449219C638.638 91.9551 606.638 135.955 670.638 187.955C734.638 239.955 806.638 215.955 826.638 259.955C846.638 303.955 810.638 395.955 718.638 475.955C645.038 539.955 509.305 555.955 450.638 555.955Z"  />
+                <path d="M450.638 555.955C391.972 558.622 380.138 511.955 226.638 455.955C226.638 455.955 61.0384 395.955 6.6384 395.955C-61.3616 395.955 -45.3616 259.955 -45.3616 231.955C-45.3616 203.955 -13.3616 -36.0449 26.6384 -132.045C66.6384 -228.045 162.638 -188.045 226.638 -132.045C290.638 -76.0449 394.638 -140.045 450.638 -132.045C506.638 -124.045 574.638 -92.0449 606.638 -0.0449219C638.638 91.9551 606.638 135.955 670.638 187.955C734.638 239.955 806.638 215.955 826.638 259.955C846.638 303.955 810.638 395.955 718.638 475.955C645.038 539.955 509.305 555.955 450.638 555.955Z" />
               </svg>
 
-              <svg className="absolute h-screen fill-primary-1 -z-10 lg:w-4/6 right-0 -top-10 opacity-70"
+              <svg className="absolute h-screen w-auto fill-primary-1 -z-10 lg:w-4/6 right-0 -top-10 opacity-70"
                 width="782" height="554" viewBox="0 0 782 554" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M497.871 68.9819C555.514 55.7719 846.095 -130.073 848 169.849L822.381 579C792.211 561.005 617.427 476.712 551.245 465.347C514.078 458.964 367.014 449.72 327.077 405.679C280.488 354.303 124.767 387.842 58.0754 348.853C-8.61652 309.863 -5.0722 244.276 6.83704 206.786C18.7463 169.296 27.0239 107.103 79.4247 84.6092C121.345 66.6139 201.116 95.9745 297.188 95.9745C393.26 95.9745 440.228 82.192 497.871 68.9819Z" />
               </svg>
 
               <div className=" h-1/2  z-20 flex flex-row items-end" >
-                <h1 className=" flex-1 text-center text-inverted ">Välkommen {user.firstname}</h1>
+                <h1 className=" h0 flex-1 text-center text-inverted ">Välkommen {user.firstname}</h1>
               </div>
             </div>
 
-            <section>
-              <div className="top-auto md:hidden flex flex-1 flex-col lg:flex-row justify-center py-12">
+            <div className="md:grid md:grid-cols-3 flex flex-col " >
+              <div className=" md:grid md:col-span-2 flex flex-col justify-center p-12 lg:p-16 gap-2 bg-tertiary-1">
+                <h3 className=" font-bold ">Senaste Nytt</h3>
+                <Nyheter />
+              </div>
+              <div className=" flex flex-col p-10 lg:p-16 bg-secondary-1 ">
+                <h3 className=" w-auto font-bold ">Kommande event</h3>
+              </div>
 
-
-
-                <div className=" grid grid-cols-2 gap-4">
-                  {INTRA_MENU_LIST.map((menu) => {
-                    return menu.bottom === false ? (
-                      <div
-                        className=" bg-primary bg-opacity-60 p-4"
-                        key={menu.text ?? "menu"}
-                      >
-                        <Link href={menu.href} className="custom-tap-highlight">
-                          <a className="w-full text-base uppercase md:ml-8 font-medium text-center text-muted opacity-80 focus:bg-opacity-80 ">
-                            <p>{menu.text}</p>
-                          </a>
-                        </Link>
+              <div className=" md:col-span-3 flex flex-col p-10 lg:p-16 bg-primary-1 items-center ">
+                <h3 className=" font-bold self-start ">Lunchgrupper</h3>
+                <div className="items-center grid grid-cols-1 md:flex md:flex-row md:flex-wrap md:w-max-1/2 gap-4 md:my-2  ">
+                  {lunchfuldata.map((pp) => {
+                    return pp.id === user.lunchgroupID ? (
+                      <div className="relative flex flex-col  p-4 lg:p-5">
+                        <h5 className="">{pp.title}</h5>
+                        {pp.people.map((i) => {
+                          return <p>{i}</p>;
+                        })}
                       </div>
                     ) : (
-                      <></>
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <div className=" flex flex-1 flex-col lg:flex-row justify-center py-12 gap-2">
-                <div className="flex flex-col md:w-1/3 ">
-                  <h4 className="uppercase font-medium ">Senaste Nytt</h4>
-                  <Nyheter />
-                </div>
-
-                <div className="flex flex-col md:grow ">
-                  <h4 className="uppercase font-medium ">Lunchgrupper</h4>
-                  <div className=" grid grid-cols-2 content-center md:flex md:flex-row md:flex-wrap md:w-max-1/2 gap-4  my-2">
-                    {lunchfuldata.map((pp) => {
-                      return pp.id === user.lunchgroupID ? (
-                        <div className="relative flex flex-col  p-4 lg:p-5">
-                          <h4 className="font-semibold">{pp.title}</h4>
+                      <div className="flex flex-col md:flex-col content-center">
+                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-inverted border-tertiary-1 p-6">
+                          <h3 className="">{pp.title}</h3>
                           {pp.people.map((i) => {
                             return <p>{i}</p>;
                           })}
                         </div>
-                      ) : (
-                        <div className="flex flex-col md:flex-row justify-center">
-                          <div className="flex-auto bg-primary p-2">
-                            <h4 className="font-semibold">{pp.title}</h4>
-                            {pp.people.map((i) => {
-                              return <p>{i}</p>;
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-                <div className="flex flex-col ">
-                  <h4 className="uppercase font-medium ">Kommande event</h4>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         </main>
       </LayoutIntranet>
