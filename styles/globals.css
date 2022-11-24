@@ -99,12 +99,12 @@
   }
 
   .p1 {
-    @apply text-lg lg:text-3xl;
+    @apply text-lg lg:text-2xl;
   }
 
   body,
   .p {
-    @apply text-base md:text-xl lg:text-2xl;
+    @apply text-base lg:text-xl;
   }
 
   /* #endregion  /**======== Typography =========== */

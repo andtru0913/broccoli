@@ -68,7 +68,7 @@ export default function Home({ feed, genderCount }) {
         </div>
 
         <svg
-          className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10"
+          className="absolute top-80 lg:top-96 right-0 fill-secondary-1 w-3/4 md:lg:w-1/2 -z-10"
           width="770"
           height="1048"
           viewBox="0 0 770 1048"
@@ -79,7 +79,7 @@ export default function Home({ feed, genderCount }) {
         </svg>
 
         <section className="relative">
-          <div className=" pb-12  flex flex-col justify-center">
+          <div className="layout pb-12  flex flex-col justify-center">
             <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2">
               <div className="  lg:max-w-readable flex justify-center">
                 <h4 className="text-center">
@@ -139,7 +139,7 @@ export default function Home({ feed, genderCount }) {
           </div>
 
           <svg
-            className="absolute top-80 lg:top-32 h-auto left-0 fill-primary-l2 w-4/5 lg:w-1/2 -z-10"
+            className="absolute top-80 lg:top-32 left-0 fill-primary-l2 w-4/5 lg:w-1/2 -z-10"
             width="721"
             height="816"
             viewBox="0 0 721 816"
@@ -151,26 +151,26 @@ export default function Home({ feed, genderCount }) {
         </section>
 
         <section className="">
-          <div className=" pb-12 lg:py-12 xl:py-48  flex flex-col justify-center">
+          <div className="layout pb-12 lg:py-12  flex flex-col justify-center">
             <div className="py-2  lg:p-4 text-center">
               <h1>Att jobba hos broccoli</h1>
             </div>
-            <div className="grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 xl:pt-24">
+            <div className="grid grid-cols-1 md:flex md:flex-row md:justify-start lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12">
               <div className="flex flex-col items-center gap-12 md:pt-12 lg:pt-0">
-                <h5 className="text-center  lg:max-w-lg xl:max-w-xl leading-relaxed">
+                <p className="text-center lg:text-3xl lg:max-w-lg">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och bjuder aktivt in berörda i dialogen. Genom våra olikheter
                   bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
                   stärker oss som grupp och utvecklar oss som individer.
-                </h5>
-                <div className="w-56 h-56 xl:w-80 xl:h-80">
+                </p>
+                <div className="w-52 h-56">
                   <Doughnut className="" data={chartData}></Doughnut>
                 </div>
                 <div>
                   <p></p>
                 </div>
               </div>
-              <div className="flex flex-col  flex-1 lg:w-4/5">
+              <div className="flex flex-col md:w-2/3 md:items-center lg:items-center">
                 <Reviews />
               </div>
             </div>
@@ -178,13 +178,13 @@ export default function Home({ feed, genderCount }) {
         </section>
 
         <section className="relative  mx-0">
-          <div className=" pb-12 lg:py-12 text-center overflow-hidden ">
+          <div className=" pb-12 lg:py-12 text-center text-base overflow-hidden ">
             <h1 className=" ">Våra kärnvärden</h1>
-            <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
-              <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
+            <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default">
+              <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
                 <h2 className="">Relationer</h2>
 
-                <p className="leading-relaxed">
+                <p className="text-justify">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och bjuder aktivt in berörda i dialogen. Genom våra olikheter
                   bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
@@ -194,8 +194,8 @@ export default function Home({ feed, genderCount }) {
                 </p>
               </div>
               <div className="relative rounded">
-                <div className=" bg-secondary-1 p-8 md:p-4 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className="shrink">Professionalism</h2>
+                <div className=" bg-secondary-1 p-8 md:p-4 lg:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+                  <h2 className="">Professionalism</h2>
 
                   <p className="text-justify">
                     Nöjda kunder får vi genom att prioritera god teknisk
@@ -208,7 +208,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
               </div>
               <div className="relative rounded">
-                <div className=" bg-primary-l1 p-8 md:p-4 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+                <div className=" bg-primary-l1 p-8 md:p-4 lg:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                   <h2 className="">Hållbar utveckling</h2>
                   <p className="text-justify">
                     Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
@@ -222,7 +222,7 @@ export default function Home({ feed, genderCount }) {
           </div>
         </section>
         <svg
-          className="absolute  right-0 fill-secondary-1 w-3/4 h-auto md:lg:w-1/2 xl:w-1/3 -z-10"
+          className="absolute  right-0 fill-secondary-1 w-3/4 md:lg:w-1/2 -z-10"
           width="696"
           height="1224"
           viewBox="0 0 696 1224"
@@ -232,7 +232,7 @@ export default function Home({ feed, genderCount }) {
           <path d="M43.7667 896.684C-21.8364 768.278 -57.4046 452.161 267.434 196.164C352.421 130.136 386.634 115.939 485.034 56.1637C583.434 -3.61172 912.455 -71.2783 818.574 175.164L828.933 297.455L843.434 1006.75L804.073 1159.61C791.643 1182.71 710.433 1227.69 485.034 1222.79C203.286 1216.68 213.644 1161.65 199.143 1159.61C187.541 1157.98 90.7248 983.647 43.7667 896.684Z" />
         </svg>
         <svg
-          className="absolute left-0 fill-tertiary-1 w-3/4 h-auto md:lg:w-1/2 xl:w-1/3 -z-10"
+          className="absolute left-0 fill-tertiary-1 w-3/4 md:lg:w-1/2 -z-10"
           width="584"
           height="816"
           viewBox="0 0 584 816"
@@ -287,10 +287,9 @@ export default function Home({ feed, genderCount }) {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted">
-              <div className="hidden lg:flex relative w-full h-96">
+            <div className="mt-8 grid grid-cols-1 grid-flow-row lg:grid-cols-2 bg-tertiary-1 w-full text-inverted">
+              <div className="hidden lg:flex relative">
                 {/**image gallery */}
-
                 <Image
                   alt="broccoligarden"
                   src={broccoligarden}
@@ -301,15 +300,14 @@ export default function Home({ feed, genderCount }) {
               <div className="flex flex-col items-center p-8 md:p-12">
                 {/**information */}
                 <h3>Välkommen till Broccoligården</h3>
-                <div className="flex flex-col md:flex-row gap-8 lg:gap-12 pt-12">
-                  <p className="h-auto p1 text-left shrink">
+                <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-8 lg:gap-12 pt-12">
+                  <p className="h-auto p1 text-left">
                     Broccoligården ligger strax utanför svanesund. En idyllisk
                     plats på västkusten. Ta en tur med vänner familj eller
                     jobbteamet och njut av den friska luften, sola på det stora
                     altandäcket, mys inne vid brasan eller varför inte ta ett
                     dopp.
                   </p>
-
                   <div className="flex flex-col items-start gap-12 h-auto">
                     <div className="flex flex-row items-center text-inverted gap-4">
                       <FaBed size={30} />
@@ -324,8 +322,6 @@ export default function Home({ feed, genderCount }) {
                       <h4>100m till havet</h4>
                     </div>
                   </div>
-                </div>
-                <div className="flex flex-col items-center p-8 md:p-12">
                   <div className="mapouter">
                     <div className="gmap_canvas ">
                       <iframe
@@ -337,7 +333,7 @@ export default function Home({ feed, genderCount }) {
                       ></iframe>
                     </div>
                   </div>
-                  <div className="shrink flex flex-col items-center md:items-start justify-around">
+                  <div className="flex flex-col items-center md:items-start justify-around">
                     <h2>Kontakt</h2>
                     <a href="mailto:engineering@broccoli.se">
                       garden@broccoli.se
