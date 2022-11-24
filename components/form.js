@@ -1,7 +1,7 @@
 export default function Form({ title }) {
   return (
     <>
-      <div className="flex flex-col ">
+      <div className="flex flex-col " >      
         <div className=" w-full  md:p-12">
           {/**title */}
 
@@ -132,7 +132,7 @@ export default function Form({ title }) {
           <div className="relative flex flex-wrap flex-row  ">
             <div className="flex flex-1 flex-row p-2">
               <label className="text-xs pb-1 text-gray-700" htmlFor="first">
-                Genom att skicka in detta formulär godkännder du att dina uppgifter sparas*
+                Genom att skicka in detta formulär godkännder du att dina uppgifter sparas
               </label>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function Form({ title }) {
                 type="submit"
                 className=" btn btn-primary "
               >
-                Skicka
+                Skicka in
               </button>
             </div>
           </div>

@@ -65,7 +65,7 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <div className="flex justify-center absolute right-10 text-muted">
+        <div className="flex justify-center absolute right-10  text-tertiary-l2">
           <ul
             className={`lg:flex lg:flex-row lg:justify-between lg:align-middle 
                         ${
@@ -86,9 +86,9 @@ const NavBar = () => {
                   <ActiveLink
                     href={menu.href}
                     className=""
-                    activeClassName="w-full text-xs font-medium lg:ml-8 text-navlink-active uppercase transition-all duration-200"
+                    activeClassName="w-full text-xs font-medium lg:ml-8 uppercase transition-all duration-200"
                   >
-                    <a className="w-full text-xs lg:ml-8 font-medium uppercase  transition-all duration-200 hover:text-navlink-hover">
+                    <a className="w-full text-xs lg:ml-8 font-medium uppercase  transition-all duration-200 hover:text-primary-l1">
                       {menu.text}
                     </a>
                   </ActiveLink>
