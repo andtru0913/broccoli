@@ -7,7 +7,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   const hamburgerLine =
-    " w-6 h-0.5 bg-primary-1 my-inledning transition-all duration-300 ease-in-out lg:hidden";
+    " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
@@ -110,7 +110,7 @@ const NavBar = () => {
             className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
+                            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
                             : "opacity-50 group-hover:opacity-100 "
                         } `}
           />
@@ -127,7 +127,7 @@ const NavBar = () => {
             className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
+                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
                             : "opacity-50 group-hover:opacity-100"
                         }`}
           />

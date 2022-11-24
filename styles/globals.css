@@ -15,11 +15,11 @@
     --color-text-inverted: 255, 255, 255;
     --color-text-inverted-muted: 242, 242, 242;
     --color-fill: 255, 255, 255;
-    --color-primary-1: 75, 146, 91;
-    --color-primary-l1: 104, 183, 122; /*light-1*/
-    --color-primary-l2: 155, 215, 168; /*lightest*/
-    --color-primary-d1: 48, 104, 61; /*dark-1*/
-    --color-primary-d2: 37, 74, 45; /*darkest*/
+    --color-primary-1: 233, 122, 235;
+    --color-primary-l1: 244, 167, 245; /*light-1*/
+    --color-primary-l2: 249, 204, 250; /*lightest*/
+    --color-primary-d1: 192, 65, 194; /*dark-1*/
+    --color-primary-d2: 160, 39, 163; /*darkest*/
     --color-secondary-1: 245, 241, 226;
     --color-secondary-l1: 255, 253, 244;
     --color-secondary-l2: 255, 254, 249;
@@ -62,38 +62,49 @@
     --color-button-secondary-hover: 79, 156, 177;
   }
 
+  /*   --color-primary-1: 93, 165, 110;
+    --color-primary-l1: 104, 183, 122; 
+    --color-primary-l2: 155, 215, 168; 
+    --color-primary-d1: 48, 104, 61; 
+    --color-primary-d2: 37, 74, 45; 
+*/
+
   /* #region  /**=========== Typography =========== */
   .h0 {
-    @apply text-5xl md:text-5xl uppercase font-bold;
+    @apply text-5xl md:text-5xl uppercase font-bold xl:text-7xl;
   }
 
   h1,
   .h1 {
-    @apply text-2xl lg:text-4xl uppercase;
+    @apply text-2xl lg:text-4xl uppercase xl:text-6xl;
   }
 
   h2,
   .h2 {
-    @apply text-2xl lg:text-3xl font-bold uppercase;
+    @apply text-2xl lg:text-3xl font-bold uppercase xl:text-5xl;
   }
 
   h3,
   .h3 {
-    @apply text-2xl lg:text-2xl uppercase;
+    @apply text-2xl lg:text-2xl uppercase xl:text-4xl;
   }
 
   h4,
   .h4 {
-    @apply text-xl lg:text-xl uppercase font-bold;
+    @apply text-xl lg:text-xl uppercase font-bold xl:text-3xl;
+  }
+  h5,
+  .h5 {
+    @apply text-xl lg:text-3xl  xl:text-4xl;
   }
 
   .p1 {
-    @apply text-lg;
+    @apply text-lg lg:text-2xl;
   }
 
   body,
   .p {
-    @apply text-base;
+    @apply text-base lg:text-xl;
   }
 
   /* #endregion  /**======== Typography =========== */
