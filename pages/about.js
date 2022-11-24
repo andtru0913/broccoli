@@ -7,7 +7,6 @@ import TimelineComponent from "../components/TimelineComponent";
 import { IoBoatSharp } from "react-icons/io5";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsGearWideConnected } from "react-icons/bs";
-import { GiHeartBeats, GiRadarSweep } from "react-icons/gi";
 const callback = function (entries) {
   entries.forEach((entry) => {
     const animationType = entry.target.dataset.animateType;
