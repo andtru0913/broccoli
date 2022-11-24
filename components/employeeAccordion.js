@@ -18,6 +18,7 @@ const EmployeeAccordion = ({data}) => {
             index={index}
             setIndex={setIndex}
             email={user.email}
+            text={user.description}
           ></EmployeeAccordionSection>
         );
         

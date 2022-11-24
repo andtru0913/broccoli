@@ -1,4 +1,4 @@
-import * as Database from "../../Database";
+import * as Database from "../../../Database";
 import checkAdmin from "./checkAdmin";
 
 export default async function handler(req, res) {

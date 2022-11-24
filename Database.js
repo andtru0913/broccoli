@@ -2,9 +2,7 @@ import {lunchgroup} from "./defaultIDs";
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient();
-
 const bcrypt = require ('bcrypt');
-
 
 export async function createNewUser(username, password, firstname, lastname, gender, email, address, privatenumber, worknumber, company, admin, role) {
     const salt = await bcrypt.genSalt(10)
@@ -55,7 +53,7 @@ export async function login(input_username, input_password) {
         else {
             return null
         }
-    } catch {
+    } catch (e) {
         return null
     }
 
@@ -124,7 +122,8 @@ export async function getUserProfile(userid) {
                 company:true,
                 image:true,
                 email:true,
-                assignment:true
+                assignment:true,
+                description:true
             }
         })
         return query[0]
@@ -576,7 +575,8 @@ export async function getUserOverview() {
             email: true,
             assignment:true,
             role:true,
-            worknumber: true
+            worknumber: true,
+            description: true
         },
     })
 }
@@ -598,7 +598,7 @@ export async function getGenderCount() {
     return [query.filter(user => user.gender === "man").length, query.filter(user => user.gender === "woman").length]
 }
 
-export async function editProfile(userid, username, password, email, address, privatenumber, worknumber, image) {
+export async function editProfile(userid, username, password, email, address, privatenumber, worknumber, image, description) {
     if (!!password) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
@@ -614,6 +614,7 @@ export async function editProfile(userid, username, password, email, address, pr
                 privatenumber: privatenumber,
                 worknumber: worknumber,
                 salt: salt,
+                description: description
             },
         })
     }
@@ -628,6 +629,7 @@ export async function editProfile(userid, username, password, email, address, pr
                 email: email,
                 privatenumber: privatenumber,
                 worknumber: worknumber,
+                description: description
             },
         })
     }

@@ -1,6 +1,5 @@
 import * as Database from "../../../Database";
 import { authenticate } from "./authenticate";
-import popupStyles from "/styles/popup.module.css";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
@@ -17,6 +16,7 @@ export default function Home({ user }) {
   const popUpstyle = "h-screen w-screen bg-black absolute z-20 bg-opacity-60";
   const windowstyle =
     "z-30 absolute w-screen bg-skin-fill p-8 rounded top-inledning/3 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 ";
+  const popHide = "pop-hide";
   return (
     <LayoutIntranet>
       <main className="">
@@ -25,7 +25,7 @@ export default function Home({ user }) {
           <div className=" flex flex-1 flex-col lg:flex-row justify-center">
             <div
               id="modifyuser"
-              className={`${popupStyles.window} ${popupStyles.hide}`}
+              className={`${popHide}`}
             >
               <h3 className="text-skin-base"> Edit User</h3>
               <form action="../../api/modifyuser" method="POST">
@@ -147,7 +147,7 @@ export default function Home({ user }) {
             </div>
             <div
               id="popup"
-              className={`${popupStyles.popUp} ${popupStyles.hide}`}
+              className={`${popHide}`}
               onClick={function () {
                 document
                   .getElementById("popup")
@@ -162,9 +162,9 @@ export default function Home({ user }) {
             ></div>
             <div
               id="createuser"
-              className={`${popupStyles.window} ${popupStyles.hide}`}
+              className={`${popHide}`}
             >
-              <form action="../../api/createuser" method="POST">
+              <form action="../../api/admin/createuser" method="POST">
                 <input type="text" name="username" placeholder="Användarnamn" />
                 <input type="text" name="password" placeholder="Lösenord" />
                 <input type="text" name="firstname" placeholder="Förnamn" />
@@ -205,7 +205,7 @@ export default function Home({ user }) {
                     onClick={function () {
                       document
                         .getElementById("popup")
-                        .classList.remove(popupStyles.hide);
+                        .classList.remove(popHide);
                       let window = document.getElementById("modifyuser");
                       window.getElementsByClassName("id")[0].value = u.id;
                       window.getElementsByClassName("id")[1].value = u.id;
@@ -232,7 +232,7 @@ export default function Home({ user }) {
                       if(!!u.gender) {
                         document.getElementById(u.gender).checked = true;
                       }
-                      window.classList.remove(popupStyles.hide);
+                      window.classList.remove(popHide);
                     }}
                     className="grid grid-flow-row gap-4 items-left text-sm p-4 rounded-lg shadow bg-skin-primary"
                   >
@@ -245,10 +245,10 @@ export default function Home({ user }) {
                     onClick={function () {
                       document
                         .getElementById("popup")
-                        .classList.remove(popupStyles.hide);
+                        .classList.remove(popHide);
                       document
                         .getElementById("createuser")
-                        .classList.remove(popupStyles.hide);
+                        .classList.remove(popHide);
                     }}
                   >
                     {" "}
@@ -307,7 +307,7 @@ export default function Home({ user }) {
                           onClick={function () {
                             document
                               .getElementById("popup")
-                              .classList.remove(popupStyles.hide);
+                              .classList.remove(popHide);
                             let window = document.getElementById("modifyuser");
                             window.getElementsByClassName("id")[0].value = u.id;
                             window.getElementsByClassName("id")[1].value = u.id;
@@ -339,7 +339,7 @@ export default function Home({ user }) {
                               window.getElementById(u.gender).checked = true;
                             }
                             window.getElementsByClassName("role")[0].value = u.role
-                            window.classList.remove(popupStyles.hide);
+                            window.classList.remove(popHide);
                           }}
                         >
                           <td className="text-sm text-skin-muted px-6 py-4 whitespace-nowrap">
@@ -386,10 +386,10 @@ export default function Home({ user }) {
                       onClick={function () {
                         document
                           .getElementById("popup")
-                          .classList.remove(popupStyles.hide);
+                          .classList.remove(popHide);
                         document
                           .getElementById("createuser")
-                          .classList.remove(popupStyles.hide);
+                          .classList.remove(popHide);
                       }}
                     >
                       {" "}

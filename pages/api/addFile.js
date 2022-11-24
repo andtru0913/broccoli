@@ -1,6 +1,6 @@
 import formidable from "formidable";
 import fs from "fs";
-import checkAdmin from "./checkAdmin";
+import checkAdmin from "./admin/checkAdmin";
 
 export const config = {
     api: {

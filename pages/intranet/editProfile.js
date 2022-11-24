@@ -87,6 +87,13 @@ const profile = ({user}) => {
                     placeholder="Arbetstelefon"
                     defaultValue={user.worknumber}
                 />
+                <input
+                    className="description"
+                    type="text"
+                    name="description"
+                    placeholder="Beskriv lite om dig själv"
+                    defaultValue={user.description}
+                />
                 <ProfilePicture image={user.image}/>
                 <input type="file" name="myImage" onChange={file.uploadToClient} />
                 <button onClick={function() {file.uploadToServer(`profiles/${user.id}`).then(_ => {})}} type="submit">Spara</button>

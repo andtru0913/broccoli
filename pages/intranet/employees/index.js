@@ -1,5 +1,5 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import EmployeeAccordion from "./employeeAccordion";
+import EmployeeAccordion from "../../../components/employeeAccordion";
 import {getUserOverview} from "../../../Database";
 
 export async function getServerSideProps() {

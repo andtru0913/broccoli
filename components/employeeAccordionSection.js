@@ -1,6 +1,6 @@
-import ProfilePicture from "../../../components/ProfilePicture";
+import ProfilePicture from "./ProfilePicture";
 
-export default function ({ img_path, id, author, index, setIndex, roll, uppdrag, email, phone }) {
+export default function ({ img_path, id, author, index, setIndex, roll, uppdrag, email, phone, text }) {
     const handleSetIndex = () => {
       index !== id ? setIndex(id) : setIndex(false);
     };
@@ -25,10 +25,11 @@ export default function ({ img_path, id, author, index, setIndex, roll, uppdrag,
   
               <div className="flex flex-col mx-3 p-2 md:w-56 md:h-64 w-36 h-40">
                 <h5 className="md:text-lm md:text-s md:font-medium text-sm uppercase ">{author}</h5>
+                  <h4 className="text-xs">Roll: {roll}</h4>
                   <h4 className="text-xs">Telefon: {phone}</h4>
-                <h4 className="text-xs">Roll: {roll}</h4>
+                  <h4 className="text-xs">Email: {email}</h4>
                 <h4 className="text-xs">Uppdrag: {uppdrag}</h4>
-                  <a href={`./employees/${email}`}>Mer info</a>
+                <p className="text-xs">{text}</p>
               </div>
               
             </div>
