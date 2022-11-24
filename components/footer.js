@@ -15,7 +15,7 @@ xmlns="http://www.w3.org/2000/svg">
 </svg>
 
 
-<svg className=" fill-primary-1 absolute -z-10 md:w-8/12 lg:w-8/12 w-11/12 h-auto lg bottom-0 right-0  overflow-hidden" 
+<svg className=" fill-primary-1 absolute -z-10 md:w-8/12 lg:w-8/12 w-screen h-auto lg bottom-0 right-0  overflow-hidden" 
 width="913" 
 height="443" 
 viewBox="0 0 913 443" 
