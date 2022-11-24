@@ -197,7 +197,30 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
             />
             <input type="hidden" name="redirect" value={redirect} />
             <input type="hidden" name="id" value={page.id} />
-            <button type="submit"> Ändra sida</button>
+            <input
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid border-border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
+                      type="file"
+                      id="modifyFormFile"
+                      name="myImage"
+                      onChange={async function (event) {
+                        file.uploadToClient(event);
+                      }}
+                    />
+                    <input type="hidden" name="filename" value={redirect} />
+                    <input type="hidden" name="redirect" value={redirect} />
+            
+            <button  onClick={function () {
+                      file
+                        .uploadToServer(
+                          `cards/${
+                            document.getElementById("modifyFormFile").files[0]
+                              .name
+                          }`
+                        )
+                        .then((_) => {});
+                    }}
+                    type="submit"
+                    id="modifyCardSubmit"> Ändra sida</button>
           </form>
         </div>
       ),
@@ -226,37 +249,39 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
         >
           Edit page{" "}
         </button>
+      <div className="relative  ">
         <svg
-          className=" absolute z-10 right-0 -top-16 w-2/3  h-auto max-h- "
+          className="fill-primary-l1 absolute z-10 right-0 -top-12 h-auto lg:w-2/3  "
           width="818"
           height="895"
           viewBox="0 0 818 902"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z"
-            fill="#E97AEB"
-            fill-opacity="0.38"
-          />
+            fill-opacity="0.70"/>
         </svg>
         <div className="relative overflow-hidden h-screen bg-center ">
           <Image
-            src="/images/gothenburg.jfif"
+            src="/images/BlurryGothenburg.JPG"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
           />
         </div>
-        <div className="absolute right-0 bottom-0 z-10  py-12 text-base  max-w-prose">
-          <h1 className="pb-8"> {page.title}</h1>
-          <h2> {page.description}</h2>
+        <div className=" bg-primary-l1 ">
+        <div className="absolute flex flex-col text-inverted bottom-1/3 lg:h-1/3 lg:pr-10 right-4 z-10 py-12 max-w-prose">
+          <h1 className="layout p-5 pb-0 md:pb-2 font-bold"> {page.title}</h1>
+          <h4 className="layout p-5 md:pr-5 font-normal "> {page.description}</h4>
         </div>
+        </div>
+        </div>
+      
       </section>
 
-      <section className="bg-fill  ">
-        <div className=" layout py-12 md:w-1/2">
-          <div className="grid md:grid-cols-2  md:gap-12 ">
+      <section className="bg-fill pb-5  ">
+        <div className="md:layout">
+          <div className="grid md:grid-cols-2 grid-cols-1 place-content-center md:gap-0 ">
             {page.cards.map((card) => (
               <Card
                 key={card.id}
@@ -286,7 +311,17 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
       {children}
 
       <section id="form" className="bg-secondary-1">
-        <div className="layout py-12 md:w-1/2">
+        <div className=" py-12 ">
+        <div className="relative">
+      <svg 
+      className="absolute fill-secondary-l1 left-0 -top-16"
+       width="893" height="707" viewBox="0 0 893 707" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M332.895 622.768C268.046 638.899 -58.8563 865.828 -61 499.602L-32.1784 0C1.76301 21.9736 198.394 124.901 272.85 138.778C314.663 146.572 480.109 157.86 525.039 211.637C577.451 274.371 752.637 233.417 827.665 281.026C902.694 328.636 898.706 408.721 885.308 454.499C871.91 500.278 862.598 576.219 803.647 603.686C756.486 625.66 666.745 589.808 558.664 589.808C450.583 589.808 397.743 606.638 332.895 622.768Z" />
+      </svg>
+      
+      
+      
+      </div>
           <form method="POST" action="./api/send_email">
             <Form title={formTitle} />
           </form>

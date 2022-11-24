@@ -25,29 +25,34 @@ export async function getServerSideProps(context) {
 export default function Career({ authentication, page, redirect }) {
   const data = [
     {
-      icon_svg: <FaHandshake />,
+      icon_svg: <FaHandshake size={90}/>,
       title: "Kollektivavtal",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      color: "bg-primary-1",
     },
     {
-      icon_svg: <FaCar />,
+      icon_svg: <FaCar size={90} />,
       title: "Parkering",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      color: "bg-secondary-d1",
     },
     {
-      icon_svg: <BiHealth />,
+      icon_svg: <BiHealth size={90} />,
       title: "Företagshälsovård",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      color: "bg-primary-l2",
     },
     {
-      icon_svg: <FaRunning />,
+      icon_svg: <FaRunning size={90} />,
       title: "Friskvård",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      color: "bg-secondary-d1",
     },
     {
-      icon_svg: <GiPartyFlags />,
+      icon_svg: <GiPartyFlags size={90} />,
       title: "Aktiviteter",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      color: "bg-primary-1",
     },
   ];
   return (
@@ -60,15 +65,15 @@ export default function Career({ authentication, page, redirect }) {
       >
       
       <section className="">
-        <div className="layout py-12 flex flex-col items-center justify-center ">
-          <h3>Förmåner hos broccoli</h3>
+        <div className="pt-12 flex flex-col items-center justify-center ">
+          <h2 className="font-light pb-5" >Förmåner hos broccoli</h2>
 
-          <div className=" flex flex-row flex-wrap md:w-auto w-3/4  items-center justify-center md:gap-8 gap-4 py-8">
+          <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
             {data.map((data) => {
               return (
-                <div className="flex flex-col items-center">
+                <div className={` flex flex-col items-center w-screen md:w-full  p-8 md:p-10 lg:p-15  ${data.color}`}>
                   {data.icon_svg}
-                  <p>{data.title}</p>
+                  <h4 className="font-light text-lg pt-5 px-8 " >{data.title}</h4>
                 </div>
               );
             })}
@@ -77,8 +82,8 @@ export default function Career({ authentication, page, redirect }) {
       </section>
       
       </Page>
-
+      </Layout>
       
-    </Layout>
+
   );
 }
