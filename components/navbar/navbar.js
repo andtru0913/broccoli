@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ActiveLink from "../activeLink";
+import ThemedImage from "../themedImage";
 import MENU_LIST from "./navItems";
 
 const NavBar = () => {
@@ -13,7 +14,7 @@ const NavBar = () => {
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
   const [padding, setPadding] = useState(30);
   const [boxShadow, setBoxShadow] = useState(0);
-  const [textColor, setTextColor] = useState(0);
+  const [textColor, setTextColor] = useState("black");
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -26,57 +27,62 @@ const NavBar = () => {
 
   useEffect(() => {
     let backgroundTransparacyVar = clientWindowHeight / 600;
+    console.log(clientWindowHeight);
+    if (clientWindowHeight === 0) {
+      setTextColor("rgb(var(--color-inverted)");
+    } else if (clientWindowHeight > 0) {
+      setTextColor("rgb(var(--color-base)");
+    }
+
     if (backgroundTransparacyVar < 1) {
       let paddingVar = 30 - backgroundTransparacyVar * 20;
 
       let boxShadowVar = backgroundTransparacyVar * 0.1;
-      let textcolVar = 255 - backgroundTransparacyVar * 100;
 
       setBackgroundTransparacy(
         Math.round((backgroundTransparacyVar + Number.EPSILON) * 100) / 100
       );
       setPadding(Math.floor(paddingVar));
       setBoxShadow(Math.round((boxShadowVar + Number.EPSILON) * 100) / 100);
-
-      setTextColor(Math.round(textcolVar));
     }
   }, [clientWindowHeight]);
 
   return (
     <header className="sticky top-0 z-50 ">
       <nav
-        className={`flex justify-between align-middle py-2 px-7`}
+        className={`flex justify-between items-center align-middle py-2 px-7 text-base font-medium `}
         style={{
           background: `rgb(var(--color-fill), ${backgroundTransparacy}) `,
-
+          color: `rgb(var(--color-inverted)`,
           boxShadow: `rgb(100 100 100 / ${boxShadow}) 0px 0px 20px 6px`,
         }}
       >
         <div className="text-lg flex justify-start">
           <Link href="/">
-            <a>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="/images/BroccoliBlack.png"
-                alt="Broccoli"
-              />
+            <a className="">
+              <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-10">
+                <ThemedImage
+                  img_path_light="/images/lightMode/BroccoliBlack.png"
+                  img_path_dark="/images/darkMode/BroccoliWhite.png"
+                />
+              </div>
             </a>
           </Link>
         </div>
 
-        <div className="flex justify-center absolute right-10  text-tertiary-l2">
+        <div className="flex justify-center absolute right-10">
           <ul
             className={`lg:flex lg:flex-row lg:justify-between lg:align-middle 
                         ${
                           isOpen === false
-                            ? `lg:static lg:bg-transparent lg:shadow-none  fixed -left-full  top-14   flex   flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-fill`
+                            ? `lg:static lg:bg-transparent lg:shadow-none  fixed -left-full  top-14   flex  flex-col  w-full  rounded-lg  text-center  shadow-sm  `
                             : "lg:static lg:bg-transparent lg:shadow-none  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-fill"
                         }`}
           >
             {MENU_LIST.map((menu) => {
               return (
                 <li
-                  className="my-2"
+                  className="my-2 flex items-center"
                   onClick={() => {
                     openmenu;
                   }}
@@ -85,9 +91,9 @@ const NavBar = () => {
                   <ActiveLink
                     href={menu.href}
                     className=""
-                    activeClassName="w-full text-xs font-medium lg:ml-8 uppercase transition-all duration-200"
+                    activeClassName="w-full text-xs font-medium lg:ml-8  uppercase  text-primary-l1"
                   >
-                    <a className="w-full text-xs lg:ml-8 font-medium uppercase  transition-all duration-200 hover:text-primary-l1">
+                    <a className="w-full text-xs lg:ml-8 font-medium uppercase  hover:text-primary-l1">
                       {menu.text}
                     </a>
                   </ActiveLink>

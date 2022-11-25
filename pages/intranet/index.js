@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -82,11 +81,6 @@ const lunchfuldata = [
 ];
 
 export default function Home({ user }) {
-  const { theme, setTheme } = useTheme();
-  useEffect(() => {
-    let currentTheme = theme;
-    theme === "dark" ? setTheme("dark_intranet") : setTheme("intranet");
-  }, []);
   if (user === null) {
     return (
       <main className="">
@@ -158,7 +152,7 @@ export default function Home({ user }) {
               />
 
               <svg
-                className="absolute h-screen fill-secondary-1 -z-10 lg:w-4/6 -left-10 top-0 opacity-70"
+                className="hidden lg:flex  absolute h-auto fill-secondary-1 -z-10 lg:w-4/6 left-0 top-0 opacity-70"
                 width="832"
                 height="557"
                 viewBox="0 0 832 557"
@@ -169,7 +163,7 @@ export default function Home({ user }) {
               </svg>
 
               <svg
-                className="absolute h-screen fill-primary-1 -z-10 lg:w-4/6 right-0 -top-10 opacity-70"
+                className="absolute h-auto fill-primary-1 -z-10 lg:w-4/6 right-0 -top-5 opacity-70"
                 width="782"
                 height="554"
                 viewBox="0 0 782 554"

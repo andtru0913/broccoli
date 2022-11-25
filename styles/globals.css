@@ -31,37 +31,40 @@
     --color-tertiary-d1: 19, 16, 33;
     --color-tertiary-d2: 9, 7, 16;
   }
-  .dark {
-    --fc-event-bg-color: #31aca1;
-    --fc-event-border-color: #48bdb3;
-    --fc-event-text-color: #fff;
-    --fc-event-selected-overlay-color: 92, 67, 67;
-    --fc-today-bg-color: 255, 223, 40;
-    --background: 242, 242, 242;
-    --color-text-base: 38, 38, 38;
-    --color-text-muted: 64, 64, 64;
-    --color-text-inverted: 255, 255, 255;
-    --color-text-inverted-muted: 242, 242, 242;
-    --color-fill: 242, 242, 242;
-    --color-shadow: 38, 38, 38;
-    --color-border: 64, 64, 64;
-    --color-footer: 89, 124, 100;
-    --color-primary: #e97aeb;
-    --color-secondary: 174, 202, 197;
-    --color-error: 242, 100, 130;
-    --color-error-hover: 238, 54, 93;
-    --color-approve: 120, 202, 163;
-    --color-approve-hover: 73, 183, 131;
-    --color-link: 195, 162, 218;
-    --color-link-hover: 167, 118, 200;
-    --color-navlink-active: 243, 165, 117;
-    --color-navlink-hover: 239, 135, 71;
-    --color-button-accent: 76, 116, 108;
-    --color-button-accent-hover: 88, 132, 123;
-    --color-button-secondary: 111, 174, 191;
-    --color-button-secondary-hover: 79, 156, 177;
+  [data-theme="dark"] {
+    --fc-event-bg-color: rgb(51, 112, 75);
+    --fc-event-border-color: rgb(92, 150, 115);
+    --fc-event-text-color: rgb(255, 255, 255);
+    --fc-event-selected-overlay-color: rgb(92, 67, 67);
+    --fc-today-bg-color: rgb(102, 96, 82);
+    --fc-next-button-bg-color: rgb(51, 112, 75);
+    --fc-today-button-bg-color: rgb(33, 80, 51);
+    --fc-button-border-color: rgb(33, 80, 51);
+    --fc-button-bg-color: rgb(51, 112, 75);
+    --fc-button-hover-bg-color: rgb(117, 188, 145);
+    --fc-button-primary-bg-color: rgb(51, 112, 75);
+    --background: 42, 41, 44;
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 242, 242, 242;
+    --color-text-inverted: 38, 38, 38;
+    --color-text-inverted-muted: 64, 64, 64;
+    --color-fill: 42, 41, 44;
+    --color-primary-1: 51, 112, 75;
+    --color-primary-l1: 92, 150, 115; /*light-1*/
+    --color-primary-l2: 117, 188, 145; /*lightest*/
+    --color-primary-d1: 33, 80, 51; /*dark-1*/
+    --color-primary-d2: 15, 49, 28; /*darkest*/
+    --color-secondary-1: 80, 78, 73;
+    --color-secondary-l1: 122, 120, 114;
+    --color-secondary-l2: 180, 177, 172;
+    --color-secondary-d1: 48, 46, 42;
+    --color-secondary-d2: 27, 25, 22;
+    --color-tertiary-1: 87, 99, 131;
+    --color-tertiary-l1: 113, 126, 158;
+    --color-tertiary-l2: 152, 161, 184;
+    --color-tertiary-d1: 65, 77, 107;
+    --color-tertiary-d2: 37, 48, 75;
   }
-
   /*   --color-primary-1: 93, 165, 110;
     --color-primary-l1: 104, 183, 122; 
     --color-primary-l2: 155, 215, 168; 
@@ -104,7 +107,7 @@
 
   body,
   .p {
-    @apply text-base md:text-xl lg:text-2xl;
+    @apply text-sm md:text-base lg:text-xl xl:text-2xl;
   }
 
   /* #endregion  /**======== Typography =========== */
@@ -126,6 +129,9 @@
   .btn-primary {
     @apply bg-primary-1;
   }
+  .btn-secondary {
+    @apply bg-primary-l1 text-muted;
+  }
 
   .btn-delete {
     @apply bg-primary-l2 text-base;
@@ -140,6 +146,7 @@
   .btn:hover {
     @apply bg-opacity-70;
   }
+
   input,
   textarea {
     @apply bg-transparent;
@@ -162,7 +169,7 @@
     /* needs to be same precedence */
     padding-top: 5px; /* an override! */
     padding-bottom: 5px; /* an override! */
-    background-color: blue;
+    background-color: "primary-1";
   }
 
   .popup {
