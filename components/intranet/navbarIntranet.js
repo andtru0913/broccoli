@@ -65,7 +65,7 @@ const NavbarIntranet = ({ user }) => {
                           href={menu.href}
                           activeClassName="w-full text-xs font-medium  lg:ml-8 text-navlink-active uppercase opacity-80 transition-all duration-200"
                         >
-                          <a className="w-full text-xs  lg:ml-8 font-medium  uppercase opacity-80 transition-all duration-200 hover:text-navlink-hover">
+                          <a className="w-full text-xs  lg:ml-8 font-medium  uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
                             {menu.top === true ? menu.text : menu.icon}
                           </a>
                         </ActiveLink>
