@@ -2,10 +2,10 @@ import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
-import popupStyles from "/styles/popup.module.css";
 import { lunchgroup } from "../defaultIDs";
 
 const Column = ({ column, tasks }) => {
+  const popHide = "pop-hide" || "";
   return (
     <div className="rounded-lg bg-primary-1  flex flex-col">
       <div className="align-middle text-center bg-secondary-1 rounded-t-lg px-2 mb-2 md:px-6 md:mb-6">
@@ -19,10 +19,8 @@ const Column = ({ column, tasks }) => {
                 column.title;
               modifyLunchgroup.getElementsByClassName("id")[0].value =
                 column.id;
-              modifyLunchgroup.classList.remove(popupStyles.hide);
-              document
-                .getElementById("popup")
-                .classList.remove(popupStyles.hide);
+              modifyLunchgroup.classList.remove(popHide);
+              document.getElementById("popup").classList.remove(popHide);
             }
           }}
         >
