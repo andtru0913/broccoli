@@ -175,18 +175,18 @@ export default function Home({ user }) {
               </div>
             </div>
 
-            <div className="md:grid md:grid-cols-3 flex flex-col " >
-              <div className=" md:grid md:col-span-2 flex flex-col justify-center p-12 lg:p-16 gap-2 bg-tertiary-1">
-                <h3 className=" font-bold ">Senaste Nytt</h3>
+            <div className="md:grid md:grid-cols-3 flex flex-col" >
+              <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-tertiary-1">
+                <h3 className=" font-bold text-white ">Senaste Nytt</h3>
                 <Nyheter />
               </div>
-              <div className=" flex flex-col p-10 lg:p-16 bg-secondary-1 ">
+              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
                 <h3 className=" w-auto font-bold ">Kommande event</h3>
               </div>
 
-              <div className=" md:col-span-3 flex flex-col p-10 lg:p-16 bg-primary-1 items-center ">
-                <h3 className=" font-bold self-start ">Lunchgrupper</h3>
-                <div className="items-center grid grid-cols-1 md:flex md:flex-row md:flex-wrap md:w-max-1/2 gap-4 md:my-2  ">
+              <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-primary-1  ">
+                <h3 className=" font-bold">Lunchgrupper</h3>
+                <div className=" grid grid-cols-1 md:grid md:grid-cols-5 lg:flex lg:flex-row lg:flex-wrap gap-6 my-4  ">
                   {lunchfuldata.map((pp) => {
                     return pp.id === user.lunchgroupID ? (
                       <div className="relative flex flex-col  p-4 lg:p-5">
@@ -196,8 +196,8 @@ export default function Home({ user }) {
                         })}
                       </div>
                     ) : (
-                      <div className="flex flex-col md:flex-col content-center">
-                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-inverted border-tertiary-1 p-6">
+                      <div className="flex flex-col md:flex-col self-center">
+                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-tertiary-1 p-6">
                           <h3 className="">{pp.title}</h3>
                           {pp.people.map((i) => {
                             return <p>{i}</p>;
