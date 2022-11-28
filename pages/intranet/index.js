@@ -85,11 +85,7 @@ const lunchfuldata = [
 ];
 
 export default function Home({ user, events }) {
-  const { theme, setTheme } = useTheme();
-  useEffect(() => {
-    let currentTheme = theme;
-    theme === "dark" ? setTheme("dark_intranet") : setTheme("intranet");
-  }, []);
+  
   if (user === null) {
     return (
       <main className="">
@@ -235,7 +231,7 @@ export default function Home({ user, events }) {
                   })}
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         </main>
       </LayoutIntranet>
