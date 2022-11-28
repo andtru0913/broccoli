@@ -7,6 +7,7 @@ import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import * as Database from "../../Database";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
+import {useTheme} from "next-themes";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -196,6 +197,16 @@ export default function Home({ user, events }) {
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
                 <h3 className=" w-auto font-bold ">Kommande event</h3>
+                {JSON.parse(events).map((data) => {
+                  return (
+                      <UpcomingEvent
+                          key={data.id}
+                          title={data.title}
+                          date={data.date}
+                          description={data.description}
+                      />
+                  );
+                })}
               </div>
 
               <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-primary-1  ">
@@ -221,21 +232,8 @@ export default function Home({ user, events }) {
                     );
                   })}
                 </div>
-                <div className="flex flex-col ">
-                  <h4 className="uppercase font-medium ">Kommande event</h4>
-                  {JSON.parse(events).map((data) => {
-                    return (
-                        <UpcomingEvent
-                            key={data.id}
-                            title={data.title}
-                            date={data.date}
-                            description={data.description}
-                        />
-                    );
-                  })}
-                </div>
               </div>
-            </section>
+            </div>
           </div>
         </main>
       </LayoutIntranet>
