@@ -2,7 +2,7 @@ const Card = ({ title, icon, image, text, click }) => {
   return !image ? (
     <a
       onClick={click}
-      className=" text-center cursor-default bg-secondary-1 p-14 md:p-12 md:mx-4 lg:p-14 text-inverted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted "
+      className=" z-10 text-center cursor-default bg-secondary-1 p-14 md:p-12 md:mx-4 lg:p-14 text-inverted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted "
     >
       <div className="flex flex-1 p-12  md:p-4">
         <h2 className="justify-self-center">{title}</h2>

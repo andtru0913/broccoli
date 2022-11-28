@@ -309,9 +309,9 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
         </div>
       </section>
 
-      <section className="bg-fill pb-5  ">
-        <div className="md:layout">
-          <div className="grid md:grid-cols-2 grid-cols-1 place-content-center md:gap-0 ">
+      <section className="bg-fill pb-5   ">
+        <div className="md:layou z-20">
+          <div className="grid md:grid-cols-2 grid-cols-1 z-20 place-content-center md:gap-0 ">
             {page.cards.map((card) => (
               <Card
                 key={card.id}

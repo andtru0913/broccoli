@@ -97,7 +97,7 @@ export default function Form({ title }) {
               <input style={{ display: "none" }} id="base64" name="base64" />
              
               <input
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
+                className="form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
                 type="file"
                 id="formFile"
                 name="file"
@@ -138,7 +138,7 @@ export default function Form({ title }) {
           </div>
           {/**submit */}
 
-          <div className="relative flex justify-end flex-row  ">
+          <div className="relative flex justify-end flex-row z-20   ">
             <div className=" p-2 ">
               <button 
                 id="formSubmit"

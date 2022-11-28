@@ -200,7 +200,7 @@ export default function Home({ user, events }) {
 
               <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-primary-1  ">
                 <h3 className=" font-bold">Lunchgrupper</h3>
-                <div className=" grid grid-cols-1 md:grid md:grid-cols-5 lg:flex lg:flex-row lg:flex-wrap gap-6 my-4  ">
+                <div className=" grid grid-cols-1 md:grid md:grid-cols-4 lg:flex lg:flex-row lg:flex-wrap gap-6 my-4  ">
                   {lunchfuldata.map((pp) => {
                     return pp.id === user.lunchgroupID ? (
                       <div className="relative flex flex-col  p-4 lg:p-5">

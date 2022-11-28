@@ -1,6 +1,6 @@
 const NewsSection = ({ id, slug, title, body, timestamp, img_path }) => {
   return (
-    <div className="bg-secondary cursor-pointer transition-all border-2 border-dashed hover:border-white border-tertiary-1 my-2">
+    <div className="bg-secondary cursor-pointer transition-all border-b-2 border-dashed hover:border-white border-tertiary-1 my-2">
       <div className=" flex flex-1 m-2 ">
         <div className="w-1/5 md:w-1/6 ">
           <img src={img_path} alt={title} />
