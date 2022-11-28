@@ -3,8 +3,8 @@ import Layout from "../components/layout/layout";
 export default function Contact() {
   return (
     <Layout>
-      <section className="py-12 text-center text-base overflow-hidden">
-        <h1>Contact Us</h1>
+      <section className="py-12 text-center text-base overflow-hidden cursor-default">
+        <h1>Kontakta oss</h1>
         <div className=" layout grid grid-cols-1 md:grid-cols-2 justify-center gap-4 py-12 lg:px-20 cursor-default">
           <div className="relative rounded ">
             <div className="flex w-full h-full justify-center z-10 ">
@@ -16,11 +16,9 @@ export default function Contact() {
           </div>
           <div className="relative rounded">
             <div className=" flex flex-col bg-primary-1 bg-opacity-80 p-4 md:px-8 z-20 h-full overflow-hidden justify-center">
-              <h4 className="pb-4 md:pb-8 md:text-3xl">
-                Broccoli Engineering AB
-              </h4>
+              <h4 className="pb-4 md:pb-8 ">Broccoli Engineering AB</h4>
               <div className=" flex flex-col gap-4">
-                <a className="hover:text-skin-muted" href="tel:031-151480">
+                <a className="hover:text-inverted" href="tel:031-151480">
                   <div className="flex flex-row gap-4 items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +26,7 @@ export default function Contact() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4"
+                      className="w-4 lg:w-8 h-4 lg:h-8 xl:w-12 xl:h-12"
                     >
                       <path
                         strokeLinecap="round"
@@ -37,21 +35,21 @@ export default function Contact() {
                       />
                     </svg>
 
-                    <p className="md:text-xl">031-151480</p>
+                    <h5 className="">031-151480</h5>
                   </div>
                 </a>
                 <a
-                  className="hover:text-skin-muted"
+                  className="hover:text-inverted"
                   href="mailto:engineering@broccoli.se"
                 >
-                  <div className="flex flex-row gap-4 items-center">
+                  <div className="flex flex-row gap-4 items-center flex-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4"
+                      className="w-4 lg:w-8 h-4 lg:h-8 xl:w-12 xl:h-12"
                     >
                       <path
                         strokeLinecap="round"
@@ -60,11 +58,11 @@ export default function Contact() {
                       />
                     </svg>
 
-                    <p className="md:text-xl">engineering@broccoli.se</p>
+                    <h5 className="">engineering@broccoli.se</h5>
                   </div>
                 </a>
                 <a
-                  className="hover:text-skin-muted"
+                  className="hover:text-inverted"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                 >
                   <div className="flex flex-row gap-4 items-center">
@@ -74,7 +72,7 @@ export default function Contact() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 "
+                      className="w-4 lg:w-8 h-4 lg:h-8 xl:w-12 xl:h-12"
                     >
                       <path
                         strokeLinecap="round"
@@ -88,9 +86,9 @@ export default function Contact() {
                       />
                     </svg>
 
-                    <p className="md:text-xl">
+                    <h5 className="text-left ">
                       Tillgängligheten 3, 417 01 Göteborg
-                    </p>
+                    </h5>
                   </div>
                 </a>
               </div>
