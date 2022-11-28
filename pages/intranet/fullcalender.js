@@ -1,5 +1,5 @@
 import { getEvents } from "../../Database";
-import Calender from "../../components/Calender";
+import Calender from "../../components/intranet/Calender";
 import * as Database from "../../Database";
 
 export async function getServerSideProps(context) {
@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         admin: user.admin,
-        allEvents: events,
+        events: JSON.stringify(events),
       },
     };
   }
@@ -23,6 +23,6 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ admin, allEvents }) {
-  return <Calender admin={admin} allEvents={allEvents} />;
+export default function Home({ admin, events }) {
+  return <Calender admin={admin} allEvents={JSON.parse(events)} />;
 }

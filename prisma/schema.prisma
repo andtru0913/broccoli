@@ -36,8 +36,8 @@ model User {
 model Event {
     id              String @id @default(auto()) @map("_id") @db.ObjectId
     title           String
-    start           String
-    end             String
+    start           DateTime
+    end             DateTime
     description     String?
     users           UserOnEvent[]
 }

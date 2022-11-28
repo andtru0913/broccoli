@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         let end = new Date(event.end)
         start.setDate(start.getDate() + req.body.delta)
         end.setDate(end.getDate() + req.body.delta)
-        await updateEventDate(req.body.id, start.toISOString().split('T')[0], end.toISOString().split('T')[0]).then()
+        await updateEventDate(req.body.id, start, end).then()
     }
     res.redirect(302, '../intranet/fullcalender');
 }

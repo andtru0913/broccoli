@@ -7,11 +7,10 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     if (await checkAdmin(req.cookies['user'])) {
-        let start = Date.parse(req.body.start)
         let end = new Date(req.body.end)
-        end.setDate(end.getDate() + 1)
+        let start = new Date(req.body.start)
         if (req.body.title !== "" && start <= end) {
-            await createEvent(req.body.title, req.body.description, req.body.start, end.toISOString().split('T')[0])
+            await createEvent(req.body.title, req.body.description, start, end)
                 .catch(e => {
                     console.error(e.message)
                 })

@@ -19,7 +19,7 @@ const INTRA_MENU_LIST = [
     bottom: true,
     top: true,
     icon: <HiBookOpen size={20} />,
-    href: "/intranet",
+    href: "/intranet/handbook/english/inledning.md",
   },
   {
     text: "Employees",
