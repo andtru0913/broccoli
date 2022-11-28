@@ -6,7 +6,7 @@ import * as Database from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
 
-const Column = dynamic(() => import("../../../components/Column"), {
+const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
 });
 

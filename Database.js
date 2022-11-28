@@ -207,6 +207,21 @@ export async function getEvents(id) {
     })
 }
 
+export async function upcomingEvents(n) {
+    return await prisma.event.findMany({
+        select: {
+            id:true,
+            title:true,
+            description:true,
+            start: true
+        },
+        orderBy: {
+          start: 'asc'
+        },
+        take: n
+    })
+}
+
 export async function deleteEvent(id) {
     return await prisma.event.delete({
         where: {

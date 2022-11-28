@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         let event = (await Database.getEvents(req.body.id))[0];
         let end = new Date(event.end)
         end.setDate(end.getDate() + req.body.delta)
-        await Database.updateEventDate(req.body.id, event.start, end.toISOString().split('T')[0]).then()
+        await Database.updateEventDate(req.body.id, event.start).then()
     }
     res.redirect(302, '../intranet/fullcalender');
 }

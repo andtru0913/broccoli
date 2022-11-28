@@ -7,12 +7,15 @@ import INTRA_MENU_LIST from "../../components/intranet/navItemIntra";
 import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import * as Database from "../../Database";
+import UpcomingEvent from "../../components/intranet/upcomingEvent";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
   if (cookies !== null) {
-    let user = await Database.getUserinfo(cookies.id);
-    let groups = await Database.getAllLunchGroups();
+    const user = await Database.getUserinfo(cookies.id);
+    const groups = await Database.getAllLunchGroups();
+    const events = await Database.upcomingEvents(3);
+    events.map(data => data.date = new Date(data.start).toLocaleString('default',{day: "numeric",month: "short"}))
     let lunchgroups = [];
     groups.slice(1).map((data) => {
       let people = [];
@@ -28,6 +31,7 @@ export async function getServerSideProps(context) {
       props: {
         user: user !== undefined ? user : null,
         lunchgroups: lunchgroups,
+        events: JSON.stringify(events)
       },
     };
   }
@@ -81,7 +85,7 @@ const lunchfuldata = [
   },
 ];
 
-export default function Home({ user }) {
+export default function Home({ user, events }) {
   const { theme, setTheme } = useTheme();
   useEffect(() => {
     let currentTheme = theme;
@@ -242,6 +246,16 @@ export default function Home({ user }) {
                 </div>
                 <div className="flex flex-col ">
                   <h4 className="uppercase font-medium ">Kommande event</h4>
+                  {JSON.parse(events).map((data) => {
+                    return (
+                        <UpcomingEvent
+                            key={data.id}
+                            title={data.title}
+                            date={data.date}
+                            description={data.description}
+                        />
+                    );
+                  })}
                 </div>
               </div>
             </section>

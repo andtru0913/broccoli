@@ -1,9 +1,7 @@
-import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
-import popupStyles from "/styles/popup.module.css";
-import { lunchgroup } from "../defaultIDs";
+import { lunchgroup } from "../../defaultIDs";
 
 const Column = ({ column, tasks }) => {
   return (
@@ -19,10 +17,10 @@ const Column = ({ column, tasks }) => {
                 column.title;
               modifyLunchgroup.getElementsByClassName("id")[0].value =
                 column.id;
-              modifyLunchgroup.classList.remove(popupStyles.hide);
+              modifyLunchgroup.classList.remove("pop-hide");
               document
                 .getElementById("popup")
-                .classList.remove(popupStyles.hide);
+                .classList.remove("pop-hide");
             }
           }}
         >

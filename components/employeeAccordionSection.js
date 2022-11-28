@@ -22,7 +22,6 @@ export default function ({ img_path, id, author, index, setIndex, roll, uppdrag,
               <div className=" relative md:w-56 md:h-64 w-36 h-40 overflow-hidden">
                 <ProfilePicture image={img_path}/>
               </div>
-  
               <div className="flex flex-col mx-3 p-2 md:w-56 md:h-64 w-36 h-40">
                 <h5 className="md:text-lm md:text-s md:font-medium text-sm uppercase ">{author}</h5>
                   <h4 className="text-xs">Roll: {roll}</h4>

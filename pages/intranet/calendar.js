@@ -1,5 +1,5 @@
 import * as Database from "../../Database";
-import Calender from "../../components/Calender";
+import Calender from "../../components/intranet/Calender";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         admin: user.admin === undefined ? false : user.admin,
-        allEvents: events,
+        events: JSON.stringify(events),
       },
     };
   }
@@ -22,6 +22,6 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ admin, allEvents }) {
-  return <Calender admin={admin} allEvents={allEvents} />;
+export default function Home({ admin, events }) {
+  return <Calender admin={admin} allEvents={JSON.parse(events)} />;
 }

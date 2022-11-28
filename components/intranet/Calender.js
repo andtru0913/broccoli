@@ -1,8 +1,8 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import LayoutIntranet from "./layout/layoutIntranet";
-import List from "./userlist";
+import LayoutIntranet from "../layout/layoutIntranet";
+import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
 
@@ -66,7 +66,7 @@ const Component = ({ admin, allEvents }) => {
         let id = e.event._def.publicId;
         let delta = e.delta.days;
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/modifyEventDate", true);
+        xhr.open("POST", "../../api/admin/modifyEventDate", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(
           JSON.stringify({
@@ -79,7 +79,7 @@ const Component = ({ admin, allEvents }) => {
         let id = e.event._def.publicId;
         let delta = e.endDelta.days;
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/resizeEvent", true);
+        xhr.open("POST", "../../api/admin/resizeEvent", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(
           JSON.stringify({
@@ -89,6 +89,8 @@ const Component = ({ admin, allEvents }) => {
         );
       }}
       events={allEvents}
+      displayEventTime={false}
+      eventDisplay={'block'}
     />
   );
 };
@@ -127,7 +129,7 @@ const Calender = ({ admin, allEvents }) => {
                 </div>
               </button>
             </div>
-            <form action="../../api/createEvent" method="POST">
+            <form action="../../api/admin/createEvent" method="POST">
               <div className="flex flex-col md:flex-row  py-4">
                 <div className="flex flex-row">
                   <p className="pr-2"> Från</p>
@@ -186,7 +188,7 @@ const Calender = ({ admin, allEvents }) => {
             <div className="flex flex-col md:flex-row flex-1 scroll-auto">
               <div className="flex flex-col md:flex-row gap-2 py-4">
                 <div className="flex flex-col">
-                  <form action="../../api/modifyEvent" method="POST">
+                  <form action="../../api/admin/modifyEvent" method="POST">
                     <div className="flex flex-col md:flex-row gap-2 py-4">
                       <div className="flex flex-row">
                         <p className="pr-2"> Från</p>
@@ -235,7 +237,7 @@ const Calender = ({ admin, allEvents }) => {
                     </button>
                   </form>
                   <div className="pt-2">
-                    <form action="../../api/deleteEvent" method="POST">
+                    <form action="../../api/admin/deleteEvent" method="POST">
                       <input
                         className="id p-2 border rounded mb-2"
                         type="hidden"
