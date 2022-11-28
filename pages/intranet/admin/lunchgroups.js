@@ -118,6 +118,7 @@ export default function Home({ lunchGroups, users }) {
       })
     );
   };
+  const popHide = "pop-hide" || "";
   return (
     <LayoutIntranet>
       <main className="bg-skin-fill ">
@@ -129,12 +130,10 @@ export default function Home({ lunchGroups, users }) {
                 <button
                   className="btn btn-misc"
                   onClick={function () {
-                    document
-                      .getElementById("popup")
-                      .classList.remove("pop-hide");
+                    document.getElementById("popup").classList.remove(popHide);
                     document
                       .getElementById("creategroup")
-                      .classList.remove("pop-hide");
+                      .classList.remove(popHide);
                   }}
                 >
                   Ny lunchgrupp
@@ -159,30 +158,26 @@ export default function Home({ lunchGroups, users }) {
           </DragDropContext>
           <div
             id="popup"
-            className={`popup pop-hide`}
+            className={`popup ${popHide}`}
             onClick={function () {
-              document.getElementById("popup").classList.add("pop-hide");
-              document
-                .getElementById("creategroup")
-                .classList.add("pop-hide");
+              document.getElementById("popup").classList.add(popHide);
+              document.getElementById("creategroup").classList.add(popHide);
               document
                 .getElementById("modifyLunchgroup")
-                .classList.add("pop-hide");
+                .classList.add(popHide);
             }}
           ></div>
-          <div id="creategroup" className={` window-pop pop-hide`}>
+          <div id="creategroup" className={` window-pop ${popHide}`}>
             <div className="relative bg-skin-fill rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ny lunchgrupp</h4>
                 <button
                   type=""
                   onClick={function () {
-                    document
-                      .getElementById("popup")
-                      .classList.add("pop-hide");
+                    document.getElementById("popup").classList.add(popHide);
                     document
                       .getElementById("creategroup")
-                      .classList.add("pop-hide");
+                      .classList.add(popHide);
                   }}
                 >
                   <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
@@ -210,22 +205,17 @@ export default function Home({ lunchGroups, users }) {
               </form>
             </div>
           </div>
-          <div
-            id="modifyLunchgroup"
-            className={`window-pop pop-hide`}
-          >
+          <div id="modifyLunchgroup" className={`window-pop ${popHide}`}>
             <div className="relative bg-skin-fill rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ändra Lunchgrupp</h4>
                 <button
                   type=""
                   onClick={function () {
-                    document
-                      .getElementById("popup")
-                      .classList.add("pop-hide");
+                    document.getElementById("popup").classList.add(popHide);
                     document
                       .getElementById("modifyLunchgroup")
-                      .classList.add("pop-hide");
+                      .classList.add(popHide);
                   }}
                 >
                   <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
@@ -246,11 +236,7 @@ export default function Home({ lunchGroups, users }) {
                     name="title"
                     placeholder="Titel"
                   />
-                  <input
-                    className={`id pop-hide`}
-                    type="text"
-                    name="id"
-                  />
+                  <input className={`id ${popHide}`} type="text" name="id" />
                   <button className="shadow btn btn-create" type="submit">
                     Ändra händelse
                   </button>

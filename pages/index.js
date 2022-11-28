@@ -5,13 +5,17 @@ import { HiArrowRight } from "react-icons/hi2";
 import { FaBed, FaFacebookSquare, FaSwimmer } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
+import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 // noinspection ES6UnusedImports
-import Chart from "chart.js/auto";
 import { getGenderCount } from "../Database";
-import data from "../public/computer.png";
-import Reviews from "../components/toWorkAtBroccoli/reviews";
+import computerWhite from "../public/images/darkMode/computerWhite.png";
+import computerBlack from "../public/images/lightMode/computerBlack.png";
 
+import { Chart } from "react-chartjs-2";
+import Reviews from "../components/toWorkAtBroccoli/reviews";
+import ThemeChanger from "../components/themechanger";
+import ThemedImage from "../components/themedImage";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
@@ -80,18 +84,22 @@ export default function Home({ feed, genderCount }) {
 
         <section className="relative">
           <div className=" pb-12  flex flex-col justify-center">
-            <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2">
+            <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
               <div className="  lg:max-w-readable flex justify-center">
                 <h4 className="text-center">
                   Hos broccoli jobbar ingenjörer med olika inriktningar främst
                   inom:
                 </h4>
               </div>
-
               <div className="flex flex-row flex-wrap flex-auto justify-center  gap-2">
-                <div className="flex flex-col items-center ">
-                  <div className="w-12 h-auto">
-                    <Image src={data} />
+                <div className=" flex flex-col items-center ">
+                  <div className="relative">
+                    <div className=" w-20 h-20">
+                      <ThemedImage
+                        img_path_light={computerBlack}
+                        img_path_dark={computerWhite}
+                      />
+                    </div>
                   </div>
 
                   <div className="bg-primary-1 py-4 px-6 ">
@@ -99,8 +107,13 @@ export default function Home({ feed, genderCount }) {
                   </div>
                 </div>
                 <div className="flex flex-col items-center  ">
-                  <div className="w-12 h-auto">
-                    <Image src={data} />
+                  <div className="relative">
+                    <div className=" w-20 h-20">
+                      <ThemedImage
+                        img_path_light={computerBlack}
+                        img_path_dark={computerWhite}
+                      />
+                    </div>
                   </div>
 
                   <div className="bg-primary-1 py-4 px-6">
@@ -108,8 +121,13 @@ export default function Home({ feed, genderCount }) {
                   </div>
                 </div>
                 <div className="flex flex-col items-center ">
-                  <div className="w-12 h-auto">
-                    <Image src={data} />
+                  <div className="relative">
+                    <div className=" w-20 h-20">
+                      <ThemedImage
+                        img_path_light={computerBlack}
+                        img_path_dark={computerWhite}
+                      />
+                    </div>
                   </div>
 
                   <div className="bg-primary-1 py-4 px-6">
@@ -117,8 +135,13 @@ export default function Home({ feed, genderCount }) {
                   </div>
                 </div>
                 <div className="flex flex-col items-center  ">
-                  <div className="w-12 h-auto">
-                    <Image src={data} />
+                  <div className="relative">
+                    <div className=" w-20 h-20">
+                      <ThemedImage
+                        img_path_light={computerBlack}
+                        img_path_dark={computerWhite}
+                      />
+                    </div>
                   </div>
 
                   <div className="bg-primary-1 py-4 px-6">
@@ -126,8 +149,13 @@ export default function Home({ feed, genderCount }) {
                   </div>
                 </div>
                 <div className="flex flex-col items-center ">
-                  <div className="w-12 h-auto">
-                    <Image src={data} />
+                  <div className="relative">
+                    <div className=" w-20 h-20">
+                      <ThemedImage
+                        img_path_light={computerBlack}
+                        img_path_dark={computerWhite}
+                      />
+                    </div>
                   </div>
 
                   <div className="bg-primary-1 py-4 px-6">
@@ -181,10 +209,10 @@ export default function Home({ feed, genderCount }) {
           <div className=" pb-12 lg:py-12 text-center overflow-hidden ">
             <h1 className=" ">Våra kärnvärden</h1>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
-              <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
+              <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
                 <h2 className="">Relationer</h2>
 
-                <p className="leading-relaxed">
+                <p className="text-justify">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och bjuder aktivt in berörda i dialogen. Genom våra olikheter
                   bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
@@ -194,7 +222,7 @@ export default function Home({ feed, genderCount }) {
                 </p>
               </div>
               <div className="relative rounded">
-                <div className=" bg-secondary-1 p-8 md:p-4 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+                <div className=" bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                   <h2 className="shrink">Professionalism</h2>
 
                   <p className="text-justify">
@@ -208,7 +236,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
               </div>
               <div className="relative rounded">
-                <div className=" bg-primary-l1 p-8 md:p-4 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+                <div className=" bg-primary-l1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                   <h2 className="">Hållbar utveckling</h2>
                   <p className="text-justify">
                     Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
@@ -287,8 +315,8 @@ export default function Home({ feed, genderCount }) {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted">
-              <div className="hidden lg:flex relative w-full h-96">
+            <div className=" flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted mt-20">
+              <div className="hidden lg:flex relative w-full max-h-full bg-cover">
                 {/**image gallery */}
 
                 <Image
@@ -298,53 +326,55 @@ export default function Home({ feed, genderCount }) {
                   objectFit="cover"
                 />
               </div>
-              <div className="flex flex-col items-center p-8 md:p-12">
-                {/**information */}
-                <h3>Välkommen till Broccoligården</h3>
-                <div className="flex flex-col md:flex-row gap-8 lg:gap-12 pt-12">
-                  <p className="h-auto p1 text-left shrink">
-                    Broccoligården ligger strax utanför svanesund. En idyllisk
-                    plats på västkusten. Ta en tur med vänner familj eller
-                    jobbteamet och njut av den friska luften, sola på det stora
-                    altandäcket, mys inne vid brasan eller varför inte ta ett
-                    dopp.
-                  </p>
+              <div className="flex flex-col items-center cursor-default">
+                <div className="flex flex-col items-center p-8 md:p-12 cursor-default">
+                  {/**information */}
+                  <h3>Välkommen till Broccoligården</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-12">
+                    <p className="h-auto p1 text-left shrink max-w-readable">
+                      Broccoligården ligger strax utanför svanesund. En idyllisk
+                      plats på västkusten. Ta en tur med vänner familj eller
+                      jobbteamet och njut av den friska luften, sola på det
+                      stora altandäcket, mys inne vid brasan eller varför inte
+                      ta ett dopp.
+                    </p>
 
-                  <div className="flex flex-col items-start gap-12 h-auto">
-                    <div className="flex flex-row items-center text-inverted gap-4">
-                      <FaBed size={30} />
-                      <h4>37 bäddar</h4>
-                    </div>
-                    <div className="flex flex-row items-center text-inverted gap-4">
-                      <MdKitchen size={30} />
-                      <h4>Fullt utrustad kök</h4>
-                    </div>
-                    <div className="flex flex-row items-center text-inverted gap-4">
-                      <FaSwimmer size={30} />
-                      <h4>100m till havet</h4>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center p-8 md:p-12">
-                  <div className="mapouter">
-                    <div className="gmap_canvas ">
-                      <iframe
-                        className="w-full h-64"
-                        width={277}
-                        height={595}
-                        id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=Broccolig%C3%A5rden%20HALS%20550,%20472%2094%20Svanesund&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                      ></iframe>
+                    <div className="flex flex-row lg:flex-col justify-center items-start gap-12 h-auto  text-center lg:text-left">
+                      <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
+                        <FaBed size={30} />
+                        <p className="font-bold ">37 bäddar</p>
+                      </div>
+                      <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
+                        <MdKitchen size={30} />
+                        <p className="font-bold ">Fullt utrustad kök</p>
+                      </div>
+                      <div className="flex flex-col lg:flex-row items-center text-inverted gap-4">
+                        <FaSwimmer size={30} />
+                        <p className="font-bold">100m till havet</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="shrink flex flex-col items-center md:items-start justify-around">
-                    <h2>Kontakt</h2>
-                    <a href="mailto:engineering@broccoli.se">
-                      garden@broccoli.se
-                    </a>
-                    <h2>Följ oss</h2>
-                    <div className="w-min text-green-3 hover:text-opacity-40">
-                      <FaFacebookSquare size={40} />
+                  <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-8 pt-12">
+                    <div className="mapouter">
+                      <div className="gmap_canvas ">
+                        <iframe
+                          className="w-full h-64"
+                          width={277}
+                          height={595}
+                          id="gmap_canvas"
+                          src="https://maps.google.com/maps?q=Broccolig%C3%A5rden%20HALS%20550,%20472%2094%20Svanesund&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        ></iframe>
+                      </div>
+                    </div>
+                    <div className="shrink flex flex-col items-center md:items-start justify-around">
+                      <h4>Kontakt</h4>
+                      <a href="mailto:engineering@broccoli.se">
+                        garden@broccoli.se
+                      </a>
+                      <h4>Följ oss</h4>
+                      <div className="w-min text-green-3 hover:text-opacity-40">
+                        <FaFacebookSquare size={40} />
+                      </div>
                     </div>
                   </div>
                 </div>

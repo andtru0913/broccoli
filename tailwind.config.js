@@ -11,6 +11,8 @@ function withOpacity(variableName) {
 
 module.exports = {
   important: true,
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -89,6 +91,10 @@ module.exports = {
         "tertiary-d2": withOpacity("--color-tertiary-d2"),
       },
       backgroundColor: {
+        base: withOpacity("--color-text-base"),
+        muted: withOpacity("--color-text-muted"),
+        inverted: withOpacity("--color-text-inverted"),
+        "inverted-muted": withOpacity("--color-text-inverted-muted"),
         fill: withOpacity("--color-fill"),
         "primary-1": withOpacity("--color-primary-1"),
         "primary-l1": withOpacity("--color-primary-l1"),

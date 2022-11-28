@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ({ img_path, id, author, children, index, setIndex }) {
   const handleSetIndex = () => {
     index !== id ? setIndex(id) : setIndex(false);
@@ -11,12 +13,16 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
               } shadow-lg shadow-shadow`}
       >
         {img_path != null}
-        <div className=" ">
-          <img
-            className="object-cover w-36 h-40 lg:w-40 lg:h-48"
-            src={img_path}
-            alt={img_path}
-          />
+        <div className="relative">
+          <div className="w-36 h-40 lg:w-40 lg:h-48 ">
+            <Image
+              className="object-cover  "
+              src={img_path}
+              alt={img_path}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="flex flex-col p-2 lg:p-6  md:w-96 xl:w-full lg:max-h-48 lg:overflow-scroll xl:overflow-auto xl:max-h-full">
           <h4 className=" lg:pb-2">{author}</h4>
@@ -34,13 +40,18 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
     }  shadow-lg shadow-shadow`}
           >
             {img_path != null}
-            <div className=" ">
-              <img
-                className="object-cover w-20 h-20 "
-                src={img_path}
-                alt={img_path}
-              />
+            <div className="relative">
+              <div className=" w-20 h-20 ">
+                <Image
+                  className="object-cover  "
+                  src={img_path}
+                  alt={img_path}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
             </div>
+
             <div className=" flex flex-row items-between w-full justify-between">
               <div className="flex  p-2 items-center">
                 <h4 className="">{author}</h4>
@@ -73,13 +84,18 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
     }  shadow-lg shadow-shadow`}
           >
             <div className="flex flex-row">
-              <div className=" ">
-                <img
-                  className="object-cover w-20 h-20 "
-                  src={img_path}
-                  alt={img_path}
-                />
+              <div className="relative">
+                <div className=" w-20 h-20 ">
+                  <Image
+                    className="object-cover  "
+                    src={img_path}
+                    alt={img_path}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
               </div>
+
               <div className="flex  p-2 items-center">
                 <h4 className="">{author}</h4>
               </div>

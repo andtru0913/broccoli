@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Layout from "../components/layout/layout";
-import data from "../public/computer.png";
-import broccoli from "../public/broccoli.png";
 import TimelineComponent from "../components/TimelineComponent";
 import { IoBoatSharp } from "react-icons/io5";
 import { AiOutlineCar } from "react-icons/ai";
@@ -45,7 +43,7 @@ export default function About({ title, intro, year, timelinedesc }) {
     <Layout>
       <main>
         <svg
-          className="fill-primary-l2 absolute top-0 left-0 h-auto -z-10 w-[48rem]"
+          className="fill-primary-l2 absolute top-0 right-0 md:left-0 h-auto -z-10 w-[48rem]"
           width="799"
           height="1107"
           viewBox="0 0 799 1107"
@@ -56,7 +54,7 @@ export default function About({ title, intro, year, timelinedesc }) {
         </svg>
         <section className="relative ">
           <svg
-            className="fill-secondary-1 absolute right-0 top-[32rem] h-auto -z-10 w-3/5"
+            className="hidden md:flex fill-secondary-1 absolute right-0 top-[32rem] h-auto -z-10 w-3/5"
             width="969"
             height="992"
             viewBox="0 0 969 992"
@@ -112,45 +110,45 @@ export default function About({ title, intro, year, timelinedesc }) {
                 "Majoriteten av våra kunder är produktutvecklande företag som återfinns inom diverse olika branscher såsom fordon, automation, marin, medicin med flera."}
             </p>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-4 w-full py-8 cursor-default">
-              <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
+              <div className="relative bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex justify-center">
                   <IoBoatSharp size={40} />
                 </div>
 
-                <p className="">
+                <p className="text-justify">
                   Vi har inom marina tillämpningar bl.a. arbetat med styrsystem,
                   brandskyddssystem och drivlineövervakning på fartyg.
                 </p>
               </div>
-              <div className="relative  bg-secondary-1 p-8 md:p-4 lg:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
+              <div className="relative bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex justify-center">
                   <AiOutlineCar size={40} />
                 </div>
 
-                <p className="">
+                <p className="text-justify">
                   Inom fordon har vi bred erfarenhet av olika ingenjörsroller
                   inom t.ex. säkerhetselektronik, infotainmentsystem och
                   powertrain.
                 </p>
               </div>
-              <div className="relative  bg-primary-l1 p-8 md:p-4 lg:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
+              <div className="relative bg-primary-l1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex justify-center">
-                  <BsGearWideConnected />
+                  <BsGearWideConnected size={40} />
                 </div>
 
-                <p className="">
+                <p className="text-justify">
                   Vi har inom automationsbranschen varit delaktiga i
                   utvecklingen av lastrampsövervakning och kommunikationsmoduler
                   för ett antal olika kommunikationsprotokoll mm.
                 </p>
               </div>
-              <div className="relative  bg-primary-1 p-8 md:p-4 lg:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
+              <div className="relative bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex flex-row justify-center">
-                  <GiHeartBeats />
-                  <GiRadarSweep />
+                  <GiHeartBeats size={30} />
+                  <GiRadarSweep size={30} />
                 </div>
 
-                <p className="">
+                <p className="text-justify">
                   Vi har arbetat med diagnosutrustning inom medicinteknik,
                   radarsystem inom försvar, sensorteknik inom telekom,
                   mekanikkonstruktion inom energibranschen mm.
@@ -163,7 +161,7 @@ export default function About({ title, intro, year, timelinedesc }) {
         <TimelineComponent />
 
         <section className="">
-          <div className="layout py-12 flex flex-col items-center">
+          <div className=" pt-12 flex flex-col items-center">
             <div className=" md:max-w-readable flex flex-col gap-4 text-center">
               <h1>{title ?? "kvalitets- och miljöpolicy"}</h1>
 
@@ -172,43 +170,48 @@ export default function About({ title, intro, year, timelinedesc }) {
                   "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
               </p>
             </div>
-            <div className=" py-12 flex flex-col">
-              <div className=" py-12 grid  lg:grid-cols-2 grid-cols-1 place-items-center lg:justify-items-end  lg:gap-8 gap-4">
-                <div className=" overflow-hidden">
-                  <Image
-                    src="/images/gothenburg.jfif"
-                    width={300}
-                    height={200}
-                    objectFit="cover"
-                    alt="Siluette of Gothenburg"
-                  />
-                </div>
-                <div className="text-center lg:text-left md:w-1/2 lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start">
-                  <h3>{title ?? "VÅRT KVALITETSARBETE"}</h3>
+            <div className="relative pt-12 flex flex-col h-full w-full">
+              <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
+                <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                    <h4>{title ?? "VÅRT KVALITETSARBETE"}</h4>
 
-                  <p className=" text-justify">
-                    {intro ??
-                      "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
-                  </p>
+                    <p className="p1 text-justify">
+                      {intro ??
+                        "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
+                    </p>
+                  </div>
+                </div>
+                <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
+                  <Image
+                    className="w-40 h-40 relative lg:absolute"
+                    alt="karlatornet"
+                    src="/images/karlatornet.JPG"
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </div>
               </div>
-              <div className=" py-12 grid  lg:grid-cols-2 grid-cols-1 place-items-center lg:justify-items-end  lg:gap-8 gap-4">
-                <div className="overflow-hidden">
+              <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
+                <div className="relative w-auto max-h-full min-w-full h-full  bg-secondary-l2">
                   <Image
-                    src="/images/gothenburg.jfif"
-                    width={300}
-                    height={200}
+                    className="w-40 h-40 relative lg:absolute"
+                    alt="karlatornet"
+                    src="/images/grass.JPG"
+                    layout="fill"
                     objectFit="cover"
-                    alt="Siluette of Gothenburg"
                   />
                 </div>
-                <div className="text-center lg:text-left  md:w-1/2 lg:max-w-readable flex flex-col  gap-4 lg:place-self-start">
-                  <h3>{title ?? "VÅRT MILJÖÅTAGANDE"}</h3>
 
-                  <p className=" text-justify">
-                    {intro ??
-                      "Vi vill skydda vår miljö och förhindra förorening genom medvetna val. Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster och produkter som är mer energieffektiva , samt reducera våra CO2 ekvivalenta utsläpp som påverkar växthuseffekten. Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår verksamhet."}
-                  </p>
+                <div className=" w-auto max-h-full min-w-full h-60 md:h-96  lg:h-[36rem] bg-secondary-1 ">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                    <h4>{title ?? "VÅRT KVALITETSARBETE"}</h4>
+
+                    <p className="p1 text-justify">
+                      {intro ??
+                        "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -96,7 +96,7 @@ const Component = ({ admin, allEvents }) => {
 };
 
 const Calender = ({ admin, allEvents }) => {
-  const popHide = "pop-hide";
+  const popHide = "pop-hide" || "";
   return (
     <LayoutIntranet>
       <div className="flex justify-center">
@@ -297,15 +297,12 @@ const Calender = ({ admin, allEvents }) => {
 
         <div className="layout py-8 md:py-12  flex flex-col items-center">
           <div className="flex flex-row gap-4">
-            <a
-              className="p-2 bg-primary-1 text-inverted rounded-sm"
-              href={"./calendar"}
-            >
+            <a className="p-2 btn btn-secondary" href={"./calendar"}>
               Mina händelser
             </a>
 
             <a
-              className="p-2 bg-primary-1 text-inverted rounded-sm"
+              className="p-2 btn btn-secondary rounded-sm"
               href={"./fullcalender"}
             >
               Alla händelser
