@@ -654,7 +654,7 @@ export async function editProfile(userid, username, password, email, address, pr
                 id: userid
             },
             data: {
-                image: userid,
+                image: email,
             },
         })
     }
