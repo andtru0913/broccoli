@@ -205,7 +205,7 @@ export default function Home({ user, events }) {
 
               <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-primary-1  ">
                 <h3 className=" font-bold">Lunchgrupper</h3>
-                <div className=" grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 my-4  ">
+                <div className=" grid grid-cols-1 md:grid md:grid-cols-4 lg:flex lg:flex-row lg:flex-wrap gap-6 my-4  ">
                   {lunchfuldata.map((pp) => {
                     return pp.id === user.lunchgroupID ? (
                       <div className="relative flex flex-col  p-4 lg:p-5">
@@ -216,7 +216,7 @@ export default function Home({ user, events }) {
                       </div>
                     ) : (
                       <div className="flex flex-col md:flex-col self-center">
-                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-secondary-1 border-tertiary-1 p-6">
+                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-tertiary-1 p-6">
                           <h3 className="">{pp.title}</h3>
                           {pp.people.map((i) => {
                             return <p>{i}</p>;
