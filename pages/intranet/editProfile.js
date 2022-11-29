@@ -96,7 +96,7 @@ const profile = ({user}) => {
                 />
                 <ProfilePicture image={user.image}/>
                 <input type="file" name="myImage" onChange={file.uploadToClient} />
-                <button onClick={function() {file.uploadToServer(`profiles/${user.id}`).then(_ => {})}} type="submit">Spara</button>
+                <button onClick={function() {file.uploadToServer(`profiles/${user.email}`).then(_ => {})}} type="submit">Spara</button>
             </form>
             <form action="../../api/deleteProfilePic" method="POST">
                 <input className="id" type="hidden" name="id" value={user.id} />

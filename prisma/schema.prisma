@@ -31,6 +31,7 @@ model User {
     lunchgroupID    String? @db.ObjectId
     events          UserOnEvent[]
     image           String?
+    news            News[]
 }
 
 model Event {
@@ -86,4 +87,13 @@ model Document {
     title       String
     filename    String
     date        String
+}
+
+model News {
+    id          String  @id @default(auto()) @map("_id") @db.ObjectId
+    title       String
+    text        String
+    date        String
+    author      Author  @relation(fields: [authorId], references: [id])
+    authorId    String  @db.ObjectId
 }
