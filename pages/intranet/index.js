@@ -3,8 +3,9 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
+import ThemedImage from "../../components/themedImage";
 import * as Database from "../../Database";
-import {useTheme} from "next-themes";
+import { useTheme } from "next-themes";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
 
 export async function getServerSideProps(context) {
@@ -13,7 +14,13 @@ export async function getServerSideProps(context) {
     const user = await Database.getUserinfo(cookies.id);
     const groups = await Database.getAllLunchGroups();
     const events = await Database.upcomingEvents(3);
-    events.map(data => data.date = new Date(data.start).toLocaleString('default',{day: "numeric",month: "short"}))
+    events.map(
+      (data) =>
+        (data.date = new Date(data.start).toLocaleString("default", {
+          day: "numeric",
+          month: "short",
+        }))
+    );
     let lunchgroups = [];
     groups.slice(1).map((data) => {
       let people = [];
@@ -29,7 +36,7 @@ export async function getServerSideProps(context) {
       props: {
         user: user !== undefined ? user : null,
         lunchgroups: lunchgroups,
-        events: JSON.stringify(events)
+        events: JSON.stringify(events),
       },
     };
   }
@@ -84,7 +91,6 @@ const lunchfuldata = [
 ];
 
 export default function Home({ user, events }) {
-
   if (user === null) {
     return (
       <main className="">
@@ -99,11 +105,12 @@ export default function Home({ user, events }) {
           <div className=" w-1/2  absolute top-0 left-1/4 flex justify-center lg:justify-start p-4 lg:left-0">
             <Link href="/">
               <a>
-                <img
-                  className="h-8 w-auto sm:h-10"
-                  src="/images/BroccoliBlack.png"
-                  alt="Broccoli"
-                />
+                <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-10">
+                  <ThemedImage
+                    img_path_light="/images/lightMode/BroccoliBlack.png"
+                    img_path_dark="/images/darkMode/BroccoliWhite.png"
+                  />
+                </div>
               </a>
             </Link>
           </div>
@@ -117,20 +124,20 @@ export default function Home({ user, events }) {
                 method="POST"
               >
                 <input
-                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
+                  className="p-4 text-2xl lg:text-base lg:p-2 m-2  appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-primary-d1 autofill:bg-primary autofill:focus:bg-secondary"
                   type="text"
                   name="username"
                   placeholder="Användarnamn"
                 />
 
                 <input
-                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border  border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
+                  className="p-4 text-2xl lg:text-base lg:p-2 m-2  appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-primary-d1  autofill:bg-primary autofill:focus:bg-secondary"
                   type="password"
                   name="password"
                   placeholder="Lösenord"
                 />
                 <button
-                  className="shadow bg-button-accent hover:bg-button-accent-hover focus:shadow-outline focus:outline-none text-inverted font-semibold p-2 m-2  rounded"
+                  className="shadow btn btn-primary focus:shadow-outline focus:outline-none text-inverted font-semibold p-2 m-2  rounded"
                   type="submit"
                 >
                   Logga in
@@ -156,7 +163,7 @@ export default function Home({ user, events }) {
               />
 
               <svg
-                className="hidden md:flex  absolute h-auto fill-secondary-1 -z-10 lg:w-4/6 left-0 top-0 opacity-70"
+                className="hidden lg:flex  absolute h-auto fill-secondary-1 -z-10 lg:w-4/6 left-0 top-0 opacity-70"
                 width="832"
                 height="557"
                 viewBox="0 0 832 557"
@@ -167,7 +174,7 @@ export default function Home({ user, events }) {
               </svg>
 
               <svg
-                className="absolute h-screen w-auto fill-primary-1 -z-10 lg:w-4/6 right-0 -top-10 opacity-70"
+                className="absolute h-screen w-auto fill-primary-1 -z-10  right-0 -top-10 opacity-70"
                 width="782"
                 height="554"
                 viewBox="0 0 782 554"
@@ -178,34 +185,36 @@ export default function Home({ user, events }) {
               </svg>
 
               <div className=" h-1/2  z-20 flex flex-row items-end">
-                <h1 className=" h0 flex-1 text-center text-inverted ">
+                <h1 className=" h0 font-bold uppercase flex-1 text-center text-inverted ">
                   Välkommen {user.firstname}
                 </h1>
               </div>
             </div>
 
             <div className="md:grid md:grid-cols-3 flex flex-col">
-              <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-tertiary-1">
-                <h3 className=" font-bold text-white ">Senaste Nytt</h3>
+              <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-secondary-d1">
+                <h3 className=" text-muted font-medium ">Senaste Nytt</h3>
                 <Nyheter />
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
-                <h3 className=" w-auto font-bold ">Kommande event</h3>
+                <h3 className=" w-auto text-muted font-medium ">
+                  Kommande event
+                </h3>
                 {JSON.parse(events).map((data) => {
                   return (
-                      <UpcomingEvent
-                          key={data.id}
-                          title={data.title}
-                          date={data.date}
-                          description={data.description}
-                      />
+                    <UpcomingEvent
+                      key={data.id}
+                      title={data.title}
+                      date={data.date}
+                      description={data.description}
+                    />
                   );
                 })}
               </div>
 
-              <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-primary-1  ">
-                <h3 className=" font-bold">Lunchgrupper</h3>
-                <div className=" grid grid-cols-1 md:grid md:grid-cols-4 lg:flex lg:flex-row lg:flex-wrap gap-6 my-4  ">
+              <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default ">
+                <h3 className=" text-muted font-medium ">Lunchgrupper</h3>
+                <div className="  flex flex-row flex-wrap gap-6 my-4 ">
                   {lunchfuldata.map((pp) => {
                     return pp.id === user.lunchgroupID ? (
                       <div className="relative flex flex-col  p-4 lg:p-5">
@@ -216,8 +225,8 @@ export default function Home({ user, events }) {
                       </div>
                     ) : (
                       <div className="flex flex-col md:flex-col self-center">
-                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-tertiary-1 p-6">
-                          <h3 className="">{pp.title}</h3>
+                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-secondary-d1 p-6">
+                          <h4 className="">{pp.title}</h4>
                           {pp.people.map((i) => {
                             return <p>{i}</p>;
                           })}

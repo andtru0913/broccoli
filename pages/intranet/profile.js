@@ -1,34 +1,97 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import {getUserProfile} from "../../Database";
+import { getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {
-    let cookies = JSON.parse(context.req.cookies["user"] || null);
-    if (cookies !== null) {
-        let user = await getUserProfile(cookies.id);
-        return {
-            props: {
-                user: user
-            }
-        }
-    }
+  let cookies = JSON.parse(context.req.cookies["user"] || null);
+  if (cookies !== null) {
+    let user = await getUserProfile(cookies.id);
     return {
-        redirect: {
-            permanent: false,
-            destination: "/intranet",
-        },
-        props: {},
+      props: {
+        user: user,
+      },
     };
+  }
+  return {
+    redirect: {
+      permanent: false,
+      destination: "/intranet",
+    },
+    props: {},
+  };
 }
 
-const profile = ({user}) => {
+const profile = ({ user }) => {
   return (
     <LayoutIntranet>
       <section className="">
-        <div className="layout  py-12">
-          <h3>Profil</h3>
-            <ProfilePicture image={user.image}/>
-            {JSON.stringify(user)}
-            <a href="./editProfile">Ändra profil</a>
+        <div className="">
+          <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-3 md:grid-rows-1  h-screen bg-secondary-1">
+            <div className="relative flex flex-col items-center  overflow-hidden ">
+              {/**Profile image */}
+              <svg
+                className="absolute left-0 md:-left-64 lg:-left-36 top-0 fill-primary-1 "
+                width="504"
+                height="773"
+                viewBox="0 0 504 773"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
+              </svg>
+              <div className="  md:mt-24 md:p-12 z-10">
+                <ProfilePicture image={user.image} />
+              </div>
+            </div>
+            <div className=" pt-0 md:pt-24 pb-24 md:pb-0 md:col-span-2 flex flex-col  overflow-y-scroll md:overflow-auto md:h-full p-12 ">
+              {/**Profile Information */}
+              <div className="flex flex-row flex-wrap py-4 border-b border-base  items-center">
+                <div className="w-1/3 mr-8">
+                  <p className="font-bold uppercase text-muted">Namn</p>
+                </div>
+                <div>
+                  <h3>
+                    {user.firstname} {user.lastname}
+                  </h3>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-8">
+                  <p className="font-bold uppercase text-muted">Roll</p>
+                </div>
+                <div>
+                  <p>
+                    {user.firstname} {user.lastname}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-8">
+                  <p className="font-bold uppercase text-muted">Företag</p>
+                </div>
+                <div>
+                  <p>
+                    {user.firstname} {user.lastname}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-8">
+                  <p className="font-bold uppercase text-muted">Beskrivning</p>
+                </div>
+                <div>
+                  <p>
+                    {user.firstname} {user.lastname}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <a href="./editProfile" className="btn btn-modify my-4">
+                  Redigera
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </LayoutIntranet>

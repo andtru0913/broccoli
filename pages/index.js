@@ -167,7 +167,7 @@ export default function Home({ feed, genderCount }) {
           </div>
 
           <svg
-            className="absolute top-80 lg:top-32 h-auto left-0 fill-primary-l2 w-4/5 lg:w-1/2 -z-10"
+            className="absolute top-80 lg:top-32 h-auto left-0 hidden w-4/5 lg:w-1/2 -z-10"
             width="721"
             height="816"
             viewBox="0 0 721 816"
@@ -183,14 +183,15 @@ export default function Home({ feed, genderCount }) {
             <div className="py-2  lg:p-4 text-center">
               <h1>Att jobba hos broccoli</h1>
             </div>
-            <div className="grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 xl:pt-24">
+            <div className="layout grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 xl:pt-24">
               <div className="flex flex-col items-center gap-12 md:pt-12 lg:pt-0">
-                <h5 className="text-center  lg:max-w-lg xl:max-w-xl leading-relaxed">
+                <p className="h4 md:h3 text-center lg:max-w-lg xl:max-w-xl leading-relaxed">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
-                  och bjuder aktivt in berörda i dialogen. Genom våra olikheter
-                  bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
-                  stärker oss som grupp och utvecklar oss som individer.
-                </h5>
+                  och är måna om att nås av rätt information vid rätt tidpunkt.
+                  Genom våra individuella egenskaper bygger vi en stark
+                  gemenskap. Vi eftersträvar diversitet då det stärker oss som
+                  grupp och utvecklar oss som individer.
+                </p>
                 <div className="w-56 h-56 xl:w-80 xl:h-80">
                   <Doughnut className="" data={chartData}></Doughnut>
                 </div>
@@ -210,7 +211,7 @@ export default function Home({ feed, genderCount }) {
             <h1 className=" ">Våra kärnvärden</h1>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
-                <h2 className="">Relationer</h2>
+                <h2 className="font-bold uppercase">Relationer</h2>
 
                 <p className="text-justify">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
@@ -223,7 +224,9 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative rounded">
                 <div className=" bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className="shrink">Professionalism</h2>
+                  <p className="h3 lg:h2 shrink font-bold uppercase">
+                    Professionalism
+                  </p>
 
                   <p className="text-justify">
                     Nöjda kunder får vi genom att prioritera god teknisk
@@ -236,8 +239,8 @@ export default function Home({ feed, genderCount }) {
                 </div>
               </div>
               <div className="relative rounded">
-                <div className=" bg-primary-l1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className="">Hållbar utveckling</h2>
+                <div className=" bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+                  <h2 className="font-bold uppercase">Hållbar utveckling</h2>
                   <p className="text-justify">
                     Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
                     och teknisk utveckling. Vi gör medvetna val för en
@@ -306,16 +309,9 @@ export default function Home({ feed, genderCount }) {
 
         <section className="">
           <div className="pt-12 lg:p-0 flex flex-col items-center ">
-            <div className="layout text-center gap-2 max-w-readable">
-              <h1 className=" ">Broccoligården</h1>
-              <p>
-                Broccolis senaste tillskott är broccoligården. En mysig gård som
-                våra konsulter får boka för en teamdag men även för privata
-                event.
-              </p>
-            </div>
+            <h1 className=" ">Broccoligården</h1>
 
-            <div className=" flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted mt-20">
+            <div className=" flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted mt-8">
               <div className="hidden lg:flex relative w-full max-h-full bg-cover">
                 {/**image gallery */}
 
@@ -367,11 +363,11 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
                     <div className="shrink flex flex-col items-center md:items-start justify-around">
-                      <h4>Kontakt</h4>
+                      <h3>Kontakt</h3>
                       <a href="mailto:engineering@broccoli.se">
                         garden@broccoli.se
                       </a>
-                      <h4>Följ oss</h4>
+                      <h3>Följ oss</h3>
                       <div className="w-min text-green-3 hover:text-opacity-40">
                         <FaFacebookSquare size={40} />
                       </div>
@@ -385,76 +381,4 @@ export default function Home({ feed, genderCount }) {
       </main>
     </Layout>
   );
-}
-
-{
-  /**<div className=" lg:col-span-2 w-auto h-64 relative">
-                <Image
-                  alt="broccoligarden"
-                  src={broccoligarden}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-
-              <div className=" lg:row-span-2 rounded">
-                <div class="mapouter">
-                  <div class="gmap_canvas ">
-                    <iframe
-                      className="w-full h-64"
-                      width={277}
-                      height={595}
-                      id="gmap_canvas"
-                      src="https://maps.google.com/maps?q=Broccolig%C3%A5rden%20HALS%20550,%20472%2094%20Svanesund&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                      frameborder="0"
-                      scrolling="no"
-                      marginheight="0"
-                      marginwidth="0 "
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
-              <div className="  lg:col-span-2 w-full rounded">
-                <div className="grid grid-cols-2">
-                  <div className="flex flex-col gap-2">
-                    <h3>Kontakt</h3>
-                    <a
-                      className="hover:text-skin-muted"
-                      href="mailto:engineering@broccoli.se"
-                    >
-                      <div className="flex flex-row  items-center  justify-start py-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-8 h-8"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                          />
-                        </svg>
-
-                        <p className=" pl-4 ">garden@broccoli.se</p>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <h3>Följ oss</h3>
-                    <div className="w-min text-green-3 hover:text-opacity-40">
-                      <FaFacebookSquare size={40} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
-            <a
-              className="text-skin-muted hover:opacity-50"
-              href="https://m.facebook.com/profile.php?id=100063900016888"
-            ></a>
-            <div className=" flex flex-1 align-middle justify-center flex-col  lg:flex-row"></div>
-            <div className="relative rounded  lg:col-span-2"></div>*/
 }
