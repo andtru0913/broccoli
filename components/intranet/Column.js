@@ -53,7 +53,7 @@ const Column = ({ column, tasks }) => {
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}
                   >
-                    {task.firstname}
+                    <p>{task.firstname}</p>
                   </div>
                 )}
               </Draggable>
