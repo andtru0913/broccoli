@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import * as Database from "../../Database";
-import {useTheme} from "next-themes";
+import { useTheme } from "next-themes";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
 
 export async function getServerSideProps(context) {
@@ -13,7 +13,13 @@ export async function getServerSideProps(context) {
     const user = await Database.getUserinfo(cookies.id);
     const groups = await Database.getAllLunchGroups();
     const events = await Database.upcomingEvents(3);
-    events.map(data => data.date = new Date(data.start).toLocaleString('default',{day: "numeric",month: "short"}))
+    events.map(
+      (data) =>
+        (data.date = new Date(data.start).toLocaleString("default", {
+          day: "numeric",
+          month: "short",
+        }))
+    );
     let lunchgroups = [];
     groups.slice(1).map((data) => {
       let people = [];
@@ -29,7 +35,7 @@ export async function getServerSideProps(context) {
       props: {
         user: user !== undefined ? user : null,
         lunchgroups: lunchgroups,
-        events: JSON.stringify(events)
+        events: JSON.stringify(events),
       },
     };
   }
@@ -84,7 +90,6 @@ const lunchfuldata = [
 ];
 
 export default function Home({ user, events }) {
-
   if (user === null) {
     return (
       <main className="">
@@ -117,14 +122,14 @@ export default function Home({ user, events }) {
                 method="POST"
               >
                 <input
-                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
+                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-border appearance-none leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
                   type="text"
                   name="username"
                   placeholder="Användarnamn"
                 />
 
                 <input
-                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border  border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
+                  className="p-4 text-2xl lg:text-base lg:p-2 m-2 border  border-border appearance-none leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
                   type="password"
                   name="password"
                   placeholder="Lösenord"
@@ -193,12 +198,12 @@ export default function Home({ user, events }) {
                 <h3 className=" w-auto font-bold ">Kommande event</h3>
                 {JSON.parse(events).map((data) => {
                   return (
-                      <UpcomingEvent
-                          key={data.id}
-                          title={data.title}
-                          date={data.date}
-                          description={data.description}
-                      />
+                    <UpcomingEvent
+                      key={data.id}
+                      title={data.title}
+                      date={data.date}
+                      description={data.description}
+                    />
                   );
                 })}
               </div>
