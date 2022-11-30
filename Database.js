@@ -46,7 +46,6 @@ export async function login(input_username, input_password) {
         let id = query[0].id
         let account_password = query[0].password
         const hashedPassword = await bcrypt.hash(input_password, salt)
-        console.log(hashedPassword)
         if (hashedPassword === account_password) {
             return {id: id, firstname: query[0].firstname, lastname: query[0].lastname}
         }
@@ -468,7 +467,6 @@ export async function deleteUser(id) {
 }
 
 export async function modifyUser(id, username, email, password, firstname, lastname, gender, address, privatenumber, worknumber, company, admin, assignment,role) {
-    console.log(role)
     if (password !== undefined) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)

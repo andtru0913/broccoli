@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
-import { lunchgroup } from "../defaultIDs";
+import { lunchgroup } from "../../defaultIDs";
 
 const Column = ({ column, tasks }) => {
   const popHide = "pop-hide" || "";
@@ -53,7 +53,7 @@ const Column = ({ column, tasks }) => {
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}
                   >
-                    <Text>{task.firstname}</Text>
+                    {task.firstname}
                   </div>
                 )}
               </Draggable>

@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import * as Database from "../../Database";
-import {useTheme} from "next-themes";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
-import {useTheme} from "next-themes";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
