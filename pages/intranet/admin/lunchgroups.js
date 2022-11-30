@@ -78,7 +78,7 @@ export default function Home({ lunchGroups, users }) {
           [newColumn.id]: newColumn,
         },
       };
-      setState(newState);
+      useEffect(() => setState(newState), []);
       return;
     }
 
@@ -107,7 +107,7 @@ export default function Home({ lunchGroups, users }) {
         },
       },
     };
-    setState(newState);
+    useEffect(() => setState(newState), []);
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "../../api/changeLunchGroup", true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -172,7 +172,8 @@ export default function Home({ lunchGroups, users }) {
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ny lunchgrupp</h4>
                 <button
-                  type=""
+                  className="absolute top-0 right-0 p-3 hover:text-skin-muted"
+                  type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
                     document
@@ -180,9 +181,7 @@ export default function Home({ lunchGroups, users }) {
                       .classList.add(popHide);
                   }}
                 >
-                  <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
-                    <HiXMark />
-                  </div>
+                  <HiXMark />
                 </button>
               </div>
 
@@ -210,7 +209,8 @@ export default function Home({ lunchGroups, users }) {
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ändra Lunchgrupp</h4>
                 <button
-                  type=""
+                  className="flex space-x-2 items-center"
+                  type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
                     document
@@ -218,9 +218,7 @@ export default function Home({ lunchGroups, users }) {
                       .classList.add(popHide);
                   }}
                 >
-                  <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
-                    <HiXMark />
-                  </div>
+                  <HiXMark />
                 </button>
               </div>
 
