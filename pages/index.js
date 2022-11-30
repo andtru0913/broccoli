@@ -1,20 +1,15 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
-import Accordion from "../components/accordion";
 import { HiArrowRight } from "react-icons/hi2";
 import { FaBed, FaFacebookSquare, FaSwimmer } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
 import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
-// noinspection ES6UnusedImports
 import { getGenderCount } from "../Database";
 import computerWhite from "../public/images/darkMode/computerWhite.png";
 import computerBlack from "../public/images/lightMode/computerBlack.png";
-
-import { Chart } from "react-chartjs-2";
 import Reviews from "../components/toWorkAtBroccoli/reviews";
-import ThemeChanger from "../components/themechanger";
 import ThemedImage from "../components/themedImage";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
