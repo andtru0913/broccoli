@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
-import { lunchgroup } from "../defaultIDs";
+import { lunchgroup } from "../../defaultIDs";
 
 const Column = ({ column, tasks }) => {
   const popHide = "pop-hide" || "";
@@ -38,7 +38,7 @@ const Column = ({ column, tasks }) => {
               <Draggable key={task.id} draggableId={`${task.id}`} index={index}>
                 {(draggableProvided, draggableSnapshot) => (
                   <div
-                    className="flex mb-4 rounded-lg bg-primary-1 text-inverted-muted justify-center p-2 md:p-6 outline-2 outline-white "
+                    className="flex mb-4 rounded-lg bg-primary-l2 text-muted justify-center p-2 md:p-6 outline-2 outline-white "
                     outlineColor={
                       draggableSnapshot.isDragging
                         ? "card-border"
@@ -53,7 +53,7 @@ const Column = ({ column, tasks }) => {
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}
                   >
-                    <Text>{task.firstname}</Text>
+                    <p>{task.firstname}</p>
                   </div>
                 )}
               </Draggable>
