@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
-import { HiArrowRight } from "react-icons/hi2";
+import { HiArrowRight } from "react-icons/hi";
 import { FaBed, FaFacebookSquare, FaSwimmer } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
@@ -294,7 +294,7 @@ export default function Home({ feed, genderCount }) {
                 <button className=" btn btn-primary">
                   <div className="flex flex-row gap-2  items-center ">
                     Instagram
-                    <HiArrowRight />
+                    <HiArrowRight/>
                   </div>
                 </button>
               </a>

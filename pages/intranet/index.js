@@ -112,7 +112,6 @@ export default function Home({ user, events }) {
               </a>
             </Link>
           </div>
-
           <div className=" layout md:left-1/4 md:w-1/2 absolute top-1/4  shadow-lg  py-4 lg:py-12 bg-fill bg-opacity-70 lg:w-1/3 lg:left-1/3">
             <div className="flex flex-1 justify-center flex-col items-center  ">
               <h1>Logga in</h1>
@@ -192,7 +191,7 @@ export default function Home({ user, events }) {
             <div className="md:grid md:grid-cols-3 flex flex-col">
               <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-secondary-d1">
                 <h3 className=" text-muted font-medium ">Senaste Nytt</h3>
-                <Nyheter />
+                <Nyheter/>
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
                 <h3 className=" w-auto text-muted font-medium ">
@@ -213,20 +212,20 @@ export default function Home({ user, events }) {
               <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default ">
                 <h3 className=" text-muted font-medium ">Lunchgrupper</h3>
                 <div className="  flex flex-row flex-wrap gap-6 my-4 ">
-                  {lunchfuldata.map((pp) => {
+                  {lunchfuldata.map((pp,n) => {
                     return pp.id === user.lunchgroupID ? (
-                      <div className="relative flex flex-col  p-4 lg:p-5">
+                      <div key={n} className="relative flex flex-col  p-4 lg:p-5">
                         <h5 className="">{pp.title}</h5>
                         {pp.people.map((i) => {
-                          return <p>{i}</p>;
+                          return <p key={i}>{i}</p>;
                         })}
                       </div>
                     ) : (
-                      <div className="flex flex-col md:flex-col self-center">
+                      <div key={n} className="flex flex-col md:flex-col self-center">
                         <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-secondary-d1 p-6">
                           <h4 className="">{pp.title}</h4>
                           {pp.people.map((i) => {
-                            return <p>{i}</p>;
+                            return <p key={i}>{i}</p>;
                           })}
                         </div>
                       </div>
