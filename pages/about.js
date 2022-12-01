@@ -65,7 +65,7 @@ export default function About({ title, intro, year, timelinedesc }) {
           </svg>
           <div className="  text-center py-12  flex flex-col flex-1  items-center justify-center   lg:gap-20 gap-8 ">
             <div className=" lg:max-w-readable flex flex-col gap-4 ">
-              <h1 className="">{title ?? "Om oss"}</h1>
+              <h1 className=" uppercase font-bold ">{title ?? "Om oss"}</h1>
             </div>
 
             <div className=" flex flex-col md:grid md:grid-rows-2 md:grid-cols-2 gap-8 lg:gap-0 items-center ">
@@ -98,7 +98,7 @@ export default function About({ title, intro, year, timelinedesc }) {
         </section>
         <section>
           <div className=" py-12 flex flex-col items-center">
-            <h1>{title ?? "Våra områden"}</h1>
+            <h1 className="uppercase font-bold">{title ?? "Våra områden"}</h1>
 
             <p className=" text-left max-w-readable p-4">
               {intro ??
@@ -158,7 +158,9 @@ export default function About({ title, intro, year, timelinedesc }) {
         <section className="">
           <div className=" pt-12 flex flex-col items-center">
             <div className=" md:max-w-readable flex flex-col gap-4 text-center">
-              <h1>{title ?? "Kvalitets- och miljöpolicy"}</h1>
+              <h1 className="uppercase font-bold">
+                {title ?? "Kvalitets- och miljöpolicy"}
+              </h1>
 
               <p className=" text-left p-4">
                 {intro ??

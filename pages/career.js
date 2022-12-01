@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
 export default function Career({ authentication, page, redirect }) {
   const data = [
     {
-      icon_svg: <FaHandshake size={90}/>,
+      icon_svg: <FaHandshake size={90} />,
       title: "Kollektivavtal",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-primary-1",
@@ -57,33 +57,33 @@ export default function Career({ authentication, page, redirect }) {
   ];
   return (
     <Layout>
-      <Page 
+      <Page
         authentication={authentication}
         page={page}
         redirect={redirect}
         formTitle="SPONTANANSÖKAN"
       >
-      
-      <section className="">
-        <div className="pt-12 flex flex-col items-center justify-center ">
-          <h2 className="font-light pb-5" >Förmåner hos broccoli</h2>
+        <section className="">
+          <div className="pt-12 flex flex-col items-center justify-center ">
+            <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
-          <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
-            {data.map((data) => {
-              return (
-                <div className={` flex flex-col items-center w-screen md:w-full  p-8 md:p-10 lg:p-15  ${data.color}`}>
-                  {data.icon_svg}
-                  <h4 className="font-light text-lg pt-5 px-8 " >{data.title}</h4>
-                </div>
-              );
-            })}
+            <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
+              {data.map((data) => {
+                return (
+                  <div
+                    className={` flex flex-col items-center w-screen md:w-full  p-8 md:p-10 lg:p-15  ${data.color}`}
+                  >
+                    {data.icon_svg}
+                    <h4 className="uppercase text-lg pt-5 px-8 ">
+                      {data.title}
+                    </h4>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
-      
+        </section>
       </Page>
-      </Layout>
-      
-
+    </Layout>
   );
 }

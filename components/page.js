@@ -302,7 +302,9 @@ const Page = ({ authentication, page, redirect, formTitle, children }) => {
           </div>
           <div className=" bg-primary-l1 ">
             <div className="absolute flex flex-col text-center md:text-left text-inverted bottom-1/4 md:bottom-1/3 2xl:bottom-20 lg:h-1/3  right-4 z-10 p-12 md:p-0  max-w-prose md:w-1/2">
-              <h1 className="layout  pb-0 md:pb-2 font-bold">{page.title}</h1>
+              <h1 className="layout  pb-0 md:pb-2 font-bold uppercase ">
+                {page.title}
+              </h1>
               <h4 className="layout font-normal ">{page.description}</h4>
             </div>
           </div>

@@ -23,7 +23,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
               />
             </div>
             <div className="flex flex-col p-2 max-h-40 md:w-96 w-52  ">
-              <h5 className="">{author}</h5>
+              <h5 className="uppercase">{author}</h5>
               <p className="line-clamp-2  text-base md:text-xl">{children}</p>
             </div>
             <div className="flex items-end ">
