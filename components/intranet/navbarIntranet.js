@@ -6,37 +6,21 @@ import ThemedImage from "../themedImage";
 import NavbarAdmin from "./navbarAdmin";
 import INTRA_MENU_LIST from "./navItemIntra";
 
-const NavbarIntranet = ({ user }) => {
+const NavbarIntranet = ({ admin }) => {
   const [isOpen, setIsOpen] = useState(false);
+  let adminNavbar = ""
+  if(admin) {
+      adminNavbar = <NavbarAdmin/>
+  }
   const openmenu = () => setIsOpen(!isOpen);
   const hamburgerLine =
     " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
   return (
     <>
-      {user === null ? (
-        <header className="fixed top-0  lg:sticky bg-fill z-30">
-          <nav className="hidden items-center lg:flex justify-between align-middle px-4">
-            <div className="text-lg flex justify-start">
-              <Link href="/intranet">
-                <a className="h-8 w-auto sm:h-10">
-                  <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-10">
-                    <ThemedImage
-                      img_path_light="/images/lightMode/BroccoliBlack.png"
-                      img_path_dark="/images/darkMode/BroccoliWhite.png"
-                    />
-                  </div>
-                </a>
-              </Link>
-            </div>
-            :
-          </nav>
-        </header>
-      ) : (
-        <>
-          <NavbarAdmin user={user} />
-          <header className="fixed top-0  lg:sticky bg-fill z-30">
-            {/*Top navbar for browsers  */}
-            <nav className="hidden lg:flex justify-between items-center align-middle px-4 py-2 shadow-md ">
+      <header className="fixed top-0  lg:sticky bg-fill z-30">
+          <>
+              {adminNavbar}
+            <nav className="hidden lg:flex justify-between items-center align-middle px-4 py-2 shadow-md">
               <div className="text-lg flex justify-start">
                 <Link href="/intranet">
                   <a className="">
@@ -146,7 +130,7 @@ const NavbarIntranet = ({ user }) => {
                         activeClassName="w-full text-xs font-medium  lg:ml-8 uppercase opacity-80 transition-all duration-200 text-primary-l1"
                       >
                         <a className="w-full text-xs md:text-base  font-medium flex flex-col items-end uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
-                          {(menu.top === true) & (menu.text != "Logout")
+                          {(menu.top === true) && (menu.text !== "Logout")
                             ? menu.text
                             : menu["icon-small"]}
                         </a>
@@ -158,27 +142,9 @@ const NavbarIntranet = ({ user }) => {
                 })}
               </ul>
             </nav>
+          </>
           </header>
-        </>
-      )}
-
-      {/*Bottom navbar for Mobile devices and tablets */}
-
       <footer className="fixed bottom-0 w-screen  lg:sticky  lg:top-0 z-50 shadow-xl shadow-black">
-        {user === null ? (
-          <nav className="flex justify-between align-middle items-center py-2 px-7  ">
-            <div className="text-lg flex justify-start">
-              <Link href="/intranet">
-                <a className="h-8 w-auto sm:h-10">
-                  <div className="relative h-20 w-20 sm:h-10">
-                    <ThemedImage />
-                  </div>
-                </a>
-              </Link>
-            </div>
-            :
-          </nav>
-        ) : (
           <>
             <nav className=" flex  lg:hidden  align-middle items-center  bg-fill-1">
               <div className=" w-full">
@@ -246,7 +212,6 @@ const NavbarIntranet = ({ user }) => {
               </div>
             </nav>
           </>
-        )}
       </footer>
     </>
   );

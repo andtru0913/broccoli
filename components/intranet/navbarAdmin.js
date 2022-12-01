@@ -15,7 +15,7 @@ const ADMIN_MENU_LIST = [
 */
 }
 
-const NavbarAdmin = ({ user }) => {
+const NavbarAdmin = ({}) => {
   const hamburgerLine =
     " w-4 h-0.5 bg-fill my-0.5 transition-all duration-300 ease-in-out  lg:hidden";
   const [isOpen, setIsOpen] = useState(false);
