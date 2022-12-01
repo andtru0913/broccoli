@@ -5,17 +5,6 @@ const Footer = () => {
   return (
     <footer className=" z-10 relative flex flex-1 md:py-12 lg:py12 py-6 bg-secondary-1 ">
       <svg
-        className=" absolute bottom-0 fill-tertiary-1 h-auto md:flex hidden  md:w-1/4 xl:w-1/6  -z-10   overflow-hidden "
-        width="425"
-        height="555"
-        viewBox="0 0 425 555"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M-123.92 390.64C-125.882 344.587 -91.5419 335.298 -50.3337 214.803C-50.3337 214.803 -6.18197 84.8087 -6.18197 42.1054C-6.18197 -11.2737 93.8952 1.28612 114.499 1.28612C135.103 1.28612 311.71 26.4057 382.353 57.8052C452.996 89.2047 423.561 164.563 382.353 214.803C341.145 265.042 388.24 346.68 382.353 390.64C376.466 434.599 352.919 487.978 285.219 513.098C217.52 538.217 185.142 513.098 146.877 563.337C108.612 613.576 126.273 670.095 93.8952 685.795C61.5173 701.494 -6.18198 673.235 -65.0509 601.016C-112.146 543.241 -123.92 436.692 -123.92 390.64Z" />
-      </svg>
-
-      <svg
         className=" fill-primary-1 absolute -z-10 md:w-8/12 lg:w-8/12 w-screen h-auto lg bottom-0 right-0 xl:w-6/12  overflow-hidden"
         width="913"
         height="443"

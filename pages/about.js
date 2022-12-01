@@ -43,7 +43,7 @@ export default function About({ title, intro, year, timelinedesc }) {
     <Layout>
       <main>
         <svg
-          className="fill-primary-l2 absolute top-0 right-0 md:left-0 h-auto -z-10 w-[48rem]"
+          className="fill-primary-1 absolute top-0 right-0 md:left-0 h-auto -z-10 w-[48rem]"
           width="799"
           height="1107"
           viewBox="0 0 799 1107"
@@ -68,9 +68,9 @@ export default function About({ title, intro, year, timelinedesc }) {
               <h1 className="">{title ?? "Om oss"}</h1>
             </div>
 
-            <div className="flex flex-col md:grid md:grid-rows-2 md:grid-cols-2 gap-5 md:gap-24 items-center place-content-center">
+            <div className=" flex flex-col md:grid md:grid-rows-2 md:grid-cols-2 gap-8 lg:gap-0 items-center ">
               <div className="flex w-full justify-center">
-                <p className="flex w-full lg:w-2/3  md:leading-relaxed text-left  pl-4 max-w-readable">
+                <p className="md:h4 lg:h3 xl:h2  flex w-full lg:w-2/3 p-4 bg-fill-1 bg-opacity-60 md:leading-relaxed text-left   max-w-readable">
                   Vi kan erbjuda tjänster inom Mjukvaruutveckling, design,
                   konstruktion, testning och inbyggda system. Med vår kompetens
                   kan vi fylla gränslandet mellan hårdvara och mjukvara.
@@ -92,12 +92,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   />
                 </div>
               </div>
-              <div className=" w-full md:col-span-2 flex flex-1 content-start place-self-start align-top justify-end pr-24">
-                <p className=" md:w-1/2 lg:w-1/3  md:leading-relaxed text-left  pl-4 max-w-readable">
-                  Merparten av våra konsulter är förlagda hos kund men vi har
-                  även inhouse projekt av olika storlekar.
-                </p>
-              </div>
+              <div className=" w-full md:col-span-2 flex flex-1 content-start place-self-start align-top justify-end pr-24"></div>
             </div>
           </div>
         </section>
@@ -105,50 +100,50 @@ export default function About({ title, intro, year, timelinedesc }) {
           <div className=" py-12 flex flex-col items-center">
             <h1>{title ?? "Våra områden"}</h1>
 
-            <p className=" text-left max-w-readable py-4">
+            <p className=" text-left max-w-readable p-4">
               {intro ??
                 "Majoriteten av våra kunder är produktutvecklande företag som återfinns inom diverse olika branscher såsom fordon, automation, marin, medicin med flera."}
             </p>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-4 w-full py-8 cursor-default">
-              <div className="relative bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+              <div className="relative bg-tertiary-1 text-inverted p-4 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex justify-center">
                   <IoBoatSharp size={40} />
                 </div>
 
-                <p className="text-justify">
+                <p className="text-left md:text-justify">
                   Vi har inom marina tillämpningar bl.a. arbetat med styrsystem,
                   brandskyddssystem och drivlineövervakning på fartyg.
                 </p>
               </div>
-              <div className="relative bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+              <div className="relative bg-secondary-1 p-4 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex justify-center">
                   <AiOutlineCar size={40} />
                 </div>
 
-                <p className="text-justify">
+                <p className="text-left md:text-justify">
                   Inom fordon har vi bred erfarenhet av olika ingenjörsroller
                   inom t.ex. säkerhetselektronik, infotainmentsystem och
                   powertrain.
                 </p>
               </div>
-              <div className="relative bg-primary-l1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+              <div className="relative bg-primary-l1 p-4 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex justify-center">
                   <BsGearWideConnected size={40} />
                 </div>
 
-                <p className="text-justify">
+                <p className="text-left md:text-justify">
                   Vi har inom automationsbranschen varit delaktiga i
                   utvecklingen av lastrampsövervakning och kommunikationsmoduler
                   för ett antal olika kommunikationsprotokoll mm.
                 </p>
               </div>
-              <div className="relative bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
+              <div className="relative bg-primary-1 p-4 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                 <div className="flex flex-row justify-center">
                   <GiHeartBeats size={30} />
                   <GiRadarSweep size={30} />
                 </div>
 
-                <p className="text-justify">
+                <p className="text-left md:text-justify">
                   Vi har arbetat med diagnosutrustning inom medicinteknik,
                   radarsystem inom försvar, sensorteknik inom telekom,
                   mekanikkonstruktion inom energibranschen mm.
@@ -163,18 +158,20 @@ export default function About({ title, intro, year, timelinedesc }) {
         <section className="">
           <div className=" pt-12 flex flex-col items-center">
             <div className=" md:max-w-readable flex flex-col gap-4 text-center">
-              <h1>{title ?? "kvalitets- och miljöpolicy"}</h1>
+              <h1>{title ?? "Kvalitets- och miljöpolicy"}</h1>
 
-              <p className=" text-left">
+              <p className=" text-left p-4">
                 {intro ??
                   "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
               </p>
             </div>
-            <div className="relative pt-12 flex flex-col h-full w-full">
+            <div className="hidden relative pt-12 md:flex flex-col h-full w-full">
               <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
                 <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
                   <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                    <h4>{title ?? "VÅRT KVALITETSARBETE"}</h4>
+                    <h4 className="font-bold uppercase tracking-wider">
+                      {title ?? "Vårt Kvalitetsarbete"}
+                    </h4>
 
                     <p className="p1 text-justify">
                       {intro ??
@@ -205,13 +202,64 @@ export default function About({ title, intro, year, timelinedesc }) {
 
                 <div className=" w-auto max-h-full min-w-full h-60 md:h-96  lg:h-[36rem] bg-secondary-1 ">
                   <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                    <h4>{title ?? "VÅRT KVALITETSARBETE"}</h4>
+                    <h4 className="font-bold uppercase tracking-wider">
+                      {title ?? "Vårt Miljöarbete"}
+                    </h4>
+
+                    <p className="p1 text-justify">
+                      {intro ??
+                        "Vi vill skydda vår miljö och förhindra förorening genom medvetna val. Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster och produkter som är mer energieffektiva , samt reducera våra CO2 ekvivalenta utsläpp som påverkar växthuseffekten. Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår verksamhet. "}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* For Phones */}
+            <div className=" md:hidden relative pt-12 flex flex-col h-full w-full">
+              <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
+                <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                    <h4 className="font-bold uppercase tracking-wider">
+                      {title ?? "Vårt Kvalitetsarbete"}
+                    </h4>
 
                     <p className="p1 text-justify">
                       {intro ??
                         "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
                     </p>
                   </div>
+                </div>
+                <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
+                  <Image
+                    className="w-40 h-40 relative lg:absolute"
+                    alt="karlatornet"
+                    src="/images/karlatornet.JPG"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+              </div>
+              <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
+                <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                    <h4 className="font-bold uppercase tracking-wider">
+                      {title ?? "Vårt Miljöarbete"}
+                    </h4>
+
+                    <p className="p1 text-justify grow">
+                      {intro ??
+                        "Vi vill skydda vår miljö och förhindra förorening genom medvetna val. Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster och produkter som är mer energieffektiva , samt reducera våra CO2 ekvivalenta utsläpp som påverkar växthuseffekten. Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår verksamhet. "}
+                    </p>
+                  </div>
+                </div>
+                <div className="relative w-auto max-h-full min-w-full h-full  bg-secondary-l2">
+                  <Image
+                    className="w-40 h-40 relative lg:absolute"
+                    alt="karlatornet"
+                    src="/images/grass.JPG"
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </div>
               </div>
             </div>

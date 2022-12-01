@@ -25,7 +25,10 @@ const NavbarIntranet = ({ user }) => {
                 <Link href="/intranet">
                   <a className="">
                     <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-10">
-                      <ThemedImage />
+                      <ThemedImage
+                        img_path_light="/images/lightMode/BroccoliBlack.png"
+                        img_path_dark="/images/darkMode/BroccoliWhite.png"
+                      />
                     </div>
                   </a>
                 </Link>
@@ -37,7 +40,7 @@ const NavbarIntranet = ({ user }) => {
                                     ${
                                       isOpen === false
                                         ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  "
-                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300 "
+                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300"
                                     }`}
                 >
                   {INTRA_MENU_LIST.map((menu) => {
@@ -55,7 +58,7 @@ const NavbarIntranet = ({ user }) => {
                           activeClassName="w-full text-xs font-medium  lg:ml-8 text-primary-l1 uppercase opacity-80 transition-all duration-200"
                         >
                           <a className="w-full text-xs  lg:ml-8 font-medium  uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
-                            {menu.top === true ? menu.text : menu.icon}
+                            {menu.top === true ? menu.text : menu["icon-small"]}
                           </a>
                         </ActiveLink>
                       </li>
@@ -101,97 +104,50 @@ const NavbarIntranet = ({ user }) => {
               </button>
             </nav>
 
-            <nav className=" items-center flex  lg:hidden justify-between align-middle px-4 py-2 shadow-md w-screen">
-              <div className="text-lg flex justify-start">
-                <Link href="/intranet">
-                  <a className="h-8 w-auto sm:h-10">
-                    <div className="relative h-20 w-20 sm:h-10">
-                      <ThemedImage />
-                    </div>
-                  </a>
-                </Link>
-              </div>
+            {/*Bottom navbarmenu for Mobile devices and tablets */}
 
-              <div className="flex justify-center absolute right-10 text-muted ">
-                <ul
-                  className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
+            <nav className=" items-end flex  lg:hidden justify-between align-middle  shadow-md w-screen">
+              <ul
+                className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
                                       isOpen === false
-                                        ? " lg:static fixed  -left-full  top-14 md:top-24 flex  flex-col  w-full  rounded-lg  text-center  duration-300  "
-                                        : "lg:static  fixed  left-0  top-14 md:top-24  flex  flex-col  w-full  rounded-lg  text-center  duration-300 bg-fill"
+                                        ? " lg:static fixed  -left-full  bottom-16 flex  flex-col  w-full h-1/4 rounded-lg  text-end  duration-300  "
+                                        : "lg:static  fixed  left-0  bottom-16   flex  flex-col  w-full h-1/4 rounded-lg  text-end  duration-300 bg-fill-1"
                                     }`}
-                >
-                  {INTRA_MENU_LIST.map((menu) => {
-                    return menu.bottom === false ? (
-                      <li
-                        className="my-2 flex items-center"
-                        onClick={() => {
-                            openmenu;
-                        }}
-                        key={menu.text}
-                      >
-                        <ActiveLink
-                          id={menu.text}
-                          href={menu.href}
-                          activeClassName="w-full text-xs font-medium  lg:ml-8 uppercase opacity-80 transition-all duration-200 text-primary-l1"
-                        >
-                          <a className="w-full text-xs  lg:ml-8 font-medium  uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
-                            {(menu.top === true) && (menu.text !== "Logout")
-                              ? menu.text
-                              : menu.icon}
-                          </a>
-                        </ActiveLink>
-                      </li>
-                    ) : (
-                      <></>
-                    );
-                  })}
-                </ul>
-              </div>
-
-              <button
-                className={` ${
-                  isOpen
-                    ? "block cursor-pointer justify-center items-center group lg:none lg:none"
-                    : "none"
-                }
-                 `}
-                onClick={openmenu}
               >
-                <div
-                  className={`${hamburgerLine}
-                        ${
-                          isOpen
-                            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
-                            : "opacity-50 group-hover:opacity-100 "
-                        } `}
-                />
-                <div
-                  className={`${hamburgerLine}
-                        ${
-                          isOpen
-                            ? "opacity-0"
-                            : "opacity-50 group-hover:opacity-100"
-                        }`}
-                />
-
-                <div
-                  className={`${hamburgerLine}
-                        ${
-                          isOpen
-                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
-                            : "opacity-50 group-hover:opacity-100"
-                        }`}
-                />
-              </button>
+                {INTRA_MENU_LIST.map((menu) => {
+                  return menu.bottom === false ? (
+                    <li
+                      className="my-2 mr-3 flex justify-end"
+                      onClick={() => {
+                        openmenu;
+                      }}
+                      key={menu.text}
+                    >
+                      <ActiveLink
+                        id={menu.text}
+                        href={menu.href}
+                        activeClassName="w-full text-xs font-medium  lg:ml-8 uppercase opacity-80 transition-all duration-200 text-primary-l1"
+                      >
+                        <a className="w-full text-xs md:text-base  font-medium flex flex-col items-end uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
+                          {(menu.top === true) & (menu.text != "Logout")
+                            ? menu.text
+                            : menu["icon-small"]}
+                        </a>
+                      </ActiveLink>
+                    </li>
+                  ) : (
+                    <></>
+                  );
+                })}
+              </ul>
             </nav>
           </>
-        )}
-      </header>
-
+          </header>
+      )}
       <footer className="fixed bottom-0 w-screen  lg:sticky  lg:top-0 z-50 shadow-xl shadow-black">
           <>
-            <nav className=" flex  lg:hidden  align-middle items-center py-4 bg-fill ">
+            <nav className=" flex  lg:hidden  align-middle items-center  bg-fill-1">
               <div className=" w-full">
                 <ul className=" grid grid-cols-5 gap-4 justify-items-center align-middle">
                   {INTRA_MENU_LIST.map((menu) =>
@@ -209,8 +165,8 @@ const NavbarIntranet = ({ user }) => {
                           activeClassName="text-primary-l1"
                           className=""
                         >
-                          <a className="text-center flex flex-col items-center align-middle text-base hover:text-primary-l1">
-                            {menu.icon}
+                          <a className="p-4 text-center flex flex-col items-center align-middle text-base hover:text-primary-l1 focus:active:bg-fill-2 ">
+                            {menu["icon-large"]}
                           </a>
                         </ActiveLink>
                       </li>
@@ -218,6 +174,41 @@ const NavbarIntranet = ({ user }) => {
                       <></>
                     )
                   )}
+                  <button
+                    className={` ${
+                      isOpen
+                        ? "block cursor-pointer justify-center items-center group lg:none lg:none"
+                        : "none"
+                    }
+                 `}
+                    onClick={openmenu}
+                  >
+                    <div
+                      className={`${hamburgerLine}
+                        ${
+                          isOpen
+                            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
+                            : "opacity-50 group-hover:opacity-100 "
+                        } `}
+                    />
+                    <div
+                      className={`${hamburgerLine}
+                        ${
+                          isOpen
+                            ? "opacity-0"
+                            : "opacity-50 group-hover:opacity-100"
+                        }`}
+                    />
+
+                    <div
+                      className={`${hamburgerLine}
+                        ${
+                          isOpen
+                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
+                            : "opacity-50 group-hover:opacity-100"
+                        }`}
+                    />
+                  </button>
                 </ul>
               </div>
             </nav>

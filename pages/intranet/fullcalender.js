@@ -24,5 +24,5 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ admin, events }) {
-  return <Calender admin={admin} allEvents={JSON.parse(events)} />;
+  return <Calender admin={admin} allEvents={JSON.parse(events)} cal="all" />;
 }

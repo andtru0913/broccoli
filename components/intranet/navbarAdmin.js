@@ -21,14 +21,14 @@ const NavbarAdmin = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   return (
-    <nav className="bg-primary-1 flex justify-end p-2  lg:p-0">
+    <nav className="bg-primary-1 flex justify-end p-2  lg:p-0 ">
       <div className="flex justify-center  text-muted ">
         <ul
           className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle 
                         ${
                           isOpen === false
-                            ? "lg:static fixed  -left-full   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm    bg-primary-1 "
-                            : "lg:static fixed  left-0   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 "
+                            ? "lg:static fixed  -left-full   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm    bg-primary-1 z-30"
+                            : "lg:static fixed  left-0   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 z-30"
                         }`}
         >
           {ADMIN_MENU_LIST.map((menu) => {

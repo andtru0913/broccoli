@@ -90,16 +90,16 @@ const Component = ({ admin, allEvents }) => {
       }}
       events={allEvents}
       displayEventTime={false}
-      eventDisplay={'block'}
+      eventDisplay={"block"}
     />
   );
 };
 
-const Calender = ({ admin, allEvents }) => {
+const Calender = ({ admin, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
   return (
     <LayoutIntranet>
-      <div className="flex justify-center">
+      <div className="flex justify-center bg-fill">
         <div
           id="popup"
           className={`popup ${popHide}`}
@@ -170,9 +170,9 @@ const Calender = ({ admin, allEvents }) => {
           </div>
         </div>
         <div id="modifyevent" className={`window-pop ${popHide}`}>
-          <div className="relative bg-fill rounded p-5 m-2 ">
-            <div className=" flex flex-row justify-between">
-              <h4 className="uppercase text-lg md:h1"> Ändra Event</h4>
+          <div className="relative bg-fill rounded  m-2 overflow-auto ">
+            <div className=" flex flex-row justify-between sticky top-0 bg-fill-1 p-5 shadow-md">
+              <h4 className="uppercase text-lg md:h1 "> Ändra Event</h4>
               <button
                 type=""
                 onClick={function () {
@@ -181,17 +181,17 @@ const Calender = ({ admin, allEvents }) => {
                 }}
               >
                 <div className="absolute top-0 right-0 p-3 hover:text-muted">
-                  <HiXMark />
+                  <HiXMark size={20} />
                 </div>
               </button>
             </div>
-            <div className="flex flex-col md:flex-row flex-1 scroll-auto">
+            <div className="flex flex-col md:flex-row flex-1 p-5">
               <div className="flex flex-col md:flex-row gap-2 py-4">
                 <div className="flex flex-col">
                   <form action="../../api/admin/modifyEvent" method="POST">
                     <div className="flex flex-col md:flex-row gap-2 py-4">
                       <div className="flex flex-row">
-                        <p className="pr-2"> Från</p>
+                        <p className="pr-2 text-muted"> Från</p>
                         <input
                           className="start px-2 hover:bg-tiertary-1 rounded"
                           type="date"
@@ -200,7 +200,7 @@ const Calender = ({ admin, allEvents }) => {
                       </div>
 
                       <div className="flex flex-row ">
-                        <p className="px-2">Till </p>
+                        <p className="px-2 text-muted">Till </p>
                         <input
                           className="end px-2 hover:bg-tiertary-1 rounded"
                           type="date"
@@ -222,9 +222,8 @@ const Calender = ({ admin, allEvents }) => {
                       </div>
 
                       <div className="flex flex-col ">
-                        border
                         <p>Beskrivning</p>
-                        <input
+                        <textarea
                           className="description p-2 rounded"
                           type="text"
                           name="description"
@@ -250,12 +249,13 @@ const Calender = ({ admin, allEvents }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
+              <div className="flex flex-row flex-1 gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
                 <form action="../../api/joinEvent" method="POST">
                   <input className="eventid" type="hidden" name="eventid" />
                   <button className="btn btn-create" type="Submit">
                     Kommer
                   </button>
+                  <div id="modifyRoot" />
                 </form>
 
                 <form action="../../api/maybeEvent" method="POST">
@@ -295,14 +295,25 @@ const Calender = ({ admin, allEvents }) => {
           </div>
         </div>
 
-        <div className="layout py-8 md:py-12  flex flex-col items-center">
-          <div className="flex flex-row gap-4">
-            <a className="p-2 btn btn-secondary" href={"./calendar"}>
+        <div className="layout    flex flex-col md:items-center h-screen w-full">
+          <div className="grid grid-cols-2 w-full justify-start">
+            <a
+              className={`p-4 font-medium  ${
+                cal === "mine"
+                  ? ""
+                  : "bg-fill-3 hover:bg-fill-1 text-secondary-d1"
+              } `}
+              href={"./calendar"}
+            >
               Mina händelser
             </a>
 
             <a
-              className="p-2 btn btn-secondary rounded-sm"
+              className={`p-4 font-medium  ${
+                cal === "all"
+                  ? ""
+                  : "bg-fill-3 hover:bg-fill-1 text-secondary-d1"
+              } `}
               href={"./fullcalender"}
             >
               Alla händelser

@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 import { authenticate } from "./authenticate";
 import * as Database from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
-import {DragDropContext} from "react-beautiful-dnd";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -119,14 +119,14 @@ export default function Home({ lunchGroups, users }) {
   const popHide = "pop-hide";
   return (
     <LayoutIntranet>
-      <main className="bg-skin-fill ">
+      <main className="bg-fill h-screen">
         <div className="layout py-20 md:py-12  flex flex-col items-center cursor-pointer">
           <h2>Lunchgrupper</h2>
           <DragDropContext onDragEnd={onDragEnd}>
-            <div className="flex flex-col min-h-full flex-wrap  w-screen gap-2 text-skin-muted pb-8">
+            <div className="flex flex-col min-h-full flex-wrap  w-full gap-2 text-skin-muted pb-8">
               <div className="flex justify-center m-2">
                 <button
-                  className="btn btn-misc"
+                  className="btn btn-primary"
                   onClick={function () {
                     document.getElementById("popup").classList.remove(popHide);
                     document.getElementById("creategroup").classList.remove(popHide);
@@ -162,19 +162,18 @@ export default function Home({ lunchGroups, users }) {
             }}
           ></div>
           <div id="creategroup" className={` window-pop ${popHide}`}>
-            <div className="relative bg-skin-fill rounded p-5 m-2 flex flex-col justify-center items-center">
+            <div className="relative bg-fill rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ny lunchgrupp</h4>
                 <button
-                  type=""
+                  className="absolute top-0 right-0 p-3 hover:text-skin-muted"
+                  type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
                     document.getElementById("creategroup").classList.add(popHide);
                   }}
                 >
-                  <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
-                    <HiXMark />
-                  </div>
+                  <HiXMark />
                 </button>
               </div>
 
@@ -198,11 +197,12 @@ export default function Home({ lunchGroups, users }) {
             </div>
           </div>
           <div id="modifyLunchgroup" className={`window-pop ${popHide}`}>
-            <div className="relative bg-skin-fill rounded p-5 m-2 flex flex-col justify-center items-center">
+            <div className="relative bg-fill rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ändra Lunchgrupp</h4>
                 <button
-                  type=""
+                  className="absolute top-0 right-0 p-3 hover:text-skin-muted focus:border-primary-l1 active:bg-fill-1 "
+                  type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
                     document
@@ -210,9 +210,7 @@ export default function Home({ lunchGroups, users }) {
                       .classList.add(popHide);
                   }}
                 >
-                  <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
-                    <HiXMark />
-                  </div>
+                  <HiXMark />
                 </button>
               </div>
 
@@ -227,9 +225,9 @@ export default function Home({ lunchGroups, users }) {
               </form>
               <form action="../../api/admin/deleteLunchgroup" method="POST">
                 <input
-                    className="id p-2 border rounded mb-2"
-                    type="hidden"
-                    name="id"
+                  className="id p-2 border rounded mb-2"
+                  type="hidden"
+                  name="id"
                 />
                 <button className="btn btn-delete" type="submit">
                   Radera händelse
