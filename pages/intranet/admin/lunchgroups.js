@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
 import { authenticate } from "./authenticate";
 import * as Database from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
+import {DragDropContext} from "react-beautiful-dnd";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -21,7 +21,6 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 export async function getServerSideProps(context) {
   let authentication = await authenticate(context);
   if (authentication !== undefined) return authentication;
-
   let lunchGroups = await Database.getGroups(undefined);
   let users = await Database.getAllUsers();
   return {
@@ -34,7 +33,7 @@ export default function Home({ lunchGroups, users }) {
   let columns = Object.assign(
     ...lunchGroups.map((a) => ({ [a.id.toString()]: a }))
   );
-  const initialData = {
+  const [state, setState] = useState({
     tasks: {
       tasks,
     },
@@ -43,8 +42,7 @@ export default function Home({ lunchGroups, users }) {
     },
     // Facilitate reordering of the columns
     columnOrder: Object.keys(columns),
-  };
-  const [state, setState] = useState(initialData);
+  });
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -60,7 +58,7 @@ export default function Home({ lunchGroups, users }) {
       return;
     }
 
-    // If the user drops within the same column but in a different positoin
+    // If the user drops within the same column but in a different position
     const sourceCol = state.columns.columns[source.droppableId];
     const destinationCol = state.columns.columns[destination.droppableId];
 
@@ -78,7 +76,7 @@ export default function Home({ lunchGroups, users }) {
           [newColumn.id]: newColumn,
         },
       };
-      useEffect(() => setState(newState), []);
+      setState(newState);
       return;
     }
 
@@ -107,7 +105,7 @@ export default function Home({ lunchGroups, users }) {
         },
       },
     };
-    useEffect(() => setState(newState), []);
+    setState(newState);
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "../../api/changeLunchGroup", true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -118,7 +116,7 @@ export default function Home({ lunchGroups, users }) {
       })
     );
   };
-  const popHide = "pop-hide" || "";
+  const popHide = "pop-hide";
   return (
     <LayoutIntranet>
       <main className="bg-skin-fill ">
@@ -131,9 +129,7 @@ export default function Home({ lunchGroups, users }) {
                   className="btn btn-misc"
                   onClick={function () {
                     document.getElementById("popup").classList.remove(popHide);
-                    document
-                      .getElementById("creategroup")
-                      .classList.remove(popHide);
+                    document.getElementById("creategroup").classList.remove(popHide);
                   }}
                 >
                   Ny lunchgrupp
@@ -162,9 +158,7 @@ export default function Home({ lunchGroups, users }) {
             onClick={function () {
               document.getElementById("popup").classList.add(popHide);
               document.getElementById("creategroup").classList.add(popHide);
-              document
-                .getElementById("modifyLunchgroup")
-                .classList.add(popHide);
+              document.getElementById("modifyLunchgroup").classList.add(popHide);
             }}
           ></div>
           <div id="creategroup" className={` window-pop ${popHide}`}>
@@ -172,16 +166,15 @@ export default function Home({ lunchGroups, users }) {
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ny lunchgrupp</h4>
                 <button
-                  className="absolute top-0 right-0 p-3 hover:text-skin-muted"
-                  type="button"
+                  type=""
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
-                    document
-                      .getElementById("creategroup")
-                      .classList.add(popHide);
+                    document.getElementById("creategroup").classList.add(popHide);
                   }}
                 >
-                  <HiXMark />
+                  <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
+                    <HiXMark />
+                  </div>
                 </button>
               </div>
 
@@ -209,8 +202,7 @@ export default function Home({ lunchGroups, users }) {
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ändra Lunchgrupp</h4>
                 <button
-                  className="flex space-x-2 items-center"
-                  type="button"
+                  type=""
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
                     document
@@ -218,37 +210,30 @@ export default function Home({ lunchGroups, users }) {
                       .classList.add(popHide);
                   }}
                 >
-                  <HiXMark />
+                  <div className="absolute top-0 right-0 p-3 hover:text-skin-muted">
+                    <HiXMark />
+                  </div>
                 </button>
               </div>
 
-              <form
-                className="flex "
-                action="../../api/modifyLunchgroup"
-                method="POST"
-              >
+              <form className="flex " action="../../api/modifyLunchgroup" method="POST">
                 <div className="flex flex-col md:flex-row gap-4 py-4">
-                  <input
-                    className="title p-2"
-                    type="text"
-                    name="title"
-                    placeholder="Titel"
-                  />
+                  <input className="title p-2" type="text" name="title" placeholder="Titel"/>
                   <input className={`id ${popHide}`} type="text" name="id" />
                   <button className="shadow btn btn-create" type="submit">
                     Ändra händelse
                   </button>
-                  <form action="../../api/admin/deleteLunchgroup" method="POST">
-                    <input
-                      className="id p-2 border rounded mb-2"
-                      type="hidden"
-                      name="id"
-                    />
-                    <button className="btn btn-delete" type="submit">
-                      Radera händelse
-                    </button>
-                  </form>
                 </div>
+              </form>
+              <form action="../../api/admin/deleteLunchgroup" method="POST">
+                <input
+                    className="id p-2 border rounded mb-2"
+                    type="hidden"
+                    name="id"
+                />
+                <button className="btn btn-delete" type="submit">
+                  Radera händelse
+                </button>
               </form>
             </div>
           </div>

@@ -31,9 +31,10 @@ export default async function handler(req, res) {
         if (req.method === "POST") {
             try {
                 post(req, res).then(_ => {
+                    return res.status(201).send("")
                 })
-
             } catch (e) {
+                console.log(e)
             }
         }
     }
