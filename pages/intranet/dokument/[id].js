@@ -31,7 +31,7 @@ export default function Home ({doc, admin}) {
             )
     }
     return (
-        <LayoutIntranet>
+        <LayoutIntranet admin={admin}>
             <p>{JSON.stringify(doc)}</p>
             <p>{doc.date}</p>
             <embed style={{height: "500px", width: "500px"}} src={`/uploads/dokument/${doc.filename}`} id={doc.id}/>

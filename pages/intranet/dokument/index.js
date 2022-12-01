@@ -98,7 +98,7 @@ export default function Home({ admin, data }) {
     );
   }
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={admin}>
       <main className="">
         <div className="layout py-20 md:py-12  flex flex-col items-center">
           <section>

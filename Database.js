@@ -123,7 +123,8 @@ export async function getUserProfile(userid) {
                 image:true,
                 email:true,
                 assignment:true,
-                description:true
+                description:true,
+                admin: true
             }
         })
         return query[0]

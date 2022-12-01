@@ -1,12 +1,25 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import EmployeeAccordion from "../../../components/employeeAccordion";
 import { getUserOverview } from "../../../Database";
+import * as Database from "../../../Database";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   let data = await getUserOverview();
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  if (cookies !== null) {
+    const user = await Database.getUserinfo(cookies.id)
+    return {
+      props: { data: data, admin:user.admin },
+    };
+  }
   return {
-    props: { data: data },
-  };
+    redirect: {
+      permanent: false,
+      destination: "/intranet",
+    },
+    props:{},
+  }
+
 }
 
 //const { theme, setTheme } = useTheme();
@@ -15,9 +28,9 @@ export async function getServerSideProps() {
 // theme === "dark" ? setTheme("dark_intranet") : setTheme("intranet");
 // }, [])
 
-export default function employee(data) {
+export default function employee({data,admin}) {
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={admin}>
       <main className=" py-20  flex flex-col items-center">
         <h1 className=" text-center"> Anställda </h1>
         <h3 className="text-base">

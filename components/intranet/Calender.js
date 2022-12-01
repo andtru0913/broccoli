@@ -98,7 +98,7 @@ const Component = ({ admin, allEvents }) => {
 const Calender = ({ admin, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={admin}>
       <div className="flex justify-center bg-fill">
         <div
           id="popup"
@@ -225,7 +225,6 @@ const Calender = ({ admin, allEvents, cal }) => {
                         <p>Beskrivning</p>
                         <textarea
                           className="description p-2 rounded"
-                          type="text"
                           name="description"
                           placeholder="Beskrivning"
                         />

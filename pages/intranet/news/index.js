@@ -77,7 +77,7 @@ export default function Home({ user, news}) {
     </div>)
   }
   return (
-      <LayoutIntranet>
+      <LayoutIntranet admin={user.admin}>
         News
         {popup}
           {news.map((item, i) =>

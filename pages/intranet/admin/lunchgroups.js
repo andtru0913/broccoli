@@ -118,7 +118,7 @@ export default function Home({ lunchGroups, users }) {
   };
   const popHide = "pop-hide";
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={true}>
       <main className="bg-fill h-screen">
         <div className="layout py-20 md:py-12  flex flex-col items-center cursor-pointer">
           <h2>Lunchgrupper</h2>

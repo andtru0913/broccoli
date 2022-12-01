@@ -148,7 +148,7 @@ export default function Home({ user, events }) {
     );
   } else {
     return (
-      <LayoutIntranet user={user}>
+      <LayoutIntranet admin={user.admin}>
         <main>
           <div className=" flex flex-col">
             <div className="flex flex-col relative h-screen">

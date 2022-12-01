@@ -6,10 +6,10 @@ import ThemedImage from "../themedImage";
 import NavbarAdmin from "./navbarAdmin";
 import INTRA_MENU_LIST from "./navItemIntra";
 
-const NavbarIntranet = ({ user }) => {
+const NavbarIntranet = ({ admin }) => {
   const [isOpen, setIsOpen] = useState(false);
   let adminNavbar = ""
-  if(user.admin) {
+  if(admin) {
       adminNavbar = <NavbarAdmin/>
   }
   const openmenu = () => setIsOpen(!isOpen);
@@ -130,7 +130,7 @@ const NavbarIntranet = ({ user }) => {
                         activeClassName="w-full text-xs font-medium  lg:ml-8 uppercase opacity-80 transition-all duration-200 text-primary-l1"
                       >
                         <a className="w-full text-xs md:text-base  font-medium flex flex-col items-end uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
-                          {(menu.top === true) & (menu.text != "Logout")
+                          {(menu.top === true) && (menu.text !== "Logout")
                             ? menu.text
                             : menu["icon-small"]}
                         </a>
@@ -144,7 +144,6 @@ const NavbarIntranet = ({ user }) => {
             </nav>
           </>
           </header>
-      )}
       <footer className="fixed bottom-0 w-screen  lg:sticky  lg:top-0 z-50 shadow-xl shadow-black">
           <>
             <nav className=" flex  lg:hidden  align-middle items-center  bg-fill-1">
@@ -213,7 +212,6 @@ const NavbarIntranet = ({ user }) => {
               </div>
             </nav>
           </>
-        )}
       </footer>
     </>
   );
