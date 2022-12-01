@@ -19,7 +19,7 @@ export default function employee(data) {
   return (
     <LayoutIntranet>
       <main className=" py-20  flex flex-col items-center">
-        <h1 className=" text-center"> Anställda </h1>
+        <h1 className=" text-center uppercase font-bold "> Anställda </h1>
         <h3 className="text-base">
           {" "}
           Här presenteras medarbetare på Broccoli med kontaktinformation{" "}

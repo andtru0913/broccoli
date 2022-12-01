@@ -7,8 +7,8 @@ const NewsSection = ({ id, slug, title, body, timestamp, img_path }) => {
         </div>
 
         <div className="flex flex-col ml-2 p-5">
-          <h4 className="">{title}</h4>
-          <p className=" p-3">{body}</p>
+          <h4 className=" uppercase font-bold ">{title}</h4>
+          <p className="">{body}</p>
         </div>
       </div>
       <div className=""></div>

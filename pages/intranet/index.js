@@ -191,13 +191,15 @@ export default function Home({ user, events }) {
 
             <div className="md:grid md:grid-cols-3 flex flex-col">
               <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-secondary-d1">
-                <h3 className=" text-muted font-medium ">Senaste Nytt</h3>
+                <h2 className=" text-muted uppercase font-bold ">
+                  Senaste Nytt
+                </h2>
                 <Nyheter />
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
-                <h3 className=" w-auto text-muted font-medium ">
+                <h2 className=" w-auto text-muted uppercase font-bold ">
                   Kommande event
-                </h3>
+                </h2>
                 {JSON.parse(events).map((data) => {
                   return (
                     <UpcomingEvent
@@ -211,12 +213,14 @@ export default function Home({ user, events }) {
               </div>
 
               <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default ">
-                <h3 className=" text-muted font-medium ">Lunchgrupper</h3>
+                <h2 className=" text-muted uppercase font-bold ">
+                  Lunchgrupper
+                </h2>
                 <div className="  flex flex-row flex-wrap gap-6 my-4 ">
                   {lunchfuldata.map((pp) => {
                     return pp.id === user.lunchgroupID ? (
                       <div className="relative flex flex-col  p-4 lg:p-5">
-                        <h5 className="">{pp.title}</h5>
+                        <h4 className="uppercse font-bold ">{pp.title}</h4>
                         {pp.people.map((i) => {
                           return <p>{i}</p>;
                         })}
@@ -224,7 +228,7 @@ export default function Home({ user, events }) {
                     ) : (
                       <div className="flex flex-col md:flex-col self-center">
                         <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-secondary-d1 p-6">
-                          <h4 className="">{pp.title}</h4>
+                          <h4 className=" uppercase font-bold ">{pp.title}</h4>
                           {pp.people.map((i) => {
                             return <p>{i}</p>;
                           })}

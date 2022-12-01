@@ -94,6 +94,6 @@ model News {
     title       String
     text        String
     date        String
-    author      Author  @relation(fields: [authorId], references: [id])
+    author      User  @relation(fields: [authorId], references: [id])
     authorId    String  @db.ObjectId
 }

@@ -33,7 +33,7 @@ export default function news({}) {
   return (
     <LayoutIntranet>
       <div className="bg-zinc-400 flex flex-col items-center justify-center p-5 ">
-        <h1 className="p-4"> nyheter </h1>
+        <h1 className=" uppercase font-bold p-4"> nyheter </h1>
         <p> Här hittar ni alla skojiga nyheter </p>
       </div>
 
