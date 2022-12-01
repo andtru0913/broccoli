@@ -26,6 +26,7 @@ const Component = ({ admin, allEvents }) => {
         }
       }}
       eventClick={function (e) {
+        console.log(e)
         let background = document.getElementById("popup");
         let description = e.event._def.extendedProps.description;
         let title = e.event._def.title;
