@@ -56,7 +56,7 @@ const NavbarAdmin = ({ user }) => {
       <button
         className={` ${
           isOpen
-            ? "block cursor-pointer justify-center items-center group  lg:none lg:none"
+            ? "block cursor-pointer justify-center items-center group lg:none lg:none"
             : "none"
         }
                  `}
@@ -66,7 +66,7 @@ const NavbarAdmin = ({ user }) => {
           className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "rotate-45 translate-y-inledning opacity-50 group-hover:opacity-100 "
+                            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
                             : "opacity-50 group-hover:opacity-100 "
                         } `}
         />
@@ -83,7 +83,7 @@ const NavbarAdmin = ({ user }) => {
           className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "-rotate-45 -translate-y-inledning opacity-50 group-hover:opacity-100"
+                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
                             : "opacity-50 group-hover:opacity-100"
                         }`}
         />

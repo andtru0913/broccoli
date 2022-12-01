@@ -141,6 +141,9 @@
   .btn-secondary {
     @apply bg-primary-l1 text-muted;
   }
+  .btn-empty {
+    @apply bg-fill-1  text-muted hover:bg-primary-1;
+  }
 
   .btn-delete {
     @apply bg-primary-l2 text-base;
@@ -188,7 +191,7 @@
     display: none !important;
   }
   .window-pop {
-    @apply z-50 fixed text-base top-10 md:top-1/4 flex flex-col w-full md:items-center h-4/5 md:h-auto;
+    @apply z-50 fixed top-0 text-base h-screen md:top-1/4 flex flex-col w-full md:items-center  md:h-auto;
   }
 
   @media (prefers-reduced-motion: no-preference) {

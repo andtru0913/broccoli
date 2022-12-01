@@ -5,6 +5,7 @@ import LayoutIntranet from "../layout/layoutIntranet";
 import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
+import { Dropdown } from "flowbite-react";
 
 const Component = ({ admin, allEvents }) => {
   const popHide = "pop-hide";
@@ -249,49 +250,103 @@ const Calender = ({ admin, allEvents, cal }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row flex-1 gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
-                <form action="../../api/joinEvent" method="POST">
-                  <input className="eventid" type="hidden" name="eventid" />
-                  <button className="btn btn-create" type="Submit">
-                    Kommer
-                  </button>
-                  <div id="modifyRoot" />
-                </form>
+              <div className="flex flex-col">
+                <div className="flex flex-row h-auto gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
+                  <form action="../../api/joinEvent" method="POST">
+                    <input className="eventid" type="hidden" name="eventid" />
+                    <button className="btn btn-create" type="Submit">
+                      Kommer
+                    </button>
+                  </form>
 
-                <form action="../../api/maybeEvent" method="POST">
-                  <input className="eventid" type="hidden" name="eventid" />
-                  <button className="btn btn-modify" type="Submit">
-                    Kanske
-                  </button>
-                </form>
-                <form action="../../api/leaveEvent" method="POST">
-                  <input className="eventid" type="hidden" name="eventid" />
-                  <button className="btn btn-delete" type="Submit">
-                    Kommer inte
-                  </button>
-                </form>
+                  <form action="../../api/maybeEvent" method="POST">
+                    <input className="eventid" type="hidden" name="eventid" />
+                    <button className="btn btn-modify" type="Submit">
+                      Kanske
+                    </button>
+                  </form>
+                  <form action="../../api/leaveEvent" method="POST">
+                    <input className="eventid" type="hidden" name="eventid" />
+                    <button className="btn btn-delete" type="Submit">
+                      Kommer inte
+                    </button>
+                  </form>
+                </div>
+                <div className="flex flex-col flex-1 gap-2 p-4 md:pr-0 items-center w-full">
+                  <div className="w-full" id="modifyRoot" />
+                </div>
               </div>
             </div>
-            <div id="modifyRoot" />
           </div>
         </div>
         <div id="checkevent" className={`window-pop ${popHide}`}>
-          <div className="bg-fill rounded p-5">
-            <h1> Check Event</h1>
-            <h2 className={"title"}></h2>
-            <p className={"description"}></p>
-            <form action="../../api/joinEvent" method="POST">
-              <input className="eventid" type="hidden" name="eventid" />
-              <button type="Submit">Gå med</button>
-            </form>
-            <form action="../../api/leaveEvent" method="POST">
-              <input className="eventid" type="hidden" name="eventid" />
-              <button type="Submit">Lämna</button>
-            </form>
-            <form action="../../api/maybeEvent" method="POST">
-              <input className="eventid" type="hidden" name="eventid" />
-              <button type="Submit">Kanske</button>
-            </form>
+          <div className="relative bg-fill rounded  overflow-auto h-full">
+            <div className=" flex flex-row justify-between sticky top-0 bg-fill-1 p-5 shadow-md">
+              <h4> </h4>
+              <button
+                type=""
+                onClick={function () {
+                  document.getElementById("popup").classList.add(popHide);
+                  document.getElementById("checkevent").classList.add(popHide);
+                }}
+              >
+                <div className="absolute top-0 right-0 p-3 hover:text-muted">
+                  <HiXMark size={20} />
+                </div>
+              </button>
+            </div>
+            <div className="bg-fill rounded p-2 md:p-5">
+              <h1 className={"title"}> </h1>
+              <p className={"description"}></p>
+
+              <div className="flex flex-col md:flex-row gap-2 py-4">
+                <div className="flex flex-row">
+                  <p className="pr-2 text-muted"> Från</p>
+                  <p className="start px-2 hover:bg-tiertary-1 rounded" />
+                </div>
+
+                <div className="flex flex-row ">
+                  <p className="px-2 text-muted">Till </p>
+                  <p className="end px-2 hover:bg-tiertary-1 rounded" />
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <div className="flex flex-row flex-1 h-auto gap-1 md:gap-2 mb-4 md:py-4 md:pl-4 items-center md:items-start justify-center">
+                  <form action="../../api/joinEvent" method="POST">
+                    <input className="eventid" type="hidden" name="eventid" />
+                    <button
+                      className="btn btn-empty normal-case text-xs md:text-base"
+                      type="Submit"
+                    >
+                      Kommer
+                    </button>
+                  </form>
+
+                  <form action="../../api/maybeEvent" method="POST">
+                    <input className="eventid" type="hidden" name="eventid" />
+                    <button
+                      className="btn btn-empty normal-case text-xs md:text-base"
+                      type="Submit"
+                    >
+                      Kanske
+                    </button>
+                  </form>
+                  <form action="../../api/leaveEvent" method="POST">
+                    <input className="eventid" type="hidden" name="eventid" />
+                    <button
+                      className="btn btn-empty normal-case text-xs md:text-base"
+                      type="Submit"
+                    >
+                      Kommer ej
+                    </button>
+                  </form>
+                </div>
+                <div className="flex flex-col flex-1 gap-2md:py-4 md:pl-4 items-center w-full">
+                  <div className="w-full" id="checkRoot" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
