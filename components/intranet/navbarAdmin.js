@@ -31,14 +31,14 @@ const NavbarAdmin = ({}) => {
                             : "lg:static fixed  left-0   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 z-30"
                         }`}
         >
-          {ADMIN_MENU_LIST.map((menu) => {
+          {ADMIN_MENU_LIST.map((menu,i) => {
             return (
               <li
                 className="m-2"
                 onClick={() => {
                   openmenu;
                 }}
-                key={menu.text}
+                key={i}
               >
                 <ActiveLink
                   href={menu.href}
