@@ -23,7 +23,7 @@ export default function Exjobb({ authentication, page }) {
       <Page
         authentication={authentication}
         page={page}
-        redirect="../exjobb"
+        redirect="exjobb"
         formTitle="EXJOBBSANSÖKAN"
       ></Page>
     </Layout>

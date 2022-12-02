@@ -23,7 +23,7 @@ export default function Underconsultants({ authentication, page }) {
       <Page
         authentication={authentication}
         page={page}
-        redirect="../underconsultants"
+        redirect="underconsultants"
         formTitle="Ansökan"
       ></Page>
     </Layout>
