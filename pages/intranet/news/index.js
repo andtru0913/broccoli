@@ -1,6 +1,7 @@
 import { getAllNews, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { FileAdder } from "../../../components/FileAdder";
+import SmallProfile from "../../../components/smallProfile";
 
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -140,12 +141,12 @@ export default function Home({ user, news }) {
           <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4">
             {news.map((item, i) => (
               <a key={i} href={`./news/${item.id}`}>
-                <div className="bg-secondary-l1/80 hover:bg-secondary-d1/80">
-                  <div className="grid grid-cols-3">
-                    <h5 className=" p-5 px-10 text-primary-d1 ">
-                      {item.author.firstname} {item.author.lastname}
-                    </h5>
-
+                <div className="bg-secondary-l1/80 hover:bg-secondary-d1/80 text-base uppercase">
+                  <div className="grid grid-cols-3 p-5 px-10 text-primary-d1">
+                    <SmallProfile
+                      firstname={item.author.firstname}
+                      lastname={item.author.lastname}
+                    />
                     <h5 className="p-5 text-primary-d1 "> {item.date} </h5>
                   </div>
                   <h3 className=" uppercase font-bold  px-10 pb-5">
