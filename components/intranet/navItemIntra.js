@@ -1,17 +1,13 @@
-import {
-  HiHandRaised,
-} from "react-icons/hi2";
+import { HiHandRaised } from "react-icons/hi2";
 
-import {
-  ImExit
-} from "react-icons/im"
+import { ImExit } from "react-icons/im";
 
 import {
   HiClock,
   HiCalendar,
   HiUserCircle,
   HiHome,
-  HiBookOpen
+  HiBookOpen,
 } from "react-icons/hi";
 const INTRA_MENU_LIST = [
   {
