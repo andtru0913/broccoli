@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 
 export default function Home ({user}) {
     return (
-        <LayoutIntranet>
+        <LayoutIntranet admin={user.admin}>
             <div className={"w-12 h-auto"}>
                 {JSON.stringify(user)}
             </div>

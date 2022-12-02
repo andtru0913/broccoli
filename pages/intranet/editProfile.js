@@ -3,7 +3,7 @@ import { getUserProfile } from "../../Database";
 import { FileAdder } from "../../components/FileAdder";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
   if (cookies !== null) {
     let user = await getUserProfile(cookies.id);
     return {
@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
 const profile = ({ user }) => {
   const file = new FileAdder();
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={user.admin || null}>
       <section className="">
         <div className="layout  py-12">
           <h3>Ändra Profil</h3>

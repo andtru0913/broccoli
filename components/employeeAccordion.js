@@ -5,7 +5,7 @@ const EmployeeAccordion = ({data}) => {
   const [index, setIndex] = useState(false);
   return (
     <div className="flex flex-row gap-1 flex-wrap justify-center">
-      {data.data.map((user, uid) => {
+      {data.map((user, uid) => {
         return (
           <EmployeeAccordionSection
             key={uid}

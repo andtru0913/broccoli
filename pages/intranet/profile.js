@@ -2,9 +2,9 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import { getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
   if (cookies !== null) {
-    let user = await getUserProfile(cookies.id);
+    const user = await getUserProfile(cookies.id);
     return {
       props: {
         user: user,
@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 
 const profile = ({ user }) => {
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={user.admin}>
       <section className="">
         <div className="">
           <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-3 md:grid-rows-1  h-screen bg-secondary-1">

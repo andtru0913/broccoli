@@ -15,7 +15,7 @@ const ADMIN_MENU_LIST = [
 */
 }
 
-const NavbarAdmin = ({ user }) => {
+const NavbarAdmin = ({}) => {
   const hamburgerLine =
     " w-4 h-0.5 bg-fill my-0.5 transition-all duration-300 ease-in-out  lg:hidden";
   const [isOpen, setIsOpen] = useState(false);
@@ -31,14 +31,14 @@ const NavbarAdmin = ({ user }) => {
                             : "lg:static fixed  left-0   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 z-30"
                         }`}
         >
-          {ADMIN_MENU_LIST.map((menu) => {
+          {ADMIN_MENU_LIST.map((menu,i) => {
             return (
               <li
                 className="m-2"
                 onClick={() => {
                   openmenu;
                 }}
-                key={menu.text}
+                key={i}
               >
                 <ActiveLink
                   href={menu.href}

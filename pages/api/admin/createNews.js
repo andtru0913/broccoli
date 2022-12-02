@@ -1,5 +1,5 @@
 import checkAdmin from "./checkAdmin";
-import {createDocument} from "../../../Database";
+import {createNews} from "../../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
     if (await checkAdmin(req.cookies['user'])) {
         if (req.body.title !== "" && req.body.filename !== "") {
-            await createDocument(req.body.title, req.body.filename, new Date().toISOString().split('T')[0])
+            await createNews(req.body.title, req.body.filename, new Date().toISOString().split('T')[0], req.body.id)
                 .catch(e => {
                     console.error(e.message)
                 })

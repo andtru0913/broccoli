@@ -26,6 +26,7 @@ const Component = ({ admin, allEvents }) => {
         }
       }}
       eventClick={function (e) {
+        console.log(e)
         let background = document.getElementById("popup");
         let description = e.event._def.extendedProps.description;
         let title = e.event._def.title;
@@ -98,7 +99,7 @@ const Component = ({ admin, allEvents }) => {
 const Calender = ({ admin, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={admin}>
       <div className="flex justify-center bg-fill">
         <div
           id="popup"
@@ -225,7 +226,6 @@ const Calender = ({ admin, allEvents, cal }) => {
                         <p>Beskrivning</p>
                         <textarea
                           className="description p-2 rounded"
-                          type="text"
                           name="description"
                           placeholder="Beskrivning"
                         />

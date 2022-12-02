@@ -66,6 +66,7 @@ export async function getUserinfo(userid) {
                 id: userid
             },
             select: {
+                id: true,
                 firstname:true,
                 lastname:true,
                 admin:true,
@@ -122,7 +123,8 @@ export async function getUserProfile(userid) {
                 image:true,
                 email:true,
                 assignment:true,
-                description:true
+                description:true,
+                admin: true
             }
         })
         return query[0]
@@ -555,6 +557,21 @@ export async function createDocument(title, filename, date) {
     })
 }
 
+export async function createNews(title, filename, date, author) {
+    await prisma.news.create({
+        data: {
+            title: title,
+            file: filename,
+            date: date,
+            author: {
+                connect: {
+                    id: author
+                }
+            }
+        },
+    })
+}
+
 export async function getAllDocuments() {
     return await prisma.document.findMany({
         select: {
@@ -577,6 +594,42 @@ export async function getDocument(id) {
             date: true
         },
     }))[0]
+}
+export async function getNews(id) {
+    return (await prisma.news.findMany({
+        where: {
+            id: id
+        },
+        select: {
+            id:true,
+            title: true,
+            file:true,
+            date: true,
+            author: {
+                select: {
+                    firstname: true,
+                    lastname: true
+                }
+            }
+        },
+    }))[0]
+}
+
+export async function getAllNews() {
+    return (await prisma.news.findMany({
+        select: {
+            id:true,
+            title: true,
+            file:true,
+            date: true,
+            author: {
+                select: {
+                    firstname: true,
+                    lastname: true
+                }
+            }
+        },
+    }))
 }
 
 export async function getUserOverview() {

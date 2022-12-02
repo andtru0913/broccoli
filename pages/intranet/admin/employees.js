@@ -18,7 +18,7 @@ export default function Home({ user }) {
     "z-30 absolute w-screen bg-skin-fill p-8 rounded top-inledning/3 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 ";
   const popHide = "pop-hide";
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={true}>
       <main className="">
         <div className="layout py-20 md:py-12 ">
           <h1 className="text-center">Anställda</h1>
