@@ -33,16 +33,16 @@ export default function Home({ lunchGroups, users }) {
   let columns = Object.assign(
     ...lunchGroups.map((a) => ({ [a.id.toString()]: a }))
   );
-  const [state, setState] = useState({
+  const initial_state = {
     tasks: {
       tasks,
     },
     columns: {
       columns,
     },
-    // Facilitate reordering of the columns
     columnOrder: Object.keys(columns),
-  });
+  }
+  const [state, setState] = useState(initial_state);
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -107,7 +107,7 @@ export default function Home({ lunchGroups, users }) {
     };
     setState(newState);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../api/changeLunchGroup", true);
+    xhr.open("POST", "../../api/admin/changeLunchGroup", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(
       JSON.stringify({

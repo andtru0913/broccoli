@@ -39,16 +39,8 @@ const Column = ({ column, tasks }) => {
                 {(draggableProvided, draggableSnapshot) => (
                   <div
                     className="flex mb-4 rounded-lg bg-primary-l2 text-muted justify-center p-2 md:p-6 outline-2 outline-white "
-                    outlineColor={
-                      draggableSnapshot.isDragging
-                        ? "card-border"
-                        : "transparent"
-                    }
-                    boxShadow={
-                      draggableSnapshot.isDragging
-                        ? "0 5px 10px rgba(0, 0, 0, 0.6)"
-                        : "unset"
-                    }
+                    outlineColor={draggableSnapshot.isDragging ? "card-border" : "transparent"}
+                    boxShadow={draggableSnapshot.isDragging ? "0 5px 10px rgba(0, 0, 0, 0.6)" : "unset"}
                     ref={draggableProvided.innerRef}
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}
