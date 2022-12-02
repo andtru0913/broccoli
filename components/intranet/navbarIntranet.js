@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import * as React from "react"
 
 import ActiveLink from "../activeLink";
 import ThemedImage from "../themedImage";
@@ -115,7 +116,7 @@ const NavbarIntranet = ({ admin }) => {
                                         : "lg:static  fixed  left-0  bottom-16   flex  flex-col  w-full h-1/4 rounded-lg  text-end  duration-300 bg-fill-1"
                                     }`}
               >
-                {INTRA_MENU_LIST.map((menu) => {
+                {INTRA_MENU_LIST.map((menu,i) => {
                   return menu.bottom === false ? (
                     <li
                       className="my-2 mr-3 flex justify-end"
@@ -137,7 +138,7 @@ const NavbarIntranet = ({ admin }) => {
                       </ActiveLink>
                     </li>
                   ) : (
-                    <></>
+                    <div key={i}></div>
                   );
                 })}
               </ul>
@@ -145,11 +146,10 @@ const NavbarIntranet = ({ admin }) => {
           </>
           </header>
       <footer className="fixed bottom-0 w-screen  lg:sticky  lg:top-0 z-50 shadow-xl shadow-black">
-          <>
             <nav className=" flex  lg:hidden  align-middle items-center  bg-fill-1">
               <div className=" w-full">
                 <ul className=" grid grid-cols-5 gap-4 justify-items-center align-middle">
-                  {INTRA_MENU_LIST.map((menu) =>
+                  {INTRA_MENU_LIST.map((menu,i) =>
                     menu.bottom === true ? (
                       <li
                         className="flex flex-row"
@@ -170,7 +170,7 @@ const NavbarIntranet = ({ admin }) => {
                         </ActiveLink>
                       </li>
                     ) : (
-                      <></>
+                      <React.Fragment key={i}/>
                     )
                   )}
                   <button
@@ -211,7 +211,6 @@ const NavbarIntranet = ({ admin }) => {
                 </ul>
               </div>
             </nav>
-          </>
       </footer>
     </>
   );

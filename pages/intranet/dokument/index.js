@@ -103,8 +103,8 @@ export default function Home({ admin, data }) {
         <div className="layout py-20 md:py-12  flex flex-col items-center">
           <section>
             {button}
-            {data.map((doc) => (
-              <div>
+            {data.map((doc, i) => (
+              <div key={i}>
                 <a href={`./dokument/${doc.id}`}>
                   {doc.title} <br />
                   {doc.date}

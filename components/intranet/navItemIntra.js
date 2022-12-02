@@ -1,12 +1,18 @@
 import {
-  HiHome,
-  HiBookOpen,
-  HiUserCircle,
-  HiCalendarDays,
-  HiClock,
-  HiArrowLeftOnRectangle,
   HiHandRaised,
 } from "react-icons/hi2";
+
+import {
+  ImExit
+} from "react-icons/im"
+
+import {
+  HiClock,
+  HiCalendar,
+  HiUserCircle,
+  HiHome,
+  HiBookOpen
+} from "react-icons/hi";
 const INTRA_MENU_LIST = [
   {
     text: "Hem",
@@ -36,16 +42,16 @@ const INTRA_MENU_LIST = [
     text: "Dokument",
     bottom: false,
     top: true,
-    "icon-small": <HiArrowLeftOnRectangle size={20} />,
-    "icon-large": <HiArrowLeftOnRectangle size={30} />,
+    "icon-small": <ImExit size={20} />,
+    "icon-large": <ImExit size={30} />,
     href: "/intranet/dokument ",
   },
   {
     text: "News",
     bottom: false,
     top: true,
-    "icon-small": <HiCalendarDays size={20} />,
-    "icon-large": <HiCalendarDays size={30} />,
+    "icon-small": <HiCalendar size={20} />,
+    "icon-large": <HiCalendar size={30} />,
     href: "/intranet/news",
   },
   {
@@ -60,8 +66,8 @@ const INTRA_MENU_LIST = [
     text: "Calendar",
     bottom: true,
     top: false,
-    "icon-small": <HiCalendarDays size={20} />,
-    "icon-large": <HiCalendarDays size={30} />,
+    "icon-small": <HiCalendar size={20} />,
+    "icon-large": <HiCalendar size={30} />,
     href: "/intranet/calendar",
   },
   {
@@ -76,8 +82,8 @@ const INTRA_MENU_LIST = [
     text: "Logout",
     bottom: false,
     top: false,
-    "icon-small": <HiArrowLeftOnRectangle size={20} />,
-    "icon-large": <HiArrowLeftOnRectangle size={30} />,
+    "icon-small": <ImExit size={20} />,
+    "icon-large": <ImExit size={30} />,
     href: "/api/logout",
   },
 ];

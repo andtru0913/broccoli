@@ -30,12 +30,12 @@ const Footer = () => {
           </div>
           <div className=" grid grid-cols-1 grid-flow-row md:grid-cols-2 pt-8 gap-4 z-2 ">
             <div className=" flex-col  px-5  ">
-              <h3 className="pb-2 text-center font-bold cursor-default">
+              <h3 className="pb-2 text-center font-bold cursor-default uppercase">
                 Kontakt
               </h3>
               <div className=" flex flex-col items-center md:text-left bg-inherit">
                 <a className="hover:text-muted" href="tel:031-151480">
-                  <div className="flex flex-row text-sm hover:text-inverted justify-center align-middle md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-secondary-d2 justify-center align-middle md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -51,14 +51,14 @@ const Footer = () => {
                       />
                     </svg>
 
-                    <p className="pl-2 ">031-151480</p>
+                    <p className="pl-2  ">031-151480</p>
                   </div>
                 </a>
                 <a
                   className="hover:text-muted"
                   href="mailto:engineering@broccoli.se"
                 >
-                  <div className="flex flex-row text-sm hover:text-inverted justify-center  align-middle  md:justify-start py-1">
+                  <div className="flex flex-row text-sm  hover:text-secondary-d2  justify-center  align-middle  md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -74,14 +74,14 @@ const Footer = () => {
                       />
                     </svg>
 
-                    <p className="pl-2 ">engineering@broccoli.se</p>
+                    <p className="pl-2  ">engineering@broccoli.se</p>
                   </div>
                 </a>
                 <a
                   className="hover:text-muted"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                 >
-                  <div className="flex flex-row text-sm hover:text-inverted justify-center align-middle  md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-secondary-d2  justify-center align-middle  md:justify-start py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -111,34 +111,38 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className=" flex-col px-5 text-center">
-              <h3 className="pb-2 font-bold cursor-default">Medarbetare</h3>
+            <div className=" flex-col px-5  text-center">
+              <h3 className="pb-2 font-bold cursor-default uppercase">
+                Medarbetare
+              </h3>
               <a href="./intranet" className="hover:text-muted py-2">
-                <p className="text-sm hover:text-inverted">Intranät</p>
+                <p className="text-sm hover:text-secondary-d2">Intranät</p>
               </a>
 
               <a
                 href="https://www.broccoli.be/tid/"
-                className="hover:text-inverted py-2"
+                className="hover:text-secondary-d2 py-2"
               >
                 <p className="text-sm p-1 ">Tidrapport</p>
               </a>
             </div>
             <div className=" md:col-span-2 pb-7 text-center justify-center ">
-              <h3 className="pb-2 font-bold cursor-default">Följ oss</h3>
+              <h3 className="pb-2 font-bold cursor-default uppercase ">
+                Följ oss
+              </h3>
               <div className="flex flex-row justify-center md:text-left bg-inherit">
-                <a href="/" className="p-2 hover:text-inverted ">
+                <a href="/" className="p-2 hover:text-secondary-d2">
                   <BsInstagram
                     className="fill-button-accent hover:fill-button-accent"
                     size={25}
                   />
                 </a>
 
-                <a href="/" className="p-2  hover:text-inverted">
+                <a href="/" className="p-2  hover:text-secondary-d2">
                   <BsFacebook size={25} />
                 </a>
 
-                <a href="/" className="p-2  hover:text-inverted">
+                <a href="/" className="p-2  hover:text-secondary-d2">
                   <BsLinkedin size={25} />
                 </a>
               </div>

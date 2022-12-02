@@ -25,6 +25,7 @@ const Nyheter = () => {
       {data.map((data) => {
         return (
           <NewsSection
+              key={data.id}
             id={data.id}
             slug={data.slug}
             title={data.title}

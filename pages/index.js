@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
-import { HiArrowRight } from "react-icons/hi2";
+import { HiArrowRight } from "react-icons/hi";
 import { FaBed, FaFacebookSquare, FaSwimmer } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
@@ -176,9 +176,9 @@ export default function Home({ feed, genderCount }) {
         <section className="">
           <div className=" pb-12 lg:py-12 xl:py-48  flex flex-col justify-center">
             <div className="py-2  lg:p-4 text-center">
-              <h1>Att jobba hos broccoli</h1>
+              <h1 className="uppercase font-bold ">Att jobba hos broccoli</h1>
             </div>
-            <div className="layout grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 xl:pt-24">
+            <div className="layout grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 ">
               <div className="flex flex-col items-center gap-12 md:pt-12 lg:pt-0">
                 <p className="h4 md:h3 text-center lg:max-w-lg xl:max-w-xl leading-relaxed">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
@@ -203,7 +203,7 @@ export default function Home({ feed, genderCount }) {
 
         <section className="relative  mx-0">
           <div className=" pb-12 lg:py-12 text-center overflow-hidden ">
-            <h1 className=" ">Våra kärnvärden</h1>
+            <h1 className=" uppercase font-bold ">Våra kärnvärden</h1>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
                 <h2 className="font-bold uppercase">Relationer</h2>
@@ -270,7 +270,9 @@ export default function Home({ feed, genderCount }) {
 
         <section className="">
           <div className="layout  lg:py-60">
-            <h1 className="  text-center ">Följ oss på Instagram</h1>
+            <h1 className=" uppercase font-bold text-center ">
+              Följ oss på Instagram
+            </h1>
 
             <div className="py-8 flex flex-1 gap-10 align-middle justify-center flex-col lg:flex lg:flex-row md:grid md:grid-cols-2">
               {insta_images &&
@@ -294,7 +296,7 @@ export default function Home({ feed, genderCount }) {
                 <button className=" btn btn-primary">
                   <div className="flex flex-row gap-2  items-center ">
                     Instagram
-                    <HiArrowRight />
+                    <HiArrowRight/>
                   </div>
                 </button>
               </a>
@@ -304,7 +306,7 @@ export default function Home({ feed, genderCount }) {
 
         <section className="">
           <div className="pt-12 lg:p-0 flex flex-col items-center ">
-            <h1 className=" ">Broccoligården</h1>
+            <h1 className=" uppercase font-bold ">Broccoligården</h1>
 
             <div className=" flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted mt-8">
               <div className="hidden lg:flex relative w-full max-h-full bg-cover">
@@ -320,7 +322,7 @@ export default function Home({ feed, genderCount }) {
               <div className="flex flex-col items-center cursor-default">
                 <div className="flex flex-col items-center p-8 md:p-12 cursor-default">
                   {/**information */}
-                  <h3>Välkommen till Broccoligården</h3>
+                  <h3 className="">Välkommen till Broccoligården</h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-12">
                     <p className="h-auto p1 text-left shrink max-w-readable">
                       Broccoligården ligger strax utanför svanesund. En idyllisk

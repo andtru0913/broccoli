@@ -20,7 +20,8 @@ export async function getServerSideProps(context) {
 export default function Posts({ authentication, page }) {
   return (
     <Layout>
-      <Page classname=""
+      <Page
+        classname=""
         authentication={authentication}
         page={page}
         redirect="../posts"

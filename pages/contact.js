@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <Layout>
       <section className="py-12 text-center text-base overflow-hidden cursor-default">
-        <h1>Kontakta oss</h1>
+        <h1 className="uppercase font-bold">Kontakta oss</h1>
         <div className=" layout grid grid-cols-1 md:grid-cols-2 justify-center gap-4 py-12 lg:px-20 cursor-default">
           <div className="relative rounded ">
             <div className="flex w-full h-full justify-center z-10 ">
@@ -16,7 +16,9 @@ export default function Contact() {
           </div>
           <div className="relative rounded">
             <div className=" flex flex-col bg-primary-1 bg-opacity-80 p-4 md:px-8 z-20 h-full overflow-hidden justify-center">
-              <h4 className="pb-4 md:pb-8 ">Broccoli Engineering AB</h4>
+              <h3 className="pb-4 md:pb-8 uppercase font-bold ">
+                Broccoli Engineering AB
+              </h3>
               <div className=" flex flex-col gap-4">
                 <a className="hover:text-inverted" href="tel:031-151480">
                   <div className="flex flex-row gap-4 items-center">

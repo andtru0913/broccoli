@@ -5,7 +5,7 @@ const Card = ({ title, icon, image, text, click }) => {
       className=" z-10 text-center cursor-default bg-secondary-1 p-14 md:p-12 md:mx-4 lg:p-14 text-inverted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted "
     >
       <div className="flex flex-1 p-12  md:p-4">
-        <h2 className="justify-self-center">{title}</h2>
+        <h2 className=" uppercase font-bold justify-self-center">{title}</h2>
       </div>
 
       <p className="text-sm leading-5"> {text}</p>
@@ -20,7 +20,7 @@ const Card = ({ title, icon, image, text, click }) => {
       </div>*/}
 
       <div className="flex flex-col items-left  p-14 md:p-12 lg:p-14  ">
-        <h2 className=" pb-3">{title}</h2>
+        <h2 className=" uppercase font-bold pb-3">{title}</h2>
         <p className="  text-justify">{text}</p>
       </div>
     </a>
