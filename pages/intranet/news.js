@@ -1,35 +1,39 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 
-const nyhetsdata = [
-  {
-    id: "00",
-    title: "Hej och välkommna",
-    month: "Dec",
-    date: "10",
-  },
-  {
-    id: "01",
-    title: "Detta händer på Broccoli",
-    month: "Dec",
-    date: "13",
-  },
+const news = () => {
+  const nyhetsdata = [
+    {
+      id: "00",
+      author: "Namn Namn",
+      title: "Hej och välkommna",
+      date: "10-Dec",
+      description: "alkncvlökakdnfvinvianv",
+    },
+    {
+      id: "01",
+      author: "Namn Namn",
+      title: "Detta händer på Broccoli",
+      date: "13-Dec",
+      description: "alkncvlökakdnfvinvianv",
+    },
 
-  {
-    id: "02",
-    title: "Detta händer hos oss",
-    month: "Sep",
-    date: "01",
-  },
+    {
+      id: "02",
+      author: "Namn Namn",
+      title: "Detta händer hos oss",
+      date: "01-Sep",
+      description: "alkncvlökakdnfvinvianv",
+    },
 
-  {
-    id: "03",
-    title: "Detta händer just nu",
-    month: "Aug",
-    date: "23",
-  },
-];
+    {
+      id: "03",
+      author: "Namn Namn",
+      title: "Detta händer just nu",
+      date: "23-Aug",
+      description: "alkncvlökakdnfvinvianv",
+    },
+  ];
 
-export default function news({}) {
   return (
     <LayoutIntranet>
       <div className="bg-zinc-400 flex flex-col items-center justify-center p-5 ">
@@ -40,25 +44,20 @@ export default function news({}) {
       <div className="flex flex-col">
         <div className="flex flex-row">
           <svg
-            className=" absolute -z-10 left-0"
+            className=" absolute -z-10 left- fill-primary-1"
             width="1003"
             height="1107"
             viewBox="0 0 1003 1107"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M-405.367 835.806C-432.001 969.232 -336.037 976.73 -164.842 1038.99C13.0588 1103.69 239.276 959.688 346.77 1063.25C426.95 1107.2 420.721 1116.42 531.945 1096.89C643.168 1077.36 653.92 966.549 697.087 950.223C751.045 929.816 845.167 877.613 916.799 816.125C988.432 754.637 1003.37 618.516 1002.11 445.824C1000.84 273.133 837.492 229.179 777.746 172.479C718 115.779 697.087 43.4356 588.505 13.9488C479.924 -15.5379 392.426 9.82456 306.692 43.4355C220.958 77.0465 137.307 65.9843 68.3682 115.779C-0.570077 165.574 1.53185 174.267 10.2654 278.899C18.999 383.53 -216.019 477.159 -316.121 573.137C-416.223 669.114 -378.734 702.379 -405.367 835.806Z"
-              fill="#F9CCFA"
-            />
+            <path d="M-405.367 835.806C-432.001 969.232 -336.037 976.73 -164.842 1038.99C13.0588 1103.69 239.276 959.688 346.77 1063.25C426.95 1107.2 420.721 1116.42 531.945 1096.89C643.168 1077.36 653.92 966.549 697.087 950.223C751.045 929.816 845.167 877.613 916.799 816.125C988.432 754.637 1003.37 618.516 1002.11 445.824C1000.84 273.133 837.492 229.179 777.746 172.479C718 115.779 697.087 43.4356 588.505 13.9488C479.924 -15.5379 392.426 9.82456 306.692 43.4355C220.958 77.0465 137.307 65.9843 68.3682 115.779C-0.570077 165.574 1.53185 174.267 10.2654 278.899C18.999 383.53 -216.019 477.159 -316.121 573.137C-416.223 669.114 -378.734 702.379 -405.367 835.806Z" />
           </svg>
 
           <svg
-            className="absolute -z-10 right-0"
+            className="absolute -z-10 right-0 fill-secondary-1 "
             width="916"
             height="992"
             viewBox="0 0 916 992"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -66,14 +65,29 @@ export default function news({}) {
               fill="#F5F1E2"
             />
           </svg>
-
-          <div className="grid grid-cols-3 w-full gap-3 content-evenly">
-            {nyhetsdata.map((item) => (
-              <h4>{item.title}</h4>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4">
+            {nyhetsdata.map((nyhetsdata) => {
+              return (
+                <>
+                  <div className="bg-secondary-l1/70">
+                    <div className="grid grid-cols-2">
+                      <h5 className=" p-5 px-10 text-primary-d1 ">
+                        {nyhetsdata.author}
+                      </h5>
+                      <h5 className="p-5"> {nyhetsdata.date} </h5>
+                    </div>
+                    <h3 className=" uppercase font-bold  px-10">
+                      {nyhetsdata.title}
+                    </h3>
+                    <p className="px-10 p-5 "> {nyhetsdata.description} </p>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </div>
       </div>
     </LayoutIntranet>
   );
-}
+};
+export default news;

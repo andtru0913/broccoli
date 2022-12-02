@@ -322,9 +322,11 @@ export default function Home({ feed, genderCount }) {
               <div className="flex flex-col items-center cursor-default">
                 <div className="flex flex-col items-center p-8 md:p-12 cursor-default">
                   {/**information */}
-                  <h3 className="">Välkommen till Broccoligården</h3>
+                  <h4 className="uppercase font-bold ">
+                    Välkommen till Broccoligården
+                  </h4>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-12">
-                    <p className="h-auto p1 text-left shrink max-w-readable">
+                    <p className="h-auto p-1 text-left shrink max-w-readable">
                       Broccoligården ligger strax utanför svanesund. En idyllisk
                       plats på västkusten. Ta en tur med vänner familj eller
                       jobbteamet och njut av den friska luften, sola på det

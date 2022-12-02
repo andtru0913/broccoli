@@ -25,7 +25,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
           </div>
         </div>
         <div className="flex flex-col p-2 lg:p-6  md:w-96 xl:w-full lg:max-h-48 lg:overflow-scroll xl:overflow-auto xl:max-h-full">
-          <h4 className=" lg:pb-2">{author}</h4>
+          <h4 className=" uppercase font-bold lg:pb-2">{author}</h4>
           <p className="">{children}</p>
         </div>
       </div>

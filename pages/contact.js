@@ -20,7 +20,7 @@ export default function Contact() {
                 Broccoli Engineering AB
               </h3>
               <div className=" flex flex-col gap-4">
-                <a className="hover:text-inverted" href="tel:031-151480">
+                <a className="hover:text-secondary-d2" href="tel:031-151480">
                   <div className="flex flex-row gap-4 items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export default function Contact() {
                   </div>
                 </a>
                 <a
-                  className="hover:text-inverted"
+                  className="hover:text-secondary-d2"
                   href="mailto:engineering@broccoli.se"
                 >
                   <div className="flex flex-row gap-4 items-center flex-auto">
@@ -64,7 +64,7 @@ export default function Contact() {
                   </div>
                 </a>
                 <a
-                  className="hover:text-inverted"
+                  className="hover:text-secondary-d2"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                 >
                   <div className="flex flex-row gap-4 items-center">
