@@ -49,7 +49,6 @@ const Component = ({ user, allEvents, setIscoming }) => {
           modifyevent.getElementsByClassName("id")[1].value = id;
           modifyevent.getElementsByClassName("eventid")[0].value = id;
           modifyevent.getElementsByClassName("eventid")[1].value = id;
-          modifyevent.getElementsByClassName("eventid")[2].value = id;
           const root = ReactDOM.createRoot(
             document.getElementById("modifyRoot")
           );
@@ -68,7 +67,6 @@ const Component = ({ user, allEvents, setIscoming }) => {
           checkevent.getElementsByClassName("end")[0].innerText = end;
           checkevent.getElementsByClassName("eventid")[0].value = id;
           checkevent.getElementsByClassName("eventid")[1].value = id;
-          checkevent.getElementsByClassName("eventid")[2].value = id;
           const root = ReactDOM.createRoot(
             document.getElementById("checkRoot")
           );
@@ -274,12 +272,6 @@ const Calender = ({ user, allEvents, cal }) => {
                     </button>
                   </form>
 
-                  <form action="../../api/maybeEvent" method="POST">
-                    <input className="eventid" type="hidden" name="eventid" />
-                    <button className="btn btn-modify" type="Submit">
-                      Kanske
-                    </button>
-                  </form>
                   <form action="../../api/leaveEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
                     <button className="btn btn-delete" type="Submit">
@@ -341,15 +333,6 @@ const Calender = ({ user, allEvents, cal }) => {
                     </button>
                   </form>
 
-                  <form action="../../api/maybeEvent" method="POST">
-                    <input className="eventid" type="hidden" name="eventid" />
-                    <button
-                      className="btn btn-empty normal-case text-xs md:text-base"
-                      type="Submit"
-                    >
-                      Kanske
-                    </button>
-                  </form>
                   <form action="../../api/leaveEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
                     <button
