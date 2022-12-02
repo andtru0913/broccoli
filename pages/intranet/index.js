@@ -88,7 +88,7 @@ const lunchfuldata = [
   },
 ];
 
-export default function Home({ user, events }) {
+export default function Home({ user, lunchgroups, events }) {
   if (user === null) {
     return (
       <main className="">
@@ -216,19 +216,27 @@ export default function Home({ user, events }) {
                   Lunchgrupper
                 </h2>
                 <div className="  flex flex-row flex-wrap gap-6 my-4 ">
-                  {lunchfuldata.map((pp,n) => {
-                    return pp.id === user.lunchgroupID ? (
-                      <div key={n} className="relative flex flex-col  p-4 lg:p-5">
-                        <h4 className="uppercse font-bold ">{pp.title}</h4>
-                        {pp.people.map((i) => {
+                  {lunchgroups.map((lunch, n) => {
+                    return lunch.id === user.lunchgroupID ? (
+                      <div
+                        key={n}
+                        className="relative flex flex-col  p-4 lg:p-5"
+                      >
+                        <h4 className="uppercase font-bold ">{lunch.title}</h4>
+                        {lunch.people.map((i) => {
                           return <p key={i}>{i}</p>;
                         })}
                       </div>
                     ) : (
-                      <div key={n} className="flex flex-col md:flex-col self-center">
+                      <div
+                        key={n}
+                        className="flex flex-col md:flex-col self-center"
+                      >
                         <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-secondary-d1 p-6">
-                          <h4 className=" uppercase font-bold ">{pp.title}</h4>
-                          {pp.people.map((i) => {
+                          <h4 className=" uppercase font-bold ">
+                            {lunch.title}
+                          </h4>
+                          {lunch.people.map((i) => {
                             return <p key={i}>{i}</p>;
                           })}
                         </div>

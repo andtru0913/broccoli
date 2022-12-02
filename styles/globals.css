@@ -4,17 +4,26 @@
 
 @layer base {
   :root {
-    --fc-event-bg-color: #4b925b;
-    --fc-event-border-color: #4b925b;
-    --fc-event-text-color: #fff;
-    --fc-event-selected-overlay-color: 92, 67, 67;
+    --fc-event-bg-color: rgb(93, 165, 110);
+    --fc-event-border-color: rgb(92, 150, 115);
+    --fc-event-text-color: rgb(255, 255, 255);
+    --fc-event-selected-overlay-color: rgb(92, 67, 67);
     --fc-today-bg-color: #e9dcba;
+    --fc-next-button-bg-color: rgb(51, 112, 75);
+    --fc-today-button-bg-color: rgb(33, 80, 51);
+    --fc-button-border-color: rgb(33, 80, 51);
+    --fc-button-bg-color: rgb(51, 112, 75);
+    --fc-button-hover-bg-color: rgb(104, 183, 122);
+    --fc-button-primary-bg-color: rgb(51, 112, 75);
     --background: 242, 242, 242;
     --color-text-base: 38, 38, 38;
     --color-text-muted: 64, 64, 64;
     --color-text-inverted: 255, 255, 255;
     --color-text-inverted-muted: 242, 242, 242;
     --color-fill: 255, 255, 255;
+    --color-fill-1: 243, 245, 243;
+    --color-fill-2: 225, 231, 225;
+    --color-fill-3: 235, 233, 233;
     --color-primary-1: 93, 165, 110;
     --color-primary-l1: 104, 183, 122;
     --color-primary-l2: 155, 215, 168;
@@ -141,6 +150,9 @@
   .btn-secondary {
     @apply bg-primary-l1 text-muted;
   }
+  .btn-empty {
+    @apply bg-fill-1  text-muted hover:bg-primary-1;
+  }
 
   .btn-delete {
     @apply bg-primary-l2 text-base;
@@ -188,7 +200,7 @@
     display: none !important;
   }
   .window-pop {
-    @apply z-50 fixed text-base top-10 md:top-1/4 flex flex-col w-full md:items-center h-4/5 md:h-auto;
+    @apply z-50 fixed top-0 text-base h-screen md:top-1/4 flex flex-col w-full md:items-center  md:h-auto;
   }
 
   @media (prefers-reduced-motion: no-preference) {
