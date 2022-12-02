@@ -15,6 +15,7 @@ const SmallProfile = ({ firstname, lastname, image, href }) => {
         src={`/uploads/profiles/${image}`}
         alt={"can't find profile pic"}
       />
+      {firstname} {lastname}
     </div>
   );
 };
