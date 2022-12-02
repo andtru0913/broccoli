@@ -6,9 +6,12 @@ import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
 import { Dropdown } from "flowbite-react";
+import { useState } from "react";
 
-const Component = ({ admin, allEvents }) => {
+const Component = ({ user, allEvents, setIscoming }) => {
   const popHide = "pop-hide";
+  const admin = user.admin;
+
   return (
     <FullCalendar
       plugins={[dayGridPlugin, interactionPlugin]}
@@ -27,18 +30,21 @@ const Component = ({ admin, allEvents }) => {
         }
       }}
       eventClick={function (e) {
-        console.log(e)
         let background = document.getElementById("popup");
         let description = e.event._def.extendedProps.description;
         let title = e.event._def.title;
         let id = e.event._def.publicId;
         let users = e.event._def.extendedProps.users;
+        let start = e.event._def.extendedProps.startDate;
+        let end = e.event._def.extendedProps.endDate;
+
         background.classList.remove(popHide);
         if (admin) {
           let modifyevent = document.getElementById("modifyevent");
           modifyevent.getElementsByClassName("title")[0].value = title;
           modifyevent.getElementsByClassName("description")[0].value =
             description;
+
           modifyevent.getElementsByClassName("id")[0].value = id;
           modifyevent.getElementsByClassName("id")[1].value = id;
           modifyevent.getElementsByClassName("eventid")[0].value = id;
@@ -50,17 +56,24 @@ const Component = ({ admin, allEvents }) => {
           root.render(<List key={id} users={users} />);
           modifyevent.classList.remove(popHide);
         } else {
+          users.map((usr) =>
+            user.id === usr.user.id ? setIscoming(usr.coming) : ""
+          );
+
           let checkevent = document.getElementById("checkevent");
           checkevent.getElementsByClassName("title")[0].innerText = title;
           checkevent.getElementsByClassName("description")[0].innerText =
             description;
+          checkevent.getElementsByClassName("start")[0].innerText = start;
+          checkevent.getElementsByClassName("end")[0].innerText = end;
           checkevent.getElementsByClassName("eventid")[0].value = id;
           checkevent.getElementsByClassName("eventid")[1].value = id;
           checkevent.getElementsByClassName("eventid")[2].value = id;
           const root = ReactDOM.createRoot(
             document.getElementById("checkRoot")
           );
-          root.render(<List key={id} users={users} />);
+          root.render(<List key={id} users={users} user={user} />);
+
           checkevent.classList.remove(popHide);
         }
       }}
@@ -97,8 +110,10 @@ const Component = ({ admin, allEvents }) => {
   );
 };
 
-const Calender = ({ admin, allEvents, cal }) => {
+const Calender = ({ user, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
+  const admin = user.admin;
+  const [iscoming, setIscoming] = useState(undefined);
   return (
     <LayoutIntranet admin={admin}>
       <div className="flex justify-center bg-fill">
@@ -254,7 +269,7 @@ const Calender = ({ admin, allEvents, cal }) => {
                 <div className="flex flex-row h-auto gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
                   <form action="../../api/joinEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
-                    <button className="btn btn-create" type="Submit">
+                    <button className=" btn btn-create" type="Submit">
                       Kommer
                     </button>
                   </form>
@@ -315,8 +330,11 @@ const Calender = ({ admin, allEvents, cal }) => {
                 <div className="flex flex-row flex-1 h-auto gap-1 md:gap-2 mb-4 md:py-4 md:pl-4 items-center md:items-start justify-center">
                   <form action="../../api/joinEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
+
                     <button
-                      className="btn btn-empty normal-case text-xs md:text-base"
+                      className={`btn btn-empty normal-case text-xs md:text-base ${
+                        iscoming ? "bg-primary-1 " : ""
+                      }`}
                       type="Submit"
                     >
                       Kommer
@@ -335,7 +353,9 @@ const Calender = ({ admin, allEvents, cal }) => {
                   <form action="../../api/leaveEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
                     <button
-                      className="btn btn-empty normal-case text-xs md:text-base"
+                      className={`btn btn-empty normal-case text-xs md:text-base ${
+                        iscoming ? " " : "bg-primary-1"
+                      }`}
                       type="Submit"
                     >
                       Kommer ej
@@ -375,7 +395,7 @@ const Calender = ({ admin, allEvents, cal }) => {
             </a>
           </div>
           <div className="w-screen p-2 md:w-4/5">
-            {Component({ admin, allEvents })}
+            {Component({ user, allEvents, setIscoming })}
           </div>
         </div>
       </div>

@@ -42,10 +42,10 @@ const profile = ({ user }) => {
                 <ProfilePicture image={user.image} />
               </div>
             </div>
-            <div className=" pt-0 md:pt-24 pb-24 md:pb-0 md:col-span-2 flex flex-col  overflow-y-scroll md:overflow-auto md:h-full p-12 ">
+            <div className=" pt-0 md:pt-24 pb-24 md:pb-0 md:col-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible md:h-full p-2 ">
               {/**Profile Information */}
               <div className="flex flex-row flex-wrap py-4 border-b border-base  items-center">
-                <div className="w-1/3 mr-8">
+                <div className="w-1/3 mr-16">
                   <p className="font-bold uppercase text-muted">Namn</p>
                 </div>
                 <div>
@@ -55,33 +55,67 @@ const profile = ({ user }) => {
                 </div>
               </div>
               <div className="flex flex-row py-4 border-b border-base items-center">
-                <div className="w-1/3  mr-8">
+                <div className="w-1/3  mr-16 ">
+                  <p className="font-bold uppercase text-muted">Användarnamn</p>
+                </div>
+                <div>
+                  <p>{user.username}</p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Roll</p>
                 </div>
                 <div>
-                  <p>
-                    {user.firstname} {user.lastname}
-                  </p>
+                  <p>{user.role}</p>
                 </div>
               </div>
               <div className="flex flex-row py-4 border-b border-base items-center">
-                <div className="w-1/3  mr-8">
+                <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Företag</p>
                 </div>
                 <div>
-                  <p>
-                    {user.firstname} {user.lastname}
-                  </p>
+                  <p>{user.company}</p>
                 </div>
               </div>
               <div className="flex flex-row py-4 border-b border-base items-center">
-                <div className="w-1/3  mr-8">
+                <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Beskrivning</p>
                 </div>
                 <div>
-                  <p>
-                    {user.firstname} {user.lastname}
-                  </p>
+                  <p>{user.description}</p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-16">
+                  <p className="font-bold uppercase text-muted">Email</p>
+                </div>
+                <div>
+                  <p>{user.email}</p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-16">
+                  <p className="font-bold uppercase text-muted">Adress</p>
+                </div>
+                <div>
+                  <p>{user.address}</p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-16">
+                  <p className="font-bold uppercase text-muted">Privatnummer</p>
+                </div>
+                <div>
+                  <p>{user.privatenumber}</p>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-16">
+                  <p className="font-bold uppercase text-muted">Jobbnummer</p>
+                </div>
+                <div>
+                  <p>{user.worknumber}</p>
                 </div>
               </div>
 

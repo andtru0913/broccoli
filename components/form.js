@@ -1,7 +1,7 @@
 export default function Form({ title }) {
   return (
     <>
-      <div className="flex flex-col " >      
+      <div className="flex flex-col ">
         <div className=" w-full  md:p-12">
           {/**title */}
 
@@ -95,7 +95,7 @@ export default function Form({ title }) {
                 Infoga fil (CV och/eller personligt brev)
               </label>
               <input style={{ display: "none" }} id="base64" name="base64" />
-             
+
               <input
                 className="form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
                 type="file"
@@ -132,7 +132,8 @@ export default function Form({ title }) {
           <div className="relative flex flex-wrap flex-row  ">
             <div className="flex flex-1 flex-row p-2">
               <label className="text-xs pb-1 text-gray-700" htmlFor="first">
-                Genom att skicka in detta formulär godkännder du att dina uppgifter sparas
+                Genom att skicka in detta formulär godkännder du att dina
+                uppgifter sparas
               </label>
             </div>
           </div>
@@ -140,7 +141,7 @@ export default function Form({ title }) {
 
           <div className="relative flex justify-end flex-row z-20   ">
             <div className=" p-2 ">
-              <button 
+              <button
                 id="formSubmit"
                 type="submit"
                 className=" btn btn-primary "

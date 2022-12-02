@@ -6,21 +6,21 @@ export async function getServerSideProps(context) {
   let user = await Database.getUserinfo(cookies.id);
   if (cookies !== {} || user !== null) {
     let events = await Database.getUserEvents(cookies.id);
-    events.map(
-        (data) => {
-          data.startDate = new Date(data.start).toLocaleString("default", {
-            day: "numeric",
-            month: "short",
-          })
-          data.endDate = new Date(data.start).toLocaleString("default", {
-            day: "numeric",
-            month: "short",
-          });
-        }
-    );
+    events.map((data) => {
+      data.startDate = new Date(data.start).toLocaleString("default", {
+        weekday: "long",
+        day: "numeric",
+        month: "short",
+      });
+      data.endDate = new Date(data.start).toLocaleString("default", {
+        weekday: "long",
+        day: "numeric",
+        month: "short",
+      });
+    });
     return {
       props: {
-        admin: user.admin === undefined ? false : user.admin,
+        user: user,
         events: JSON.stringify(events),
       },
     };
@@ -34,6 +34,6 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ admin, events }) {
-  return <Calender admin={admin} allEvents={JSON.parse(events)} cal="mine" />;
+export default function Home({ user, events }) {
+  return <Calender user={user} allEvents={JSON.parse(events)} cal="mine" />;
 }
