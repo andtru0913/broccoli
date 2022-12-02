@@ -24,7 +24,7 @@ export default function Posts({ authentication, page }) {
         classname=""
         authentication={authentication}
         page={page}
-        redirect="../posts"
+        redirect="posts"
         formTitle="ANSÖKAN"
       ></Page>
     </Layout>

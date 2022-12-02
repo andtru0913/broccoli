@@ -6,23 +6,20 @@ import Layout from "../components/layout/layout";
 import { FaHandshake, FaCar, FaRunning } from "react-icons/fa";
 import { BiHealth } from "react-icons/bi";
 import { GiPartyFlags } from "react-icons/gi";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export async function getServerSideProps(context) {
   const pageId = career;
-  const redirect = "../career";
   let authentication = await authenticate(context);
   const page = (await getPage(pageId))[0];
   return {
     props: {
       authentication: authentication === undefined ? null : authentication,
       page: page,
-      redirect: redirect,
     },
   };
 }
 
-export default function Career({ authentication, page, redirect }) {
+export default function Career({ authentication, page }) {
   const data = [
     {
       icon_svg: <FaHandshake size={90} />,
@@ -60,7 +57,7 @@ export default function Career({ authentication, page, redirect }) {
       <Page
         authentication={authentication}
         page={page}
-        redirect={redirect}
+        redirect={"career"}
         formTitle="SPONTANANSÖKAN"
       >
         <section className="">

@@ -254,6 +254,14 @@ export async function deleteEvent(id) {
   });
 }
 
+export async function deleteNotification(id) {
+    return await prisma.notifications.delete({
+        where: {
+            id:id
+        }
+    })
+}
+
 export async function updateEventDesc(id, title, description) {
   return await prisma.event.update({
     where: {
@@ -769,12 +777,12 @@ export async function deleteProfilePic(id) {
 }
 
 export async function createNotification(userid, title, text, startdate, enddate) {
-    await prisma.news.create({
+    await prisma.notifications.create({
         data: {
             title: title,
             text: text,
-            start: startdate,
-            end: enddate,
+            startDate: startdate,
+            endDate: enddate,
             author: {
                 connect: {
                     id: userid
@@ -782,4 +790,21 @@ export async function createNotification(userid, title, text, startdate, enddate
             }
         },
     })
+}
+
+export async function getAllNotifications() {
+    return (await prisma.notifications.findMany({
+        select: {
+            id:true,
+            title: true,
+            text:true,
+            startDate: true,
+            author: {
+                select: {
+                    firstname: true,
+                    lastname: true
+                }
+            }
+        },
+    }))
 }
