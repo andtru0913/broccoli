@@ -1,9 +1,21 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function ThemedImage({ img_path_light, img_path_dark }) {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
   let src;
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   switch (resolvedTheme) {
     case "light":
