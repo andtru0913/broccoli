@@ -94,6 +94,7 @@ export async function getUserinfo(userid) {
         address: true,
         username: true,
         email: true,
+        lunchgroup: true,
       },
     });
     return query[0];
@@ -777,23 +778,23 @@ export async function deleteProfilePic(id) {
 }
 
 export async function createNotification(userid, title, text, startdate, enddate) {
-    await prisma.notifications.create({
-        data: {
-            title: title,
-            text: text,
-            startDate: startdate,
-            endDate: enddate,
-            author: {
-                connect: {
-                    id: userid
-                }
-            }
-        },
+  await prisma.news.create({
+    data: {
+      title: title,
+      text: text,
+      start: startdate,
+      end: enddate,
+      author: {
+        connect: {
+          id: userid,
+        }
+      },
+    }
     })
 }
 
 export async function getAllNotifications() {
-    return (await prisma.notifications.findMany({
+    return await prisma.notifications.findMany({
         select: {
             id:true,
             title: true,
@@ -806,7 +807,7 @@ export async function getAllNotifications() {
                 }
             }
         },
-    }))
+    })
 }
 
 export async function getEventNotReplied(eventid) {
