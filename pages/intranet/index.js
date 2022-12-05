@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
         let fullName = usr.firstname + usr.lastname;
         people.push(fullName);
       });
-      let object = { title: data.title, people: people };
+      let object = { id: data.id, title: data.title, people: people };
       lunchgroups.push(object);
     });
 
@@ -44,49 +44,6 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-const lunchfuldata = [
-  {
-    id: "00",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "12",
-    title: "Lundby",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "23",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "634e9876bf1fe7084e06634c",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "34",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "je",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "78",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "98",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-];
 
 export default function Home({ user, lunchgroups, events }) {
   if (user === null) {
@@ -217,22 +174,26 @@ export default function Home({ user, lunchgroups, events }) {
                 </h2>
                 <div className="  flex flex-row flex-wrap gap-6 my-4 ">
                   {lunchgroups.map((lunch, n) => {
-                    return lunch.id === user.lunchgroupID ? (
+                    return lunch.id === user.lunchgroup.id ? (
                       <div
                         key={n}
-                        className="relative flex flex-col  p-4 lg:p-5"
+                        className="flex flex-col md:flex-col self-center"
                       >
-                        <h4 className="uppercase font-bold ">{lunch.title}</h4>
-                        {lunch.people.map((i) => {
-                          return <p key={i}>{i}</p>;
-                        })}
+                        <div className="flex-auto bg-primary-1 border-2 border-dashed  border-secondary-d1 p-6">
+                          <h4 className=" uppercase font-bold ">
+                            {lunch.title}
+                          </h4>
+                          {lunch.people.map((i) => {
+                            return <p key={i}>{i}</p>;
+                          })}
+                        </div>
                       </div>
                     ) : (
                       <div
                         key={n}
                         className="flex flex-col md:flex-col self-center"
                       >
-                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-secondary-d1 p-6">
+                        <div className="flex-auto  border-2 border-dashed  border-secondary-d1 p-6">
                           <h4 className=" uppercase font-bold ">
                             {lunch.title}
                           </h4>

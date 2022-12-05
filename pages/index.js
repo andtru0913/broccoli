@@ -296,7 +296,7 @@ export default function Home({ feed, genderCount }) {
                 <button className=" btn btn-primary">
                   <div className="flex flex-row gap-2  items-center ">
                     Instagram
-                    <HiArrowRight/>
+                    <HiArrowRight />
                   </div>
                 </button>
               </a>
