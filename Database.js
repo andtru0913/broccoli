@@ -808,3 +808,21 @@ export async function getAllNotifications() {
         },
     }))
 }
+
+export async function getEventNotReplied(eventid) {
+  return (await prisma.user.findMany({
+    where: {
+      events: {
+        every: {
+          NOT: {
+              eventId: eventid
+          }
+        }
+      }
+    },
+    select: {
+      firstname: true,
+      lastname: true
+    },
+  }))
+}

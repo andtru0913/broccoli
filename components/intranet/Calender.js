@@ -5,7 +5,6 @@ import LayoutIntranet from "../layout/layoutIntranet";
 import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
-import { Dropdown } from "flowbite-react";
 import { useState } from "react";
 
 const Component = ({ user, allEvents, setIscoming }) => {
@@ -123,7 +122,6 @@ const Calender = ({ user, allEvents, cal }) => {
           onClick={function () {
             document.getElementById("checkevent").classList.add(popHide);
             document.getElementById("modifyevent").classList.add(popHide);
-
             document.getElementById("createevent").classList.add(popHide);
             document.getElementById("popup").classList.add(popHide);
           }}

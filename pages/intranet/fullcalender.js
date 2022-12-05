@@ -1,4 +1,4 @@
-import { getEvents } from "../../Database";
+import {getEvents} from "../../Database";
 import Calender from "../../components/intranet/Calender";
 import * as Database from "../../Database";
 
@@ -17,6 +17,7 @@ export async function getServerSideProps(context) {
         month: "short",
       });
     });
+
     return {
       props: {
         user: user,
@@ -34,5 +35,21 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user, events }) {
-  return <Calender user={user} allEvents={JSON.parse(events)} cal="all" />;
+
+  return (<>
+        <button onClick={function() {
+          fetch("../api/admin/getNotAnswered", {
+            method: 'post', // Default is 'get'
+            body: JSON.stringify({id: '63885f1daa2ce12979e5a1da'}),
+            headers: new Headers({
+              'Content-Type': 'application/json'
+            })
+          })
+              .then(response => response.json())
+              .then(json => console.log(json))
+
+        }}>Test</button>
+        <Calender user={user} allEvents={JSON.parse(events)} cal="all" />
+      </>
+  );
 }
