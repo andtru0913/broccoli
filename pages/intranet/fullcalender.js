@@ -1,6 +1,7 @@
 import {getEvents} from "../../Database";
 import Calender from "../../components/intranet/Calender";
 import * as Database from "../../Database";
+import LayoutIntranet from "../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -22,6 +23,7 @@ export async function getServerSideProps(context) {
       props: {
         user: user,
         events: JSON.stringify(events),
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -34,9 +36,9 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ user, events }) {
+export default function Home({ user, events, notifications }) {
 
-  return (<>
+  return (<LayoutIntranet admin={user.admin} notifications={notifications}>
         <button onClick={function() {
           fetch("../api/admin/getNotAnswered", {
             method: 'post', // Default is 'get'
@@ -50,6 +52,6 @@ export default function Home({ user, events }) {
 
         }}>Test</button>
         <Calender user={user} allEvents={JSON.parse(events)} cal="all" />
-      </>
+      </LayoutIntranet>
   );
 }

@@ -1,14 +1,14 @@
 import LayoutIntranet from '../../../components/layout/layoutIntranet';
-import {getDocument, getUserinfo} from "../../../Database";
+import {getDocument, getNotifications, getUserinfo} from "../../../Database";
 
 export async function getServerSideProps(context) {
     let cookies = JSON.parse(context.req.cookies['user'] || null)
     let user = await getUserinfo(cookies.id)
     if (cookies !== {} || user !== null) {
         const id = context.params.id
-        let doc = await getDocument(id)
+        const doc = await getDocument(id)
         return {
-            props: {doc: doc, admin: user.admin}
+            props: {doc: doc, admin: user.admin, notifications: JSON.stringify(await getNotifications())}
         }
     }
     return {
@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function Home ({doc, admin}) {
+export default function Home ({doc, admin, notifications}) {
     let button = ""
     if (admin) {
         button = (
@@ -31,7 +31,7 @@ export default function Home ({doc, admin}) {
             )
     }
     return (
-        <LayoutIntranet admin={admin}>
+        <LayoutIntranet notifications={notifications} admin={admin}>
             <p>{JSON.stringify(doc)}</p>
             <p>{doc.date}</p>
             <embed style={{height: "500px", width: "500px"}} src={`/uploads/dokument/${doc.filename}`} id={doc.id}/>

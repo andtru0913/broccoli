@@ -9,6 +9,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         user: user,
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -21,10 +22,10 @@ export async function getServerSideProps(context) {
   };
 }
 
-const profile = ({ user }) => {
+const profile = ({ user, notifications }) => {
   const file = new FileAdder();
   return (
-    <LayoutIntranet admin={user.admin || null}>
+    <LayoutIntranet notifications={notifications} admin={user.admin || null}>
       <section className="bg-secondary-1 h-screen overflow-scroll lg:overflow-visible w-full pb-24  lg:pb-12">
         <div className="relative px-2 bg-secondary-1">
           <h2 className="py-8 uppercase text-center">Redigera Profil</h2>
@@ -58,7 +59,6 @@ const profile = ({ user }) => {
                     </label>
                     <textarea
                       className="description text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                      type="text"
                       name="description"
                       placeholder="Beskriv lite om dig själv"
                       defaultValue={user.description}

@@ -1,7 +1,6 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import LayoutIntranet from "../layout/layoutIntranet";
 import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
@@ -109,10 +108,8 @@ const Component = ({ user, allEvents, setIscoming }) => {
 
 const Calender = ({ user, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
-  const admin = user.admin;
   const [iscoming, setIscoming] = useState(undefined);
   return (
-    <LayoutIntranet admin={admin}>
       <div className="flex justify-center bg-fill">
         <div
           id="popup"
@@ -380,7 +377,6 @@ const Calender = ({ user, allEvents, cal }) => {
           </div>
         </div>
       </div>
-    </LayoutIntranet>
   );
 };
 

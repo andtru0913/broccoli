@@ -778,12 +778,12 @@ export async function deleteProfilePic(id) {
 }
 
 export async function createNotification(userid, title, text, startdate, enddate) {
-  await prisma.news.create({
+  await prisma.notifications.create({
     data: {
       title: title,
       text: text,
-      start: startdate,
-      end: enddate,
+      startDate: startdate,
+      endDate: enddate,
       author: {
         connect: {
           id: userid,
@@ -800,6 +800,7 @@ export async function getAllNotifications() {
             title: true,
             text:true,
             startDate: true,
+            endDate: true,
             author: {
                 select: {
                     firstname: true,
@@ -807,7 +808,49 @@ export async function getAllNotifications() {
                 }
             }
         },
+      orderBy: {
+          endDate: "asc"
+      }
     })
+}
+
+export async function getNotifications() {
+  let result = await prisma.notifications.findMany({
+    where: {
+      endDate: {
+          gte: new Date()
+      }
+    },
+    select: {
+      id:true,
+      title: true,
+      text:true,
+      startDate: true,
+      endDate: true,
+      author: {
+        select: {
+          firstname: true,
+          lastname: true
+        }
+      }
+    },
+    orderBy: {
+      startDate: 'desc'
+    }
+  })
+  result.map((data) => {
+    data.startDate = new Date(data.startDate).toLocaleString("default", {
+      year: "numeric",
+      day: "numeric",
+      month: "long",
+    });
+    data.endDate = new Date(data.endDate).toLocaleString("default", {
+      year: "numeric",
+      day: "numeric",
+      month: "long",
+    });
+  });
+  return result
 }
 
 export async function getEventNotReplied(eventid) {

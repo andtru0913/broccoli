@@ -1,6 +1,28 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
+import {getNotifications, getUserProfile} from "../../Database";
 
-const news = () => {
+export async function getServerSideProps(context) {
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  if (cookies !== null) {
+    const user = await getUserProfile(cookies.id);
+    return {
+      props: {
+        user: user,
+        notifications: JSON.stringify(await getNotifications())
+      },
+    };
+  }
+  return {
+    redirect: {
+      permanent: false,
+      destination: "/intranet",
+    },
+    props: {},
+  };
+}
+
+
+const news = ({user, notifications}) => {
   const nyhetsdata = [
     {
       id: "00",
@@ -35,7 +57,7 @@ const news = () => {
   ];
 
   return (
-    <LayoutIntranet>
+    <LayoutIntranet admin={user.admin} notifications={notifications}>
       <div className="bg-zinc-400 flex flex-col items-center justify-center p-5 ">
         <h1 className=" uppercase font-bold p-4"> nyheter </h1>
         <p> Här hittar ni alla skojiga nyheter </p>

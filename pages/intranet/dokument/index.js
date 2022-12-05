@@ -1,5 +1,5 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import { getAllDocuments, getUserinfo } from "../../../Database";
+import {getAllDocuments, getNotifications, getUserinfo} from "../../../Database";
 import { FileAdder } from "../../../components/FileAdder";
 
 export async function getServerSideProps(context) {
@@ -11,6 +11,7 @@ export async function getServerSideProps(context) {
       props: {
         admin: user.admin,
         data: data,
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -23,7 +24,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ admin, data }) {
+export default function Home({ admin, data, notifications }) {
   let button = "";
   if (admin) {
     const file = new FileAdder();
@@ -98,7 +99,7 @@ export default function Home({ admin, data }) {
     );
   }
   return (
-    <LayoutIntranet admin={admin}>
+    <LayoutIntranet admin={admin} notifications={notifications}>
       <main className="">
         <div className="layout py-20 md:py-12  flex flex-col items-center">
           <section>

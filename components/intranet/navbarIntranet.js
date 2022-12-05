@@ -9,7 +9,7 @@ import INTRA_MENU_LIST from "./navItemIntra";
 import { HiBell } from "react-icons/hi";
 import ThemeChanger from "../themechanger";
 
-const NavbarIntranet = ({ admin }) => {
+const NavbarIntranet = ({ admin, notifications }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [isRed, setIsRed] = useState(false);
@@ -98,8 +98,6 @@ const NavbarIntranet = ({ admin }) => {
                 ></div>
               </div>
             </div>
-
-            {notificationOpen ? console.log("open") : console.log("closed")}
             <div
               className={` ${
                 notificationOpen
@@ -108,7 +106,7 @@ const NavbarIntranet = ({ admin }) => {
               }
                  `}
             >
-              No notifications atm
+                {notifications}
               {/*  current notifications here!  */}
             </div>
 

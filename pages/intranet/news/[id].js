@@ -8,7 +8,7 @@ export async function getServerSideProps(context) {
         const id = context.params.id
         let doc = await getNews(id)
         return {
-            props: {doc: doc, admin: user.admin}
+            props: {doc: doc, admin: user.admin, notifications: JSON.stringify(await getNotifications())}
         }
     }
     return {
@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function Home ({doc, admin}) {
+export default function Home ({doc, admin, notifications}) {
     let button = ""
     if (admin) {
         button = (
@@ -31,7 +31,7 @@ export default function Home ({doc, admin}) {
             )
     }
     return (
-        <LayoutIntranet admin={user.admin}>
+        <LayoutIntranet notifications={notifications} admin={user.admin}>
             <p>{JSON.stringify(doc)}</p>
             <p>{doc.date}</p>
             <embed style={{height: "500px", width: "500px"}} src={`/uploads/news/${doc.file}#toolbar=0`} id={doc.id}/>

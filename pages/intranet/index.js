@@ -5,6 +5,7 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import ThemedImage from "../../components/themedImage";
 import * as Database from "../../Database";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
+import {getNotifications} from "../../Database";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -35,6 +36,7 @@ export async function getServerSideProps(context) {
         user: user !== undefined ? user : null,
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -45,7 +47,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ user, lunchgroups, events }) {
+export default function Home({ user, lunchgroups, events, notifications }) {
   if (user === null) {
     return (
       <main className="">
@@ -104,7 +106,7 @@ export default function Home({ user, lunchgroups, events }) {
     );
   } else {
     return (
-      <LayoutIntranet admin={user.admin}>
+      <LayoutIntranet notifications={notifications} admin={user.admin}>
         <main>
           <div className=" flex flex-col">
             <div className="flex flex-col relative h-screen">

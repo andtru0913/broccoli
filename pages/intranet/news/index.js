@@ -12,6 +12,7 @@ export async function getServerSideProps(context) {
       props: {
         user: user,
         news: news,
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -24,7 +25,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ user, news }) {
+export default function Home({ user, news, notifications }) {
   let popup = "";
   if (user.admin) {
     const file = new FileAdder();
@@ -107,7 +108,7 @@ export default function Home({ user, news }) {
     );
   }
   return (
-    <LayoutIntranet admin={user.admin}>
+    <LayoutIntranet notifications={notifications} admin={user.admin}>
       <div className=" flex flex-col items-center justify-center p-5 ">
         <h1 className=" uppercase font-bold p-4"> nyheter </h1>
         <p> Här hittar ni alla skojiga nyheter </p>

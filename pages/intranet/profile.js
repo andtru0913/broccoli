@@ -8,6 +8,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         user: user,
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -20,9 +21,9 @@ export async function getServerSideProps(context) {
   };
 }
 
-const profile = ({ user }) => {
+const profile = ({ user, notifications }) => {
   return (
-    <LayoutIntranet admin={user.admin}>
+    <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
         <div className="">
           <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-3 md:grid-rows-1  h-screen bg-secondary-1">
