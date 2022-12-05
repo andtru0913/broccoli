@@ -94,6 +94,7 @@ export async function getUserinfo(userid) {
         address: true,
         username: true,
         email: true,
+        lunchgroup: true,
       },
     });
     return query[0];
@@ -255,11 +256,11 @@ export async function deleteEvent(id) {
 }
 
 export async function deleteNotification(id) {
-    return await prisma.notifications.delete({
-        where: {
-            id:id
-        }
-    })
+  return await prisma.notifications.delete({
+    where: {
+      id: id,
+    },
+  });
 }
 
 export async function updateEventDesc(id, title, description) {
@@ -776,53 +777,24 @@ export async function deleteProfilePic(id) {
   });
 }
 
-export async function createNotification(userid, title, text, startdate, enddate) {
-    await prisma.notifications.create({
-        data: {
-            title: title,
-            text: text,
-            startDate: startdate,
-            endDate: enddate,
-            author: {
-                connect: {
-                    id: userid
-                }
-            }
+export async function createNotification(
+  userid,
+  title,
+  text,
+  startdate,
+  enddate
+) {
+  await prisma.news.create({
+    data: {
+      title: title,
+      text: text,
+      start: startdate,
+      end: enddate,
+      author: {
+        connect: {
+          id: userid,
         },
-    })
-}
-
-export async function getAllNotifications() {
-    return (await prisma.notifications.findMany({
-        select: {
-            id:true,
-            title: true,
-            text:true,
-            startDate: true,
-            author: {
-                select: {
-                    firstname: true,
-                    lastname: true
-                }
-            }
-        },
-    }))
-}
-
-export async function getEventNotReplied(eventid) {
-  return (await prisma.user.findMany({
-    where: {
-      events: {
-        every: {
-          NOT: {
-              eventId: eventid
-          }
-        }
-      }
+      },
     },
-    select: {
-      firstname: true,
-      lastname: true
-    },
-  }))
+  });
 }
