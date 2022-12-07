@@ -1,4 +1,4 @@
-import {getEvents} from "../../Database";
+import {getEvents, getNotifications} from "../../Database";
 import Calender from "../../components/intranet/Calender";
 import * as Database from "../../Database";
 import LayoutIntranet from "../../components/layout/layoutIntranet";

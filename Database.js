@@ -52,6 +52,7 @@ export async function login(input_username, input_password) {
       lastname: true,
       password: true,
       salt: true,
+      admin: true
     },
   });
   try {
@@ -64,6 +65,7 @@ export async function login(input_username, input_password) {
         id: id,
         firstname: query[0].firstname,
         lastname: query[0].lastname,
+        admin: query[0].admin
       };
     } else {
       return null;
@@ -349,7 +351,7 @@ export async function deleteLunchgroup(id) {
   });
 }
 
-export async function createCard(pageId, title, description, image) {
+export async function createCard(pageId, title, description) {
   await prisma.card.create({
     data: {
       title: title,
@@ -359,7 +361,6 @@ export async function createCard(pageId, title, description, image) {
           id: pageId,
         },
       },
-      image: image,
     },
   });
 }
@@ -386,8 +387,7 @@ export async function deleteCard(id) {
   });
 }
 
-export async function updateCard(id, title, description, image) {
-  if (image.length === 0) {
+export async function updateCard(id, title, description) {
     return await prisma.card.update({
       where: {
         id: id,
@@ -397,17 +397,6 @@ export async function updateCard(id, title, description, image) {
         description: description,
       },
     });
-  }
-  return await prisma.card.update({
-    where: {
-      id: id,
-    },
-    data: {
-      title: title,
-      description: description,
-      image: image,
-    },
-  });
 }
 
 export async function updatePage(id, title, description) {

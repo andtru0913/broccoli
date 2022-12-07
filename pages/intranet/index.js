@@ -53,7 +53,7 @@ export default function Home({ user, lunchgroups, events, notifications }) {
       <main className="">
         <div className=" mx-auto bg-fill w-screen h-screen p-4 relative">
           <Image
-            src="/images/gothenburg.jfif"
+            src="/images/frontpage.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"

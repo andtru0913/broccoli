@@ -2,7 +2,7 @@ import LayoutIntranet from "../../../../components/layout/layoutIntranet";
 import fs from 'fs'
 import ReactMarkdown from "react-markdown";
 import NavHandbook from "../../../../components/handbook/navHandbook";
-import {getUserinfo} from "../../../../Database";
+import {getNotifications, getUserinfo} from "../../../../Database";
 
 export async function getServerSideProps(context) {
   const language = context.params.language

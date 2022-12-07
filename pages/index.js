@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
 import { HiArrowRight } from "react-icons/hi";
-import { FaBed, FaFacebookSquare, FaSwimmer } from "react-icons/fa";
+import {FaBed, FaChalkboardTeacher, FaFacebookSquare, FaSwimmer} from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
 import "chart.js/auto";
@@ -57,9 +57,9 @@ export default function Home({ feed, genderCount }) {
   return (
     <Layout className="relativ">
       <main>
-        <div className=" overflow-hidden h-screen bg-center ">
+        <div className="overflow-hidden h-screen bg-center ">
           <Image
-            src="/images/gothenburg.jfif"
+            src="/images/frontpage.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
@@ -209,12 +209,10 @@ export default function Home({ feed, genderCount }) {
                 <h2 className="font-bold uppercase">Relationer</h2>
 
                 <p className="text-justify">
-                  På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
-                  och bjuder aktivt in berörda i dialogen. Genom våra olikheter
-                  bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
-                  stärker oss som grupp och utvecklar oss som individer. Vi lär
-                  oss även kontinuerligt genom kunskapsdelning och inspiration
-                  av varandra vilket leder till vår trevliga företagskultur.
+                  På Broccoli arbetar vi inkluderande, visar ömsesidig respekt och bjuder aktivt in berörda i dialogen.
+                  Genom våra olikheter bygger vi en stark gemenskap. Vi eftersträvar olikheter då det stärker oss som grupp
+                  och utvecklar oss som individer. Vi lär oss även kontinuerligt genom kunskapsdelning och inspiration av
+                  varandra vilket leder till vår trevliga företagskultur.
                 </p>
               </div>
               <div className="relative rounded">
@@ -224,12 +222,10 @@ export default function Home({ feed, genderCount }) {
                   </p>
 
                   <p className="text-justify">
-                    Nöjda kunder får vi genom att prioritera god teknisk
-                    kompetens och kvalitet samt genom att vara lyhörda till
-                    behoven. Vi är den pålitliga partnern med goda ambitioner
-                    och fokus på att garantera en bra leverans. Kontinuerlig
-                    utveckling genom feedback, erfarenhet och utbildning leder
-                    till arbetsglädje, nätverkande och ett högt engamenang.
+                    Nöjda kunder får vi genom att prioritera god teknisk kompetens och kvalitet samt genom att
+                    vara lyhörda till behoven. Vi är den pålitliga partnern med goda ambitioner och fokus på att
+                    garantera förväntat  resultat. Kontinuerlig utveckling genom feedback, erfarenhet och utbildning
+                    leder till arbetsglädje, nätverkande och ett högt engagemang.
                   </p>
                 </div>
               </div>
@@ -237,10 +233,9 @@ export default function Home({ feed, genderCount }) {
                 <div className=" bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                   <h2 className="font-bold uppercase">Hållbar utveckling</h2>
                   <p className="text-justify">
-                    Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
-                    och teknisk utveckling. Vi gör medvetna val för en
-                    långsiktig utveckling vilket ger oss trygghet, frihet och en
-                    känsla av att vi tillsammans bidrar till det bättre.
+                    Vi värderar hållbarhet genom ekonomiskt sinne samt personlig och teknisk utveckling.
+                    Vi gör medvetna val för en långsiktig utveckling vilket ger oss trygghet,
+                    frihet och en känsla av att vi tillsammans bidrar till det bättre.
                   </p>
                 </div>
               </div>
@@ -327,14 +322,13 @@ export default function Home({ feed, genderCount }) {
                   </h4>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-12">
                     <p className="h-auto p-1 text-left shrink max-w-readable">
-                      Broccoligården ligger strax utanför svanesund. En idyllisk
-                      plats på västkusten. Ta en tur med vänner familj eller
-                      jobbteamet och njut av den friska luften, sola på det
-                      stora altandäcket, mys inne vid brasan eller varför inte
-                      ta ett dopp.
+                      Broccoligården ligger strax utanför Svanesund. En idyllisk plats på västkusten.
+                      Ta en tur med vänner familj eller jobbteamet och njut av den friska luften,
+                      sola på det stora altandäcket, mys inne vid brasan eller varför inte ta ett dopp.
+
                     </p>
 
-                    <div className="flex flex-row lg:flex-col justify-center items-start gap-12 h-auto  text-center lg:text-left">
+                    <div className="flex flex-row lg:flex-col justify-center items-start gap-4 h-auto  text-center lg:text-left">
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
                         <FaBed size={30} />
                         <p className="font-bold ">37 bäddar</p>
@@ -342,6 +336,10 @@ export default function Home({ feed, genderCount }) {
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
                         <MdKitchen size={30} />
                         <p className="font-bold ">Fullt utrustad kök</p>
+                      </div>
+                      <div className="flex flex-col lg:flex-row items-center text-inverted gap-4">
+                        <FaChalkboardTeacher size={30} />
+                        <p className="font-bold">Konferensutrustning</p>
                       </div>
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4">
                         <FaSwimmer size={30} />

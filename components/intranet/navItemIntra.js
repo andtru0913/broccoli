@@ -48,7 +48,7 @@ const INTRA_MENU_LIST = [
     top: true,
     "icon-small": <HiCalendar size={20} />,
     "icon-large": <HiCalendar size={30} />,
-    href: "/intranet/news",
+    href: "/intranet/news2",
   },
   {
     text: "Timereporting",

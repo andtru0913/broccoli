@@ -31,7 +31,7 @@ model User {
   lunchgroupID  String?         @db.ObjectId
   events        UserOnEvent[]
   image         String?
-  news          News[]
+  news2          News[]
   notifications Notifications[]
 }
 
@@ -54,6 +54,7 @@ model Lunchgroup {
 model Page {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   title       String
+  image       String
   description String?
   cards       Card[]
 }
@@ -62,7 +63,6 @@ model Card {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String?
-  image       String?
   page        Page    @relation(fields: [pageID], references: [id])
   pageID      String  @db.ObjectId
 }
@@ -84,13 +84,6 @@ model UserOnEvent {
   coming  Boolean?
 
   @@unique([userId, eventId])
-}
-
-model Document {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  filename String
-  date     String
 }
 
 model News {

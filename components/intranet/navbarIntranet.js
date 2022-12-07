@@ -7,12 +7,12 @@ import ThemedImage from "../themedImage";
 import NavbarAdmin from "./navbarAdmin";
 import INTRA_MENU_LIST from "./navItemIntra";
 import { HiBell } from "react-icons/hi";
-import ThemeChanger from "../themechanger";
+import UpcomingNotifications from "./upcomingNotifications";
 
 const NavbarIntranet = ({ admin, notifications }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
-  const [isRed, setIsRed] = useState(false);
+  const [isRed, _] = useState(false);
   let adminNavbar = "";
   if (admin) {
     adminNavbar = <NavbarAdmin />;
@@ -101,12 +101,22 @@ const NavbarIntranet = ({ admin, notifications }) => {
             <div
               className={` ${
                 notificationOpen
-                  ? " fixed  right-16  top-28   flex  flex-col  w-1/2 h-1/3 rounded-lg  text-end  duration-500 ease-in-out bg-fill-1"
-                  : "fixed  -right-full  top-28 flex  flex-col  w-1/2 h-1/3 rounded-lg  text-end  duration-500 ease-in-out"
+                  ? "px-2 fixed  right-0  top-40   flex  flex-col  w-1/4 h-1/3 rounded-lg  duration-500 ease-in-out bg-fill-1"
+                  : "px-2 fixed  -right-full  top-40 flex  flex-col  w-1/2 rounded-lg h-1/3 duration-500 ease-in-out"
               }
                  `}
             >
-                {notifications}
+                {JSON.parse(notifications).map((data) => {
+                    return (
+                        <UpcomingNotifications
+                            key={data.id}
+                            title={data.title}
+                            date={data.startDate}
+                            description={data.text}
+                            author={data.author}
+                        />
+                    );
+                })}
               {/*  current notifications here!  */}
             </div>
 
@@ -146,7 +156,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
               />
             </button>
           </nav>
-          <ThemeChanger />
+            {/*<ThemeChanger />*/}
 
           {/*Bottom navbarmenu for Mobile devices and tablets */}
 
