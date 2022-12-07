@@ -599,38 +599,9 @@ export async function createNews(title, filename, date, author) {
     },
   });
 }
-
-export async function getAllDocuments() {
-  return await prisma.document.findMany({
-    select: {
-      id: true,
-      title: true,
-      date: true,
-    },
-  });
-}
-
-export async function getDocument(id) {
-  return (
-    await prisma.document.findMany({
-      where: {
-        id: id,
-      },
-      select: {
-        id: true,
-        title: true,
-        filename: true,
-        date: true,
-      },
-    })
-  )[0];
-}
-export async function getNews(id) {
+export async function getNews(take) {
   return (
     await prisma.news.findMany({
-      where: {
-        id: id,
-      },
       select: {
         id: true,
         title: true,
@@ -640,11 +611,16 @@ export async function getNews(id) {
           select: {
             firstname: true,
             lastname: true,
+            email: true
           },
         },
       },
+      take: take,
+      orderBy: {
+        date: "desc"
+      }
     })
-  )[0];
+  );
 }
 
 export async function getAllNews() {
@@ -658,6 +634,7 @@ export async function getAllNews() {
         select: {
           firstname: true,
           lastname: true,
+          email:true,
         },
       },
     },

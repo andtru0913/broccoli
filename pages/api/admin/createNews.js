@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
     if (await checkAdmin(req.cookies['user'])) {
         if (req.body.title !== "" && req.body.filename !== "") {
-            await createNews(req.body.title, req.body.filename, new Date().toISOString().split('T')[0], req.body.id)
+            await createNews(req.body.title, req.body.filename, new Date(), req.body.id)
                 .catch(e => {
                     console.error(e.message)
                 })

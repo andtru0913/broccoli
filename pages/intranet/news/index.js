@@ -1,6 +1,7 @@
 import {getAllNews, getNotifications, getUserinfo} from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { FileAdder } from "../../../components/FileAdder";
+import Nyheter from "../../../components/intranet/newsItem";
 
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -10,7 +11,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         user: user,
-        news: news,
+        news: JSON.stringify(news),
         notifications: JSON.stringify(await getNotifications())
       },
     };
@@ -29,6 +30,7 @@ export default function Home({ user, news, notifications }) {
   if (user.admin) {
     const file = new FileAdder();
     const uploadToDatabase = () => {
+      console.log("hi")
       return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "../../api/admin/createNews");
@@ -75,7 +77,7 @@ export default function Home({ user, news, notifications }) {
             className={
               "form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
             }
-            id={"file"}
+            id="file"
             type="file"
             name="myImage"
             onChange={file.uploadToClient}
@@ -85,17 +87,11 @@ export default function Home({ user, news, notifications }) {
             type="submit"
             onClick={async function () {
               try {
-                file
-                  .uploadToServer(
-                    `news/${document
-                      .getElementById("file")
-                      .value.split(/([\\/])/g)
-                      .pop()}`
-                  )
-                  .then((e) => {
-                    console.log(e);
-                  });
-                await uploadToDatabase();
+                file.uploadToServer(`news/${document.getElementById("file").files[0].name}`).then(_ => {
+
+                });
+                await uploadToDatabase()
+                ;
               } catch (e) {}
               window.location.href = "";
             }}
@@ -138,21 +134,7 @@ export default function Home({ user, news, notifications }) {
               />
             </svg>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4">
-              {news.map((data) => {
-                return (
-                    <a href={`./news/${data.file}`} key={data.id} className="py-5 px-3 bg-secondary-l1/70">
-                      <div className="grid grid-cols-2">
-                        <h5 className=" p-5 px-10 text-primary-d1 ">
-                          {`${data.author.firstname} ${data.author.firstname}`}
-                        </h5>
-                        <h5 className="p-5"> {data.date} </h5>
-                      </div>
-                      <h3 className=" uppercase font-bold  px-10">
-                        {data.title}
-                      </h3>
-                    </a>
-                );
-              })}
+              <Nyheter data={JSON.parse(news)}/>
             </div>
           </div>
         </div>
