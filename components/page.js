@@ -223,7 +223,7 @@ const Page = ({ authentication, page, redirect, formTitle, children, image }) =>
       <section className="bg-fill relative">
         <div className="relative h-[40rem] overflow-hidden ">
           <svg
-            className="fill-primary-l1 absolute z-10 right-0 -top-5 h-auto lg:w-2/3  "
+            className="fill-primary-l1 absolute z-10 opacity-50 right-0 -top-5 h-auto lg:w-2/3  "
             width="818"
             height="895"
             viewBox="0 0 818 902"
