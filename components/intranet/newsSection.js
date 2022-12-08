@@ -1,5 +1,4 @@
 const NewsSection = ({ id, title, author, date, file }) => {
-    console.log(date)
   return (
     <a key={id} href={`/uploads/news/${file}`} download={file} className="bg-secondary cursor-pointer transition-all hover:bg-secondary-d2/40 my-2">
       <div className=" flex flex-1 m-2 ">

@@ -1,24 +1,47 @@
 import Link from "next/link";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import * as React from "react";
-
 import ActiveLink from "../activeLink";
 import ThemedImage from "../themedImage";
 import NavbarAdmin from "./navbarAdmin";
 import INTRA_MENU_LIST from "./navItemIntra";
 import { HiBell } from "react-icons/hi";
 import UpcomingNotifications from "./upcomingNotifications";
+import {getCookie, setCookie} from "cookies-next";
+
 
 const NavbarIntranet = ({ admin, notifications }) => {
+    const parsedNotifications = JSON.parse(notifications)
   const [isOpen, setIsOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
-  const [isRed, _] = useState(false);
+  const [isRed, setIsRed] = useState(false);
   let adminNavbar = "";
   if (admin) {
     adminNavbar = <NavbarAdmin />;
   }
   const openmenu = () => setIsOpen(!isOpen);
-  const openNotification = () => setNotificationOpen(!notificationOpen);
+
+  useEffect(() => {
+            let notificationCookies = JSON.parse(getCookie("readNotifications") || null) || []
+          setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
+      }
+  )
+  const openNotification = () =>
+  {
+      if(!notificationOpen) {
+          let notificationCookies = JSON.parse(getCookie("readNotifications") || null) || []
+          const parsedNotifications = JSON.parse(notifications)
+          parsedNotifications.forEach(item => {
+              if (!notificationCookies.includes(item.id)) {
+                  notificationCookies.push(item.id)
+              }
+          })
+          setCookie("readNotifications", JSON.stringify(notificationCookies))
+          setIsRed(false)
+      }
+
+      setNotificationOpen(!notificationOpen)
+  };
   const hamburgerLine =
     " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
   return (
@@ -101,12 +124,12 @@ const NavbarIntranet = ({ admin, notifications }) => {
             <div
               className={` ${
                 notificationOpen
-                  ? "px-2 fixed  right-0  top-40   flex  flex-col  w-1/4 h-1/3 rounded-lg  duration-500 ease-in-out bg-fill-1"
-                  : "px-2 fixed  -right-full  top-40 flex  flex-col  w-1/2 rounded-lg h-1/3 duration-500 ease-in-out"
+                  ? "px-2 fixed  right-0  top-40   flex  flex-col  w-1/4 min-h-1/3 rounded-lg  duration-500 ease-in-out bg-fill-1"
+                  : "px-2 fixed  -right-full  top-40 flex  flex-col  w-1/2 rounded-lg min-h-1/3 duration-500 ease-in-out"
               }
                  `}
             >
-                {JSON.parse(notifications).map((data) => {
+                {parsedNotifications.map((data) => {
                     return (
                         <UpcomingNotifications
                             key={data.id}
