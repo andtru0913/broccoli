@@ -27,7 +27,7 @@ const NavBar = () => {
 
   useEffect(() => {
     let backgroundTransparacyVar = clientWindowHeight / 600;
-    if (clientWindowHeight == 0) {
+    if (clientWindowHeight === 0) {
       setTextColor("rgb(var(--color-inverted)");
     } else if (clientWindowHeight > 0) {
       setTextColor("rgb(var(--color-base)");
