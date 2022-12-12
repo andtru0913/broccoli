@@ -1,5 +1,5 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import { getUserProfile } from "../../Database";
+import {getNotifications, getUserProfile} from "../../Database";
 import { FileAdder } from "../../components/FileAdder";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {

@@ -66,7 +66,6 @@ export default function Home({ user, news, notifications }) {
     popup = (
       <div>
         Ny inlägg
-        <form>
           <input
             id={"title"}
             type={"text"}
@@ -84,21 +83,19 @@ export default function Home({ user, news, notifications }) {
           />
           <button
             className="btn btn-primary"
-            type="submit"
             onClick={async function () {
               try {
-                file.uploadToServer(`news/${document.getElementById("file").files[0].name}`).then(_ => {
-
-                });
-                await uploadToDatabase()
-                ;
-              } catch (e) {}
-              window.location.href = "";
-            }}
+                await uploadToDatabase().then(_ => {});
+                file.uploadToServer(`news/${document.getElementById("file").files[0].name}`).then(_ => {});
+                window.location.reload();
+              } catch (e) {
+                console.log(e)
+              }
+            }
+          }
           >
             Skapa nytt inlägg
           </button>
-        </form>
       </div>
     );
   }
@@ -129,12 +126,12 @@ export default function Home({ user, news, notifications }) {
                 xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                  d="M1076.54 536.211C1129 481.733 1162.98 429.612 1135.21 385.366C1099.43 342.88 1079.11 221.986 942.188 139.86C883.571 93.1478 828.694 74.5988 711.915 24.6996C646.676 -3.177 560.298 65.1129 472.678 87.7451C385.057 110.377 271.808 -28.7223 177.414 6.41411C107.024 32.6159 50.5347 122.503 47.3241 151.469C42.9831 190.634 -3.8496 282.131 1.1307 358.169C7.03954 448.382 82.996 541.715 147.869 590.956C195.895 627.41 262.594 635.375 353.42 634.654C472.035 633.712 505.984 774.547 553.94 837.605L553.961 837.633C601.924 900.698 694.494 1022.42 790.991 984.215C838.403 965.444 902.668 944.06 919.412 858.449C932.492 791.569 1029.89 759.386 1048.75 705.878C1067.61 652.369 1024.09 590.689 1076.54 536.211Z"
+                  d="M1076.54 536.211C1129 481.733 116f2.98 429.612 1135.21 385.366C1099.43 342.88 1079.11 221.986 942.188 139.86C883.571 93.1478 828.694 74.5988 711.915 24.6996C646.676 -3.177 560.298 65.1129 472.678 87.7451C385.057 110.377 271.808 -28.7223 177.414 6.41411C107.024 32.6159 50.5347 122.503 47.3241 151.469C42.9831 190.634 -3.8496 282.131 1.1307 358.169C7.03954 448.382 82.996 541.715 147.869 590.956C195.895 627.41 262.594 635.375 353.42 634.654C472.035 633.712 505.984 774.547 553.94 837.605L553.961 837.633C601.924 900.698 694.494 1022.42 790.991 984.215C838.403 965.444 902.668 944.06 919.412 858.449C932.492 791.569 1029.89 759.386 1048.75 705.878C1067.61 652.369 1024.09 590.689 1076.54 536.211Z"
                   fill="#F5F1E2"
               />
             </svg>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4">
-              <Nyheter data={JSON.parse(news)}/>
+              <Nyheter admin={user.admin} data={JSON.parse(news)}/>
             </div>
           </div>
         </div>

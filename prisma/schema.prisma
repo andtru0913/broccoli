@@ -38,7 +38,6 @@ model User {
 model Event {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   title       String
-  text        String
   start       DateTime
   end         DateTime
   description String?

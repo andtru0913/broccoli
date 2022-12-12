@@ -7,7 +7,6 @@ import NavbarAdmin from "./navbarAdmin";
 import INTRA_MENU_LIST from "./navItemIntra";
 import { HiBell } from "react-icons/hi";
 import UpcomingNotifications from "./upcomingNotifications";
-import {getCookie, setCookie} from "cookies-next";
 
 
 const NavbarIntranet = ({ admin, notifications }) => {
@@ -22,21 +21,21 @@ const NavbarIntranet = ({ admin, notifications }) => {
   const openmenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-            let notificationCookies = JSON.parse(getCookie("readNotifications") || null) || []
+            let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
           setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
       }
   )
   const openNotification = () =>
   {
       if(!notificationOpen) {
-          let notificationCookies = JSON.parse(getCookie("readNotifications") || null) || []
+          let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
           const parsedNotifications = JSON.parse(notifications)
           parsedNotifications.forEach(item => {
               if (!notificationCookies.includes(item.id)) {
                   notificationCookies.push(item.id)
               }
           })
-          setCookie("readNotifications", JSON.stringify(notificationCookies))
+          localStorage.setItem("readNotifications", JSON.stringify(notificationCookies))
           setIsRed(false)
       }
 

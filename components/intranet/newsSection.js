@@ -1,6 +1,12 @@
-const NewsSection = ({ id, title, author, date, file }) => {
+const NewsSection = ({ id, title, author, date, file, admin }) => {
+    const deletebutton = admin
+        ? (<form method={"POST"} action={"../../api/admin/deleteNews"}>
+            <input type={"hidden"} name={"id"} value={id}/>
+            <button type={"submit"}>&#10060;</button>
+         </form>)
+        : ""
   return (
-    <a key={id} href={`/uploads/news/${file}`} download={file} className="bg-secondary cursor-pointer transition-all hover:bg-secondary-d2/40 my-2">
+    <a key={id} href={`./news/${file}`} className="bg-secondary cursor-pointer transition-all hover:bg-secondary-d2/40 my-2">
       <div className=" flex flex-1 m-2 ">
         <div className="w-1/5 md:w-1/6 ">
           <img src={`/uploads/profiles/${author.email}`} alt={title} />
@@ -11,7 +17,10 @@ const NewsSection = ({ id, title, author, date, file }) => {
                 <p>{date.split("T")[0]}</p>
             </div>
 
-          <h4 className=" uppercase font-bold ">{title}</h4>
+            <div className={"flex justify-between"}>
+                <h4 className={"uppercase font-bold"}>{title}</h4>
+                {deletebutton}
+            </div>
         </div>
       </div>
       <div className=""></div>

@@ -9,7 +9,6 @@ import { useState } from "react";
 const Component = ({ user, allEvents, setIscoming }) => {
   const popHide = "pop-hide";
   const admin = user.admin;
-
   return (
     <FullCalendar
       plugins={[dayGridPlugin, interactionPlugin]}
@@ -47,6 +46,8 @@ const Component = ({ user, allEvents, setIscoming }) => {
           modifyevent.getElementsByClassName("id")[1].value = id;
           modifyevent.getElementsByClassName("eventid")[0].value = id;
           modifyevent.getElementsByClassName("eventid")[1].value = id;
+          modifyevent.getElementsByClassName("start")[0].valueAsDate = new Date(start);
+          modifyevent.getElementsByClassName("end")[0].valueAsDate = new Date(end);
           const root = ReactDOM.createRoot(
             document.getElementById("modifyRoot")
           );
@@ -66,7 +67,7 @@ const Component = ({ user, allEvents, setIscoming }) => {
           checkevent.getElementsByClassName("eventid")[0].value = id;
           checkevent.getElementsByClassName("eventid")[1].value = id;
           const root = ReactDOM.createRoot(
-            document.getElementById("checkRoot")
+              document.getElementById("checkRoot")
           );
           root.render(<List key={id} users={users} user={user} />);
 
@@ -203,10 +204,7 @@ const Calender = ({ user, allEvents, cal }) => {
                       <div className="flex flex-row">
                         <p className="pr-2 text-muted"> Från</p>
                         <input
-                          className="start px-2 hover:bg-tiertary-1 rounded"
-                          type="date"
-                          name="start"
-                        />
+                          className="start px-2 hover:bg-tiertary-1 rounded" type="date" name="start"/>
                       </div>
 
                       <div className="flex flex-row ">

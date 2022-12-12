@@ -13,5 +13,5 @@ export default async function handler(req, res) {
                 })
         }
     }
-    res.redirect(302, '../../intranet/dokument');
+    res.send(200, 'Success');
 }

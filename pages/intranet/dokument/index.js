@@ -37,38 +37,6 @@ export default function Home({ admin, notifications, data }) {
   let button = "";
   if (admin) {
     const file = new FileAdder();
-    const uploadToDatabase = () => {
-      return new Promise(function (resolve, reject) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/createDocument");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(
-          JSON.stringify({
-            title: document.getElementById("title").value,
-            filename: document
-              .getElementById("file")
-              .value.split(/([\\/])/g)
-              .pop(),
-          })
-        );
-        xhr.onload = function () {
-          if (this.status >= 200 && this.status < 300) {
-            resolve(xhr.response);
-          } else {
-            reject({
-              status: this.status,
-              statusText: xhr.statusText,
-            });
-          }
-        };
-        xhr.onerror = function () {
-          reject({
-            status: this.status,
-            statusText: xhr.statusText,
-          });
-        };
-      });
-    };
     button = (
       <div>
         <input
@@ -83,17 +51,9 @@ export default function Home({ admin, notifications, data }) {
           type="submit"
           onClick={async function () {
             try {
-              file
-                .uploadToServer(
-                  `dokument/${document
-                    .getElementById("file")
-                    .value.split(/([\\/])/g)
-                    .pop()}`
-                )
-                .then((_) => {});
-              await uploadToDatabase();
-              window.location.reload();
+              await file.uploadToServer(`dokument/${document.getElementById("file").value.split(/([\\/])/g).pop()}`).then((_) => {});
             } catch (e) {}
+            window.location.reload();
           }}
         >
           Ladda upp

@@ -1,0 +1,43 @@
+.markdown p{
+    all:revert;
+    margin-bottom: 10px;
+    margin-top:0;
+}
+
+.markdown h1 {
+    all:revert;
+    margin-top: 0;
+}
+
+.markdown h2 {
+    all:revert;
+    margin-top: 40px;
+}
+
+.markdown h3 {
+    all:revert;
+    margin-top: 40px;
+}
+
+.markdown h4 {
+    all:revert;
+    margin-top: 40px;
+}
+
+.markdown h5 {
+    all:revert;
+    margin-top: 40px;
+}
+
+.markdown h6 {
+    all:revert;
+    margin-top: 40px;
+}
+
+.markdown ol {
+    all:revert;
+}
+
+.markdown ul {
+    all:revert;
+}

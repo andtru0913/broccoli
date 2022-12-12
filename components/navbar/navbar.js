@@ -15,7 +15,7 @@ const NavBar = () => {
   const [boxShadow, setBoxShadow] = useState(0);
   const [textColor, setTextColor] = useState("black");
 
-  /*
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -46,7 +46,7 @@ const NavBar = () => {
     }
   }, [clientWindowHeight]);
 
-   */
+
   return (
     <header className="sticky top-0 z-50 ">
       <nav

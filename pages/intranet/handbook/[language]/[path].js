@@ -32,16 +32,34 @@ export async function getServerSideProps(context) {
 export default function Home({md, filename, language, admin, notifications}) {
   return (
   <LayoutIntranet admin={admin} notifications={notifications}>
-    <NavHandbook language={language}/>
-    <button onClick={function() {
-        window.location.replace(`../english/${filename}`)
-      }
-    }>English</button>
-    <button onClick={function() {
-      window.location.replace(`../swedish/${filename}`)
-    }
-    }>Swedish</button>
-    <ReactMarkdown>{md}</ReactMarkdown>
+    <div className={"flex flex-row"}>
+      <div className={"w-50 flex-initial overflow-y-scroll"}>
+        <div className={"p-5"}>
+          <div className={"flex flex-row justify-around"}>
+            <a href={`../english/${filename}`}>
+              <div className={"flex flex-row"}>
+                <img width={"20px"} src={"https://flagcdn.com/gb.svg"} alt={""}/>
+                <p className={`m-1 ${language==="english"?"font-bold":""}`}>Engelska</p>
+              </div>
+            </a>
+            <a href={`../swedish/${filename}`}>
+            <div className={"flex flex-row"}>
+              <img width={"20px"} src={"https://flagcdn.com/se.svg"} alt={""}/>
+              <p className={`m-1 ${language==="swedish"?"font-bold":""}`}>Svenska</p>
+            </div>
+            </a>
+          </div>
+
+          <NavHandbook language={language} currentPage={filename}/>
+        </div>
+
+      </div>
+      <div className={"w-4/6 h-max p-5"}>
+        <ReactMarkdown className={"markdown"}>{md}</ReactMarkdown>
+      </div>
+    </div>
+
+
   </LayoutIntranet>
   )
 }

@@ -1,19 +1,22 @@
-### Kvalitets- och miljöpolicy
+# 2. Miljö- och kvalitetsarbete
 Broccoli blev certifierade enligt ISO9001 och ISO14001 i april 2019. Vi följer arbetssättet enligt
 vår Verksamhetsmanual som uppdateras löpande.
-#### Kvalitets- och miljöpolicy
-**Följande kvalitets- och miljöpolicy gäller för Broccoli:**
+
+
+## 2.1 Kvalitets- och miljöpolicy
+Följande kvalitets- och miljöpolicy gäller för Broccoli:
 
 Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda
 system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom
 fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som
 trivs och utvecklas.
 
-#### Vårt kvalitetsarbete:
+### Vårt kvalitetsarbete:
 
 Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är
 självklarheter för oss.
-#### Vårt miljöåtagande:
+
+### Vårt miljöåtagande:
 Vi vill skydda vår miljö och förhindra förorening genom medvetna val.
 Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster
 och produkter som är mer energieffektiva, samt reducera våra CO2 ekvivalenta utsläpp som
@@ -21,8 +24,8 @@ påverkar växthuseffekten.
 Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår
 verksamhet.
 
-#### 2.2 Kärnvärden / Core values
-På Broccoli har vi tagit fram följande kärnvärden/ These are the core values for Broccoli:
+## 2.2 Kärnvärden
+På Broccoli har vi tagit fram följande kärnvärden
 
 **RELATIONER**
 
@@ -43,7 +46,7 @@ Vi värderar hållbarhet genom ekonomiskt sinne samt personlig och teknisk utvec
 medvetna val för en långsiktig utveckling vilket ger oss trygghet, frihet och en känsla av att vi
 tillsammans bidrar till det bättre.
 
-#### Gravida och ammande arbetstagare (AFS2007:5)
+## 2.3 Gravida och ammande arbetstagare (AFS2007:5)
 Det finns ett antal lagar och föreskrifter som arbetsgivare aktivt skall jobba med. En viktig sådan
 som gäller personal är för medarbetare som är gravida eller ammande. Vi har en rutin för att
 undersöka risker i arbetsmiljön när vi får information om att en medarbetare är gravid eller
