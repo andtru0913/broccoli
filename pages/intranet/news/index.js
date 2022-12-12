@@ -141,7 +141,7 @@ export default function Home({ user, news }) {
           <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4">
             {news.map((item, i) => (
               <a key={i} href={`./news/${item.id}`}>
-                <div className="bg-secondary-l1/80 hover:bg-secondary-d1/80 text-base uppercase">
+                <div className="hover:bg-secondary-l1/80 bg-secondary-d1/80 text-base uppercase">
                   <div className="grid grid-cols-3 p-5 px-10 text-primary-d1">
                     <SmallProfile
                       firstname={item.author.firstname}
