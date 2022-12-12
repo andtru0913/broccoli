@@ -5,6 +5,7 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import ThemedImage from "../../components/themedImage";
 import * as Database from "../../Database";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
+import {getNews, getNotifications} from "../../Database";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -26,7 +27,7 @@ export async function getServerSideProps(context) {
         let fullName = usr.firstname + usr.lastname;
         people.push(fullName);
       });
-      let object = { title: data.title, people: people };
+      let object = { id: data.id, title: data.title, people: people };
       lunchgroups.push(object);
     });
 
@@ -35,6 +36,8 @@ export async function getServerSideProps(context) {
         user: user !== undefined ? user : null,
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
+        notifications: JSON.stringify(await getNotifications()),
+        news: JSON.stringify(await getNews(2))
       },
     };
   }
@@ -45,56 +48,13 @@ export async function getServerSideProps(context) {
   };
 }
 
-const lunchfuldata = [
-  {
-    id: "00",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "12",
-    title: "Lundby",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "23",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "634e9876bf1fe7084e06634c",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "34",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "je",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "78",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-  {
-    id: "98",
-    title: "Arendal",
-    people: ["Anna", "Mathilda", "Stefan", "Johannes", "Kalle"],
-  },
-];
-
-export default function Home({ user, lunchgroups, events }) {
+export default function Home({ user, lunchgroups, events, notifications, news }) {
   if (user === null) {
     return (
       <main className="">
         <div className=" mx-auto bg-fill w-screen h-screen p-4 relative">
           <Image
-            src="/images/gothenburg.jfif"
+            src="/images/frontpage.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
@@ -147,7 +107,7 @@ export default function Home({ user, lunchgroups, events }) {
     );
   } else {
     return (
-      <LayoutIntranet admin={user.admin}>
+      <LayoutIntranet notifications={notifications} admin={user.admin}>
         <main>
           <div className=" flex flex-col">
             <div className="flex flex-col relative h-screen">
@@ -193,7 +153,7 @@ export default function Home({ user, lunchgroups, events }) {
                 <h2 className=" text-muted uppercase font-bold ">
                   Senaste Nytt
                 </h2>
-                <Nyheter />
+                <Nyheter data={JSON.parse(news)}/>
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
                 <h2 className=" w-auto text-muted uppercase font-bold ">
@@ -217,22 +177,26 @@ export default function Home({ user, lunchgroups, events }) {
                 </h2>
                 <div className="  flex flex-row flex-wrap gap-6 my-4 ">
                   {lunchgroups.map((lunch, n) => {
-                    return lunch.id === user.lunchgroupID ? (
-                      <div
-                        key={n}
-                        className="relative flex flex-col  p-4 lg:p-5"
-                      >
-                        <h4 className="uppercase font-bold ">{lunch.title}</h4>
-                        {lunch.people.map((i) => {
-                          return <p key={i}>{i}</p>;
-                        })}
-                      </div>
-                    ) : (
+                    return lunch.id === user.lunchgroup.id ? (
                       <div
                         key={n}
                         className="flex flex-col md:flex-col self-center"
                       >
-                        <div className="flex-auto bg-primary border-2 border-dashed hover:border-white border-secondary-d1 p-6">
+                        <div className="flex-auto bg-primary-1 border-2 border-dashed  border-secondary-d1 p-6">
+                          <h4 className=" uppercase font-bold ">
+                            {lunch.title}
+                          </h4>
+                          {lunch.people.map((i) => {
+                            return <p key={i}>{i}</p>;
+                          })}
+                        </div>
+                      </div>
+                    ) : (
+                      <div
+                        key={n}
+                        className="flex flex-col md:flex-col self-top"
+                      >
+                        <div className="flex-auto  border-2 border-dashed  border-secondary-d1 p-6">
                           <h4 className=" uppercase font-bold ">
                             {lunch.title}
                           </h4>

@@ -2,9 +2,9 @@ import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { authenticate } from "./authenticate";
-import * as Database from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
+import {getAllUsers, getGroups, getNotifications} from "../../../Database";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -21,14 +21,15 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 export async function getServerSideProps(context) {
   let authentication = await authenticate(context);
   if (authentication !== undefined) return authentication;
-  let lunchGroups = await Database.getGroups(undefined);
-  let users = await Database.getAllUsers();
+  let lunchGroups = await getGroups(undefined);
+  let users = await getAllUsers();
+  const notifications = await getNotifications()
   return {
-    props: { lunchGroups: lunchGroups, users: users },
+    props: { lunchGroups: lunchGroups, users: users, notifications: JSON.stringify(notifications) },
   };
 }
 
-export default function Home({ lunchGroups, users }) {
+export default function Home({ lunchGroups, users, notifications }) {
   let tasks = Object.assign(...users.map((a) => ({ [a.id.toString()]: a })));
   let columns = Object.assign(
     ...lunchGroups.map((a) => ({ [a.id.toString()]: a }))
@@ -118,7 +119,7 @@ export default function Home({ lunchGroups, users }) {
   };
   const popHide = "pop-hide";
   return (
-    <LayoutIntranet admin={true}>
+    <LayoutIntranet admin={true} notifications={notifications}>
       <main className="bg-fill h-screen">
         <div className="layout py-20 md:py-12  flex flex-col items-center cursor-pointer">
           <h2>Lunchgrupper</h2>

@@ -1,6 +1,6 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import EmployeeAccordion from "../../../components/employeeAccordion";
-import { getUserOverview } from "../../../Database";
+import { getNotifications, getUserOverview } from "../../../Database";
 import * as Database from "../../../Database";
 
 export async function getServerSideProps(context) {
@@ -9,7 +9,11 @@ export async function getServerSideProps(context) {
   if (cookies !== null) {
     const user = await Database.getUserinfo(cookies.id);
     return {
-      props: { data: data, admin: user.admin },
+      props: {
+        data: data,
+        admin: user.admin,
+        notifications: JSON.stringify(await getNotifications()),
+      },
     };
   }
   return {
@@ -27,11 +31,17 @@ export async function getServerSideProps(context) {
 // theme === "dark" ? setTheme("dark_intranet") : setTheme("intranet");
 // }, [])
 
-export default function employee({ data, admin }) {
+export default function employee({ data, admin, notifications }) {
   return (
-    <LayoutIntranet admin={admin}>
-      <main className="   flex flex-col items-center bg-secondary-1 ">
-        <div className=" overflow-hidden relative py-20 w-screen  bg-secondary-1 z-0  ">
+    <LayoutIntranet notifications={notifications} admin={admin}>
+      <main className=" py-20  flex flex-col items-center">
+        <h1 className=" text-center uppercase font-bold "> Anställda </h1>
+        <h3 className="text-base">
+          {" "}
+          Här presenteras medarbetare på Broccoli med kontaktinformation{" "}
+        </h3>
+
+        <div className="layout flex flex-row flex-wrap py-4">
           <svg
             className=" absolute fill-primary-l1 top-0 left-0 -z-10 h-auto overflow-hidden "
             width="950"

@@ -8,7 +8,7 @@ export async function getServerSideProps(context) {
         const email = context.params.email
         let user = await getUserByEmail(email)
         return {
-            props: {user: user}
+            props: {user: user, notifications: JSON.stringify(await getNotifications())}
         }
     }
     return {
@@ -20,9 +20,9 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function Home ({user}) {
+export default function Home ({user, notifications}) {
     return (
-        <LayoutIntranet admin={user.admin}>
+        <LayoutIntranet notifications={notifications} admin={user.admin}>
             <div className={"w-12 h-auto"}>
                 {JSON.stringify(user)}
             </div>

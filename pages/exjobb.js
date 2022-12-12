@@ -1,29 +1,26 @@
 import Page from "../components/page";
-import { authenticate } from "./intranet/admin/authenticate";
 import { getPage } from "../Database";
 import { exjobb } from "../defaultIDs";
 import Layout from "../components/layout/layout";
 
 export async function getServerSideProps(context) {
   const pageId = exjobb;
-  let authentication = await authenticate(context);
+  const pageName = "exjobb"
+  let cookies = JSON.parse(context.req.cookies["user"] || null);
   const page = (await getPage(pageId))[0];
   return {
-    props: {
-      authentication: authentication === undefined ? null : authentication,
-      pageId: pageId,
-      page: page,
-    },
+    props: {admin: !!cookies ? cookies.admin : false, page: page, pageName: pageName}
   };
 }
 
-export default function Exjobb({ authentication, page }) {
+export default function Exjobb({admin, page, pageName }) {
   return (
     <Layout>
       <Page
-        authentication={authentication}
+        authentication={admin}
         page={page}
-        redirect="../exjobb"
+        image={pageName}
+        redirect={pageName}
         formTitle="EXJOBBSANSÖKAN"
       ></Page>
     </Layout>

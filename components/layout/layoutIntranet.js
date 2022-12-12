@@ -1,6 +1,6 @@
 import Head from "next/head";
 import NavbarIntranet from "../intranet/navbarIntranet";
-export default function LayoutIntranet({ children, admin }) {
+export default function LayoutIntranet({ children, admin, notifications }) {
   return (
     <>
       <div className="">
@@ -10,7 +10,7 @@ export default function LayoutIntranet({ children, admin }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <NavbarIntranet admin={admin} />
+        <NavbarIntranet admin={admin} notifications={notifications} />
         <section>
           <div className="">{children}</div>
         </section>

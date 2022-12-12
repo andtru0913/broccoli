@@ -10,12 +10,12 @@ const NavBar = () => {
   const hamburgerLine =
     " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
   const [clientWindowHeight, setClientWindowHeight] = useState("");
-
-  const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
+  const [backgroundTransparacy, setBackgroundTransparacy] = useState(1);
   const [padding, setPadding] = useState(30);
   const [boxShadow, setBoxShadow] = useState(0);
   const [textColor, setTextColor] = useState("black");
 
+  /*
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -46,6 +46,7 @@ const NavBar = () => {
     }
   }, [clientWindowHeight]);
 
+   */
   return (
     <header className="sticky top-0 z-50 ">
       <nav

@@ -2,14 +2,16 @@ import { useState } from "react";
 import ActiveLink from "../activeLink";
 
 const ADMIN_MENU_LIST = [
+    {text: "Hemsidan", href: ".."},
   { text: "Anställda", href: "/intranet/admin/employees" },
   { text: "Lunchgrupper", href: "/intranet/admin/lunchgroups" },
+    { text: "Notifikationer", href: "/intranet/admin/notifications" }
 ];
 
 {
   /**
 
-   
+
     { text: "Admin",icon: "" ,  href: "../intranet/admin" },
 
 */

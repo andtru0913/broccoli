@@ -1,29 +1,31 @@
 import Page from "../components/page";
-import { authenticate } from "./intranet/admin/authenticate";
 import { getPage } from "../Database";
 import { underconsultants } from "../defaultIDs";
 import Layout from "../components/layout/layout";
 
 export async function getServerSideProps(context) {
   const pageId = underconsultants;
-  let authentication = await authenticate(context);
+  const pageName = "underconsultants";
+  let cookies = JSON.parse(context.req.cookies["user"] || null);
   const page = (await getPage(pageId))[0];
   return {
     props: {
-      authentication: authentication === undefined ? null : authentication,
+      admin: !!cookies ? cookies.admin : false,
       pageId: pageId,
       page: page,
+      pageName: pageName
     },
   };
 }
 
-export default function Underconsultants({ authentication, page }) {
+export default function Underconsultants({ admin, page, pageName }) {
   return (
     <Layout>
       <Page
-        authentication={authentication}
+        authentication={admin}
         page={page}
-        redirect="../underconsultants"
+        image={pageName}
+        redirect={pageName}
         formTitle="ANSÖKAN"
       ></Page>
     </Layout>

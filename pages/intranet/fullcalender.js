@@ -1,6 +1,7 @@
-import { getEvents } from "../../Database";
+import {getEvents, getNotifications} from "../../Database";
 import Calender from "../../components/intranet/Calender";
 import * as Database from "../../Database";
+import LayoutIntranet from "../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -17,10 +18,12 @@ export async function getServerSideProps(context) {
         month: "short",
       });
     });
+
     return {
       props: {
         user: user,
         events: JSON.stringify(events),
+        notifications: JSON.stringify(await getNotifications())
       },
     };
   }
@@ -33,6 +36,22 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ user, events }) {
-  return <Calender user={user} allEvents={JSON.parse(events)} cal="all" />;
+export default function Home({ user, events, notifications }) {
+
+  return (<LayoutIntranet admin={user.admin} notifications={notifications}>
+        <button onClick={function() {
+          fetch("../api/admin/getNotAnswered", {
+            method: 'post', // Default is 'get'
+            body: JSON.stringify({id: '63885f1daa2ce12979e5a1da'}),
+            headers: new Headers({
+              'Content-Type': 'application/json'
+            })
+          })
+              .then(response => response.json())
+              .then(json => console.log(json))
+
+        }}>Test</button>
+        <Calender user={user} allEvents={JSON.parse(events)} cal="all" />
+      </LayoutIntranet>
+  );
 }

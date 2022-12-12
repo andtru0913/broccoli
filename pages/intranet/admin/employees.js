@@ -1,24 +1,25 @@
-import * as Database from "../../../Database";
 import { authenticate } from "./authenticate";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
+import {getAllUsers, getNotifications} from "../../../Database";
 
 export async function getServerSideProps(context) {
   let authentication = await authenticate(context);
   if (authentication !== undefined) return authentication;
 
-  let user = await Database.getAllUsers();
+  const user = await getAllUsers();
+  const notifications = await getNotifications()
   return {
-    props: { user: user },
+    props: { user: user, notifications: JSON.stringify(notifications) },
   };
 }
 
-export default function Home({ user }) {
+export default function Home({ user, notifications }) {
   const popUpstyle = "h-screen w-screen bg-black absolute z-20 bg-opacity-60";
   const windowstyle =
     "z-30 absolute w-screen bg-skin-fill p-8 rounded top-inledning/3 md:left-inledning/4 flex flex-col md:w-inledning/2 -translate-inledning/2 ";
   const popHide = "pop-hide";
   return (
-    <LayoutIntranet admin={true}>
+    <LayoutIntranet admin={true} notifications={notifications}>
       <main className="">
         <div className="layout py-20 md:py-12 ">
           <h1 className="text-center">Anställda</h1>

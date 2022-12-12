@@ -1,11 +1,9 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import LayoutIntranet from "../layout/layoutIntranet";
 import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
-import { Dropdown } from "flowbite-react";
 import { useState } from "react";
 
 const Component = ({ user, allEvents, setIscoming }) => {
@@ -49,7 +47,6 @@ const Component = ({ user, allEvents, setIscoming }) => {
           modifyevent.getElementsByClassName("id")[1].value = id;
           modifyevent.getElementsByClassName("eventid")[0].value = id;
           modifyevent.getElementsByClassName("eventid")[1].value = id;
-          modifyevent.getElementsByClassName("eventid")[2].value = id;
           const root = ReactDOM.createRoot(
             document.getElementById("modifyRoot")
           );
@@ -68,7 +65,6 @@ const Component = ({ user, allEvents, setIscoming }) => {
           checkevent.getElementsByClassName("end")[0].innerText = end;
           checkevent.getElementsByClassName("eventid")[0].value = id;
           checkevent.getElementsByClassName("eventid")[1].value = id;
-          checkevent.getElementsByClassName("eventid")[2].value = id;
           const root = ReactDOM.createRoot(
             document.getElementById("checkRoot")
           );
@@ -112,10 +108,8 @@ const Component = ({ user, allEvents, setIscoming }) => {
 
 const Calender = ({ user, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
-  const admin = user.admin;
   const [iscoming, setIscoming] = useState(undefined);
   return (
-    <LayoutIntranet admin={admin}>
       <div className="flex justify-center bg-fill">
         <div
           id="popup"
@@ -123,7 +117,6 @@ const Calender = ({ user, allEvents, cal }) => {
           onClick={function () {
             document.getElementById("checkevent").classList.add(popHide);
             document.getElementById("modifyevent").classList.add(popHide);
-
             document.getElementById("createevent").classList.add(popHide);
             document.getElementById("popup").classList.add(popHide);
           }}
@@ -274,12 +267,6 @@ const Calender = ({ user, allEvents, cal }) => {
                     </button>
                   </form>
 
-                  <form action="../../api/maybeEvent" method="POST">
-                    <input className="eventid" type="hidden" name="eventid" />
-                    <button className="btn btn-modify" type="Submit">
-                      Kanske
-                    </button>
-                  </form>
                   <form action="../../api/leaveEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
                     <button className="btn btn-delete" type="Submit">
@@ -341,15 +328,6 @@ const Calender = ({ user, allEvents, cal }) => {
                     </button>
                   </form>
 
-                  <form action="../../api/maybeEvent" method="POST">
-                    <input className="eventid" type="hidden" name="eventid" />
-                    <button
-                      className="btn btn-empty normal-case text-xs md:text-base"
-                      type="Submit"
-                    >
-                      Kanske
-                    </button>
-                  </form>
                   <form action="../../api/leaveEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
                     <button
@@ -399,7 +377,6 @@ const Calender = ({ user, allEvents, cal }) => {
           </div>
         </div>
       </div>
-    </LayoutIntranet>
   );
 };
 
