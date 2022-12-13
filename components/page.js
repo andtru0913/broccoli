@@ -149,7 +149,7 @@ const Page = ({ authentication, page, redirect, formTitle, children, image }) =>
                   </div>
                 </button>
               </div>
-              <div className="flex flex-col gap-2 w-full ">
+              <div className="flex flex-col gap-2 w-full">
                 <form action="../../api/admin/modifyPage" method="POST">
                   <div className="flex flex-col gap-2 py-2">
                     <input
@@ -157,12 +157,14 @@ const Page = ({ authentication, page, redirect, formTitle, children, image }) =>
                       type="text"
                       name="title"
                       placeholder="Rubrik"
+                      defaultValue={page.title}
                     />
                     <input
                       className="description"
                       type="text"
                       name="description"
                       placeholder="Text"
+                      defaultValue={page.description}
                     />
                     <input type="hidden" name="redirect" value={redirect} />
                     <input type="hidden" name="id" value={page.id} />
@@ -200,9 +202,6 @@ const Page = ({ authentication, page, redirect, formTitle, children, image }) =>
                   let background = document.getElementById("popup");
                   let modifyPage = document.getElementById("modifyPage");
                   background.classList.remove(popHide);
-                  modifyPage.getElementsByClassName("title")[0].value = page.title;
-                  modifyPage.getElementsByClassName("description")[0].value =
-                      page.description;
                   modifyPage.classList.remove(popHide);
                 }
               }}
@@ -236,7 +235,8 @@ const Page = ({ authentication, page, redirect, formTitle, children, image }) =>
           </svg>
           <div className="relative overflow-hidden h-full bg-center ">
             <Image
-              src={`/uploads/pages/${image}`}
+              src={`/uploads/pages/${image}?${Date.now()}`}
+              priority={true}
               layout="fill"
               objectFit="cover"
               alt="Siluette of Gothenburg"

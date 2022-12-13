@@ -1,6 +1,6 @@
 import NewsSection from "./newsSection";
 
-const Nyheter = ({data, admin}) => {
+const Nyheter = ({data, admin, link}) => {
   return (
     <>
       {data.map((data) => {
@@ -13,6 +13,7 @@ const Nyheter = ({data, admin}) => {
             date={data.date}
             file={data.file}
             title={data.title}
+              link={link}
           />
         );
       })}

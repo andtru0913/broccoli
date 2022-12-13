@@ -131,7 +131,7 @@ export default function Home({ user, news, notifications }) {
               />
             </svg>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4">
-              <Nyheter admin={user.admin} data={JSON.parse(news)}/>
+              <Nyheter link={"news/"} admin={user.admin} data={JSON.parse(news)}/>
             </div>
           </div>
         </div>

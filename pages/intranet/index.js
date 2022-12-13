@@ -153,7 +153,7 @@ export default function Home({ user, lunchgroups, events, notifications, news })
                 <h2 className=" text-muted uppercase font-bold ">
                   Senaste Nytt
                 </h2>
-                <Nyheter admin={false} data={JSON.parse(news)}/>
+                <Nyheter link={"intranet/news/"} admin={false} data={JSON.parse(news)}/>
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
                 <h2 className=" w-auto text-muted uppercase font-bold ">

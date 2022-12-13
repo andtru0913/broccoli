@@ -70,7 +70,7 @@ export default function Home({ admin, notifications, data }) {
 
             <table style={{width: "60vw"}}>
               <thead>
-              <tr>
+              <tr className={"border-b"}>
                 <th className={"text-left"}>
                   Name
                 </th>
