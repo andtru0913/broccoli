@@ -28,7 +28,7 @@ export default function ({
             </div>
           </div>
         ) : (
-          <div className="flex group p-2 flex-col w-full border-transparent bg-secondary-1/60 border-2 border-black border-dashed">
+          <div className="flex group p-2 flex-col w-full border-transparent bg-secondary-1/80 border-2 border-black border-dashed">
             <div className="relative md:w-56 md:h-64 w-36 h-40">
               <ProfilePicture image={img_path} />
             </div>

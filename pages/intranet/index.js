@@ -5,7 +5,7 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import ThemedImage from "../../components/themedImage";
 import * as Database from "../../Database";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
-import {getNews, getNotifications} from "../../Database";
+import { getNews, getNotifications } from "../../Database";
 
 export async function getServerSideProps(context) {
   let cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
         notifications: JSON.stringify(await getNotifications()),
-        news: JSON.stringify(await getNews(2))
+        news: JSON.stringify(await getNews(2)),
       },
     };
   }
@@ -48,7 +48,13 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ user, lunchgroups, events, notifications, news }) {
+export default function Home({
+  user,
+  lunchgroups,
+  events,
+  notifications,
+  news,
+}) {
   if (user === null) {
     return (
       <main className="">
@@ -153,7 +159,7 @@ export default function Home({ user, lunchgroups, events, notifications, news })
                 <h2 className=" text-muted uppercase font-bold ">
                   Senaste Nytt
                 </h2>
-                <Nyheter data={JSON.parse(news)}/>
+                <Nyheter data={JSON.parse(news)} />
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
                 <h2 className=" w-auto text-muted uppercase font-bold ">

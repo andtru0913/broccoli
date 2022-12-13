@@ -104,7 +104,7 @@ const Footer = () => {
 
                     <div className="flex flex-col ">
                       <p className=" ">Tillgängligheten 3</p>
-                      <p className=" ">417 01 Göteborg</p>
+                      <p className=" ">417 10 Göteborg</p>
                     </div>
                   </div>
                 </a>
