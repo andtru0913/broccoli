@@ -66,40 +66,39 @@ export default function Home({ user, news, notifications }) {
     popup = (
       <div className="z-10">
         Ny inlägg
-        <form>
-          <input
-            id={"title"}
-            type={"text"}
-            name={"title"}
-            placeholder={"Titel"}
-          />
-          <input
-            className={
-              "form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+        <input
+          id={"title"}
+          type={"text"}
+          name={"title"}
+          placeholder={"Titel"}
+        />
+        <input
+          className={
+            "form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+          }
+          id="file"
+          type="file"
+          name="myImage"
+          onChange={file.uploadToClient}
+        />
+        <button
+          className="btn btn-primary"
+          onClick={async function () {
+            try {
+              await uploadToDatabase().then((_) => {});
+              file
+                .uploadToServer(
+                  `news/${document.getElementById("file").files[0].name}`
+                )
+                .then((_) => {});
+              window.location.reload();
+            } catch (e) {
+              console.log(e);
             }
-            id="file"
-            type="file"
-            name="myImage"
-            onChange={file.uploadToClient}
-          />
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={async function () {
-              try {
-                file
-                  .uploadToServer(
-                    `news/${document.getElementById("file").files[0].name}`
-                  )
-                  .then((_) => {});
-                await uploadToDatabase();
-              } catch (e) {}
-              window.location.href = "";
-            }}
-          >
-            Skapa nytt inlägg
-          </button>
-        </form>
+          }}
+        >
+          Skapa nytt inlägg
+        </button>
       </div>
     );
   }

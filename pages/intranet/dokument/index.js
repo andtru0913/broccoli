@@ -37,40 +37,8 @@ export default function Home({ admin, notifications, data }) {
   let button = "";
   if (admin) {
     const file = new FileAdder();
-    const uploadToDatabase = () => {
-      return new Promise(function (resolve, reject) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/createDocument");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(
-          JSON.stringify({
-            title: document.getElementById("title").value,
-            filename: document
-              .getElementById("file")
-              .value.split(/([\\/])/g)
-              .pop(),
-          })
-        );
-        xhr.onload = function () {
-          if (this.status >= 200 && this.status < 300) {
-            resolve(xhr.response);
-          } else {
-            reject({
-              status: this.status,
-              statusText: xhr.statusText,
-            });
-          }
-        };
-        xhr.onerror = function () {
-          reject({
-            status: this.status,
-            statusText: xhr.statusText,
-          });
-        };
-      });
-    };
     button = (
-      <div>
+      <div className={"w-96 m-auto"}>
         <input
           className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid border-border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
           id={"file"}
@@ -83,17 +51,9 @@ export default function Home({ admin, notifications, data }) {
           type="submit"
           onClick={async function () {
             try {
-              file
-                .uploadToServer(
-                  `dokument/${document
-                    .getElementById("file")
-                    .value.split(/([\\/])/g)
-                    .pop()}`
-                )
-                .then((_) => {});
-              await uploadToDatabase();
-              window.location.reload();
+              await file.uploadToServer(`dokument/${document.getElementById("file").value.split(/([\\/])/g).pop()}`).then((_) => {});
             } catch (e) {}
+            window.location.reload();
           }}
         >
           Ladda upp
@@ -107,18 +67,39 @@ export default function Home({ admin, notifications, data }) {
         <div className="layout py-20 md:py-12  flex flex-col items-center">
           <section>
             {button}
-            {files.map((doc, i) => (
-              <div key={i}>
-                <a href={`./dokument/${doc.filename}`}>
-                  {doc.filename}
-                  {doc.stats.birthtime.toLocaleString("default", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "short",
-                  }).split("T")[0]}
-                </a>
-              </div>
-            ))}
+
+            <table style={{width: "60vw"}}>
+              <thead>
+              <tr className={"border-b"}>
+                <th className={"text-left"}>
+                  Name
+                </th>
+                <th className={"text-left"}>
+                  Date modified
+                </th>
+                <th className={"text-left"}>
+                  Type
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              {files.map((doc, i) => (
+                    <tr className={"cursor-pointer"} onClick={function() {window.location.href = `dokument/${doc.filename}`}} key={i}>
+                      <td className={"p-2"}>{doc.filename.split(".").shift()}</td>
+                      <td className={"p-2"}>{doc.stats.birthtime.toLocaleString("default", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "short",
+                      }).split("T")[0]}</td>
+                      <td className={"p-2"}>
+                        {doc.filename.split(".").pop()}
+                      </td>
+                    </tr>
+
+
+              ))}
+          </tbody>
+            </table>
           </section>
         </div>
       </main>

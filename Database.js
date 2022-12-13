@@ -387,6 +387,13 @@ export async function deleteCard(id) {
   });
 }
 
+export async function deleteNews(id) {
+  return await prisma.news.delete({
+    where: {
+      id: id,
+    },
+  });
+}
 export async function updateCard(id, title, description) {
     return await prisma.card.update({
       where: {

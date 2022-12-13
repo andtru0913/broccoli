@@ -160,7 +160,7 @@ const Page = ({
                   </div>
                 </button>
               </div>
-              <div className="flex flex-col gap-2 w-full ">
+              <div className="flex flex-col gap-2 w-full">
                 <form action="../../api/admin/modifyPage" method="POST">
                   <div className="flex flex-col gap-2 py-2">
                     <input
@@ -168,12 +168,14 @@ const Page = ({
                       type="text"
                       name="title"
                       placeholder="Rubrik"
+                      defaultValue={page.title}
                     />
                     <input
                       className="description"
                       type="text"
                       name="description"
                       placeholder="Text"
+                      defaultValue={page.description}
                     />
                     <input type="hidden" name="redirect" value={redirect} />
                     <input type="hidden" name="id" value={page.id} />
@@ -244,7 +246,8 @@ const Page = ({
           </svg>
           <div className="relative overflow-hidden h-full bg-center ">
             <Image
-              src={`/uploads/pages/${image}`}
+              src={`/uploads/pages/${image}?${Date.now()}`}
+              priority={true}
               layout="fill"
               objectFit="cover"
               alt="Siluette of Gothenburg"
