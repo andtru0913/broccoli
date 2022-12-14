@@ -1,4 +1,5 @@
 import { BsInstagram, BsFacebook, BsLinkedin } from "react-icons/bs";
+import { FaFacebookSquare } from "react-icons/fa";
 import Link from "next/link";
 import ThemedImage from "./themedImage";
 const Footer = () => {
@@ -131,18 +132,24 @@ const Footer = () => {
                 Följ oss
               </h3>
               <div className="flex flex-row justify-center md:text-left bg-inherit">
-                <a href="/" className="p-2 hover:text-secondary-d2">
-                  <BsInstagram
-                    className="fill-button-accent hover:fill-button-accent"
-                    size={25}
-                  />
+                <a
+                  href="https://www.instagram.com/broccoliengineering/"
+                  className="p-2 hover:text-secondary-d2"
+                >
+                  <BsInstagram size={25} />
                 </a>
 
-                <a href="/" className="p-2  hover:text-secondary-d2">
-                  <BsFacebook size={25} />
+                <a
+                  href="https://www.facebook.com/Broccoli.se"
+                  className="p-2  hover:text-secondary-d2"
+                >
+                  <FaFacebookSquare size={26} />
                 </a>
 
-                <a href="/" className="p-2  hover:text-secondary-d2">
+                <a
+                  href="https://www.linkedin.com/company/broccoli-engineering-ab/?originalSubdomain=se"
+                  className="p-2  hover:text-secondary-d2"
+                >
                   <BsLinkedin size={25} />
                 </a>
               </div>

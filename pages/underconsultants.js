@@ -13,7 +13,7 @@ export async function getServerSideProps(context) {
       admin: !!cookies ? cookies.admin : false,
       pageId: pageId,
       page: page,
-      pageName: pageName
+      pageName: pageName,
     },
   };
 }
@@ -26,7 +26,7 @@ export default function Underconsultants({ admin, page, pageName }) {
         page={page}
         image={pageName}
         redirect={pageName}
-        formTitle="ANSÖKAN"
+        formTitle="ANSÖK OM ATT BLI UNDERKONSULT"
       ></Page>
     </Layout>
   );

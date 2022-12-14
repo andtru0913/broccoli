@@ -156,7 +156,7 @@ export default function Home({
 
             <div className="md:grid md:grid-cols-3 flex flex-col">
               <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-secondary-d1">
-                <h2 className=" text-muted uppercase font-bold ">
+                <h2 className=" text-muted uppercase font-bold mb-1">
                   Senaste Nytt
                 </h2>
                 <Nyheter
@@ -166,7 +166,7 @@ export default function Home({
                 />
               </div>
               <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
-                <h2 className=" w-auto text-muted uppercase font-bold ">
+                <h2 className="  text-muted uppercase font-bold mb-3 ">
                   Kommande event
                 </h2>
                 {JSON.parse(events).map((data) => {

@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
 import { HiArrowRight } from "react-icons/hi";
-import {FaBed, FaChalkboardTeacher, FaFacebookSquare, FaSwimmer} from "react-icons/fa";
+import {
+  FaBed,
+  FaChalkboardTeacher,
+  FaFacebookSquare,
+  FaSwimmer,
+} from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/kranar.png";
 import "chart.js/auto";
@@ -209,10 +214,12 @@ export default function Home({ feed, genderCount }) {
                 <h2 className="font-bold uppercase">Relationer</h2>
 
                 <p className="text-justify">
-                  På Broccoli arbetar vi inkluderande, visar ömsesidig respekt och bjuder aktivt in berörda i dialogen.
-                  Genom våra olikheter bygger vi en stark gemenskap. Vi eftersträvar olikheter då det stärker oss som grupp
-                  och utvecklar oss som individer. Vi lär oss även kontinuerligt genom kunskapsdelning och inspiration av
-                  varandra vilket leder till vår trevliga företagskultur.
+                  På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
+                  och bjuder aktivt in berörda i dialogen. Genom våra olikheter
+                  bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
+                  stärker oss som grupp och utvecklar oss som individer. Vi lär
+                  oss även kontinuerligt genom kunskapsdelning och inspiration
+                  av varandra vilket leder till vår trevliga företagskultur.
                 </p>
               </div>
               <div className="relative rounded">
@@ -222,10 +229,12 @@ export default function Home({ feed, genderCount }) {
                   </p>
 
                   <p className="text-justify">
-                    Nöjda kunder får vi genom att prioritera god teknisk kompetens och kvalitet samt genom att
-                    vara lyhörda till behoven. Vi är den pålitliga partnern med goda ambitioner och fokus på att
-                    garantera förväntat  resultat. Kontinuerlig utveckling genom feedback, erfarenhet och utbildning
-                    leder till arbetsglädje, nätverkande och ett högt engagemang.
+                    Nöjda kunder får vi genom att prioritera god teknisk
+                    kompetens och kvalitet samt genom att vara lyhörda till
+                    behoven. Vi är den pålitliga partnern med goda ambitioner
+                    och fokus på att garantera förväntat resultat. Kontinuerlig
+                    utveckling genom feedback, erfarenhet och utbildning leder
+                    till arbetsglädje, nätverkande och ett högt engagemang.
                   </p>
                 </div>
               </div>
@@ -233,9 +242,10 @@ export default function Home({ feed, genderCount }) {
                 <div className=" bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
                   <h2 className="font-bold uppercase">Hållbar utveckling</h2>
                   <p className="text-justify">
-                    Vi värderar hållbarhet genom ekonomiskt sinne samt personlig och teknisk utveckling.
-                    Vi gör medvetna val för en långsiktig utveckling vilket ger oss trygghet,
-                    frihet och en känsla av att vi tillsammans bidrar till det bättre.
+                    Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
+                    och teknisk utveckling. Vi gör medvetna val för en
+                    långsiktig utveckling vilket ger oss trygghet, frihet och en
+                    känsla av att vi tillsammans bidrar till det bättre.
                   </p>
                 </div>
               </div>
@@ -315,20 +325,21 @@ export default function Home({ feed, genderCount }) {
                 />
               </div>
               <div className="flex flex-col items-center cursor-default">
-                <div className="flex flex-col items-center p-8 md:p-12 cursor-default">
+                <div className="flex flex-col items-center p-8 md:p-10 cursor-default">
                   {/**information */}
-                  <h4 className="uppercase font-bold ">
+                  <h4 className="uppercase font-bold  ">
                     Välkommen till Broccoligården
                   </h4>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-12">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 pt-8">
                     <p className="h-auto p-1 text-left shrink max-w-readable">
-                      Broccoligården ligger strax utanför Svanesund. En idyllisk plats på västkusten.
-                      Ta en tur med vänner familj eller jobbteamet och njut av den friska luften,
-                      sola på det stora altandäcket, mys inne vid brasan eller varför inte ta ett dopp.
-
+                      Broccoligården ligger strax utanför Svanesund. En idyllisk
+                      plats på västkusten. Ta en tur med vänner familj eller
+                      jobbteamet och njut av den friska luften, sola på det
+                      stora altandäcket, mys inne vid brasan eller varför inte
+                      ta ett dopp.
                     </p>
 
-                    <div className="flex flex-row lg:flex-col justify-center items-start gap-4 h-auto  text-center lg:text-left">
+                    <div className="flex flex-row lg:flex-col justify-center items-start gap-4 h-auto pt-0 text-center lg:text-left">
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
                         <FaBed size={30} />
                         <p className="font-bold ">37 bäddar</p>
@@ -347,11 +358,11 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-8 pt-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-8 pt-10 mb-2 ">
                     <div className="mapouter">
-                      <div className="gmap_canvas ">
+                      <div className="gmap_canvas mb-2 ">
                         <iframe
-                          className="w-full h-64"
+                          className="w-full h-64 mb-2"
                           width={277}
                           height={595}
                           id="gmap_canvas"
@@ -359,14 +370,16 @@ export default function Home({ feed, genderCount }) {
                         ></iframe>
                       </div>
                     </div>
-                    <div className="shrink flex flex-col items-center md:items-start justify-around">
-                      <h3>Kontakt</h3>
+                    <div className="shrink flex flex-col items-center md:items-start ">
+                      <h3 className="pb-1">Kontakt</h3>
                       <a href="mailto:engineering@broccoli.se">
                         garden@broccoli.se
                       </a>
-                      <h3>Följ oss</h3>
-                      <div className="w-min text-green-3 hover:text-opacity-40">
-                        <FaFacebookSquare size={40} />
+                      <h3 className="py-2 pt-7">Följ oss</h3>
+                      <div className=" text-green-3 hover:text-opacity-40  ">
+                        <a href="https://www.facebook.com/profile.php?id=100063900016888">
+                          <FaFacebookSquare size={35} />
+                        </a>
                       </div>
                     </div>
                   </div>

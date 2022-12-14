@@ -89,7 +89,7 @@ export default function Contact() {
                     </svg>
 
                     <h5 className="text-left ">
-                      Tillgängligheten 3, 417 01 Göteborg
+                      Tillgängligheten 3, 417 10 Göteborg
                     </h5>
                   </div>
                 </a>
