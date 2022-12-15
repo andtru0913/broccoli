@@ -51,7 +51,8 @@ export default function employee({ data, admin, notifications }) {
             <path d="M-262.814 197.543C-267.368 164.706 -187.678 158.082 -92.0512 72.1636C-92.0512 72.1636 10.4065 -20.5277 10.4065 -50.977C10.4065 -89.0386 242.644 -80.0829 290.458 -80.0829C338.271 -80.0829 748.102 -62.1716 912.034 -39.7824C1075.97 -17.3932 1007.66 36.3409 912.034 72.1636C816.407 107.986 827 197.543 780.5 256.5C759.325 283.347 720.102 302.772 563 320.684C405.898 338.595 403.797 284.861 315 320.684C226.203 356.506 317.78 484.805 242.644 496C167.508 507.195 10.4065 399.046 -126.204 347.551C-235.492 306.355 -262.814 230.381 -262.814 197.543Z" />
           </svg>
         </div>
-        <div className="layout  flex flex-row flex-wrap z-20 ">
+
+        <div className="layout  flex flex-row flex-wrap z-20 bg-secondary-1 h-screen ">
           <div className="flex flex-row flex-wrap justify-center py-12">
             <EmployeeAccordion data={data} />
           </div>
