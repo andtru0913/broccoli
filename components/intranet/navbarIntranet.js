@@ -14,20 +14,21 @@ const NavbarIntranet = ({ admin, notifications }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [isRed, setIsRed] = useState(false);
-  let adminNavbar = "";
-  if (admin) {
-    adminNavbar = <NavbarAdmin />;
-  }
   const openmenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-            let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
-          setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
-      }
+        let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
+        setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
+        setNotificationOpen(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
+      }, []
   )
+
+
   const openNotification = () =>
   {
-      if(!notificationOpen) {
+      if(notificationOpen) {
+          setIsRed(false)
+          setNotificationOpen(false)
           let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
           const parsedNotifications = JSON.parse(notifications)
           parsedNotifications.forEach(item => {
@@ -36,10 +37,11 @@ const NavbarIntranet = ({ admin, notifications }) => {
               }
           })
           localStorage.setItem("readNotifications", JSON.stringify(notificationCookies))
-          setIsRed(false)
+      }
+        else {
+          setNotificationOpen(true)
       }
 
-      setNotificationOpen(!notificationOpen)
   };
   const hamburgerLine =
     " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
@@ -47,7 +49,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
     <>
       <header className="fixed top-0  lg:sticky bg-fill z-30">
         <>
-          {adminNavbar}
+          {admin?<NavbarAdmin/>:""}
           <nav className="hidden lg:flex justify-between items-center align-middle px-4 py-2 shadow-md">
             <div className="text-lg flex justify-start">
               <Link href="/intranet">
