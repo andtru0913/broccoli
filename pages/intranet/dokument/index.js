@@ -3,9 +3,9 @@ import {getNotifications, getUserinfo} from "../../../Database";
 import { FileAdder } from "../../../components/FileAdder";
 
 export async function getServerSideProps(context) {
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
-  let user = await getUserinfo(cookies.id);
-  if (cookies !== {} || user !== null) {
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !!cookies? await getUserinfo(cookies.id):null;
+  if (!!user) {
     const fs = require('fs')
     const files = fs.readdirSync("./public/uploads/dokument")
     let data = []

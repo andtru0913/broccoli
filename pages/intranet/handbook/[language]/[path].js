@@ -2,14 +2,15 @@ import LayoutIntranet from "../../../../components/layout/layoutIntranet";
 import fs from 'fs'
 import ReactMarkdown from "react-markdown";
 import NavHandbook from "../../../../components/handbook/navHandbook";
-import {getNotifications, getUserinfo} from "../../../../Database";
+import {getNotifications} from "../../../../Database";
+import * as Database from "../../../../Database";
 
 export async function getServerSideProps(context) {
-  const language = context.params.language
-  const filename = context.params.path
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  if (cookies !== null) {
-    const user = await getUserinfo(cookies.id)
+  const user = !!cookies? await Database.getUserinfo(cookies.id):null;
+  if (!!user) {
+    const language = context.params.language
+    const filename = context.params.path
     let result = "### Error"
     try {
       result = fs.readFileSync(`pages/intranet/handbook/${language}/${filename}`, 'utf8')

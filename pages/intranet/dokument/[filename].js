@@ -2,23 +2,24 @@ import LayoutIntranet from '../../../components/layout/layoutIntranet';
 import {getNotifications, getUserinfo} from "../../../Database";
 
 export async function getServerSideProps(context) {
-    let cookies = JSON.parse(context.req.cookies['user'] || null)
-    let user = await getUserinfo(cookies.id)
-    if (cookies !== {} || user !== null) {
-        return {
+    const cookies = JSON.parse(context.req.cookies["user"] || null);
+    const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
+    return !user ?
+        {
+            redirect: {
+                permanent: false,
+                destination: "/intranet",
+            },
+            props: {},
+        }
+        :
+        {
             props: {
                 filename: context.params.filename,
                 admin: user.admin,
-                notifications: JSON.stringify(await getNotifications())}
+                notifications: JSON.stringify(await getNotifications())
+            }
         }
-    }
-    return {
-        redirect: {
-            permanent: false,
-            destination: "/intranet",
-        },
-        props:{},
-    }
 }
 
 export default function Home ({filename, admin, notifications}) {

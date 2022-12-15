@@ -1,28 +1,26 @@
-import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import EmployeeAccordion from "../../../components/employeeAccordion";
-import { getNotifications, getUserOverview } from "../../../Database";
-import * as Database from "../../../Database";
+import LayoutIntranet from "../../components/layout/layoutIntranet";
+import EmployeeAccordion from "../../components/employeeAccordion";
+import {getNotifications, getUserinfo, getUserOverview} from "../../Database";
 
 export async function getServerSideProps(context) {
-  let data = await getUserOverview();
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  if (cookies !== null) {
-    const user = await Database.getUserinfo(cookies.id);
-    return {
-      props: {
-        data: data,
-        admin: user.admin,
-        notifications: JSON.stringify(await getNotifications()),
-      },
-    };
-  }
-  return {
-    redirect: {
-      permanent: false,
-      destination: "/intranet",
-    },
-    props: {},
-  };
+  const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
+  return !user ?
+      {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+      :
+      {
+        props: {
+          data: await getUserOverview(),
+          admin: user.admin,
+          notifications: JSON.stringify(await getNotifications())
+        }
+      }
 }
 
 //const { theme, setTheme } = useTheme();
