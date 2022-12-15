@@ -11,8 +11,8 @@ const data = [
     year: "1993",
     text:
       "Broccoli grundades av Björn Bergholm vid sidan om Chalmersstudierna. " +
-      "Genom åren har företaget vuxit och är numera ett väl utvecklat teknikkonsultbolag " +
-      "specialiserat inom elektronikutveckling.",
+      "Genom åren har företaget vuxit och är numera ett väl utvecklat " +
+      "teknikkonsultbolag  specialiserat inom elektronikutveckling.",
   },
   {
     year: "2003",
@@ -34,15 +34,15 @@ const data = [
   },
   {
     year: "2010",
-    text: "Gasellföretag",
+    text: "Broccoli blev ett Gasellföretag",
   },
   {
     year: "2012",
-    text: "Första konsultchefen Jessica anställs",
+    text: "Första konsultchefen anställs",
   },
   {
     year: "2013",
-    text: "Dotterbolaget Broccoli Systems startas tillsammans med Per",
+    text: "Dotterbolaget Broccoli Systems startas",
   },
   {
     year: "2015",
@@ -50,11 +50,11 @@ const data = [
   },
   {
     year: "2018",
-    text: "Dotterbolaget Sectyne startas med Janne",
+    text: "Dotterbolaget Sectyne startas",
   },
   {
     year: "2019",
-    text: "Broccoli Systems säljs till Per",
+    text: "Broccoli Systems säljs",
   },
   {
     year: "2020",
@@ -69,9 +69,12 @@ const TimelineComponent = () => {
   // noinspection JSValidateTypes
   return (
     <>
-      <div className={"hidden md:block"}>
-        <h1 className={"text-center m-4"}>Historia</h1>
-        <Timeline className={"items-center"} position="alternate">
+      <div className="hidden md:block py-12 lg:16 ">
+        <h2 className="text-center uppercase font-bold">Historia</h2>
+        <h5 className="text-center m-4 md:mb-8 ">
+          Några milstolpar i Broccolis historia
+        </h5>
+        <Timeline className="items-center" position="alternate">
           {data.map((item, i) => (
             <TimelineItem key={i}>
               <TimelineSeparator className={"mx-5"}>
@@ -79,9 +82,9 @@ const TimelineComponent = () => {
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
-                <div className={""}>
-                  <h4>{item.year}</h4>
-                  <p>{item.text}</p>
+                <div className=" ">
+                  <h4 lassName="font-extrabold">{item.year}</h4>
+                  <p className="max-w-readable ">{item.text}</p>
                 </div>
               </TimelineContent>
             </TimelineItem>
@@ -90,14 +93,14 @@ const TimelineComponent = () => {
       </div>
       <div
         className={
-          " md:hidden layout text-skin-inverted text-center py-12  flex flex-col  flex-1  items-center justify-center   lg:gap-20 gap-8"
+          " md:hidden layout text-skin-inverted text-center py-12  flex flex-col  flex-1  items-center justify-center lg:gap-20 gap-8"
         }
       >
         {data.map((item, i) => (
           <div key={i} className=" w-full   flex flex-col items-center ">
             <div className="w-full flex-1 border-2  lg:p-4 p-4 flex flex-col items-center ">
-              <h4 className="font-bold">{item.year}</h4>
-              <p className="">{item.text}</p>
+              <h4 className="font-extrabold">{item.year}</h4>
+              <p className=" ">{item.text}</p>
             </div>
           </div>
         ))}
