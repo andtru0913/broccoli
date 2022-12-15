@@ -1,5 +1,5 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import {getNotifications, getUserProfile} from "../../Database";
+import { getNotifications, getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
@@ -8,7 +8,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         user: user,
-        notifications: JSON.stringify(await getNotifications())
+        notifications: JSON.stringify(await getNotifications()),
       },
     };
   }
@@ -43,9 +43,9 @@ const profile = ({ user, notifications }) => {
                 <ProfilePicture image={user.image} />
               </div>
             </div>
-            <div className=" pt-0 md:pt-24 pb-24 md:pb-0 md:col-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible md:h-full p-2 ">
+            <div className=" px-10 md:pr-16 pt-0 md:pt-24 pb-24 md:pb-0 md:col-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible md:h-full p-2 ">
               {/**Profile Information */}
-              <div className="flex flex-row flex-wrap py-4 border-b border-base  items-center">
+              <div className="flex flex-row flex-wrap py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3 mr-16">
                   <p className="font-bold uppercase text-muted">Namn</p>
                 </div>
@@ -55,7 +55,7 @@ const profile = ({ user, notifications }) => {
                   </h3>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16 ">
                   <p className="font-bold uppercase text-muted">Användarnamn</p>
                 </div>
@@ -63,7 +63,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.username}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Roll</p>
                 </div>
@@ -71,7 +71,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.role}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Företag</p>
                 </div>
@@ -79,7 +79,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.company}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Beskrivning</p>
                 </div>
@@ -87,7 +87,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.description}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Email</p>
                 </div>
@@ -95,7 +95,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.email}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Adress</p>
                 </div>
@@ -103,7 +103,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.address}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Privatnummer</p>
                 </div>
@@ -111,7 +111,7 @@ const profile = ({ user, notifications }) => {
                   <p>{user.privatenumber}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Jobbnummer</p>
                 </div>

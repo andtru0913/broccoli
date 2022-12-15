@@ -8,14 +8,14 @@ import { GiPartyFlags } from "react-icons/gi";
 
 export async function getServerSideProps(context) {
   const pageId = career;
-  const pageName = "career"
+  const pageName = "career";
   let cookies = JSON.parse(context.req.cookies["user"] || null);
   const page = (await getPage(pageId))[0];
   return {
     props: {
       admin: !!cookies ? cookies.admin : false,
       page: page,
-      pageName: pageName
+      pageName: pageName,
     },
   };
 }
@@ -57,7 +57,7 @@ export default function Career({ admin, page, pageName }) {
         image={pageName}
       >
         <section className="">
-          <div className="pt-12 flex flex-col items-center justify-center ">
+          <div className="pt-12 flex flex-col px-5 text-center items-center justify-center ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
             <div className=" grid md:grid-cols-4 w-screen justify-center gap-0 ">
