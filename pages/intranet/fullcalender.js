@@ -4,9 +4,9 @@ import * as Database from "../../Database";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 
 export async function getServerSideProps(context) {
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
-  let user = await Database.getUserinfo(cookies.id);
-  if (cookies !== {} || user !== null) {
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !!cookies? await Database.getUserinfo(cookies.id):null;
+  if (!!user) {
     let events = await getEvents(undefined);
     events.map((data) => {
       data.startDate = new Date(data.start).toLocaleString("default", {

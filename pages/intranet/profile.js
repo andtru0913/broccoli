@@ -3,25 +3,26 @@ import { getNotifications, getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  if (cookies !== null) {
-    const user = await getUserProfile(cookies.id);
-    return {
-      props: {
-        user: user,
-        notifications: JSON.stringify(await getNotifications()),
-      },
-    };
-  }
-  return {
-    redirect: {
-      permanent: false,
-      destination: "/intranet",
-    },
-    props: {},
-  };
+  const user = !!cookies ? (await getUserProfile(cookies.id)) : null;
+  return !user ?
+      {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+      :
+      {
+        props: {
+          userString: JSON.stringify(user),
+          notifications: JSON.stringify(await getNotifications())
+        }
+      }
 }
 
-const profile = ({ user, notifications }) => {
+const profile = ({ userString, notifications }) => {
+  const user = JSON.parse(userString)
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
@@ -53,6 +54,14 @@ const profile = ({ user, notifications }) => {
                   <h3>
                     {user.firstname} {user.lastname}
                   </h3>
+                </div>
+              </div>
+              <div className="flex flex-row py-4 border-b border-base items-center">
+                <div className="w-1/3  mr-16 ">
+                  <p className="font-bold uppercase text-muted">Födelsedatum</p>
+                </div>
+                <div>
+                  <p>{user.birthday.split("T")[0]}</p>
                 </div>
               </div>
               <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">

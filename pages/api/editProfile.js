@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     if(!!cookies) {
         if (cookies.id === req.body.id) {
 
-            await editProfile(req.body.id, req.body.username, req.body.password, req.body.email, req.body.address, req.body.privatenumber, req.body.worknumber, req.body.myImage, req.body.description)
+            await editProfile(req.body.id, req.body.username, req.body.password, req.body.email, req.body.address, req.body.privatenumber, req.body.worknumber, req.body.myImage, req.body.description,  new Date(req.body.birthdate))
                 .catch(e => {
                     console.error(e.message)
                 })

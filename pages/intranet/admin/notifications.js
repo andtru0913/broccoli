@@ -1,46 +1,41 @@
-import { authenticate } from "./authenticate";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import {getAllNotifications, getNotifications, getUserProfile} from "../../../Database";
+import {getAllNotifications, getNotifications, getUserinfo} from "../../../Database";
+import {useEffect, useState} from "react";
 
 export async function getServerSideProps(context) {
-  let authentication = await authenticate(context);
-  if (authentication !== undefined) return authentication;
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  if (cookies !== null) {
-    const user = await getUserProfile(cookies.id);
-    let notifications = await getAllNotifications();
-    notifications.map((data) => {
-      data.start = new Date(data.startDate).toLocaleString("default", {
-        year: "numeric",
-        day: "numeric",
-        month: "long",
-      });
-      data.end = new Date(data.endDate).toLocaleString("default", {
-        year: "numeric",
-        day: "numeric",
-        month: "long",
-      });
-    });
-    const relevantNotifs = await getNotifications()
-    return {
-      props: {
-        user: user,
-        notifications: JSON.stringify(notifications),
-        relevantNotifs: JSON.stringify(relevantNotifs),
-      },
-    };
-  }
-  return {
-    redirect: {
-      permanent: false,
-      destination: "/intranet",
-    },
-    props: {},
-  };
+  const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
+  return (!user || !user.admin) ?
+      {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+      :
+      {
+        props: {
+          user: user,
+          notifications: JSON.stringify(await getAllNotifications()),
+            relevantNotifs: JSON.stringify(await getNotifications())
+        }
+      }
 }
 
 export default function Home({ user, notifications, relevantNotifs }) {
-  const list = JSON.parse(notifications)
+
+  const useFormattedDate = (date) => {
+    const [formattedDate, setFormattedDate] = useState(null);
+
+    useEffect(
+        () => setFormattedDate(new Date(date).toLocaleString("default", {year: "numeric", day: "numeric", month: "long",}),[])
+    )
+
+    return formattedDate;
+  };
+
+  let list = JSON.parse(notifications)
   return (
     <LayoutIntranet admin={true} notifications={relevantNotifs}>
       Notifikationer
@@ -56,7 +51,7 @@ export default function Home({ user, notifications, relevantNotifs }) {
             <div className={"flex flex-col"}>
               <p className={"font-bold"}>{item.title}</p>
               <p>{item.text}</p>
-              <p>{item.start} - {item.end}</p>
+              <p>{useFormattedDate(item.startDate)} - {useFormattedDate(item.endDate)}</p>
           </div>
             <form className={"flex flex-row"} action={"../../api/admin/deleteNotification"} method={"POST"}>
               <input type={"hidden"} name={"id"} value={item.id}/>

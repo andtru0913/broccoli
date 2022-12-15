@@ -2,27 +2,29 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import {getNotifications, getUserProfile} from "../../Database";
 import { FileAdder } from "../../components/FileAdder";
 import ProfilePicture from "../../components/ProfilePicture";
+
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  if (cookies !== null) {
-    let user = await getUserProfile(cookies.id);
-    return {
-      props: {
-        user: user,
-        notifications: JSON.stringify(await getNotifications())
-      },
-    };
-  }
-  return {
-    redirect: {
-      permanent: false,
-      destination: "/intranet",
-    },
-    props: {},
-  };
+  const user = !!cookies ? (await getUserProfile(cookies.id)) : null;
+  return !user ?
+      {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+      :
+      {
+        props: {
+          userString: JSON.stringify(user),
+          notifications: JSON.stringify(await getNotifications())
+        }
+      }
 }
 
-const profile = ({ user, notifications }) => {
+const profile = ({ userString, notifications }) => {
+  const user = JSON.parse(userString)
   const file = new FileAdder();
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
@@ -121,13 +123,24 @@ const profile = ({ user, notifications }) => {
                     />
                   </div>
                 </div>
+                <div className="relative flex flex-wrap flex-col md:flex-row  ">
+                  <div className="flex flex-1 flex-col md:p-2">
+                <label className="text-base pb-1" htmlFor="first">
+                  Födelsedatum
+                </label>
+                <input
+                    className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                    type="Date"
+                    name="birthdate"
+                />
+                  </div>
+                </div>
                 {/**Address*/}
                 <div className="relative flex flex-wrap flex-col md:flex-row  ">
                   <div className="flex flex-1 flex-col md:p-2">
                     <label className="text-base pb-1" htmlFor="first">
                       Address
                     </label>
-
                     <input
                       className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                       type="text"

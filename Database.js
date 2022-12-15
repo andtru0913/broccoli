@@ -151,6 +151,7 @@ export async function getUserProfile(userid) {
         assignment: true,
         description: true,
         admin: true,
+        birthday: true
       },
     });
     return query[0];
@@ -297,11 +298,8 @@ export async function createGroup(name) {
   });
 }
 
-export async function getGroups(id) {
+export async function getGroups() {
   return await prisma.lunchgroup.findMany({
-    where: {
-      id: id,
-    },
     select: {
       id: true,
       title: true,
@@ -692,7 +690,8 @@ export async function editProfile(
   privatenumber,
   worknumber,
   image,
-  description
+  description,
+  birthdate,
 ) {
   if (!!password) {
     const salt = await bcrypt.genSalt(10);
@@ -710,6 +709,7 @@ export async function editProfile(
         worknumber: worknumber,
         salt: salt,
         description: description,
+        birthday: birthdate
       },
     });
   } else {
@@ -724,6 +724,7 @@ export async function editProfile(
         privatenumber: privatenumber,
         worknumber: worknumber,
         description: description,
+        birthday: birthdate
       },
     });
   }
@@ -791,7 +792,7 @@ export async function getNotifications() {
   let result = await prisma.notifications.findMany({
     where: {
       endDate: {
-          gte: new Date()
+          gt: new Date()
       }
     },
     select: {
@@ -841,5 +842,15 @@ export async function getEventNotReplied(eventid) {
       firstname: true,
       lastname: true
     },
+  }))
+}
+
+export async function getBirthdays() {
+  return (await prisma.user.findMany( {
+    select: {
+      firstname: true,
+      lastname: true,
+      birthday: true
+    }
   }))
 }

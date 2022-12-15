@@ -16,6 +16,7 @@ model User {
   password      String
   firstname     String?
   lastname      String?
+  birthday      DateTime?
   gender        String
   email         String          @unique
   address       String?
@@ -31,7 +32,7 @@ model User {
   lunchgroupID  String?         @db.ObjectId
   events        UserOnEvent[]
   image         String?
-  news2          News[]
+  news2         News[]
   notifications Notifications[]
 }
 
