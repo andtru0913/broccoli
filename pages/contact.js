@@ -3,23 +3,37 @@ import Layout from "../components/layout/layout";
 export default function Contact() {
   return (
     <Layout>
-      <section className="py-12 text-center text-base overflow-hidden cursor-default">
-        <h1 className="uppercase font-bold">Kontakta oss</h1>
-        <div className=" layout grid grid-cols-1 md:grid-cols-2 justify-center gap-4 py-12 lg:px-20 cursor-default">
+      <section className=" bg-secondary-1 text-center text-base overflow-hidden cursor-default">
+        <div className="  grid grid-cols-1 md:grid-cols-2 justify-center cursor-default">
           <div className="relative rounded ">
             <div className="flex w-full h-full justify-center z-10 ">
               <img
-                className=" object-cover"
+                className=" object-cover z-10"
                 src="/images/broccoli-kontor.jpg"
               />
             </div>
           </div>
           <div className="relative rounded">
-            <div className=" flex flex-col bg-primary-1 bg-opacity-80 p-4 md:px-8 z-20 h-full overflow-hidden justify-center">
-              <h3 className="pb-4 md:pb-8 uppercase font-bold ">
+            <svg
+              className="absolute overflow-clip fill-secondary-l1 top-12 lg:top16 right-0 w-11/12"
+              width="645"
+              height="501"
+              viewBox="0 0 645 501"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M497.871 68.9819C555.514 55.7719 846.095 -130.073 848 169.849L822.381 579C792.211 561.005 617.427 476.712 551.245 465.347C514.078 458.964 367.014 449.72 327.077 405.679C280.488 354.303 124.767 387.842 58.0754 348.853C-8.61652 309.863 -5.0722 244.276 6.83704 206.786C18.7463 169.296 27.0239 107.103 79.4247 84.6092C121.345 66.6139 201.116 95.9745 297.188 95.9745C393.26 95.9745 440.228 82.192 497.871 68.9819Z" />
+            </svg>
+
+            <div className="  flex  flex-col bg-secondary-1 bg-opacity-80 p-4 md:px-8 z-20 h-full overflow-hidden ">
+              <h1 className=" py-12 lg:pt-20 uppercase font-bold z-10 ">
+                Kontakta oss
+              </h1>
+              <h3 className=" flex self-start px-8 pb-6 uppercase font-bold z-10">
                 Broccoli Engineering AB
               </h3>
-              <div className=" flex flex-col gap-4">
+
+              <div className=" flex flex-col gap-4 px-8 pb-10 z-10">
                 <a className="hover:text-secondary-d2" href="tel:031-151480">
                   <div className="flex flex-row gap-4 items-center">
                     <svg
@@ -96,9 +110,9 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <div className="relative rounded md:col-span-2">
+          <div className="relative rounded md:col-span-2 z-20 ">
             <div className="mapouter relative text-right ">
-              <div className="gmap_canvas overflow-hidden bg-none ">
+              <div className="gmap_canvas overflow-hidden bg-none  ">
                 <iframe
                   className="w-full h-80"
                   id="gmap_canvas"
