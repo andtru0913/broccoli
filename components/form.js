@@ -6,8 +6,8 @@ export default function Form({ title }) {
           {/**title */}
 
           <div className="relative flex  flex-row ">
-            <div className="flex-1 p-2 text-2xl">
-              <p>{title}</p>
+            <div className="flex-1 flex justify-center md:justify-start  p-2 text-2xl">
+              <p className="flex self-center md:self-auto uppercase">{title}</p>
             </div>
           </div>
 

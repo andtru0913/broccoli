@@ -1,24 +1,23 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import {getAllUsers, getNotifications, getUserinfo} from "../../../Database";
+import { getAllUsers, getNotifications, getUserinfo } from "../../../Database";
 
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies ? (await getUserinfo(cookies.id)) : null;
-  return (!user || !user.admin) ?
-      {
+  const user = !!cookies ? await getUserinfo(cookies.id) : null;
+  return !user || !user.admin
+    ? {
         redirect: {
           permanent: false,
           destination: "/intranet",
         },
         props: {},
       }
-      :
-      {
+    : {
         props: {
           user: await getAllUsers(),
           notifications: JSON.stringify(await getNotifications()),
-        }
-      }
+        },
+      };
 }
 export default function Home({ user, notifications }) {
   const popUpstyle = "h-screen w-screen bg-black absolute z-20 bg-opacity-60";
@@ -31,10 +30,7 @@ export default function Home({ user, notifications }) {
         <div className="layout py-20 md:py-12 ">
           <h1 className="text-center">Anställda</h1>
           <div className=" flex flex-1 flex-col lg:flex-row justify-center">
-            <div
-              id="modifyuser"
-              className={`${popHide}`}
-            >
+            <div id="modifyuser" className={`${popHide}`}>
               <h3 className="text-skin-base"> Edit User</h3>
               <form action="../../api/modifyuser" method="POST">
                 <input className="id" type="hidden" name="id" />
@@ -114,10 +110,10 @@ export default function Home({ user, notifications }) {
                   placeholder="Bolag"
                 />
                 <input
-                    className="assignment"
-                    type="text"
-                    name="assignment"
-                    placeholder="Uppdrag"
+                  className="assignment"
+                  type="text"
+                  name="assignment"
+                  placeholder="Uppdrag"
                 />
                 <div>
                   <label> Administratör</label>
@@ -127,13 +123,12 @@ export default function Home({ user, notifications }) {
                     name="admin"
                     value="true"
                   />
-
                 </div>
                 <input
-                    className="role"
-                    type="text"
-                    name="role"
-                    placeholder="Roll"
+                  className="role"
+                  type="text"
+                  name="role"
+                  placeholder="Roll"
                 />
 
                 <button type="submit">Ändra anställd</button>
@@ -168,10 +163,7 @@ export default function Home({ user, notifications }) {
                   .classList.add(popupStyles.hide);
               }}
             ></div>
-            <div
-              id="createuser"
-              className={`${popHide}`}
-            >
+            <div id="createuser" className={`${popHide}`}>
               <form action="../../api/admin/createuser" method="POST">
                 <input type="text" name="username" placeholder="Användarnamn" />
                 <input type="text" name="password" placeholder="Lösenord" />
@@ -235,9 +227,10 @@ export default function Home({ user, notifications }) {
                         u.company;
                       window.getElementsByClassName("admin")[0].checked =
                         u.admin;
-                      window.getElementsByClassName("assignment")[0].value = u.assignment
-                      window.getElementsByClassName("role")[0].value = u.role
-                      if(!!u.gender) {
+                      window.getElementsByClassName("assignment")[0].value =
+                        u.assignment;
+                      window.getElementsByClassName("role")[0].value = u.role;
+                      if (!!u.gender) {
                         document.getElementById(u.gender).checked = true;
                       }
                       window.classList.remove(popHide);
@@ -259,7 +252,6 @@ export default function Home({ user, notifications }) {
                         .classList.remove(popHide);
                     }}
                   >
-                    {" "}
                     Lägg till anställd
                   </button>
                 </div>
@@ -342,11 +334,14 @@ export default function Home({ user, notifications }) {
                               u.company;
                             window.getElementsByClassName("admin")[0].checked =
                               u.admin;
-                            window.getElementsByClassName("assignment")[0].value = u.assignment
-                            if(!u.gender) {
+                            window.getElementsByClassName(
+                              "assignment"
+                            )[0].value = u.assignment;
+                            if (!u.gender) {
                               window.getElementById(u.gender).checked = true;
                             }
-                            window.getElementsByClassName("role")[0].value = u.role
+                            window.getElementsByClassName("role")[0].value =
+                              u.role;
                             window.classList.remove(popHide);
                           }}
                         >
@@ -400,7 +395,6 @@ export default function Home({ user, notifications }) {
                           .classList.remove(popHide);
                       }}
                     >
-                      {" "}
                       Lägg till anställd
                     </button>
                   </div>

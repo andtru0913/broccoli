@@ -50,8 +50,8 @@ export default function employee({ data, admin, notifications }) {
           </svg>
         </div>
 
-        <div className="layout  flex flex-row flex-wrap z-20 bg-secondary-1 h-screen ">
-          <div className="flex flex-row flex-wrap justify-center py-12">
+        <div className="layout  flex flex-row flex-wrap z-20 bg-secondary-1  ">
+          <div className="flex flex-row flex-wrap justify-center py-6">
             <EmployeeAccordion data={data} />
           </div>
 
