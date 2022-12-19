@@ -20,7 +20,7 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
   const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
-  return (!user || !user.admin) ?
+  return (!user || !user.admin)   ?
       {
         redirect: {
           permanent: false,

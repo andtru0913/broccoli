@@ -122,7 +122,7 @@ export default function Home({ user, news, notifications }) {
       <div className="flex flex-col bg-secondary-1 h-screen pt-12">
         <div className="flex flex-row">
           <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4 z-20 ">
-            <Nyheter link={"/intranet/news/"} data={JSON.parse(news)} />
+            <Nyheter admin={user.admin} link={"/intranet/news/"} data={JSON.parse(news)} />
           </div>
         </div>
       </div>
