@@ -14,6 +14,15 @@ import { Doughnut } from "react-chartjs-2";
 import { getGenderCount } from "../Database";
 import computerWhite from "../public/images/darkMode/computerWhite.png";
 import computerBlack from "../public/images/lightMode/computerBlack.png";
+import webbBlack from "../public/images/lightMode/webbBlack.png";
+import webbWhite from "../public/images/darkMode/webbWhite.png";
+import circuitWhite from "../public/images/darkMode/circuitWhite.png";
+import circuitBlack from "../public/images/lightMode/circuitBlack.png";
+import armWhite from "../public/images/darkMode/armWhite.png";
+import armBlack from "../public/images/lightMode/armBlack.png";
+import fysikBlack from "../public/images/lightMode/fysikBlack.png";
+import fysikWhite from "../public/images/darkMode/fysikWhite.png";
+
 import Reviews from "../components/toWorkAtBroccoli/reviews";
 import ThemedImage from "../components/themedImage";
 export const getStaticProps = async () => {
@@ -110,8 +119,8 @@ export default function Home({ feed, genderCount }) {
                   <div className="relative">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={computerBlack}
-                        img_path_dark={computerWhite}
+                        img_path_light={webbBlack}
+                        img_path_dark={webbWhite}
                       />
                     </div>
                   </div>
@@ -124,8 +133,8 @@ export default function Home({ feed, genderCount }) {
                   <div className="relative">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={computerBlack}
-                        img_path_dark={computerWhite}
+                        img_path_light={circuitBlack}
+                        img_path_dark={circuitWhite}
                       />
                     </div>
                   </div>
@@ -138,8 +147,8 @@ export default function Home({ feed, genderCount }) {
                   <div className="relative">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={computerBlack}
-                        img_path_dark={computerWhite}
+                        img_path_light={armBlack}
+                        img_path_dark={armWhite}
                       />
                     </div>
                   </div>
@@ -152,8 +161,8 @@ export default function Home({ feed, genderCount }) {
                   <div className="relative">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={computerBlack}
-                        img_path_dark={computerWhite}
+                        img_path_light={fysikBlack}
+                        img_path_dark={fysikWhite}
                       />
                     </div>
                   </div>

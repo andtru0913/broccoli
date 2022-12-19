@@ -32,12 +32,15 @@ export async function getServerSideProps(context) {
 export default function employee({ data, admin, notifications }) {
   return (
     <LayoutIntranet notifications={notifications} admin={admin}>
-      <main className=" py-20  flex flex-col items-center bg-secondary-1 ">
-        <h1 className=" text-center uppercase font-bold z-20"> Anställda </h1>
-        <h3 className="text-base z-20">
-          Här presenteras medarbetare på Broccoli med kontaktinformation
-        </h3>
-
+      <main className=" py-20  flex flex-col items-center bg-secondary-1  ">
+        <div className="h-[10rem] z-20">
+          <h1 className=" px-4 text-center uppercase font-bold z-20">
+            Anställda
+          </h1>
+          <h3 className="p-4 text-center text-base z-20">
+            Här presenteras medarbetare på Broccoli med kontaktinformation
+          </h3>
+        </div>
         <div className="layout flex flex-row flex-wrap py-4 bg-secondary-1 ">
           <svg
             className=" absolute fill-primary-l1 top-0 left-0 z-0 h-auto overflow-hidden "
