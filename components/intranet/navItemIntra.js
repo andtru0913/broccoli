@@ -19,7 +19,7 @@ const INTRA_MENU_LIST = [
     href: "/intranet",
   },
   {
-    text: "Handbook",
+    text: "Handbok",
     bottom: true,
     top: true,
     "icon-small": <HiBookOpen size={20} />,
@@ -27,7 +27,7 @@ const INTRA_MENU_LIST = [
     href: "/intranet/handbook/english/inledning.md",
   },
   {
-    text: "Employees",
+    text: "Anställda",
     bottom: false,
     top: true,
     "icon-small": <HiHandRaised size={20} />,
@@ -43,7 +43,7 @@ const INTRA_MENU_LIST = [
     href: "/intranet/dokument ",
   },
   {
-    text: "News",
+    text: "Nyheter",
     bottom: false,
     top: true,
     "icon-small": <HiCalendar size={20} />,
@@ -59,7 +59,7 @@ const INTRA_MENU_LIST = [
     href: "https://www.broccoli.be/tid/",
   },
   {
-    text: "Calendar",
+    text: "Kalendar",
     bottom: true,
     top: false,
     "icon-small": <HiCalendar size={20} />,
@@ -67,7 +67,7 @@ const INTRA_MENU_LIST = [
     href: "/intranet/calendar",
   },
   {
-    text: "Profile",
+    text: "Profil",
     bottom: false,
     top: false,
     "icon-small": <HiUserCircle size={20} />,

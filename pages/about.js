@@ -81,8 +81,8 @@ export default function About({ title, intro, year, timelinedesc }) {
               <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
                 <Image
                   className="w-40 h-40 relative lg:absolute"
-                  alt="karlatornet"
-                  src="/images/karlatornet.JPG"
+                  alt="bird"
+                  src="/images/bird.png"
                   layout="fill"
                   objectFit="cover"
                 />
