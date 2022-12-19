@@ -165,7 +165,6 @@ export default function Home({ feed, genderCount }) {
               </div>
             </div>
           </div>
-
           <svg
             className="absolute top-80 lg:top-32 h-auto left-0 hidden w-4/5 lg:w-1/2 -z-10"
             width="721"

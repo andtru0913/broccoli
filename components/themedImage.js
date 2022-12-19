@@ -25,8 +25,7 @@ function ThemedImage({ img_path_light, img_path_dark }) {
       src = img_path_dark;
       break;
     default:
-      src =
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+      src = img_path_light;
       break;
   }
 
