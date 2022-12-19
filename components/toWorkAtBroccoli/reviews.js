@@ -25,7 +25,7 @@ const Reviews = () => {
   ];
 
   return (
-    <div className=" py-2 h-auto transition-all duration-500">
+    <div className=" h-auto transition-all duration-500">
       {data.map((data) => {
         return (
           <ReviewsSection

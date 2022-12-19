@@ -2,9 +2,9 @@ import { getPage } from "../Database";
 import Page from "../components/page";
 import { career } from "../defaultIDs";
 import Layout from "../components/layout/layout";
-import { FaHandshake, FaRunning } from "react-icons/fa";
+import { FaHandshake, FaRunning, FaPhoneAlt } from "react-icons/fa";
 import { BiHealth } from "react-icons/bi";
-import { GiPartyFlags } from "react-icons/gi";
+import { GiPartyFlags, GiSmartphone } from "react-icons/gi";
 
 export async function getServerSideProps(context) {
   const pageId = career;
@@ -40,6 +40,13 @@ export default function Career({ admin, page, pageName }) {
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-secondary-d1",
     },
+
+    {
+      icon_svg: <GiSmartphone size={90} />,
+      title: "Företagstelefon",
+      text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      color: "bg-primary-l2",
+    },
     {
       icon_svg: <GiPartyFlags size={90} />,
       title: "Aktiviteter",
@@ -60,7 +67,7 @@ export default function Career({ admin, page, pageName }) {
           <div className="pt-12 flex flex-col px-5 text-center items-center justify-center ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
-            <div className=" grid md:grid-cols-4 w-screen justify-center gap-0 ">
+            <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
               {data.map((data) => {
                 return (
                   <div
