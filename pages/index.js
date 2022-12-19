@@ -12,17 +12,6 @@ import broccoligarden from "../public/images/kranar.png";
 import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { getGenderCount } from "../Database";
-import computerWhite from "../public/images/darkMode/computerWhite.png";
-import computerBlack from "../public/images/lightMode/computerBlack.png";
-import webbBlack from "../public/images/lightMode/webbBlack.png";
-import webbWhite from "../public/images/darkMode/webbWhite.png";
-import circuitWhite from "../public/images/darkMode/circuitWhite.png";
-import circuitBlack from "../public/images/lightMode/circuitBlack.png";
-import armWhite from "../public/images/darkMode/armWhite.png";
-import armBlack from "../public/images/lightMode/armBlack.png";
-import fysikBlack from "../public/images/lightMode/fysikBlack.png";
-import fysikWhite from "../public/images/darkMode/fysikWhite.png";
-
 import Reviews from "../components/toWorkAtBroccoli/reviews";
 import ThemedImage from "../components/themedImage";
 export const getStaticProps = async () => {
@@ -92,82 +81,82 @@ export default function Home({ feed, genderCount }) {
         </svg>
 
         <section className="relative">
-          <div className=" pb-12  flex flex-col justify-center">
+          <div className=" pt-12  flex flex-col justify-center">
             <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
-              <div className="  lg:max-w-readable flex justify-center">
-                <h4 className="text-center">
-                  Hos broccoli jobbar ingenjörer med olika inriktningar främst
+              <div className="  lg:max-w-readable flex justify-center pb-8">
+                <h2 className="text-center font-bold uppercase">
+                  Hos broccoli jobbar ingenjörer med olika inriktningar, främst
                   inom:
-                </h4>
+                </h2>
               </div>
-              <div className="flex flex-row flex-wrap flex-auto justify-center  gap-2">
-                <div className=" flex flex-col items-center ">
-                  <div className="relative">
+              <div className="flex flex-row flex-wrap flex-auto justify-center gap:2">
+                <div className=" flex flex-col items-center">
+                  <div className="relative  mb-2 mt-4">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={computerBlack}
-                        img_path_dark={computerWhite}
+                        img_path_light="/images/lightMode/computerBlack.png"
+                        img_path_dark="/images/lightMode/computerWhite.png"
                       />
                     </div>
                   </div>
 
-                  <div className="bg-primary-1 py-4 px-6 ">
+                  <div className="bg-primary-1 py-4 px-6 mx-2 ">
                     <p className="font-medium">Data</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center  ">
-                  <div className="relative">
+                  <div className="relative mb-2 mt-4">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={webbBlack}
-                        img_path_dark={webbWhite}
+                        img_path_light="/images/lightMode/webbBlack.png"
+                        img_path_dark="/images/lightMode/webbWhite.png"
                       />
                     </div>
                   </div>
 
-                  <div className="bg-primary-1 py-4 px-6">
+                  <div className="bg-primary-1 py-4 px-6 mx-2">
                     <p className="font-medium">Mjukvara</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center ">
-                  <div className="relative">
+                  <div className="relative  mb-2 mt-4">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={circuitBlack}
-                        img_path_dark={circuitWhite}
+                        img_path_light="/images/lightMode/circuitBlack.png"
+                        img_path_dark="/images/lightMode/circuitWhite.png"
                       />
                     </div>
                   </div>
 
-                  <div className="bg-primary-1 py-4 px-6">
+                  <div className="bg-primary-1 py-4 px-6 mx-2">
                     <p className="font-medium">Elektronik</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center  ">
-                  <div className="relative">
+                  <div className="relative mt-4 mb-2">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={armBlack}
-                        img_path_dark={armWhite}
+                        img_path_light="/images/lightMode/armBlack.png"
+                        img_path_dark="/images/lightMode/armwWhite.png"
                       />
                     </div>
                   </div>
 
-                  <div className="bg-primary-1 py-4 px-6">
+                  <div className="bg-primary-1 py-4 px-6 mx-2">
                     <p className="font-medium">Mekatronik</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center ">
-                  <div className="relative">
+                  <div className="relative mt-4 mb-2">
                     <div className=" w-20 h-20">
                       <ThemedImage
-                        img_path_light={fysikBlack}
-                        img_path_dark={fysikWhite}
+                        img_path_light="/images/lightMode/fysikBlack.png"
+                        img_path_dark="/images/darkMode/fysikWhite.png"
                       />
                     </div>
                   </div>
 
-                  <div className="bg-primary-1 py-4 px-6">
+                  <div className="bg-primary-1 py-4 px-6 mx-2">
                     <p className="font-medium">Teknisk Fysik</p>
                   </div>
                 </div>
@@ -188,13 +177,13 @@ export default function Home({ feed, genderCount }) {
         </section>
 
         <section className="">
-          <div className=" pb-12 lg:py-12 xl:py-48  flex flex-col justify-center">
-            <div className="py-2  lg:p-4 text-center">
+          <div className=" py-12 lg:py-14 xl:py-48  flex flex-col justify-center">
+            <div className="  text-center">
               <h1 className="uppercase font-bold ">Att jobba hos broccoli</h1>
             </div>
             <div className="layout grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 ">
               <div className="flex flex-col items-center gap-12 md:pt-12 lg:pt-0">
-                <p className="h4 md:h3 text-center lg:max-w-lg xl:max-w-xl leading-relaxed">
+                <p className="h4 md:h3 text-center lg:max-w-lg xl:max-w-xl leading-relaxed px-5">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och är måna om att nås av rätt information vid rätt tidpunkt.
                   Genom våra individuella egenskaper bygger vi en stark
@@ -208,15 +197,15 @@ export default function Home({ feed, genderCount }) {
                   <p></p>
                 </div>
               </div>
-              <div className="flex flex-col  flex-1 lg:w-4/5">
+              <div className=" flex flex-col  flex-1 lg:w-4/5">
                 <Reviews />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="relative  mx-0">
-          <div className=" pb-12 lg:py-12 text-center overflow-hidden ">
+        <section className="relative  ">
+          <div className=" py-12 lg:py-14 text-center overflow-hidden ">
             <h1 className=" uppercase font-bold ">Våra kärnvärden</h1>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
@@ -231,11 +220,11 @@ export default function Home({ feed, genderCount }) {
                   av varandra vilket leder till vår trevliga företagskultur.
                 </p>
               </div>
-              <div className="relative rounded">
+              <div className="relative ">
                 <div className=" bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <p className="h3 lg:h2 shrink font-bold uppercase">
+                  <h2 className=" shrink font-bold uppercase">
                     Professionalism
-                  </p>
+                  </h2>
 
                   <p className="text-justify">
                     Nöjda kunder får vi genom att prioritera god teknisk

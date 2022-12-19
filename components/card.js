@@ -3,6 +3,7 @@ const Card = ({ title, image, text, click }) => {
     <a
       onClick={click}
       className=" z-10 text-center cursor-default bg-secondary-1 p-14 md:p-12 md:mx-0 lg:p-14 text-inverted transition-all duration-150 ease-in-out hover:scale-105 hover:text-muted "
+      href="#linkForm"
     >
       <div className="flex flex-1 p-12 items-center md:p-4 ">
         <h2 className=" uppercase  self-center font-bold ">{title}</h2>
@@ -14,6 +15,7 @@ const Card = ({ title, image, text, click }) => {
     <a
       onClick={click}
       className=" relative md:mx-0 mb-4 md:mb-0 text-left bg-secondary-1 text-muted transition-all hover:text-muted duration-150 ease-in-out hover:scale-105 "
+      href="#linkForm"
     >
       {/*  <div className="h-1/2 overflow-hidden">
         <img className=" w-full  bg-cover bg-center " src={image} />

@@ -1,13 +1,18 @@
 export default function Form({ title }) {
   return (
     <>
-      <div className="flex flex-col ">
+      <div className="  flex flex-col ">
         <div className=" w-full  md:p-12">
           {/**title */}
 
           <div className="relative flex  flex-row ">
             <div className="flex-1 flex justify-center md:justify-start  p-2 text-2xl">
-              <p className="flex self-center md:self-auto uppercase">{title}</p>
+              <p
+                id="linkForm"
+                className=" pt-12 flex self-center md:self-auto uppercase"
+              >
+                {title}
+              </p>
             </div>
           </div>
 

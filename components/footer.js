@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="flex justify-center">
             <Link href="/">
               <a>
-                <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-10">
+                <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-16">
                   <ThemedImage
                     img_path_light="/images/lightMode/BroccoliBlack.png"
                     img_path_dark="/images/darkMode/BroccoliWhite.png"
