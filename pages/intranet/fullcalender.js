@@ -1,57 +1,41 @@
-import {getEvents, getNotifications} from "../../Database";
 import Calender from "../../components/intranet/Calender";
-import * as Database from "../../Database";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
+import {getBirthdays, getEvents, getNotifications, getUserinfo} from "../../Database";
 
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies? await Database.getUserinfo(cookies.id):null;
-  if (!!user) {
-    let events = await getEvents(undefined);
-    events.map((data) => {
-      data.startDate = new Date(data.start).toLocaleString("default", {
-        day: "numeric",
-        month: "short",
-      });
-      data.endDate = new Date(data.start).toLocaleString("default", {
-        day: "numeric",
-        month: "short",
-      });
-    });
-
-    return {
-      props: {
-        user: user,
-        events: JSON.stringify(events),
-        notifications: JSON.stringify(await getNotifications())
-      },
-    };
-  }
-  return {
-    redirect: {
-      permanent: false,
-      destination: "/intranet",
-    },
-    props: {},
-  };
+  const user = !!cookies ? (await getUserinfo(cookies.id)) : null;
+  return !user ?
+      {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+      :
+      {
+        props: {
+          user: user,
+          events: JSON.stringify(await getEvents(undefined)),
+          notifications: JSON.stringify(await getNotifications()),
+          birthdays: JSON.stringify(await getBirthdays())
+        }
+      }
 }
 
-export default function Home({ user, events, notifications }) {
 
-  return (<LayoutIntranet admin={user.admin} notifications={notifications}>
-        <button onClick={function() {
-          fetch("../api/admin/getNotAnswered", {
-            method: 'post', // Default is 'get'
-            body: JSON.stringify({id: '63885f1daa2ce12979e5a1da'}),
-            headers: new Headers({
-              'Content-Type': 'application/json'
-            })
-          })
-              .then(response => response.json())
-              .then(json => console.log(json))
-
-        }}>Test</button>
-        <Calender user={user} allEvents={JSON.parse(events)} cal="all" />
-      </LayoutIntranet>
-  );
+export default function Home({ user, events, notifications, birthdays }) {
+  let allEvents = JSON.parse(events)
+  JSON.parse(birthdays).forEach((u) => {
+    if (!!u.birthday) {
+      let birthday = (new Date(u.birthday))
+      birthday.setFullYear(new Date().getFullYear())
+      allEvents.push({title: `${u.firstname} ${u.lastname}s födelsedag`, start: birthday, end: birthday})
+    }
+  })
+  return (
+      <LayoutIntranet notifications={notifications} admin={user.admin}>
+        <Calender id={"calendar"} user={user} allEvents={allEvents} cal="mine" />
+      </LayoutIntranet>);
 }

@@ -237,6 +237,11 @@ export async function getEvents(id) {
 
 export async function upcomingEvents(n) {
   return await prisma.event.findMany({
+    where: {
+      end: {
+        gt: new Date()
+      }
+    },
     select: {
       id: true,
       title: true,
