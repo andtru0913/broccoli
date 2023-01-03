@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
-import {getAllUsers, getGroups, getNotifications, getUserinfo} from "../../../Database";
+import {getAllUsers, getGroupsAdmin, getNotifications, getUserinfo} from "../../../Database";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
       }
       :
       {
-    props: { lunchGroupString: JSON.stringify(await getGroups()), userString: JSON.stringify(await getAllUsers()), notifications: JSON.stringify(await getNotifications()) },
+    props: { lunchGroupString: JSON.stringify(await getGroupsAdmin()), userString: JSON.stringify(await getAllUsers()), notifications: JSON.stringify(await getNotifications()) },
   };
 }
 

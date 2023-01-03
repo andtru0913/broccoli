@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
         {
             props: {
                 user: user,
-                news: JSON.stringify(await getAllNews()),
+                news: JSON.stringify(await getAllNews(false )),
                 notifications: JSON.stringify(await getNotifications()),
             }
         }
@@ -120,6 +120,7 @@ export default function Home({ user, news, notifications }) {
       </div>
 
       <div className="flex flex-col bg-secondary-1 h-screen pt-12">
+          <a href={"./news/archive"} className={"ml-4"}>Arkiv</a>
         <div className="flex flex-row">
           <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4 z-20 ">
             <Nyheter admin={user.admin} link={"/intranet/news/"} data={JSON.parse(news)} />

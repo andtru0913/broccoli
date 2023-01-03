@@ -303,12 +303,33 @@ export async function createGroup(name) {
   });
 }
 
+export async function getGroupsAdmin() {
+  return await prisma.lunchgroup.findMany({
+    select: {
+      id: true,
+      title: true,
+      users: {
+        select: {
+          id: true,
+          firstname: true,
+          lastname: true
+        }
+      }
+    },
+  });
+}
 export async function getGroups() {
   return await prisma.lunchgroup.findMany({
     select: {
       id: true,
       title: true,
-      users: true,
+      users: {
+        select: {
+          email: true,
+          firstname: true,
+          lastname: true
+        }
+      }
     },
   });
 }
@@ -397,6 +418,28 @@ export async function deleteNews(id) {
     },
   });
 }
+export async function archiveNews(id) {
+  return await prisma.news.update({
+    where: {
+      id: id,
+    },
+    data: {
+      archive: true
+    }
+  });
+}
+
+export async function removeArchive(id) {
+  return await prisma.news.update({
+    where: {
+      id: id,
+    },
+    data: {
+      archive: false
+    }
+  });
+}
+
 export async function updateCard(id, title, description) {
     return await prisma.card.update({
       where: {
@@ -612,6 +655,9 @@ export async function createNews(title, filename, date, author) {
 export async function getNews(take) {
   return (
     await prisma.news.findMany({
+      where: {
+        archive: false
+      },
       select: {
         id: true,
         title: true,
@@ -633,13 +679,17 @@ export async function getNews(take) {
   );
 }
 
-export async function getAllNews() {
+export async function getAllNews(isArchive) {
   return await prisma.news.findMany({
+    where: {
+      archive: isArchive
+    },
     select: {
       id: true,
       title: true,
       file: true,
       date: true,
+      archive:true,
       author: {
         select: {
           firstname: true,
@@ -648,8 +698,12 @@ export async function getAllNews() {
         },
       },
     },
+    orderBy: {
+      date: "desc"
+    }
   });
 }
+
 
 export async function getUserOverview() {
   return await prisma.user.findMany({

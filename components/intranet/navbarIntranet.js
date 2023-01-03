@@ -125,8 +125,8 @@ const NavbarIntranet = ({ admin, notifications }) => {
             <div
               className={` ${
                 notificationOpen
-                  ? "px-2 fixed  right-0  top-40   flex  flex-col  w-1/4 min-h-1/3 rounded-lg  duration-500 ease-in-out bg-fill-1"
-                  : "px-2 fixed  -right-full  top-40 flex  flex-col  w-1/2 rounded-lg min-h-1/3 duration-500 ease-in-out"
+                  ? "px-2 fixed  right-0  top-40   flex  flex-col  w-1/4 min-h-1/3 rounded-lg min-h-[30%]  duration-500 ease-in-out bg-fill-1"
+                  : "px-2 fixed  -right-full  top-40 flex  flex-col  w-1/2 rounded-lg h-1/3 duration-500 ease-in-out"
               }
                  `}
             >
@@ -188,8 +188,8 @@ const NavbarIntranet = ({ admin, notifications }) => {
             <ul
               className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
-                                      isOpen === false
-                                        ? " lg:static fixed  -left-full  bottom-16 flex  flex-col  w-full h-1/4 rounded-lg  text-end  duration-300  "
+                                      isOpen
+                                        ? " lg:static fixed  -left-full  bottom-16 flex  flex-col w-full h-1/4 rounded-lg  text-end  duration-300  "
                                         : "lg:static  fixed  left-0  bottom-16   flex  flex-col  w-full h-1/4 rounded-lg  text-end  duration-300 bg-fill-1"
                                     }`}
             >

@@ -92,6 +92,7 @@ model News {
   date     DateTime
   author   User   @relation(fields: [authorId], references: [id])
   authorId String @db.ObjectId
+  archive   Boolean @default(false)
 }
 
 model Notifications {

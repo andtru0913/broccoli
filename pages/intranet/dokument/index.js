@@ -63,8 +63,8 @@ export default function Home({ admin, notifications, data }) {
   }
   return (
     <LayoutIntranet admin={admin} notifications={notifications}>
-      <main className="">
-        <div className="layout py-20 md:py-12  flex flex-col items-center">
+      <main className="bg-secondary-1">
+        <div className=" layout py-20 md:py-12  flex flex-col items-center">
           <section>
             {button}
 

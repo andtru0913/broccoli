@@ -9,14 +9,6 @@ const NewsSection = ({
   admin,
   link,
 }) => {
-  const deletebutton = admin ? (
-    <form method={"POST"} action={"../../api/admin/deleteNews"}>
-      <input type={"hidden"} name={"id"} value={id} />
-      <button type={"submit"}>&#10060;</button>
-    </form>
-  ) : (
-    ""
-  );
   return (
     <a
       key={id}
@@ -29,12 +21,27 @@ const NewsSection = ({
           <p className="py-2">{author.firstname}</p>
         </div>
         <div className="flex flex-col p-5 mt-5 w-full">
-          <div className="flex flex-row ">
+          <div className="flex flex-row justify-between ">
             <p className="">{date.split("T")[0]}</p>
+            {admin ?
+                  <form className={"flex flex-row items-center"} method={"POST"} action={"../../api/admin/deleteNews"}>
+                    <input type={"hidden"} name={"id"} value={id} />
+                    <input type={"hidden"} name={"redirect"} value={"../../intranet/news"} />
+                    <button className={"mx-auto"} type={"submit"}>Radera</button>
+                  </form>
+                :
+                ""}
           </div>
           <div className={"flex justify-between"}>
             <h4 className={"uppercase font-bold"}>{title}</h4>
-            {deletebutton}
+            {admin ?
+                <form className={"flex flex-row items-center"} method={"POST"} action={"../../api/admin/archiveNews"}>
+                  <input type={"hidden"} name={"id"} value={id} />
+                  <input type={"hidden"} name={"redirect"} value={"../../intranet/news"} />
+                  <button className={"mx-auto"} type={"submit"}>Arkivera</button>
+                </form>
+                :
+                ""}
           </div>
         </div>
       </div>
