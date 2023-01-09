@@ -720,6 +720,17 @@ export async function getUserOverview() {
   });
 }
 
+export async function getUserNotifications() {
+  return await prisma.user.findMany({
+    select: {
+      id:true,
+      firstname: true,
+      lastname: true,
+      email: true,
+    },
+  });
+}
+
 export async function deleteDocument(id) {
   return await prisma.document.delete({
     where: {
@@ -810,20 +821,45 @@ export async function deleteProfilePic(id) {
   });
 }
 
-export async function createNotification(userid, title, text, startdate, enddate) {
-  await prisma.notifications.create({
-    data: {
-      title: title,
-      text: text,
-      startDate: startdate,
-      endDate: enddate,
-      author: {
-        connect: {
-          id: userid,
+export async function createNotification(userid, title, text, startdate, enddate, users) {
+  if (users.isArray) {
+    let result = await prisma.notifications.create({
+          data: {
+            title: title,
+            text: text,
+            startDate: startdate,
+            endDate: enddate,
+            author: {
+              connect: {
+                id: userid,
+              }
+            },
+          }
         }
-      },
-    }
+    )
+    return await prisma.UserNotifications.createMany({
+      data: users.map(u => ({notificationId: result.id, userId: u}))
     })
+  }
+  else {
+    let result = await prisma.notifications.create({
+          data: {
+            title: title,
+            text: text,
+            startDate: startdate,
+            endDate: enddate,
+            author: {
+              connect: {
+                id: userid,
+              }
+            },
+          }
+        }
+    )
+    return await prisma.UserNotifications.create({
+      data: {notificationId: result.id, userId: users}
+    })
+  }
 }
 
 export async function getAllNotifications() {
@@ -847,37 +883,41 @@ export async function getAllNotifications() {
     })
 }
 
-export async function getNotifications() {
-  let result = await prisma.notifications.findMany({
+export async function getNotifications(userid) {
+  let result = await prisma.UserNotifications.findMany({
     where: {
-      endDate: {
+      notification: {
+        endDate: {
           gt: new Date()
-      }
+        }
+      },
+      userId: userid
     },
     select: {
-      id:true,
-      title: true,
-      text:true,
-      startDate: true,
-      endDate: true,
-      author: {
+      notification: {
         select: {
-          firstname: true,
-          lastname: true
+          id: true,
+          title: true,
+          text: true,
+          startDate: true,
+          endDate: true,
+          author: true
         }
       }
     },
     orderBy: {
-      startDate: 'desc'
+      notification: {
+        startDate: 'desc'
+      }
     }
   })
   result.map((data) => {
-    data.startDate = new Date(data.startDate).toLocaleString("default", {
+    data.notification.startDate = new Date(data.notification.startDate).toLocaleString("default", {
       year: "numeric",
       day: "numeric",
       month: "long",
     });
-    data.endDate = new Date(data.endDate).toLocaleString("default", {
+    data.notification.endDate = new Date(data.notification.endDate).toLocaleString("default", {
       year: "numeric",
       day: "numeric",
       month: "long",

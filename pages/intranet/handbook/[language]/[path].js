@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
 
     }
     return {
-      props: {md: result, filename: filename, language: language, admin: user.admin || null, notifications: JSON.stringify(await getNotifications())},
+      props: {md: result, filename: filename, language: language, admin: user.admin || null, notifications: JSON.stringify(await getNotifications(user.id))},
     };
   }
   return {

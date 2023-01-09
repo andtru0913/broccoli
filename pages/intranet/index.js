@@ -36,7 +36,7 @@ export async function getServerSideProps(context) {
         user: user,
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
-        notifications: JSON.stringify(await getNotifications()),
+        notifications: JSON.stringify(await getNotifications(user.id)),
         news: JSON.stringify(await getNews(2)),
       },
     };

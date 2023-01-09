@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
         props: {
           data: await getUserOverview(),
           admin: user.admin,
-          notifications: JSON.stringify(await getNotifications())
+          notifications: JSON.stringify(await getNotifications(user.id))
         }
       }
 }

@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
         props: {
           user: user,
           events: JSON.stringify(await getEvents(undefined)),
-          notifications: JSON.stringify(await getNotifications()),
+          notifications: JSON.stringify(await getNotifications(user.id)),
           birthdays: JSON.stringify(await getBirthdays())
         }
       }

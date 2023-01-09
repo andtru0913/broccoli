@@ -18,8 +18,8 @@ const NavbarIntranet = ({ admin, notifications }) => {
 
   useEffect(() => {
         let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
-        setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
-        setNotificationOpen(!parsedNotifications.every(item => notificationCookies.includes(item.id)))
+        setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.notification.id)))
+        setNotificationOpen(!parsedNotifications.every(item => notificationCookies.includes(item.notification.id)))
       }, []
   )
 
@@ -32,8 +32,8 @@ const NavbarIntranet = ({ admin, notifications }) => {
           let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
           const parsedNotifications = JSON.parse(notifications)
           parsedNotifications.forEach(item => {
-              if (!notificationCookies.includes(item.id)) {
-                  notificationCookies.push(item.id)
+              if (!notificationCookies.includes(item.notification.id)) {
+                  notificationCookies.push(item.notification.id)
               }
           })
           localStorage.setItem("readNotifications", JSON.stringify(notificationCookies))
@@ -133,11 +133,11 @@ const NavbarIntranet = ({ admin, notifications }) => {
                 {parsedNotifications.map((data) => {
                     return (
                         <UpcomingNotifications
-                            key={data.id}
-                            title={data.title}
-                            date={data.startDate}
-                            description={data.text}
-                            author={data.author}
+                            key={data.notification.id}
+                            title={data.notification.title}
+                            date={data.notification.startDate}
+                            description={data.notification.text}
+                            author={data.notification.author}
                         />
                     );
                 })}

@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
       }
       :
       {
-    props: { lunchGroupString: JSON.stringify(await getGroupsAdmin()), userString: JSON.stringify(await getAllUsers()), notifications: JSON.stringify(await getNotifications()) },
+    props: { lunchGroupString: JSON.stringify(await getGroupsAdmin()), userString: JSON.stringify(await getAllUsers()), notifications: JSON.stringify(await getNotifications(user.id)) },
   };
 }
 

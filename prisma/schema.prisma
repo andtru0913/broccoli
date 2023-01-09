@@ -34,6 +34,7 @@ model User {
   image         String?
   news2         News[]
   notifications Notifications[]
+  receivedNotifications UserNotifications[]
 }
 
 model Event {
@@ -103,4 +104,13 @@ model Notifications {
   endDate   DateTime
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String   @db.ObjectId
+  users     UserNotifications[]
+}
+
+model UserNotifications {
+    id              String   @id @default(auto()) @map("_id") @db.ObjectId
+    user            User     @relation(fields: [userId], references: [id])
+    userId          String   @db.ObjectId
+    notification    Notifications @relation(fields: notificationId, references: [id])
+    notificationId  String  @db.ObjectId
 }
