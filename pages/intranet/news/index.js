@@ -1,27 +1,26 @@
-import {getAllNews, getNotifications, getUserinfo} from "../../../Database";
+import { getAllNews, getNotifications, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { FileAdder } from "../../../components/FileAdder";
 import Nyheter from "../../../components/intranet/newsItem";
 
 export async function getServerSideProps(context) {
-    const cookies = JSON.parse(context.req.cookies["user"] || null);
-    const user = !!cookies ? (await getUserinfo(cookies.id)) : null;
-    return !user ?
-        {
-            redirect: {
-                permanent: false,
-                destination: "/intranet",
-            },
-            props: {},
-        }
-        :
-        {
-            props: {
-                user: user,
-                news: JSON.stringify(await getAllNews()),
-                notifications: JSON.stringify(await getNotifications()),
-            }
-        }
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !!cookies ? await getUserinfo(cookies.id) : null;
+  return !user
+    ? {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+    : {
+        props: {
+          user: user,
+          news: JSON.stringify(await getAllNews()),
+          notifications: JSON.stringify(await getNotifications()),
+        },
+      };
 }
 
 export default function Home({ user, news, notifications }) {
@@ -122,7 +121,11 @@ export default function Home({ user, news, notifications }) {
       <div className="flex flex-col bg-secondary-1 h-screen pt-12">
         <div className="flex flex-row">
           <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4 z-20 ">
-            <Nyheter admin={user.admin} link={"/intranet/news/"} data={JSON.parse(news)} />
+            <Nyheter
+              admin={user.admin}
+              link={"/intranet/news/"}
+              data={JSON.parse(news)}
+            />
           </div>
         </div>
       </div>

@@ -58,15 +58,23 @@ export default function Home({ feed, genderCount }) {
   };
   const insta_images = feed.data;
   return (
-    <Layout className="relativ">
+    <Layout className="relative">
       <main>
         <div className="overflow-hidden h-screen bg-center ">
           <Image
-            src="/images/frontpage.jpg"
+            src="/images/firstp3.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
           />
+          <div className="flex flex-col w-screen h-screen ">
+            <div className="absolute bottom-1/3 flex justify-center ">
+              <img
+                src="/images/lightMode/BroccoliBlack.png"
+                className=" flex justify-center w-1/2 "
+              />
+            </div>
+          </div>
         </div>
 
         <svg

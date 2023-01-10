@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
         notifications: JSON.stringify(await getNotifications()),
-        news: JSON.stringify(await getNews(2)),
+        news: JSON.stringify(await getNews(3)),
       },
     };
   }
@@ -118,14 +118,14 @@ export default function Home({
           <div className=" flex flex-col">
             <div className="flex flex-col relative h-screen">
               <Image
-                src="/images/BlurryGothenburg.JPG"
+                src="/images/finut.JPG"
                 layout="fill"
                 objectFit="cover"
                 alt="Siluette of Gothenburg"
                 className="absolute top-0 -z-20"
               />
 
-              <svg
+              {/**  <svg
                 className="hidden lg:flex  absolute h-auto fill-secondary-1 -z-10 lg:w-4/6 left-0 top-0 opacity-70"
                 width="832"
                 height="557"
@@ -146,27 +146,38 @@ export default function Home({
               >
                 <path d="M497.871 68.9819C555.514 55.7719 846.095 -130.073 848 169.849L822.381 579C792.211 561.005 617.427 476.712 551.245 465.347C514.078 458.964 367.014 449.72 327.077 405.679C280.488 354.303 124.767 387.842 58.0754 348.853C-8.61652 309.863 -5.0722 244.276 6.83704 206.786C18.7463 169.296 27.0239 107.103 79.4247 84.6092C121.345 66.6139 201.116 95.9745 297.188 95.9745C393.26 95.9745 440.228 82.192 497.871 68.9819Z" />
               </svg>
-
+    **/}
               <div className=" h-1/2  z-20 flex flex-row items-end">
-                <h1 className=" h0 font-bold uppercase flex-1 text-center text-inverted ">
+                <h1 className=" h0 font-bold uppercase flex-1 text-center text-secondary-1 ">
                   Välkommen {user.firstname}
                 </h1>
               </div>
             </div>
 
-            <div className="md:grid md:grid-cols-3 flex flex-col">
-              <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-secondary-d1">
-                <h2 className=" text-muted uppercase font-bold mb-1">
+            <div className="relative md:grid md:grid-cols-3 flex flex-col">
+              <svg
+                className="absolute left-0 -top-24 z-0 fill-primary-1"
+                width="565"
+                height="656"
+                viewBox="0 0 565 656"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M4.89484 622.768C-59.9537 638.899 -386.856 865.828 -389 499.602L-360.178 0C-326.237 21.9736 -129.606 124.901 -55.1501 138.778C-13.3372 146.572 152.109 157.86 197.039 211.637C249.451 274.371 424.637 233.417 499.665 281.026C574.694 328.636 570.706 408.721 557.308 454.499C543.91 500.278 534.598 576.219 475.647 603.686C428.486 625.66 338.745 589.808 230.664 589.808C122.583 589.808 69.7434 606.638 4.89484 622.768Z" />
+              </svg>
+              <div className=" md:grid md:col-span-2 flex flex-col p-12 lg:p-16 bg-secondary-1">
+                <h2 className=" text-muted uppercase font-bold z-10">
                   Senaste Nytt
                 </h2>
+
                 <Nyheter
                   link={"intranet/news/"}
                   admin={false}
                   data={JSON.parse(news)}
                 />
               </div>
-              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-1 ">
-                <h2 className="  text-muted uppercase font-bold mb-3 ">
+              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-d1 ">
+                <h2 className="  text-muted uppercase font-bold mb-3 z-10 ">
                   Kommande event
                 </h2>
                 {JSON.parse(events).map((data) => {
@@ -181,11 +192,22 @@ export default function Home({
                 })}
               </div>
 
-              <div className=" md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default ">
-                <h2 className=" text-muted uppercase font-bold ">
+              <div className=" relative md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default  ">
+                <svg
+                  className="absolute right-0 -top-5 z-0 fill-primary-l2"
+                  width="782"
+                  height="554"
+                  viewBox="0 0 782 554"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M497.871 68.9819C555.514 55.7719 846.095 -130.073 848 169.849L822.381 579C792.211 561.005 617.427 476.712 551.245 465.347C514.078 458.964 367.014 449.72 327.077 405.679C280.488 354.303 124.767 387.842 58.0754 348.853C-8.61652 309.863 -5.07227 244.276 6.83704 206.786C18.7463 169.296 27.0239 107.103 79.4247 84.6092C121.345 66.6139 201.116 95.9745 297.188 95.9745C393.26 95.9745 440.228 82.192 497.871 68.9819Z" />
+                </svg>
+
+                <h2 className=" text-muted uppercase font-bold z-10 ">
                   Lunchgrupper
                 </h2>
-                <div className="  flex flex-row flex-wrap gap-6 my-4 ">
+                <div className="  flex flex-row flex-wrap gap-6 my-4 z-10">
                   {lunchgroups.map((lunch, n) => {
                     return lunch.id === user.lunchgroup.id ? (
                       <div

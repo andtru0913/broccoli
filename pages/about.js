@@ -239,7 +239,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <Image
                     className="w-40 h-40 relative lg:absolute"
                     alt="karlatornet"
-                    src="/images/karlatornet.JPG"
+                    src="/images/bro2.JPG"
                     layout="fill"
                     objectFit="cover"
                   />
@@ -250,7 +250,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <Image
                     className="w-40 h-40 relative lg:absolute"
                     alt="karlatornet"
-                    src="/images/grass.JPG"
+                    src="/images/bi.jpg"
                     layout="fill"
                     objectFit="cover"
                   />
@@ -312,7 +312,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <Image
                     className="w-40 h-40 relative lg:absolute"
                     alt="karlatornet"
-                    src="/images/grass.JPG"
+                    src="/images/bro.jpg"
                     layout="fill"
                     objectFit="cover"
                   />
