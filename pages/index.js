@@ -8,7 +8,7 @@ import {
   FaSwimmer,
 } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
-import broccoligarden from "../public/images/kranar.png";
+import broccoligarden from "../public/images/bgard.jpeg";
 import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { getGenderCount } from "../Database";
