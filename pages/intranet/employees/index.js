@@ -43,9 +43,9 @@ export default function employee({ data, admin, notifications }) {
             Här presenteras medarbetare på Broccoli med kontaktinformation
           </h3>
         </div>
-        <div className="layout flex flex-row flex-wrap py-4 bg-secondary-1 ">
+        <div className="layout flex flex-row py-4 bg-secondary-1 ">
           <svg
-            className=" absolute fill-primary-l1 top-0 left-0 z-0 h-auto overflow-hidden "
+            className="  md:visible md:absolute  md:fill-primary-l1 md:top-0 md:left-0 md:z-0 md:h-auto  "
             width="950"
             height="350"
             viewBox="0 0 1011 497"

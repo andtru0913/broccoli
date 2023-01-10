@@ -4,16 +4,16 @@ export default function Contact() {
   return (
     <Layout>
       <section className=" bg-secondary-1 text-center text-base overflow-hidden cursor-default">
-        <div className="  grid grid-cols-1 md:grid-cols-2 justify-center cursor-default">
-          <div className="relative rounded ">
-            <div className="flex w-full h-full justify-center z-10 ">
+        <div className="  grid grid-cols-1 col-end-2 md:grid-cols-2 justify-center cursor-default">
+          <div className="relative ">
+            <div className="flex w-full h-full justify-center z-10  ">
               <img
                 className=" object-cover z-10"
                 src="/images/broccoli-kontor.jpg"
               />
             </div>
           </div>
-          <div className="relative rounded">
+          <div className="relative">
             <svg
               className="absolute overflow-clip fill-secondary-l1 top-12 lg:top16 right-0 w-11/12"
               width="645"

@@ -11,7 +11,7 @@ import {
 } from "react-icons/hi";
 const INTRA_MENU_LIST = [
   {
-    text: "Home",
+    text: "Hem",
     bottom: true,
     top: true,
     "icon-small": <HiHome size={20} />,

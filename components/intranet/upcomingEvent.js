@@ -1,6 +1,6 @@
 const upcomingEvent = ({ date, title, description }) => {
   return (
-    <div className=" cursor-pointer hover:bg-secondary-l2 bg-secondary-l1/60 my-2  ">
+    <div className=" cursor-pointer hover:bg-primary-l2 bg-secondary-1 my-2  ">
       <div className=" lex flex-1">
         <div className="flex flex-col">
           <div className="grid grid-cols-3 ">
