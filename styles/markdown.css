@@ -41,3 +41,7 @@
 .markdown ul {
     all:revert;
 }
+
+.markdown a {
+    all:revert;
+}

@@ -1,18 +1,24 @@
-import { authenticate } from "./authenticate";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import { getAllUsers, getNotifications } from "../../../Database";
+import { getAllUsers, getNotifications, getUserinfo } from "../../../Database";
 
 export async function getServerSideProps(context) {
-  let authentication = await authenticate(context);
-  if (authentication !== undefined) return authentication;
-
-  const user = await getAllUsers();
-  const notifications = await getNotifications();
-  return {
-    props: { user: user, notifications: JSON.stringify(notifications) },
-  };
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !!cookies ? await getUserinfo(cookies.id) : null;
+  return !user || !user.admin
+    ? {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+    : {
+        props: {
+          user: await getAllUsers(),
+          notifications: JSON.stringify(await getNotifications()),
+        },
+      };
 }
-
 export default function Home({ user, notifications }) {
   const popUpstyle = "h-screen w-screen bg-black absolute z-20 bg-opacity-60";
   const windowstyle =

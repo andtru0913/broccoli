@@ -1,6 +1,7 @@
-import LayoutIntranet from '../../../components/layout/layoutIntranet';
+import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import {getNotifications, getUserinfo} from "../../../Database";
-
+import HB_ITEMS from "../../../components/handbook/handbookItems";
+import HBLink from "../../../components/handbook/HBLink";
 export async function getServerSideProps(context) {
     const cookies = JSON.parse(context.req.cookies["user"] || null);
     const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
@@ -15,20 +16,23 @@ export async function getServerSideProps(context) {
         :
         {
             props: {
-                filename: context.params.filename,
                 admin: user.admin,
                 notifications: JSON.stringify(await getNotifications())
             }
         }
 }
 
-export default function Home ({filename, admin, notifications}) {
+export default function Home({admin,notifications}) {
     return (
-        <LayoutIntranet notifications={notifications} admin={admin}>
-            <object style={{height: "100vh"}} className={"mx-auto w-4/5"} data={`/uploads/dokument/${filename}#toolbar=1`}>
-                <p> Gick inte att öppna filen</p>
-                <a download={filename} href={`/uploads/dokument/${filename}`}>Ladda ner</a>
-            </object>
+        <LayoutIntranet admin={admin} notifications={notifications}>
+            <div className={"mt-20 mx-40 grid grid-cols-2 md:grid-cols-4 gap-2"}>
+                {HB_ITEMS.map((category,i) =>
+                <HBLink category={category} i={i}>
+                </HBLink>
+                )}
+            </div>
+
         </LayoutIntranet>
-    );
+    )
+
 }

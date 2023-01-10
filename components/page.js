@@ -76,6 +76,7 @@ const Page = ({
                     className=" p-2  rounded mb-2"
                     rows="3"
                     id="description"
+                    name="description"
                     placeholder="Text"
                   ></textarea>
                   <input type="hidden" name="pageId" value={page.id} />

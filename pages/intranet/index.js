@@ -8,9 +8,9 @@ import UpcomingEvent from "../../components/intranet/upcomingEvent";
 import { getNews, getNotifications } from "../../Database";
 
 export async function getServerSideProps(context) {
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
-  if (cookies !== null) {
-    const user = await Database.getUserinfo(cookies.id);
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !!cookies? await Database.getUserinfo(cookies.id):null;
+  if (!!user) {
     const groups = await Database.getAllLunchGroups();
     const events = await Database.upcomingEvents(3);
     events.map(
@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        user: user !== undefined ? user : null,
+        user: user,
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
         notifications: JSON.stringify(await getNotifications()),

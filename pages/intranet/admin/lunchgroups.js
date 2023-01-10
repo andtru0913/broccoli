@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { authenticate } from "./authenticate";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
-import {getAllUsers, getGroups, getNotifications} from "../../../Database";
+import {getAllUsers, getGroups, getNotifications, getUserinfo} from "../../../Database";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -19,17 +18,26 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 };
 
 export async function getServerSideProps(context) {
-  let authentication = await authenticate(context);
-  if (authentication !== undefined) return authentication;
-  let lunchGroups = await getGroups(undefined);
-  let users = await getAllUsers();
-  const notifications = await getNotifications()
-  return {
-    props: { lunchGroups: lunchGroups, users: users, notifications: JSON.stringify(notifications) },
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
+  return (!user || !user.admin)   ?
+      {
+        redirect: {
+          permanent: false,
+          destination: "/intranet",
+        },
+        props: {},
+      }
+      :
+      {
+    props: { lunchGroupString: JSON.stringify(await getGroups()), userString: JSON.stringify(await getAllUsers()), notifications: JSON.stringify(await getNotifications()) },
   };
 }
 
-export default function Home({ lunchGroups, users, notifications }) {
+
+export default function Home({ lunchGroupString, userString, notifications }) {
+  const users = JSON.parse(userString)
+  const lunchGroups = JSON.parse(lunchGroupString)
   let tasks = Object.assign(...users.map((a) => ({ [a.id.toString()]: a })));
   let columns = Object.assign(
     ...lunchGroups.map((a) => ({ [a.id.toString()]: a }))

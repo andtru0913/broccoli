@@ -24,7 +24,7 @@ const INTRA_MENU_LIST = [
     top: true,
     "icon-small": <HiBookOpen size={20} />,
     "icon-large": <HiBookOpen size={30} />,
-    href: "/intranet/handbook/english/inledning.md",
+    href: "/intranet/handbook/",
   },
   {
     text: "Anställda",

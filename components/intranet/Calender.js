@@ -9,6 +9,7 @@ import { useState } from "react";
 const Component = ({ user, allEvents, setIscoming }) => {
   const popHide = "pop-hide";
   const admin = user.admin;
+
   return (
     <FullCalendar
       plugins={[dayGridPlugin, interactionPlugin]}
@@ -27,51 +28,53 @@ const Component = ({ user, allEvents, setIscoming }) => {
         }
       }}
       eventClick={function (e) {
-        let background = document.getElementById("popup");
-        let description = e.event._def.extendedProps.description;
-        let title = e.event._def.title;
         let id = e.event._def.publicId;
-        let users = e.event._def.extendedProps.users;
-        let start = e.event._def.extendedProps.startDate;
-        let end = e.event._def.extendedProps.endDate;
+        if(!!id) {
+          let background = document.getElementById("popup");
+          let description = e.event._def.extendedProps.description;
+          let title = e.event._def.title;
+          let users = e.event._def.extendedProps.users;
+          let start = e.event._def.extendedProps.startDate;
+          let end = e.event._def.extendedProps.endDate;
 
-        background.classList.remove(popHide);
-        if (admin) {
-          let modifyevent = document.getElementById("modifyevent");
-          modifyevent.getElementsByClassName("title")[0].value = title;
-          modifyevent.getElementsByClassName("description")[0].value =
-            description;
+          background.classList.remove(popHide);
+          if (admin) {
+            let modifyevent = document.getElementById("modifyevent");
+            modifyevent.getElementsByClassName("title")[0].value = title;
+            modifyevent.getElementsByClassName("description")[0].value =
+                description;
 
-          modifyevent.getElementsByClassName("id")[0].value = id;
-          modifyevent.getElementsByClassName("id")[1].value = id;
-          modifyevent.getElementsByClassName("eventid")[0].value = id;
-          modifyevent.getElementsByClassName("eventid")[1].value = id;
-          modifyevent.getElementsByClassName("start")[0].valueAsDate = new Date(start);
-          modifyevent.getElementsByClassName("end")[0].valueAsDate = new Date(end);
-          const root = ReactDOM.createRoot(
-            document.getElementById("modifyRoot")
-          );
-          root.render(<List key={id} users={users} />);
-          modifyevent.classList.remove(popHide);
-        } else {
-          users.map((usr) =>
-            user.id === usr.user.id ? setIscoming(usr.coming) : ""
-          );
+            modifyevent.getElementsByClassName("id")[0].value = id;
+            modifyevent.getElementsByClassName("id")[1].value = id;
+            modifyevent.getElementsByClassName("eventid")[0].value = id;
+            modifyevent.getElementsByClassName("eventid")[1].value = id;
+            modifyevent.getElementsByClassName("start")[0].valueAsDate = new Date(start);
+            modifyevent.getElementsByClassName("end")[0].valueAsDate = new Date(end);
+            const root = ReactDOM.createRoot(
+                document.getElementById("modifyRoot")
+            );
+            root.render(<List key={id} users={users} />);
+            modifyevent.classList.remove(popHide);
+          } else {
+            users.map((usr) =>
+                user.id === usr.user.id ? setIscoming(usr.coming) : ""
+            );
 
-          let checkevent = document.getElementById("checkevent");
-          checkevent.getElementsByClassName("title")[0].innerText = title;
-          checkevent.getElementsByClassName("description")[0].innerText =
-            description;
-          checkevent.getElementsByClassName("start")[0].innerText = start;
-          checkevent.getElementsByClassName("end")[0].innerText = end;
-          checkevent.getElementsByClassName("eventid")[0].value = id;
-          checkevent.getElementsByClassName("eventid")[1].value = id;
-          const root = ReactDOM.createRoot(
-              document.getElementById("checkRoot")
-          );
-          root.render(<List key={id} users={users} user={user} />);
+            let checkevent = document.getElementById("checkevent");
+            checkevent.getElementsByClassName("title")[0].innerText = title;
+            checkevent.getElementsByClassName("description")[0].innerText =
+                description;
+            checkevent.getElementsByClassName("start")[0].innerText = start;
+            checkevent.getElementsByClassName("end")[0].innerText = end;
+            checkevent.getElementsByClassName("eventid")[0].value = id;
+            checkevent.getElementsByClassName("eventid")[1].value = id;
+            const root = ReactDOM.createRoot(
+                document.getElementById("checkRoot")
+            );
+            root.render(<List key={id} users={users} user={user} />);
 
-          checkevent.classList.remove(popHide);
+            checkevent.classList.remove(popHide);
+          }
         }
       }}
       eventDrop={function (e) {

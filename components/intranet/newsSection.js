@@ -8,8 +8,6 @@ const NewsSection = ({
   file,
   admin,
   link,
-  firstname,
-  lastname,
 }) => {
   const deletebutton = admin ? (
     <form method={"POST"} action={"../../api/admin/deleteNews"}>
