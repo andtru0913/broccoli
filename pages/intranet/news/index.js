@@ -1,4 +1,4 @@
-import {getAllNews, getNotifications, getUserinfo} from "../../../Database";
+import { getAllNews, getNotifications, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { FileAdder } from "../../../components/FileAdder";
 import Nyheter from "../../../components/intranet/newsItem";
@@ -123,7 +123,11 @@ export default function Home({ user, news, notifications }) {
           <a href={"./news/archive"} className={"ml-4"}>Arkiv</a>
         <div className="flex flex-row">
           <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4 z-20 ">
-            <Nyheter admin={user.admin} link={"/intranet/news/"} data={JSON.parse(news)} />
+            <Nyheter
+              admin={user.admin}
+              link={"/intranet/news/"}
+              data={JSON.parse(news)}
+            />
           </div>
         </div>
       </div>

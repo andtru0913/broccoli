@@ -19,12 +19,12 @@ export default function ({
     <>
       <div onClick={handleSetIndex} className="">
         {index !== id ? (
-          <div className="flex flex-1 group place-self-center flex-col p-2 cursor-pointer w-full border-transparent border-2  hover:border-black hover:border-2 hover:border-dashed">
-            <div className="relative bg-pink-300 justify-center w-36 h-40 md:w-56 md:h-64">
+          <div className="flex flex-1 group place-self-center flex-col p-2  cursor-pointer w-full border-transparent border-2  hover:border-black hover:border-2 hover:border-dashed">
+            <div className="relative justify-center w-36 h-40 md:w-56 md:h-64">
               <ProfilePicture image={img_path} />
             </div>
             <div className=" flex flex-col pt-2 pl-2 md:w-56 w-36">
-              <h5 className="uppercase text-base ">{author}</h5>
+              <h5 className="uppercase font-bold text-base ">{author}</h5>
             </div>
           </div>
         ) : (
@@ -39,12 +39,11 @@ export default function ({
                 <h4 className="text-xs">Uppdrag: {uppdrag}</h4>
                 <h4 className="text-xs">Telefon: {phone}</h4>
                 <h4 className="text-xs">Email: {email}</h4>
-                <p className="text-xs pt-3 col-span-2 ">Om mig:</p>
-                <p className="text-xs col-span-2">{text}</p>
+                <p className="text-sm pt-3  col-span-2">{text}</p>
               </div>
             </div>
             <div>
-              <h5 className="pl-2 text-base uppercase ">{author}</h5>
+              <h5 className="pl-2 text-base font-bold uppercase ">{author}</h5>
             </div>
           </div>
         )}

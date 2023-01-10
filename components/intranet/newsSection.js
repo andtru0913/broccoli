@@ -13,15 +13,17 @@ const NewsSection = ({
     <a
       key={id}
       href={`${link}${file}`}
-      className="bg-secondary-d2/30 cursor-pointer transition-all hover:bg-secondary-d2 my-2"
+      className="bg-secondary-l1 cursor-pointer transition-all hover:bg-primary-l2 mt-4 z-10 "
     >
-      <div className=" flex flex-1">
-        <div className=" p-5 mt-5 ml-3 justify-center">
+      <div className=" flex flex-1 z-10 ">
+        <div className=" flex flex-col p-2 mt-3 ml-5 justify-center">
           <SmallProfile className="font-normal "></SmallProfile>
           <p className="py-2">{author.firstname}</p>
         </div>
         <div className="flex flex-col p-5 mt-5 w-full">
           <div className="flex flex-row justify-between ">
+        <div className="flex flex-col p-2  mx-5 justify-center w-full z-10">
+          <div className="flex flex-row ">
             <p className="">{date.split("T")[0]}</p>
             {admin ?
                   <form className={"flex flex-row items-center"} method={"POST"} action={"../../api/admin/deleteNews"}>
