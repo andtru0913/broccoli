@@ -60,23 +60,33 @@ export default function Home({ feed, genderCount }) {
   return (
     <Layout className="relative">
       <main>
-        <div className="overflow-hidden h-screen bg-center ">
+        <div className="overflow-hidden h-full bg-center z-0 ">
           <Image
             src="/images/firstp3.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
           />
-          <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute bottom-1/3 flex justify-center ">
-              <img
-                src="/images/lightMode/BroccoliBlack.png"
-                className=" flex justify-center w-1/2 "
-              />
+
+          <div className="  overflow-hidden z-0">
+            <svg
+              className="fill-secondary-1/50 absolute z-0 right-0 top-0 h-auto lg:w-2/3  "
+              width="818"
+              height="895"
+              viewBox="0 0 818 902"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
+            </svg>
+
+            <div className="flex flex-col w-screen h-screen ">
+              <div className="absolute z-10 top-1/2 flex justify-end p-5 mr-5 md:mr-16 xl:mb-3">
+                <img src="/images/Broccolibl.png" className=" md:w-2/5 " />
+              </div>
             </div>
           </div>
         </div>
-
         <svg
           className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10"
           width="770"
@@ -89,6 +99,17 @@ export default function Home({ feed, genderCount }) {
         </svg>
 
         <section className="relative">
+          <svg
+            className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10 lg:hidden"
+            width="770"
+            height="1048"
+            viewBox="0 0 770 1048"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M48.3323 721.52C-17.2708 593.114 -67.2673 272.303 257.572 16.3055L823.14 0L833.498 122.292L848 831.583L808.638 984.447C796.208 1007.55 714.998 1052.52 489.6 1047.63C207.852 1041.52 218.21 986.485 203.708 984.447C192.107 982.817 95.2904 808.483 48.3323 721.52Z" />
+          </svg>
+
           <div className=" pt-12  flex flex-col justify-center">
             <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
               <div className="  lg:max-w-readable flex justify-center pb-8">

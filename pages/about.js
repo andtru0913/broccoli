@@ -56,14 +56,14 @@ export default function About({ title, intro, year, timelinedesc }) {
             <div className=" hidden md:grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
               <div className=" w-auto max-h-full min-w-full h-60 lg:h-[42rem] md:h-screen bg-tertiary-d1 place-content-center ">
                 <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col items-center gap-4 align-top lg:place-self-center  p-4 lg:p-8 xl:p-12">
-                  <div className=" flex flex-col p-10 lg:p-16 z-10">
+                  <div className=" flex flex-col p-5  z-10">
                     <h1 className="font-bold py-3 px-4 tracking-wider uppercase z-10 text-inverted ">
                       {title ?? "Om oss"}
                     </h1>
 
-                    <h4 className=" tracking-wider max-w-readable px-5 z-10 text-inverted ">
+                    <h4 className="   px-5 z-10 text-inverted ">
                       {intro ??
-                        "Vi kan erbjuda tjänster inom Mjukvaruutveckling, design, konstruktion, testning och inbyggda system. Med vår kompetens kan vi fylla gränslandet mellan hårdvara och mjukvara. Merparten av våra konsulter är förlagda hos kund men vi har även inhouse projekt av olika storlekar. "}
+                        "Vi är ett Göteborgsbaserat konsultföretag med ca 50 anställda. Vårt kompetensområde sträcker sig från det mekatroniska och ända upp i molnet. Vi erbjuder tjänster för utveckling av system inom områden där bland annat kontroll, reglering, övervakning, säkerhet och kommunikation är önskade funktioner.  Dessa system kan vara inbyggda, befinna sig i molnet eller någonstans däremellan. De kan vara uppkopplade eller helt autonoma. De förbrukar alltid elektricitet, men kan även vara beroende av andra energikällor, såsom fossila bränslen, vätgas mm. Vårt engagemang inom fordonsindustrin är stort, men även andra tekniska branscher eller branscher baserade på mer virtuella system är en del av det vi dagligen ägnar oss åt. "}
                     </h4>
                   </div>
                   <svg
@@ -126,51 +126,57 @@ export default function About({ title, intro, year, timelinedesc }) {
 
             <p className=" text-center px-5 pb-4  max-w-readable pt-2">
               {intro ??
-                "Majoriteten av våra kunder är produktutvecklande företag som återfinns inom diverse olika branscher såsom fordon, automation, marin, medicin med flera."}
+                "Majoriteten av våra kunder är produkt- eller tjänsteföretag som återfinns inom diverse olika branscher såsom fordon, automation, marin, energi, medicin, försvar, säkerhet med flera."}
             </p>
             <div className="grid grid-cols-1 grid-flow-row md:grid-cols-4 w-full cursor-default">
               <div className="relative bg-tertiary-1 text-inverted p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
-                  <IoBoatSharp size={40} />
-                </div>
-
-                <p className="text-center max-w-readable">
-                  Vi har inom marina tillämpningar bl.a. arbetat med styrsystem,
-                  brandskyddssystem och drivlineövervakning på fartyg.
-                </p>
-              </div>
-              <div className="relative bg-secondary-1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
-                <div className="flex justify-center">
                   <AiOutlineCar size={40} />
                 </div>
 
-                <p className="text-center  max-w-readable">
+                <p className="text-center max-w-readable">
                   Inom fordon har vi bred erfarenhet av olika ingenjörsroller
-                  inom t.ex. säkerhetselektronik, infotainmentsystem och
-                  powertrain.
+                  inom t.ex. säkerhetselektronik, infotainmentsystem,
+                  eftermarknad, klimat, OTA (Over The Air) och drivlina.
                 </p>
               </div>
-              <div className="relative bg-primary-l1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="relative bg-secondary-1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
                   <BsGearWideConnected size={40} />
                 </div>
 
                 <p className="text-center  max-w-readable">
-                  Vi har inom automationsbranschen varit delaktiga i
-                  utvecklingen av lastrampsövervakning och kommunikationsmoduler
-                  för ett antal olika kommunikationsprotokoll mm.
+                  Vi har inom automation- och energibranschen erfarenhet från
+                  t.ex utveckling av värmepumpar, vätgasapplikationer och
+                  kommunikationsmoduler för ett antal olika
+                  kommunikationsprotokoll.
+                </p>
+              </div>
+              <div className="relative bg-primary-l1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+                <div className="flex justify-center">
+                  <IoBoatSharp size={40} />
+                </div>
+
+                <p className="text-center  max-w-readable">
+                  Vi har erfarenhet inom marina tillämpningar där vi bl.a.
+                  arbetat med styrsystem, brandskyddssystem och
+                  drivlineövervakning på fartyg.
                 </p>
               </div>
               <div className="relative bg-tertiary-1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex flex-row text-inverted justify-center">
-                  <GiHeartBeats size={30} />
-                  <GiRadarSweep size={30} />
+                  <div className="px-5">
+                    <GiHeartBeats size={30} />
+                  </div>
+                  <div>
+                    <GiRadarSweep size={30} />
+                  </div>
                 </div>
 
                 <p className="text-center text-inverted max-w-readable ">
-                  Vi har arbetat med diagnosutrustning inom medicinteknik,
+                  Vi har erfarenhet av diagnosutrustning inom medicinteknik,
                   radarsystem inom försvar, sensorteknik inom telekom,
-                  mekanikkonstruktion inom energibranschen mm.
+                  cybersäkerhet inom IT, mm.
                 </p>
               </div>
             </div>

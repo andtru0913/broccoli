@@ -9,36 +9,31 @@ import TimelineDot from "@mui/lab/TimelineDot";
 const data = [
   {
     year: "1993",
-    text:
-      "Broccoli grundades av Björn Bergholm vid sidan om Chalmersstudierna. " +
-      "Genom åren har företaget vuxit och är numera ett väl utvecklat " +
-      "teknikkonsultbolag  specialiserat inom elektronikutveckling.",
+    text: "Broccoli grundas av Björn som ett deltidsföretag vid sidan om Chalmersstudierna ",
   },
   {
     year: "2003",
-    text:
-      "Broccoli blir heltidssyselsättning  " +
-      "utvecklat teknikkonsultbolag specialiserat inom elektronikutveckling.",
+    text: "Broccoli blir heltidssysselsättning med fokus på mjukvarubaserad utveckling ",
   },
   {
     year: "2005",
-    text: "Start av aktiebolaget Broccoli och anställning av första kollegan Henrik",
+    text: "Broccoli byter bolagsform till aktiebolag och första kollegan Henrik anställs",
   },
   {
     year: "2006",
-    text: "Vi tar in vår första examensarbetare",
+    text: "Vi tar in vår första examensarbetare Dick",
   },
   {
     year: "2007",
-    text: "Lågkonjunktur utan uppsägningar",
+    text: "Lågkonjunktur men vi håller nollan, inga uppsägningar",
   },
   {
     year: "2010",
-    text: "Broccoli blev ett Gasellföretag",
+    text: "Broccoli blir ett Gasellföretag",
   },
   {
     year: "2012",
-    text: "Första konsultchefen anställs",
+    text: "Första konsultchefen Jessica anställs",
   },
   {
     year: "2013",
@@ -46,7 +41,7 @@ const data = [
   },
   {
     year: "2015",
-    text: "Vi blir totalt 50 anställda i alla bolag",
+    text: "Vi passerar 50 anställda",
   },
   {
     year: "2018",
@@ -54,14 +49,11 @@ const data = [
   },
   {
     year: "2019",
-    text: "Broccoli Systems säljs",
+    text: "Dotterbolaget Broccoli Systems med ca 25 anställda avyttras",
   },
   {
     year: "2020",
-    text:
-      "Broccoligården köps in" +
-      " konstruktion och testning av inbyggda system. Vi hjälper till att " +
-      "täcka behov i gränslandet mellan hårdvara och mjukvara i flera olika branscher.",
+    text: "Broccoligården förvärvas",
   },
 ];
 
