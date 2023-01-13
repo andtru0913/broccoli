@@ -47,6 +47,8 @@ const NewsSection = ({
           </div>
         </div>
       </div>
+        </div>
+      </div>
     </a>
   );
 };

@@ -32,7 +32,7 @@ model User {
   lunchgroupID  String?         @db.ObjectId
   events        UserOnEvent[]
   image         String?
-  news2         News[]
+  news          News[]
   notifications Notifications[]
   receivedNotifications UserNotifications[]
 }
@@ -93,7 +93,7 @@ model News {
   date     DateTime
   author   User   @relation(fields: [authorId], references: [id])
   authorId String @db.ObjectId
-  archive   Boolean @default(false)
+  archive  Boolean @default(false)
 }
 
 model Notifications {

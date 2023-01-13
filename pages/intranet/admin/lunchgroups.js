@@ -138,9 +138,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                   className="btn btn-primary"
                   onClick={function () {
                     document.getElementById("popup").classList.remove(popHide);
-                    document
-                      .getElementById("creategroup")
-                      .classList.remove(popHide);
+                    document.getElementById("creategroup").classList.remove(popHide);
                   }}
                 >
                   Ny lunchgrupp
@@ -169,9 +167,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
             onClick={function () {
               document.getElementById("popup").classList.add(popHide);
               document.getElementById("creategroup").classList.add(popHide);
-              document
-                .getElementById("modifyLunchgroup")
-                .classList.add(popHide);
+              document.getElementById("modifyLunchgroup").classList.add(popHide);
             }}
           ></div>
           <div id="creategroup" className={` window-pop ${popHide}`}>
@@ -183,9 +179,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                   type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
-                    document
-                      .getElementById("creategroup")
-                      .classList.add(popHide);
+                    document.getElementById("creategroup").classList.add(popHide);
                   }}
                 >
                   <HiXMark />
@@ -220,9 +214,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                   type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
-                    document
-                      .getElementById("modifyLunchgroup")
-                      .classList.add(popHide);
+                    document.getElementById("modifyLunchgroup").classList.add(popHide);
                   }}
                 >
                   <HiXMark />
@@ -231,7 +223,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
 
               <form
                 className="flex "
-                action="../../api/modifyLunchgroup"
+                action="../../api/admin/modifyLunchgroup"
                 method="POST"
               >
                 <div className="flex flex-col md:flex-row gap-4 py-4">
@@ -241,18 +233,14 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                     name="title"
                     placeholder="Titel"
                   />
-                  <input className={`id ${popHide}`} type="text" name="id" />
+                  <input className={`id`} type="hidden" name="id" />
                   <button className="shadow btn btn-create" type="submit">
                     Ändra händelse
                   </button>
                 </div>
               </form>
               <form action="../../api/admin/deleteLunchgroup" method="POST">
-                <input
-                  className="id p-2 border rounded mb-2"
-                  type="hidden"
-                  name="id"
-                />
+                <input className="id" type="hidden" name="id"/>
                 <button className="btn btn-delete" type="submit">
                   Radera händelse
                 </button>

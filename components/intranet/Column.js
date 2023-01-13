@@ -14,11 +14,11 @@ const Column = ({ column, tasks }) => {
             if (column.id !== lunchgroup) {
               let modifyLunchgroup =
                 document.getElementById("modifyLunchgroup");
-              modifyLunchgroup.getElementsByClassName("title")[0].value =
-                column.title;
-              modifyLunchgroup.getElementsByClassName("id")[0].value =
-                column.id;
-              modifyLunchgroup.classList.remove(popHide);
+                modifyLunchgroup.getElementsByClassName("title")[0].value = column.title;
+                modifyLunchgroup.querySelectorAll('input[type="hidden"]').forEach((item) => {
+                    item.value = column.id
+                })
+                modifyLunchgroup.classList.remove(popHide);
               document.getElementById("popup").classList.remove(popHide);
             }
           }}

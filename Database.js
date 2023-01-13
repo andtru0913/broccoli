@@ -34,7 +34,7 @@ export async function createNewUser(
       company: company,
       admin: admin !== undefined,
       salt: salt,
-      lunchgroupID: "634e9876bf1fe7084e06634c",
+      lunchgroupID: lunchgroup,
       image: null,
       role: role,
     },
@@ -264,6 +264,11 @@ export async function deleteEvent(id) {
 }
 
 export async function deleteNotification(id) {
+  await prisma.UserNotifications.deleteMany({
+    where: {
+      notificationId: id
+    }
+  })
     return await prisma.notifications.delete({
         where: {
             id:id
@@ -279,6 +284,17 @@ export async function updateEventDesc(id, title, description) {
     data: {
       title: title,
       description: description,
+    },
+  });
+}
+
+export async function modifyLunchgroup(id, title) {
+  return await prisma.lunchgroup.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title: title,
     },
   });
 }
@@ -360,17 +376,18 @@ export async function setLunchgroup(userid, lunchgroupid) {
 }
 
 export async function deleteLunchgroup(id) {
-  await prisma.lunchgroup.delete({
+
+  await prisma.user.updateMany({
     where: {
-      id: id,
-    },
-  });
-  return await prisma.user.updateMany({
-    where: {
-      lunchgroupID: null,
+      lunchgroupID: id,
     },
     data: {
       lunchgroupID: lunchgroup,
+    },
+  });
+  return await prisma.lunchgroup.delete({
+    where: {
+      id: id,
     },
   });
 }
@@ -822,7 +839,8 @@ export async function deleteProfilePic(id) {
 }
 
 export async function createNotification(userid, title, text, startdate, enddate, users) {
-  if (users.isArray) {
+  if (users.constructor.name === "Array") {
+
     let result = await prisma.notifications.create({
           data: {
             title: title,
@@ -862,6 +880,48 @@ export async function createNotification(userid, title, text, startdate, enddate
   }
 }
 
+export async function modifyNotification(notifId, title, text, enddate, users) {
+  await prisma.UserNotifications.deleteMany({
+    where: {
+      notificationId: notifId
+    }
+  })
+  if (users.constructor.name === "Array") {
+    const result = await prisma.notifications.update({
+      where: {
+        id:notifId
+      },
+          data: {
+            title: title,
+            text: text,
+            endDate: enddate,
+          }
+    })
+    return await prisma.UserNotifications.createMany({
+      data: users.map(u => ({notificationId: result.id, userId: u}))
+    })
+  }
+  else {
+    const result = await prisma.notifications.create({
+          data: {
+            title: title,
+            text: text,
+            startDate: startdate,
+            endDate: enddate,
+            author: {
+              connect: {
+                id: userid,
+              }
+            },
+          }
+        }
+    )
+    return await prisma.UserNotifications.create({
+      data: {notificationId: result.id, userId: users}
+    })
+  }
+}
+
 export async function getAllNotifications() {
     return await prisma.notifications.findMany({
         select: {
@@ -875,6 +935,15 @@ export async function getAllNotifications() {
                     firstname: true,
                     lastname: true
                 }
+            },
+            users: {
+              select: {
+                user: {
+                  select: {
+                    email: true
+                  }
+                }
+              }
             }
         },
       orderBy: {
