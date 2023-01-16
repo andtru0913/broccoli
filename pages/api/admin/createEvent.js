@@ -10,33 +10,47 @@ export default async function handler(req, res) {
         let end = new Date(req.body.end)
         let start = new Date(req.body.start)
         if (req.body.title !== "" && start <= end) {
-            await createEvent(req.body.title, req.body.description, start, end)
-                .catch(e => {
-                    console.error(e.message)
-                })
+            const client = new SMTPClient({
+                user: 'anders.truong@broccoli.se',
+                password: 'gFga2mDGz&',
+                host: 'smtp01.levonline.com',
+                tsl: true,
+                port: 587
+            });
+            const ics = require('ics')
+            ics.createEvent( {
+                start: [start.getFullYear(), (start.getMonth()+1)%12, start.getUTCDay(),0,0],
+                end: [end.getFullYear(), (start.getMonth()+1)%12, end.getUTCDay(),0,0],
+                title: req.body.title,
+                description: req.body.description,
+                organizer: {name: "Broccoli", email: "anders.truong@broccoli.se"}
+            } ,(err, value) => {
+                if (!err) {
+                    client.send(
+                        {
+                            text: `${req.body.title}\n${start.toLocaleString("default", {day: "numeric", month: "long",})} - ${end.toLocaleString("default", {day: "numeric", month: "long",})}\n${req.body.description}`,
+                            from: 'anders.truong@broccoli.se',
+                            to: 'andtru0913@gmail.com',
+                            subject: req.body.title,
+                            attachment: [{
+                                data: value,
+                                name: "event.ics"
+                            }]
+                        },
+                        async (err, _) => {
+                            if (!err) {
+                                await createEvent(req.body.title, req.body.description, start, end).catch(e => {
+                                    console.error(e.message)
+                                })
+                            }
+                        })
+                } else {
+                    console.log(err)
+                }
+            })
         }
-        /*
-        const client = new SMTPClient({
-            user: 'anders.truong@broccoli.se',
-            password: 'gFga2mDGz&',
-            host: 'smtp01.levonline.com',
-            tsl: true,
-            port: 587
-        });
+        }
 
-        client.send(
-            {
-                text: "<p style=\"font-family: times, serif;\">"+req.body.description+"</p>",
-                from: 'anders.truong@broccoli.se',
-                to: 'andtru0913@gmail.com',
-                subject: req.body.title
-            },
-            (err, message) => {
-                //console.log(err || message);
-            }
-        )
-        */
 
-    }
     res.redirect(302, '../../intranet/fullcalender');
 }

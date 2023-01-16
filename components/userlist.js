@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SmallProfile from "./smallProfile";
+import SmallProfile from "./SmallProfile";
 const List = ({ users }) => {
   const [index, setIndex] = useState(true);
 

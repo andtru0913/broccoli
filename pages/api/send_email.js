@@ -33,7 +33,7 @@ export default async function handler(req, res) {
             //console.log(err || message);
         }
     )
+*/
 
-     */
     res.redirect(302, '../carreer');
 }
