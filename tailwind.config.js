@@ -12,6 +12,7 @@ function withOpacity(variableName) {
 module.exports = {
   important: true,
   darkMode: "class",
+
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -21,6 +22,7 @@ module.exports = {
   variants: {
     animation: ["motion-safe"],
   },
+
   theme: {
     extend: {
       animation: {
@@ -154,5 +156,6 @@ module.exports = {
       },
     },
   },
+
   plugins: [require("@tailwindcss/line-clamp")],
 };

@@ -42,6 +42,7 @@
     "react-markdown": "^8.0.3",
     "sharp": "^0.31.1",
     "swr": "^1.3.0",
+    "taos": "^1.0.2",
     "tw-elements": "^1.0.0-alpha12"
   },
   "devDependencies": {
