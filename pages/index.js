@@ -70,18 +70,18 @@ export default function Home({ feed, genderCount }) {
 
           <div className="  overflow-hidden z-0">
             <svg
-              className="fill-secondary-1/50 absolute z-0 right-0 top-0 h-auto lg:w-2/3  "
-              width="818"
-              height="895"
-              viewBox="0 0 818 902"
+              className="fill-secondary-1/40 absolute z-0 right-0 bottom-0 h-auto lg:w-2/3  "
+              width="850"
+              height="704"
+              viewBox="0 0 850 704"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
+              <path d="M1076.54 536.211C1129 481.733 1162.98 429.612 1135.21 385.366C1099.43 342.88 1079.11 221.986 942.188 139.86C883.571 93.1478 828.694 74.5988 711.915 24.6996C646.676 -3.177 560.298 65.1129 472.678 87.7451C385.057 110.377 271.808 -28.7223 177.414 6.41411C107.024 32.6159 50.5347 122.503 47.3241 151.469C42.9831 190.634 -3.8496 282.131 1.1307 358.169C7.03954 448.382 82.996 541.715 147.869 590.956C195.895 627.41 262.594 635.375 353.42 634.654C472.035 633.712 505.984 774.547 553.94 837.605L553.961 837.633C601.924 900.698 694.494 1022.42 790.991 984.215C838.403 965.444 902.668 944.06 919.412 858.449C932.492 791.569 1029.89 759.386 1048.75 705.878C1067.61 652.369 1024.09 590.689 1076.54 536.211Z" />
             </svg>
 
             <div className="flex flex-col w-screen h-screen ">
-              <div className="absolute z-10 top-1/2 flex justify-end p-5 mr-5 md:mr-16 xl:mb-3">
+              <div className="absolute z-10 bottom-1/4 flex justify-end p-5 mx-5 md:mr-16 xl:mb-3">
                 <img src="/images/Broccolibl.png" className=" md:w-2/5 " />
               </div>
             </div>
@@ -237,9 +237,9 @@ export default function Home({ feed, genderCount }) {
             <h1 className=" uppercase font-bold ">Våra kärnvärden</h1>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
-                <h2 className="font-bold uppercase">Relationer</h2>
+                <h2 className="font-bold uppercase mx-3">Relationer</h2>
 
-                <p className="text-justify">
+                <p className="text-justify mx-3">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och bjuder aktivt in berörda i dialogen. Genom våra olikheter
                   bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
@@ -250,11 +250,11 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative ">
                 <div className=" bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className=" shrink font-bold uppercase">
+                  <h2 className=" shrink font-bold uppercase mx-3">
                     Professionalism
                   </h2>
 
-                  <p className="text-justify">
+                  <p className="text-justify mx-3">
                     Nöjda kunder får vi genom att prioritera god teknisk
                     kompetens och kvalitet samt genom att vara lyhörda till
                     behoven. Vi är den pålitliga partnern med goda ambitioner
@@ -266,8 +266,10 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative rounded">
                 <div className=" bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className="font-bold uppercase">Hållbar utveckling</h2>
-                  <p className="text-justify">
+                  <h2 className="font-bold uppercase mx-3">
+                    Hållbar utveckling
+                  </h2>
+                  <p className="text-justify mx-3">
                     Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
                     och teknisk utveckling. Vi gör medvetna val för en
                     långsiktig utveckling vilket ger oss trygghet, frihet och en
@@ -372,7 +374,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
                         <MdKitchen size={30} />
-                        <p className="font-bold ">Fullt utrustad kök</p>
+                        <p className="font-bold ">Fullt utrustat kök</p>
                       </div>
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4">
                         <FaChalkboardTeacher size={30} />

@@ -26,7 +26,7 @@ export default function Posts({ admin, page, pageName }) {
         page={page}
         image={pageName}
         redirect={pageName}
-        formTitle="Ansök om våra konsulttjänster"
+        formTitle="Ansök våra konsulttjänster"
       ></Page>
     </Layout>
   );

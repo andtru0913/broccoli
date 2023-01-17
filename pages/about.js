@@ -6,6 +6,9 @@ import { IoBoatSharp } from "react-icons/io5";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsGearWideConnected } from "react-icons/bs";
 import { GiHeartBeats, GiRadarSweep } from "react-icons/gi";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const callback = function (entries) {
   entries.forEach((entry) => {
     const animationType = entry.target.dataset.animateType;
@@ -39,6 +42,10 @@ export default function About({ title, intro, year, timelinedesc }) {
     // Callback for IntersectionObserver
   }, []);
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <Layout>
       <main>
@@ -54,27 +61,27 @@ export default function About({ title, intro, year, timelinedesc }) {
               </p>
             </div>*/}
             <div className=" hidden md:grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-              <div className=" w-auto max-h-full min-w-full h-60 lg:h-[42rem] md:h-screen bg-tertiary-d1 place-content-center ">
-                <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col items-center gap-4 align-top lg:place-self-center  p-4 lg:p-8 xl:p-12">
-                  <div className=" flex flex-col p-5  z-10">
-                    <h1 className="font-bold py-3 px-4 tracking-wider uppercase z-10 text-inverted ">
+              <div className="  w-auto max-h-full min-w-full h-60 lg:h-[42rem] md:h-screen bg-secondary-1 place-content-center ">
+                <div className="relative text-center lg:text-left  flex flex-col items-center gap-4 align-top lg:place-self-center  p-4 lg:p-8 xl:p-12">
+                  <div className=" flex flex-col p-5 pb-5  z-10 ">
+                    <h1 className="font-bold py-3 px-6 tracking-wider uppercase z-10  ">
                       {title ?? "Om oss"}
                     </h1>
 
-                    <h4 className="   px-5 z-10 text-inverted ">
+                    <h4 className="   px-6 z-10  ">
                       {intro ??
                         "Vi är ett Göteborgsbaserat konsultföretag med ca 50 anställda. Vårt kompetensområde sträcker sig från det mekatroniska och ända upp i molnet. Vi erbjuder tjänster för utveckling av system inom områden där bland annat kontroll, reglering, övervakning, säkerhet och kommunikation är önskade funktioner.  Dessa system kan vara inbyggda, befinna sig i molnet eller någonstans däremellan. De kan vara uppkopplade eller helt autonoma. De förbrukar alltid elektricitet, men kan även vara beroende av andra energikällor, såsom fossila bränslen, vätgas mm. Vårt engagemang inom fordonsindustrin är stort, men även andra tekniska branscher eller branscher baserade på mer virtuella system är en del av det vi dagligen ägnar oss åt. "}
                     </h4>
                   </div>
                   <svg
-                    className=" absolute left-0 top-0 z-0 fill-tertiary-l2/50 "
-                    width="580"
-                    height="668"
-                    viewBox="0 0 580 668"
+                    className=" absolute left-0 top-0 z-0   fill-secondary-d1/70 "
+                    width="780"
+                    height="445"
+                    viewBox="0 0 780 445"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M162.513 532.351C112.789 560.346 -107.471 865.19 -185.689 453.758L-266.403 -112.341C-234.027 -92.7957 -51.553 -6.9668 12.3024 -2.68343C48.1623 -0.277977 185.972 -12.7397 233.985 40.8921C289.994 103.457 424.869 30.7769 496.236 72.8985C567.603 115.02 581.06 205.669 579.649 259.175C578.237 312.682 586.469 399.481 543.94 439.325C509.917 471.201 428.959 444.536 340.471 460.968C251.984 477.4 212.238 504.356 162.513 532.351Z" />
+                    <path d="M-297.347 217.554C-301.146 192.447 -291.119 170.711 -213.931 104.639C-213.931 104.639 -165.137 24.0854 -133.115 3.31137C-106.923 -13.6811 100.637 -11.3454 139.374 -11.5147C178.112 -11.684 587.111 -28.0643 720 -11.5154C852.889 5.0335 731.426 89.7244 654.071 117.47C576.716 145.215 585.597 213.695 548.121 258.966C531.056 279.581 499.343 294.582 372.122 308.841C244.901 323.101 243.019 281.998 171.197 309.719C99.3759 337.441 173.998 435.274 113.162 444.105C52.3262 452.936 -75.3159 370.75 -186.167 331.837C-274.848 300.706 -297.237 242.677 -297.347 217.554Z" />
                   </svg>
                 </div>
               </div>
@@ -82,7 +89,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                 <Image
                   className="w-40 h-40 relative lg:absolute"
                   alt="bird"
-                  src="/images/bird.png"
+                  src="/images/omoss.jpg"
                   layout="fill"
                   objectFit="cover"
                 />
@@ -93,13 +100,13 @@ export default function About({ title, intro, year, timelinedesc }) {
           {/* For Phones */}
           <div className=" md:hidden relative flex flex-col h-full w-full">
             <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-              <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-tertiary-d1 ">
-                <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                  <h1 className="font-bold text-inverted uppercase tracking-wider">
+              <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
+                <div className="text-center py-8 lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                  <h1 className="font-bold  uppercase layout tracking-wider">
                     {title ?? "Om oss"}
                   </h1>
 
-                  <p className="px-5 text-inverted  text-center">
+                  <p className="layout px-6 text-justify">
                     {intro ??
                       "Vi kan erbjuda tjänster inom Mjukvaruutveckling, design, konstruktion, testning och inbyggda system. Med vår kompetens kan vi fylla gränslandet mellan hårdvara och mjukvara. Merparten av våra konsulter är förlagda hos kund men vi har även inhouse projekt av olika storlekar. "}
                   </p>
@@ -109,7 +116,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                 <Image
                   className="w-40 h-40 relative lg:absolute"
                   alt="karlatornet"
-                  src="/images/karlatornet.JPG"
+                  src="/images/omoss.JPG"
                   layout="fill"
                   objectFit="cover"
                 />
@@ -120,21 +127,21 @@ export default function About({ title, intro, year, timelinedesc }) {
 
         <section>
           <div className=" flex py-12 md:py-16 flex-col items-center">
-            <h2 className="uppercase pt-6  px-5 font-bold">
+            <h2 className="uppercase pt-6  font-bold">
               {title ?? "Våra områden"}
             </h2>
 
-            <p className=" text-center px-5 pb-4  max-w-readable pt-2">
+            <p className=" md:text-center text-center mx-6 mb-5 max-w-readable pt-2">
               {intro ??
                 "Majoriteten av våra kunder är produkt- eller tjänsteföretag som återfinns inom diverse olika branscher såsom fordon, automation, marin, energi, medicin, försvar, säkerhet med flera."}
             </p>
             <div className="grid grid-cols-1 grid-flow-row md:grid-cols-4 w-full cursor-default">
-              <div className="relative bg-tertiary-1 text-inverted p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="relative bg-tertiary-1 py-5 text-inverted p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
                   <AiOutlineCar size={40} />
                 </div>
 
-                <p className="text-center max-w-readable">
+                <p className="md:text-center text-justify mx-6 mb-3 text-inverted max-w-readable ">
                   Inom fordon har vi bred erfarenhet av olika ingenjörsroller
                   inom t.ex. säkerhetselektronik, infotainmentsystem,
                   eftermarknad, klimat, OTA (Over The Air) och drivlina.
@@ -145,7 +152,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <BsGearWideConnected size={40} />
                 </div>
 
-                <p className="text-center  max-w-readable">
+                <p className="md:text-center text-justify mx-6 mb-3  max-w-readable">
                   Vi har inom automation- och energibranschen erfarenhet från
                   t.ex utveckling av värmepumpar, vätgasapplikationer och
                   kommunikationsmoduler för ett antal olika
@@ -157,7 +164,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <IoBoatSharp size={40} />
                 </div>
 
-                <p className="text-center  max-w-readable">
+                <p className="md:text-center text-justify mx-6 mb-3  max-w-readable">
                   Vi har erfarenhet inom marina tillämpningar där vi bl.a.
                   arbetat med styrsystem, brandskyddssystem och
                   drivlineövervakning på fartyg.
@@ -173,7 +180,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   </div>
                 </div>
 
-                <p className="text-center text-inverted max-w-readable ">
+                <p className="md:text-center text-justify text-inverted mx-6 mb-3  max-w-readable ">
                   Vi har erfarenhet av diagnosutrustning inom medicinteknik,
                   radarsystem inom försvar, sensorteknik inom telekom,
                   cybersäkerhet inom IT, mm.
@@ -183,7 +190,7 @@ export default function About({ title, intro, year, timelinedesc }) {
           </div>
         </section>
 
-        <div className="relative">
+        <div className="relative flex flex-col py-12">
           <h2 className=" md:hidden text-center uppercase font-bold">
             Historia
           </h2>
@@ -213,6 +220,19 @@ export default function About({ title, intro, year, timelinedesc }) {
           </svg>
 
           <TimelineComponent />
+          <div
+            data-aos="fade-up"
+            className=" mx-6 flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
+          >
+            <h2 className=" md:hidden text-center uppercase font-extrabold my-4 px-3 border-b-2  border-primary-d1 ">
+              nu
+            </h2>
+            <h5 className="md:hidden max-w-readable  mb-5 text-center  px-6">
+              Genom åren har företaget vuxit och är numera ett väl utvecklat
+              teknikkonsultbolag specialiserat inom utveckling av
+              mjukvarubaserade system och tjänster.
+            </h5>
+          </div>
         </div>
 
         <section className="">
@@ -222,7 +242,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                 {title ?? "Kvalitets- och miljöpolicy"}
               </h2>
 
-              <p className="">
+              <p className=" text-center mx-6">
                 {intro ??
                   "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
               </p>
@@ -230,12 +250,12 @@ export default function About({ title, intro, year, timelinedesc }) {
             <div className="hidden relative pt-5 md:flex flex-col h-full w-full">
               <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
                 <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
-                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                    <h4 className="font-bold uppercase tracking-wider">
+                  <div className=" text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                    <h4 className="font-bold uppercase tracking-wider mx-6">
                       {title ?? "Vårt Kvalitetsarbete"}
                     </h4>
 
-                    <p className="p1 text-justify">
+                    <p className="p1 text-justify  mx-6">
                       {intro ??
                         "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
                     </p>
@@ -264,11 +284,11 @@ export default function About({ title, intro, year, timelinedesc }) {
 
                 <div className=" w-auto max-h-full min-w-full h-60 md:h-96  lg:h-[36rem] bg-secondary-1 ">
                   <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                    <h4 className="font-bold uppercase tracking-wider">
+                    <h4 className="font-bold uppercase tracking-wider mx-6">
                       {title ?? "Vårt Miljöarbete"}
                     </h4>
 
-                    <p className="p1 text-justify">
+                    <p className=" mx-6">
                       {intro ??
                         "Vi vill skydda vår miljö och förhindra förorening genom medvetna val. Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster och produkter som är mer energieffektiva , samt reducera våra CO2 ekvivalenta utsläpp som påverkar växthuseffekten. Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår verksamhet. "}
                     </p>
@@ -279,13 +299,13 @@ export default function About({ title, intro, year, timelinedesc }) {
             {/* For Phones */}
             <div className=" md:hidden relative pt-12 flex flex-col h-full w-full">
               <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-                <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
-                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                    <h4 className="font-bold uppercase tracking-wider">
+                <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] py-5 bg-secondary-1 ">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start mx-5  p-4 lg:p-8 xl:p-12">
+                    <h4 className="font-bold uppercase mx-6 tracking-wider">
                       {title ?? "Vårt Kvalitetsarbete"}
                     </h4>
 
-                    <p className="p1 text-justify">
+                    <p className="p1 text-justify mx-6">
                       {intro ??
                         "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
                     </p>
@@ -294,31 +314,31 @@ export default function About({ title, intro, year, timelinedesc }) {
                 <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
                   <Image
                     className="w-40 h-40 relative lg:absolute"
-                    alt="karlatornet"
-                    src="/images/karlatornet.JPG"
+                    alt="bro"
+                    src="/images/bro2.JPG"
                     layout="fill"
                     objectFit="cover"
                   />
                 </div>
               </div>
               <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-                <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
+                <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] py-5 bg-secondary-1 ">
                   <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                    <h4 className="font-bold uppercase tracking-wider">
+                    <h4 className="font-bold uppercase mx-6">
                       {title ?? "Vårt Miljöarbete"}
                     </h4>
 
-                    <p className="p1 text-justify grow">
+                    <p className="p1 text-justify grow mx-6">
                       {intro ??
                         "Vi vill skydda vår miljö och förhindra förorening genom medvetna val. Vi vill minska vår klimatpåverkan och bidra till ett hållbart samhälle genom att utveckla tjänster och produkter som är mer energieffektiva , samt reducera våra CO2 ekvivalenta utsläpp som påverkar växthuseffekten. Vi följer de lagar och krav som vi omfattas av och vi jobbar med att ständigt förbättra vår verksamhet. "}
                     </p>
                   </div>
                 </div>
-                <div className="relative w-auto max-h-full min-w-full h-full  bg-secondary-l2">
+                <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2">
                   <Image
                     className="w-40 h-40 relative lg:absolute"
-                    alt="karlatornet"
-                    src="/images/bro.jpg"
+                    alt="bi"
+                    src="/images/bi.jpg"
                     layout="fill"
                     objectFit="cover"
                   />

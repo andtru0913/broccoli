@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { icons } from "react-icons";
+import { GrFormDown, GrFormUp } from "react-icons/Gr";
 
 export default function ({ img_path, id, author, children, index, setIndex }) {
   const handleSetIndex = () => {
@@ -41,7 +43,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
           >
             {img_path != null}
             <div className="relative">
-              <div className=" w-20 h-20 ">
+              <div className="flex  w-20 h-20 ">
                 <Image
                   className="object-cover  "
                   src={img_path}
@@ -53,24 +55,11 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
             </div>
 
             <div className=" flex flex-row items-between w-full justify-between">
-              <div className="flex  p-2 items-center">
-                <h4 className="">{author}</h4>
+              <div className="flex px-6 p-2 items-center">
+                <h4 className="font-bold uppercase ">{author}</h4>
               </div>
-              <div className=" place-self-end">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v12m6-6H6"
-                  />
-                </svg>
+              <div className="p-3 place-self-end">
+                <GrFormDown size={25} />
               </div>
             </div>
           </div>
@@ -87,7 +76,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
               <div className="relative">
                 <div className=" w-20 h-20 ">
                   <Image
-                    className="object-cover  "
+                    className="object-cover p-2  rounded-full "
                     src={img_path}
                     alt={img_path}
                     layout="fill"
@@ -96,27 +85,14 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
                 </div>
               </div>
 
-              <div className="flex  p-2 items-center">
-                <h4 className="">{author}</h4>
+              <div className="flex px-6 items-center">
+                <h4 className="font-bold uppercase ">{author}</h4>
               </div>
             </div>
             <div className="flex flex-row justify-between">
-              <p className=" p-2 max-w-readable ml-20">{children}</p>
-              <div className="flex items-end">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className=" w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M18 12H6"
-                  />
-                </svg>
+              <p className=" p-2 px-6 pb-6 max-w-readable ml-20">{children}</p>
+              <div className="p-3 flex items-end">
+                <GrFormUp size={25} />
               </div>
             </div>
           </div>
