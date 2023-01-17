@@ -222,7 +222,7 @@ export default function About({ title, intro, year, timelinedesc }) {
           <TimelineComponent />
           <div
             data-aos="fade-up"
-            className=" mx-6 flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
+            className="md:hidden mx-6 flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
           >
             <h2 className=" md:hidden text-center uppercase font-extrabold my-4 px-3 border-b-2  border-primary-d1 ">
               nu
@@ -242,7 +242,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                 {title ?? "Kvalitets- och miljöpolicy"}
               </h2>
 
-              <p className=" text-center mx-6">
+              <p className=" text-center mx-10">
                 {intro ??
                   "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
               </p>
