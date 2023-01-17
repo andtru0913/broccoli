@@ -8,7 +8,7 @@ import {
   FaSwimmer,
 } from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
-import broccoligarden from "../public/images/kranar.png";
+import broccoligarden from "../public/images/bgard.jpeg";
 import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { getGenderCount } from "../Database";
@@ -60,23 +60,33 @@ export default function Home({ feed, genderCount }) {
   return (
     <Layout className="relative">
       <main>
-        <div className="overflow-hidden h-screen bg-center ">
+        <div className="overflow-hidden h-full bg-center z-0 ">
           <Image
             src="/images/firstp3.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
           />
-          <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute bottom-1/3 flex justify-center ">
-              <img
-                src="/images/lightMode/BroccoliBlack.png"
-                className=" flex justify-center w-1/2 "
-              />
+
+          <div className="  overflow-hidden z-0">
+            <svg
+              className="fill-secondary-1/40 absolute z-0 right-0 bottom-0 h-auto lg:w-2/3  "
+              width="850"
+              height="704"
+              viewBox="0 0 850 704"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1076.54 536.211C1129 481.733 1162.98 429.612 1135.21 385.366C1099.43 342.88 1079.11 221.986 942.188 139.86C883.571 93.1478 828.694 74.5988 711.915 24.6996C646.676 -3.177 560.298 65.1129 472.678 87.7451C385.057 110.377 271.808 -28.7223 177.414 6.41411C107.024 32.6159 50.5347 122.503 47.3241 151.469C42.9831 190.634 -3.8496 282.131 1.1307 358.169C7.03954 448.382 82.996 541.715 147.869 590.956C195.895 627.41 262.594 635.375 353.42 634.654C472.035 633.712 505.984 774.547 553.94 837.605L553.961 837.633C601.924 900.698 694.494 1022.42 790.991 984.215C838.403 965.444 902.668 944.06 919.412 858.449C932.492 791.569 1029.89 759.386 1048.75 705.878C1067.61 652.369 1024.09 590.689 1076.54 536.211Z" />
+            </svg>
+
+            <div className="flex flex-col w-screen h-screen ">
+              <div className="absolute z-10 bottom-1/4 flex justify-end p-5 mx-5 md:mr-16 xl:mb-3">
+                <img src="/images/Broccolibl.png" className=" md:w-2/5 " />
+              </div>
             </div>
           </div>
         </div>
-
         <svg
           className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10"
           width="770"
@@ -89,6 +99,17 @@ export default function Home({ feed, genderCount }) {
         </svg>
 
         <section className="relative">
+          <svg
+            className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10 lg:hidden"
+            width="770"
+            height="1048"
+            viewBox="0 0 770 1048"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M48.3323 721.52C-17.2708 593.114 -67.2673 272.303 257.572 16.3055L823.14 0L833.498 122.292L848 831.583L808.638 984.447C796.208 1007.55 714.998 1052.52 489.6 1047.63C207.852 1041.52 218.21 986.485 203.708 984.447C192.107 982.817 95.2904 808.483 48.3323 721.52Z" />
+          </svg>
+
           <div className=" pt-12  flex flex-col justify-center">
             <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
               <div className="  lg:max-w-readable flex justify-center pb-8">
@@ -216,9 +237,9 @@ export default function Home({ feed, genderCount }) {
             <h1 className=" uppercase font-bold ">Våra kärnvärden</h1>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
-                <h2 className="font-bold uppercase">Relationer</h2>
+                <h2 className="font-bold uppercase mx-3">Relationer</h2>
 
-                <p className="text-justify">
+                <p className="text-justify mx-3">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och bjuder aktivt in berörda i dialogen. Genom våra olikheter
                   bygger vi en stark gemenskap. Vi eftersträvar olikheter då det
@@ -229,11 +250,11 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative ">
                 <div className=" bg-secondary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex  flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className=" shrink font-bold uppercase">
+                  <h2 className=" shrink font-bold uppercase mx-3">
                     Professionalism
                   </h2>
 
-                  <p className="text-justify">
+                  <p className="text-justify mx-3">
                     Nöjda kunder får vi genom att prioritera god teknisk
                     kompetens och kvalitet samt genom att vara lyhörda till
                     behoven. Vi är den pålitliga partnern med goda ambitioner
@@ -245,8 +266,10 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative rounded">
                 <div className=" bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left">
-                  <h2 className="font-bold uppercase">Hållbar utveckling</h2>
-                  <p className="text-justify">
+                  <h2 className="font-bold uppercase mx-3">
+                    Hållbar utveckling
+                  </h2>
+                  <p className="text-justify mx-3">
                     Vi värderar hållbarhet genom ekonomiskt sinne samt personlig
                     och teknisk utveckling. Vi gör medvetna val för en
                     långsiktig utveckling vilket ger oss trygghet, frihet och en
@@ -351,7 +374,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
                         <MdKitchen size={30} />
-                        <p className="font-bold ">Fullt utrustad kök</p>
+                        <p className="font-bold ">Fullt utrustat kök</p>
                       </div>
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4">
                         <FaChalkboardTeacher size={30} />
