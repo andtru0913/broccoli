@@ -58,20 +58,24 @@ export default function Home({ feed, genderCount }) {
   };
   const insta_images = feed.data;
   return (
-    <Layout className="relative">
+    <Layout className="fixed">
       <main>
-        <div className="overflow-hidden h-screen bg-center ">
-          <Image
-            src="/images/firstp3.jpg"
-            layout="fill"
-            objectFit="cover"
-            alt="Siluette of Gothenburg"
-          />
+        <div className="overflow-hidden h-screen bg-center">
+          <div className={"relative h-screen"}>
+            <Image
+                src="/images/firstp3.jpg"
+                layout="fill"
+                objectFit="cover"
+                alt="Siluette of Gothenburg"
+            />
+          </div>
+
           <div className="flex flex-col w-screen h-screen ">
             <div className="absolute bottom-1/3 flex justify-center ">
               <img
                 src="/images/lightMode/BroccoliBlack.png"
                 className=" flex justify-center w-1/2 "
+                alt={"broccoli_logo"}
               />
             </div>
           </div>
@@ -100,7 +104,7 @@ export default function Home({ feed, genderCount }) {
               <div className="flex flex-row flex-wrap flex-auto justify-center gap:2">
                 <div className=" flex flex-col items-center">
                   <div className="relative  mb-2 mt-4">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/computerBlack.png"
                         img_path_dark="/images/lightMode/computerWhite.png"
@@ -114,7 +118,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center  ">
                   <div className="relative mb-2 mt-4">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/webbBlack.png"
                         img_path_dark="/images/lightMode/webbWhite.png"
@@ -128,7 +132,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center ">
                   <div className="relative  mb-2 mt-4">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/circuitBlack.png"
                         img_path_dark="/images/lightMode/circuitWhite.png"
@@ -142,7 +146,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center  ">
                   <div className="relative mt-4 mb-2">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/armBlack.png"
                         img_path_dark="/images/lightMode/armwWhite.png"
@@ -156,7 +160,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center ">
                   <div className="relative mt-4 mb-2">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/fysikBlack.png"
                         img_path_dark="/images/darkMode/fysikWhite.png"
@@ -204,7 +208,7 @@ export default function Home({ feed, genderCount }) {
                   <p></p>
                 </div>
               </div>
-              <div className=" flex flex-col  flex-1 lg:w-4/5">
+              <div className=" flex flex-col  flex-1 lg:w-9/10">
                 <Reviews />
               </div>
             </div>
