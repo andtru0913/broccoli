@@ -60,36 +60,49 @@ export default function About({ title, intro, year, timelinedesc }) {
                   "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
               </p>
             </div>*/}
+
+            <div className="  top-0">
+              <div className=" w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
+                <Image
+                  className=""
+                  alt="omslag_about"
+                  src="/images/about.JPG"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+
             <div className=" hidden md:grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-              <div className="  w-auto max-h-full min-w-full h-60 lg:h-[42rem] md:h-screen bg-secondary-1 place-content-center ">
+              <div className="  w-auto max-h-full min-w-full  h-60 lg:h-[42rem] md:h-screen bg-secondary-1 md:bg-secondary-d1/90 md:z-10 place-content-center ">
                 <div className="relative text-center lg:text-left  flex flex-col items-center gap-4 align-top lg:place-self-center  p-4 lg:p-8 xl:p-12">
                   <div className=" flex flex-col p-5 pb-5  z-10 ">
                     <h1 className="font-bold py-3 px-6 tracking-wider uppercase z-10  ">
                       {title ?? "Om oss"}
                     </h1>
 
-                    <h4 className="   px-6 z-10  ">
+                    <h4 className="px-6 z-10">
                       {intro ??
                         "Vi är ett Göteborgsbaserat konsultföretag med ca 50 anställda. Vårt kompetensområde sträcker sig från det mekatroniska och ända upp i molnet. Vi erbjuder tjänster för utveckling av system inom områden där bland annat kontroll, reglering, övervakning, säkerhet och kommunikation är önskade funktioner.  Dessa system kan vara inbyggda, befinna sig i molnet eller någonstans däremellan. De kan vara uppkopplade eller helt autonoma. De förbrukar alltid elektricitet, men kan även vara beroende av andra energikällor, såsom fossila bränslen, vätgas mm. Vårt engagemang inom fordonsindustrin är stort, men även andra tekniska branscher eller branscher baserade på mer virtuella system är en del av det vi dagligen ägnar oss åt. "}
                     </h4>
                   </div>
                   <svg
-                    className=" absolute left-0 top-0 z-0   fill-secondary-d1/70 "
-                    width="780"
-                    height="445"
-                    viewBox="0 0 780 445"
+                    className=" absolute left-0 top-0 z-0    fill-secondary-l1/50 "
+                    width="759"
+                    height="413"
+                    viewBox="0 0 687 415"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M-297.347 217.554C-301.146 192.447 -291.119 170.711 -213.931 104.639C-213.931 104.639 -165.137 24.0854 -133.115 3.31137C-106.923 -13.6811 100.637 -11.3454 139.374 -11.5147C178.112 -11.684 587.111 -28.0643 720 -11.5154C852.889 5.0335 731.426 89.7244 654.071 117.47C576.716 145.215 585.597 213.695 548.121 258.966C531.056 279.581 499.343 294.582 372.122 308.841C244.901 323.101 243.019 281.998 171.197 309.719C99.3759 337.441 173.998 435.274 113.162 444.105C52.3262 452.936 -75.3159 370.75 -186.167 331.837C-274.848 300.706 -297.237 242.677 -297.347 217.554Z" />
+                    <path d="M-216.496 199.25C-219.694 175.504 -211.295 154.954 -146.593 92.5056C-146.593 92.5056 -105.71 16.349 -78.8652 -3.28187C-56.9071 -19.3393 117.161 -17.0334 149.648 -17.1754C182.135 -17.3173 525.13 -32.6168 636.584 -16.9044C748.038 -1.19195 646.214 78.8431 581.354 105.046C516.494 131.248 523.974 196.014 492.566 238.809C478.264 258.296 451.675 272.467 344.99 285.893C238.304 299.319 236.706 260.447 176.487 286.63C116.267 312.812 178.894 405.368 127.879 413.69C76.8637 422.013 -30.2206 344.231 -123.203 307.379C-197.589 277.897 -216.393 223.008 -216.496 199.25Z" />
                   </svg>
                 </div>
               </div>
-              <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
+              <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 md:hidden ">
                 <Image
-                  className="w-40 h-40 relative lg:absolute"
+                  className=" relative lg:absolute"
                   alt="bird"
-                  src="/images/omoss.jpg"
+                  src="/images/finut4.jpg"
                   layout="fill"
                   objectFit="cover"
                 />
@@ -100,23 +113,34 @@ export default function About({ title, intro, year, timelinedesc }) {
           {/* For Phones */}
           <div className=" md:hidden relative flex flex-col h-full w-full">
             <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-              <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
-                <div className="text-center py-8 lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
-                  <h1 className="font-bold  uppercase layout tracking-wider">
+              <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-d1/80 ">
+                <div className="text-center z-10 py-8 lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                  <h1 className="font-bold z-10 uppercase layout tracking-wider">
                     {title ?? "Om oss"}
                   </h1>
 
-                  <p className="layout px-6 text-justify">
+                  <p className="layout z-10 px-6 text-justify">
                     {intro ??
                       "Vi kan erbjuda tjänster inom Mjukvaruutveckling, design, konstruktion, testning och inbyggda system. Med vår kompetens kan vi fylla gränslandet mellan hårdvara och mjukvara. Merparten av våra konsulter är förlagda hos kund men vi har även inhouse projekt av olika storlekar. "}
                   </p>
                 </div>
+
+                <svg
+                  className=" absolute left-0 top-0 z-0    fill-secondary-l1/50 "
+                  width="317"
+                  height="184"
+                  viewBox="0 0 687 415"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M-216.496 199.25C-219.694 175.504 -211.295 154.954 -146.593 92.5056C-146.593 92.5056 -105.71 16.349 -78.8652 -3.28187C-56.9071 -19.3393 117.161 -17.0334 149.648 -17.1754C182.135 -17.3173 525.13 -32.6168 636.584 -16.9044C748.038 -1.19195 646.214 78.8431 581.354 105.046C516.494 131.248 523.974 196.014 492.566 238.809C478.264 258.296 451.675 272.467 344.99 285.893C238.304 299.319 236.706 260.447 176.487 286.63C116.267 312.812 178.894 405.368 127.879 413.69C76.8637 422.013 -30.2206 344.231 -123.203 307.379C-197.589 277.897 -216.393 223.008 -216.496 199.25Z" />
+                </svg>
               </div>
               <div className="relative w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
                 <Image
                   className="w-40 h-40 relative lg:absolute"
                   alt="karlatornet"
-                  src="/images/omoss.JPG"
+                  src="/images/finut.JPG"
                   layout="fill"
                   objectFit="cover"
                 />
@@ -136,41 +160,41 @@ export default function About({ title, intro, year, timelinedesc }) {
                 "Majoriteten av våra kunder är produkt- eller tjänsteföretag som återfinns inom diverse olika branscher såsom fordon, automation, marin, energi, medicin, försvar, säkerhet med flera."}
             </p>
             <div className="grid grid-cols-1 grid-flow-row md:grid-cols-4 w-full cursor-default">
-              <div className="relative bg-tertiary-1 py-5 text-inverted p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="  relative bg-tertiary-1 py-5 text-inverted p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
                   <AiOutlineCar size={40} />
                 </div>
 
-                <p className="md:text-center text-justify mx-6 mb-3 text-inverted max-w-readable ">
+                <p className="md:text-center text-justify mx-6  text-inverted max-w-readable ">
                   Inom fordon har vi bred erfarenhet av olika ingenjörsroller
                   inom t.ex. säkerhetselektronik, infotainmentsystem,
                   eftermarknad, klimat, OTA (Over The Air) och drivlina.
                 </p>
               </div>
-              <div className="relative bg-secondary-1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="relative bg-secondary-1 p-4  py-5  lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
                   <BsGearWideConnected size={40} />
                 </div>
 
-                <p className="md:text-center text-justify mx-6 mb-3  max-w-readable">
+                <p className="md:text-center text-justify mx-6  max-w-readable">
                   Vi har inom automation- och energibranschen erfarenhet från
                   t.ex utveckling av värmepumpar, vätgasapplikationer och
                   kommunikationsmoduler för ett antal olika
                   kommunikationsprotokoll.
                 </p>
               </div>
-              <div className="relative bg-primary-l1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="relative bg-primary-l1  py-5  p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
                   <IoBoatSharp size={40} />
                 </div>
 
-                <p className="md:text-center text-justify mx-6 mb-3  max-w-readable">
+                <p className="md:text-center text-justify mx-6   max-w-readable">
                   Vi har erfarenhet inom marina tillämpningar där vi bl.a.
                   arbetat med styrsystem, brandskyddssystem och
                   drivlineövervakning på fartyg.
                 </p>
               </div>
-              <div className="relative bg-tertiary-1 p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="relative bg-tertiary-1  py-5  p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex flex-row text-inverted justify-center">
                   <div className="px-5">
                     <GiHeartBeats size={30} />
@@ -180,7 +204,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   </div>
                 </div>
 
-                <p className="md:text-center text-justify text-inverted mx-6 mb-3  max-w-readable ">
+                <p className="md:text-center text-justify text-inverted mx-6  max-w-readable ">
                   Vi har erfarenhet av diagnosutrustning inom medicinteknik,
                   radarsystem inom försvar, sensorteknik inom telekom,
                   cybersäkerhet inom IT, mm.

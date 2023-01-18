@@ -73,8 +73,8 @@ const NavBar = () => {
             className={`lg:flex lg:flex-row lg:justify-between lg:align-middle 
                         ${
                           isOpen === false
-                            ? `lg:static lg:bg-transparent lg:shadow-none  fixed -left-full  top-14   flex  flex-col  w-full  rounded-lg  text-center  shadow-sm  `
-                            : "lg:static lg:bg-transparent lg:shadow-none  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-fill"
+                            ? `lg:static lg:bg-transparent lg:shadow-none  fixed -left-full  top-9   flex  flex-col  w-full    text-center  shadow-sm  `
+                            : "lg:static lg:bg-transparent lg:shadow-none  fixed  left-0  top-9  flex  flex-col  w-full   text-center  duration-300  shadow-sm  bg-fill"
                         }`}
           >
             {MENU_LIST.map((menu) => {
