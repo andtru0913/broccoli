@@ -9,14 +9,14 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
   return (
     <>
       <div
-        className={`hidden lg:flex flex-col md:flex-row cursor-default w-full transition-all duration-100 ease-in-out  my-2 
+        className={`max-h-48 hidden lg:flex flex-col md:flex-row cursor-default w-full transition-all duration-100 ease-in-out  my-2 
               ${
                 id % 2 ? " bg-primary-1" : "bg-secondary-1"
               } shadow-lg shadow-shadow`}
       >
         {img_path != null}
         <div className="relative">
-          <div className="w-36 h-40 lg:w-40 lg:h-48 ">
+          <div className="w-36 h-40 lg:w-40 lg:h-48 relative">
             <Image
               className="object-cover  "
               src={img_path}
@@ -26,7 +26,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
             />
           </div>
         </div>
-        <div className="flex flex-col p-2 lg:p-6  md:w-96 xl:w-full lg:max-h-48 lg:overflow-scroll xl:overflow-auto xl:max-h-full">
+        <div className="flex flex-col p-2 lg:p-6 max-h-40  md:w-96 xl:w-full lg:max-h-40 overflow-x-auto xl:max-h-full">
           <h4 className=" uppercase font-bold lg:pb-2">{author}</h4>
           <p className="">{children}</p>
         </div>

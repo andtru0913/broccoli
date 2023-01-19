@@ -58,32 +58,25 @@ export default function Home({ feed, genderCount }) {
   };
   const insta_images = feed.data;
   return (
-    <Layout className="relative">
+    <Layout className="fixed">
       <main>
-        <div className="overflow-hidden h-full bg-center z-0 ">
-          <Image
-            src="/images/firstp3.jpg"
-            layout="fill"
-            objectFit="cover"
-            alt="Siluette of Gothenburg"
-          />
+        <div className="overflow-hidden h-screen bg-center">
+          <div className={"relative h-screen"}>
+            <Image
+                src="/images/firstp3.jpg"
+                layout="fill"
+                objectFit="cover"
+                alt="Siluette of Gothenburg"
+            />
+          </div>
 
-          <div className="  overflow-hidden z-0">
-            <svg
-              className="fill-secondary-1/40 absolute z-0 right-0 bottom-0 h-auto lg:w-2/3  "
-              width="850"
-              height="704"
-              viewBox="0 0 850 704"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1076.54 536.211C1129 481.733 1162.98 429.612 1135.21 385.366C1099.43 342.88 1079.11 221.986 942.188 139.86C883.571 93.1478 828.694 74.5988 711.915 24.6996C646.676 -3.177 560.298 65.1129 472.678 87.7451C385.057 110.377 271.808 -28.7223 177.414 6.41411C107.024 32.6159 50.5347 122.503 47.3241 151.469C42.9831 190.634 -3.8496 282.131 1.1307 358.169C7.03954 448.382 82.996 541.715 147.869 590.956C195.895 627.41 262.594 635.375 353.42 634.654C472.035 633.712 505.984 774.547 553.94 837.605L553.961 837.633C601.924 900.698 694.494 1022.42 790.991 984.215C838.403 965.444 902.668 944.06 919.412 858.449C932.492 791.569 1029.89 759.386 1048.75 705.878C1067.61 652.369 1024.09 590.689 1076.54 536.211Z" />
-            </svg>
-
-            <div className="flex flex-col w-screen h-screen ">
-              <div className="absolute z-10 bottom-1/4 flex justify-end p-5 mx-5 md:mr-16 xl:mb-3">
-                <img src="/images/Broccolibl.png" className=" md:w-2/5 " />
-              </div>
+          <div className="flex flex-col w-screen h-screen ">
+            <div className="absolute bottom-1/3 flex justify-center ">
+              <img
+                src="/images/lightMode/BroccoliBlack.png"
+                className=" flex justify-center w-1/2 "
+                alt={"broccoli_logo"}
+              />
             </div>
           </div>
         </div>
@@ -121,7 +114,7 @@ export default function Home({ feed, genderCount }) {
               <div className="flex flex-row flex-wrap flex-auto justify-center gap:2">
                 <div className=" flex flex-col items-center">
                   <div className="relative  mb-2 mt-4">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/computerBlack.png"
                         img_path_dark="/images/lightMode/computerWhite.png"
@@ -135,7 +128,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center  ">
                   <div className="relative mb-2 mt-4">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/webbBlack.png"
                         img_path_dark="/images/lightMode/webbWhite.png"
@@ -149,7 +142,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center ">
                   <div className="relative  mb-2 mt-4">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/circuitBlack.png"
                         img_path_dark="/images/lightMode/circuitWhite.png"
@@ -163,7 +156,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center  ">
                   <div className="relative mt-4 mb-2">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/armBlack.png"
                         img_path_dark="/images/lightMode/armwWhite.png"
@@ -177,7 +170,7 @@ export default function Home({ feed, genderCount }) {
                 </div>
                 <div className="flex flex-col items-center ">
                   <div className="relative mt-4 mb-2">
-                    <div className=" w-20 h-20">
+                    <div className=" w-20 h-20 relative">
                       <ThemedImage
                         img_path_light="/images/lightMode/fysikBlack.png"
                         img_path_dark="/images/darkMode/fysikWhite.png"
@@ -225,7 +218,7 @@ export default function Home({ feed, genderCount }) {
                   <p></p>
                 </div>
               </div>
-              <div className=" flex flex-col  flex-1 lg:w-4/5">
+              <div className=" flex flex-col  flex-1 lg:w-9/10">
                 <Reviews />
               </div>
             </div>

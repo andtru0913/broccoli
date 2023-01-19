@@ -15,10 +15,13 @@ const NavBar = () => {
   const [boxShadow, setBoxShadow] = useState(0);
   const [textColor, setTextColor] = useState("black");
 
+  /*
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   });
+
+   */
 
   const handleScroll = () => {
     setClientWindowHeight(window.scrollY);
@@ -46,7 +49,8 @@ const NavBar = () => {
   }, [clientWindowHeight]);
 
   return (
-    <header className="sticky top-0 z-50 ">
+    <header className="fixed top-0 z-50 bg-white w-screen">
+    {/*<header className="sticky top-0 z-50">*/}
       <nav
         className={`flex justify-between items-center align-middle py-2 px-7 text-base font-medium `}
         style={{
@@ -112,7 +116,7 @@ const NavBar = () => {
         >
           <div
             className={`${hamburgerLine}
-                        ${
+                        ${  
                           isOpen
                             ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
                             : "opacity-50 group-hover:opacity-100 "

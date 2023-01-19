@@ -6,15 +6,15 @@ const Reviews = () => {
   const data = [
     {
       id: 1,
-      img_path: "/images/AnnaM.JPG",
-      author: "Anna Manfredsson",
-      text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
+      img_path: "/images/mthersthol.JPG",
+      author: "Marcus Thersthol",
+      text: "Här finns goda utvecklings- och karriärmöjligheter! Ledningen ser till mig som individ. Broccoli har korta beslutsvägar och högt i tak.",
     },
     {
       id: 2,
-      img_path: "/images/AsaV.jfif",
-      author: "Åsa Vikström",
-      text: "Excellent culture and great leadership team. Enjoy the offices and co-workers. Happy to be a part of such a great company. Feel very respected and heard by teams and leaders.",
+      img_path: "/images/anygren.jpg",
+      author: "Åsa Nygren",
+      text: "Jag har varit anställd på Broccoli i drygt 6 år och trivs väldigt bra. Jag upplever att alla här ges möjligheter att utvecklas och där det till stor del är ens egna intressen och önskemål som styr, vilket är viktigt för mig. På Broccoli känns alla kollegor intresserade och engagerade och jag har alltid tyckt att mina tankar och idéer blir hörda.",
     },
     {
       id: 3,
