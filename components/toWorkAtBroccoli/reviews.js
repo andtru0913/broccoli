@@ -18,9 +18,9 @@ const Reviews = () => {
     },
     {
       id: 3,
-      img_path: "/images/BjornB.jfif",
-      author: "Björn Bergholm",
-      text: "It's a great company to learn whatever your field is in, with a hospitable and nurturing work environment. However, the turnover rate for employees is quite high.",
+      img_path: "/images/klarsson.jpg",
+      author: "Karin Larsson",
+      text: "Broccoli är ett företag där man som konsult inte \"försvinner\" i mängden samt att det har en platt organisation så det snabbt o lätt går att få tag på rätt person. \n" + "På Broccoli tar sig vårt härliga admingäng sig tid att lyssna på oss konsulter och ser till att vi mår bra på arbetsplatsen vi befinner oss på samt att vi vidareutvecklas. Jag är inte endast elektroingenjör utan även fyrbarnsmorsa och tycker att sommarfesterna som Broccoli anordnar är kanon för då får hela familjen följa med!",
     },
   ];
 

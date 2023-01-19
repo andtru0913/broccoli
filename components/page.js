@@ -234,7 +234,7 @@ const Page = ({
       {admin.modifyPage}
       {admin.editPage}
       <section className="bg-fill relative">
-        <div className="relative h-[40rem] overflow-hidden ">
+        <div className="relative h-[48rem] overflow-hidden ">
           <svg
             className="fill-primary-l1/70 absolute z-10 right-0 -top-5 h-auto lg:w-2/3  "
             width="818"
@@ -245,7 +245,7 @@ const Page = ({
           >
             <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
           </svg>
-          <div className="relative overflow-hidden h-full bg-center ">
+          <div className="relative overflow-y-auto h-full bg-center ">
             <Image
               src={`/uploads/pages/${image}?${Date.now()}`}
               priority={true}
@@ -255,11 +255,11 @@ const Page = ({
             />
           </div>
           <div className=" bg-primary-l1 ">
-            <div className="absolute flex flex-col text-center md:text-left text-inverted bottom-1/4 md:bottom-1/3 2xl:bottom-20 lg:h-1/3  right-4 z-10 p-12 md:p-0  max-w-prose md:w-1/2">
+            <div className="absolute flex flex-col text-center md:text-left text-inverted top-[10%] md:top-36 lg:top-[22%] lg:h-1/4  right-4 z-10 p-12 md:p-0  max-w-prose md:w-1/2">
               <h1 className="layout  pb-0 md:pb-2 font-bold uppercase ">
                 {page.title}
               </h1>
-              <h4 className="layout font-normal ">{page.description}</h4>
+              <h4 className="layout font-small ">{page.description}</h4>
             </div>
           </div>
         </div>

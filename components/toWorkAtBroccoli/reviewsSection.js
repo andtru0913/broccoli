@@ -7,14 +7,14 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
   return (
     <>
       <div
-        className={`max-h-48 hidden lg:flex flex-col md:flex-row cursor-default w-full transition-all duration-100 ease-in-out  my-2 
+        className={`h-auto hidden lg:flex flex-col md:flex-row cursor-default w-full transition-all duration-100 ease-in-out  my-2 
               ${
                 id % 2 ? " bg-primary-1" : "bg-secondary-1"
               } shadow-lg shadow-shadow`}
       >
         {img_path != null}
         <div className="relative">
-          <div className="w-36 h-40 lg:w-40 lg:h-48 relative">
+          <div className="w-48 h-full relative">
             <Image
               className="object-cover  "
               src={img_path}
