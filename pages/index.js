@@ -63,13 +63,13 @@ export default function Home({ feed, genderCount }) {
   const insta_images = feed.data;
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 2500 });
   }, []);
   return (
     <Layout className="fixed">
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className={"relative h-screen"}>
+          <div className={"relative h-screen duration-75 "}>
             <Image
               src="/images/firstp3.jpg"
               layout="fill"

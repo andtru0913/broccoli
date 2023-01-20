@@ -49,7 +49,7 @@ const NavBar = () => {
   }, [clientWindowHeight]);
 
   return (
-    <header className="fixed top-0 z-50 bg-white w-screen">
+    <header className="fixed top-0 z-50 bg-secondary-l1 w-screen">
       {/*<header className="sticky top-0 z-50">*/}
       <nav
         className={`flex justify-between items-center align-middle py-2 px-7 text-base font-medium `}

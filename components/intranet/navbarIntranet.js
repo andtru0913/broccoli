@@ -54,14 +54,14 @@ const NavbarIntranet = ({ admin, notifications }) => {
     " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
   return (
     <>
-      <header className="fixed top-0  lg:sticky bg-fill z-30">
+      <header className="fixed top-0  lg:sticky bg-secondary-1 z-30">
         <>
           {admin ? <NavbarAdmin /> : ""}
           <nav className="hidden lg:flex justify-between items-center align-middle px-4 py-2 shadow-md">
             <div className="text-lg flex justify-start">
               <Link href="/intranet">
                 <a className="">
-                  <div className="relative h-auto w-20 md:h-5 py-0 flex md:w-60 lg:h-10">
+                  <div className="relative h-auto w-20 md:h-5  py-0 flex md:w-60 lg:h-10">
                     <ThemedImage
                       img_path_light="/images/lightMode/BroccoliBlack.png"
                       img_path_dark="/images/darkMode/BroccoliWhite.png"
