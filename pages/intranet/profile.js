@@ -3,26 +3,25 @@ import { getNotifications, getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies ? (await getUserProfile(cookies.id)) : null;
-  return !user ?
-      {
+  const user = !!cookies ? await getUserProfile(cookies.id) : null;
+  return !user
+    ? {
         redirect: {
           permanent: false,
           destination: "/intranet",
         },
         props: {},
       }
-      :
-      {
+    : {
         props: {
           userString: JSON.stringify(user),
-          notifications: JSON.stringify(await getNotifications(user.id))
-        }
-      }
+          notifications: JSON.stringify(await getNotifications(user.id)),
+        },
+      };
 }
 
 const profile = ({ userString, notifications }) => {
-  const user = JSON.parse(userString)
+  const user = JSON.parse(userString);
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
@@ -44,19 +43,19 @@ const profile = ({ userString, notifications }) => {
                 <ProfilePicture image={user.image} />
               </div>
             </div>
-            <div className=" px-10 md:pr-16 pt-0 md:pt-24 pb-24 md:pb-0 md:col-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible md:h-full p-2 ">
+            <div className=" md:pr-16 md:pt-24 mt-8 md:col-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible md:h-full ">
               {/**Profile Information */}
-              <div className="flex flex-row flex-wrap py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row flex-wrap pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3 mr-16">
                   <p className="font-bold uppercase text-muted">Namn</p>
                 </div>
                 <div>
-                  <h3>
+                  <p>
                     {user.firstname} {user.lastname}
-                  </h3>
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16 ">
                   <p className="font-bold uppercase text-muted">Födelsedatum</p>
                 </div>
@@ -64,7 +63,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.birthday.split("T")[0]}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16 ">
                   <p className="font-bold uppercase text-muted">Användarnamn</p>
                 </div>
@@ -72,7 +71,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.username}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Roll</p>
                 </div>
@@ -80,7 +79,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.role}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Företag</p>
                 </div>
@@ -88,7 +87,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.company}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Beskrivning</p>
                 </div>
@@ -96,7 +95,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.description}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Email</p>
                 </div>
@@ -104,7 +103,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.email}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Adress</p>
                 </div>
@@ -112,7 +111,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.address}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Privatnummer</p>
                 </div>
@@ -120,7 +119,7 @@ const profile = ({ userString, notifications }) => {
                   <p>{user.privatenumber}</p>
                 </div>
               </div>
-              <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
+              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
                 <div className="w-1/3  mr-16">
                   <p className="font-bold uppercase text-muted">Jobbnummer</p>
                 </div>

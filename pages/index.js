@@ -14,10 +14,14 @@ import { Doughnut } from "react-chartjs-2";
 import { getGenderCount } from "../Database";
 import Reviews from "../components/toWorkAtBroccoli/reviews";
 import ThemedImage from "../components/themedImage";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect, useState } from "react";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
   const feed = await data.json();
+
   return {
     props: {
       feed: feed,
@@ -57,24 +61,29 @@ export default function Home({ feed, genderCount }) {
     ],
   };
   const insta_images = feed.data;
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
     <Layout className="fixed">
       <main>
         <div className="overflow-hidden h-screen bg-center">
           <div className={"relative h-screen"}>
             <Image
-                src="/images/firstp3.jpg"
-                layout="fill"
-                objectFit="cover"
-                alt="Siluette of Gothenburg"
+              src="/images/firstp3.jpg"
+              layout="fill"
+              objectFit="cover"
+              alt="Siluette of Gothenburg"
             />
           </div>
 
           <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute bottom-1/3 flex justify-center ">
+            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 ">
               <img
-                src="/images/lightMode/BroccoliBlack.png"
-                className=" flex justify-center w-1/2 "
+                src="/images/Broccolibl.png"
+                className=" flex justify-center md:w-1/2 "
+                data-aos="fade-left"
                 alt={"broccoli_logo"}
               />
             </div>

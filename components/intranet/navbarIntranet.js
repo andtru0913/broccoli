@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import * as React from "react";
 import ActiveLink from "../activeLink";
 import ThemedImage from "../themedImage";
@@ -8,40 +8,47 @@ import INTRA_MENU_LIST from "./navItemIntra";
 import { HiBell } from "react-icons/hi";
 import UpcomingNotifications from "./upcomingNotifications";
 
-
 const NavbarIntranet = ({ admin, notifications }) => {
-    const parsedNotifications = JSON.parse(notifications)
+  const parsedNotifications = JSON.parse(notifications);
   const [isOpen, setIsOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [isRed, setIsRed] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-        let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
-        setIsRed(!parsedNotifications.every(item => notificationCookies.includes(item.notification.id)))
-        setNotificationOpen(!parsedNotifications.every(item => notificationCookies.includes(item.notification.id)))
-      }, []
-  )
+    let notificationCookies =
+      JSON.parse(localStorage.getItem("readNotifications") || null) || [];
+    setIsRed(
+      !parsedNotifications.every((item) =>
+        notificationCookies.includes(item.notification.id)
+      )
+    );
+    setNotificationOpen(
+      !parsedNotifications.every((item) =>
+        notificationCookies.includes(item.notification.id)
+      )
+    );
+  }, []);
 
-
-  const openNotification = () =>
-  {
-      if(notificationOpen) {
-          setIsRed(false)
-          setNotificationOpen(false)
-          let notificationCookies = JSON.parse(localStorage.getItem("readNotifications") || null) || []
-          const parsedNotifications = JSON.parse(notifications)
-          parsedNotifications.forEach(item => {
-              if (!notificationCookies.includes(item.notification.id)) {
-                  notificationCookies.push(item.notification.id)
-              }
-          })
-          localStorage.setItem("readNotifications", JSON.stringify(notificationCookies))
-      }
-        else {
-          setNotificationOpen(true)
-      }
-
+  const openNotification = () => {
+    if (notificationOpen) {
+      setIsRed(false);
+      setNotificationOpen(false);
+      let notificationCookies =
+        JSON.parse(localStorage.getItem("readNotifications") || null) || [];
+      const parsedNotifications = JSON.parse(notifications);
+      parsedNotifications.forEach((item) => {
+        if (!notificationCookies.includes(item.notification.id)) {
+          notificationCookies.push(item.notification.id);
+        }
+      });
+      localStorage.setItem(
+        "readNotifications",
+        JSON.stringify(notificationCookies)
+      );
+    } else {
+      setNotificationOpen(true);
+    }
   };
   const hamburgerLine =
     " w-6 h-0.5 bg-primary-1 my-1 transition-all duration-300 ease-in-out lg:hidden";
@@ -49,7 +56,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
     <>
       <header className="fixed top-0  lg:sticky bg-fill z-30">
         <>
-          {admin?<NavbarAdmin/>:""}
+          {admin ? <NavbarAdmin /> : ""}
           <nav className="hidden lg:flex justify-between items-center align-middle px-4 py-2 shadow-md">
             <div className="text-lg flex justify-start">
               <Link href="/intranet">
@@ -69,8 +76,8 @@ const NavbarIntranet = ({ admin, notifications }) => {
                 className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
                                       isOpen === false
-                                        ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300  "
-                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full  rounded-lg  text-center  duration-300"
+                                        ? " lg:static fixed  -left-full  top-14  flex  flex-col  w-full   text-center  duration-300  "
+                                        : "lg:static  fixed  left-0  top-14  flex  flex-col  w-full   text-center  duration-300"
                                     }`}
               >
                 {INTRA_MENU_LIST.map((menu) => {
@@ -85,9 +92,9 @@ const NavbarIntranet = ({ admin, notifications }) => {
                       <ActiveLink
                         id={menu.text}
                         href={menu.href}
-                        activeClassName="w-full text-xs font-medium  lg:ml-8 text-primary-l1 uppercase opacity-80 transition-all duration-200"
+                        activeClassName="w-full text-xs font-bold  lg:ml-8 text-primary-l1 uppercase opacity-80 transition-all duration-200"
                       >
-                        <a className="w-full text-xs  lg:ml-8 font-medium  uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
+                        <a className="w-full text-xs  lg:ml-8 font-bold  uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
                           {menu.top === true ? menu.text : menu["icon-small"]}
                         </a>
                       </ActiveLink>
@@ -130,17 +137,17 @@ const NavbarIntranet = ({ admin, notifications }) => {
               }
                  `}
             >
-                {parsedNotifications.map((data) => {
-                    return (
-                        <UpcomingNotifications
-                            key={data.notification.id}
-                            title={data.notification.title}
-                            date={data.notification.startDate}
-                            description={data.notification.text}
-                            author={data.notification.author}
-                        />
-                    );
-                })}
+              {parsedNotifications.map((data) => {
+                return (
+                  <UpcomingNotifications
+                    key={data.notification.id}
+                    title={data.notification.title}
+                    date={data.notification.startDate}
+                    description={data.notification.text}
+                    author={data.notification.author}
+                  />
+                );
+              })}
               {/*  current notifications here!  */}
             </div>
 
@@ -157,7 +164,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
                 className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
+                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100 "
                             : "opacity-50 group-hover:opacity-100 "
                         } `}
               />
@@ -174,29 +181,29 @@ const NavbarIntranet = ({ admin, notifications }) => {
                 className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
+                            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100"
                             : "opacity-50 group-hover:opacity-100"
                         }`}
               />
             </button>
           </nav>
-            {/*<ThemeChanger />*/}
+          {/*<ThemeChanger />*/}
 
           {/*Bottom navbarmenu for Mobile devices and tablets */}
 
-          <nav className=" items-end flex  lg:hidden justify-between align-middle  shadow-md w-screen">
+          <nav className=" items-end flex  lg:hidden justify-between align-middle   shadow-md w-screen">
             <ul
               className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
-                                      isOpen
-                                        ? " lg:static fixed  -left-full  bottom-16 flex  flex-col w-full h-1/4 rounded-lg  text-end  duration-300  "
-                                        : "lg:static  fixed  left-0  bottom-16   flex  flex-col  w-full h-1/4 rounded-lg  text-end  duration-300 bg-fill-1"
+                                      isOpen == false
+                                        ? " lg:static fixed  -left-full  bottom-14 flex  flex-col w-full  text-end  duration-300  "
+                                        : "lg:static  fixed  left-0  bottom-14   flex  flex-col  w-full    text-end  duration-300 bg-secondary-1"
                                     }`}
             >
               {INTRA_MENU_LIST.map((menu, i) => {
                 return menu.bottom === false ? (
                   <li
-                    className="my-2 mr-3 flex justify-end"
+                    className="my-3 mr-6 mb-4 flex justify-end"
                     onClick={() => {
                       openmenu;
                     }}
@@ -207,7 +214,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
                       href={menu.href}
                       activeClassName="w-full text-xs font-medium  lg:ml-8 uppercase opacity-80 transition-all duration-200 text-primary-l1"
                     >
-                      <a className="w-full text-xs md:text-base  font-medium flex flex-col items-end uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
+                      <a className="w-full text-xs md:text-bas  font-medium flex flex-col items-end uppercase opacity-80 transition-all duration-200 hover:text-primary-l1">
                         {menu.top === true && menu.text !== "Logout"
                           ? menu.text
                           : menu["icon-small"]}
@@ -223,7 +230,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
         </>
       </header>
       <footer className="fixed bottom-0 w-screen  lg:sticky  lg:top-0 z-50 shadow-xl shadow-black">
-        <nav className=" flex  lg:hidden  align-middle items-center  bg-fill-1">
+        <nav className=" flex  lg:hidden  align-middle items-center  bg-secondary-1">
           <div className=" w-full">
             <ul className=" grid grid-cols-5 gap-4 justify-items-center align-middle">
               {INTRA_MENU_LIST.map((menu, i) =>

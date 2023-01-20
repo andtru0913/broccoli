@@ -2,10 +2,10 @@ import { useState } from "react";
 import ActiveLink from "../activeLink";
 
 const ADMIN_MENU_LIST = [
-    {text: "Hemsidan", href: ".."},
+  { text: "Hemsidan", href: ".." },
   { text: "Anställda", href: "/intranet/admin/employees" },
   { text: "Lunchgrupper", href: "/intranet/admin/lunchgroups" },
-    { text: "Notifikationer", href: "/intranet/admin/notifications" }
+  { text: "Notifikationer", href: "/intranet/admin/notifications" },
 ];
 
 {
@@ -23,17 +23,17 @@ const NavbarAdmin = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   return (
-    <nav className="bg-primary-1 flex justify-end p-2  lg:p-0 ">
+    <nav className="bg-primary-1 flex justify-end p-2 pr-6  lg:p-0 ">
       <div className="flex justify-center  text-muted ">
         <ul
-          className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle 
+          className={` lg:flex  lg:flex-row  lg:justify-between pr-8  lg:align-middle 
                         ${
                           isOpen === false
-                            ? "lg:static fixed  -left-full   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm    bg-primary-1 z-30"
-                            : "lg:static fixed  left-0   top-10  flex  flex-col  w-full  rounded-lg  text-center  duration-300  shadow-sm  bg-primary-1 z-30"
+                            ? "lg:static fixed  -left-full   top-6  flex  flex-col  w-full  font-bold uppercase  text-center  duration-300  shadow-sm    bg-primary-1 z-30"
+                            : "lg:static fixed  left-0   top-6  flex  flex-col  w-full  text-center font-bold uppercase duration-300  shadow-sm  bg-primary-1 z-30"
                         }`}
         >
-          {ADMIN_MENU_LIST.map((menu,i) => {
+          {ADMIN_MENU_LIST.map((menu, i) => {
             return (
               <li
                 className="m-2"
@@ -85,7 +85,7 @@ const NavbarAdmin = ({}) => {
           className={`${hamburgerLine}
                         ${
                           isOpen
-                            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
+                            ? "-rotate-45 -translate-y-0.5 opacity-50 group-hover:opacity-100"
                             : "opacity-50 group-hover:opacity-100"
                         }`}
         />

@@ -50,7 +50,7 @@ const NavBar = () => {
 
   return (
     <header className="fixed top-0 z-50 bg-white w-screen">
-    {/*<header className="sticky top-0 z-50">*/}
+      {/*<header className="sticky top-0 z-50">*/}
       <nav
         className={`flex justify-between items-center align-middle py-2 px-7 text-base font-medium `}
         style={{
@@ -116,7 +116,7 @@ const NavBar = () => {
         >
           <div
             className={`${hamburgerLine}
-                        ${  
+                        ${
                           isOpen
                             ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100 "
                             : "opacity-50 group-hover:opacity-100 "
