@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Underconsultants({ admin, page, pageName }) {
+export default function Underconsultants({ admin, page, pageName, click }) {
   return (
     <Layout>
       <Page
@@ -27,7 +27,34 @@ export default function Underconsultants({ admin, page, pageName }) {
         image={pageName}
         redirect={pageName}
         formTitle="ANSÖK OM ATT BLI UNDERKONSULT"
-      ></Page>
+      >
+        <div>
+          <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
+            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-20 lg:px-32 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
+              <a onClick={click} href="#linkForm">
+                <h1 className="uppercase font-bold pb-5 pt-8 mb:pt-0">
+                  Vad vi kan göra
+                </h1>
+                <p className="max-w-readable ">
+                  Driver du ett eget konsultföretag och är på jakt efter nytt
+                  uppdrag, då kan vi vara din nya partner. Vi har ett logiskt,
+                  transparent och attraktivt upplägg för dig som vill fokusera
+                  mer på tekniken än att granska finstilta avtal. Vi har själva
+                  varit små och genom åren lärt oss att man behöver en pålitlig
+                  partner för att hitta de mest intressanta uppdragen hos kunder
+                  där man själv inte har ett ramavtal. Kontakta oss ifall du
+                  vill ha hjälp att hitta ditt nästa uppdrag eller ifall du
+                  redan hittat ett uppdrag och behöver en väg in till kunden, så
+                  syr vi tillsammans ihop det administrativa.
+                </p>
+              </a>
+            </div>
+            <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-56 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
+              <img className=" " src="/images/ucon.png"></img>
+            </div>
+          </div>
+        </div>
+      </Page>
     </Layout>
   );
 }

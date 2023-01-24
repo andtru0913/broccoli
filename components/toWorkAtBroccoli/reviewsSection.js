@@ -16,7 +16,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
       >
         {img_path != null}
         <div className="relative">
-          <div className="w-48 h-full relative">
+          <div className="w-52 h-full relative">
             <Image
               className="object-cover  "
               src={img_path}

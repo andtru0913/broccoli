@@ -69,7 +69,7 @@ export default function Home({ feed, genderCount }) {
     <Layout className="fixed">
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className={"relative h-screen duration-75 "}>
+          <div className={"relative h-screen duration-0 "}>
             <Image
               src="/images/firstp3.jpg"
               layout="fill"
@@ -100,7 +100,7 @@ export default function Home({ feed, genderCount }) {
           <path d="M48.3323 721.52C-17.2708 593.114 -67.2673 272.303 257.572 16.3055L823.14 0L833.498 122.292L848 831.583L808.638 984.447C796.208 1007.55 714.998 1052.52 489.6 1047.63C207.852 1041.52 218.21 986.485 203.708 984.447C192.107 982.817 95.2904 808.483 48.3323 721.52Z" />
         </svg>
 
-        <section className="relative">
+        <section className="relative ">
           <svg
             className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10 lg:hidden"
             width="770"

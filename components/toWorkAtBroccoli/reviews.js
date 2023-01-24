@@ -6,7 +6,7 @@ const Reviews = () => {
   const data = [
     {
       id: 1,
-      img_path: "/images/mthersthol.JPG",
+      img_path: "/images/mthersthol1.JPG",
       author: "Marcus Thersthol",
       text: "Här finns goda utvecklings- och karriärmöjligheter! Ledningen ser till mig som individ. Broccoli har korta beslutsvägar och högt i tak.",
     },
@@ -20,7 +20,9 @@ const Reviews = () => {
       id: 3,
       img_path: "/images/klarsson.jpg",
       author: "Karin Larsson",
-      text: "Broccoli är ett företag där man som konsult inte \"försvinner\" i mängden samt att det har en platt organisation så det snabbt o lätt går att få tag på rätt person. \n" + "På Broccoli tar sig vårt härliga admingäng sig tid att lyssna på oss konsulter och ser till att vi mår bra på arbetsplatsen vi befinner oss på samt att vi vidareutvecklas. Jag är inte endast elektroingenjör utan även fyrbarnsmorsa och tycker att sommarfesterna som Broccoli anordnar är kanon för då får hela familjen följa med!",
+      text:
+        'Broccoli är ett företag där man som konsult inte "försvinner" i mängden samt att det har en platt organisation så det snabbt o lätt går att få tag på rätt person. \n' +
+        "På Broccoli tar sig vårt härliga admingäng sig tid att lyssna på oss konsulter och ser till att vi mår bra på arbetsplatsen vi befinner oss på samt att vi vidareutvecklas. Jag är inte endast elektroingenjör utan även fyrbarnsmorsa och tycker att sommarfesterna som Broccoli anordnar är kanon för då får hela familjen följa med!",
     },
   ];
 

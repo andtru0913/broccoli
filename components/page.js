@@ -255,7 +255,7 @@ const Page = ({
             />
           </div>
           <div className=" bg-primary-l1 ">
-            <div className="absolute flex flex-col text-center md:text-left text-inverted top-[10%] md:top-36 lg:top-[22%] lg:h-1/4  right-4 z-10 p-12 md:p-0  max-w-prose md:w-1/2">
+            <div className="absolute flex flex-col text-center md:text-left text-inverted top-[25%] md:top-36 lg:top-[35%]  right-4 z-10 p-12 md:p-5  max-w-prose md:w-1/2">
               <h1 className="layout  pb-0 md:pb-2 font-bold uppercase ">
                 {page.title}
               </h1>
@@ -265,8 +265,8 @@ const Page = ({
         </div>
       </section>
 
-      <section className="bg-fill pb-5   ">
-        <div className="z-20 px-5 ">
+      <section className="bg-secondary-l1 pb-10   ">
+        {/*    <div className="z-20 px-5 ">
           <div
             className={`grid md:grid-cols-${Math.min(
               numCards,
@@ -297,7 +297,7 @@ const Page = ({
             ))}
             {admin.button}
           </div>
-        </div>
+        </div>*/}
       </section>
       {children}
 
