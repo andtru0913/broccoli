@@ -6,26 +6,29 @@ export class FileAdder {
     setCreateObjectURL;
     unused;
     constructor() {
-        [this.image, this.setImage] = useState(null);
+        [this.image, this.setImage] = useState([]);
 
-        [this.unused, this.setCreateObjectURL] = useState(null);
+        [this.urls, this.setCreateObjectURL] = useState([]);
     }
 
     uploadToClient = (event) => {
-        if (event.target.files && event.target.files[0]) {
-            const i = event.target.files[0];
-            this.setImage(i);
-            this.setCreateObjectURL(URL.createObjectURL(i));
+        if (!!event.target.files) {
+            for(let i = 0; i < event.target.files.length; i++) {
+                this.setImage(image => [...image, event.target.files[i]]);
+            }
         }
     };
-    uploadToServer = async (filename) => {
-        const form = new FormData();
-        form.append("newFilename",filename)
-        form.append("file", this.image);
-        await fetch("../../api/addFile", {
-            method: "POST",
-            body: form,
-        });
+    uploadToServer = (directory) => {
+        console.log(directory)
+        this.image.forEach(elem => {
+            let form = new FormData();
+            form.append("newFilename",`${directory}/${elem.name}`)
+            form.append("file", elem);
+            fetch("../../api/addFile", {
+                method: "POST",
+                body: form,
+            }).then(_ => {});
+        })
     };
 }
 

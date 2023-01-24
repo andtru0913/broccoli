@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { icons } from "react-icons";
 import { GrFormDown, GrFormUp } from "react-icons/Gr";
 
 export default function ({ img_path, id, author, children, index, setIndex }) {
@@ -36,7 +35,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
           <div
             className={`flex lg:hidden flex-row  cursor-pointer w-full transition-all duration-100 ease-in-out  my-2 hover:border-none
     ${
-      id % 2
+      id % 2    
         ? " bg-primary-1 hover:bg-primary-l1"
         : "bg-secondary-1 hover:bg-secondary-d1"
     }  shadow-lg shadow-shadow`}
