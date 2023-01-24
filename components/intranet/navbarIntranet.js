@@ -57,7 +57,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
       <header className="fixed top-0  lg:sticky bg-secondary-1 z-30">
         <>
           {admin ? <NavbarAdmin /> : ""}
-          <nav className="hidden lg:flex justify-between items-center align-middle px-4 py-2 shadow-md">
+          <nav className="hidden lg:flex justify-between items-center align-middle pr-4 py-2 shadow-md">
             <div className="text-lg flex justify-start">
               <Link href="/intranet">
                 <a className="">
