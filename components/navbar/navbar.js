@@ -52,7 +52,7 @@ const NavBar = () => {
     <header className="fixed top-0 z-50 bg-secondary-l1 w-screen">
       {/*<header className="sticky top-0 z-50">*/}
       <nav
-        className={`flex justify-between items-center align-middle py-2 px-7 text-base font-medium `}
+        className={`flex justify-between items-center align-middle py-2 pr-7 text-base font-medium `}
         style={{
           background: `rgb(var(--color-fill), ${backgroundTransparacy}) `,
           color: `rgb(var(--color-inverted)`,
