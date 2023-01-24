@@ -46,7 +46,7 @@ export default function Posts({ admin, page, pageName, click }) {
               </a>
             </div>
             <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-56 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
-              <img className=" " src="/images/posts4.png"></img>
+              <img className=" " src="/images/posts.png"></img>
             </div>
           </div>
         </div>

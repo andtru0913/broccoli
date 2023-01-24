@@ -61,7 +61,7 @@ export default function Exjobb({ admin, page, pageName, click }) {
             </div>
 
             <div className=" col-span-1 md:relative -bottom-16 row-start-2 row-span-1  md:right-32 md:top-5    md:col-span-1 md:col-end-5 md:row-start-1  ">
-              <img className="  " src="/images/tva3.png"></img>
+              <img className="  " src="/images/tva.png"></img>
             </div>
           </div>
         </div>
