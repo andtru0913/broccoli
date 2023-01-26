@@ -84,11 +84,7 @@ export default function Home({ user, news, notifications }) {
           onClick={async function () {
             try {
               await uploadToDatabase().then((_) => {});
-              file
-                .uploadToServer(
-                  `news/${document.getElementById("file").files[0].name}`
-                )
-                .then((_) => {});
+              file.uploadToServer(`news/${document.getElementById("file")}`);
               window.location.reload();
             } catch (e) {
               console.log(e);

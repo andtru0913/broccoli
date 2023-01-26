@@ -21,8 +21,8 @@ const saveFile = async (file, filename) => {
         const data = fs.readFileSync(file.filepath);
         fs.writeFileSync(`./public/uploads/${filename}`, data);
         await fs.unlinkSync(file.filepath);
-    } catch (_) {
-
+    } catch (err) {
+        console.log(err)
     }
 };
 
