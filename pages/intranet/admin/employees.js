@@ -1,10 +1,9 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { getAllUsers, getNotifications, getUserinfo } from "../../../Database";
-import {verify} from "../../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
-  const user = await getUserinfo(user_id);
+  const cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user = !!cookies ? await getUserinfo(cookies.id) : null;
   return !user || !user.admin
     ? {
         redirect: {
