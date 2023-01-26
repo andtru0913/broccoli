@@ -69,7 +69,17 @@ export default function Home({ feed, genderCount }) {
     <Layout className="fixed">
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className={"relative h-screen duration-0 "}>
+          <div
+            className="relative h-screen duration-0 "
+            data-aos="zoom-in-up"
+            data-aos-easing="ease-in-out-sine"
+            data-aos-offset="50"
+            data-aos-delay="0"
+            data-aos-duration="1000"
+            data-aos-mirror="true"
+            data-aos-once="false"
+            data-aos-anchor-placement="center-bottom"
+          >
             <Image
               src="/images/firstp3.jpg"
               layout="fill"
@@ -79,7 +89,7 @@ export default function Home({ feed, genderCount }) {
           </div>
 
           <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 ">
+            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24">
               <img
                 src="/images/Broccolibl.png"
                 className=" flex justify-center md:w-1/2 "
@@ -102,7 +112,7 @@ export default function Home({ feed, genderCount }) {
 
         <section className="relative ">
           <svg
-            className="absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10 lg:hidden"
+            className="  absolute top-80 lg:top-96  right-0 h-auto fill-secondary-1 w-3/4 md:lg:w-1/2 xl:w-11/12 -z-10 lg:hidden"
             width="770"
             height="1048"
             viewBox="0 0 770 1048"
@@ -114,13 +124,16 @@ export default function Home({ feed, genderCount }) {
 
           <div className=" pt-12  flex flex-col justify-center">
             <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
-              <div className="  lg:max-w-readable flex justify-center pb-8">
+              <div className=" lg:max-w-readable flex justify-center pb-8">
                 <h2 className="text-center font-bold uppercase">
                   Hos broccoli jobbar ingenjörer med olika inriktningar, främst
                   inom:
                 </h2>
               </div>
-              <div className="flex flex-row flex-wrap flex-auto justify-center gap:2">
+              <div
+                className="flex flex-row flex-wrap flex-auto justify-center gap:2"
+                id="trigger-zoom"
+              >
                 <div className=" flex flex-col items-center">
                   <div className="relative  mb-2 mt-4">
                     <div className=" w-20 h-20 relative">

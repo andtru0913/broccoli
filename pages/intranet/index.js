@@ -9,7 +9,7 @@ import { getNews, getNotifications } from "../../Database";
 
 export async function getServerSideProps(context) {
   const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies? await Database.getUserinfo(cookies.id):null;
+  const user = !!cookies ? await Database.getUserinfo(cookies.id) : null;
   if (!!user) {
     const groups = await Database.getAllLunchGroups();
     const events = await Database.upcomingEvents(3);
@@ -176,7 +176,7 @@ export default function Home({
                   data={JSON.parse(news)}
                 />
               </div>
-              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-d1 ">
+              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-d1 z-10">
                 <h2 className="  text-muted uppercase font-bold mb-3 z-10 ">
                   Kommande event
                 </h2>
@@ -194,7 +194,7 @@ export default function Home({
 
               <div className=" relative md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default  ">
                 <svg
-                  className="absolute right-0 -top-5 z-0 fill-primary-l2"
+                  className="absolute right-0 -top-4 z-0 fill-primary-l2"
                   width="782"
                   height="554"
                   viewBox="0 0 782 554"
