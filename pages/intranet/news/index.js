@@ -29,6 +29,7 @@ export default function Home({ user, news, notifications }) {
   if (user.admin) {
     const file = new FileAdder();
     const uploadToDatabase = () => {
+      console.log("hi");
       return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "../../api/admin/createNews");
@@ -62,18 +63,17 @@ export default function Home({ user, news, notifications }) {
       });
     };
     popup = (
-      <div className="z-10 flex flex-col justify-center">
-          <p className={"m-1"}>Ny inlägg</p>
+      <div className="z-10">
+        Ny inlägg
         <input
           id={"title"}
           type={"text"}
           name={"title"}
           placeholder={"Titel"}
-          className={"m-1 border-black"}
         />
         <input
           className={
-            "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+            "form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
           }
           id="file"
           type="file"
@@ -81,12 +81,12 @@ export default function Home({ user, news, notifications }) {
           onChange={file.uploadToClient}
         />
         <button
-          className="m-1 btn btn-primary"
+          className="btn btn-primary"
           onClick={async function () {
             try {
               await uploadToDatabase().then((_) => {});
-              file.uploadToServer(`news`);
-              //window.location.reload();
+              file.uploadToServer(`news/${document.getElementById("file")}`);
+              window.location.reload();
             } catch (e) {
               console.log(e);
             }

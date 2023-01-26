@@ -61,39 +61,21 @@ export default function Home({ user, notifications }) {
             });
         };
         popup = (
-            <div className="z-10 flex flex-col justify-center">
+            <form action="../../api/uploadFile" method="POST" encType="multipart/form-data"
+                  className="z-10 flex flex-col justify-center">
                 <p className={"m-1"}>Ny företagsdokument</p>
-                <input
-                    id={"title"}
-                    type={"text"}
-                    name={"title"}
-                    placeholder={"Titel"}
-                    className={"m-1 border-black"}
-                />
                 <input
                     className={
                         "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
                     }
                     id="file"
                     type="file"
-                    name="myImage"
-                    onChange={file.uploadToClient}
+                    name={"file"}
                 />
-                <button
-                    className="m-1 btn btn-primary"
-                    onClick={async function () {
-                        try {
-                            await uploadToDatabase().then((_) => {});
-                            file.uploadToServer(`dokument`);
-                            //window.location.reload();
-                        } catch (e) {
-                            console.log(e);
-                        }
-                    }}
-                >
+                <button className="m-1 btn btn-primary">
                     Skapa nytt inlägg
                 </button>
-            </div>
+            </form>
         );
     }
     return (

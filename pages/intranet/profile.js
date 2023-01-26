@@ -61,7 +61,7 @@ const profile = ({ userString, notifications }) => {
                   <p className="font-bold uppercase text-muted">Födelsedatum</p>
                 </div>
                 <div>
-                  <p>{user.birthday.split("T")[0]}</p>
+                  <p>{!!user.birthday? user.birthday.split("T")[0]:""}</p>
                 </div>
               </div>
               <div className="flex flex-row py-4 border-primary-1 border-b border-base items-center">
