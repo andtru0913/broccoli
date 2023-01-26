@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     /*
-    if (await checkAdmin(req.cookies['user'])) {
+    if (await checkAdmin(req.cookies['token'])) {
         if (req.body.title !== "" && req.body.filename !== "") {
             await createDocument(req.body.title, req.body.filename, new Date().toISOString().split('T')[0])
                 .catch(e => {
