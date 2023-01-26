@@ -1,5 +1,5 @@
 import {SMTPClient} from "emailjs";
-import checkAdmin from "./checkAdmin";
+import {checkAdmin} from "./checkAdmin";
 import {createEvent} from "../../../Database";
 
 export default async function handler(req, res) {

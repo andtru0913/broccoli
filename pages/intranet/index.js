@@ -5,11 +5,12 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import ThemedImage from "../../components/themedImage";
 import * as Database from "../../Database";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
-import { getNews, getNotifications } from "../../Database";
+import {getNews, getNotifications, getUserinfo} from "../../Database";
+import {verify} from "../../tokens";
 
 export async function getServerSideProps(context) {
-  const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies? await Database.getUserinfo(cookies.id):null;
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user = await getUserinfo(user_id);
   if (!!user) {
     const groups = await Database.getAllLunchGroups();
     const events = await Database.upcomingEvents(3);

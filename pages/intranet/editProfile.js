@@ -2,10 +2,11 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import {getNotifications, getUserProfile} from "../../Database";
 import { FileAdder } from "../../components/FileAdder";
 import ProfilePicture from "../../components/ProfilePicture";
+import {verify} from "../../tokens";
 
 export async function getServerSideProps(context) {
-  const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies ? (await getUserProfile(cookies.id)) : null;
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user = await getUserProfile(user_id);
   return !user ?
       {
         redirect: {
@@ -187,7 +188,6 @@ const profile = ({ userString, notifications }) => {
                       onClick={function () {
                         file
                           .uploadToServer(`profiles/${user.email}`)
-                          .then((_) => {});
                       }}
                       type="submit"
                     >

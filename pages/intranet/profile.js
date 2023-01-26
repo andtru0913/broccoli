@@ -1,9 +1,10 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import { getNotifications, getUserProfile } from "../../Database";
+import {getNotifications, getUserProfile} from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
+import {verify} from "../../tokens";
 export async function getServerSideProps(context) {
-  const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !!cookies ? await getUserProfile(cookies.id) : null;
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user = await getUserProfile(user_id);
   return !user
     ? {
         redirect: {

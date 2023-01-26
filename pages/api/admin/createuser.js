@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import {createNewUser} from "../../../Database";
-import checkAdmin from "./checkAdmin";
+import {checkAdmin} from "./checkAdmin";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {

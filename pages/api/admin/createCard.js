@@ -1,4 +1,4 @@
-import checkAdmin from "./checkAdmin";
+import {checkAdmin} from "./checkAdmin";
 import {createCard} from "../../../Database";
 
 export default async function handler(req, res) {

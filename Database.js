@@ -61,9 +61,7 @@ export async function login(input_username, input_password) {
     let account_password = query[0].password;
     const hashedPassword = await bcrypt.hash(input_password, salt);
     if (hashedPassword === account_password) {
-      return {
-        id: id,
-      };
+      return id
     } else {
       return null;
     }
@@ -178,7 +176,7 @@ export async function getAllUsers() {
 }
 
 export async function isAdmin(userid) {
-  if (userid === undefined) return false;
+  if (userid === undefined) return null;
   try {
     const query = await prisma.user.findMany({
       where: {
@@ -190,7 +188,21 @@ export async function isAdmin(userid) {
     });
     return query[0].admin;
   } catch (e) {
-    return false;
+    return null;
+  }
+}
+
+export async function isUser(userid) {
+  if (userid === undefined) return null;
+  try {
+    const query = await prisma.user.findMany({
+      where: {
+        id: userid,
+      },
+    });
+    return !!query;
+  } catch (e) {
+    return null;
   }
 }
 

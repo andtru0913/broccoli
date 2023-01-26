@@ -4,6 +4,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
 import {getAllUsers, getGroupsAdmin, getNotifications, getUserinfo} from "../../../Database";
+import {verify} from "../../../tokens";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -18,8 +19,8 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 };
 
 export async function getServerSideProps(context) {
-  const cookies = JSON.parse(context.req.cookies["user"] || null);
-  const user = !! cookies ? (await getUserinfo(cookies.id)) : null;
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user = await getUserinfo(user_id);
   return (!user || !user.admin)   ?
       {
         redirect: {
