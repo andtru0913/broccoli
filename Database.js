@@ -63,9 +63,6 @@ export async function login(input_username, input_password) {
     if (hashedPassword === account_password) {
       return {
         id: id,
-        firstname: query[0].firstname,
-        lastname: query[0].lastname,
-        admin: query[0].admin
       };
     } else {
       return null;

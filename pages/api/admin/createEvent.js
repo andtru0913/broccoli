@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if(req.method !== 'POST') {
         res.redirect(302, '../intranet')
     }
-    if (await checkAdmin(req.cookies['user'])) {
+    if (await checkAdmin(req.cookies['token'])) {
         let end = new Date(req.body.end)
         let start = new Date(req.body.start)
         if (req.body.title !== "" && start <= end) {
@@ -54,3 +54,5 @@ export default async function handler(req, res) {
 
     res.redirect(302, '../../intranet/fullcalender');
 }
+
+
