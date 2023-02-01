@@ -5,11 +5,22 @@ export default async function handler(req, res) {
     if(req.method !== 'POST') {
         res.redirect(302, '../intranet')
     }
-    if (await checkAdmin(req.cookies['token'])) {
-        await deleteNotification(req.body.id)
-            .catch(e => {
-                console.error(e.message)
-            })
+    try {
+        if (await checkAdmin(req.cookies['token'])) {
+            await deleteNotification(req.body.id)
+                .catch(e => {
+                    throw e
+                })
+            if(!!req.body.redirect) {
+                res.redirect(302, req.body.redirect);
+            } else {
+                res.redirect(200, "Done!");
+            }
+        }  else {
+            res.status(401, "Unauthorized")
+        }
+    } catch {
+        res.status(500, "Internal server error")
     }
-    res.redirect(302, '../../intranet/admin/notifications');
+
 }

@@ -1,16 +1,18 @@
-import { getPage } from "../Database";
+import {getPage, getUserinfo} from "../Database";
 import Page from "../components/page";
 import { posts } from "../defaultIDs";
 import Layout from "../components/layout/layout";
+import {verify} from "../tokens";
 
 export async function getServerSideProps(context) {
   const pageId = posts;
   const pageName = "posts";
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user = await getUserinfo(user_id);
   const page = (await getPage(pageId))[0];
   return {
     props: {
-      admin: !!cookies ? cookies.admin : false,
+      admin: user.admin,
       page: page,
       pageName: pageName,
     },

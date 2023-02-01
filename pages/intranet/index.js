@@ -88,6 +88,11 @@ export default function Home({
                 method="POST"
               >
                 <input
+                    type="hidden"
+                    name="redirect"
+                    value="../intranet/"
+                />
+                <input
                   className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
                   type="text"
                   name="username"

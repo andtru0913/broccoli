@@ -82,6 +82,11 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
         <div className={"p-2"}>
       Notifikationer
             <form className={"flex flex-row h-64"} action={"../../api/admin/createNotification"} method={"POST"}>
+                <input
+                    type="hidden"
+                    name="redirect"
+                    value={"../../intranet/admin/notifications"}
+                />
                 <div className={"flex flex-row"}>
                     <div className={"flex flex-col w-72 "}>
                         <input type={"hidden"} name={"id"} value={user.id}/>
@@ -197,6 +202,11 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                             <p>{useFormattedDate(item.startDate)} - {useFormattedDate(item.endDate)}</p>
                         </div>
                         <form className={"flex flex-row"} action={"../../api/admin/deleteNotification"} method={"POST"}>
+                            <input
+                                type="hidden"
+                                name="redirect"
+                                value={"../../intranet/admin/notifications"}
+                            />
                             <input type={"hidden"} name={"id"} value={item.id}/>
                             <button type={"submit"}>&#10060;</button>
                         </form>
@@ -214,6 +224,11 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
         ></div>
         <div className={`${popHide} window-pop `} id={"modifyNotif"}>
             <form className={"flex flex-row p-2 h-64 bg-white"} action={"../../api/admin/modifyNotification"} method={"POST"}>
+                <input
+                    type="hidden"
+                    name="redirect"
+                    value={"../../intranet/admin/notifications"}
+                />
                 <input type={"hidden"} name={"notifId"} id={"modifyId"}/>
                 <div className={"flex flex-row"}>
                     <div className={"flex flex-col w-72 "}>

@@ -7,8 +7,17 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     const query = await login(req.body.username, req.body.password)
-    if (!!query) {
-        res.setHeader('Set-Cookie', serialize('token', JSON.stringify(await getToken(query)), { path: '/' }));
+    if (!!req.body.redirect) {
+        if (!!query) {
+            res.setHeader('Set-Cookie', serialize('token', JSON.stringify(await getToken(query)), { path: '/' }));
+        }
+        res.redirect(302, '../intranet/')
+    } else {
+        if (!!query) {
+            res.status(200).send(await getToken(query))
+        }
     }
-    res.redirect(302, '../intranet/')
+    res.status(401).json({error: 'Wrong username or password'})
+
+
 }

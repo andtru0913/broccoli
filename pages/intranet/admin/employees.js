@@ -36,8 +36,9 @@ export default function Home({ user, notifications }) {
           <div className=" flex flex-1 flex-col lg:flex-row justify-center">
             <div id="modifyuser" className={`${popHide} z-30 absolute w-screen p-8 rounded flex flex-col bg-white w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
               <h3 className="text-skin-base"> Edit User</h3>
-              <form className={"flex flex-col"} action="../../api/modifyuser" method="POST">
+              <form className={"flex flex-col"} action="../../api/admin/modifyuser" method="POST">
                 <input className="id" type="hidden" name="id" />
+                <input type="hidden" name="redirect"/>
                 <input
                   className="username m-1"
                   type="text"

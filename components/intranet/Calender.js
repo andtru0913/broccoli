@@ -34,8 +34,8 @@ const Component = ({ user, allEvents, setIscoming }) => {
           let description = e.event._def.extendedProps.description;
           let title = e.event._def.title;
           let users = e.event._def.extendedProps.users;
-          let start = e.event._def.extendedProps.startDate;
-          let end = e.event._def.extendedProps.endDate;
+          let start = e.event.start;
+          let end = e.event.end || start;
 
           background.classList.remove(popHide);
           if (admin) {
@@ -48,8 +48,8 @@ const Component = ({ user, allEvents, setIscoming }) => {
             modifyevent.getElementsByClassName("id")[1].value = id;
             modifyevent.getElementsByClassName("eventid")[0].value = id;
             modifyevent.getElementsByClassName("eventid")[1].value = id;
-            modifyevent.getElementsByClassName("start")[0].valueAsDate = new Date(start);
-            modifyevent.getElementsByClassName("end")[0].valueAsDate = new Date(end);
+            document.getElementById("modifyStart").valueAsDate = new Date(start);
+            document.getElementById("modifyEnd").valueAsDate = new Date(end);
             const root = ReactDOM.createRoot(
                 document.getElementById("modifyRoot")
             );
@@ -144,6 +144,11 @@ const Calender = ({ user, allEvents, cal }) => {
               </button>
             </div>
             <form action="../../api/admin/createEvent" method="POST">
+              <input
+                  type="hidden"
+                  name="redirect"
+                  value={"../../intranet/fullcalender"}
+              />
               <div className="flex flex-col md:flex-row  py-4">
                 <div className="flex flex-row">
                   <p className="pr-2"> Från</p>
@@ -153,7 +158,6 @@ const Calender = ({ user, allEvents, cal }) => {
                     name="start"
                   />
                 </div>
-
                 <div className="flex flex-row px-2">
                   <p className="px-2">till </p>
                   <input
@@ -203,11 +207,12 @@ const Calender = ({ user, allEvents, cal }) => {
               <div className="flex flex-col md:flex-row gap-2 py-4">
                 <div className="flex flex-col">
                   <form action="../../api/admin/modifyEvent" method="POST">
+                    <input type={"hidden"} name={"redirect"} value={"../../intranet/fullcalender"}/>
                     <div className="flex flex-col md:flex-row gap-2 py-4">
                       <div className="flex flex-row">
                         <p className="pr-2 text-muted"> Från</p>
                         <input
-                          className="start px-2 hover:bg-tiertary-1 rounded" type="date" name="start"/>
+                          className="start px-2 hover:bg-tiertary-1 rounded" type="date" id={"modifyStart"} name="start"/>
                       </div>
 
                       <div className="flex flex-row ">
@@ -216,6 +221,7 @@ const Calender = ({ user, allEvents, cal }) => {
                           className="end px-2 hover:bg-tiertary-1 rounded"
                           type="date"
                           name="end"
+                          id={"modifyEnd"}
                         />
                       </div>
                     </div>
@@ -247,6 +253,7 @@ const Calender = ({ user, allEvents, cal }) => {
                   </form>
                   <div className="pt-2">
                     <form action="../../api/admin/deleteEvent" method="POST">
+                      <input type={"hidden"} name={"redirect"} value={"../../intranet/fullcalender"}/>
                       <input
                         className="id p-2 border rounded mb-2"
                         type="hidden"
@@ -263,6 +270,7 @@ const Calender = ({ user, allEvents, cal }) => {
                 <div className="flex flex-row h-auto gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
                   <form action="../../api/joinEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
+                    <input type="hidden" name="redirect" value={"../intranet/calendar"} />
                     <button className=" btn btn-create" type="Submit">
                       Kommer
                     </button>
@@ -270,6 +278,7 @@ const Calender = ({ user, allEvents, cal }) => {
 
                   <form action="../../api/leaveEvent" method="POST">
                     <input className="eventid" type="hidden" name="eventid" />
+                    <input type="hidden" name="redirect" value={"../intranet/calendar"} />
                     <button className="btn btn-delete" type="Submit">
                       Kommer inte
                     </button>

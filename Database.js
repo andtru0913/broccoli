@@ -285,7 +285,7 @@ export async function deleteNotification(id) {
     })
 }
 
-export async function updateEventDesc(id, title, description) {
+export async function updateEvent(id, title, description, start, end) {
   return await prisma.event.update({
     where: {
       id: id,
@@ -293,6 +293,8 @@ export async function updateEventDesc(id, title, description) {
     data: {
       title: title,
       description: description,
+      start: start,
+      end: end,
     },
   });
 }

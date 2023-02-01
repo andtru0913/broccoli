@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import {modifyUser} from "../../Database";
-import checkAdmin from "./admin/checkAdmin";
+import {modifyUser} from "../../../Database";
+import {checkAdmin} from "./checkAdmin";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
@@ -13,6 +13,6 @@ export default async function handler(req, res) {
                 console.error(e.message)
             })
     }
-    res.redirect(302, '../intranet/admin/employees');
+    res.redirect(302, '../../intranet/admin/employees');
 }
 

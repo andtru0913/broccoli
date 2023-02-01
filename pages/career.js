@@ -1,19 +1,21 @@
-import { getPage } from "../Database";
+import {getPage, getUserinfo} from "../Database";
 import Page from "../components/page";
 import { career } from "../defaultIDs";
 import Layout from "../components/layout/layout";
 import { FaHandshake, FaRunning, FaPhoneAlt } from "react-icons/fa";
 import { BiHealth } from "react-icons/bi";
 import { GiPartyFlags, GiSmartphone } from "react-icons/gi";
+import {verify} from "../tokens";
 
 export async function getServerSideProps(context) {
   const pageId = career;
   const pageName = "career";
-  let cookies = JSON.parse(context.req.cookies["user"] || null);
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user = await getUserinfo(user_id);
   const page = (await getPage(pageId))[0];
   return {
     props: {
-      admin: !!cookies ? cookies.admin : false,
+      admin: user.admin,
       page: page,
       pageName: pageName,
     },
