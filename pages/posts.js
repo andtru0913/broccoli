@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
   const page = (await getPage(pageId))[0];
   return {
     props: {
-      admin: user.admin,
+      admin: !!user ? user.admin : false,
       page: page,
       pageName: pageName,
     },
