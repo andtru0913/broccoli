@@ -2,6 +2,9 @@ import Page from "../components/page";
 import { getPage } from "../Database";
 import { underconsultants } from "../defaultIDs";
 import Layout from "../components/layout/layout";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export async function getServerSideProps(context) {
   const pageId = underconsultants;
@@ -19,6 +22,9 @@ export async function getServerSideProps(context) {
 }
 
 export default function Underconsultants({ admin, page, pageName, click }) {
+  useEffect(() => {
+    AOS.init({ duration: 2500 });
+  }, []);
   return (
     <Layout>
       <Page
@@ -28,14 +34,23 @@ export default function Underconsultants({ admin, page, pageName, click }) {
         redirect={pageName}
         formTitle="ANSÖK OM ATT BLI UNDERKONSULT"
       >
-        <div>
+        <div className="bg-secondary-l1">
           <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
-            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-20 lg:px-32 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
+            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-32 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
               <a onClick={click} href="#linkForm">
-                <h1 className="uppercase font-bold pb-5 pt-8 mb:pt-0">
+                <h1
+                  className="uppercase font-bold pb-5 pt-8 mb:pt-0"
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                >
                   Vad vi kan göra
                 </h1>
-                <p className="max-w-readable ">
+                <p
+                  className="max-w-readable "
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                  data-aos-delay="500"
+                >
                   Driver du ett eget konsultföretag och är på jakt efter nytt
                   uppdrag, då kan vi vara din nya partner. Vi har ett logiskt,
                   transparent och attraktivt upplägg för dig som vill fokusera
@@ -49,7 +64,7 @@ export default function Underconsultants({ admin, page, pageName, click }) {
                 </p>
               </a>
             </div>
-            <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-56 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
+            <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-44 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
               <img className=" " src="/images/ucon.png"></img>
             </div>
           </div>

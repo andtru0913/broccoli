@@ -5,6 +5,9 @@ import Layout from "../components/layout/layout";
 import { FaHandshake, FaRunning, FaPhoneAlt } from "react-icons/fa";
 import { BiHealth } from "react-icons/bi";
 import { GiPartyFlags, GiSmartphone } from "react-icons/gi";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export async function getServerSideProps(context) {
   const pageId = career;
@@ -54,6 +57,10 @@ export default function Career({ admin, page, pageName, click }) {
       color: "bg-primary-1",
     },
   ];
+
+  useEffect(() => {
+    AOS.init({ duration: 2500 });
+  }, []);
   return (
     <Layout>
       <Page
@@ -63,23 +70,32 @@ export default function Career({ admin, page, pageName, click }) {
         formTitle="SPONTANANSÖKAN"
         image={pageName}
       >
-        <div className="bg-secondary-l1 ">
+        <div className="bg-secondary-l1">
           <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
-            <div className=" mx-4 md:ml-16 md:-mr-64 -mt-14 md:mt-0 md:col-span-4 md:col-start-1 z-10">
-              <img className="z-10 " src="/images/career1.png"></img>
-            </div>
-            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:py-28  lg:py-20 lg:px-40 lg:pl-56  text-justify  md:col-span-5 md:col-end-10">
+            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-36 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
               <a onClick={click} href="#linkForm">
-                <h1 className="uppercase font-bold pb-5 pt-8 mb:pt-0">
+                <h1
+                  className="uppercase font-bold pb-5 pt-8 mb:pt-0"
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                >
                   Spontanansökan
                 </h1>
-                <p className="max-w-readable ">
+                <p
+                  className="max-w-readable "
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                  data-aos-delay="500"
+                >
                   Om du är intresserad av att arbeta som ingenjör hos oss och
                   har en utbildning inom Elektronik, Data, IT, Mekatronik eller
                   Teknisk Fysik så är du välkommen att skicka ditt CV samt några
                   rader om dig själv.
                 </p>
               </a>
+            </div>
+            <div className=" mx-4 md:mr-16 lg:mr-44 md:-ml-20 lg:-ml-64 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
+              <img className=" " src="/images/career.png"></img>
             </div>
           </div>
         </div>
@@ -106,7 +122,7 @@ export default function Career({ admin, page, pageName, click }) {
           </div>
         </div>
 */}
-        <section className="bg-secondary-l1 ">
+        <section className="bg-secondary-l1 z-20 pt-12 ">
           <div className="pt-12 flex flex-col px-5 text-center items-center justify-center ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
