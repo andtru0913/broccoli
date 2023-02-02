@@ -118,19 +118,18 @@ export default function Home({ user, news, notifications }) {
       </section>
 
       <section>
-        <div className="flex flex-col bg-secondary-1 h-screen pt-12">
-          <a href={"./news/archive"} className={"ml-4"}>
-            Arkiv
-          </a>
-
-          <div className="flex flex-row">
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-evenly gap-3 p-4 z-20 ">
-              <Nyheter
-                admin={user.admin}
-                link={"/intranet/news/"}
-                data={JSON.parse(news)}
-              />
-            </div>
+        <div className="flex flex-col bg-secondary-1 h-screen pt-12 ">
+          <div>
+            <a href={"./news/archive"} className="ml-4 btn btn-button-primary ">
+              Arkiv
+            </a>
+          </div>
+          <div className="flex flex-col  md:w-1/2  p-4 z-20 mx-5 ">
+            <Nyheter
+              admin={user.admin}
+              link={"/intranet/news/"}
+              data={JSON.parse(news)}
+            />
           </div>
         </div>
       </section>

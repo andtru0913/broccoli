@@ -4,11 +4,19 @@ import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import ThemedImage from "../../components/themedImage";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
-import {getGroups, getRecentNews, getNotifications, getUserinfo, upcomingEvents} from "../../Database";
-import {verify} from "../../tokens";
+import {
+  getGroups,
+  getRecentNews,
+  getNotifications,
+  getUserinfo,
+  upcomingEvents,
+} from "../../Database";
+import { verify } from "../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserinfo(user_id);
   if (!!user) {
     const groups = await getGroups();
@@ -86,11 +94,7 @@ export default function Home({
                 action="../../api/login"
                 method="POST"
               >
-                <input
-                    type="hidden"
-                    name="redirect"
-                    value="../intranet/"
-                />
+                <input type="hidden" name="redirect" value="../intranet/" />
                 <input
                   className="p-4 text-2xl lg:text-base lg:p-2 m-2 border border-border appearance-none  rounded-md  shadow leading-tight focus:outline focus:outline-offset-1 focus:outline-2 focus:outline-link autofill:bg-primary autofill:focus:bg-secondary"
                   type="text"
@@ -181,7 +185,7 @@ export default function Home({
                   data={JSON.parse(news)}
                 />
               </div>
-              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-d1 ">
+              <div className=" flex flex-col p-12 lg:p-16 bg-secondary-d1 z-10">
                 <h2 className="  text-muted uppercase font-bold mb-3 z-10 ">
                   Kommande event
                 </h2>
@@ -199,7 +203,7 @@ export default function Home({
 
               <div className=" relative md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default  ">
                 <svg
-                  className="absolute right-0 -top-5 z-0 fill-primary-l2"
+                  className="absolute right-0 -top-4 z-0 fill-primary-l2"
                   width="782"
                   height="554"
                   viewBox="0 0 782 554"

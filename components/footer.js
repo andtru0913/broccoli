@@ -4,7 +4,7 @@ import Link from "next/link";
 import ThemedImage from "./themedImage";
 const Footer = () => {
   return (
-    <footer className=" z-10 relative flex flex-1 md:py-12 lg:py12 py-6 bg-secondary-1 ">
+    <footer className=" z-20 relative flex flex-1 md:py-12 lg:py12 py-6 bg-secondary-1 ">
       <svg
         className=" fill-primary-1 absolute -z-10 md:w-8/12 lg:w-8/12 w-screen h-auto lg bottom-0 right-0 xl:w-6/12  overflow-hidden"
         width="913"
