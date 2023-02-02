@@ -3,17 +3,16 @@ import Link from "next/link";
 import Nyheter from "../../components/intranet/newsItem";
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import ThemedImage from "../../components/themedImage";
-import * as Database from "../../Database";
 import UpcomingEvent from "../../components/intranet/upcomingEvent";
-import {getNews, getNotifications, getUserinfo} from "../../Database";
+import {getGroups, getRecentNews, getNotifications, getUserinfo, upcomingEvents} from "../../Database";
 import {verify} from "../../tokens";
 
 export async function getServerSideProps(context) {
   const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
   const user = await getUserinfo(user_id);
   if (!!user) {
-    const groups = await Database.getAllLunchGroups();
-    const events = await Database.upcomingEvents(3);
+    const groups = await getGroups();
+    const events = await upcomingEvents(3);
     events.map(
       (data) =>
         (data.date = new Date(data.start).toLocaleString("default", {
@@ -38,7 +37,7 @@ export async function getServerSideProps(context) {
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
         notifications: JSON.stringify(await getNotifications(user.id)),
-        news: JSON.stringify(await getNews(2)),
+        news: JSON.stringify(await getRecentNews(2)),
       },
     };
   }

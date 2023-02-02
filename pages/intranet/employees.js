@@ -1,6 +1,6 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import EmployeeAccordion from "../../components/employeeAccordion";
-import { getNotifications, getUserinfo, getUserOverview } from "../../Database";
+import {getAllUsers, getNotifications, getUserinfo} from "../../Database";
 import {verify} from "../../tokens";
 
 export async function getServerSideProps(context) {
@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
       }
     : {
         props: {
-          data: await getUserOverview(),
+          data: await getAllUsers(),
           admin: user.admin,
           notifications: JSON.stringify(await getNotifications(user.id)),
         },

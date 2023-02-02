@@ -1,5 +1,5 @@
 import {checkAdmin} from "../admin/checkAdmin";
-import {getAllUsers} from "../../../Database";
+import {getAllUsersEmail} from "../../../Database";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
     try {
         if (await checkAdmin(req.cookies['token'])) {
-                res.status(200).send((await getAllUsers()))
+                res.status(200).send((await getAllUsersEmail()))
         } else {
             res.status(401).json({ error: 'Unauthorized' })
         }

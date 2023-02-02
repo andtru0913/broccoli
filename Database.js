@@ -100,32 +100,6 @@ export async function getUserinfo(userid) {
   }
 }
 
-export async function getUserByEmail(email) {
-  if (email === undefined) return null;
-  try {
-    const query = await prisma.user.findMany({
-      where: {
-        email: email,
-      },
-      select: {
-        firstname: true,
-        lastname: true,
-        address: true,
-        privatenumber: true,
-        worknumber: true,
-        company: true,
-        image: true,
-        email: true,
-        assignment: true,
-        role: true,
-      },
-    });
-    return query[0];
-  } catch (e) {
-    return null;
-  }
-}
-
 export async function getUserProfile(userid) {
   try {
     const query = await prisma.user.findMany({
@@ -171,6 +145,17 @@ export async function getAllUsers() {
       admin: true,
       assignment: true,
       role: true,
+    },
+  });
+}
+
+export async function getAllUsersEmail() {
+  return await prisma.user.findMany({
+    select: {
+      id: true,
+      firstname: true,
+      lastname: true,
+      email: true,
     },
   });
 }
@@ -330,21 +315,6 @@ export async function createGroup(name) {
   });
 }
 
-export async function getGroupsAdmin() {
-  return await prisma.lunchgroup.findMany({
-    select: {
-      id: true,
-      title: true,
-      users: {
-        select: {
-          id: true,
-          firstname: true,
-          lastname: true
-        }
-      }
-    },
-  });
-}
 export async function getGroups() {
   return await prisma.lunchgroup.findMany({
     select: {
@@ -352,21 +322,12 @@ export async function getGroups() {
       title: true,
       users: {
         select: {
+          id:true,
           email: true,
           firstname: true,
           lastname: true
         }
       }
-    },
-  });
-}
-
-export async function getAllLunchGroups() {
-  return await prisma.lunchgroup.findMany({
-    select: {
-      id: true,
-      title: true,
-      users: true,
     },
   });
 }
@@ -656,16 +617,6 @@ export async function getUserEvents(id) {
   });
 }
 
-export async function createDocument(title, filename, date) {
-  await prisma.document.create({
-    data: {
-      title: title,
-      filename: filename,
-      date: date,
-    },
-  });
-}
-
 export async function createNews(title, filename, date, author) {
   await prisma.news.create({
     data: {
@@ -680,7 +631,7 @@ export async function createNews(title, filename, date, author) {
     },
   });
 }
-export async function getNews(take) {
+export async function getRecentNews(take) {
   return (
     await prisma.news.findMany({
       where: {
@@ -732,22 +683,6 @@ export async function getAllNews(isArchive) {
   });
 }
 
-
-export async function getUserOverview() {
-  return await prisma.user.findMany({
-    select: {
-      firstname: true,
-      lastname: true,
-      image: true,
-      email: true,
-      assignment: true,
-      role: true,
-      worknumber: true,
-      description: true,
-    },
-  });
-}
-
 export async function getUserNotifications() {
   return await prisma.user.findMany({
     select: {
@@ -755,14 +690,6 @@ export async function getUserNotifications() {
       firstname: true,
       lastname: true,
       email: true,
-    },
-  });
-}
-
-export async function deleteDocument(id) {
-  return await prisma.document.delete({
-    where: {
-      id: id,
     },
   });
 }
