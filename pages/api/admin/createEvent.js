@@ -11,9 +11,10 @@ export default async function handler(req, res) {
       let end = new Date(req.body.end);
       let start = new Date(req.body.start);
       if (req.body.title !== "" && start <= end) {
+
         const client = new SMTPClient({
           user: "anders.truong@broccoli.se",
-          password: "gFga2mDGz&",
+          password: process.env.EMAIL_PASSWORD,
           host: "smtp01.levonline.com",
           tsl: true,
           port: 587,
