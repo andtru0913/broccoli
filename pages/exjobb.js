@@ -52,6 +52,7 @@ export default function Exjobb({ admin, page, pageName, click }) {
                   className="max-w-readable "
                   data-aos="fade-right"
                   data-aos-once="true"
+                  data-aos-delay="500"
                 >
                   För dig som snart ska välja ett examensarbete så kan vi vara
                   ett alternativ. I vår process att ta fram examensarbeten så
