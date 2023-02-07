@@ -2,11 +2,13 @@ import { getAllNews, getNotifications, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { FileAdder } from "../../../components/FileAdder";
 import Nyheter from "../../../components/intranet/newsItem";
-import {verify} from "../../../tokens";
+import { verify } from "../../../tokens";
 
 export async function getServerSideProps(context) {
-    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
-    const user = await getUserinfo(user_id);
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
+  const user = await getUserinfo(user_id);
   return !user
     ? {
         redirect: {
@@ -62,9 +64,10 @@ export default function Home({ user, news, notifications }) {
         };
       });
     };
+
     popup = (
       <div className="z-10">
-        Ny inlägg
+        Nytt inlägg
         <input
           id={"title"}
           type={"text"}
@@ -113,7 +116,10 @@ export default function Home({ user, news, notifications }) {
           </svg>
 
           <h1 className=" uppercase font-bold mt-12 p-4 z-10"> nyheter </h1>
-          {popup}
+          <button>
+            Skapa inlägg
+            {popup}
+          </button>
         </div>
       </section>
 

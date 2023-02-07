@@ -1,9 +1,11 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { getAllUsers, getNotifications, getUserinfo } from "../../../Database";
-import {verify} from "../../../tokens";
+import { verify } from "../../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserinfo(user_id);
   return !user || !user.admin
     ? {
@@ -21,42 +23,44 @@ export async function getServerSideProps(context) {
       };
 }
 export default function Home({ user, notifications }) {
- const popHide = "pop-hide";
+  const popHide = "pop-hide";
   return (
     <LayoutIntranet admin={true} notifications={notifications}>
-      <div id="popup" className={`${popHide} h-screen w-screen bg-black fixed z-20 bg-opacity-60 top-0 left-0 z-30`} onClick={function () {
-        document.getElementById("popup").classList.add(popHide)
-        document.getElementById("createuser").classList.add(popHide)
-        document.getElementById("modifyuser").classList.add(popHide)
-      }}>
-      </div>
+      <div
+        id="popup"
+        className={`${popHide} h-screen w-screen bg-black fixed bg-opacity-60 top-0 left-0 z-30`}
+        onClick={function () {
+          document.getElementById("popup").classList.add(popHide);
+          document.getElementById("createuser").classList.add(popHide);
+          document.getElementById("modifyuser").classList.add(popHide);
+        }}
+      ></div>
       <main className="">
         <div className="layout py-20 md:py-12 ">
           <h1 className="text-center">Anställda</h1>
           <div className=" flex flex-1 flex-col lg:flex-row justify-center">
-            <div id="modifyuser" className={`${popHide} z-30 absolute w-screen p-8 rounded flex flex-col bg-white w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
+            <div
+              id="modifyuser"
+              className={`${popHide} z-30 p-8 rounded flex flex-col bg-secondary-1 w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+            >
               <h3 className="text-skin-base"> Edit User</h3>
-              <form className={"flex flex-col"} action="../../api/admin/modifyuser" method="POST">
+              <form
+                className={"flex flex-col"}
+                action="../../api/admin/modifyuser"
+                method="POST"
+              >
                 <input className="id" type="hidden" name="id" />
-                <input type="hidden" name="redirect"/>
+                <input type="hidden" name="redirect" />
                 <input
-                  className="username m-1"
+                  className="username m-1 p-1"
                   type="text"
                   name="username"
                   placeholder="Användarnamn"
                 />
-                <div>
+                <div className="flex flex-row">
+                  <label className="m-1 p-1  "> Byt lösenord</label>
                   <input
-                    id="changePassText"
-                    disabled={true}
-                    className="password m-1"
-                    type="text"
-                    name="password"
-                    placeholder="Lösenord"
-                  />
-                  <label> Byt lösenord</label>
-                  <input
-                      className={"m-1"}
+                    className={"m-1 mt-4 mr-7"}
                     id="changePassBox"
                     type="checkbox"
                     name="changePass"
@@ -65,71 +69,98 @@ export default function Home({ user, notifications }) {
                         !document.querySelector("#changePassBox:checked");
                     }}
                   />
+
+                  <input
+                    id="changePassText"
+                    disabled={true}
+                    className="password m-1 p-1  w-1/2"
+                    type="text"
+                    name="password"
+                    placeholder="Ange nytt lösenord"
+                  />
                 </div>
                 <input
-                  className="firstname m-1"
+                  className="firstname m-1 p-1"
                   type="text"
                   name="firstname"
                   placeholder="Förnamn"
                 />
                 <input
-                  className="lastname m-1"
+                  className="lastname m-1 p-1"
                   type="text"
                   name="lastname"
                   placeholder="Efternamn"
                 />
                 <div className={"flex flex-row justify-between"}>
                   <div>
-                    <input className={"m-1"} type="radio" id="man" name="gender" value="man" />
+                    <input
+                      className={"m-1 p-1"}
+                      type="radio"
+                      id="man"
+                      name="gender"
+                      value="man"
+                    />
                     <label htmlFor="man">Man</label>
                   </div>
                   <div>
-                    <input className={"m-1"} type="radio" id="woman" name="gender" value="woman" />
+                    <input
+                      className={"m-1 p-1"}
+                      type="radio"
+                      id="woman"
+                      name="gender"
+                      value="woman"
+                    />
                     <label htmlFor="woman">Kvinna</label>
                   </div>
                   <div>
-                    <input className={"m-1"} type="radio" id="none" name="gender" value="" />
+                    <input
+                      className={"m-1 p-1"}
+                      type="radio"
+                      id="none"
+                      name="gender"
+                      value=""
+                    />
                     <label htmlFor="none">Vill ej ange</label>
                   </div>
                 </div>
                 <input
-                  className="email m-1"
+                  className="email m-1 p-1"
                   type="text"
                   name="email"
                   placeholder="Email"
                 />
                 <input
-                  className="address m-1"
+                  className="address m-1 p-1"
                   type="text"
                   name="address"
                   placeholder="Address"
                 />
                 <input
-                  className="privatenumber m-1"
+                  className="privatenumber m-1 p-1"
                   type="text"
                   name="privatenumber"
                   placeholder="Privattelefon"
                 />
                 <input
-                  className="worknumber m-1"
+                  className="worknumber m-1 p-1"
                   type="text"
                   name="worknumber"
                   placeholder="Arbetstelefon"
                 />
 
                 <input
-                  className="company m-1"
+                  className="company m-1 p-1"
                   type="text"
                   name="company"
                   placeholder="Bolag"
                 />
                 <input
-                  className="assignment m-1"
+                  className="assignment m-1 p-1"
                   type="text"
                   name="assignment"
                   placeholder="Uppdrag"
                 />
-                <div className={"m-1"}>
+                <div className={"m-1 p-1"}>
                   <label> Administratör</label>
                   <input
                     className="admin m-1"
@@ -139,14 +170,16 @@ export default function Home({ user, notifications }) {
                   />
                 </div>
                 <input
-                  className="role m-1"
+                  className="role m-1 p-1"
                   type="text"
                   name="role"
                   placeholder="Roll"
                 />
-
-                <button type="submit">Ändra anställd</button>
+                <button className="btn btn-create btn:hover m-1" type="submit">
+                  Ändra anställd
+                </button>
               </form>
+
               <form
                 onSubmit={function () {
                   if (!confirm("Är du säker?")) {
@@ -159,53 +192,122 @@ export default function Home({ user, notifications }) {
                 method="POST"
               >
                 <input className="id" type="hidden" name="id" />
-                <button type="submit">Radera anställd</button>
+                <button
+                  className="btn btn-delete btn:hover w-full m-1"
+                  type="submit"
+                >
+                  Radera anställd
+                </button>
               </form>
             </div>
-            <div id="createuser" className={`${popHide} z-30 absolute w-screen p-8 rounded flex flex-col bg-white w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
+            <div
+              id="createuser"
+              className={`${popHide} z-30 p-8 rounded flex flex-col bg-secondary-1 w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+            >
               <h3 className={"text-skin-base"}>Lägg till anställd</h3>
-              <form className={"flex flex-col"} action="../../api/admin/createuser" method="POST">
-                <input className={"m-1"} type="text" name="username" placeholder="Användarnamn" />
-                <input className={"m-1"} type="text" name="password" placeholder="Lösenord" />
-                <input className={"m-1"} type="text" name="firstname" placeholder="Förnamn" />
-                <input className={"m-1"} type="text" name="lastname" placeholder="Efternamn" />
+              <form
+                className={"flex flex-col"}
+                action="../../api/admin/createuser"
+                method="POST"
+              >
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="username"
+                  placeholder="Användarnamn"
+                />
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="password"
+                  placeholder="Lösenord"
+                />
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="firstname"
+                  placeholder="Förnamn"
+                />
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="lastname"
+                  placeholder="Efternamn"
+                />
                 <div className={"m-1 flex flex-row justify-between"}>
                   <div>
                     <input type="radio" id="man" name="gender" value="man" />
-                    <label htmlFor="man">Man</label>
+                    <label className="p-1" htmlFor="man">
+                      Man
+                    </label>
                   </div>
                   <div>
-                    <input type="radio" id="woman" name="gender" value="woman" />
-                    <label htmlFor="woman">Kvinna</label>
+                    <input
+                      type="radio"
+                      id="woman"
+                      name="gender"
+                      value="woman"
+                    />
+                    <label className="p-1" htmlFor="woman">
+                      Kvinna
+                    </label>
                   </div>
                   <div>
                     <input type="radio" id="none" name="gender" value="" />
-                    <label htmlFor="none">Vill ej ange</label>
+                    <label className="p-1" htmlFor="none">
+                      Vill ej ange
+                    </label>
                   </div>
-
                 </div>
 
-                <input className={"m-1"} type="text" name="email" placeholder="Email" />
-                <input className={"m-1"} type="text" name="address" placeholder="Address" />
                 <input
-                    className={"m-1"}
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                />
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                />
+                <input
+                  className={"m-1 p-1"}
                   type="text"
                   name="privatenumber"
                   placeholder="Privattelefon"
                 />
                 <input
-                    className={"m-1"}
+                  className={"m-1 p-1"}
                   type="text"
                   name="worknumber"
                   placeholder="Arbetstelefon"
                 />
-                <input className={"m-1"} type="text" name="company" placeholder="Bolag" />
-                <div className={"m-1"}>
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="company"
+                  placeholder="Bolag"
+                />
+                <div className={"m-1 p-1"}>
                   <label> Administratör</label>
-                  <input className={"m-1"} type="checkbox" name="admin" value="true" />
+                  <input
+                    className={"m-1 p-1"}
+                    type="checkbox"
+                    name="admin"
+                    value="true"
+                  />
                 </div>
-                <input className={"m-1"} type="text" name="role" placeholder="Roll" />
-                <button type="submit">Lägg till anställd</button>
+                <input
+                  className={"m-1 p-1"}
+                  type="text"
+                  name="role"
+                  placeholder="Roll"
+                />
+                <button className="btn btn-primary m-1" type="submit">
+                  Lägg till anställd
+                </button>
               </form>
             </div>
 
@@ -254,7 +356,7 @@ export default function Home({ user, notifications }) {
                 ))}
                 <div className="flex justify-end">
                   <button
-                    className=" btn btn-create"
+                    className=" btn btn-create m-1 "
                     onClick={function () {
                       document
                         .getElementById("popup")
@@ -396,9 +498,15 @@ export default function Home({ user, notifications }) {
                   </table>
 
                   <div className="flex justify-end my-2">
-                    <button className=" btn btn-create" onClick={function () {
-                        document.getElementById("popup").classList.remove(popHide);
-                        document.getElementById("createuser").classList.remove(popHide);
+                    <button
+                      className=" btn btn-create"
+                      onClick={function () {
+                        document
+                          .getElementById("popup")
+                          .classList.remove(popHide);
+                        document
+                          .getElementById("createuser")
+                          .classList.remove(popHide);
                       }}
                     >
                       Lägg till anställd

@@ -8,6 +8,7 @@ import TimelineContent, {
 } from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import { BiNews } from "react-icons/bi";
 
 const NewsSection = ({ id, title, author, date, file, admin, link }) => {
   return (
@@ -25,15 +26,17 @@ const NewsSection = ({ id, title, author, date, file, admin, link }) => {
             },
           }}
           className="flex justify-start  border-b-2 border-dashed border-black"
-          position="alternate"
+          position="right"
         >
           <TimelineItem className="ml-1">
             <TimelineSeparator>
               <TimelineDot
                 variant="outlined"
                 color="success"
-                className="w-5 h-5 md:mt-5 mt-2 "
-              ></TimelineDot>
+                //className="w-5 h-5 md:mt-5 mt-2 "
+              >
+                <BiNews size={20} />
+              </TimelineDot>
               <TimelineConnector className="bg-black w-1" />
             </TimelineSeparator>
             <TimelineContent>

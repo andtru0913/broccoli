@@ -68,7 +68,7 @@ export default function Home({
       <main className="">
         <div className=" mx-auto bg-fill w-screen h-screen p-4 relative">
           <Image
-            src="/images/frontpage.jpg"
+            src="/images/firstp.jpg"
             layout="fill"
             objectFit="cover"
             alt="Siluette of Gothenburg"
