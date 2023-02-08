@@ -26,8 +26,8 @@ export async function getServerSideProps(context) {
       };
 }
 
-export default function Home({ user, news, notifications }) {
-  let popup = "";
+export default function Home({ user, news, notifications, popup }) {
+  const popHide = "pop-hide";
   if (user.admin) {
     const file = new FileAdder();
     const uploadToDatabase = () => {

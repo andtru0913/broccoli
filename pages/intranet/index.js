@@ -66,7 +66,7 @@ export default function Home({
   if (user === null) {
     return (
       <main className="">
-        <div className=" mx-auto bg-fill w-screen h-screen p-4 relative">
+        <div className=" mx-auto bg-fill w-screen h-screen p-4 relative ">
           <Image
             src="/images/firstp.jpg"
             layout="fill"
@@ -125,7 +125,7 @@ export default function Home({
       <LayoutIntranet notifications={notifications} admin={user.admin}>
         <main>
           <div className=" flex flex-col">
-            <div className="flex flex-col relative h-screen">
+            <div className="flex flex-col relative h-screen z-20">
               <Image
                 src="/images/finut.JPG"
                 layout="fill"

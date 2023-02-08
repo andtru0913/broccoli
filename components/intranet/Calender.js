@@ -161,7 +161,7 @@ const Calender = ({ user, allEvents, cal }) => {
                 />
               </div>
               <div className="flex flex-row px-2">
-                <p className="px-2">till </p>
+                <p className="px-2">Till </p>
                 <input
                   className="end px-2 hover:bg-tiertary-1 rounded"
                   type="date"
