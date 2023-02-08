@@ -128,7 +128,7 @@ export default function Home({
   return (
     <LayoutIntranet admin={true} notifications={relevantNotifs}>
       <div className="">
-        <div className="flex flex-col  p-12 bg-secondary-d1 text-inverted">
+        <div className="flex flex-col  p-12 bg-secondary-d1">
           <h2 className=" flex justify-center md:justify-start uppercase font-bold">
             Notifikationer
           </h2>
