@@ -214,7 +214,7 @@ export default function Home({ user, notifications }) {
             </div>
             <div
               id="createuser"
-              className={`${popHide} z-30  p-8 rounded flex flex-col bg-secondary-1 w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`${popHide} z-50  p-8 rounded flex flex-col bg-secondary-1 w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
             >
               <h3 className={"text-skin-base uppercase m-1 "}>
                 Lägg till anställd
