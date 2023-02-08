@@ -2,10 +2,12 @@ import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { getNotifications, getUserinfo } from "../../../Database";
 import HB_ITEMS from "../../../components/handbook/handbookItems";
 import HBLink from "../../../components/handbook/HBLink";
-import {verify} from "../../../tokens";
+import { verify } from "../../../tokens";
 export async function getServerSideProps(context) {
-    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
-    const user = await getUserinfo(user_id);
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
+  const user = await getUserinfo(user_id);
   return !user
     ? {
         redirect: {
@@ -26,12 +28,12 @@ export default function Home({ admin, notifications }) {
   return (
     <LayoutIntranet admin={admin} notifications={notifications}>
       <div className="realtive">
-        <div className="flex flex-col items-center mg:pt-16 p-12">
-          <h1 className="font-bold uppercase">Genvägar</h1>
-          <p className="p-3">Här hittar du några snabblänkar</p>
+        <div className="flex flex-col items-center mg:pt-16 p-12 ">
+          <h1 className="font-bold uppercase z-20">Genvägar</h1>
+          <p className="p-3 z-20">Här hittar du några snabblänkar</p>
         </div>
         <svg
-          className="absolute right-0 top-0 -z-10 fill-secondary-d1"
+          className="absolute right-0 top-0 z-0 fill-secondary-d1 "
           width="1189"
           height="1092"
           viewBox="0 0 1189 1092"
@@ -43,7 +45,7 @@ export default function Home({ admin, notifications }) {
 
         <div
           className={
-            " mt-12 mx-5 md:mx-40 grid grid-cols-2 md:grid-cols-4 gap-2"
+            " mt-12 mx-5 md:mx-40 grid grid-cols-2 md:grid-cols-4 gap-2 z-30"
           }
         >
           {HB_ITEMS.map((category, i) => (

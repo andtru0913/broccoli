@@ -2,11 +2,13 @@ import { getAllNews, getNotifications, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { FileAdder } from "../../../components/FileAdder";
 import Nyheter from "../../../components/intranet/newsItem";
-import {verify} from "../../../tokens";
+import { verify } from "../../../tokens";
 
 export async function getServerSideProps(context) {
-    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
-    const user = await getUserinfo(user_id);
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
+  const user = await getUserinfo(user_id);
   return !user
     ? {
         redirect: {
@@ -24,8 +26,8 @@ export async function getServerSideProps(context) {
       };
 }
 
-export default function Home({ user, news, notifications }) {
-  let popup = "";
+export default function Home({ user, news, notifications, popup }) {
+  const popHide = "pop-hide";
   if (user.admin) {
     const file = new FileAdder();
     const uploadToDatabase = () => {
@@ -62,38 +64,40 @@ export default function Home({ user, news, notifications }) {
         };
       });
     };
-    popup = (
-      <div className="z-10">
-        Ny inlägg
-        <input
-          id={"title"}
-          type={"text"}
-          name={"title"}
-          placeholder={"Titel"}
-        />
-        <input
-          className={
-            "form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
-          }
-          id="file"
-          type="file"
-          name="myImage"
-          onChange={file.uploadToClient}
-        />
-        <button
-          className="btn btn-primary"
-          onClick={async function () {
-            try {
-              await uploadToDatabase().then((_) => {});
-              file.uploadToServer(`news/${document.getElementById("file")}`);
-              window.location.reload();
-            } catch (e) {
-              console.log(e);
+    const popup = (
+      <div className="bg-secondary-l1" id="popup">
+        <div className="z-10">
+          Ny inlägg
+          <input
+            id={"title"}
+            type={"text"}
+            name={"title"}
+            placeholder={"Titel"}
+          />
+          <input
+            className={
+              "form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
             }
-          }}
-        >
-          Skapa nytt inlägg
-        </button>
+            id="file"
+            type="file"
+            name="myImage"
+            onChange={file.uploadToClient}
+          />
+          <button
+            className="btn btn-primary"
+            onClick={async function () {
+              try {
+                await uploadToDatabase().then((_) => {});
+                file.uploadToServer(`news/${document.getElementById("file")}`);
+                window.location.reload();
+              } catch (e) {
+                console.log(e);
+              }
+            }}
+          >
+            Skapa nytt inlägg
+          </button>
+        </div>
       </div>
     );
   }
@@ -113,7 +117,14 @@ export default function Home({ user, news, notifications }) {
           </svg>
 
           <h1 className=" uppercase font-bold mt-12 p-4 z-10"> nyheter </h1>
-          {popup}
+          <button
+            className=""
+            onClick={function () {
+              document.getElementById("popup").classList.add(popHide);
+            }}
+          >
+            Nytt
+          </button>
         </div>
       </section>
 
