@@ -15,7 +15,7 @@ const NewsSection = ({ id, title, author, date, file, admin, link }) => {
     <a
       key={id}
       href={`${link}${file}`}
-      className=" cursor-pointer transition-all bg-secondary-l1/90 hover:bg-secondary-l2 mt-4 z-10 "
+      className=" cursor-pointer transition-all bg-secondary-l1/90 hover:bg-secondary-l2 mt-4 z-10 h-fit "
     >
       <div className="felx justify-between">
         <Timeline
@@ -33,9 +33,9 @@ const NewsSection = ({ id, title, author, date, file, admin, link }) => {
               <TimelineDot
                 variant="outlined"
                 color="success"
-                //className="w-5 h-5 md:mt-5 mt-2 "
+                className="md:mt-4 mt-2 "
               >
-                <BiNews size={20} />
+                <BiNews size={25} />
               </TimelineDot>
               <TimelineConnector className="bg-black w-1" />
             </TimelineSeparator>
