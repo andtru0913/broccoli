@@ -45,7 +45,7 @@ export default function Home({ admin, notifications }) {
 
         <div
           className={
-            " mt-12 mx-5 md:mx-40 grid grid-cols-2 md:grid-cols-4 gap-2 z-30"
+            " mt-12 mx-5 md:mx-40 grid grid-cols-2 md:grid-cols-4 gap-2 "
           }
         >
           {HB_ITEMS.map((category, i) => (
