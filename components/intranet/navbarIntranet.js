@@ -28,7 +28,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
         notificationCookies.includes(item.notification.id)
       )
     );
-  }, []);
+  }, [parsedNotifications] );
 
   const openNotification = () => {
     if (notificationOpen) {
@@ -195,7 +195,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
             <ul
               className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
-                                      isOpen == false
+                                      !isOpen
                                         ? " lg:static fixed  -left-full  bottom-14 flex  flex-col w-full  text-end  duration-300  "
                                         : "lg:static  fixed  left-0  bottom-14   flex  flex-col  w-full    text-end  duration-300 bg-secondary-1"
                                     }`}
