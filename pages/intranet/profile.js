@@ -53,8 +53,10 @@ const profile = ({ userString, notifications }) => {
               <div className="grid grid-rows-6 cols-2  ">
                 <div className="flex flex-row ">
                   {/* Name */}
-                  <div className="flex flex-col w-1/2 mt-4  mr-2  ">
-                    <p className="font-semibold uppercase  ">Namn</p>
+                  <div className="flex flex-col w-1/2 mt-4    ">
+                    <p className="text-base pb-1 uppercase font-semibold  ">
+                      Namn
+                    </p>
                     <div className=" bg-secondary-l1/80  p-2 mr-2 md:mr-0">
                       <p>
                         {user.firstname} {user.lastname}
@@ -62,8 +64,10 @@ const profile = ({ userString, notifications }) => {
                     </div>
                   </div>
                   {/* Birthday */}
-                  <div className="flex flex-col w-1/2 mt-4  ml-2  ">
-                    <p className="font-semibold  uppercase  ">Födelsedatum</p>
+                  <div className="flex flex-col w-1/2 mt-4  md:ml-4 ml-2  ">
+                    <p className="text-base pb-1 uppercase font-semibold ">
+                      Födelsedatum
+                    </p>
                     <div className="bg-secondary-l1/80  p-2 mr-2 md:mr-0">
                       <p>
                         {!!user.birthday ? user.birthday.split("T")[0] : ""}
@@ -75,14 +79,18 @@ const profile = ({ userString, notifications }) => {
                 <div className="flex flex-row ">
                   {/* Mail */}
                   <div className="flex flex-col w-1/2  mt-4  mr-2  ">
-                    <p className="font-semibold  uppercase  ">Email</p>
+                    <p className="text-base pb-1 uppercase font-semibold  ">
+                      Mail
+                    </p>
                     <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
                       <p>{user.email}</p>
                     </div>
                   </div>
                   {/* Username */}
-                  <div className="flex flex-col  w-1/2  mt-4 ml-2  ">
-                    <p className="font-semibold  uppercase   ">Användarnamn</p>
+                  <div className="flex flex-col  w-1/2  mt-4 md:ml-4 ml-2  ">
+                    <p className="text-base pb-1 uppercase font-semibold   ">
+                      Användarnamn
+                    </p>
                     <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
                       <p className="">{user.username}</p>
                     </div>
@@ -92,14 +100,18 @@ const profile = ({ userString, notifications }) => {
                 <div className="flex flex-row ">
                   {/* Privatenumber */}
                   <div className="flex flex-col  w-1/2  mt-4  mr-2 ">
-                    <p className="font-semibold  uppercase  ">Privatnummer</p>
+                    <p className="text-base pb-1 uppercase font-semibold  ">
+                      Privatnummer
+                    </p>
                     <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
                       <p>{user.privatenumber}</p>
                     </div>
                   </div>
                   {/* Worknumber */}
-                  <div className="flex flex-col  w-1/2  mt-4 ml-2  ">
-                    <p className="font-semibold  uppercase  ">Jobbnummer</p>
+                  <div className="flex flex-col  w-1/2  mt-4  md:ml-4 ml-2  ">
+                    <p className="text-base pb-1 uppercase font-semibold ">
+                      Jobbnummer
+                    </p>
                     <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
                       <p>{user.worknumber}</p>
                     </div>
@@ -109,14 +121,18 @@ const profile = ({ userString, notifications }) => {
                 <div className="flex flex-row">
                   {/* Roll */}
                   <div className="flex flex-col  w-1/2  mt-4  mr-2  ">
-                    <p className="font-semibold d uppercase  ">Roll</p>
+                    <p className="text-base pb-1 uppercase font-semibold  ">
+                      Roll
+                    </p>
                     <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
                       <p>{user.role}</p>
                     </div>
                   </div>
                   {/* Company */}
-                  <div className="flex flex-col  w-1/2  mt-4  ml-2  ">
-                    <p className="font-semibold  uppercase  ">Företag</p>
+                  <div className="flex flex-col  w-1/2  mt-4  md:ml-4 ml-2  ">
+                    <p className="text-base pb-1 uppercase font-semibold  ">
+                      Företag
+                    </p>
                     <div className="bg-secondary-l1/80  p-2 mr-2 md:mr-0">
                       <p>{user.company}</p>
                     </div>
@@ -124,15 +140,17 @@ const profile = ({ userString, notifications }) => {
                 </div>
                 <div className="flex flex-row row-span-2">
                   {/* Description */}
-                  <div className="flex flex-col w-full overflow-y-scroll mt-4  mr-2 ">
-                    <p className="font-semibold  uppercase  ">Beskrivning</p>
+                  <div className="flex flex-col w-full overflow-y-scroll mt-4  mr-2 md:mr:0 ">
+                    <p className="text-base pb-1 uppercase font-semibold ">
+                      Beskrivning
+                    </p>
                     <div className="bg-secondary-l1/80  p-2 mr-2 md:mr-0">
                       <p>{user.description}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Address */}
+                {/* Address 
                 <div className="flex flex-col w-full overflow-y-scroll mt-4  mr-2 md:mr-0">
                   <p className="font-semibold  uppercase  ">Adress</p>
 
@@ -140,6 +158,7 @@ const profile = ({ userString, notifications }) => {
                     <p>{user.address}</p>
                   </div>
                 </div>
+                */}
               </div>
               <div className="flex justify-end">
                 <a
