@@ -15,7 +15,7 @@ const NewsSection = ({ id, title, author, date, file, admin, link }) => {
     <a
       key={id}
       href={`${link}${file}`}
-      className=" cursor-pointer transition-all bg-secondary-l1/90 hover:bg-secondary-l2 mt-4 z-10 h-fit "
+      className=" cursor-pointer transition-all bg-secondary-l1/90 hover:bg-secondary-l2 my-2  z-10 h-fit "
     >
       <div className="felx justify-between">
         <Timeline

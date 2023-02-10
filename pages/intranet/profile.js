@@ -1,9 +1,11 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import {getNotifications, getUserProfile} from "../../Database";
+import { getNotifications, getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
-import {verify} from "../../tokens";
+import { verify } from "../../tokens";
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserProfile(user_id);
   return !user
     ? {
@@ -27,9 +29,8 @@ const profile = ({ userString, notifications }) => {
     <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
         <div className="">
-          <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-3 md:grid-rows-1  h-screen bg-secondary-1">
-            <div className="relative flex flex-col items-center  overflow-hidden ">
-              {/**Profile image */}
+          <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1   bg-secondary-1">
+            <div className="relative flex flex-col items-center col-span-1 pt-12 pl-2 overflow-hidden ">
               <svg
                 className="absolute left-0 md:-left-64 lg:-left-36 top-0 fill-primary-1 "
                 width="504"
@@ -40,97 +41,111 @@ const profile = ({ userString, notifications }) => {
               >
                 <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
               </svg>
-              <div className="  md:mt-24 md:p-12 z-10">
+              {/**Profile image */}
+              <div className=" w-36 h-40 md:w-56 md:h-64 md:mt-24 top-10 md:p-12 z-10">
                 <ProfilePicture image={user.image} />
               </div>
             </div>
-            <div className=" md:pr-16 md:pt-24 mt-8 md:col-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible md:h-full ">
-              {/**Profile Information */}
-              <div className="flex flex-row flex-wrap pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3 mr-16">
-                  <p className="font-bold uppercase text-muted">Namn</p>
-                </div>
-                <div>
-                  <p>
-                    {user.firstname} {user.lastname}
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16 ">
-                  <p className="font-bold uppercase text-muted">Födelsedatum</p>
-                </div>
-                <div>
-                  <p>{!!user.birthday? user.birthday.split("T")[0]:""}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16 ">
-                  <p className="font-bold uppercase text-muted">Användarnamn</p>
-                </div>
-                <div>
-                  <p>{user.username}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Roll</p>
-                </div>
-                <div>
-                  <p>{user.role}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Företag</p>
-                </div>
-                <div>
-                  <p>{user.company}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Beskrivning</p>
-                </div>
-                <div>
-                  <p>{user.description}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Email</p>
-                </div>
-                <div>
-                  <p>{user.email}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Adress</p>
-                </div>
-                <div>
-                  <p>{user.address}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Privatnummer</p>
-                </div>
-                <div>
-                  <p>{user.privatenumber}</p>
-                </div>
-              </div>
-              <div className="flex flex-row pt-4 border-primary-1 border-b border-base items-center">
-                <div className="w-1/3  mr-16">
-                  <p className="font-bold uppercase text-muted">Jobbnummer</p>
-                </div>
-                <div>
-                  <p>{user.worknumber}</p>
-                </div>
-              </div>
 
+            <div className=" md:pr-16 pl-2 mt-8 md:col-span-2 row-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible ">
+              <h2 className="  font-bold uppercase align-middle">Din profil</h2>
+              {/**Profile Information */}
+              <div className="grid grid-rows-6 cols-2  ">
+                <div className="flex flex-row ">
+                  {/* Name */}
+                  <div className="flex flex-col w-1/2 mt-4  mr-2  ">
+                    <p className="font-semibold uppercase  ">Namn</p>
+                    <div className=" bg-secondary-l1/80  p-2 mr-2 md:mr-0">
+                      <p>
+                        {user.firstname} {user.lastname}
+                      </p>
+                    </div>
+                  </div>
+                  {/* Birthday */}
+                  <div className="flex flex-col w-1/2 mt-4  ml-2  ">
+                    <p className="font-semibold  uppercase  ">Födelsedatum</p>
+                    <div className="bg-secondary-l1/80  p-2 mr-2 md:mr-0">
+                      <p>
+                        {!!user.birthday ? user.birthday.split("T")[0] : ""}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-row ">
+                  {/* Mail */}
+                  <div className="flex flex-col w-1/2  mt-4  mr-2  ">
+                    <p className="font-semibold  uppercase  ">Email</p>
+                    <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
+                      <p>{user.email}</p>
+                    </div>
+                  </div>
+                  {/* Username */}
+                  <div className="flex flex-col  w-1/2  mt-4 ml-2  ">
+                    <p className="font-semibold  uppercase   ">Användarnamn</p>
+                    <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
+                      <p className="">{user.username}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-row ">
+                  {/* Privatenumber */}
+                  <div className="flex flex-col  w-1/2  mt-4  mr-2 ">
+                    <p className="font-semibold  uppercase  ">Privatnummer</p>
+                    <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
+                      <p>{user.privatenumber}</p>
+                    </div>
+                  </div>
+                  {/* Worknumber */}
+                  <div className="flex flex-col  w-1/2  mt-4 ml-2  ">
+                    <p className="font-semibold  uppercase  ">Jobbnummer</p>
+                    <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
+                      <p>{user.worknumber}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-row">
+                  {/* Roll */}
+                  <div className="flex flex-col  w-1/2  mt-4  mr-2  ">
+                    <p className="font-semibold d uppercase  ">Roll</p>
+                    <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
+                      <p>{user.role}</p>
+                    </div>
+                  </div>
+                  {/* Company */}
+                  <div className="flex flex-col  w-1/2  mt-4  ml-2  ">
+                    <p className="font-semibold  uppercase  ">Företag</p>
+                    <div className="bg-secondary-l1/80  p-2 mr-2 md:mr-0">
+                      <p>{user.company}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-row row-span-2">
+                  {/* Description */}
+                  <div className="flex flex-col w-full overflow-y-scroll mt-4  mr-2 ">
+                    <p className="font-semibold  uppercase  ">Beskrivning</p>
+                    <div className="bg-secondary-l1/80  p-2 mr-2 md:mr-0">
+                      <p>{user.description}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Address */}
+                <div className="flex flex-col w-full overflow-y-scroll mt-4  mr-2 md:mr-0">
+                  <p className="font-semibold  uppercase  ">Adress</p>
+
+                  <div className="bg-secondary-l1/80  p-2  mr-2 md:mr-0">
+                    <p>{user.address}</p>
+                  </div>
+                </div>
+              </div>
               <div className="flex justify-end">
-                <a href="./editProfile" className="btn btn-modify my-4">
+                <a
+                  href="./editProfile"
+                  className="btn btn-modify my-4 md:mx-0 mx-6 mb-20 md:mb-12"
+                >
                   Redigera
                 </a>
               </div>
