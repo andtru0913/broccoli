@@ -5,7 +5,7 @@ const navHandbook = ({ language, currentPage }) => {
     <div className={"grid grid-flow-row mt-1"}>
       <ul>
         {HB_ITEMS.map((item, i) => (
-          <li
+          <li key={i}
             className={`border-l-2 p-2 hover:border-l-3 hover:border-gray-400 ${
               currentPage === item.filename ? "font-medium" : ""
             }`}
@@ -21,7 +21,7 @@ const navHandbook = ({ language, currentPage }) => {
     <div className={"grid grid-flow-col  mt-1"}>
       <ul>
         {HB_ITEMS.map((item, i) => (
-          <li
+          <li key={i}
             className={`border-l-2 p-2 hover:border-l-3 hover:border-gray-400 ${
               currentPage === item.filename ? "font-medium" : ""
             }`}

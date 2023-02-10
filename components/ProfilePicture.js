@@ -1,12 +1,14 @@
+import Image from "next/image";
+
 const ProfilePicture = ({ image }) => {
   return !image ? (
-    <img
+    <Image width={80} height={80}
       className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
       src={"/images/silhouette.jpg"}
       alt={"silhouette"}
     />
   ) : (
-    <img
+    <Image width={80} height={80}
       className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
       src={`/uploads/profiles/${image}`}
       alt={"can't find profile pic"}

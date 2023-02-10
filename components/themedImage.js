@@ -29,7 +29,7 @@ function ThemedImage({ img_path_light, img_path_dark }) {
       break;
   }
 
-  return <Image src={src} layout="fill" objectFit="contain" />;
+  return <Image alt={""} src={src} layout="fill" objectFit="contain" />;
 }
 
 export default ThemedImage;
