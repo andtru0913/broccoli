@@ -15,7 +15,7 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -78,7 +78,7 @@ const data = [
   {
     icon: <GiFamilyHouse className="m-1  fill-tertiary-1" size={30} />,
     year: "2020",
-    text: "Broccoligården köps in. En idyllisk  palts utanför Svanesund ",
+    text: "Broccoligården köps in. En idyllisk  plats utanför Svanesund ",
   },
   {
     icon: <GiOrganigram className="m-1  fill-tertiary-1" size={30} />,
@@ -112,7 +112,7 @@ const TimelineComponent = () => {
                 <TimelineConnector className="bg-black h-24 " />
               </TimelineSeparator>
               <TimelineContent>
-                <div classname="flex flex-col justify-center w-full bg-slate-300 ">
+                <div className="flex flex-col justify-center w-full bg-slate-300 ">
                   <div
                     data-aos="fade-up"
                     className=" flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
@@ -164,7 +164,7 @@ const TimelineComponent = () => {
                 <TimelineConnector className="bg-black ml-1 h-52 left-2" />
               </TimelineSeparator>
               <TimelineContent>
-                <div classname="flex flex-col justify-center my-5  ">
+                <div className="flex flex-col justify-center my-5  ">
                   <div
                     data-aos="fade-up"
                     className=" flex flex-col mt-7 h-64 w-48 text-center items-center border-2  border-dashed border-secondary-d1 "

@@ -49,7 +49,7 @@ export default function Home({ admin, notifications }) {
           }
         >
           {HB_ITEMS.map((category, i) => (
-            <HBLink category={category} i={i}></HBLink>
+            <HBLink key={i} category={category} i={i}></HBLink>
           ))}
         </div>
       </div>

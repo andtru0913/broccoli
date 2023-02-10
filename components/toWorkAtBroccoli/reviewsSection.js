@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { GrFormDown, GrFormUp } from "react-icons/Gr";
 
-export default function ({ img_path, id, author, children, index, setIndex }) {
+export default function ({ img_path, id, author, text, index, setIndex }) {
   const handleSetIndex = () => {
     index !== id ? setIndex(id) : setIndex(false);
   };
@@ -27,7 +27,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
         </div>
         <div className="flex flex-col p-2 lg:p-6 max-h-40  md:w-96 xl:w-full lg:max-h-40 overflow-x-auto xl:max-h-full">
           <h4 className=" uppercase font-bold lg:pb-2">{author}</h4>
-          <p className="">{children}</p>
+          <p className="">{text}</p>
         </div>
       </div>
       <div onClick={handleSetIndex} className="">
@@ -89,7 +89,7 @@ export default function ({ img_path, id, author, children, index, setIndex }) {
               </div>
             </div>
             <div className="flex flex-row justify-between">
-              <p className=" p-2 px-6 pb-6 max-w-readable ml-20">{children}</p>
+              <p className=" p-2 px-6 pb-6 max-w-readable ml-20">{text}</p>
               <div className="p-3 flex items-end">
                 <GrFormUp size={25} />
               </div>

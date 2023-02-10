@@ -35,7 +35,7 @@ const Reviews = () => {
             img_path={data.img_path}
             id={data.id}
             author={data.author}
-            children={data.text}
+            text={data.text}
             index={index}
             setIndex={setIndex}
           />
