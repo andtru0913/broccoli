@@ -71,7 +71,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
               </Link>
             </div>
 
-            <div className="flex justify-center absolute right-10 text-muted ">
+            <div className="flex justify-center absolute right-10  ">
               <ul
                 className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${

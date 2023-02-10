@@ -1,193 +1,244 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import {getNotifications, getUserProfile} from "../../Database";
+import { getNotifications, getUserProfile } from "../../Database";
 import { FileAdder } from "../../components/FileAdder";
 import ProfilePicture from "../../components/ProfilePicture";
-import {verify} from "../../tokens";
+import { verify } from "../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserProfile(user_id);
-  return !user ?
-      {
+  return !user
+    ? {
         redirect: {
           permanent: false,
           destination: "/intranet",
         },
         props: {},
       }
-      :
-      {
+    : {
         props: {
           userString: JSON.stringify(user),
-          notifications: JSON.stringify(await getNotifications(user.id))
-        }
-      }
+          notifications: JSON.stringify(await getNotifications(user.id)),
+        },
+      };
 }
 
 const profile = ({ userString, notifications }) => {
-  const user = JSON.parse(userString)
+  const user = JSON.parse(userString);
   const file = new FileAdder();
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
-      <section className="bg-secondary-1 h-screen overflow-scroll lg:overflow-visible w-full pb-24  lg:pb-12">
-        <div className="relative px-2 bg-secondary-1">
-          <h2 className="py-8 uppercase text-center">Redigera Profil</h2>
-          <form action="../../api/editProfile" method="POST">
-            <div className="flex flex-col  w-full gap-2">
-              <div className=" w-full  md:p-12 bg-secondary-1">
-                <div className="w-1/4 pb-2">
-                  <ProfilePicture image={user.image} />
-                </div>
-                <div className="relative flex flex-wrap flex-col md:flex-row ">
-                  <div className="flex flex-1 flex-col md:p-2 w-full">
-                    <input
-                      className="form-control block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
-                      type="file"
-                      name="myImage"
-                      onChange={file.uploadToClient}
-                    />
-                    <input
-                      className="id"
-                      type="hidden"
-                      name="id"
-                      value={user.id}
-                    />
-                  </div>
-                </div>
-                {/**Beskrivning*/}
-                <div className="relative flex flex-wrap flex-col md:flex-row  ">
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <label className="text-base pb-1" htmlFor="first">
-                      Beskrivning
-                    </label>
-                    <textarea
-                      className="description text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                      name="description"
-                      placeholder="Beskriv lite om dig själv"
-                      defaultValue={user.description}
-                    />
-                  </div>
-                </div>
-                {/**Username and mail */}
-                <div className="relative flex flex-wrap flex-col md:flex-row ">
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <label className="text-base pb-1" htmlFor="first">
-                      Användarnamn
-                    </label>
+      <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
+        <div className="relative bg-secondary-1">
+          <div>
+            <form action="../../api/editProfile" method="POST">
+              <div className=" grid  grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1  h-full  md:px-12 bg-secondary-1  overflow-hidden">
+                <div className=" relative col-span-1 pt-12 pl-2 ">
+                  <svg
+                    className="absolute left-0 md:-left-64 lg:-left-36 top-0 fill-primary-l1  "
+                    width="504"
+                    height="773"
+                    viewBox="0 0 504 773"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
+                  </svg>
 
-                    <input
-                      className="username text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                      type="text"
-                      name="username"
-                      placeholder="Användarnamn"
-                      defaultValue={user.username}
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <label className="text-base pb-1" htmlFor="last">
-                      Mail
-                    </label>
-                    <input
-                      className="email text-sm p-2 border   appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
-                      type="text"
-                      name="email"
-                      placeholder="Email"
-                      defaultValue={user.email}
-                    />
+                  <div className="  ">
+                    <div className="w-36 h-40 md:w-56 md:h-64 md:mt-24 mt-10 px-2 relative z-10 ">
+                      <ProfilePicture image={user.image} />
+                    </div>
+                    <div className="relative flex flex-wrap flex-col md:flex-row  z-10 ">
+                      <div className="flex flex-1 flex-col md:p-2  w-fit">
+                        <p className="text-base pb-1 uppercase font-semibold ">
+                          Ladda upp en profilbild
+                        </p>
+                        <input
+                          className="form-control w-fit block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
+                          type="file"
+                          name="myImage"
+                          onChange={file.uploadToClient}
+                        />
+                        <input
+                          className="id"
+                          type="hidden"
+                          name="id"
+                          value={user.id}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/**private and work number*/}
-                <div className="relative flex flex-wrap flex-col md:flex-row  ">
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <label className="text-base pb-1" htmlFor="first">
-                      Privatnummer
-                    </label>
-                    <input
-                      className="privatenumber text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                      type="text"
-                      name="privatenumber"
-                      placeholder="Privattelefon"
-                      defaultValue={user.privatenumber}
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <label className="text-base pb-1" htmlFor="last">
-                      Jobbnummer
-                    </label>
-                    <input
-                      className="worknumber text-sm p-2 border    appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
-                      type="text"
-                      name="worknumber"
-                      placeholder="Arbetstelefon"
-                      defaultValue={user.worknumber}
-                    />
-                  </div>
-                </div>
-                <div className="relative flex flex-wrap flex-col md:flex-row  ">
-                  <div className="flex flex-1 flex-col md:p-2">
-                <label className="text-base pb-1" htmlFor="first">
-                  Födelsedatum
-                </label>
-                <input
-                    className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                    type="Date"
-                    name="birthdate"
-                />
-                  </div>
-                </div>
-                {/**Address*/}
-                <div className="relative flex flex-wrap flex-col md:flex-row  ">
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <label className="text-base pb-1" htmlFor="first">
-                      Address
-                    </label>
-                    <input
-                      className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                      type="text"
-                      name="address"
-                      placeholder="Address"
-                      defaultValue={user.address}
-                    />
-                  </div>
-                </div>
-                {/**Change password*/}
-                <div className="relative flex flex-wrap flex-col md:flex-row ">
-                  <div className="flex flex-1 flex-col md:p-2">
-                    <div className="flex flex-row gap-8">
-                      <label className="text-base pb-1" htmlFor="first">
-                        Byt lösenord
+                <div className="md:col-span-2 row-span-2 relative z-10 ">
+                  <h2 className="  pt-8 p-2 uppercase font-bold z-10">
+                    Redigera Profil
+                  </h2>
+
+                  {/**Birthday*/}
+                  <div className="relative flex flex-wrap flex-col md:flex-row  ">
+                    <div className="flex flex-1 flex-col p-2">
+                      <label
+                        className="text-base pb-1 uppercase font-semibold"
+                        htmlFor="first"
+                      >
+                        Födelsedatum
                       </label>
                       <input
-                        id="changePassBox"
-                        type="checkbox"
-                        name="changePass"
-                        onChange={function () {
-                          document.getElementById("changePassText").disabled =
-                            !document.querySelector("#changePassBox:checked");
-                          document.getElementById("changePassText").value = "";
-                        }}
+                        className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                        type="Date"
+                        name="birthdate"
                       />
                     </div>
-                    <input
-                      id="changePassText"
-                      disabled={true}
-                      className="password p-2 border   mb-2"
-                      type="text"
-                      name="password"
-                      placeholder="Lösenord"
-                    />
                   </div>
-                </div>
+                  {/**Username and mail */}
+                  <div className="relative flex flex-wrap flex-col md:flex-row ">
+                    <div className="flex flex-1 flex-col p-2">
+                      <label
+                        className="text-base pb-1 uppercase font-semibold"
+                        htmlFor="last"
+                      >
+                        Mail
+                      </label>
+                      <input
+                        className="email text-sm p-2 border   appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        defaultValue={user.email}
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-2">
+                      <label
+                        className="text-base uppercase pb-1 font-semibold"
+                        htmlFor="first"
+                      >
+                        Användarnamn
+                      </label>
 
-                {/**Save button*/}
-                <div className="relative flex flex-wrap flex-col md:flex-row items-end pt-2 w-full">
-                  <div className="flex flex-1 flex-col md:p-2 w-1/2">
+                      <input
+                        className="username text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                        type="text"
+                        name="username"
+                        placeholder="Användarnamn"
+                        defaultValue={user.username}
+                      />
+                    </div>
+                  </div>
+
+                  {/**private and work number*/}
+                  <div className="relative flex flex-wrap flex-col md:flex-row  ">
+                    <div className="flex flex-1 flex-col p-2">
+                      <label
+                        className="text-base pb-1 uppercase font-semibold"
+                        htmlFor="first"
+                      >
+                        Privatnummer
+                      </label>
+                      <input
+                        className="privatenumber text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                        type="text"
+                        name="privatenumber"
+                        placeholder="Privattelefon"
+                        defaultValue={user.privatenumber}
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-2">
+                      <label
+                        className="text-base pb-1 uppercase font-semibold"
+                        htmlFor="last"
+                      >
+                        Jobbnummer
+                      </label>
+                      <input
+                        className="worknumber text-sm p-2 border    appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
+                        type="text"
+                        name="worknumber"
+                        placeholder="Arbetstelefon"
+                        defaultValue={user.worknumber}
+                      />
+                    </div>
+                  </div>
+                  {/**Beskrivning*/}
+                  <div className="relative flex flex-wrap flex-col md:flex-row  ">
+                    <div className="flex flex-1 flex-col p-2 ">
+                      <label
+                        className="text-base uppercase pb-1 font-semibold"
+                        htmlFor="first"
+                      >
+                        Beskrivning
+                      </label>
+                      <textarea
+                        className="description text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-d1 autofill:focus:bg-primary-d2"
+                        name="description"
+                        placeholder="Beskriv lite om dig själv"
+                        defaultValue={user.description}
+                      />
+                    </div>
+                  </div>
+
+                  {/**Address
+                  <div className="relative flex flex-wrap flex-col md:flex-row  ">
+                    <div className="flex flex-1 flex-col p-2">
+                      <label
+                        className="text-base pb-1 uppercase font-semibold"
+                        htmlFor="first"
+                      >
+                        Adress
+                      </label>
+                      <input
+                        className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                        type="text"
+                        name="address"
+                        placeholder="Address"
+                        defaultValue={user.address}
+                      />
+                    </div>
+                  </div>
+                  */}
+                  {/**Change password*/}
+                  <div className="relative flex flex-wrap flex-col md:flex-row ">
+                    <div className="flex flex-1 flex-col p-2">
+                      <div className="flex flex-row ">
+                        <label
+                          className="text-base mb-2 uppercase font-semibold"
+                          htmlFor="first"
+                        >
+                          Byt lösenord
+                        </label>
+                        <input
+                          className="mt-2 ml-2"
+                          id="changePassBox"
+                          type="checkbox"
+                          name="changePass"
+                          onChange={function () {
+                            document.getElementById("changePassText").disabled =
+                              !document.querySelector("#changePassBox:checked");
+                            document.getElementById("changePassText").value =
+                              "";
+                          }}
+                        />
+                      </div>
+                      <input
+                        id="changePassText"
+                        disabled={true}
+                        className="password p-2    mb-2"
+                        type="text"
+                        name="password"
+                        placeholder="Nytt lösenord"
+                      />
+                    </div>
+                  </div>
+
+                  {/**Save button*/}
+                  <div className=" flex justify-end p-2 pt-2 md:pb-12 pb-24 ">
                     <button
                       className="btn btn-primary"
                       onClick={function () {
-                        file
-                          .uploadToServer(`profiles/${user.email}`)
+                        file.uploadToServer(`profiles/${user.email}`);
                       }}
                       type="submit"
                     >
@@ -196,17 +247,14 @@ const profile = ({ userString, notifications }) => {
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
           {/**Delete profile img*/}
           <form action="../../api/deleteProfilePic" method="POST">
             <input className="id" type="hidden" name="id" value={user.id} />
-
-            <div className="absolute top-32 right-2 md:right-12 md:top-60 flex flex-1 flex-col md:p-2">
-              <button className="btn btn-empty text-xs md:text-base">
-                Radera profilbild
-              </button>
-            </div>
+            <button className=" relative btn btn-delete  mt-2 md:mb-12 mb-24 z-10">
+              Radera profilbild
+            </button>
           </form>
         </div>
       </section>
