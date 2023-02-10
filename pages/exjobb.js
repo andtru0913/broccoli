@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { verify } from "../tokens";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
   const pageId = exjobb;
@@ -67,7 +68,7 @@ export default function Exjobb({ admin, page, pageName, click }) {
               </a>
             </div>
             <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-44 md:mt-10 md:col-span-4 md:col-end-10">
-              <img className=" " src="/images/exjobb.png"></img>
+              <Image alt={""} width={800} height={600} className=" " src="/images/exjobb.png"></Image>
             </div>
           </div>
         </div>

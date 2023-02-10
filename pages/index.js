@@ -16,7 +16,7 @@ import Reviews from "../components/toWorkAtBroccoli/reviews";
 import ThemedImage from "../components/themedImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
@@ -80,7 +80,9 @@ export default function Home({ feed, genderCount }) {
 
           <div className="flex flex-col w-screen h-screen ">
             <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0">
-              <img
+              <Image
+                  height={200}
+                  width={200}
                 src="/images/Broccolibl.png"
                 className=" flex justify-center md:w-1/2 "
                 data-aos="fade-left"
@@ -347,7 +349,9 @@ export default function Home({ feed, genderCount }) {
                     key={image.id}
                   >
                     <a href={image.permalink}>
-                      <img
+                      <Image
+                          width={400}
+                          height={400}
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                         src={image.media_url}
                         alt={"image"}

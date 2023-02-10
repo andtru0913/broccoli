@@ -861,7 +861,7 @@ export async function modifyNotification(notifId, title, text, enddate, users) {
 }
 
 export async function getAllNotifications() {
-    return await prisma.notifications.findMany({
+    let result = await prisma.notifications.findMany({
         select: {
             id:true,
             title: true,
@@ -888,6 +888,19 @@ export async function getAllNotifications() {
           endDate: "asc"
       }
     })
+  result.map((data) => {
+    data.startDate = new Date(data.startDate).toLocaleString("default", {
+      year: "numeric",
+      day: "numeric",
+      month: "long",
+    });
+    data.endDate = new Date(data.endDate).toLocaleString("default", {
+      year: "numeric",
+      day: "numeric",
+      month: "long",
+    });
+  });
+    return result;
 }
 
 export async function getNotifications(userid) {

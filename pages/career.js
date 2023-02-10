@@ -2,13 +2,14 @@ import { getPage, getUserinfo } from "../Database";
 import Page from "../components/page";
 import { career } from "../defaultIDs";
 import Layout from "../components/layout/layout";
-import { FaHandshake, FaRunning, FaPhoneAlt } from "react-icons/fa";
+import { FaHandshake, FaRunning } from "react-icons/fa";
 import { BiHealth } from "react-icons/bi";
 import { GiPartyFlags, GiSmartphone } from "react-icons/gi";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { verify } from "../tokens";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
   const pageId = career;
@@ -99,7 +100,7 @@ export default function Career({ admin, page, pageName, click }) {
               </a>
             </div>
             <div className=" mx-4 md:mr-16 lg:mr-44 md:-ml-20 lg:-ml-64 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
-              <img className=" " src="/images/career.png"></img>
+              <Image alt={""} width={"600"} height={"600"} src="/images/career.png"></Image>
             </div>
           </div>
         </div>
@@ -131,9 +132,9 @@ export default function Career({ admin, page, pageName, click }) {
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
             <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
-              {data.map((data) => {
+              {data.map((data,i) => {
                 return (
-                  <div
+                  <div key={i}
                     className={` flex flex-col items-center w-screen md:w-full  p-8 md:p-10 lg:p-15  ${data.color}`}
                   >
                     {data.icon_svg}

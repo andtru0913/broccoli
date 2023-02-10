@@ -1,6 +1,6 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import {getAllNotifications, getGroups, getNotifications, getUserinfo, getUserNotifications} from "../../../Database";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {HiXMark} from "react-icons/hi2";
 import {verify} from "../../../tokens";
 
@@ -28,16 +28,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user, notifications, relevantNotifs, groups, allUsers }) {
-  const useFormattedDate = (date) => {
-    const [formattedDate, setFormattedDate] = useState(null);
-
-    useEffect(
-        () => setFormattedDate(new Date(date).toLocaleString("default", {year: "numeric", day: "numeric", month: "long",}),[])
-    )
-
-    return formattedDate;
-  };
-
     const list = JSON.parse(notifications)
     const lunchgroups = JSON.parse(groups)
     useEffect(() => {
@@ -199,7 +189,7 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                         }}>
                             <p className={"font-bold"}>{item.title}</p>
                             <p>{item.text}</p>
-                            <p>{useFormattedDate(item.startDate)} - {useFormattedDate(item.endDate)}</p>
+                            <p>{item.startDate} - {item.endDate}</p>
                         </div>
                         <form className={"flex flex-row"} action={"../../api/admin/deleteNotification"} method={"POST"}>
                             <input
