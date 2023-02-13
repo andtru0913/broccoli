@@ -207,7 +207,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
                     onClick={() => {
                       openmenu;
                     }}
-                    key={menu.text}
+                    key={i}
                   >
                     <ActiveLink
                       id={menu.text}

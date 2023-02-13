@@ -1,6 +1,5 @@
 import { getAllNews, getNotifications, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import { FileAdder } from "../../../components/FileAdder";
 import {verify} from "../../../tokens";
 
 export async function getServerSideProps(context) {
@@ -27,40 +26,6 @@ export async function getServerSideProps(context) {
 export default function Home({ user, notifications }) {
     let popup = "";
     if (user.admin) {
-        const file = new FileAdder();
-        const uploadToDatabase = () => {
-            return new Promise(function (resolve, reject) {
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", "../../api/admin/createNews");
-                xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.send(
-                    JSON.stringify({
-                        title: document.getElementById("title").value,
-                        filename: document
-                            .getElementById("file")
-                            .value.split(/([\\/])/g)
-                            .pop(),
-                        id: user.id,
-                    })
-                );
-                xhr.onload = function () {
-                    if (this.status >= 200 && this.status < 300) {
-                        resolve(xhr.response);
-                    } else {
-                        reject({
-                            status: this.status,
-                            statusText: xhr.statusText,
-                        });
-                    }
-                };
-                xhr.onerror = function () {
-                    reject({
-                        status: this.status,
-                        statusText: xhr.statusText,
-                    });
-                };
-            });
-        };
         popup = (
             <form action="../../api/uploadFile" method="POST" encType="multipart/form-data"
                   className="z-10 flex flex-col justify-center">

@@ -1,6 +1,5 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import {getNotifications, getUserProfile} from "../../Database";
-import { FileAdder } from "../../components/FileAdder";
 import ProfilePicture from "../../components/ProfilePicture";
 import {verify} from "../../tokens";
 
@@ -26,13 +25,12 @@ export async function getServerSideProps(context) {
 
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString)
-  const file = new FileAdder();
   return (
-    <LayoutIntranet notifications={notifications} admin={user.admin || null}>
+    <LayoutIntranet notifications={notifications} admin={!!user.admin?user.admin:null}>
       <section className="bg-secondary-1 h-screen overflow-scroll lg:overflow-visible w-full pb-24  lg:pb-12">
         <div className="relative px-2 bg-secondary-1">
           <h2 className="py-8 uppercase text-center">Redigera Profil</h2>
-          <form action="../../api/editProfile" method="POST">
+          <form action="../../api/editProfile" method="POST" encType="multipart/form-data">
             <div className="flex flex-col  w-full gap-2">
               <div className=" w-full  md:p-12 bg-secondary-1">
                 <div className="w-1/4 pb-2">
@@ -43,8 +41,7 @@ const profile = ({ userString, notifications }) => {
                     <input
                       className="form-control block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
                       type="file"
-                      name="myImage"
-                      onChange={file.uploadToClient}
+                      name="file"
                     />
                     <input
                       className="id"
@@ -185,10 +182,6 @@ const profile = ({ userString, notifications }) => {
                   <div className="flex flex-1 flex-col md:p-2 w-1/2">
                     <button
                       className="btn btn-primary"
-                      onClick={function () {
-                        file
-                          .uploadToServer(`profiles/${user.email}`)
-                      }}
                       type="submit"
                     >
                       Spara
