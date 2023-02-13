@@ -34,7 +34,7 @@ const Footer = () => {
               <h3 className="pb-2 text-center font-bold cursor-default uppercase">
                 Kontakt
               </h3>
-              <div className=" flex flex-col items-center md:text-left bg-inherit">
+              <div className=" flex flex-col items-left md:text-left bg-inherit">
                 <a className="hover:text-muted" href="tel:031-151480">
                   <div className="flex flex-row text-sm hover:text-secondary-d2 justify-center align-middle md:justify-start py-1">
                     <svg
@@ -116,16 +116,18 @@ const Footer = () => {
               <h3 className="pb-2 font-bold cursor-default uppercase">
                 Medarbetare
               </h3>
-              <a href="./intranet" className="hover:text-muted py-2">
-                <p className="text-sm hover:text-secondary-d2">Intranät</p>
-              </a>
+              <div className=" flex flex-col items-left md:text-left bg-inherit">
+                <a href="./intranet" className="hover:text-muted py-2">
+                  <p className="text-sm hover:text-secondary-d2">Intranät</p>
+                </a>
 
-              <a
-                href="https://www.broccoli.be/tid/"
-                className="hover:text-secondary-d2 py-2"
-              >
-                <p className="text-sm p-1 ">Tidrapport</p>
-              </a>
+                <a
+                  href="https://www.broccoli.be/tid/"
+                  className="hover:text-secondary-d2 py-2"
+                >
+                  <p className="text-sm hover:text-secondary-d2 ">Tidrapport</p>
+                </a>
+              </div>
             </div>
             <div className=" md:col-span-2 pb-7 text-center justify-center ">
               <h3 className="pb-2 font-bold cursor-default uppercase ">

@@ -255,7 +255,7 @@ const Page = ({
             />
           </div>
           <div className=" bg-primary-l1 ">
-            <div className="absolute flex flex-col text-center md:text-left text-inverted top-[25%] md:top-36 lg:top-[35%]  right-4 z-10 p-12 md:p-5  max-w-prose md:w-1/2">
+            <div className="absolute flex flex-col text-center md:text-left text-inverted dark:text-color-base top-[25%] md:top-36 lg:top-[35%]  right-4 z-10 p-12 md:p-5  max-w-prose md:w-1/2">
               <h1 className="layout  pb-0 md:pb-2 font-bold uppercase ">
                 {page.title}
               </h1>

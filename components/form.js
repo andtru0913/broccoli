@@ -136,7 +136,7 @@ export default function Form({ title }) {
 
           <div className="relative flex flex-wrap flex-row  ">
             <div className="flex flex-1 flex-row p-2">
-              <label className="text-xs pb-1 text-gray-700" htmlFor="first">
+              <label className="text-xs pb-1 text-muted" htmlFor="first">
                 Genom att skicka in detta formulär godkännder du att dina
                 uppgifter sparas
               </label>
