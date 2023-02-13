@@ -1,33 +1,30 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import { getNotifications, getUserProfile } from "../../Database";
-import { FileAdder } from "../../components/FileAdder";
+import {getNotifications, getUserProfile} from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 import { verify } from "../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(
-    JSON.parse(context.req.cookies["token"] || null)
-  );
+  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
   const user = await getUserProfile(user_id);
-  return !user
-    ? {
+  return !user ?
+      {
         redirect: {
           permanent: false,
           destination: "/intranet",
         },
         props: {},
       }
-    : {
+      :
+      {
         props: {
           userString: JSON.stringify(user),
-          notifications: JSON.stringify(await getNotifications(user.id)),
-        },
-      };
+          notifications: JSON.stringify(await getNotifications(user.id))
+        }
+      }
 }
 
 const profile = ({ userString, notifications }) => {
-  const user = JSON.parse(userString);
-  const file = new FileAdder();
+  const user = JSON.parse(userString)
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
       <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
@@ -59,8 +56,7 @@ const profile = ({ userString, notifications }) => {
                         <input
                           className="form-control w-fit block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
                           type="file"
-                          name="myImage"
-                          onChange={file.uploadToClient}
+                          name="file"
                         />
                         <input
                           className="id"
@@ -237,9 +233,6 @@ const profile = ({ userString, notifications }) => {
                   <div className=" flex justify-end p-2 pt-2 md:pb-12 pb-24 ">
                     <button
                       className="btn btn-primary"
-                      onClick={function () {
-                        file.uploadToServer(`profiles/${user.email}`);
-                      }}
                       type="submit"
                     >
                       Spara
