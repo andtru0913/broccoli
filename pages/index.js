@@ -80,9 +80,7 @@ export default function Home({ feed, genderCount }) {
 
           <div className="flex flex-col w-screen h-screen ">
             <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0">
-              <Image
-                height={200}
-                width={200}
+              <img
                 src="/images/Broccolibl.png"
                 className=" flex justify-center md:w-1/2 "
                 data-aos="fade-left"
@@ -124,7 +122,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/computerBlack.png"
-                          img_path_dark="/images/lightMode/computerWhite.png"
+                          img_path_dark="/images/darkMode/computerWhite.png"
                         />
                       </div>
                     </div>
@@ -143,7 +141,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/webbBlack.png"
-                          img_path_dark="/images/lightMode/webbWhite.png"
+                          img_path_dark="/images/darkMode/webbWhite.png"
                         />
                       </div>
                     </div>
@@ -162,7 +160,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative ">
                         <ThemedImage
                           img_path_light="/images/lightMode/circuitBlack.png"
-                          img_path_dark="/images/lightMode/circuitWhite.png"
+                          img_path_dark="/images/darkMode/circuitWhite.png"
                         />
                       </div>
                     </div>
@@ -181,7 +179,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/armBlack.png"
-                          img_path_dark="/images/lightMode/armwWhite.png"
+                          img_path_dark="/images/darkMode/armWhite.png"
                         />
                       </div>
                     </div>
