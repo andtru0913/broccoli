@@ -11,7 +11,7 @@ function withOpacity(variableName) {
 
 module.exports = {
   important: true,
-  darkMode: "class",
+  darkMode: "media",
 
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",

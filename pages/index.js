@@ -81,8 +81,8 @@ export default function Home({ feed, genderCount }) {
           <div className="flex flex-col w-screen h-screen ">
             <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0">
               <Image
-                  height={200}
-                  width={200}
+                height={200}
+                width={200}
                 src="/images/Broccolibl.png"
                 className=" flex justify-center md:w-1/2 "
                 data-aos="fade-left"
@@ -350,8 +350,9 @@ export default function Home({ feed, genderCount }) {
                   >
                     <a href={image.permalink}>
                       <Image
-                          width={400}
-                          height={400}
+                        loader={() => image.media_url}
+                        width={400}
+                        height={400}
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                         src={image.media_url}
                         alt={"image"}
