@@ -17,7 +17,6 @@ export default async function handler(req, res) {
                         res.status(500).json({error: err});
                     }
                     try {
-                        console.log(files.file)
                         if(!!files.file.originalFilename) {
                             const data = fs.readFileSync(files.file.filepath)
                             const newFilename = `${fields.id}.${files.file.originalFilename.split(".").pop()}`
