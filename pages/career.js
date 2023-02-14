@@ -75,12 +75,41 @@ export default function Career({ admin, page, pageName, click }) {
         formTitle="SPONTANANSÖKAN"
         image={pageName}
       >
-        <div className="bg-secondary-l1">
-          <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
-            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-36 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
+        <div className=" bg-secondary-1 w-full pt-20 sm:pt-0">
+          <div className="flex flex-row justify-center">
+            <div className=" text-justify py-8 px-4">
+              <a onClick={click} href="#linkForm">
+                <h3
+                  className="uppercase font-bold pb-5 pt-8 mb:pt-0 md:h1"
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                >
+                  Spontanansökan
+                </h3>
+                <p
+                  className="max-w-readable py-2"
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                  data-aos-delay="500"
+                >
+                  Om du är intresserad av att arbeta som ingenjör hos oss och
+                  har en utbildning inom Elektronik, Data, IT, Mekatronik eller
+                  Teknisk Fysik så är du välkommen att skicka ditt CV samt några
+                  rader om dig själv.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/*
+
+<div id="trigger-zoom" className="bg-secondary-l1 ">
+          <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1 ">
+            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-36 lg:pr-56 text-justify md:col-span-5 md:col-start-1  w-screen md:w-full">
               <a onClick={click} href="#linkForm">
                 <h1
-                  className="uppercase font-bold pb-5 pt-8 mb:pt-0"
+                  className="uppercase font-bold pb-5 pt-8 mb:pt-0 h4 md:h1"
                   data-aos="fade-right"
                   data-aos-once="true"
                 >
@@ -100,12 +129,18 @@ export default function Career({ admin, page, pageName, click }) {
               </a>
             </div>
             <div className=" mx-4 md:mr-16 lg:mr-44 md:-ml-20 lg:-ml-64 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
-              <Image alt={""} width={"600"} height={"600"} src="/images/career.png"></Image>
+              <Image
+                alt={""}
+                width={"600"}
+                height={"600"}
+                src="/images/career.png"
+              ></Image>
             </div>
           </div>
         </div>
 
-        {/*
+
+
         <div>
           <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
             <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:py-28  lg:py-20 lg:px-40 lg:pr-56  text-justify md:col-span-5 md:col-start-1">
@@ -127,14 +162,15 @@ export default function Career({ admin, page, pageName, click }) {
           </div>
         </div>
 */}
-        <section className="bg-secondary-l1 z-20 pt-12 ">
+        <section className="bg-secondary-1 z-20 pt-12 ">
           <div className="pt-12 flex flex-col px-5 text-center items-center justify-center ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
             <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
-              {data.map((data,i) => {
+              {data.map((data, i) => {
                 return (
-                  <div key={i}
+                  <div
+                    key={i}
                     className={` flex flex-col items-center w-screen md:w-full  p-8 md:p-10 lg:p-15  ${data.color}`}
                   >
                     {data.icon_svg}
