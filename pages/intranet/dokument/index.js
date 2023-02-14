@@ -1,6 +1,5 @@
 import { getAllNews, getNotifications, getUserinfo } from "../../../Database";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import { FileAdder } from "../../../components/FileAdder";
 import {verify} from "../../../tokens";
 
 export async function getServerSideProps(context) {
@@ -25,44 +24,27 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user, notifications }) {
-    let popup = "";
+    let adminPanel = "";
     if (user.admin) {
-        const file = new FileAdder();
-        const uploadToDatabase = () => {
-            return new Promise(function (resolve, reject) {
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", "../../api/admin/createNews");
-                xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.send(
-                    JSON.stringify({
-                        title: document.getElementById("title").value,
-                        filename: document
-                            .getElementById("file")
-                            .value.split(/([\\/])/g)
-                            .pop(),
-                        id: user.id,
-                    })
-                );
-                xhr.onload = function () {
-                    if (this.status >= 200 && this.status < 300) {
-                        resolve(xhr.response);
-                    } else {
-                        reject({
-                            status: this.status,
-                            statusText: xhr.statusText,
-                        });
+        adminPanel = (
+            <form action="../../api/createAdminDocument" method="POST" encType="multipart/form-data"
+                  className="z-10 flex flex-col justify-center">
+                <p className={"m-1"}>Ny företagsdokument</p>
+                <input
+                    className={
+                        "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
                     }
-                };
-                xhr.onerror = function () {
-                    reject({
-                        status: this.status,
-                        statusText: xhr.statusText,
-                    });
-                };
-            });
-        };
-        popup = (
-            <form action="../../api/uploadFile" method="POST" encType="multipart/form-data"
+                    id="file"
+                    type="file"
+                    name={"file"}
+                />
+                <button className="m-1 btn btn-primary">
+                    Skapa nytt inlägg
+                </button>
+            </form>
+        );
+        adminPanel = (
+            <form action="../../api/createUserDocument" method="POST" encType="multipart/form-data"
                   className="z-10 flex flex-col justify-center">
                 <p className={"m-1"}>Ny företagsdokument</p>
                 <input
@@ -94,7 +76,8 @@ export default function Home({ user, notifications }) {
                 </svg>
 
                 <h1 className=" uppercase font-bold mt-12 p-4 z-10"> nyheter </h1>
-                {popup}
+                {adminPanel}
+
             </div>
 
             <div className="flex flex-col bg-secondary-1 h-screen pt-12">

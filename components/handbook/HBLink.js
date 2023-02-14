@@ -1,7 +1,7 @@
 const style = [
-  { div: "bg-primary-1", text: "text-black", icon: "" },
-  { div: "bg-secondary-1", text: "text-black", icon: "" },
-  { div: "bg-tertiary-1", text: "text-white", icon: "bg-transparent" },
+  { div: "bg-primary-1 z-30 ", text: "text-black", icon: "" },
+  { div: "bg-secondary-1 z-30", text: "text-black", icon: "" },
+  { div: "bg-tertiary-1 z-30", text: "text-white", icon: "bg-transparent" },
 ];
 
 const HBLink = ({ category, i }) => {
