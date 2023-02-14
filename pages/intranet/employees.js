@@ -1,10 +1,12 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
 import EmployeeAccordion from "../../components/employeeAccordion";
-import {getAllUsers, getNotifications, getUserinfo} from "../../Database";
-import {verify} from "../../tokens";
+import { getAllUsers, getNotifications, getUserinfo } from "../../Database";
+import { verify } from "../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserinfo(user_id);
   return !user
     ? {
@@ -43,7 +45,7 @@ export default function employee({ data, admin, notifications }) {
         </div>
         <div className="layout flex flex-row py-4 ">
           <svg
-            className="  md:visible md:absolute  md:fill-primary-l1 md:top-0 md:left-0 md:z-0 md:h-auto  "
+            className="  visible absolute  fill-primary-l1 top-0 left-0 z-0 h-auto md:w-full w-11/12 "
             width="950"
             height="350"
             viewBox="0 0 1011 497"
@@ -54,7 +56,7 @@ export default function employee({ data, admin, notifications }) {
         </div>
         <div>
           <svg
-            className="absolute right-0 -z-10 fill-secondary-1"
+            className="absolute right-0 z-10 fill-secondary-1"
             width="1004"
             height="920"
             viewBox="0 0 1004 920"
@@ -64,7 +66,7 @@ export default function employee({ data, admin, notifications }) {
             <path d="M1012.42 473.14C1015.76 358.195 1017.07 312.824 953.28 258.393C836.941 159.125 754.537 189.872 703.896 78.1764C655.971 21.5714 663.546 15.8344 572.525 1.88259C481.504 -12.0692 439.496 73.9557 401.504 75.5566C354.013 77.5577 266.111 94.3679 192.578 124.615C119.045 154.862 66.1191 260.071 14.4367 398.928C-37.2459 537.786 74.2907 616.541 102.7 677.931C131.109 739.322 125.049 802.919 199.106 855.485C273.163 908.05 347.816 911.006 423.635 906.875C499.454 902.744 560.061 933.892 627.968 912.307C695.875 890.723 696.918 883.19 722.137 796.936C747.357 710.682 836.01 703.266 941.831 652.935C1047.65 602.604 1010.47 540.303 1012.42 473.14Z" />
           </svg>
 
-          <div className="layout  flex flex-row flex-wrap z-20  ">
+          <div className="layout relative flex flex-row flex-wrap z-30  ">
             <div className="flex flex-row flex-wrap justify-center py-6">
               <EmployeeAccordion data={data} />
             </div>
