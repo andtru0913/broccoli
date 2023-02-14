@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../components/layout/layout";
 import TimelineComponent from "../components/TimelineComponent";
 import { IoBoatSharp } from "react-icons/io5";
@@ -22,10 +22,10 @@ const callback = function (entries) {
     }
   });
 };
-export default function About({ title, intro, }) {
+export default function About({ title, intro, year, timelinedesc }) {
   // Get all the elements you want to show on scroll
 
-  //const [animateHeader, setAnimateHeader] = useState(false);
+  const [animateHeader, setAnimateHeader] = useState(false);
 
   useEffect(() => {
     const targets = document.querySelectorAll(".js-show-on-scroll");
@@ -62,7 +62,7 @@ export default function About({ title, intro, }) {
             </div>*/}
 
             <div className="  top-0">
-              <div className=" w-auto max-h-full min-w-full h-full bg-secondary-l2 ">
+              <div className=" w-auto max-h-full min-w-full h-full bg-secondary-d1 ">
                 <Image
                   className=""
                   alt="omslag_about"
@@ -74,7 +74,7 @@ export default function About({ title, intro, }) {
             </div>
 
             <div className=" hidden md:grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-              <div className="  w-auto max-h-full min-w-full  h-60 lg:h-[42rem] md:h-screen bg-secondary-1 md:bg-secondary-d1/90 md:z-10 place-content-center ">
+              <div className="  w-auto max-h-full min-w-full  h-60 lg:h-[42rem] md:h-screen bg-secondary-1 md:bg-secondary-1/80 md:z-10 place-content-center ">
                 <div className="relative text-center lg:text-left  flex flex-col items-center gap-4 align-top lg:place-self-center  p-4 lg:p-8 xl:p-12">
                   <div className=" flex flex-col p-5 pb-5  z-10 ">
                     <h1 className="font-bold py-3 px-6 tracking-wider uppercase z-10  ">
@@ -87,7 +87,7 @@ export default function About({ title, intro, }) {
                     </h4>
                   </div>
                   <svg
-                    className=" absolute left-0 top-0 z-0    fill-secondary-l1/50 "
+                    className=" absolute left-0 top-0 z-0 fill-secondary-l1/80 "
                     width="759"
                     height="413"
                     viewBox="0 0 687 415"
@@ -113,7 +113,7 @@ export default function About({ title, intro, }) {
           {/* For Phones */}
           <div className=" md:hidden relative flex flex-col h-full w-full">
             <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-              <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-d1/80 ">
+              <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
                 <div className="text-center z-10 py-8 lg:text-left md:max-w-readable lg:max-w-readable flex flex-col flex-auto gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
                   <h1 className="font-bold z-10 uppercase layout tracking-wider">
                     {title ?? "Om oss"}
@@ -126,7 +126,7 @@ export default function About({ title, intro, }) {
                 </div>
 
                 <svg
-                  className=" absolute left-0 top-0 z-0    fill-secondary-l1/50 "
+                  className=" absolute left-0 top-0 z-0 fill-secondary-l2 "
                   width="317"
                   height="184"
                   viewBox="0 0 687 415"
