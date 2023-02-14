@@ -92,7 +92,7 @@ export default function Home({ user, notifications }) {
                   />
                 </div>
                 <input
-                  className="firstname m-1 p-1"
+                  className="firstname m-1 p-1 "
                   type="text"
                   name="firstname"
                   placeholder="Förnamn"
@@ -248,7 +248,7 @@ export default function Home({ user, notifications }) {
                   placeholder="Lösenord"
                 />
                 <input
-                  className={"m-1 p-1"}
+                  className={"m-1 p-1 "}
                   type="text"
                   name="firstname"
                   placeholder="Förnamn"
@@ -414,10 +414,10 @@ export default function Home({ user, notifications }) {
                   <table className="min-w-full">
                     <thead className="border-b-2 border-primary-d1">
                       <tr>
-                        <th className=" text-base font-bold uppercase text-skin-base px-6 pt-4 text-left ">
+                        <th className="  text-base font-bold uppercase text-skin-base px-6 pt-4 text-left ">
                           Användarnamn
                         </th>
-                        <th className="text-base font-bold uppercase  text-skin-base px-6 pt-4 text-left">
+                        <th className=" sticky left-0 text-base font-bold uppercase  text-skin-base px-6 pt-4 text-left">
                           Förnamn
                         </th>
                         <th className="text-base font-bold uppercase  text-skin-base px-6 pt-4 text-left">
