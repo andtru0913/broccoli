@@ -60,7 +60,9 @@ export default function employeeAccordionSection({
                     Email: {email}
                   </a>
                 </h4>
-                <p className="select-none text-sm pt-3  col-span-2">{text}</p>
+                <p className="select-none text-sm pt-3  col-span-2">
+                  Om mig: {text}
+                </p>
               </div>
             </div>
             <div>
