@@ -66,7 +66,7 @@ export default function Home({ user, news, notifications, popup }) {
     };
 
     popup = (
-      <div className="z-10">
+      <div className="realtive z-20">
         Nytt inlägg
         <input
           id={"title"}
@@ -115,8 +115,8 @@ export default function Home({ user, news, notifications, popup }) {
             <path d="M497.871 59.9819C555.514 46.7719 846.095 -139.073 848 160.849L822.381 570C792.211 552.005 617.427 467.712 551.245 456.347C514.078 449.964 367.014 440.72 327.077 396.679C280.488 345.303 124.767 378.842 58.0754 339.853C-8.61652 300.863 -5.0722 235.276 6.83704 197.786C18.7463 160.296 27.0239 98.1033 79.4247 75.6092C121.345 57.6139 201.116 86.9745 297.188 86.9745C393.26 86.9745 440.228 73.192 497.871 59.9819Z" />
           </svg>
 
-          <h1 className=" uppercase font-bold mt-12 p-4 z-10"> nyheter </h1>
-          <button>
+          <h1 className="  uppercase font-bold mt-12 p-4 z-10">nyheter</h1>
+          <button className="z-10">
             Skapa inlägg
             {popup}
           </button>
