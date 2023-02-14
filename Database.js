@@ -759,10 +759,11 @@ export async function editProfile(
         id: userid,
       },
       data: {
-        image: email,
+        image: image,
       },
     });
   }
+  return Promise.resolve();
 }
 
 export async function deleteProfilePic(id) {
