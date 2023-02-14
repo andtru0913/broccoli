@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../components/layout/layout";
 import TimelineComponent from "../components/TimelineComponent";
 import { IoBoatSharp } from "react-icons/io5";
@@ -22,10 +22,10 @@ const callback = function (entries) {
     }
   });
 };
-export default function About({ title, intro, }) {
+export default function About({ title, intro, year, timelinedesc }) {
   // Get all the elements you want to show on scroll
 
-  //const [animateHeader, setAnimateHeader] = useState(false);
+  const [animateHeader, setAnimateHeader] = useState(false);
 
   useEffect(() => {
     const targets = document.querySelectorAll(".js-show-on-scroll");

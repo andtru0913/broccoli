@@ -26,22 +26,32 @@ const data = [
     text: "Broccoli grundas av Björn som ett deltidsföretag vid sidan om Chalmersstudierna ",
   },
   {
-    icon: <TbCalendarTime className="m-2 " size={30} />,
+    icon: <TbCalendarTime className="m-2 dark:fill-tertiary-d2" size={30} />,
     year: "2003",
     text: "Broccoli blir heltidssysselsättning med fokus på mjukvarubaserad utveckling ",
   },
   {
-    icon: <GrOptimize className="m-2 fill-tertiary-1" size={25} />,
+    icon: <GrOptimize className="m-2 dark:fill-tertiary-d2 " size={25} />,
     year: "2005",
     text: "Broccoli byter bolagsform till aktiebolag och första kollegan Henrik anställs",
   },
   {
-    icon: <GiMaterialsScience className="m-1  fill-tertiary-1" size={30} />,
+    icon: (
+      <GiMaterialsScience
+        className="m-1  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2006",
     text: "Vi tar in vår första examensarbetare, Dick",
   },
   {
-    icon: <MdStarOutline className="m-1 fill-tertiary-1" size={30} />,
+    icon: (
+      <MdStarOutline
+        className="m-1 fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2007",
     text: "Lågkonjunktur men vi håller nollan, inga uppsägningar",
   },
@@ -112,7 +122,7 @@ const TimelineComponent = () => {
                 <TimelineConnector className="bg-black h-24 " />
               </TimelineSeparator>
               <TimelineContent>
-                <div className="flex flex-col justify-center w-full bg-slate-300 ">
+                <div className="flex flex-col justify-center w-full  ">
                   <div
                     data-aos="fade-up"
                     className=" flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
