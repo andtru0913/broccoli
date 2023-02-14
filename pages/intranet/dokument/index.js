@@ -24,10 +24,27 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user, notifications }) {
-    let popup = "";
+    let adminPanel = "";
     if (user.admin) {
-        popup = (
-            <form action="../../api/uploadFile" method="POST" encType="multipart/form-data"
+        adminPanel = (
+            <form action="../../api/createAdminDocument" method="POST" encType="multipart/form-data"
+                  className="z-10 flex flex-col justify-center">
+                <p className={"m-1"}>Ny företagsdokument</p>
+                <input
+                    className={
+                        "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+                    }
+                    id="file"
+                    type="file"
+                    name={"file"}
+                />
+                <button className="m-1 btn btn-primary">
+                    Skapa nytt inlägg
+                </button>
+            </form>
+        );
+        adminPanel = (
+            <form action="../../api/createUserDocument" method="POST" encType="multipart/form-data"
                   className="z-10 flex flex-col justify-center">
                 <p className={"m-1"}>Ny företagsdokument</p>
                 <input
@@ -59,7 +76,8 @@ export default function Home({ user, notifications }) {
                 </svg>
 
                 <h1 className=" uppercase font-bold mt-12 p-4 z-10"> nyheter </h1>
-                {popup}
+                {adminPanel}
+
             </div>
 
             <div className="flex flex-col bg-secondary-1 h-screen pt-12">

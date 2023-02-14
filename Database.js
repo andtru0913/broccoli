@@ -618,6 +618,7 @@ export async function getUserEvents(id) {
 }
 
 export async function createNews(title, filename, date, author) {
+  console.log(author)
   await prisma.news.create({
     data: {
       title: title,
