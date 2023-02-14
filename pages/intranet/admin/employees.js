@@ -417,7 +417,7 @@ export default function Home({ user, notifications }) {
                         <th className="  text-base font-bold uppercase text-skin-base px-6 pt-4 text-left ">
                           Användarnamn
                         </th>
-                        <th className=" sticky left-0 text-base font-bold uppercase  text-skin-base px-6 pt-4 text-left">
+                        <th className=" sticky left-0 bg-secondary-l1 text-base font-bold uppercase  text-skin-base px-6 pt-4 text-left">
                           Förnamn
                         </th>
                         <th className="text-base font-bold uppercase  text-skin-base px-6 pt-4 text-left">
@@ -498,7 +498,7 @@ export default function Home({ user, notifications }) {
                           <td className="text-sm text-skin-muted px-6 pt-6   whitespace-nowrap">
                             {u.username}
                           </td>
-                          <td className="text-sm text-skin-muted px-6 pt-6 whitespace-nowrap">
+                          <td className=" sticky left-0 bg-secondary-l1 text-sm text-skin-muted px-6 pt-6 whitespace-nowrap">
                             {u.firstname}
                           </td>
                           <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
