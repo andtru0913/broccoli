@@ -39,19 +39,19 @@ export default function Posts({ admin, page, pageName, click }) {
         redirect={pageName}
         formTitle="Ansök våra konsulttjänster"
       >
-        <div className="bg-secondary-l1 z-20 ">
-          <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
-            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-36 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
+        <div className=" bg-secondary-1 w-full pt-20 sm:pt-0">
+          <div className="flex flex-row justify-center">
+            <div className=" text-justify py-8 px-4">
               <a onClick={click} href="#linkForm">
-                <h1
-                  className="uppercase font-bold pb-5 pt-8 mb:pt-0"
+                <h3
+                  className="uppercase font-bold pb-5 pt-8 mb:pt-0 md:h1"
                   data-aos="fade-right"
                   data-aos-once="true"
                 >
                   Konsulttjänster
-                </h1>
+                </h3>
                 <p
-                  className="max-w-readable "
+                  className="max-w-readable py-2"
                   data-aos="fade-right"
                   data-aos-once="true"
                   data-aos-delay="500"
@@ -64,9 +64,6 @@ export default function Posts({ admin, page, pageName, click }) {
                   era lokaler eller sitter på annan ort.
                 </p>
               </a>
-            </div>
-            <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-32 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
-              <Image alt={""} width={"600"} height={"600"} className=" " src="/images/posts.png"></Image>
             </div>
           </div>
         </div>
