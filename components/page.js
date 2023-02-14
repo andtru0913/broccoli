@@ -2,7 +2,6 @@ import Form from "./form";
 import Card from "./card";
 import Image from "next/image";
 import { HiXMark } from "react-icons/hi2";
-import { FileAdder } from "./FileAdder";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
