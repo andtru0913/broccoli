@@ -2,7 +2,6 @@ import Form from "./form";
 import Card from "./card";
 import Image from "next/image";
 import { HiXMark } from "react-icons/hi2";
-import { FileAdder } from "./FileAdder";
 
 const Page = ({
   authentication,
@@ -30,8 +29,6 @@ const Page = ({
         />
       );
     };
-
-    const file = new FileAdder();
     admin = {
       background: (
         <div
@@ -180,23 +177,17 @@ const Page = ({
                     />
                     <input type="hidden" name="redirect" value={redirect} />
                     <input type="hidden" name="id" value={page.id} />
-                    <input type="hidden" name="filename" value={redirect} />
+                    <input type="hidden" name="file" value={redirect} />
                     <input
                       className="form-control block w-full px-3 py-1.5 text-base font-normal text-muted  bg-clip-padding border border-solid border-border rounded transition ease-in-out m-0 focus:text-muted focus:bg-fill focus:border-secondary focus:outline-none"
                       type="file"
                       id="modifyFormFile"
-                      name="myImage"
-                      onChange={async function (event) {
-                        file.uploadToClient(event);
-                      }}
+                      name="file"
                     />
                   </div>
                   <button
                     className="shadow btn btn-modify w-full"
                     type="submit"
-                    onClick={function () {
-                      file.uploadToServer(`pages/${redirect}`).then((_) => {});
-                    }}
                   >
                     Ändra sida
                   </button>

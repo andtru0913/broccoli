@@ -1,6 +1,7 @@
 import formidable from 'formidable';
 import fs from 'fs';
 import {editProfile} from "../../Database";
+import {verify} from "../../tokens";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
@@ -13,8 +14,8 @@ export default async function handler(req, res) {
                     maxFileSize: Infinity
                 });
                 form.parse(req, async (err, fields, files) => {
-                    if (err) {
-                        res.status(500).json({error: err});
+                    if (err || await verify(cookies) === fields.id) {
+                        res.status(500).json({error: err || "Token mismatch"});
                     }
                     try {
                         if(!!files.file.originalFilename) {
