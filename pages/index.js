@@ -17,6 +17,7 @@ import ThemedImage from "../components/themedImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Link from "next/link";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
@@ -341,11 +342,11 @@ export default function Home({ feed, genderCount }) {
               </h1>
             </div>
 
-            <div className="relative py-8 flex flex-1 gap-10 align-middle justify-center flex-col lg:flex lg:flex-row md:grid md:grid-cols-2 z-20">
+            <div className="relative py-9 flex flex-1 gap-10 align-middle justify-center flex-col lg:flex lg:flex-row md:grid md:grid-cols-2 z-20">
               {insta_images &&
                 insta_images.slice(0, 4).map((image) => (
                   <div
-                    className=" relative basis-1/3 shadow-lg shadow-skin-shadow"
+                    className=" relative  shadow-lg shadow-skin-shadow"
                     key={image.id}
                   >
                     <a href={image.permalink}>

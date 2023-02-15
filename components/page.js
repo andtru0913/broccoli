@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { useEffect } from "react";
+import { useState } from "react";
 
 const Page = ({
   authentication,
@@ -48,6 +49,7 @@ const Page = ({
       ),
       button: (
         <Card
+          type={"admin"}
           title="Nytt Kort"
           click={function () {
             document.getElementById("popup").classList.remove(popHide);
@@ -224,6 +226,7 @@ const Page = ({
   useEffect(() => {
     AOS.init({ duration: 2500 });
   }, []);
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       {admin.background}
@@ -272,8 +275,51 @@ const Page = ({
           </div>
         </div>
       </section>
+      <div className="z-20">{children}</div>
 
-      <section className="bg-secondary-1   ">
+      <section className="bg-secondary-d1 z-30 ">
+        {numCards > 0 ? (
+          <div className=" flex flex-col gap-8  text-center  text-color-base dark:text-color-base">
+            <h2 className="pt-8  uppercase  "> Tidigare {page.title}</h2>
+
+            <div className="grid grid-flow-col justify-items-center gap-4 overflow-x-auto px-4 md:px-20 pb-8 ">
+              {page.cards.map((card) => (
+                <>
+                  <Card
+                    type={"exjobb"}
+                    key={card.id}
+                    id={card.id}
+                    title={card.title}
+                    text={card.description}
+                    auth={authentication}
+                    click={function () {
+                      if (authentication) {
+                        let background = document.getElementById("popup");
+                        let modifyCard = document.getElementById("modifyCard");
+                        background.classList.remove(popHide);
+                        modifyCard.getElementsByClassName("id")[0].value =
+                          card.id;
+                        modifyCard.getElementsByClassName("id")[1].value =
+                          card.id;
+                        modifyCard.getElementsByClassName("title")[0].value =
+                          card.title;
+                        modifyCard.getElementsByClassName(
+                          "description"
+                        )[0].value = card.description;
+                        modifyCard.classList.remove(popHide);
+                      }
+                    }}
+                    setShowModal={setShowModal}
+                    showModal={showModal}
+                  />
+                </>
+              ))}
+              {admin.button}
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
         {/*    <div className="z-20 px-5 ">
           <div
             className={`grid md:grid-cols-${Math.min(
@@ -308,9 +354,7 @@ const Page = ({
         </div>*/}
       </section>
 
-      <div className="z-20">{children}</div>
-
-      <section id="form" className="bg-secondary-1">
+      <section id="form" className="bg-secondary-1 py-12">
         <div className=" py-12 ">
           <div className="relative">
             <svg

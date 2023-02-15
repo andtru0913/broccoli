@@ -1,6 +1,5 @@
 import ProfilePicture from "./ProfilePicture";
 
-
 export default function employeeAccordionSection({
   img_path,
   id,

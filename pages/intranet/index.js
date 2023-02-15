@@ -157,7 +157,7 @@ export default function Home({
               </svg>
     **/}
               <div className=" h-1/2  z-20 flex flex-row items-end">
-                <h1 className=" h0 font-bold uppercase flex-1 text-center text-secondary-1 ">
+                <h1 className=" h0 font-bold uppercase flex-1 text-center text-secondary-1 dark:text-color-base ">
                   Välkommen {user.firstname}
                 </h1>
               </div>
