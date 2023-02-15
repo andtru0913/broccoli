@@ -79,11 +79,11 @@ export default function Home({ feed, genderCount }) {
           </div>
 
           <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0">
+            <div className="absolute top-1/2 flex justify-center px-12 z-0">
               <img
                 src="/images/Broccolibl.png"
                 className=" flex justify-center md:w-1/2 "
-                data-aos="fade-left"
+                data-aos="slide-up"
                 alt={"broccoli_logo"}
               />
             </div>

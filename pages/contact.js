@@ -3,7 +3,10 @@ import Layout from "../components/layout/layout";
 export default function Contact() {
   return (
     <Layout>
-      <section className=" bg-tertiary-1 text-center text-base overflow-hidden cursor-default">
+      <section className=" bg-secondary-1 text-center text-base overflow-hidden cursor-default">
+        <h1 className="  lg:pt-24 uppercase font-bold p-5 pt-12 md:pt-16 ">
+          Kontakta oss
+        </h1>
         <div className="  grid grid-cols-1 col-end-2 md:grid-cols-2 justify-center cursor-default">
           <div className="relative ">
             <div className="flex w-full h-full justify-center z-10  ">
@@ -15,7 +18,7 @@ export default function Contact() {
           </div>
           <div className="relative">
             <svg
-              className="absolute overflow-clip fill-tertiary-l1 top-12 lg:top16 right-0 w-11/12"
+              className="absolute overflow-clip fill-secondary-l1 right-0 w-11/12"
               width="645"
               height="501"
               viewBox="0 0 645 501"
@@ -25,17 +28,14 @@ export default function Contact() {
               <path d="M497.871 68.9819C555.514 55.7719 846.095 -130.073 848 169.849L822.381 579C792.211 561.005 617.427 476.712 551.245 465.347C514.078 458.964 367.014 449.72 327.077 405.679C280.488 354.303 124.767 387.842 58.0754 348.853C-8.61652 309.863 -5.0722 244.276 6.83704 206.786C18.7463 169.296 27.0239 107.103 79.4247 84.6092C121.345 66.6139 201.116 95.9745 297.188 95.9745C393.26 95.9745 440.228 82.192 497.871 68.9819Z" />
             </svg>
 
-            <div className="  flex  flex-col bg-tertiary-1 bg-opacity-80 p-4 md:px-8 z-20 h-full overflow-hidden ">
-              <h1 className=" py-12 lg:pt-20 uppercase font-bold z-10 text-inverted ">
-                Kontakta oss
-              </h1>
-              <h3 className=" flex self-start px-8 pb-6 uppercase text-inverted font-bold z-10">
+            <div className="  flex  flex-col bg-secondary-1 bg-opacity-80 p-4 justify-center md:px-8 z-20 h-full overflow-hidden ">
+              <h3 className=" flex self-start px-8 pb-6 uppercase font-bold z-10">
                 Broccoli Engineering AB
               </h3>
 
               <div className=" flex flex-col gap-4 px-8 pb-10 z-10">
                 <a className="" href="tel:031-151480">
-                  <div className=" hover:text-secondary-d1 flex flex-row gap-4 items-center text-inverted">
+                  <div className=" hover:text-secondary-d1 flex flex-row gap-4 items-center  ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -55,7 +55,7 @@ export default function Contact() {
                   </div>
                 </a>
                 <a className="" href="mailto:engineering@broccoli.se">
-                  <div className=" hover:text-secondary-d1  flex text-inverted flex-row gap-4 items-center flex-auto">
+                  <div className=" hover:text-secondary-d1  flex   flex-row gap-4 items-center flex-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -75,7 +75,7 @@ export default function Contact() {
                   </div>
                 </a>
                 <a className="" href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9">
-                  <div className=" hover:text-secondary-d1 flex flex-row gap-4 items-center text-inverted">
+                  <div className=" hover:text-secondary-d1 flex flex-row gap-4 items-center  ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -108,7 +108,7 @@ export default function Contact() {
             <div className="mapouter relative text-right ">
               <div className="gmap_canvas overflow-hidden bg-none  ">
                 <iframe
-                  className="w-full h-80"
+                  className="w-full h-96"
                   id="gmap_canvas"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                   src="https://maps.google.com/maps?q=Tillg%C3%A4ngligheten%203,%20417%2001%20G%C3%B6teborg&t=&z=13&ie=UTF8&iwloc=&output=embed"
