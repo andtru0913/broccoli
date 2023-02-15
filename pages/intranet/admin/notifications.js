@@ -13,6 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { HiXMark } from "react-icons/hi2";
 import { verify } from "../../../tokens";
+import {AiOutlineDelete} from "react-icons/all";
 
 export async function getServerSideProps(context) {
     const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
@@ -25,8 +26,7 @@ export async function getServerSideProps(context) {
         },
         props: {},
       }
-      :
-      {
+    : {
         props: {
           user: user,
           notifications: JSON.stringify(await getAllNotifications()),
@@ -378,8 +378,7 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                       <p className={"font-bold pb-1"}>{item.title}</p>
                       <p>{item.text}</p>
                       <p>
-                        {useFormattedDate(item.startDate)} -{" "}
-                        {useFormattedDate(item.endDate)}
+                        {item.startDate} - {item.endDate}
                       </p>
                     </div>
 
@@ -394,9 +393,9 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                         value={"../../intranet/admin/notifications"}
                       />
                       <input type={"hidden"} name={"id"} value={item.id} />
-                      <div className="p-1 ">
-                        <button className="" type={"submit"}>
-                          <HiXMark size={20} />
+                      <div className=" p-4 pt-2">
+                        <button type={"submit"}>
+                          <AiOutlineDelete size={20} className="" />
                         </button>
                       </div>
                     </form>
@@ -613,7 +612,7 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                       </div>
                       <div className="flex flex-col m-1 ">
                         <h5 className="uppercase">Valda anställda</h5>
-                        <div className="w-72 p-1 overflow-y-scroll h-36 md:h-48">
+                        <div className="w-72 p-1 overflow-y-scroll h-48 md:h-56">
                           <div id={"modifySelected"}>
                             {allUsers.map((user, i) => (
                               <div key={i} className={`ml-4`}>
