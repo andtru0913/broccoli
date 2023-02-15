@@ -1,5 +1,5 @@
 import {leaveEvent} from "../../Database";
-import checkUser from "./admin/checkAdmin";
+import {checkUser} from "../../tokens";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {

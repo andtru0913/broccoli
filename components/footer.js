@@ -1,4 +1,4 @@
-import { BsInstagram, BsFacebook, BsLinkedin } from "react-icons/bs";
+import { BsInstagram, BsLinkedin } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import Link from "next/link";
 import ThemedImage from "./themedImage";
