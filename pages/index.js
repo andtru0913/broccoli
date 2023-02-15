@@ -79,7 +79,7 @@ export default function Home({ feed, genderCount }) {
           </div>
 
           <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0">
+            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0 right-0">
               <Image
                   height={200}
                   width={700}
