@@ -11,12 +11,10 @@ import { HiXMark } from "react-icons/hi2";
 import { verify } from "../../../tokens";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(
-    JSON.parse(context.req.cookies["token"] || null)
-  );
-  const user = await getUserinfo(user_id);
-  return !user || !user.admin
-    ? {
+    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+    const user = await getUserinfo(user_id);
+  return (!user || !user.admin) ?
+      {
         redirect: {
           permanent: false,
           destination: "/intranet",
@@ -34,80 +32,46 @@ export async function getServerSideProps(context) {
       };
 }
 
-export default function Home({
-  user,
-  notifications,
-  relevantNotifs,
-  groups,
-  allUsers,
-}) {
-  const list = JSON.parse(notifications);
-  const lunchgroups = JSON.parse(groups);
-  useEffect(() => {
-    document
-      .getElementById("createSearch")
-      .addEventListener("keyup", function (e) {
-        try {
-          document
-            .getElementById("create")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.add("hidden");
+export default function Home({ user, notifications, relevantNotifs, groups, allUsers }) {
+    const list = JSON.parse(notifications)
+    const lunchgroups = JSON.parse(groups)
+    useEffect(() => {
+            document.getElementById("createSearch").addEventListener("keyup", function(e) {
+                try {
+                    document.getElementById("create").querySelectorAll('label').forEach((item) => {
+                        item.classList.add("hidden")
+                    })
+                    document.getElementById("create").querySelectorAll(`label[name*=${e.target.value}]`).forEach((item) => {
+                        item.classList.remove("hidden")
+                    })
+                } catch(e) {
+                    document.getElementById("create").querySelectorAll('label').forEach((item) => {
+                        item.classList.remove("hidden")
+                    })
+                    document.getElementById("create").querySelectorAll('label[class*="name"]').forEach((item) => {
+                        item.classList.add("hidden")
+                    })
+                }
             });
-          document
-            .getElementById("create")
-            .querySelectorAll(`label[name*=${e.target.value}]`)
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-        } catch (e) {
-          document
-            .getElementById("create")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-          document
-            .getElementById("create")
-            .querySelectorAll('label[class*="name"]')
-            .forEach((item) => {
-              item.classList.add("hidden");
-            });
-        }
-      });
-    document
-      .getElementById("modifySearch")
-      .addEventListener("keyup", function (e) {
-        try {
-          document
-            .getElementById("modify")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.add("hidden");
-            });
-          document
-            .getElementById("modify")
-            .querySelectorAll(`label[name*=${e.target.value}]`)
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-        } catch (e) {
-          document
-            .getElementById("modify")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-          document
-            .getElementById("modify")
-            .querySelectorAll('label[class*="name"]')
-            .forEach((item) => {
-              item.classList.add("hidden");
-            });
-        }
-      });
-  }, []);
-  const popHide = "pop-hide";
+        document.getElementById("modifySearch").addEventListener("keyup", function(e) {
+            try {
+                document.getElementById("modify").querySelectorAll('label').forEach((item) => {
+                    item.classList.add("hidden")
+                })
+                document.getElementById("modify").querySelectorAll(`label[name*=${e.target.value}]`).forEach((item) => {
+                    item.classList.remove("hidden")
+                })
+            } catch(e) {
+                document.getElementById("modify").querySelectorAll('label').forEach((item) => {
+                    item.classList.remove("hidden")
+                })
+                document.getElementById("modify").querySelectorAll('label[class*="name"]').forEach((item) => {
+                    item.classList.add("hidden")
+                })
+            }
+        });
+    }, [])
+    const popHide = "pop-hide"
   return (
     <LayoutIntranet admin={true} notifications={relevantNotifs}>
       <div className="">

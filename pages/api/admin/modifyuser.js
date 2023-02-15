@@ -1,8 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import {modifyUser} from "../../../Database";
-import {checkAdmin} from "./checkAdmin";
-
+import {checkAdmin} from "../../../tokens";
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
         res.redirect(302, '../intranet')

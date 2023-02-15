@@ -7,7 +7,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { verify } from "../tokens";
 import Image from "next/image";
-
 export async function getServerSideProps(context) {
   const pageId = posts;
   const pageName = "posts";
