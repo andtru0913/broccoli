@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { GrFormDown, GrFormUp } from "react-icons/Gr";
+import { GrFormDown, GrFormUp } from "react-icons/gr";
 
 export default function reviewsSection ({ img_path, id, author, text, index, setIndex }) {
   const handleSetIndex = () => {

@@ -1,4 +1,4 @@
-import {checkAdmin} from "./checkAdmin";
+import {checkAdmin} from "../../../tokens";
 import {createNews} from "../../../Database";
 import formidable from "formidable";
 import fs from "fs";
