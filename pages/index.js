@@ -69,7 +69,7 @@ export default function Home({ feed, genderCount }) {
     <Layout>
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className=" h-screen duration-0 top-0 right-0 left-0 fixed z-0">
+          <div className="fixed h-screen duration-0 top-0 right-0 left-0  z-0">
             <Image
               src="/images/firstp3.jpg"
               layout="fill"
@@ -79,10 +79,10 @@ export default function Home({ feed, genderCount }) {
           </div>
 
           <div className="flex flex-col w-screen h-screen ">
-            <div className="absolute top-1/2 flex justify-end p-16 md:pr-24 z-0 right-0">
+            <div className="fixed top-1/2 flex justify-end p-16 md:pr-24 z-0 right-0 ">
               <Image
-                  height={200}
-                  width={700}
+                height={200}
+                width={700}
                 src="/images/Broccolibl.png"
                 className="flex justify-center md:w-1/2 "
                 data-aos="fade-left"

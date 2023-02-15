@@ -1,8 +1,4 @@
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import {getAllNotifications, getGroups, getNotifications, getUserinfo, getUserNotifications} from "../../../Database";
-import {useEffect} from "react";
-import {HiXMark} from "react-icons/hi2";
-import {verify} from "../../../tokens";
 import {
   getAllNotifications,
   getGroups,
@@ -252,7 +248,7 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                   </div>
                   <div className="flex flex-col m-1 p-1 ">
                     <h5 className="uppercase">Valda anställda</h5>
-                    <div className="w-72 p-1 overflow-y-scroll h-36 md:h-56">
+                    <div className="w-72 p-1 overflow-y-scroll h-48 md:h-56">
                       <div id={"createSelected"}>
                         {allUsers.map((user, i) => (
                           <div key={i} className={`ml-4 `}>
@@ -307,45 +303,12 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
               </div>
               <div className=" overflow-y-auto h-56 md:h-72">
                 {list.map((item, i) => (
-                    <div className={"flex flex-row bg-secondary-1 w-80 p-2"} key={i}>
-                        <div className={"flex flex-col"} onClick={function() {
-                            let background = document.getElementById("popup");
-                            let window = document.getElementById("modifyNotif");
-                            document.getElementById("modifyId").value = item.id
-                            document.getElementById("modifyTitle").value = item.title
-                            document.getElementById("modifyDesc").innerText = item.text
-                            document.getElementById("modifyDate").valueAsDate = new Date(item.endDate)
-                            item.users.forEach((user) => {
-                                const email = user.user.email
-                                document.getElementById(`modifySelected${email}`).checked = true
-                                document.getElementById("modifySelected").querySelector(`label[name=${CSS.escape(email)}]`).classList.remove("hidden")
-                            })
-                            background.classList.remove(popHide);
-                            window.classList.remove(popHide);
-                        }}>
-                            <p className={"font-bold"}>{item.title}</p>
-                            <p>{item.text}</p>
-                            <p>{item.startDate} - {item.endDate}</p>
-                        </div>
-                        <form className={"flex flex-row"} action={"../../api/admin/deleteNotification"} method={"POST"}>
-                            <input
-                                type="hidden"
-                                name="redirect"
-                                value={"../../intranet/admin/notifications"}
-                            />
-                            <input type={"hidden"} name={"id"} value={item.id}/>
-                            <button type={"submit"}>&#10060;</button>
-                        </form>
-                    </div>
-                ))}
                   <div
-                    className={
-                      "flex flex-row justify-center bg-secondary-1 w-80 p-2 m-4  "
-                    }
+                    className={"flex flex-row bg-secondary-1 w-80 p-2"}
                     key={i}
                   >
                     <div
-                      className={"flex flex-col p-1 ml-1"}
+                      className={"flex flex-col px-4 py-2"}
                       onClick={function () {
                         let background = document.getElementById("popup");
                         let window = document.getElementById("modifyNotif");
@@ -376,7 +339,6 @@ export default function Home({ user, notifications, relevantNotifs, groups, allU
                         {item.startDate} - {item.endDate}
                       </p>
                     </div>
-
                     <form
                       className={"flex flex-row"}
                       action={"../../api/admin/deleteNotification"}
