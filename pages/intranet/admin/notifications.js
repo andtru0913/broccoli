@@ -10,11 +10,6 @@ import {
   getUserinfo,
   getUserNotifications,
 } from "../../../Database";
-import { useEffect, useState } from "react";
-import { HiXMark } from "react-icons/hi2";
-import { verify } from "../../../tokens";
-import {AiOutlineDelete} from "react-icons/all";
-
 export async function getServerSideProps(context) {
     const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
     const user = await getUserinfo(user_id);
