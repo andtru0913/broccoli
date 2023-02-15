@@ -69,7 +69,7 @@ export default function Home({ feed, genderCount }) {
     <Layout>
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className="fixed h-screen duration-0 top-0 right-0 left-0 fixed z-0">
+          <div className="fixed h-screen duration-0 top-0 right-0 left-0  z-0">
             <Image
               src="/images/firstp3.jpg"
               layout="fill"

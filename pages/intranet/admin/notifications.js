@@ -8,6 +8,7 @@ import {
 } from "../../../Database";
 import { useEffect } from "react";
 import { HiXMark } from "react-icons/hi2";
+import { AiOutlineDelete } from "react-icons/Ai";
 import { verify } from "../../../tokens";
 
 export async function getServerSideProps(context) {
@@ -288,7 +289,7 @@ export default function Home({
                   </div>
                   <div className="flex flex-col m-1 p-1 ">
                     <h5 className="uppercase">Valda anställda</h5>
-                    <div className="w-72 p-1 overflow-y-scroll h-36 md:h-56">
+                    <div className="w-72 p-1 overflow-y-scroll h-48 md:h-56">
                       <div id={"createSelected"}>
                         {allUsers.map((user, i) => (
                           <div key={i} className={`ml-4 `}>
@@ -348,7 +349,7 @@ export default function Home({
                     key={i}
                   >
                     <div
-                      className={"flex flex-col"}
+                      className={"flex flex-col px-4 py-2"}
                       onClick={function () {
                         let background = document.getElementById("popup");
                         let window = document.getElementById("modifyNotif");
@@ -373,7 +374,7 @@ export default function Home({
                         window.classList.remove(popHide);
                       }}
                     >
-                      <p className={"font-bold"}>{item.title}</p>
+                      <p className={"font-bold pb-1"}>{item.title}</p>
                       <p>{item.text}</p>
                       <p>
                         {item.startDate} - {item.endDate}
@@ -390,7 +391,11 @@ export default function Home({
                         value={"../../intranet/admin/notifications"}
                       />
                       <input type={"hidden"} name={"id"} value={item.id} />
-                      <button type={"submit"}>&#10060;</button>
+                      <div className=" p-4 pt-2">
+                        <button type={"submit"}>
+                          <AiOutlineDelete size={20} className="" />
+                        </button>
+                      </div>
                     </form>
                   </div>
                 ))}
@@ -605,7 +610,7 @@ export default function Home({
                       </div>
                       <div className="flex flex-col m-1 ">
                         <h5 className="uppercase">Valda anställda</h5>
-                        <div className="w-72 p-1 overflow-y-scroll h-36 md:h-48">
+                        <div className="w-72 p-1 overflow-y-scroll h-48 md:h-56">
                           <div id={"modifySelected"}>
                             {allUsers.map((user, i) => (
                               <div key={i} className={`ml-4`}>
