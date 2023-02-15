@@ -8,7 +8,7 @@ import {
 } from "../../../Database";
 import { useEffect } from "react";
 import { HiXMark } from "react-icons/hi2";
-import { AiOutlineDelete } from "react-icons/Ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { verify } from "../../../tokens";
 
 export async function getServerSideProps(context) {
