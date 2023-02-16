@@ -116,7 +116,7 @@ const Calender = ({ user, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
   const [iscoming, setIscoming] = useState(undefined);
   return (
-    <div className="flex justify-center bg-fill">
+    <div className="flex justify-center bg-scondary-l1">
       <div
         id="popup"
         className={`popup ${popHide}`}
