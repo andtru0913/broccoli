@@ -1,5 +1,5 @@
 import LayoutIntranet from "../../components/layout/layoutIntranet";
-import {getNotifications, getUserProfile} from "../../Database";
+import { getNotifications, getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 import { verify } from "../../tokens";
 
@@ -8,8 +8,8 @@ export async function getServerSideProps(context) {
     JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserProfile(user_id);
-  return !user ?
-      {
+  return !user
+    ? {
         redirect: {
           permanent: false,
           destination: "/intranet",
@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
 }
 
 const profile = ({ userString, notifications }) => {
-  const user = JSON.parse(userString)
+  const user = JSON.parse(userString);
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
       <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
@@ -45,17 +45,17 @@ const profile = ({ userString, notifications }) => {
                     <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
                   </svg>
 
-                  <div className="  ">
-                    <div className="w-36 h-40 md:w-56 md:h-64 md:mt-24 mt-10 px-2 relative z-10 ">
+                  <div className=" mr-10 mt-16 my justify-center flex flex-col">
+                    <div className="w-56 h-64 mb-6 self-center relative z-10 ">
                       <ProfilePicture image={user.image} />
                     </div>
-                    <div className="relative flex flex-wrap flex-col md:flex-row  z-10 ">
-                      <div className="flex flex-1 flex-col md:p-2  w-fit">
-                        <p className="text-base pb-1 uppercase font-semibold ">
+                    <div className="relative flex flex-wrap flex-col md:flex-row  items-end z-10 ">
+                      <div className="flex flex-1 flex-col p-2 items-center  w-fit">
+                        <p className="text-base pb-2 uppercase font-semibold ">
                           Ladda upp en profilbild
                         </p>
                         <input
-                          className="form-control w-fit block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
+                          className="form-control w-1/2  block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
                           type="file"
                           name="file"
                         />
@@ -232,10 +232,7 @@ const profile = ({ userString, notifications }) => {
 
                   {/**Save button*/}
                   <div className=" flex justify-end p-2 pt-2 md:pb-12 pb-24 ">
-                    <button
-                      className="btn btn-primary"
-                      type="submit"
-                    >
+                    <button className="btn btn-primary" type="submit">
                       Spara
                     </button>
                   </div>
@@ -244,12 +241,12 @@ const profile = ({ userString, notifications }) => {
             </form>
           </div>
           {/**Delete profile img*/}
-          <form action="../../api/deleteProfilePic" method="POST">
-            <input className="id" type="hidden" name="id" value={user.id} />
-            <button className=" relative btn btn-delete  mt-2 md:mb-12 mb-24 z-10">
-              Radera profilbild
-            </button>
-          </form>
+          <div className=" relative flex -top-24 md:ml-4 justify-center w-1/3 z-10 ">
+            <form action="../../api/deleteProfilePic" method="POST">
+              <input className="id" type="hidden" name="id" value={user.id} />
+              <button className="  btn btn-delete  ">Radera profilbild</button>
+            </form>
+          </div>
         </div>
       </section>
     </LayoutIntranet>

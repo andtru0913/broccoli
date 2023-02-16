@@ -28,7 +28,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
         notificationCookies.includes(item.notification.id)
       )
     );
-  }, [parsedNotifications] );
+  }, [parsedNotifications]);
 
   const openNotification = () => {
     if (notificationOpen) {
@@ -191,7 +191,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
 
           {/*Bottom navbarmenu for Mobile devices and tablets */}
 
-          <nav className=" items-end flex  lg:hidden justify-between align-middle   shadow-md w-screen">
+          <nav className=" items-end flex  lg:hidden justify-between align-middle  shadow-md w-screen">
             <ul
               className={` lg:flex  lg:flex-row  lg:justify-between  lg:align-middle
                                     ${
@@ -203,7 +203,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
               {INTRA_MENU_LIST.map((menu, i) => {
                 return menu.bottom === false ? (
                   <li
-                    className="my-3 mr-6 mb-4 flex justify-end"
+                    className="my-3 mr-6  flex justify-end"
                     onClick={() => {
                       openmenu;
                     }}
