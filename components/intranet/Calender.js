@@ -116,7 +116,7 @@ const Calender = ({ user, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
   const [iscoming, setIscoming] = useState(undefined);
   return (
-    <div className="flex justify-center bg-scondary-l1">
+    <div className="flex justify-center bg-scondary-1">
       <div
         id="popup"
         className={`popup ${popHide}`}
@@ -130,7 +130,7 @@ const Calender = ({ user, allEvents, cal }) => {
       <div></div>
 
       <div id="createevent" className={` window-pop ${popHide}`}>
-        <div className="relative bg-fill rounded p-5 m-2 ">
+        <div className="relative rounded p-5 m-2 bg-secondary-1 ">
           <div className=" flex flex-row justify-between">
             <h3 className="uppercase text-lg md:h1"> Skapa Event</h3>
             <button
@@ -190,8 +190,8 @@ const Calender = ({ user, allEvents, cal }) => {
         </div>
       </div>
       <div id="modifyevent" className={`window-pop ${popHide}`}>
-        <div className="relative bg-fill rounded  m-2 overflow-auto ">
-          <div className=" flex flex-row justify-between sticky top-0 bg-fill-1 p-5 shadow-md">
+        <div className="relative bg-secondary-1 rounded  m-2 overflow-auto ">
+          <div className=" flex flex-row justify-between sticky top-0 bg-secondary-1 p-5 shadow-md">
             <h4 className="uppercase text-lg md:h1 "> Ändra Event</h4>
             <button
               type=""
@@ -314,8 +314,8 @@ const Calender = ({ user, allEvents, cal }) => {
         </div>
       </div>
       <div id="checkevent" className={`window-pop ${popHide}`}>
-        <div className="relative bg-fill rounded  overflow-auto h-full">
-          <div className=" flex flex-row justify-between sticky top-0 bg-fill-1 p-5 shadow-md">
+        <div className="relative bg-secondary-1 rounded  overflow-auto h-full">
+          <div className=" flex flex-row justify-between sticky top-0 bg-secondary-1 p-5 shadow-md">
             <h4> </h4>
             <button
               type=""
@@ -329,7 +329,7 @@ const Calender = ({ user, allEvents, cal }) => {
               </div>
             </button>
           </div>
-          <div className="bg-fill rounded p-2 md:p-5">
+          <div className="bg-secondary-1 rounded p-2 md:p-5">
             <h1 className={"title"}> </h1>
             <p className={"description"}></p>
 
