@@ -48,30 +48,55 @@ export default function About({ title, intro, year, timelinedesc }) {
 
   return (
     <Layout>
-      <main>
-        <section className="relative ">
-          <div className=" hidden md:flex md:flex-col items-center">
-            {/* For Phones 
+      <main className="bg-secondary-1">
+        <section className="bg-secondary-1 relative ">
+          <div className="relative h-[48rem] lg:h-screen pb-12 ">
+            <svg
+              className="fill-secondary-l1 absolute z-0 left-0 -top-5 h-auto lg:w-2/3 rotate-180 "
+              width="818"
+              height="895"
+              viewBox="0 0 818 902"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
+            </svg>
+
+            <div className="">
+              <div className="absolute grid grid-flow-row sm:grid-flow-col md:w-full top-[25%] md:top-36 lg:top-[30%]   z-10  pt-12 p-4 md:p-12">
+                <div
+                  className=" flex flex-col gap-8  text-center md:text-left text-color-base dark:text-color-base"
+                  data-aso=""
+                >
+                  <h0 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
+                    Om oss
+                  </h0>
+                  <h4 className=" font-small w-10/12 md:text-left lg:text-xl ">
+                    Broccoli är ett Göteborgsbaserat konsultbolag inom hårdvaru-
+                    och mjukvaruutveckling. Våra kunder finns till största delen
+                    inom fordonsindustrin i Västsverige. Vi vill skapa en
+                    attraktiv arbetsplats med nöjda medarbetare som trivs och
+                    utvecklas.
+                  </h4>
+                </div>
+                <div className=" relative -top-40 right-20  ">
+                  <Image
+                    alt={""}
+                    height={"600"}
+                    width={"560"}
+                    className=" "
+                    src="/images/omoss.png"
+                  ></Image>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className=" hidden md:flex md:flex-col items-center">
+             For Phones 
             <div className=" md:max-w-readable flex flex-col gap-4 text-center">
               <h1 className="uppercase font-bold ">{title ?? "Om oss"}</h1>
 
-              <p className=" text-left p-4">
-                {intro ??
-                  "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
-              </p>
-            </div>*/}
-
-            <div className="  top-0">
-              <div className=" w-auto max-h-full min-w-full h-full bg-secondary-d1 ">
-                <Image
-                  className=""
-                  alt="omslag_about"
-                  src="/images/about.JPG"
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </div>
+      
 
             <div className=" hidden md:grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
               <div className="  w-auto max-h-full min-w-full  h-60 lg:h-[42rem] md:h-screen bg-secondary-1 md:bg-secondary-1/80 md:z-10 place-content-center ">
@@ -109,8 +134,8 @@ export default function About({ title, intro, year, timelinedesc }) {
               </div>
             </div>
           </div>
-
-          {/* For Phones */}
+*/}
+          {/* For Phones 
           <div className=" md:hidden relative flex flex-col h-full w-full">
             <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
               <div className=" w-auto max-h-full min-w-full basis-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
@@ -147,18 +172,15 @@ export default function About({ title, intro, year, timelinedesc }) {
               </div>
             </div>
           </div>
+          */}
         </section>
 
-        <section>
-          <div className=" flex py-12 md:py-16 flex-col items-center">
-            <h2 className="uppercase pt-6  font-bold">
+        <section className="bg-secondary-1 ">
+          <div className=" flex py-12 md:py-36 flex-col items-center bg-secondary-1">
+            <h2 className="uppercase pb-12  font-bold z-10">
               {title ?? "Våra områden"}
             </h2>
 
-            <p className=" md:text-center text-center mx-6 mb-5 max-w-readable pt-2">
-              {intro ??
-                "Majoriteten av våra kunder är produkt- eller tjänsteföretag som återfinns inom diverse olika branscher såsom fordon, automation, marin, energi, medicin, försvar, säkerhet med flera."}
-            </p>
             <div className="grid grid-cols-1 grid-flow-row md:grid-cols-4 w-full cursor-default">
               <div className="  relative bg-tertiary-1 py-5 text-inverted p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
@@ -171,7 +193,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   eftermarknad, klimat, OTA (Over The Air) och drivlina.
                 </p>
               </div>
-              <div className="relative bg-secondary-1 p-4  py-5  lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
+              <div className="relative bg-secondary-d1 p-4  py-5  lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
                 <div className="flex justify-center">
                   <BsGearWideConnected size={40} />
                 </div>
@@ -218,11 +240,9 @@ export default function About({ title, intro, year, timelinedesc }) {
           <h2 className=" md:hidden text-center uppercase font-bold">
             Historia
           </h2>
-          <h5 className="md:hidden text-center ">
-            Några milstolpar i Broccolis historia
-          </h5>
+
           <svg
-            className="absolute -left-5 top-0 -z-10 fill-primary-1 w-11/12 md:w-full "
+            className="absolute -left-5 top-0 fill-primary-1 w-11/12 md:w-full  z-0 "
             width="1078"
             height="1085"
             viewBox="0 0 1078 1085"
@@ -233,7 +253,7 @@ export default function About({ title, intro, year, timelinedesc }) {
           </svg>
 
           <svg
-            className="absolute right-0 bottom-0 -z-10 fill-secondary-1 "
+            className="absolute right-0 bottom-0 z-0 fill-secondary-l1 "
             width="622"
             height="818"
             viewBox="0 0 622 818"
@@ -260,21 +280,16 @@ export default function About({ title, intro, year, timelinedesc }) {
         </div>
 
         <section className="">
-          <div className=" pt-12 lg:pt-16 flex flex-col items-center">
+          <div className=" pt-12 lg:pt-16 flex flex-col items-center ">
             <div className=" md:max-w-readable flex flex-col gap-4 text-center">
               <h2 className="uppercase font-bold">
                 {title ?? "Kvalitets- och miljöpolicy"}
               </h2>
-
-              <p className=" text-center mx-10">
-                {intro ??
-                  "Broccoli är ett ingenjörsbolag inom hårdvaru- och mjukvaruutveckling, och då främst inbyggda system. Vi erbjuder konsulttjänster och utbildning. Våra kunder finns till största delen inom fordonsindustrin i Västsverige. Vi vill skapa en attraktiv arbetsplats med nöjda medarbetare som trivs och utvecklas."}
-              </p>
             </div>
             <div className="hidden relative pt-5 md:flex flex-col h-full w-full">
               <div className=" grid   grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
-                <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-1 ">
-                  <div className=" text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
+                <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] bg-secondary-l1/70 ">
+                  <div className="  text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start  p-4 lg:p-8 xl:p-12">
                     <h4 className="font-bold uppercase tracking-wider mx-6">
                       {title ?? "Vårt Kvalitetsarbete"}
                     </h4>
