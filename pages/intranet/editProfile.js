@@ -45,7 +45,7 @@ const profile = ({ userString, notifications }) => {
                     <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
                   </svg>
 
-                  <div className=" mr-10 mt-16 my justify-center flex flex-col">
+                  <div className=" mr-10 mt-16   justify-center flex flex-col">
                     <div className="w-56 h-64 mb-6 self-center relative z-10 ">
                       <ProfilePicture image={user.image} />
                     </div>

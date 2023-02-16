@@ -26,35 +26,37 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user, news, notifications }) {
-  let adminPanel = ""
+  let adminPanel = "";
   if (user.admin) {
     adminPanel = (
-        <form className={"flex flex-col w-64 z-10"} method="POST" action={"../../api/admin/createNews"} encType={"multipart/form-data"}>
-            <p className={"m-1"}>Nytt inlägg</p>
-            <input type={"hidden"} name={"id"} value={user.id}/>
-            <input
-                id={"title"}
-                className={
-                    "m-1 form-control block text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
-                }
-                type={"text"}
-                name={"title"}
-                placeholder={"Titel"}
-            />
-            <input
-                className={
-                    "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
-                }
-                type="file"
-                name="file"
-            />
-            <button
-                className="m-1 btn btn-primary"
-                type={"submit"}
-            >
-                Skapa nytt inlägg
-            </button>
-        </form>
+      <form
+        className={"flex flex-col w-64 z-10"}
+        method="POST"
+        action={"../../api/admin/createNews"}
+        encType={"multipart/form-data"}
+      >
+        <p className={"m-1"}>Nytt inlägg</p>
+        <input type={"hidden"} name={"id"} value={user.id} />
+        <input
+          id={"title"}
+          className={
+            "m-1 form-control block text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+          }
+          type={"text"}
+          name={"title"}
+          placeholder={"Titel"}
+        />
+        <input
+          className={
+            "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+          }
+          type="file"
+          name="file"
+        />
+        <button className="m-1 btn btn-primary" type={"submit"}>
+          Skapa nytt inlägg
+        </button>
+      </form>
     );
   }
   return (
@@ -62,7 +64,7 @@ export default function Home({ user, news, notifications }) {
       <section>
         <div className="flex flex-col items-center justify-center p-5 bg-secondary-1 ">
           <svg
-            className=" absolute right-0 overflow-hidden z-0 fill-primary-1 "
+            className=" absolute right-0 overflow-hidden z-0 fill-secondary-d1 "
             width="709"
             height="570"
             viewBox="0 0 709 570"
@@ -73,7 +75,7 @@ export default function Home({ user, news, notifications }) {
           </svg>
 
           <h1 className="uppercase font-bold mt-12 p-4 z-10">nyheter</h1>
-            {adminPanel}
+          {adminPanel}
         </div>
       </section>
 
