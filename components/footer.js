@@ -137,7 +137,7 @@ const Footer = () => {
                     className="hover:text-secondary-d2 "
                   >
                     <p className="text-sm hover:text-secondary-d2 py-1 ">
-                      Tidrapport
+                      Tidrapportering
                     </p>
                   </a>
                 </div>
