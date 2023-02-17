@@ -235,8 +235,8 @@ export default function Home({ feed, genderCount }) {
                 <p
                   className="h4 md:h3 text-center lg:max-w-lg xl:max-w-xl leading-relaxed px-5 z-20"
                   data-aos="fade-up-right"
-                  data-aos-offset="200"
                   data-aos-once="true"
+                  data-aos-duration="2500"
                 >
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och är måna om att nås av rätt information vid rätt tidpunkt.
@@ -248,6 +248,7 @@ export default function Home({ feed, genderCount }) {
                   className="w-56 h-56 xl:w-80 xl:h-80 z-20"
                   data-aos="fade-up-right"
                   data-aos-once="true"
+                  data-aos-duration="2800"
                 >
                   <Doughnut className="" data={chartData}></Doughnut>
                 </div>
