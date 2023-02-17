@@ -122,7 +122,7 @@ const Footer = () => {
               <h3 className="pb-2 font-bold cursor-default uppercase">
                 Medarbetare
               </h3>
-              <div className=" flex flex-col items-center p-1  bg-inherit">
+              <div className=" flex flex-col items-center bg-inherit">
                 <div className="flex flex-row  hover:text-secondary-d2">
                   <BsGlobe className="m-1 mr-3" size={20} />
 
@@ -130,7 +130,7 @@ const Footer = () => {
                     <p className="text-sm hover:text-secondary-d2">Intranät</p>
                   </a>
                 </div>
-                <div className="flex flex-row  hover:text-secondary-d2 py-1">
+                <div className="flex flex-row  hover:text-secondary-d2 ">
                   <BsClockHistory className="m-1 mr-3 " size={20} />
                   <a
                     href="https://www.broccoli.be/tid/"

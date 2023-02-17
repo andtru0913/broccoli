@@ -342,7 +342,7 @@ export default function Home({
               <div className=" pt-2 pb-1 pl-4 flex justify-center md:justify-start">
                 <h5 className="uppercase  font-bold">Aktiva notifikationer</h5>
               </div>
-              <div className=" overflow-y-auto h-56 md:h-72">
+              <div className=" overflow-y-auto h-56 md:h-72 pl-4">
                 {list.map((item, i) => (
                   <div
                     className={"flex flex-row bg-secondary-1 w-80 p-2"}

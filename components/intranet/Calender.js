@@ -192,7 +192,7 @@ const Calender = ({ user, allEvents, cal }) => {
       <div id="modifyevent" className={`window-pop ${popHide}`}>
         <div className="relative bg-secondary-1 rounded  m-2 overflow-auto ">
           <div className=" flex flex-row justify-between sticky top-0 bg-secondary-1 p-5 shadow-md">
-            <h4 className="uppercase text-lg md:h1 "> Ändra Event</h4>
+            <h4 className="uppercase font-bold text-lg md:h1 "> Ändra Event</h4>
             <button
               type=""
               onClick={function () {
@@ -351,7 +351,7 @@ const Calender = ({ user, allEvents, cal }) => {
                   <input className="eventid" type="hidden" name="eventid" />
 
                   <button
-                    className={`btn btn-empty normal-case text-xs md:text-base ${
+                    className={`btn btn-empty normal-case  text-xs md:text-base ${
                       iscoming ? "bg-primary-1 " : ""
                     }`}
                     type="Submit"
