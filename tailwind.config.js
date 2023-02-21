@@ -11,7 +11,7 @@ function withOpacity(variableName) {
 
 module.exports = {
   important: true,
-  darkMode: "class",
+  darkMode: "media",
 
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -76,6 +76,8 @@ module.exports = {
       },
       fill: {
         fill: withOpacity("--color-fill"),
+        "fill-1": withOpacity("--color-fill-1"),
+        "fill-2": withOpacity("--color-fill-2"),
         "primary-1": withOpacity("--color-primary-1"),
         "primary-l1": withOpacity("--color-primary-l1"),
         "primary-l2": withOpacity("--color-primary-l2"),

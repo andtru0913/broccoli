@@ -39,9 +39,47 @@ export default function Underconsultants({ admin, page, pageName, click }) {
         redirect={pageName}
         formTitle="ANSÖK OM ATT BLI UNDERKONSULT"
       >
-        <div className="bg-secondary-l1">
+        <div className=" bg-secondary-1 w-full pt-48 sm:pt-0">
+          <div className="flex flex-row justify-center">
+            <div className=" text-justify py-8 px-4">
+              <a onClick={click} href="#linkForm">
+                <h3
+                  className="uppercase font-bold pb-5 pt-8 mb:pt-0 md:h1"
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                >
+                  Vad vi kan göra
+                </h3>
+                <p
+                  className="max-w-readable py-2"
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                  data-aos-delay="500"
+                >
+                  Driver du ett eget konsultföretag och är på jakt efter nytt
+                  uppdrag, då kan vi vara din nya partner. Vi har ett logiskt,
+                  transparent och attraktivt upplägg för dig som vill fokusera
+                  mer på tekniken än att granska finstilta avtal. Vi har själva
+                  varit små och genom åren lärt oss att man behöver en pålitlig
+                  partner för att hitta de mest intressanta uppdragen hos kunder
+                  där man själv inte har ett ramavtal. Kontakta oss ifall du
+                  vill ha hjälp att hitta ditt nästa uppdrag eller ifall du
+                  redan hittat ett uppdrag och behöver en väg in till kunden, så
+                  syr vi tillsammans ihop det administrativa.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </Page>
+    </Layout>
+  );
+}
+
+/**
+ * <div className="bg-secondary-1">
           <div className="grid md:grid-cols-9 grid-rows-2 md:grid-rows-1">
-            <div className="bg-secondary-1 pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-32 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
+            <div className=" pb-20 md:pb-0  p-8 md:px-24 lg:py-28 lg:px-32 lg:pr-56 text-justify md:col-span-5 md:col-start-1">
               <a onClick={click} href="#linkForm">
                 <h1
                   className="uppercase font-bold pb-5 pt-8 mb:pt-0"
@@ -69,12 +107,6 @@ export default function Underconsultants({ admin, page, pageName, click }) {
                 </p>
               </a>
             </div>
-            <div className=" mx-4 md:mr-16 lg:mr-28 md:-ml-20 lg:-ml-44 -mt-14 md:mt-0 md:col-span-4 md:col-end-10">
-              <Image alt={""} height={"600"} width={"600"} className=" " src="/images/ucon.png"></Image>
-            </div>
           </div>
         </div>
-      </Page>
-    </Layout>
-  );
-}
+ */

@@ -165,7 +165,7 @@ export default function Home({
 
             <div className="relative md:grid md:grid-cols-3 flex flex-col">
               <svg
-                className="absolute left-0 -top-24 z-0 fill-primary-1"
+                className="absolute left-0 -top-36 z-0 fill-secondary-l1 md:fill-secondary-d1 md:w-auto w-11/12 "
                 width="565"
                 height="656"
                 viewBox="0 0 565 656"
@@ -203,7 +203,7 @@ export default function Home({
 
               <div className=" relative md:col-span-3 flex flex-col p-12 lg:p-16 bg-secondary-l1 cursor-default  ">
                 <svg
-                  className="absolute right-0 -top-4 z-0 fill-primary-l2"
+                  className="absolute right-0 -top-4 z-0 fill-secondary-1"
                   width="782"
                   height="554"
                   viewBox="0 0 782 554"

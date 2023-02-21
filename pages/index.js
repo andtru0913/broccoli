@@ -68,7 +68,7 @@ export default function Home({ feed, genderCount }) {
     <Layout>
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className="fixed h-screen duration-0 top-0 right-0 left-0 fixed z-0">
+          <div className="fixed h-screen duration-0 top-0 right-0 left-0  z-0">
             <Image
               src="/images/firstp3.jpg"
               layout="fill"
@@ -80,8 +80,8 @@ export default function Home({ feed, genderCount }) {
           <div className="flex flex-col w-screen h-screen ">
             <div className="fixed top-1/2 flex justify-end p-16 md:pr-24 z-0 right-0 ">
               <Image
-                  height={200}
-                  width={700}
+                height={200}
+                width={700}
                 src="/images/Broccolibl.png"
                 className="flex justify-center md:w-1/2 "
                 data-aos="fade-left"
@@ -123,7 +123,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/computerBlack.png"
-                          img_path_dark="/images/lightMode/computerWhite.png"
+                          img_path_dark="/images/darkMode/computerWhite.png"
                         />
                       </div>
                     </div>
@@ -142,7 +142,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/webbBlack.png"
-                          img_path_dark="/images/lightMode/webbWhite.png"
+                          img_path_dark="/images/darkMode/webbWhite.png"
                         />
                       </div>
                     </div>
@@ -161,7 +161,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative ">
                         <ThemedImage
                           img_path_light="/images/lightMode/circuitBlack.png"
-                          img_path_dark="/images/lightMode/circuitWhite.png"
+                          img_path_dark="/images/darkMode/circuitWhite.png"
                         />
                       </div>
                     </div>
@@ -180,7 +180,7 @@ export default function Home({ feed, genderCount }) {
                       <div className=" w-20 h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/armBlack.png"
-                          img_path_dark="/images/lightMode/armwWhite.png"
+                          img_path_dark="/images/darkMode/armWhite.png"
                         />
                       </div>
                     </div>
@@ -234,8 +234,8 @@ export default function Home({ feed, genderCount }) {
                 <p
                   className="h4 md:h3 text-center lg:max-w-lg xl:max-w-xl leading-relaxed px-5 z-20"
                   data-aos="fade-up-right"
-                  data-aos-offset="200"
                   data-aos-once="true"
+                  data-aos-duration="2500"
                 >
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
                   och är måna om att nås av rätt information vid rätt tidpunkt.
@@ -247,6 +247,7 @@ export default function Home({ feed, genderCount }) {
                   className="w-56 h-56 xl:w-80 xl:h-80 z-20"
                   data-aos="fade-up-right"
                   data-aos-once="true"
+                  data-aos-duration="2800"
                 >
                   <Doughnut className="" data={chartData}></Doughnut>
                 </div>
@@ -349,8 +350,9 @@ export default function Home({ feed, genderCount }) {
                   >
                     <a href={image.permalink}>
                       <Image
-                          width={400}
-                          height={400}
+                        loader={() => image.media_url}
+                        width={400}
+                        height={400}
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
                         src={image.media_url}
                         alt={"image"}

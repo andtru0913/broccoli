@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import LayoutIntranet from "../../../components/layout/layoutIntranet";
 import { HiXMark } from "react-icons/hi2";
-import {getAllUsers, getGroups, getNotifications, getUserinfo} from "../../../Database";
-import {verify} from "../../../tokens";
+import {
+  getAllUsers,
+  getGroups,
+  getNotifications,
+  getUserinfo,
+} from "../../../Database";
+import { verify } from "../../../tokens";
 
 const Column = dynamic(() => import("../../../components/intranet/Column"), {
   ssr: false,
@@ -19,26 +24,30 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 };
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserinfo(user_id);
-  return (!user || !user.admin)   ?
-      {
+  return !user || !user.admin
+    ? {
         redirect: {
           permanent: false,
           destination: "/intranet",
         },
         props: {},
       }
-      :
-      {
-    props: { lunchGroupString: JSON.stringify(await getGroups()), userString: JSON.stringify(await getAllUsers()), notifications: JSON.stringify(await getNotifications(user.id)) },
-  };
+    : {
+        props: {
+          lunchGroupString: JSON.stringify(await getGroups()),
+          userString: JSON.stringify(await getAllUsers()),
+          notifications: JSON.stringify(await getNotifications(user.id)),
+        },
+      };
 }
 
-
 export default function Home({ lunchGroupString, userString, notifications }) {
-  const users = JSON.parse(userString)
-  const lunchGroups = JSON.parse(lunchGroupString)
+  const users = JSON.parse(userString);
+  const lunchGroups = JSON.parse(lunchGroupString);
   let tasks = Object.assign(...users.map((a) => ({ [a.id.toString()]: a })));
   let columns = Object.assign(
     ...lunchGroups.map((a) => ({ [a.id.toString()]: a }))
@@ -51,7 +60,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
       columns,
     },
     columnOrder: Object.keys(columns),
-  }
+  };
   const [state, setState] = useState(initial_state);
 
   const onDragEnd = (result) => {
@@ -129,7 +138,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
   const popHide = "pop-hide";
   return (
     <LayoutIntranet admin={true} notifications={notifications}>
-      <main className="bg-fill h-screen">
+      <main className="bg-secondary-l1 h-screen">
         <div className="layout py-20 md:py-12  flex flex-col items-center cursor-pointer">
           <h2>Lunchgrupper</h2>
           <DragDropContext onDragEnd={onDragEnd}>
@@ -139,7 +148,9 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                   className="btn btn-primary"
                   onClick={function () {
                     document.getElementById("popup").classList.remove(popHide);
-                    document.getElementById("creategroup").classList.remove(popHide);
+                    document
+                      .getElementById("creategroup")
+                      .classList.remove(popHide);
                   }}
                 >
                   Ny lunchgrupp
@@ -168,11 +179,13 @@ export default function Home({ lunchGroupString, userString, notifications }) {
             onClick={function () {
               document.getElementById("popup").classList.add(popHide);
               document.getElementById("creategroup").classList.add(popHide);
-              document.getElementById("modifyLunchgroup").classList.add(popHide);
+              document
+                .getElementById("modifyLunchgroup")
+                .classList.add(popHide);
             }}
           ></div>
           <div id="creategroup" className={` window-pop ${popHide}`}>
-            <div className="relative bg-fill rounded p-5 m-2 flex flex-col justify-center items-center">
+            <div className="relative bg-secondary-1 rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ny lunchgrupp</h4>
                 <button
@@ -180,7 +193,9 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                   type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
-                    document.getElementById("creategroup").classList.add(popHide);
+                    document
+                      .getElementById("creategroup")
+                      .classList.add(popHide);
                   }}
                 >
                   <HiXMark />
@@ -207,15 +222,17 @@ export default function Home({ lunchGroupString, userString, notifications }) {
             </div>
           </div>
           <div id="modifyLunchgroup" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill rounded p-5 m-2 flex flex-col justify-center items-center">
+            <div className="relative bg-secondary-l1 rounded p-5 m-2 flex flex-col justify-center items-center">
               <div className=" flex flex-row justify-between">
                 <h4 className="uppercase text-lg md:h1"> Ändra Lunchgrupp</h4>
                 <button
-                  className="absolute top-0 right-0 p-3 hover:text-skin-muted focus:border-primary-l1 active:bg-fill-1 "
+                  className="absolute top-0 right-0 p-3 hover:text-skin-muted focus:border-primary-1 active:bg-secondary-l1 "
                   type="button"
                   onClick={function () {
                     document.getElementById("popup").classList.add(popHide);
-                    document.getElementById("modifyLunchgroup").classList.add(popHide);
+                    document
+                      .getElementById("modifyLunchgroup")
+                      .classList.add(popHide);
                   }}
                 >
                   <HiXMark />
@@ -241,7 +258,7 @@ export default function Home({ lunchGroupString, userString, notifications }) {
                 </div>
               </form>
               <form action="../../api/admin/deleteLunchgroup" method="POST">
-                <input className="id" type="hidden" name="id"/>
+                <input className="id" type="hidden" name="id" />
                 <button className="btn btn-delete" type="submit">
                   Radera händelse
                 </button>

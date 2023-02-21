@@ -1,12 +1,21 @@
 import * as React from "react";
 import { GrFlagFill, GrOptimize, GrUserManager, GrGroup } from "react-icons/gr";
 import {
+  GiMoneyStack,
   GiMaterialsScience,
   GiDeer,
   GiFamilyHouse,
   GiOrganigram,
+  GiChart,
 } from "react-icons/gi";
-import { MdOutlinePriceChange, MdStarOutline } from "react-icons/md";
+import { HiUserGroup, HiOutlineArrowTrendingUp } from "react-icons/hi2";
+import { BsFlagFill, BsArrowUpRight } from "react-icons/bs";
+import {
+  MdOutlineBusinessCenter,
+  MdOutlinePriceChange,
+  MdStarOutline,
+  MdCalendarToday,
+} from "react-icons/md";
 import { FaRegHandshake } from "react-icons/fa";
 import { TbCalendarTime } from "react-icons/tb";
 import Timeline from "@mui/lab/Timeline";
@@ -21,67 +30,132 @@ import "aos/dist/aos.css";
 
 const data = [
   {
-    icon: <GrFlagFill className="m-2 fill-tertiary-1" size={25} />,
+    icon: (
+      <BsFlagFill
+        className="m-2 fill-tertiary-1 dark:fill-tertiary-d2"
+        size={25}
+      />
+    ),
     year: "1993",
     text: "Broccoli grundas av Björn som ett deltidsföretag vid sidan om Chalmersstudierna ",
   },
   {
-    icon: <TbCalendarTime className="m-2 " size={30} />,
+    icon: (
+      <MdCalendarToday
+        className="m-2 fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2003",
     text: "Broccoli blir heltidssysselsättning med fokus på mjukvarubaserad utveckling ",
   },
   {
-    icon: <GrOptimize className="m-2 fill-tertiary-1" size={25} />,
+    icon: (
+      <BsArrowUpRight
+        className="m-2 fill-tertiary-1 dark:fill-tertiary-d2 "
+        size={25}
+      />
+    ),
     year: "2005",
     text: "Broccoli byter bolagsform till aktiebolag och första kollegan Henrik anställs",
   },
   {
-    icon: <GiMaterialsScience className="m-1  fill-tertiary-1" size={30} />,
+    icon: (
+      <GiMaterialsScience
+        className="m-1  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2006",
     text: "Vi tar in vår första examensarbetare, Dick",
   },
   {
-    icon: <MdStarOutline className="m-1 fill-tertiary-1" size={30} />,
+    icon: (
+      <MdStarOutline
+        className="m-1 fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2007",
     text: "Lågkonjunktur men vi håller nollan, inga uppsägningar",
   },
   {
-    icon: <GiDeer className="m-1  fill-tertiary-1" size={30} />,
+    icon: (
+      <GiDeer
+        className="m-1  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2010",
     text: "Broccoli utses till ett Gasellföretag",
   },
   {
-    icon: <GrUserManager className="m-2  fill-tertiary-1" size={25} />,
+    icon: (
+      <MdOutlineBusinessCenter
+        className="m-2  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={25}
+      />
+    ),
     year: "2012",
     text: "Första konsultchefen, Jessica anställs",
   },
   {
-    icon: <FaRegHandshake className="m-1 fill-tertiary-1" size={30} />,
+    icon: (
+      <FaRegHandshake
+        className="m-1 fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2013",
     text: "Första dotterbolaget, Broccoli Systems startas",
   },
   {
-    icon: <GrGroup className="m-2  fill-tertiary-1" size={25} />,
+    icon: (
+      <HiUserGroup
+        className="m-2  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={25}
+      />
+    ),
     year: "2015",
     text: "Vi blir mer än 50 anställda",
   },
   {
-    icon: <FaRegHandshake className="m-1 fill-tertiary-1" size={30} />,
+    icon: (
+      <FaRegHandshake
+        className="m-1 fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2018",
     text: "Andra dotterbolaget, Sectyne startas ",
   },
   {
-    icon: <MdOutlinePriceChange className="m-1  fill-tertiary-1" size={30} />,
+    icon: (
+      <GiMoneyStack
+        className="m-1  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2019",
     text: "Dotterbolaget Broccoli Systems med ca 25 anställda avyttras",
   },
   {
-    icon: <GiFamilyHouse className="m-1  fill-tertiary-1" size={30} />,
+    icon: (
+      <GiFamilyHouse
+        className="m-1  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2020",
     text: "Broccoligården köps in. En idyllisk  plats utanför Svanesund ",
   },
   {
-    icon: <GiOrganigram className="m-1  fill-tertiary-1" size={30} />,
+    icon: (
+      <GiOrganigram
+        className="m-1  fill-tertiary-1 dark:fill-tertiary-d2"
+        size={30}
+      />
+    ),
     year: "2021",
     text: "Styrningen och administrationen av företaget moderniseras",
     container: <div className="w-48 h-36 border-black border-2 " />,
@@ -97,11 +171,9 @@ const TimelineComponent = () => {
 
   return (
     <>
-      <div className="hidden md:block py-12 ">
+      <div className="hidden md:block py-12 relative z-20 ">
         <h2 className="text-center uppercase font-bold">Historia</h2>
-        <h5 className="text-center m-4 md:mb-8 ">
-          Några milstolpar i Broccolis historia
-        </h5>
+
         <Timeline className="items-center" position="alternate">
           {data.map((item, i) => (
             <TimelineItem key={i}>
@@ -112,7 +184,7 @@ const TimelineComponent = () => {
                 <TimelineConnector className="bg-black h-24 " />
               </TimelineSeparator>
               <TimelineContent>
-                <div className="flex flex-col justify-center w-full bg-slate-300 ">
+                <div className="flex flex-col justify-center w-full  ">
                   <div
                     data-aos="fade-up"
                     className=" flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "

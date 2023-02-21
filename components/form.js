@@ -2,15 +2,12 @@ export default function Form({ title }) {
   return (
     <>
       <div className="  flex flex-col ">
-        <div className=" w-full  md:p-12">
+        <div id="linkForm" className=" w-full  md:p-12">
           {/**title */}
 
           <div className="relative flex  flex-row ">
             <div className="flex-1 flex justify-center md:justify-start  p-2 text-2xl">
-              <p
-                id="linkForm"
-                className=" pt-12 flex self-center md:self-auto uppercase"
-              >
+              <p className=" pt-12 flex self-center md:self-auto uppercase">
                 {title}
               </p>
             </div>
@@ -94,8 +91,8 @@ export default function Form({ title }) {
 
           {/**attatchment */}
 
-          <div className="relative flex flex-wrap flex-row  ">
-            <div className="flex flex-1 flex-col p-2">
+          <div className="relative flex flex-wrap flex-row ">
+            <div className="flex flex-1 flex-col p-2  w-screen md:w-full">
               <label className="text-base pb-1" htmlFor="first">
                 Infoga fil (CV och/eller personligt brev)
               </label>
@@ -136,7 +133,7 @@ export default function Form({ title }) {
 
           <div className="relative flex flex-wrap flex-row  ">
             <div className="flex flex-1 flex-row p-2">
-              <label className="text-xs pb-1 text-gray-700" htmlFor="first">
+              <label className="text-xs pb-1 text-muted" htmlFor="first">
                 Genom att skicka in detta formulär godkännder du att dina
                 uppgifter sparas
               </label>
