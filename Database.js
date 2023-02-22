@@ -432,9 +432,10 @@ export async function updateCard(
   id,
   title,
   description,
-  date,
   requirements,
   location,
+  startdate,
+  enddate,
   contact
 ) {
   return await prisma.card.update({
@@ -444,9 +445,10 @@ export async function updateCard(
     data: {
       title: title,
       description: description,
-      date: date,
       requirements: requirements,
       location: location,
+      startdate: startdate,
+      enddate: enddate,
       contact: contact,
     },
   });

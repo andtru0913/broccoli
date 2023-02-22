@@ -2,7 +2,11 @@ const Card = ({
   id,
   title,
   text,
-  fields,
+  requirements,
+  location,
+  startdate,
+  enddate,
+  contact,
   click,
   auth,
   setShowModal,
@@ -48,15 +52,15 @@ const Card = ({
                 Close
               </button>
             </div>
-            {console.log(fields)}
-            {fields.map((data, index) => {
-              field(data.rubrik, data.description);
-            })}
-            {field("Datum", "2015/01/13 - 2015/05/22")}
+            <div className="flex flex-col px-8 ">
+              <h4 className=" font-medium">Datum</h4>
+              <p>{startdate + ("-" + enddate) ?? ""}</p>
+            </div>
+
             {field("Beskrivning", `${text}`)}
-            {field("Requirements", "C++")}
-            {field("Plats", "Göteborg")}
-            {field("Kontaktperson", "Åsa Vikström")}
+            {field("Krav", `${requirements}`)}
+            {field("Plats", `${location}`)}
+            {field("Kontaktperson", `${contact}`)}
             <div className="flex flex-row justify-between"></div>
           </div>
         </>

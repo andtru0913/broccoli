@@ -63,7 +63,8 @@ model Card {
   id            String  @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   description   String?
-  date          String?
+  startdate     DateTime?
+  enddate       DateTime?
   requirements  String?
   location      String?
   contact       String?

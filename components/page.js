@@ -19,43 +19,7 @@ const Page = ({
   let admin = {};
   let numCards = page.cards.length;
   const popHide = "pop-hide";
-  const [inputFields, setInputFields] = useState([
-    {
-      rubrik: "",
-      text: "",
-    },
-  ]);
 
-  const addInputField = () => {
-    setInputFields([
-      ...inputFields,
-      {
-        rubrik: "",
-        text: "",
-      },
-    ]);
-  };
-  const removeInputFields = (index) => {
-    const rows = [...inputFields];
-    rows.splice(index, 1);
-    setInputFields(rows);
-  };
-  const handleSelect = (index, evnt) => {
-    const { name, value } = evnt.target;
-
-    const list = [...inputFields];
-    list[index][name] = value;
-
-    setInputFields(list);
-  };
-  const handleChange = (index, evnt) => {
-    const { name, value } = evnt.target;
-
-    const list = [...inputFields];
-    list[index][name] = value;
-
-    setInputFields(list);
-  };
   if (authentication) {
     numCards += 1;
     const XMark = () => {
@@ -136,7 +100,7 @@ const Page = ({
       modifyCard: (
         <div className="flex justify-center">
           <div id="modifyCard" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill  p-5 m-2 ">
+            <div className="relative bg-fill w-1/3 p-5 m-2 ">
               <div className=" flex flex-row justify-between">
                 <h1> Ändra kort</h1>
               </div>
@@ -145,60 +109,6 @@ const Page = ({
               </div>
               <div className="flex flex-col gap-2 w-full ">
                 <form action="../../api/admin/modifyCard" method="POST">
-                  {inputFields.map((data, index) => {
-                    const { rub, text } = data;
-
-                    return (
-                      <div>
-                        <div className="form-group flex flex-row gap-4">
-                          <select
-                            defaultValue={"choose"}
-                            className="rubrik"
-                            name="rubrik"
-                            id="rubrik"
-                            aria-label="Floating label select example"
-                            onChange={(evnt) => handleSelect(index, evnt)}
-                          >
-                            <option value="choose" disabled>
-                              -- Select Type --
-                            </option>
-                            <option value="description">Beskrivning</option>
-                            <option value="date">Datum</option>
-                            <option value="requirements">Krav</option>
-                            <option value="location">Plats</option>
-                            <option value="contact">Kontakt</option>
-                            {rub}
-                          </select>
-
-                          <textarea
-                            className="text form-control  p-2 rounded"
-                            type="text"
-                            onChange={(evnt) => handleChange(index, evnt)}
-                            value={text}
-                            name="text"
-                            placeholder={data.rubrik}
-                          />
-                          <div className="">
-                            <button
-                              className="text-black px-4 py-2  bg-red-400 rounded-lg hover:bg-red-600"
-                              onClick={removeInputFields}
-                            >
-                              x
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                  <label className="text-base pt-4 pb-1" htmlFor="first">
-                    Lägg till fält
-                  </label>
-                  <div
-                    onClick={addInputField}
-                    className="cursor-pointer flex justify-center shadow btn btn-empty w-full text-xl"
-                  >
-                    +
-                  </div>
                   <div className="flex flex-col gap-2 py-2">
                     <input className="id p-2" type="hidden" name="id" />
                     <input
@@ -207,14 +117,54 @@ const Page = ({
                       name="title"
                       placeholder="Rubrik"
                     />
-                    <input
+                    <textarea
                       className="description  p-2 rounded"
                       type="text"
                       name="description"
-                      placeholder="Text"
+                      placeholder="Description"
+                    />
+                    <input
+                      className="requirements p-2 rounded"
+                      type="text"
+                      name="requirements"
+                      placeholder="Requirements"
+                    />
+                    <input
+                      className="location  p-2 rounded"
+                      type="text"
+                      name="location"
+                      placeholder="Location"
+                    />
+                    <div className="flex flex-row gap-2 ">
+                      <div className="flex flex-col w-full">
+                        <label>Startdatum</label>
+                        <input
+                          className="startdate  p-2 rounded"
+                          type="date"
+                          name="startdate"
+                          placeholder="Startdate"
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <label>Slutdatum</label>
+                        <input
+                          className="enddate  p-2 rounded"
+                          type="date"
+                          name="enddate"
+                          placeholder="Enddate"
+                        />
+                      </div>
+                    </div>
+
+                    <input
+                      className="contact  p-2 rounded"
+                      type="text"
+                      name="contact"
+                      placeholder="Contact"
                     />
                     <input type="hidden" name="redirect" value={redirect} />
                   </div>
+
                   <button
                     className="shadow btn btn-modify w-full"
                     type="submit"
@@ -380,7 +330,11 @@ const Page = ({
                     id={card.id}
                     title={card.title}
                     text={card.description}
-                    fields={inputFields}
+                    requirements={card.requirements}
+                    location={card.location}
+                    startdate={card.startdate}
+                    enddate={card.enddate}
+                    contact={card.contact}
                     auth={authentication}
                     click={function () {
                       if (authentication) {
@@ -396,7 +350,20 @@ const Page = ({
                         modifyCard.getElementsByClassName(
                           "description"
                         )[0].value = card.description;
+                        modifyCard.getElementsByClassName(
+                          "requirements"
+                        )[0].value = card.requirements;
+                        modifyCard.getElementsByClassName("location")[0].value =
+                          card.location;
+                        modifyCard.getElementsByClassName(
+                          "startdate"
+                        )[0].valueAsDate = new Date(startdate);
+                        modifyCard.getElementsByClassName(
+                          "enddate"
+                        )[0].valueAsDate = new Date(enddate);
 
+                        modifyCard.getElementsByClassName("contact")[0].value =
+                          card.contact;
                         modifyCard.classList.remove(popHide);
                       }
                     }}
