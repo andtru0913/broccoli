@@ -363,11 +363,25 @@ export async function deleteLunchgroup(id) {
   });
 }
 
-export async function createCard(pageId, title, description) {
+export async function createCard(
+  pageId,
+  title,
+  description,
+  requirements,
+  location,
+  startdate,
+  enddate,
+  contact
+) {
   await prisma.card.create({
     data: {
       title: title,
       description: description,
+      requirements: requirements,
+      location: location,
+      startdate: startdate,
+      enddate: enddate,
+      contact: contact,
       page: {
         connect: {
           id: pageId,

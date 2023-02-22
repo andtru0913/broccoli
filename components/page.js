@@ -60,7 +60,7 @@ const Page = ({
       createCard: (
         <div className="flex justify-center">
           <div id="createCard" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill p-5 m-2 ">
+            <div className="relative bg-fill w-1/3 p-5 m-2 ">
               <div className=" flex flex-row justify-between">
                 <h1> Skapa kort</h1>
                 <div className="absolute top-0 right-0 p-3 hover:text-muted">
@@ -68,20 +68,64 @@ const Page = ({
                 </div>
               </div>
               <form action="../../api/admin/createCard" method="POST">
-                <div className="flex flex-col py-4">
+                <div className="flex flex-col gap-2 py-4">
                   <input
-                    className="p-2 border rounded mb-2"
+                    className="title p-2 rounded"
                     type="text"
                     name="title"
                     placeholder="Rubrik"
                   />
                   <textarea
-                    className=" p-2  rounded mb-2"
+                    className="description p-2  rounded "
                     rows="3"
-                    id="description"
                     name="description"
                     placeholder="Text"
                   ></textarea>
+                  <input
+                    className="requirements p-2 rounded"
+                    type="text"
+                    name="requirements"
+                    placeholder="Requirements"
+                  />
+                  <input
+                    className="location  p-2 rounded"
+                    type="text"
+                    name="location"
+                    placeholder="Location"
+                  />
+                  <div className="flex flex-row gap-2 ">
+                    <div className="flex flex-col w-full">
+                      <label>Startdatum</label>
+                      <input
+                        className="startdate  p-2 rounded"
+                        type="date"
+                        name="startdate"
+                        placeholder="Startdate"
+                      />
+                    </div>
+                    <div className="flex flex-col w-full">
+                      <label>Slutdatum</label>
+                      <input
+                        className="enddate  p-2 rounded"
+                        type="date"
+                        name="enddate"
+                        placeholder="Enddate"
+                      />
+                    </div>
+                  </div>
+
+                  <input
+                    className="contact  p-2 rounded"
+                    type="text"
+                    name="contact"
+                    placeholder="Contact"
+                  />
+                  <input
+                    className="exjobbare  p-2 rounded"
+                    type="text"
+                    name="exjobbare"
+                    placeholder="Exjobbare"
+                  />
                   <input type="hidden" name="pageId" value={page.id} />
                   <input type="hidden" name="redirect" value={redirect} />
                   <button
@@ -118,11 +162,11 @@ const Page = ({
                       placeholder="Rubrik"
                     />
                     <textarea
-                      className="description  p-2 rounded"
-                      type="text"
+                      className="description p-2  rounded "
+                      rows="3"
                       name="description"
-                      placeholder="Description"
-                    />
+                      placeholder="Text"
+                    ></textarea>
                     <input
                       className="requirements p-2 rounded"
                       type="text"
@@ -161,6 +205,12 @@ const Page = ({
                       type="text"
                       name="contact"
                       placeholder="Contact"
+                    />
+                    <input
+                      className="exjobbare  p-2 rounded"
+                      type="text"
+                      name="exjobbare"
+                      placeholder="Exjobbare"
                     />
                     <input type="hidden" name="redirect" value={redirect} />
                   </div>
@@ -335,6 +385,7 @@ const Page = ({
                     startdate={card.startdate}
                     enddate={card.enddate}
                     contact={card.contact}
+                    exjobbare={card.exjobbare}
                     auth={authentication}
                     click={function () {
                       if (authentication) {
@@ -357,13 +408,16 @@ const Page = ({
                           card.location;
                         modifyCard.getElementsByClassName(
                           "startdate"
-                        )[0].valueAsDate = new Date(startdate);
+                        )[0].valueAsDate = new Date(card.startdate);
                         modifyCard.getElementsByClassName(
                           "enddate"
-                        )[0].valueAsDate = new Date(enddate);
+                        )[0].valueAsDate = new Date(card.enddate);
 
                         modifyCard.getElementsByClassName("contact")[0].value =
                           card.contact;
+                        modifyCard.getElementsByClassName(
+                          "exjobbare"
+                        )[0].value = card.exjobbare;
                         modifyCard.classList.remove(popHide);
                       }
                     }}

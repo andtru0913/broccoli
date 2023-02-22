@@ -7,6 +7,7 @@ const Card = ({
   startdate,
   enddate,
   contact,
+  exjobbare,
   click,
   auth,
   setShowModal,
@@ -52,15 +53,22 @@ const Card = ({
                 Close
               </button>
             </div>
-            <div className="flex flex-col px-8 ">
-              <h4 className=" font-medium">Datum</h4>
-              <p>{startdate + ("-" + enddate) ?? ""}</p>
-            </div>
+            {startdate ? (
+              <div className="flex flex-col px-8 ">
+                <h4 className=" font-medium">Datum</h4>
+                <p>{startdate}</p> {enddate ? <p>{"-" + enddate}</p> : <></>}
+              </div>
+            ) : (
+              <></>
+            )}
 
-            {field("Beskrivning", `${text}`)}
-            {field("Krav", `${requirements}`)}
-            {field("Plats", `${location}`)}
-            {field("Kontaktperson", `${contact}`)}
+            {text
+              ? field("Beskrivning", `${text}`)
+              : field("Beskrivning", "Mer information kommer.")}
+            {requirements ? field("Krav", `${requirements}`) : ""}
+            {location ? field("Plats", `${location}`) : ""}
+            {contact ? field("Kontaktperson", `${contact}`) : ""}
+            {exjobbare ? field("Exjobbare", `${exjobbare}`) : ""}
             <div className="flex flex-row justify-between"></div>
           </div>
         </>

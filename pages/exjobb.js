@@ -20,16 +20,17 @@ export async function getServerSideProps(context) {
   return {
     props: {
       admin: !!user ? user.admin : false,
-      page: JSON.stringify(page[0]),
+      pagestring: JSON.stringify(page[0]),
       pageName: pageName,
     },
   };
 }
 
-export default function Exjobb({ admin, page, pageName, click }) {
+export default function Exjobb({ admin, pagestring, pageName, click }) {
   useEffect(() => {
     AOS.init({ duration: 2500 });
   }, []);
+  const page = JSON.parse(pagestring);
   return (
     <Layout>
       <Page

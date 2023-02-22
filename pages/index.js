@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
 import { HiArrowRight } from "react-icons/hi";
-import {FaBed, FaChalkboardTeacher, FaFacebookSquare, FaSwimmer,} from "react-icons/fa";
+import {
+  FaBed,
+  FaChalkboardTeacher,
+  FaFacebookSquare,
+  FaSwimmer,
+} from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/bgard.jpeg";
 import "chart.js/auto";
@@ -14,10 +19,16 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
+
   const data = await fetch(url);
-  const [feed, genderCount] = await Promise.all([data.json(), getGenderCount()]);
+  const [feed, genderCount] = await Promise.all([
+    data.json(),
+    getGenderCount(),
+  ]);
+
   return {
     props: {
+      response: response,
       feed: feed,
       genderCount: genderCount,
     },
@@ -54,6 +65,10 @@ export default function Home({ feed, genderCount }) {
     ],
   };
   const insta_images = feed.data;
+
+  process.env.INSTAGRAM_KEY = response.access_token;
+  const type = respone.token_type;
+  const expire = response.expires_in;
 
   useEffect(() => {
     AOS.init({ duration: 2500 });

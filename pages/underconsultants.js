@@ -22,16 +22,22 @@ export async function getServerSideProps(context) {
     props: {
       admin: !!user ? user.admin : false,
       pageId: pageId,
-      page: JSON.stringify(page[0]),
+      pagestring: JSON.stringify(page[0]),
       pageName: pageName,
     },
   };
 }
 
-export default function Underconsultants({ admin, page, pageName, click }) {
+export default function Underconsultants({
+  admin,
+  pagestring,
+  pageName,
+  click,
+}) {
   useEffect(() => {
     AOS.init({ duration: 2500 });
   }, []);
+  const page = JSON.parse(pagestring);
   return (
     <Layout>
       <Page

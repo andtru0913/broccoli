@@ -14,7 +14,8 @@ export default async function handler(req, res) {
       req.body.location,
       new Date(req.body.startdate),
       new Date(req.body.enddate),
-      req.body.contact
+      req.body.contact,
+      req.body.exjobbare
     ).catch((e) => {
       console.error(e.message);
     });

@@ -56,7 +56,7 @@ model Page {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String?
-  cards       Card[]
+  cards       Card[] 
 }
 
 model Card {
@@ -68,6 +68,7 @@ model Card {
   requirements  String?
   location      String?
   contact       String?
+  exjobbare String?
   page          Page    @relation(fields: [pageID], references: [id])
   pageID        String  @db.ObjectId
   
