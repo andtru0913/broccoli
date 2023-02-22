@@ -1,26 +1,34 @@
-import LayoutIntranet from "../../../components/layout/layoutIntranet";
-import { getAllUsers, getNotifications, getUserinfo } from "../../../Database";
-import { verify } from "../../../tokens";
+import LayoutIntranet from "../../../../components/layout/layoutIntranet";
+import { getAllUsers, getNotifications, getUserinfo } from "../../../../Database";
+import { verify } from "../../../../tokens";
 
 export async function getServerSideProps(context) {
   const user_id = await verify(
-    JSON.parse(context.req.cookies["token"] || null)
+      JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserinfo(user_id);
-  return !user || !user.admin
-    ? {
-        redirect: {
-          permanent: false,
-          destination: "/intranet",
-        },
-        props: {},
-      }
-    : {
-        props: {
-          user: await getAllUsers(),
-          notifications: JSON.stringify(await getNotifications(user.id)),
-        },
-      };
+
+  if (!user || !user.admin) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/intranet",
+      },
+      props: {},
+    };
+  } else {
+    const [users, notifications] = await Promise.all([
+      getAllUsers(),
+      getNotifications(user.id),
+    ]);
+
+    return {
+      props: {
+        user: users,
+        notifications: JSON.stringify(notifications),
+      },
+    };
+  }
 }
 export default function Home({ user, notifications }) {
   const popHide = "pop-hide";
@@ -56,7 +64,7 @@ export default function Home({ user, notifications }) {
               </svg>
               <form
                 className="flex flex-col relative"
-                action="../../api/admin/modifyuser"
+                action="../../../api/admin/modifyuser"
                 method="POST"
               >
                 <input className="id " type="hidden" name="id" />
@@ -204,7 +212,7 @@ export default function Home({ user, notifications }) {
                       .getElementsByClassName("id")[1].value = "";
                   }
                 }}
-                action="../../api/deleteUser"
+                action="../../../api/deleteUser"
                 method="POST"
               >
                 <input className="id" type="hidden" name="id" />
@@ -232,7 +240,7 @@ export default function Home({ user, notifications }) {
               </svg>
               <form
                 className="flex flex-col relative"
-                action="../../api/admin/createuser"
+                action="../../../api/admin/createuser"
                 method="POST"
               >
                 <input

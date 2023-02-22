@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { verify } from "../tokens";
-import Image from "next/image";
 
 export async function getServerSideProps(context) {
   const pageId = career;
@@ -17,12 +16,11 @@ export async function getServerSideProps(context) {
   const user_id = await verify(
     JSON.parse(context.req.cookies["token"] || null)
   );
-  const user = await getUserinfo(user_id);
-  const page = (await getPage(pageId))[0];
+  const [user, page] = await Promise.all([getUserinfo(user_id), getPage(pageId)]);
   return {
     props: {
       admin: !!user ? user.admin : false,
-      page: page,
+      page: page[0],
       pageName: pageName,
     },
   };

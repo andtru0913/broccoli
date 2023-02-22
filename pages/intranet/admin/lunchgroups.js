@@ -25,24 +25,33 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 
 export async function getServerSideProps(context) {
   const user_id = await verify(
-    JSON.parse(context.req.cookies["token"] || null)
+      JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserinfo(user_id);
-  return !user || !user.admin
-    ? {
-        redirect: {
-          permanent: false,
-          destination: "/intranet",
-        },
-        props: {},
-      }
-    : {
-        props: {
-          lunchGroupString: JSON.stringify(await getGroups()),
-          userString: JSON.stringify(await getAllUsers()),
-          notifications: JSON.stringify(await getNotifications(user.id)),
-        },
-      };
+
+  if (!user || !user.admin) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/intranet",
+      },
+      props: {},
+    };
+  } else {
+    const [lunchGroupString, userString, notifications] = await Promise.all([
+      getGroups(),
+      getAllUsers(),
+      getNotifications(user.id),
+    ]);
+
+    return {
+      props: {
+        lunchGroupString: JSON.stringify(lunchGroupString),
+        userString: JSON.stringify(userString),
+        notifications: JSON.stringify(notifications),
+      },
+    };
+  }
 }
 
 export default function Home({ lunchGroupString, userString, notifications }) {

@@ -19,8 +19,7 @@ export async function getServerSideProps(context) {
   );
   const user = await getUserinfo(user_id);
   if (!!user) {
-    const groups = await getGroups();
-    const events = await upcomingEvents(3);
+    const [groups, events, notifications, news] = await Promise.all([getGroups(), upcomingEvents(3), getNotifications(user.id), getRecentNews(2)]);
     events.map(
       (data) =>
         (data.date = new Date(data.start).toLocaleString("default", {
@@ -44,8 +43,8 @@ export async function getServerSideProps(context) {
         user: user,
         lunchgroups: lunchgroups,
         events: JSON.stringify(events),
-        notifications: JSON.stringify(await getNotifications(user.id)),
-        news: JSON.stringify(await getRecentNews(2)),
+        notifications: JSON.stringify(notifications),
+        news: JSON.stringify(news),
       },
     };
   }

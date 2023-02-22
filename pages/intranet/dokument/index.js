@@ -5,22 +5,29 @@ import {verify} from "../../../tokens";
 export async function getServerSideProps(context) {
     const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
     const user = await getUserinfo(user_id);
-    return !user ?
-        {
+
+    if (!user) {
+        return {
             redirect: {
                 permanent: false,
                 destination: "/intranet",
             },
             props: {},
-        }
-        :
-        {
-            props: {
-                user: user,
-                news: JSON.stringify(await getAllNews(false )),
-                notifications: JSON.stringify(await getNotifications(user.id)),
-            }
-        }
+        };
+    }
+
+    const [news, notifications] = await Promise.all([
+        getAllNews(true),
+        getNotifications(user.id),
+    ]);
+
+    return {
+        props: {
+            admin: user.admin,
+            news: JSON.stringify(news),
+            notifications: JSON.stringify(notifications),
+        },
+    };
 }
 
 export default function Home({ user, notifications }) {
@@ -30,6 +37,7 @@ export default function Home({ user, notifications }) {
             <form action="../../api/createAdminDocument" method="POST" encType="multipart/form-data"
                   className="z-10 flex flex-col justify-center">
                 <p className={"m-1"}>Ny företagsdokument</p>
+                <input name={"title"} className={"m-1"} placeholder={"Titel"}/>
                 <input
                     className={
                         "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
@@ -37,23 +45,7 @@ export default function Home({ user, notifications }) {
                     id="file"
                     type="file"
                     name={"file"}
-                />
-                <button className="m-1 btn btn-primary">
-                    Skapa nytt inlägg
-                </button>
-            </form>
-        );
-        adminPanel = (
-            <form action="../../api/createUserDocument" method="POST" encType="multipart/form-data"
-                  className="z-10 flex flex-col justify-center">
-                <p className={"m-1"}>Ny företagsdokument</p>
-                <input
-                    className={
-                        "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
-                    }
-                    id="file"
-                    type="file"
-                    name={"file"}
+                    multiple={true}
                 />
                 <button className="m-1 btn btn-primary">
                     Skapa nytt inlägg
@@ -76,7 +68,30 @@ export default function Home({ user, notifications }) {
                 </svg>
 
                 <h1 className=" uppercase font-bold mt-12 p-4 z-10"> nyheter </h1>
-                {adminPanel}
+                <div className={"flex flex-row justify-around w-screen"}>
+                    <div className={"flex flex-col"}>
+                        {adminPanel}
+                    </div>
+                    <div className={"flex flex-col"}>
+                        <form action="../../api/createUserDocument" method="POST" encType="multipart/form-data"
+                              className="z-10 flex flex-col justify-center">
+                            <p className={"m-1"}>Ny övrig dokument</p>
+                            <input
+                                className={
+                                    "m-1 form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted "
+                                }
+                                id="file"
+                                type="file"
+                                name={"file"}
+                                multiple={true}
+                            />
+                            <button className="m-1 btn btn-primary">
+                                Skapa nytt inlägg
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
 
             </div>
 

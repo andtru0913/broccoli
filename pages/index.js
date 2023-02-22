@@ -1,12 +1,7 @@
 import Image from "next/image";
 import Layout from "../components/layout/layout";
 import { HiArrowRight } from "react-icons/hi";
-import {
-  FaBed,
-  FaChalkboardTeacher,
-  FaFacebookSquare,
-  FaSwimmer,
-} from "react-icons/fa";
+import {FaBed, FaChalkboardTeacher, FaFacebookSquare, FaSwimmer,} from "react-icons/fa";
 import { MdKitchen } from "react-icons/md";
 import broccoligarden from "../public/images/bgard.jpeg";
 import "chart.js/auto";
@@ -20,12 +15,11 @@ import { useEffect } from "react";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);
-  const feed = await data.json();
-
+  const [feed, genderCount] = await Promise.all([data.json(), getGenderCount()]);
   return {
     props: {
       feed: feed,
-      genderCount: await getGenderCount(),
+      genderCount: genderCount,
     },
   };
 };
@@ -33,7 +27,6 @@ export const getStaticProps = async () => {
 export default function Home({ feed, genderCount }) {
   const chartData = {
     labels: ["Män", "Kvinnor"],
-
     datasets: [
       {
         borderWidth: 2,
@@ -357,6 +350,7 @@ export default function Home({ feed, genderCount }) {
                         className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105 "
                         src={image.media_url}
                         alt={"image"}
+                        unoptimized
                       />
                     </a>
                   </div>
