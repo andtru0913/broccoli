@@ -13,11 +13,14 @@ export async function getServerSideProps(context) {
   const user_id = await verify(
     JSON.parse(context.req.cookies["token"] || null)
   );
-  const [user, page] = await Promise.all([getUserinfo(user_id), getPage(pageId)]);
+  const [user, page] = await Promise.all([
+    getUserinfo(user_id),
+    getPage(pageId),
+  ]);
   return {
     props: {
       admin: !!user ? user.admin : false,
-      page: page[0],
+      page: JSON.stringify(page[0]),
       pageName: pageName,
     },
   };
