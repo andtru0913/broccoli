@@ -6,25 +6,26 @@ import {verify} from "../../tokens";
 export async function getServerSideProps(context) {
     const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
     const user = await getUserinfo(user_id);
-  return !user ?
-      {
-        redirect: {
-          permanent: false,
-          destination: "/intranet",
-        },
-        props: {},
-      }
-      :
-      {
-        props: {
-          user: user,
-          events: JSON.stringify(await getEvents(undefined)),
-          notifications: JSON.stringify(await getNotifications(user.id)),
-          birthdays: JSON.stringify(await getBirthdays())
+    if (!user) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/intranet",
+            },
+            props: {},
         }
-      }
+    } else {
+        const [events, notifications, birthdays] = await Promise.all([getEvents(undefined), getNotifications(user.id), getBirthdays()]);
+        return {
+            props: {
+                user: user,
+                events: JSON.stringify(events),
+                notifications: JSON.stringify(notifications),
+                birthdays: JSON.stringify(birthdays)
+            }
+        }
+    }
 }
-
 
 export default function Home({ user, events, notifications, birthdays }) {
   let allEvents = JSON.parse(events)

@@ -8,21 +8,24 @@ export async function getServerSideProps(context) {
     JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserinfo(user_id);
-  return !user
-    ? {
-        redirect: {
-          permanent: false,
-          destination: "/intranet",
-        },
-        props: {},
-      }
-    : {
-        props: {
-          user: user,
-          news: JSON.stringify(await getAllNews(false)),
-          notifications: JSON.stringify(await getNotifications(user.id)),
-        },
-      };
+  if (!user) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/intranet",
+      },
+      props: {},
+    }
+  } else {
+    const [news, notifications] = await Promise.all([getAllNews(false), getNotifications(user.id)])
+    return {
+      props: {
+        user: user,
+        news: JSON.stringify(news),
+        notifications: JSON.stringify(notifications),
+      },
+    }
+  }
 }
 
 export default function Home({ user, news, notifications }) {

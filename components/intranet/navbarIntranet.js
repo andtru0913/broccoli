@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import * as React from "react";
 import ActiveLink from "../activeLink";
 import ThemedImage from "../themedImage";
@@ -10,25 +10,28 @@ import UpcomingNotifications from "./upcomingNotifications";
 
 const NavbarIntranet = ({ admin, notifications }) => {
   const parsedNotifications = JSON.parse(notifications);
+
   const [isOpen, setIsOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [isRed, setIsRed] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
 
+
+  const parsedNotificationsRef = useRef(parsedNotifications);
   useEffect(() => {
     let notificationCookies =
       JSON.parse(localStorage.getItem("readNotifications") || null) || [];
     setIsRed(
-      !parsedNotifications.every((item) =>
+      !parsedNotificationsRef.current.every((item) =>
         notificationCookies.includes(item.notification.id)
       )
     );
     setNotificationOpen(
-      !parsedNotifications.every((item) =>
+      !parsedNotificationsRef.current.every((item) =>
         notificationCookies.includes(item.notification.id)
       )
     );
-  }, [parsedNotifications]);
+  }, []);
 
   const openNotification = () => {
     if (notificationOpen) {
@@ -36,7 +39,6 @@ const NavbarIntranet = ({ admin, notifications }) => {
       setNotificationOpen(false);
       let notificationCookies =
         JSON.parse(localStorage.getItem("readNotifications") || null) || [];
-      const parsedNotifications = JSON.parse(notifications);
       parsedNotifications.forEach((item) => {
         if (!notificationCookies.includes(item.notification.id)) {
           notificationCookies.push(item.notification.id);
@@ -47,7 +49,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
         JSON.stringify(notificationCookies)
       );
     } else {
-      setNotificationOpen(true);
+        setNotificationOpen(true);
     }
   };
   const hamburgerLine =

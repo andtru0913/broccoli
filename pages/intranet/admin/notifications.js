@@ -9,26 +9,38 @@ import {
 import {HiXMark} from "react-icons/hi2";
 import {AiOutlineDelete} from "react-icons/ai";
 import {verify} from "../../../tokens";
+import {useEffect} from "react";
 export async function getServerSideProps(context) {
-    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null));
     const user = await getUserinfo(user_id);
-  return (!user || !user.admin) ?
-      {
-        redirect: {
-          permanent: false,
-          destination: "/intranet",
-        },
-        props: {},
-      }
-    : {
-        props: {
-          user: user,
-          notifications: JSON.stringify(await getAllNotifications()),
-          relevantNotifs: JSON.stringify(await getNotifications(user.id)),
-          groups: JSON.stringify(await getGroups()),
-          allUsers: await getUserNotifications(),
-        },
-      };
+
+    if (!user || !user.admin) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/intranet",
+            },
+            props: {},
+        };
+    }
+    else {
+        const [notifications, relevantNotifs, groups, allUsers] = await Promise.all([
+            getAllNotifications(),
+            getNotifications(user.id),
+            getGroups(),
+            getUserNotifications(),
+        ]);
+
+        return {
+            props: {
+                user,
+                notifications: JSON.stringify(notifications),
+                relevantNotifs: JSON.stringify(relevantNotifs),
+                groups: JSON.stringify(groups),
+                allUsers,
+            },
+        };
+    }
 }
 
 export default function Home({ user, notifications, relevantNotifs, groups, allUsers }) {
