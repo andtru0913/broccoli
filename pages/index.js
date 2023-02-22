@@ -70,7 +70,7 @@ export default function Home({ feed, genderCount }) {
     <Layout>
       <main>
         <div className="overflow-hidden h-screen bg-center">
-          <div className="fixed h-screen duration-0 top-0 right-0 left-0 fixed z-0">
+          <div className=" h-screen duration-0 top-0 right-0 left-0 fixed z-0">
             <Image
               src="/images/firstp3.jpg"
               layout="fill"
@@ -346,15 +346,15 @@ export default function Home({ feed, genderCount }) {
               {insta_images &&
                 insta_images.slice(0, 4).map((image) => (
                   <div
-                    className=" relative  shadow-lg shadow-skin-shadow"
+                    className=" relative  shadow-lg shadow-skin-shadow p-0 m-0 w-[400px] h-[400px]"
                     key={image.id}
                   >
                     <a href={image.permalink}>
                       <Image
-                        loader={() => image.media_url}
+                        loader={() => `${image.media_url}&w=${400}&h=${400}`}
                         width={400}
                         height={400}
-                        className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105"
+                        className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105 "
                         src={image.media_url}
                         alt={"image"}
                       />
