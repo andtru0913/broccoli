@@ -29,7 +29,7 @@ const profile = ({ userString, notifications }) => {
     <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
         <div className="">
-          <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1   bg-secondary-1">
+          <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1  h-full bg-secondary-1">
             <div className="relative flex flex-col items-center col-span-1 pt-12 pl-2 overflow-hidden ">
               <svg
                 className="absolute left-0 md:-left-64 lg:-left-36 top-0 fill-primary-1 "
@@ -42,7 +42,7 @@ const profile = ({ userString, notifications }) => {
                 <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
               </svg>
               {/**Profile image */}
-              <div className=" w-36 h-40 md:w-56 md:h-64 md:mt-24 top-10 md:p-12 z-10">
+              <div className="relative flex justify-center w-56 h-64 md:top-16 md:ml-10 z-10">
                 <ProfilePicture image={user.image} />
               </div>
             </div>
@@ -160,10 +160,10 @@ const profile = ({ userString, notifications }) => {
                 </div>
                 */}
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end mb-20 md:mb-12 ">
                 <a
                   href="./editProfile"
-                  className="btn btn-modify my-4 md:mx-0 mx-6 mb-20 md:mb-12"
+                  className="btn btn-modify my-4 md:mx-0 mx-6 "
                 >
                   Redigera
                 </a>

@@ -1,4 +1,4 @@
-import {checkAdmin} from "./checkAdmin";
+import {checkAdmin} from "../../../tokens";
 import {modifyLunchgroup} from "../../../Database";
 
 export default async function handler(req, res) {

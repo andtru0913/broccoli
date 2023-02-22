@@ -1,6 +1,5 @@
-import {checkUser} from "../admin/checkAdmin";
 import {getNotifications} from "../../../Database";
-import {verify} from "../../../tokens";
+import {checkUser, verify} from "../../../tokens";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {

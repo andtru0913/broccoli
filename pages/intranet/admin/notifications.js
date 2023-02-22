@@ -6,17 +6,14 @@ import {
   getUserinfo,
   getUserNotifications,
 } from "../../../Database";
-import { useEffect } from "react";
-import { HiXMark } from "react-icons/hi2";
-import { verify } from "../../../tokens";
-
+import {HiXMark} from "react-icons/hi2";
+import {AiOutlineDelete} from "react-icons/ai";
+import {verify} from "../../../tokens";
 export async function getServerSideProps(context) {
-  const user_id = await verify(
-    JSON.parse(context.req.cookies["token"] || null)
-  );
-  const user = await getUserinfo(user_id);
-  return !user || !user.admin
-    ? {
+    const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+    const user = await getUserinfo(user_id);
+  return (!user || !user.admin) ?
+      {
         redirect: {
           permanent: false,
           destination: "/intranet",
@@ -34,80 +31,46 @@ export async function getServerSideProps(context) {
       };
 }
 
-export default function Home({
-  user,
-  notifications,
-  relevantNotifs,
-  groups,
-  allUsers,
-}) {
-  const list = JSON.parse(notifications);
-  const lunchgroups = JSON.parse(groups);
-  useEffect(() => {
-    document
-      .getElementById("createSearch")
-      .addEventListener("keyup", function (e) {
-        try {
-          document
-            .getElementById("create")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.add("hidden");
+export default function Home({ user, notifications, relevantNotifs, groups, allUsers }) {
+    const list = JSON.parse(notifications)
+    const lunchgroups = JSON.parse(groups)
+    useEffect(() => {
+            document.getElementById("createSearch").addEventListener("keyup", function(e) {
+                try {
+                    document.getElementById("create").querySelectorAll('label').forEach((item) => {
+                        item.classList.add("hidden")
+                    })
+                    document.getElementById("create").querySelectorAll(`label[name*=${e.target.value}]`).forEach((item) => {
+                        item.classList.remove("hidden")
+                    })
+                } catch(e) {
+                    document.getElementById("create").querySelectorAll('label').forEach((item) => {
+                        item.classList.remove("hidden")
+                    })
+                    document.getElementById("create").querySelectorAll('label[class*="name"]').forEach((item) => {
+                        item.classList.add("hidden")
+                    })
+                }
             });
-          document
-            .getElementById("create")
-            .querySelectorAll(`label[name*=${e.target.value}]`)
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-        } catch (e) {
-          document
-            .getElementById("create")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-          document
-            .getElementById("create")
-            .querySelectorAll('label[class*="name"]')
-            .forEach((item) => {
-              item.classList.add("hidden");
-            });
-        }
-      });
-    document
-      .getElementById("modifySearch")
-      .addEventListener("keyup", function (e) {
-        try {
-          document
-            .getElementById("modify")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.add("hidden");
-            });
-          document
-            .getElementById("modify")
-            .querySelectorAll(`label[name*=${e.target.value}]`)
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-        } catch (e) {
-          document
-            .getElementById("modify")
-            .querySelectorAll("label")
-            .forEach((item) => {
-              item.classList.remove("hidden");
-            });
-          document
-            .getElementById("modify")
-            .querySelectorAll('label[class*="name"]')
-            .forEach((item) => {
-              item.classList.add("hidden");
-            });
-        }
-      });
-  }, []);
-  const popHide = "pop-hide";
+        document.getElementById("modifySearch").addEventListener("keyup", function(e) {
+            try {
+                document.getElementById("modify").querySelectorAll('label').forEach((item) => {
+                    item.classList.add("hidden")
+                })
+                document.getElementById("modify").querySelectorAll(`label[name*=${e.target.value}]`).forEach((item) => {
+                    item.classList.remove("hidden")
+                })
+            } catch(e) {
+                document.getElementById("modify").querySelectorAll('label').forEach((item) => {
+                    item.classList.remove("hidden")
+                })
+                document.getElementById("modify").querySelectorAll('label[class*="name"]').forEach((item) => {
+                    item.classList.add("hidden")
+                })
+            }
+        });
+    }, [])
+    const popHide = "pop-hide"
   return (
     <LayoutIntranet admin={true} notifications={relevantNotifs}>
       <div className="">
@@ -288,7 +251,7 @@ export default function Home({
                   </div>
                   <div className="flex flex-col m-1 p-1 ">
                     <h5 className="uppercase">Valda anställda</h5>
-                    <div className="w-72 p-1 overflow-y-scroll h-36 md:h-56">
+                    <div className="w-72 p-1 overflow-y-scroll h-48 md:h-56">
                       <div id={"createSelected"}>
                         {allUsers.map((user, i) => (
                           <div key={i} className={`ml-4 `}>
@@ -341,14 +304,14 @@ export default function Home({
               <div className=" pt-2 pb-1 pl-4 flex justify-center md:justify-start">
                 <h5 className="uppercase  font-bold">Aktiva notifikationer</h5>
               </div>
-              <div className=" overflow-y-auto h-56 md:h-72">
+              <div className=" overflow-y-auto h-56 md:h-72 pl-4">
                 {list.map((item, i) => (
                   <div
                     className={"flex flex-row bg-secondary-1 w-80 p-2"}
                     key={i}
                   >
                     <div
-                      className={"flex flex-col"}
+                      className={"flex flex-col px-4 py-2"}
                       onClick={function () {
                         let background = document.getElementById("popup");
                         let window = document.getElementById("modifyNotif");
@@ -373,7 +336,7 @@ export default function Home({
                         window.classList.remove(popHide);
                       }}
                     >
-                      <p className={"font-bold"}>{item.title}</p>
+                      <p className={"font-bold pb-1"}>{item.title}</p>
                       <p>{item.text}</p>
                       <p>
                         {item.startDate} - {item.endDate}
@@ -390,7 +353,11 @@ export default function Home({
                         value={"../../intranet/admin/notifications"}
                       />
                       <input type={"hidden"} name={"id"} value={item.id} />
-                      <button type={"submit"}>&#10060;</button>
+                      <div className=" p-4 pt-2">
+                        <button type={"submit"}>
+                          <AiOutlineDelete size={20} className="" />
+                        </button>
+                      </div>
                     </form>
                   </div>
                 ))}
@@ -605,7 +572,7 @@ export default function Home({
                       </div>
                       <div className="flex flex-col m-1 ">
                         <h5 className="uppercase">Valda anställda</h5>
-                        <div className="w-72 p-1 overflow-y-scroll h-36 md:h-48">
+                        <div className="w-72 p-1 overflow-y-scroll h-48 md:h-56">
                           <div id={"modifySelected"}>
                             {allUsers.map((user, i) => (
                               <div key={i} className={`ml-4`}>

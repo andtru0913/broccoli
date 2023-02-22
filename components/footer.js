@@ -1,4 +1,10 @@
-import { BsInstagram, BsFacebook, BsLinkedin } from "react-icons/bs";
+import {
+  BsInstagram,
+  BsFacebook,
+  BsLinkedin,
+  BsGlobe,
+  BsClockHistory,
+} from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 import Link from "next/link";
 import ThemedImage from "./themedImage";
@@ -36,7 +42,7 @@ const Footer = () => {
               </h3>
               <div className=" flex flex-col items-left md:text-left bg-inherit">
                 <a className="hover:text-muted" href="tel:031-151480">
-                  <div className="flex flex-row text-sm hover:text-secondary-d2 justify-center align-middle md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-secondary-d2 justify-center align-middle  py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -59,7 +65,7 @@ const Footer = () => {
                   className="hover:text-muted"
                   href="mailto:engineering@broccoli.se"
                 >
-                  <div className="flex flex-row text-sm  hover:text-secondary-d2  justify-center  align-middle  md:justify-start py-1">
+                  <div className="flex flex-row text-sm  hover:text-secondary-d2  justify-center  align-middle  py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -82,7 +88,7 @@ const Footer = () => {
                   className="hover:text-muted"
                   href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9"
                 >
-                  <div className="flex flex-row text-sm hover:text-secondary-d2  justify-center align-middle  md:justify-start py-1">
+                  <div className="flex flex-row text-sm hover:text-secondary-d2  justify-center align-middle   py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -116,17 +122,25 @@ const Footer = () => {
               <h3 className="pb-2 font-bold cursor-default uppercase">
                 Medarbetare
               </h3>
-              <div className=" flex flex-col items-left md:text-left bg-inherit">
-                <a href="./intranet" className="hover:text-muted py-2">
-                  <p className="text-sm hover:text-secondary-d2">Intranät</p>
-                </a>
+              <div className=" flex flex-col items-center bg-inherit">
+                <div className="flex flex-row  hover:text-secondary-d2">
+                  <BsGlobe className="m-1 mr-3" size={20} />
 
-                <a
-                  href="https://www.broccoli.be/tid/"
-                  className="hover:text-secondary-d2 py-2"
-                >
-                  <p className="text-sm hover:text-secondary-d2 ">Tidrapport</p>
-                </a>
+                  <a href="./intranet" className="hover:text-muted py-1 ">
+                    <p className="text-sm hover:text-secondary-d2">Intranät</p>
+                  </a>
+                </div>
+                <div className="flex flex-row  hover:text-secondary-d2 ">
+                  <BsClockHistory className="m-1 mr-3 " size={20} />
+                  <a
+                    href="https://www.broccoli.be/tid/"
+                    className="hover:text-secondary-d2 "
+                  >
+                    <p className="text-sm hover:text-secondary-d2 py-1 ">
+                      Tidrapportering
+                    </p>
+                  </a>
+                </div>
               </div>
             </div>
             <div className=" md:col-span-2 pb-7 text-center justify-center ">

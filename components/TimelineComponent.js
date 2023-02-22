@@ -171,11 +171,9 @@ const TimelineComponent = () => {
 
   return (
     <>
-      <div className="hidden md:block py-12 ">
+      <div className="hidden md:block py-12 relative z-20 ">
         <h2 className="text-center uppercase font-bold">Historia</h2>
-        <h5 className="text-center m-4 md:mb-8 ">
-          Några milstolpar i Broccolis historia
-        </h5>
+
         <Timeline className="items-center" position="alternate">
           {data.map((item, i) => (
             <TimelineItem key={i}>

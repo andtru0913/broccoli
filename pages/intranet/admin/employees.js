@@ -533,7 +533,7 @@ export default function Home({ user, notifications }) {
                     </tbody>
                   </table>
 
-                  <div className="flex justify-center my-2">
+                  <div className="flex justify-center my-2 mt-6">
                     <button
                       className=" btn btn-create"
                       onClick={function () {
