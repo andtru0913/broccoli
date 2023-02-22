@@ -50,7 +50,7 @@ export default function About({ title, intro, year, timelinedesc }) {
     <Layout>
       <main className="bg-secondary-1">
         <section className="bg-secondary-1 relative ">
-          <div className="relative h-[48rem] lg:h-screen pb-12 ">
+          <div className="relative h-[48rem] lg:h-screen pb-12  z-40">
             <svg
               className="fill-secondary-l1 absolute z-0 left-0 -top-5 h-auto lg:w-2/3 rotate-180 "
               width="818"
@@ -68,9 +68,9 @@ export default function About({ title, intro, year, timelinedesc }) {
                   className=" flex flex-col gap-8  text-center md:text-left text-color-base dark:text-color-base"
                   data-aso=""
                 >
-                  <h0 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
+                  <h1 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
                     Om oss
-                  </h0>
+                  </h1>
                   <h4 className=" font-small w-10/12 md:text-left lg:text-xl ">
                     Broccoli är ett Göteborgsbaserat konsultbolag inom hårdvaru-
                     och mjukvaruutveckling. Våra kunder finns till största delen
@@ -79,7 +79,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                     utvecklas.
                   </h4>
                 </div>
-                <div className=" relative -top-40 right-20  ">
+                <div className=" relative -top-40 right-20 ">
                   <Image
                     alt={""}
                     height={"600"}

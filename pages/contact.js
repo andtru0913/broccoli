@@ -5,9 +5,9 @@ export default function Contact() {
   return (
     <Layout>
       <section className=" bg-secondary-1 text-center text-base overflow-hidden cursor-default">
-        <div className="  grid grid-cols-1 col-end-2 md:grid-cols-2 justify-center cursor-default">
+        <div className="  grid grid-cols-1 col-end-2 md:grid-cols-2 justify-center cursor-default relative z-40">
           <div className="relative ">
-            <div className="flex w-full h-full justify-center z-10  ">
+            <div className="flex w-full h-full p-5 pt-20">
               <Image
                 alt={""}
                 width={"800"}

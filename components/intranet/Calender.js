@@ -5,6 +5,7 @@ import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
 import { useState } from "react";
+import ActiveLink from "../activeLink";
 
 const Component = ({ user, allEvents, setIscoming }) => {
   const popHide = "pop-hide";
@@ -395,7 +396,9 @@ const Calender = ({ user, allEvents, cal }) => {
 
           <a
             className={`p-4 font-medium  ${
-              cal === "all" ? "" : "bg-fill-3 hover:bg-fill-1 text-secondary-d1"
+              cal === "all"
+                ? ""
+                : "bg-fill-3 hover:bg-fill-1 text-secondary-d1 "
             } `}
             href={"./fullcalender"}
           >

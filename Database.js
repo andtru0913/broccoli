@@ -52,7 +52,7 @@ export async function login(input_username, input_password) {
       lastname: true,
       password: true,
       salt: true,
-      admin: true
+      admin: true,
     },
   });
   try {
@@ -61,7 +61,7 @@ export async function login(input_username, input_password) {
     let account_password = query[0].password;
     const hashedPassword = await bcrypt.hash(input_password, salt);
     if (hashedPassword === account_password) {
-      return id
+      return id;
     } else {
       return null;
     }
@@ -120,7 +120,7 @@ export async function getUserProfile(userid) {
         assignment: true,
         description: true,
         admin: true,
-        birthday: true
+        birthday: true,
       },
     });
     return query[0];
@@ -233,8 +233,8 @@ export async function upcomingEvents(n) {
   return await prisma.event.findMany({
     where: {
       end: {
-        gt: new Date()
-      }
+        gt: new Date(),
+      },
     },
     select: {
       id: true,
@@ -260,14 +260,14 @@ export async function deleteEvent(id) {
 export async function deleteNotification(id) {
   await prisma.UserNotifications.deleteMany({
     where: {
-      notificationId: id
-    }
-  })
-    return await prisma.notifications.delete({
-        where: {
-            id:id
-        }
-    })
+      notificationId: id,
+    },
+  });
+  return await prisma.notifications.delete({
+    where: {
+      id: id,
+    },
+  });
 }
 
 export async function updateEvent(id, title, description, start, end) {
@@ -322,12 +322,12 @@ export async function getGroups() {
       title: true,
       users: {
         select: {
-          id:true,
+          id: true,
           email: true,
           firstname: true,
-          lastname: true
-        }
-      }
+          lastname: true,
+        },
+      },
     },
   });
 }
@@ -348,7 +348,6 @@ export async function setLunchgroup(userid, lunchgroupid) {
 }
 
 export async function deleteLunchgroup(id) {
-
   await prisma.user.updateMany({
     where: {
       lunchgroupID: id,
@@ -413,8 +412,8 @@ export async function archiveNews(id) {
       id: id,
     },
     data: {
-      archive: true
-    }
+      archive: true,
+    },
   });
 }
 
@@ -424,21 +423,33 @@ export async function removeArchive(id) {
       id: id,
     },
     data: {
-      archive: false
-    }
+      archive: false,
+    },
   });
 }
 
-export async function updateCard(id, title, description) {
-    return await prisma.card.update({
-      where: {
-        id: id,
-      },
-      data: {
-        title: title,
-        description: description,
-      },
-    });
+export async function updateCard(
+  id,
+  title,
+  description,
+  date,
+  requirements,
+  location,
+  contact
+) {
+  return await prisma.card.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title: title,
+      description: description,
+      date: date,
+      requirements: requirements,
+      location: location,
+      contact: contact,
+    },
+  });
 }
 
 export async function updatePage(id, title, description) {
@@ -618,7 +629,7 @@ export async function getUserEvents(id) {
 }
 
 export async function createNews(title, filename, date, author) {
-  console.log(author)
+  console.log(author);
   await prisma.news.create({
     data: {
       title: title,
@@ -633,61 +644,59 @@ export async function createNews(title, filename, date, author) {
   });
 }
 export async function getRecentNews(take) {
-  return (
-    await prisma.news.findMany({
-      where: {
-        archive: false
-      },
-      select: {
-        id: true,
-        title: true,
-        file: true,
-        date: true,
-        author: {
-          select: {
-            firstname: true,
-            lastname: true,
-            email: true
-          },
-        },
-      },
-      take: take,
-      orderBy: {
-        date: "desc"
-      }
-    })
-  );
-}
-
-export async function getAllNews(isArchive) {
   return await prisma.news.findMany({
     where: {
-      archive: isArchive
+      archive: false,
     },
     select: {
       id: true,
       title: true,
       file: true,
       date: true,
-      archive:true,
       author: {
         select: {
           firstname: true,
           lastname: true,
-          email:true,
+          email: true,
+        },
+      },
+    },
+    take: take,
+    orderBy: {
+      date: "desc",
+    },
+  });
+}
+
+export async function getAllNews(isArchive) {
+  return await prisma.news.findMany({
+    where: {
+      archive: isArchive,
+    },
+    select: {
+      id: true,
+      title: true,
+      file: true,
+      date: true,
+      archive: true,
+      author: {
+        select: {
+          firstname: true,
+          lastname: true,
+          email: true,
         },
       },
     },
     orderBy: {
-      date: "desc"
-    }
+      date: "desc",
+    },
   });
 }
 
 export async function getUserNotifications() {
   return await prisma.user.findMany({
     select: {
-      id:true,
+      id: true,
       firstname: true,
       lastname: true,
       email: true,
@@ -717,7 +726,7 @@ export async function editProfile(
   worknumber,
   image,
   description,
-  birthdate,
+  birthdate
 ) {
   if (!!password) {
     const salt = await bcrypt.genSalt(10);
@@ -735,7 +744,7 @@ export async function editProfile(
         worknumber: worknumber,
         salt: salt,
         description: description,
-        birthday: birthdate
+        birthday: birthdate,
       },
     });
   } else {
@@ -750,7 +759,7 @@ export async function editProfile(
         privatenumber: privatenumber,
         worknumber: worknumber,
         description: description,
-        birthday: birthdate
+        birthday: birthdate,
       },
     });
   }
@@ -778,118 +787,119 @@ export async function deleteProfilePic(id) {
   });
 }
 
-export async function createNotification(userid, title, text, startdate, enddate, users) {
+export async function createNotification(
+  userid,
+  title,
+  text,
+  startdate,
+  enddate,
+  users
+) {
   if (users.constructor.name === "Array") {
-
     let result = await prisma.notifications.create({
-          data: {
-            title: title,
-            text: text,
-            startDate: startdate,
-            endDate: enddate,
-            author: {
-              connect: {
-                id: userid,
-              }
-            },
-          }
-        }
-    )
+      data: {
+        title: title,
+        text: text,
+        startDate: startdate,
+        endDate: enddate,
+        author: {
+          connect: {
+            id: userid,
+          },
+        },
+      },
+    });
     return await prisma.UserNotifications.createMany({
-      data: users.map(u => ({notificationId: result.id, userId: u}))
-    })
-  }
-  else {
+      data: users.map((u) => ({ notificationId: result.id, userId: u })),
+    });
+  } else {
     let result = await prisma.notifications.create({
-          data: {
-            title: title,
-            text: text,
-            startDate: startdate,
-            endDate: enddate,
-            author: {
-              connect: {
-                id: userid,
-              }
-            },
-          }
-        }
-    )
+      data: {
+        title: title,
+        text: text,
+        startDate: startdate,
+        endDate: enddate,
+        author: {
+          connect: {
+            id: userid,
+          },
+        },
+      },
+    });
     return await prisma.UserNotifications.create({
-      data: {notificationId: result.id, userId: users}
-    })
+      data: { notificationId: result.id, userId: users },
+    });
   }
 }
 
 export async function modifyNotification(notifId, title, text, enddate, users) {
   await prisma.UserNotifications.deleteMany({
     where: {
-      notificationId: notifId
-    }
-  })
+      notificationId: notifId,
+    },
+  });
   if (users.constructor.name === "Array") {
     const result = await prisma.notifications.update({
       where: {
-        id:notifId
+        id: notifId,
       },
-          data: {
-            title: title,
-            text: text,
-            endDate: enddate,
-          }
-    })
+      data: {
+        title: title,
+        text: text,
+        endDate: enddate,
+      },
+    });
     return await prisma.UserNotifications.createMany({
-      data: users.map(u => ({notificationId: result.id, userId: u}))
-    })
-  }
-  else {
+      data: users.map((u) => ({ notificationId: result.id, userId: u })),
+    });
+  } else {
     const result = await prisma.notifications.create({
-          data: {
-            title: title,
-            text: text,
-            startDate: startdate,
-            endDate: enddate,
-            author: {
-              connect: {
-                id: userid,
-              }
-            },
-          }
-        }
-    )
+      data: {
+        title: title,
+        text: text,
+        startDate: startdate,
+        endDate: enddate,
+        author: {
+          connect: {
+            id: userid,
+          },
+        },
+      },
+    });
     return await prisma.UserNotifications.create({
-      data: {notificationId: result.id, userId: users}
-    })
+      data: { notificationId: result.id, userId: users },
+    });
   }
 }
 
 export async function getAllNotifications() {
-    let result = await prisma.notifications.findMany({
+  let result = await prisma.notifications.findMany({
+    select: {
+      id: true,
+      title: true,
+      text: true,
+      startDate: true,
+      endDate: true,
+      author: {
         select: {
-            id:true,
-            title: true,
-            text:true,
-            startDate: true,
-            endDate: true,
-            author: {
-                select: {
-                    firstname: true,
-                    lastname: true
-                }
-            },
-            users: {
-              select: {
-                user: {
-                  select: {
-                    email: true
-                  }
-                }
-              }
-            }
+          firstname: true,
+          lastname: true,
         },
-      orderBy: {
-          endDate: "asc"
-      }
-    })
+      },
+      users: {
+        select: {
+          user: {
+            select: {
+              email: true,
+            },
+          },
+        },
+      },
+    },
+    orderBy: {
+      endDate: "asc",
+    },
+  });
   result.map((data) => {
     data.startDate = new Date(data.startDate).toLocaleString("default", {
       year: "numeric",
@@ -902,7 +912,7 @@ export async function getAllNotifications() {
       month: "long",
     });
   });
-    return result;
+  return result;
 }
 
 export async function getNotifications(userid) {
@@ -910,10 +920,10 @@ export async function getNotifications(userid) {
     where: {
       notification: {
         endDate: {
-          gt: new Date()
-        }
+          gt: new Date(),
+        },
       },
-      userId: userid
+      userId: userid,
     },
     select: {
       notification: {
@@ -923,55 +933,59 @@ export async function getNotifications(userid) {
           text: true,
           startDate: true,
           endDate: true,
-          author: true
-        }
-      }
+          author: true,
+        },
+      },
     },
     orderBy: {
       notification: {
-        startDate: 'desc'
-      }
-    }
-  })
+        startDate: "desc",
+      },
+    },
+  });
   result.map((data) => {
-    data.notification.startDate = new Date(data.notification.startDate).toLocaleString("default", {
+    data.notification.startDate = new Date(
+      data.notification.startDate
+    ).toLocaleString("default", {
       year: "numeric",
       day: "numeric",
       month: "long",
     });
-    data.notification.endDate = new Date(data.notification.endDate).toLocaleString("default", {
+    data.notification.endDate = new Date(
+      data.notification.endDate
+    ).toLocaleString("default", {
       year: "numeric",
       day: "numeric",
       month: "long",
     });
   });
-  return result
+  return result;
 }
 
 export async function getEventNotReplied(eventid) {
-  return (await prisma.user.findMany({
+  return await prisma.user.findMany({
     where: {
       events: {
         every: {
           NOT: {
-              eventId: eventid
-          }
-        }
-      }
+            eventId: eventid,
+          },
+        },
+      },
     },
-    select: {
-      firstname: true,
-      lastname: true
-    },
-  }))
-}
-
-export async function getBirthdays() {
-  return (await prisma.user.findMany( {
     select: {
       firstname: true,
       lastname: true,
-      birthday: true
-    }
-  }))
+    },
+  });
+}
+
+export async function getBirthdays() {
+  return await prisma.user.findMany({
+    select: {
+      firstname: true,
+      lastname: true,
+      birthday: true,
+    },
+  });
 }

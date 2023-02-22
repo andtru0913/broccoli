@@ -92,7 +92,6 @@
 
   /* #region  /**=========== Typography =========== */
 
-
   .h0 {
     @apply text-3xl md:text-6xl;
   }
@@ -187,11 +186,50 @@
 }
 
 @layer utilities {
+  .flip {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    perspective: 600px;
+  }
+  .flip-content {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+  }
+  .flip:hover .flip-content {
+    transform: rotateY(180deg);
+    transition: transform 0.3s;
+  }
   .fc .fc-col-header-cell-cushion {
     /* needs to be same precedence */
     padding-top: 5px; /* an override! */
     padding-bottom: 5px; /* an override! */
     background-color: "primary-1";
+  }
+  .flip-front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    line-height: 150px;
+    backface-visibility: hidden;
+    color: #fff;
+    background-color: lightcoral;
+  }
+
+  .flip-back {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+    line-height: 150px;
+    backface-visibility: hidden;
+    color: #fff;
+    background-color: lightseagreen;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
   }
 
   .popup {

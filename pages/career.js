@@ -76,7 +76,7 @@ export default function Career({ admin, page, pageName, click }) {
         image={pageName}
       >
         <div className=" bg-secondary-1 w-full pt-20 sm:pt-0">
-          <div className="flex flex-row justify-center">
+          <div className="flex flex-row justify-center relative z-40">
             <div className=" text-justify py-8 px-4">
               <a onClick={click} href="#linkForm">
                 <h3
@@ -163,7 +163,7 @@ export default function Career({ admin, page, pageName, click }) {
         </div>
 */}
         <section className="bg-secondary-1 z-20 pt-12 ">
-          <div className="pt-12 flex flex-col px-5 text-center items-center justify-center ">
+          <div className="pt-12 flex flex-col px-5 text-center items-center justify-center relative z-40 ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
             <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">

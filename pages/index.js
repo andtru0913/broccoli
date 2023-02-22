@@ -17,7 +17,6 @@ import ThemedImage from "../components/themedImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import Link from "next/link";
 export const getStaticProps = async () => {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_KEY}`;
   const data = await fetch(url);

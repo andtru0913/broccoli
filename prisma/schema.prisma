@@ -60,12 +60,19 @@ model Page {
 }
 
 model Card {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String?
-  page        Page    @relation(fields: [pageID], references: [id])
-  pageID      String  @db.ObjectId
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String?
+  date          String?
+  requirements  String?
+  location      String?
+  contact       String?
+  page          Page    @relation(fields: [pageID], references: [id])
+  pageID        String  @db.ObjectId
+  
 }
+
+
 
 model Posts {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId

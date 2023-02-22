@@ -1,7 +1,14 @@
 import Image from "next/image";
 import { GrFormDown, GrFormUp } from "react-icons/gr";
 
-export default function reviewsSection ({ img_path, id, author, text, index, setIndex }) {
+export default function reviewsSection({
+  img_path,
+  id,
+  author,
+  text,
+  index,
+  setIndex,
+}) {
   const handleSetIndex = () => {
     index !== id ? setIndex(id) : setIndex(false);
   };
@@ -35,7 +42,7 @@ export default function reviewsSection ({ img_path, id, author, text, index, set
           <div
             className={`flex lg:hidden flex-row  cursor-pointer w-full transition-all duration-100 ease-in-out  my-2 hover:border-none
     ${
-      id % 2    
+      id % 2
         ? " bg-primary-1 hover:bg-primary-l1"
         : "bg-secondary-1 hover:bg-secondary-d1"
     }  shadow-lg shadow-shadow`}

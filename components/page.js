@@ -19,6 +19,43 @@ const Page = ({
   let admin = {};
   let numCards = page.cards.length;
   const popHide = "pop-hide";
+  const [inputFields, setInputFields] = useState([
+    {
+      rubrik: "",
+      text: "",
+    },
+  ]);
+
+  const addInputField = () => {
+    setInputFields([
+      ...inputFields,
+      {
+        rubrik: "",
+        text: "",
+      },
+    ]);
+  };
+  const removeInputFields = (index) => {
+    const rows = [...inputFields];
+    rows.splice(index, 1);
+    setInputFields(rows);
+  };
+  const handleSelect = (index, evnt) => {
+    const { name, value } = evnt.target;
+
+    const list = [...inputFields];
+    list[index][name] = value;
+
+    setInputFields(list);
+  };
+  const handleChange = (index, evnt) => {
+    const { name, value } = evnt.target;
+
+    const list = [...inputFields];
+    list[index][name] = value;
+
+    setInputFields(list);
+  };
   if (authentication) {
     numCards += 1;
     const XMark = () => {
@@ -49,7 +86,6 @@ const Page = ({
       ),
       button: (
         <Card
-          type={"admin"}
           title="Nytt Kort"
           click={function () {
             document.getElementById("popup").classList.remove(popHide);
@@ -109,6 +145,60 @@ const Page = ({
               </div>
               <div className="flex flex-col gap-2 w-full ">
                 <form action="../../api/admin/modifyCard" method="POST">
+                  {inputFields.map((data, index) => {
+                    const { rub, text } = data;
+
+                    return (
+                      <div>
+                        <div className="form-group flex flex-row gap-4">
+                          <select
+                            defaultValue={"choose"}
+                            className="rubrik"
+                            name="rubrik"
+                            id="rubrik"
+                            aria-label="Floating label select example"
+                            onChange={(evnt) => handleSelect(index, evnt)}
+                          >
+                            <option value="choose" disabled>
+                              -- Select Type --
+                            </option>
+                            <option value="description">Beskrivning</option>
+                            <option value="date">Datum</option>
+                            <option value="requirements">Krav</option>
+                            <option value="location">Plats</option>
+                            <option value="contact">Kontakt</option>
+                            {rub}
+                          </select>
+
+                          <textarea
+                            className="text form-control  p-2 rounded"
+                            type="text"
+                            onChange={(evnt) => handleChange(index, evnt)}
+                            value={text}
+                            name="text"
+                            placeholder={data.rubrik}
+                          />
+                          <div className="">
+                            <button
+                              className="text-black px-4 py-2  bg-red-400 rounded-lg hover:bg-red-600"
+                              onClick={removeInputFields}
+                            >
+                              x
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <label className="text-base pt-4 pb-1" htmlFor="first">
+                    Lägg till fält
+                  </label>
+                  <div
+                    onClick={addInputField}
+                    className="cursor-pointer flex justify-center shadow btn btn-empty w-full text-xl"
+                  >
+                    +
+                  </div>
                   <div className="flex flex-col gap-2 py-2">
                     <input className="id p-2" type="hidden" name="id" />
                     <input
@@ -234,8 +324,8 @@ const Page = ({
       {admin.modifyCard}
       {admin.modifyPage}
       {admin.editPage}
-      <section className="bg-secondary-1 relative">
-        <div className="relative h-[48rem] lg:h-screen  ">
+      <section className="bg-secondary-1 relative ">
+        <div className="relative  h-[48rem] lg:h-screen  ">
           <svg
             className="fill-secondary-l1 absolute z-0 right-0 -top-5 h-auto lg:w-2/3  "
             width="818"
@@ -246,9 +336,8 @@ const Page = ({
           >
             <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
           </svg>
-
           <div className="">
-            <div className="absolute grid grid-flow-row sm:grid-flow-col md:w-full top-[25%] md:top-36 lg:top-[30%]   z-10  pt-12 p-4 md:p-12">
+            <div className="absolute grid grid-flow-row sm:grid-flow-col md:w-full top-[25%] md:top-36 lg:top-[30%]   pt-12 p-4 md:p-12">
               <div className=" flex flex-col gap-8  text-center md:text-left text-color-base dark:text-color-base">
                 <h1 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
                   {page.title}
@@ -275,11 +364,11 @@ const Page = ({
           </div>
         </div>
       </section>
-      <div className="z-20">{children}</div>
+      <div className="">{children}</div>
 
-      <section className="bg-secondary-d1 z-30 ">
+      <section className="relative bg-secondary-d1 ">
         {numCards > 0 ? (
-          <div className=" flex flex-col gap-8  text-center  text-color-base dark:text-color-base">
+          <div className=" z-10 flex flex-col gap-8  text-center  text-color-base dark:text-color-base">
             <h2 className="pt-8  uppercase  "> Tidigare {page.title}</h2>
 
             <div className="grid grid-flow-col justify-items-center gap-4 overflow-x-auto px-4 md:px-20 pb-8 ">
@@ -291,6 +380,7 @@ const Page = ({
                     id={card.id}
                     title={card.title}
                     text={card.description}
+                    fields={inputFields}
                     auth={authentication}
                     click={function () {
                       if (authentication) {
@@ -306,6 +396,7 @@ const Page = ({
                         modifyCard.getElementsByClassName(
                           "description"
                         )[0].value = card.description;
+
                         modifyCard.classList.remove(popHide);
                       }
                     }}
