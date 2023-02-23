@@ -28,7 +28,6 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      response: response,
       feed: feed,
       genderCount: genderCount,
     },
@@ -65,10 +64,6 @@ export default function Home({ feed, genderCount }) {
     ],
   };
   const insta_images = feed.data;
-
-  process.env.INSTAGRAM_KEY = response.access_token;
-  const type = respone.token_type;
-  const expire = response.expires_in;
 
   useEffect(() => {
     AOS.init({ duration: 2500 });
