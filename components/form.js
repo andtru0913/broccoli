@@ -1,8 +1,10 @@
-export default function Form({ title }) {
+export default function Form({ title, pagetitle, redirect }) {
   return (
     <>
       <div className="  flex flex-col ">
         <div id="linkForm" className=" w-full  md:p-12">
+          <input type={"hidden"} name={"pagetitle"} value={pagetitle} />
+          <input type={"hidden"} name={"redirect"} value={redirect} />
           {/**title */}
 
           <div className="relative flex  flex-row ">
@@ -81,7 +83,6 @@ export default function Form({ title }) {
               </label>
               <textarea
                 className=" text-sm p-2 border  border-slate-900  appearance-none leading-tight text-wrap focus:border-dashed hover:border-dashed"
-                type="text"
                 id="freetext"
                 name="freetext"
                 placeholder="Berätta något om dig själv! :)"
@@ -96,36 +97,12 @@ export default function Form({ title }) {
               <label className="text-base pb-1" htmlFor="first">
                 Infoga fil (CV och/eller personligt brev)
               </label>
-              <input style={{ display: "none" }} id="base64" name="base64" />
-
               <input
                 className="form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
                 type="file"
                 id="formFile"
                 name="file"
-                onChange={async function () {
-                  let submit = document.getElementById("formSubmit");
-                  submit.disabled = true;
-                  const convertBase64 = (file) => {
-                    return new Promise((resolve, reject) => {
-                      const fileReader = new FileReader();
-                      fileReader.readAsDataURL(file);
-
-                      fileReader.onload = () => {
-                        resolve(fileReader.result);
-                      };
-
-                      fileReader.onerror = (error) => {
-                        reject(error);
-                      };
-                    });
-                  };
-                  const f = document.querySelector("#formFile").files[0];
-                  document.getElementById("base64").value = await convertBase64(
-                    f
-                  );
-                  submit.disabled = false;
-                }}
+                multiple={true}
               />
             </div>
           </div>

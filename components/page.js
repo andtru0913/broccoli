@@ -13,7 +13,6 @@ const Page = ({
   redirect,
   formTitle,
   children,
-  image,
 }) => {
   let admin = {};
   let numCards = page.cards.length;
@@ -324,8 +323,8 @@ const Page = ({
               <path d="M332.895 622.768C268.046 638.899 -58.8563 865.828 -61 499.602L-32.1784 0C1.76301 21.9736 198.394 124.901 272.85 138.778C314.663 146.572 480.109 157.86 525.039 211.637C577.451 274.371 752.637 233.417 827.665 281.026C902.694 328.636 898.706 408.721 885.308 454.499C871.91 500.278 862.598 576.219 803.647 603.686C756.486 625.66 666.745 589.808 558.664 589.808C450.583 589.808 397.743 606.638 332.895 622.768Z" />
             </svg>
           </div>
-          <form method="POST" action="./api/send_email">
-            <Form title={formTitle} />
+          <form method="POST" action="./api/send_email" encType={"multipart/form-data"}>
+            <Form title={formTitle} pagetitle={page.title} redirect={redirect} />
           </form>
         </div>
       </section>
