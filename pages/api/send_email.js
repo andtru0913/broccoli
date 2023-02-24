@@ -58,7 +58,7 @@ export default async function handler(req, res) {
                 (err, _) => {
                     if (!!err) {throw Error}
                 })
-            res.redirect(302, `../${fields.redirect}`);
+            res.redirect(302, `${fields.redirect}`);
             } catch (e) {
                 res.status(500).send("Something went wrong, mail not sent");
             }
