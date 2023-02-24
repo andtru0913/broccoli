@@ -392,7 +392,7 @@ export async function createCard(
 }
 
 export async function getPage(id) {
-  return await prisma.page.findMany({
+  let result = await prisma.page.findMany({
     where: {
       id: id,
     },
@@ -403,6 +403,19 @@ export async function getPage(id) {
       cards: true,
     },
   });
+  result[0].cards.map((data) => {
+    data.startdate = new Date(data.startdate).toLocaleString("default", {
+      year: "numeric",
+      day: "numeric",
+      month: "long",
+    });
+    data.enddate = new Date(data.enddate).toLocaleString("default", {
+      year: "numeric",
+      day: "numeric",
+      month: "long",
+    });
+  });
+  return result;
 }
 
 export async function deleteCard(id) {
@@ -949,7 +962,12 @@ export async function getNotifications(userid) {
           text: true,
           startDate: true,
           endDate: true,
-          author: true,
+          author: {
+            select: {
+              firstname: true,
+              lastname: true
+            }
+          },
         },
       },
     },
