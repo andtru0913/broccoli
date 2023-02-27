@@ -77,33 +77,6 @@ export default function Career({ admin, pagestring, pageName, click }) {
         formTitle="SPONTANANSÖKAN"
         image={pageName}
       >
-        <div className=" bg-secondary-1 w-full pt-20 sm:pt-0">
-          <div className="flex flex-row justify-center relative z-40">
-            <div className=" text-justify py-8 px-4">
-              <a onClick={click} href="#linkForm">
-                <h3
-                  className="uppercase font-bold pb-5 pt-8 mb:pt-0 md:h1"
-                  data-aos="fade-right"
-                  data-aos-once="true"
-                >
-                  Spontanansökan
-                </h3>
-                <p
-                  className="max-w-readable py-2"
-                  data-aos="fade-right"
-                  data-aos-once="true"
-                  data-aos-delay="500"
-                >
-                  Om du är intresserad av att arbeta som ingenjör hos oss och
-                  har en utbildning inom Elektronik, Data, IT, Mekatronik eller
-                  Teknisk Fysik så är du välkommen att skicka ditt CV samt några
-                  rader om dig själv.
-                </p>
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/*
 
 <div id="trigger-zoom" className="bg-secondary-l1 ">
@@ -168,7 +141,7 @@ export default function Career({ admin, pagestring, pageName, click }) {
           <div className="pt-12 flex flex-col px-5 text-center items-center justify-center relative z-40 ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
-            <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
+            <div className=" grid md:grid-cols-5  w-screen justify-center gap-2 ">
               {data.map((data, i) => {
                 return (
                   <div

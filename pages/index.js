@@ -80,9 +80,10 @@ export default function Home({ feed, genderCount }) {
               alt="Siluette of Gothenburg"
             />
           </div>
+          <div className="backdrop-blur-sm w-screen h-screen absolute"></div>
 
-          <div className="flex flex-col w-screen h-screen ">
-            <div className="fixed top-1/2 flex justify-end p-16 md:pr-24 z-0 right-0 ">
+          <div className="flex flex-col w-screen h-screen z-10">
+            <div className="fixed bottom-52  flex justify-end p-16 md:pr-24 z-0 right-0 ">
               <Image
                 height={200}
                 width={700}
@@ -112,8 +113,7 @@ export default function Home({ feed, genderCount }) {
               <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
                 <div className=" lg:max-w-readable flex justify-center pb-8 z-20  ">
                   <h2 className="text-center font-bold uppercase ">
-                    Hos broccoli jobbar ingenjörer med olika inriktningar,
-                    främst inom:
+                    Hos broccoli jobbar ingenjörer med olika inriktningar
                   </h2>
                 </div>
                 <div className="flex flex-row flex-wrap flex-auto justify-center gap:2 z-20">
@@ -345,11 +345,11 @@ export default function Home({ feed, genderCount }) {
               </h1>
             </div>
 
-            <div className="relative py-9 flex flex-1 gap-10 align-middle justify-center flex-col lg:flex lg:flex-row md:grid md:grid-cols-2 z-20">
+            <div className="relative py-9 flex flex-1 gap-10 align-middle justify-center  items-center flex-col lg:flex lg:flex-row md:grid md:grid-cols-2 z-20">
               {insta_images &&
                 insta_images.slice(0, 4).map((image) => (
                   <div
-                    className=" relative  shadow-lg shadow-skin-shadow p-0 m-0 w-[400px] h-[400px]"
+                    className=" relative  shadow-lg shadow-skin-shadow p-0 m-0 w-96 h-96 lg:w-[400px] lg:h-[400px]"
                     key={image.id}
                   >
                     <a href={image.permalink}>
