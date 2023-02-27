@@ -7,7 +7,14 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const Page = ({ authentication, page, redirect, buttonName, children }) => {
+const Page = ({
+  authentication,
+  page,
+  redirect,
+  buttonName,
+  children,
+  image,
+}) => {
   let admin = {};
   let numCards = page.cards.length;
   const popHide = "pop-hide";
