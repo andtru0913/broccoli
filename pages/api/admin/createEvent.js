@@ -1,6 +1,6 @@
 import { SMTPClient } from "emailjs";
 import {checkAdmin} from "../../../tokens";
-import { createEvent } from "../../../Database";
+import {createEvent, getAllUsers} from "../../../Database";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -8,12 +8,13 @@ export default async function handler(req, res) {
   }
   try {
     if (await checkAdmin(req.cookies["token"])) {
+      const allUsers = (await getAllUsers()).map(u => u.email)
       let end = new Date(req.body.end);
       let start = new Date(req.body.start);
       if (req.body.title !== "" && start <= end) {
 
         const client = new SMTPClient({
-          user: "anders.truong@broccoli.se",
+          user: "notiser@broccoli.se",
           password: process.env.EMAIL_PASSWORD,
           host: "smtp01.levonline.com",
           tsl: true,
@@ -38,7 +39,7 @@ export default async function handler(req, res) {
             ],
             title: req.body.title,
             description: req.body.description,
-            organizer: { name: "Broccoli", email: "anders.truong@broccoli.se" },
+            organizer: { name: "Broccoli", email: "notiser@broccoli.se" },
           },
           (err, value) => {
             if (!err) {
@@ -51,8 +52,8 @@ export default async function handler(req, res) {
                     day: "numeric",
                     month: "long",
                   })}\n${req.body.description}`,
-                  from: "anders.truong@broccoli.se",
-                  to: "andtru0913@gmail.com",
+                  from: "notiser@broccoli.se",
+                  to: allUsers,
                   subject: req.body.title,
                   attachment: [
                     {
