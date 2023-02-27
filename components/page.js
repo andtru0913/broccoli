@@ -7,13 +7,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const Page = ({
-  authentication,
-  page,
-  redirect,
-  buttonName,
-  children,
-}) => {
+const Page = ({ authentication, page, redirect, buttonName, children }) => {
   let admin = {};
   let numCards = page.cards.length;
   const popHide = "pop-hide";
@@ -349,15 +343,15 @@ const Page = ({
                   </a>
                 </div>
               </div>
-              <div className="">
-                <Image
-                  alt={""}
-                  height={"600"}
-                  width={"600"}
-                  className=" "
-                  src="/images/ucon.png"
-                ></Image>
-              </div>
+            </div>
+            <div className="absolute top-20 right-10">
+              <Image
+                alt={""}
+                height={"800"}
+                width={"1000"}
+                className=" "
+                src={`/images/${image}.svg`}
+              ></Image>
             </div>
           </div>
         </div>
