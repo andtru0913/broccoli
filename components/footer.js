@@ -61,10 +61,7 @@ const Footer = () => {
                     <p className="pl-2  ">031-151480</p>
                   </div>
                 </a>
-                <a
-                  className="hover:text-muted"
-                  href="mailto:engineering@broccoli.se"
-                >
+                <a className="hover:text-muted">
                   <div className="flex flex-row text-sm  hover:text-secondary-d2 hover:fill-secondary-d2  justify-center  align-middle  py-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -80,31 +77,12 @@ const Footer = () => {
                         d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                       />
                     </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="180"
-                      height="35"
-                      overflow="hidden"
-                    >
-                      <defs>
-                        <clipPath id="clip0">
-                          <rect x="217" y="164" width="198" height="35" />
-                        </clipPath>
-                      </defs>
-                      <g
-                        clip-path="url(#clip0)"
-                        transform="translate(-217 -168)"
-                      >
-                        <text
-                          font-family="Arial,Arial_MSFontService,sans-serif"
-                          font-weight="400"
-                          font-size="14"
-                          transform="translate(227.446 185)"
-                        >
-                          engineering@broccoli.se
-                        </text>
-                      </g>
-                    </svg>
+                    <p className="pl-2">
+                      <span className="hidden" aria-hidden="true">
+                        PLEASE GO AWAY!
+                      </span>
+                      engineering@{/**sdfjsdhfkjypcs */}broccoli.se
+                    </p>
                   </div>
                 </a>
                 <a

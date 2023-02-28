@@ -2,7 +2,6 @@ import Layout from "../components/layout/layout";
 import Image from "next/image";
 
 export default function Contact() {
-  const mail = "engineering@broccoli.se";
   return (
     <Layout>
       <section className=" bg-secondary-1 text-center text-base overflow-hidden cursor-default">
@@ -59,7 +58,7 @@ export default function Contact() {
                     <h5 className=" ">031-151480</h5>
                   </div>
                 </a>
-                <a className="" href={`mailto:${mail}`}>
+                <a className="">
                   <div className=" hover:text-secondary-d1 hover:fill-secondary-d1 flex   flex-row gap-4 items-center flex-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -75,31 +74,14 @@ export default function Contact() {
                         d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                       />
                     </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="200"
-                      height="35"
-                      overflow="hidden"
-                    >
-                      <defs>
-                        <clipPath id="clip0">
-                          <rect x="217" y="164" width="198" height="35" />
-                        </clipPath>
-                      </defs>
-                      <g
-                        clip-path="url(#clip0)"
-                        transform="translate(-225 -164)"
-                      >
-                        <text
-                          font-family="Arial,Arial_MSFontService,sans-serif"
-                          font-weight="400"
-                          font-size="16"
-                          transform="translate(227.446 185)"
-                        >
-                          engineering@broccoli.se
-                        </text>
-                      </g>
-                    </svg>
+
+                    <p className="">
+                      engineering
+                      <span className="hidden" aria-hidden="true">
+                        PLEASE GO AWAY!
+                      </span>
+                      @{/**sdfjsdhfkjypcs */}broccoli.se
+                    </p>
                   </div>
                 </a>
                 <a className="" href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9">

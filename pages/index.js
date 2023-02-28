@@ -80,7 +80,6 @@ export default function Home({ feed, genderCount }) {
               alt="Siluette of Gothenburg"
             />
           </div>
-          <div className="backdrop-blur-sm w-screen h-screen absolute"></div>
 
           <div className="flex flex-col w-screen h-screen z-10">
             <div className="fixed bottom-52  flex justify-end p-16 md:pr-24 z-0 right-0 ">
@@ -442,9 +441,13 @@ export default function Home({ feed, genderCount }) {
                     </div>
                     <div className="shrink flex flex-col items-center md:items-start ">
                       <h3 className="pb-1">Kontakt</h3>
-                      <a href="mailto:engineering@broccoli.se">
-                        garden@broccoli.se
-                      </a>
+                      <p className="">
+                        <span className="hidden" aria-hidden="true">
+                          PLEASE GO AWAY!
+                        </span>
+                        garden@{/**sdfjsdhfkjypcs */}broccoli.se
+                      </p>
+
                       <h3 className="py-2 pt-7">Följ oss</h3>
                       <div className=" text-green-3 hover:text-opacity-40  ">
                         <a href="https://www.facebook.com/profile.php?id=100063900016888">
