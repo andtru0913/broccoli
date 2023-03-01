@@ -76,7 +76,7 @@ const data = [
         size={30}
       />
     ),
-    year: "2007",
+    year: "2008",
     text: "Lågkonjunktur men vi håller nollan, inga uppsägningar",
   },
   {

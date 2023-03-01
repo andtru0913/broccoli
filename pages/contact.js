@@ -58,8 +58,8 @@ export default function Contact() {
                     <h5 className=" ">031-151480</h5>
                   </div>
                 </a>
-                <a className="" href="mailto:engineering@broccoli.se">
-                  <div className=" hover:text-secondary-d1  flex   flex-row gap-4 items-center flex-auto">
+                <a className="">
+                  <div className=" hover:text-secondary-d1 hover:fill-secondary-d1 flex   flex-row gap-4 items-center flex-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -75,7 +75,13 @@ export default function Contact() {
                       />
                     </svg>
 
-                    <h5 className="">engineering@broccoli.se</h5>
+                    <p className="">
+                      engineering
+                      <span className="hidden" aria-hidden="true">
+                        PLEASE GO AWAY!
+                      </span>
+                      @{/**sdfjsdhfkjypcs */}broccoli.se
+                    </p>
                   </div>
                 </a>
                 <a className="" href="https://goo.gl/maps/p9sa1f82ZyN3FdAH9">

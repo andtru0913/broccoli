@@ -77,33 +77,6 @@ export default function Career({ admin, pageString, pageName }) {
         buttonName="Skicka ansökan"
         image={pageName}
       >
-        <div className=" bg-secondary-1 w-full pt-20 sm:pt-0">
-          <div className="flex flex-row justify-center relative z-40">
-            <div className=" text-justify py-8 px-4">
-              <a href="#linkForm">
-                <h3
-                  className="uppercase font-bold pb-5 pt-8 mb:pt-0 md:h1"
-                  data-aos="fade-right"
-                  data-aos-once="true"
-                >
-                  Spontanansökan
-                </h3>
-                <p
-                  className="max-w-readable py-2"
-                  data-aos="fade-right"
-                  data-aos-once="true"
-                  data-aos-delay="500"
-                >
-                  Om du är intresserad av att arbeta som ingenjör hos oss och
-                  har en utbildning inom Elektronik, Data, IT, Mekatronik eller
-                  Teknisk Fysik så är du välkommen att skicka ditt CV samt några
-                  rader om dig själv.
-                </p>
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/*
 
 <div id="trigger-zoom" className="bg-secondary-l1 ">
@@ -168,7 +141,7 @@ export default function Career({ admin, pageString, pageName }) {
           <div className="pt-12 flex flex-col px-5 text-center items-center justify-center relative z-40 ">
             <h2 className="font-bold uppercase pb-5">Förmåner hos broccoli</h2>
 
-            <div className=" grid md:grid-cols-5 w-screen justify-center gap-0 ">
+            <div className=" grid md:grid-cols-5  w-screen justify-center gap-2 ">
               {data.map((data, i) => {
                 return (
                   <div
@@ -186,7 +159,11 @@ export default function Career({ admin, pageString, pageName }) {
           </div>
         </section>
       </Page>
-      <form method="POST" action="./api/send_email" encType={"multipart/form-data"}>
+      <form
+        method="POST"
+        action="./api/send_email"
+        encType={"multipart/form-data"}
+      >
         <div className="  flex flex-col ">
           <div id="linkForm" className=" w-full  md:p-12">
             <input type={"hidden"} name={"pagetitle"} value={pageName} />
@@ -208,12 +185,12 @@ export default function Career({ admin, pageString, pageName }) {
                   Förnamn
                 </label>
                 <input
-                    className=" text-sm p-2 border border-slate-900 appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
-                    type="text"
-                    id="first"
-                    name="first"
-                    placeholder="Förnamn..."
-                    required
+                  className=" text-sm p-2 border border-slate-900 appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
+                  type="text"
+                  id="first"
+                  name="first"
+                  placeholder="Förnamn..."
+                  required
                 />
               </div>
               <div className="flex flex-1 flex-col p-2">
@@ -221,13 +198,13 @@ export default function Career({ admin, pageString, pageName }) {
                   Efternamn
                 </label>
                 <input
-                    className="text-sm p-2 border  border-slate-900 appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
-                    autoComplete="on"
-                    type="text"
-                    id="last"
-                    name="last"
-                    placeholder="Efternamn..."
-                    required
+                  className="text-sm p-2 border  border-slate-900 appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
+                  autoComplete="on"
+                  type="text"
+                  id="last"
+                  name="last"
+                  placeholder="Efternamn..."
+                  required
                 />
               </div>
             </div>
@@ -238,12 +215,12 @@ export default function Career({ admin, pageString, pageName }) {
                   E-post
                 </label>
                 <input
-                    className=" text-sm p-2 border  border-slate-900 appearance-none  leading-tight focus:border-dashed hover:border-dashed "
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="example@mail.com "
-                    required
+                  className=" text-sm p-2 border  border-slate-900 appearance-none  leading-tight focus:border-dashed hover:border-dashed "
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="example@mail.com "
+                  required
                 />
               </div>
               <div className="flex flex-1 flex-col p-2">
@@ -251,12 +228,12 @@ export default function Career({ admin, pageString, pageName }) {
                   Telefonnummer
                 </label>
                 <input
-                    className=" text-sm p-2 border border-slate-900 aappearance-none  leading-tight focus:border-dashed hover:border-dashed"
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="07xxxxxxxx "
-                    required
+                  className=" text-sm p-2 border border-slate-900 aappearance-none  leading-tight focus:border-dashed hover:border-dashed"
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="07xxxxxxxx "
+                  required
                 />
               </div>
             </div>
@@ -268,10 +245,10 @@ export default function Career({ admin, pageString, pageName }) {
                   Egen text
                 </label>
                 <textarea
-                    className=" text-sm p-2 border  border-slate-900  appearance-none leading-tight text-wrap focus:border-dashed hover:border-dashed"
-                    id="freetext"
-                    name="freetext"
-                    placeholder="Berätta något om dig själv! :)"
+                  className=" text-sm p-2 border  border-slate-900  appearance-none leading-tight text-wrap focus:border-dashed hover:border-dashed"
+                  id="freetext"
+                  name="freetext"
+                  placeholder="Berätta något om dig själv! :)"
                 />
               </div>
             </div>
@@ -284,11 +261,11 @@ export default function Career({ admin, pageString, pageName }) {
                   Infoga fil (CV och/eller personligt brev)
                 </label>
                 <input
-                    className="form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
-                    type="file"
-                    id="formFile"
-                    name="file"
-                    multiple={true}
+                  className="form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
+                  type="file"
+                  id="formFile"
+                  name="file"
+                  multiple={true}
                 />
               </div>
             </div>
@@ -307,9 +284,9 @@ export default function Career({ admin, pageString, pageName }) {
             <div className="relative flex justify-end flex-row z-20   ">
               <div className=" p-2 ">
                 <button
-                    id="formSubmit"
-                    type="submit"
-                    className=" btn btn-primary "
+                  id="formSubmit"
+                  type="submit"
+                  className=" btn btn-primary "
                 >
                   Skicka in
                 </button>
