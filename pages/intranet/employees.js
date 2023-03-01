@@ -15,18 +15,20 @@ export async function getServerSideProps(context) {
         destination: "/intranet",
       },
       props: {},
-    }
+    };
+  } else {
+    const [data, notifications] = await Promise.all([
+      getAllUsers(),
+      getNotifications(user.id),
+    ]);
+    return {
+      props: {
+        data: data,
+        admin: user.admin,
+        notifications: JSON.stringify(notifications),
+      },
+    };
   }
-    else {
-      const [data, notifications] = await Promise.all([getAllUsers(), getNotifications(user.id)])
-      return {
-        props: {
-          data: data,
-          admin: user.admin,
-          notifications: JSON.stringify(notifications),
-        },
-      }
-    }
 }
 
 //const { theme, setTheme } = useTheme();
@@ -49,7 +51,7 @@ export default function employee({ data, admin, notifications }) {
         </div>
         <div className="layout flex flex-row py-4 ">
           <svg
-            className="  visible absolute  fill-primary-l1 top-0 left-0 z-0 h-auto md:w-full w-11/12 "
+            className="  visible absolute  fill-primary-l2 top-0 left-0 z-0 h-auto md:w-full w-11/12 "
             width="950"
             height="350"
             viewBox="0 0 1011 497"

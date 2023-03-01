@@ -114,7 +114,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <div className="relative rounded md:col-span-2 z-20 ">
+          <div className="relative rounded md:col-span-2 z-20 px-5">
             <div className="mapouter relative text-right ">
               <div className="gmap_canvas overflow-hidden bg-none  ">
                 <iframe

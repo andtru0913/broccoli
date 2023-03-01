@@ -165,7 +165,7 @@ export default function Career({ admin, pageString, pageName }) {
         encType={"multipart/form-data"}
       >
         <div className="  flex flex-col ">
-          <div id="linkForm" className=" w-full  md:p-12">
+          <div id="linkForm" className=" w-full bg-secondary-1 md:p-12">
             <input type={"hidden"} name={"pagetitle"} value={pageName} />
             <input type={"hidden"} name={"redirect"} value={"../posts"} />
             {/**title */}
