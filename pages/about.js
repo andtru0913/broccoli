@@ -204,7 +204,7 @@ export default function About({ title, intro, year, timelinedesc }) {
         </div>
 
         <section className="bg-secondary-1 ">
-          <div className=" flex py-12 md:py-36 flex-col items-center bg-secondary-1">
+          <div className="flex py-12 md:py-36 flex-col items-center bg-secondary-1">
             <h2 className="uppercase pb-12  font-bold z-10">
               {title ?? "Våra områden"}
             </h2>

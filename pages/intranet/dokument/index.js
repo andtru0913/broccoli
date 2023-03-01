@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            admin: user.admin,
+            user: user,
             news: JSON.stringify(news),
             notifications: JSON.stringify(notifications),
         },
