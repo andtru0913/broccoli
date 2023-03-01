@@ -45,6 +45,7 @@ export async function getServerSideProps(context) {
 
 export default function Home({ user, notifications, relevantNotifs, groups, allUsers }) {
     const list = JSON.parse(notifications)
+
     const lunchgroups = JSON.parse(groups)
     useEffect(() => {
             document.getElementById("createSearch").addEventListener("keyup", function(e) {

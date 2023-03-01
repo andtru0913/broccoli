@@ -6,7 +6,7 @@ const Reviews = () => {
   const data = [
     {
       id: 1,
-      img_path: "/images/mthersthol1.JPG",
+      img_path: "/images/mthersthol1.jpg",
       author: "Marcus ",
       text: "Här finns goda utvecklings- och karriärmöjligheter! Ledningen ser till mig som individ. Broccoli har korta beslutsvägar och högt i tak.",
     },

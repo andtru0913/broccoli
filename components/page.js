@@ -324,7 +324,7 @@ const Page = ({
       {admin.modifyPage}
       {admin.editPage}
       <section className="bg-secondary-1 relative ">
-        <div className="relative  h-[48rem] lg:h-screen  ">
+        <div className="relative  h-[48rem] lg:h-screen portrait:h-full">
           <svg
             className="fill-secondary-l1 absolute z-0 right-0 -top-5 h-auto lg:w-2/3  "
             width="818"
@@ -335,8 +335,8 @@ const Page = ({
           >
             <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
           </svg>
-          <div className="">
-            <div className="absolute grid grid-flow-row sm:grid-flow-col md:w-full top-[25%] md:top-36 lg:top-[30%]   pt-12 p-4 md:p-12">
+          <div className="flex flex-col lg:flex-row">
+            <div className=" z-20 grid  grid-flow-col    pt-16 p-4 md:p-12 md:pt-32 lg:pt-48 xl:pt-60">
               <div className=" flex flex-col gap-8  text-center md:text-left text-color-base dark:text-color-base">
                 <h1 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
                   {page.title}
@@ -351,10 +351,10 @@ const Page = ({
                 </div>
               </div>
             </div>
-            <div className="absolute top-20 right-10">
+            <div className="  w-2/3 place-self-center  ">
               <Image
                 alt={""}
-                height={"800"}
+                height={"600"}
                 width={"1000"}
                 className=" "
                 src={`/images/${image}.svg`}

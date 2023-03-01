@@ -69,11 +69,7 @@ export default function Posts({ admin, pageString, pageName }) {
           </div>
         </div>
       </Page>
-      <form
-        method="POST"
-        action="./api/send_email"
-        encType={"multipart/form-data"}
-      >
+      <form method="POST" action="./api/send_email" encType={"multipart/form-data"}>
         <div className="  flex flex-col ">
           <div id="linkForm" className=" w-full  md:p-12">
             <input type={"hidden"} name={"pagetitle"} value={pageName} />
