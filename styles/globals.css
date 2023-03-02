@@ -241,6 +241,14 @@
   .window-pop {
     @apply z-50 fixed top-0 text-base h-screen md:top-1/4 flex flex-col w-full md:items-center  md:h-auto;
   }
+  .MuiTimelineItem-root {
+    padding: 0px;
+  }
+  @media only screen and (max-width: 390px) {
+    .MuiTimelineItem-root::before {
+      padding: 0px;
+    }
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     .animated-underline {

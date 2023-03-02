@@ -219,13 +219,17 @@ const TimelineComponent = () => {
       </div>
       <div
         className={
-          " md:hidden layout text-skin-inverted py-12  flex justify-start  -ml-10"
+          " md:hidden layout text-skin-inverted py-12  flex justify-start "
         }
       >
-        <Timeline className="" position="right">
+        <Timeline className="w-full p-0  " position="right">
           {data.map((item, i) => (
-            <TimelineItem className="ml-1" key={i}>
-              <TimelineSeparator className="  mx-6">
+            <TimelineItem
+              className="m-0"
+              key={i}
+              sx={{ "& . MuiTimelineItem-root": { padding: "0px" } }}
+            >
+              <TimelineSeparator className=" mx-0 xs:mx-6">
                 <TimelineDot
                   variant="outlined"
                   color="success"
@@ -233,13 +237,13 @@ const TimelineComponent = () => {
                 >
                   {item.icon}
                 </TimelineDot>
-                <TimelineConnector className="bg-black ml-1 h-52 left-2" />
+                <TimelineConnector className="bg-black  h-52 left-2" />
               </TimelineSeparator>
               <TimelineContent>
                 <div className="flex flex-col justify-center my-5  ">
                   <div
                     data-aos="fade-up"
-                    className=" flex flex-col mt-7 h-64 w-48 text-center items-center border-2  border-dashed border-secondary-d1 "
+                    className=" flex flex-col mt-7 h-64 w-44 xs:w-48  text-center items-center border-2  border-dashed border-secondary-d1 "
                   >
                     <h4 className="font-extrabold my-4 px-3 border-b-2 border-primary-d1 ">
                       {item.year}
