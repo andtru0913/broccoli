@@ -1,11 +1,10 @@
-import Card from "./card";
 import Image from "next/image";
 import { HiXMark } from "react-icons/hi2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { useEffect } from "react";
-import { useState } from "react";
+import Cardsection from "./cardsection";
 
 const Page = ({
   authentication,
@@ -13,13 +12,12 @@ const Page = ({
   redirect,
   buttonName,
   children,
+    cardTitle
 }) => {
   let admin = {};
-  let numCards = page.cards.length;
   const popHide = "pop-hide";
 
   if (authentication) {
-    numCards += 1;
     const XMark = () => {
       return (
         <HiXMark
@@ -45,15 +43,6 @@ const Page = ({
             document.getElementById("modifyPage").classList.add(popHide);
           }}
         ></div>
-      ),
-      button: (
-        <Card
-          title="Nytt Kort"
-          click={function () {
-            document.getElementById("popup").classList.remove(popHide);
-            document.getElementById("createCard").classList.remove(popHide);
-          }}
-        />
       ),
       createCard: (
         <div className="flex justify-center">
@@ -314,7 +303,6 @@ const Page = ({
   useEffect(() => {
     AOS.init({ duration: 2500 });
   }, []);
-  const [showModal, setShowModal] = useState(false);
   return (
     <>
       {admin.background}
@@ -363,73 +351,8 @@ const Page = ({
         </div>
       </section>
       <div className="">{children}</div>
-
       <section className="relative bg-secondary-d1 ">
-        {numCards > 0 ? (
-          <div className=" z-10 flex flex-col gap-8  text-center  text-color-base dark:text-color-base">
-            <h2 className="pt-8  uppercase  "> Tidigare {page.title}</h2>
-
-            <div className="grid grid-flow-col justify-items-center gap-4 overflow-x-auto px-4 md:px-20 pb-8 ">
-              {page.cards.map((card) => (
-                <>
-                  <Card
-                    type={"exjobb"}
-                    key={card.id}
-                    id={card.id}
-                    title={card.title}
-                    text={card.description}
-                    requirements={card.requirements}
-                    location={card.location}
-                    startdate={card.startdate}
-                    enddate={card.enddate}
-                    contact={card.contact}
-                    exjobbare={card.exjobbare}
-                    auth={authentication}
-                    click={function () {
-                      if (authentication) {
-                        let background = document.getElementById("popup");
-                        let modifyCard = document.getElementById("modifyCard");
-                        background.classList.remove(popHide);
-                        modifyCard.getElementsByClassName("id")[0].value =
-                          card.id;
-                        modifyCard.getElementsByClassName("id")[1].value =
-                          card.id;
-                        modifyCard.getElementsByClassName("title")[0].value =
-                          card.title;
-                        modifyCard.getElementsByClassName(
-                          "description"
-                        )[0].value = card.description;
-                        modifyCard.getElementsByClassName(
-                          "requirements"
-                        )[0].value = card.requirements;
-                        modifyCard.getElementsByClassName("location")[0].value =
-                          card.location;
-                        modifyCard.getElementsByClassName(
-                          "startdate"
-                        )[0].valueAsDate = new Date(card.startdate);
-                        modifyCard.getElementsByClassName(
-                          "enddate"
-                        )[0].valueAsDate = new Date(card.enddate);
-
-                        modifyCard.getElementsByClassName("contact")[0].value =
-                          card.contact;
-                        modifyCard.getElementsByClassName(
-                          "exjobbare"
-                        )[0].value = card.exjobbare;
-                        modifyCard.classList.remove(popHide);
-                      }
-                    }}
-                    setShowModal={setShowModal}
-                    showModal={showModal}
-                  />
-                </>
-              ))}
-              {admin.button}
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+        <Cardsection title={cardTitle} authentication={authentication} page={page}/>
         {/*    <div className="z-20 px-5 ">
           <div
             className={`grid md:grid-cols-${Math.min(
