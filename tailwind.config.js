@@ -127,6 +127,7 @@ module.exports = {
       screens: {
         // => @media (min-width: 640px) { ... }
         "dark-mode": { raw: "(prefers-color-scheme: dark)" },
+        xs: "390px",
       },
       fontSize: {
         "2xs": "0.75rem",

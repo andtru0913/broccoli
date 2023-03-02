@@ -351,10 +351,10 @@ const Page = ({
                 </div>
               </div>
             </div>
-            <div className="  w-2/3 place-self-center lg:py-20 ">
+            <div className="  w-2/3 place-self-center lg:py-20 portrait:w-full">
               <Image
                 alt={""}
-                height={"600"}
+                height={"800"}
                 width={"1000"}
                 className=" "
                 src={`/images/${image}.svg`}

@@ -95,9 +95,9 @@ export default function reviewsSection({
                 <h4 className="font-bold uppercase ">{author}</h4>
               </div>
             </div>
-            <div className="flex flex-row justify-between">
-              <p className=" p-2 px-6 pb-6 max-w-readable ml-20">{text}</p>
-              <div className="p-3 flex items-end">
+            <div className="flex flex-row justify-between w-full relative">
+              <p className=" p-2 px-6 pb-6 max-w-readable ">{text}</p>
+              <div className="absolute right-0 bottom-0 p-3 flex items-end">
                 <GrFormUp size={25} />
               </div>
             </div>

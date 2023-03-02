@@ -1,24 +1,20 @@
 const upcomingEvent = ({ date, title, description }) => {
   return (
-    <div className=" cursor-pointer hover:bg-primary-l2 bg-secondary-1 my-2  ">
-      <div className=" lex flex-1">
-        <div className="flex flex-col">
-          <div className="grid grid-cols-3 ">
-            <div className="grid pl-2  col-span-1 items-center ">
-              <div className=" flex flex-col ml-2 lg:flex-row ">
-                <h4 className=" uppercase px-2 font-bold">
-                  {date.split(" ")[0]}
-                </h4>
-                <h4 className=" uppercase font-bold">{date.split(" ")[1]}</h4>
-              </div>
+    <div className=" cursor-pointer   my-2 mx-2  flex justify-center md:justify-start">
+      <div className="flex flex-col bg-secondary-1 hover:bg-primary-1 w-full">
+        <div className="grid grid-cols-3 ">
+          <div className="grid  col-span-1  items-center justify-center text-center bg-secondary-d1/70">
+            <div className=" flex flex-col lg:flex-row gap-2">
+              <h4 className=" uppercase  font-bold">{date.split(" ")[0]}</h4>
+              <h4 className=" uppercase font-bold ">{date.split(" ")[1]}</h4>
             </div>
-            <div className=" grid col-span-2  items-center border-primary-d1 border-l-2 pl-5  ">
-              <div className="flex flex-col">
-                <h4 className="flex-row-reverse mt-3 uppercase font-bold ">
-                  {title}
-                </h4>
-                <p className="mb-3">{description}</p>
-              </div>
+          </div>
+          <div className=" grid col-span-2  items-center  px-5 py-5  ">
+            <div className="flex flex-1 flex-col">
+              <h4 className="flex-row-reverse  uppercase font-bold shrink max-w-fit">
+                {title}
+              </h4>
+              <p className="">{description}</p>
             </div>
           </div>
         </div>

@@ -50,7 +50,7 @@ export default function About({ title, intro, year, timelinedesc }) {
     <Layout>
       <main className="bg-secondary-1">
         <section className="bg-secondary-1 relative ">
-          <div className="relative h-[48rem] lg:h-screen pb-12 portrait:h-full ">
+          <div className="relative h-[48rem] lg:h-screen pb-5 md:pb-12 portrait:h-full ">
             <svg
               className="fill-secondary-l1 absolute z-0 right-0 md:left-0 -top-5 h-auto lg:w-2/3 rotate-180 "
               width="818"
@@ -71,17 +71,17 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <h1 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
                     Om oss
                   </h1>
-                  <h4 className=" font-small w-10/12 md:text-left lg:text-xl ">
+                  <h4 className=" font-small md:w-10/12 md:text-left lg:text-xl ">
                     Vi är ett Göteborgsbaserat konsultföretag med ca 50
                     anställda. Vårt kompetensområde sträcker sig från det
                     mekatroniska och ända upp i molnet.
                   </h4>
                 </div>
               </div>
-              <div className=" w-2/3 place-self-center lg:py-20  ">
+              <div className=" md:w-2/3 place-self-center lg:py-20  portrait:w-full">
                 <Image
                   alt={""}
-                  height={"600"}
+                  height={"800"}
                   width={"1000"}
                   className=" "
                   src="/images/about.svg"
@@ -172,11 +172,11 @@ export default function About({ title, intro, year, timelinedesc }) {
           </div>
           */}
         </section>
-        <div className=" bg-secondary-1 w-full pt-40 sm:pt-0">
+        <div className=" bg-secondary-1 w-full pt-5 md:pt-40 sm:pt-0">
           <div className="flex flex-row justify-center relative z-40">
-            <div className=" text-justify py-8 px-4">
+            <div className=" text-justify  px-4">
               <h3
-                className="uppercase font-bold pb-5 pt-8 mb:pt-0 md:h1"
+                className="uppercase font-bold pb-5  mb:pt-0 md:h1"
                 data-aos="fade-right"
                 data-aos-once="true"
               >
@@ -229,8 +229,8 @@ export default function About({ title, intro, year, timelinedesc }) {
                 <p className="md:text-center text-justify mx-6  max-w-readable">
                   Vi har inom automation- och energibranschen erfarenhet från
                   t.ex utveckling av värmepumpar, vätgasapplikationer och
-                  kommunikationsmoduler för ett antal olika
-                  kommunikationsprotokoll.
+                  kommunikations-moduler för ett antal olika
+                  kommunikations-protokoll.
                 </p>
               </div>
               <div className="relative bg-primary-l1  py-5  p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
@@ -290,8 +290,10 @@ export default function About({ title, intro, year, timelinedesc }) {
           >
             <path d="M421.826 160.477C471.755 126.93 678.13 -214.715 793.93 218.741L925.002 817.123C889.402 798.642 690.75 720.452 623.34 720.58C585.484 720.653 441.778 744.102 386.97 690.384C323.032 627.718 187.334 715.236 108.94 675.524C30.5467 635.813 8.99995 540.034 6.10496 482.81C3.20998 425.586 -12.535 333.532 28.8689 287.866C61.992 251.333 149.194 273.838 240.777 249.781C332.36 225.725 371.896 194.023 421.826 160.477Z" />
           </svg>
+          <div className="max-w-full">
+            <TimelineComponent />
+          </div>
 
-          <TimelineComponent />
           <div
             data-aos="fade-up"
             className="z-10 md:hidden mx-6 flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
@@ -332,7 +334,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <Image
                     className="w-40 h-40 relative lg:absolute"
                     alt="karlatornet"
-                    src="/images/vatten.JPG"
+                    src="/images/broklippt.JPG"
                     layout="fill"
                     objectFit="cover"
                   />
@@ -367,12 +369,12 @@ export default function About({ title, intro, year, timelinedesc }) {
             <div className=" md:hidden relative pt-12 flex flex-col h-full w-full">
               <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
                 <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] py-5 bg-secondary-1 ">
-                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start mx-5  p-4 lg:p-8 xl:p-12">
-                    <h4 className="font-bold uppercase mx-6 tracking-wider">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start   p-4 lg:p-8 xl:p-12">
+                    <h4 className="font-bold uppercase tracking-wider">
                       {title ?? "Vårt Kvalitetsarbete"}
                     </h4>
 
-                    <p className="p1 text-justify mx-6">
+                    <p className="p1 text-justify ">
                       {intro ??
                         "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
                     </p>
