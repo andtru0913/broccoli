@@ -38,6 +38,7 @@ export default function Exjobb({ admin, pagestring, pageName, click }) {
         page={page}
         image={pageName}
         redirect={pageName}
+        cardTitle={"Tidigare exjobb"}
         buttonName="Skicka ansökan"
       >
         <div className=" bg-secondary-1 w-full pt-40 sm:pt-0">

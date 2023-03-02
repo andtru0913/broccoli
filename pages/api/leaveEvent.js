@@ -1,15 +1,15 @@
 import {leaveEvent} from "../../Database";
-import {checkUser} from "../../tokens";
+import {checkUser, verify} from "../../tokens";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
         res.redirect(302, "../intranet");
     }
-    let user = JSON.parse(checkUser(req.cookies['token']) || null)
+    const [user, user_id] = await Promise.all([JSON.parse(await checkUser(req.cookies['token'])), verify(JSON.parse(req.cookies['token']))])
     try {
         if (!!req.body.eventid) {
             if(!!user) {
-                await leaveEvent(user.id, req.body.eventid);
+                await leaveEvent(user_id, req.body.eventid);
             } else {
                 res.status(400).send("Unauthorized")
             }

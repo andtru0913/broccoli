@@ -1,14 +1,19 @@
 import { joinEvent } from "../../Database";
-import {checkUser} from "../../tokens";
+import {checkUser, verify} from "../../tokens";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.redirect(302, "../intranet");
   }
-  let user = JSON.parse(checkUser(req.cookies['token']) || null)
+  const [user, user_id] = await Promise.all([JSON.parse(await checkUser(req.cookies['token'])), verify(JSON.parse(req.cookies['token']))])
   try {
     if (!!req.body.eventid) {
       if(!!user) {
-        await joinEvent(user.id, req.body.eventid);
+        await joinEvent(user_id, req.body.eventid);
+        if(!!req.body.redirect) {
+          res.redirect(302, req.body.redirect);
+        } else {
+          res.status(200).send("Done!")
+        }
       } else {
         res.status(400).send("Unauthorized")
       }
@@ -18,10 +23,4 @@ export default async function handler(req, res) {
   } catch {
     res.status(500).send("Internal server error");
   }
-  if(!!req.body.redirect) {
-    res.redirect(302, req.body.redirect);
-  } else {
-    res.status(200).send("Done!")
-  }
-
 }

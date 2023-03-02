@@ -565,8 +565,8 @@ export async function deleteUser(id) {
 
 export async function modifyUser(
   id,
-  username,
   email,
+  username,
   password,
   firstname,
   lastname,
