@@ -69,9 +69,13 @@ export default function Posts({ admin, pageString, pageName }) {
           </div>
         </div>
       </Page>
-      <form method="POST" action="./api/send_email" encType={"multipart/form-data"}>
+      <form
+        method="POST"
+        action="./api/send_email"
+        encType={"multipart/form-data"}
+      >
         <div className="  flex flex-col ">
-          <div id="linkForm" className=" w-full  md:p-12">
+          <div id="linkForm" className=" w-full bg-secondary-1 md:p-12">
             <input type={"hidden"} name={"pagetitle"} value={pageName} />
             <input type={"hidden"} name={"redirect"} value={"../posts"} />
             {/**title */}
@@ -158,25 +162,6 @@ export default function Posts({ admin, pageString, pageName }) {
                 />
               </div>
             </div>
-
-            {/**attatchment */}
-
-            <div className="relative flex flex-wrap flex-row ">
-              <div className="flex flex-1 flex-col p-2  w-screen md:w-full">
-                <label className="text-base pb-1" htmlFor="first">
-                  Infoga fil (CV och/eller personligt brev)
-                </label>
-                <input
-                  className="form-control block px-3 py-1.5 text-base font-normal text-muted  solid  border  border-slate-900 focus:text-muted focus:border-dashed hover:border-dashed"
-                  type="file"
-                  id="formFile"
-                  name="file"
-                  multiple={true}
-                />
-              </div>
-            </div>
-            {/**attatchment */}
-
             <div className="relative flex flex-wrap flex-row  ">
               <div className="flex flex-1 flex-row p-2">
                 <label className="text-xs pb-1 text-muted" htmlFor="first">

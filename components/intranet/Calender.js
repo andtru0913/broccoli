@@ -16,7 +16,7 @@ const Component = ({ user, allEvents, setIscoming }) => {
       plugins={[dayGridPlugin, interactionPlugin]}
       selectable
       editable={admin}
-      height={"80vh"}
+      height={"76vh"}
       select={function (e) {
         if (admin) {
           e.start.setDate(e.start.getDate() + 1);
@@ -152,17 +152,17 @@ const Calender = ({ user, allEvents, cal }) => {
               name="redirect"
               value={"../../intranet/fullcalender"}
             />
-            <div className="flex flex-col md:flex-row  py-4">
-              <div className="flex flex-row">
-                <p className="pr-2"> Från</p>
+            <div className="flex flex-col md:flex-row  py-4 gap-2 ">
+              <div className="flex flex-row  justify-between">
+                <p className="w-1/3 md:w-auto pr-2"> Från</p>
                 <input
-                  className="start px-2 hover:bg-tiertary-1 rounded"
+                  className="start px-2 hover:bg-tiertary-1 rounded "
                   type="date"
                   name="start"
                 />
               </div>
-              <div className="flex flex-row px-2">
-                <p className="px-2">Till </p>
+              <div className="flex flex-row  justify-between">
+                <p className="w-1/3 md:w-auto md:pr-2">Till </p>
                 <input
                   className="end px-2 hover:bg-tiertary-1 rounded"
                   type="date"

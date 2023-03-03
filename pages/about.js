@@ -50,9 +50,9 @@ export default function About({ title, intro, year, timelinedesc }) {
     <Layout>
       <main className="bg-secondary-1">
         <section className="bg-secondary-1 relative ">
-          <div className="relative h-[48rem] lg:h-screen pb-12  z-40">
+          <div className="relative h-[48rem] lg:h-screen pb-5 md:pb-12 portrait:h-full ">
             <svg
-              className="fill-secondary-l1 absolute z-0 left-0 -top-5 h-auto lg:w-2/3 rotate-180 "
+              className="fill-secondary-l1 absolute z-0 right-0 md:left-0 -top-5 h-auto lg:w-2/3 rotate-180 "
               width="818"
               height="895"
               viewBox="0 0 818 902"
@@ -62,32 +62,30 @@ export default function About({ title, intro, year, timelinedesc }) {
               <path d="M534.272 107.464C596.13 86.8846 907.955 -202.635 910 264.601L882.508 902C850.132 873.966 662.57 742.65 591.548 724.945C551.663 715.002 393.847 700.6 350.99 631.991C300.995 551.954 133.889 604.204 62.3215 543.463C-9.24652 482.722 -5.44305 380.548 7.33691 322.144C20.1169 263.739 28.9997 166.852 85.2317 131.809C130.217 103.775 215.82 149.515 318.916 149.515C422.012 149.515 472.415 128.043 534.272 107.464Z" />
             </svg>
 
-            <div className="">
-              <div className="absolute grid grid-flow-row sm:grid-flow-col md:w-full top-[25%] md:top-36 lg:top-[30%]   z-10  pt-12 p-4 md:p-12">
+            <div className="flex flex-col lg:flex-row ">
+              <div className=" z-20 grid  grid-flow-col    pt-16 p-4 md:p-12 md:pt-32 lg:pt-48 xl:pt-60">
                 <div
-                  className=" flex flex-col gap-8  text-center md:text-left text-color-base dark:text-color-base"
+                  className="  flex flex-col gap-8  text-center md:text-left text-color-base dark:text-color-base"
                   data-aso=""
                 >
                   <h1 className="  pb-0 md:pb-2 font-bold uppercase h3 sm:h1  lg:text-7xl ">
                     Om oss
                   </h1>
-                  <h4 className=" font-small w-10/12 md:text-left lg:text-xl ">
-                    Broccoli är ett Göteborgsbaserat konsultbolag inom hårdvaru-
-                    och mjukvaruutveckling. Våra kunder finns till största delen
-                    inom fordonsindustrin i Västsverige. Vi vill skapa en
-                    attraktiv arbetsplats med nöjda medarbetare som trivs och
-                    utvecklas.
+                  <h4 className=" font-small md:w-10/12 md:text-left lg:text-xl ">
+                    Vi är ett Göteborgsbaserat konsultföretag med ca 50
+                    anställda. Vårt kompetensområde sträcker sig från det
+                    mekatroniska och ända upp i molnet.
                   </h4>
                 </div>
-                <div className=" relative -top-40 right-20 ">
-                  <Image
-                    alt={""}
-                    height={"600"}
-                    width={"560"}
-                    className=" "
-                    src="/images/omoss.png"
-                  ></Image>
-                </div>
+              </div>
+              <div className=" md:w-2/3 place-self-center lg:py-20  portrait:w-full">
+                <Image
+                  alt={""}
+                  height={"800"}
+                  width={"1000"}
+                  className=" "
+                  src="/images/about.svg"
+                ></Image>
               </div>
             </div>
           </div>
@@ -174,9 +172,39 @@ export default function About({ title, intro, year, timelinedesc }) {
           </div>
           */}
         </section>
+        <div className=" bg-secondary-1 w-full pt-5 md:pt-40 sm:pt-0">
+          <div className="flex flex-row justify-center relative z-40">
+            <div className=" text-justify  px-4">
+              <h3
+                className="uppercase font-bold pb-5  mb:pt-0 md:h1"
+                data-aos="fade-right"
+                data-aos-once="true"
+              >
+                Vad erbjuder Broccoli
+              </h3>
+              <p
+                className="max-w-readable py-2"
+                data-aos="fade-right"
+                data-aos-once="true"
+                data-aos-delay="500"
+              >
+                Vi erbjuder tjänster för utveckling av system inom områden där
+                bland annat kontroll, reglering, övervakning, säkerhet och
+                kommunikation är önskade funktioner.  Dessa system kan vara
+                inbyggda, befinna sig i molnet eller någonstans däremellan. De
+                kan vara uppkopplade eller helt autonoma. De förbrukar alltid
+                elektricitet, men kan även vara beroende av andra energikällor,
+                såsom fossila bränslen, vätgas mm. Vårt engagemang inom
+                fordonsindustrin är stort, men även andra tekniska branscher
+                eller branscher baserade på mer virtuella system är en del av
+                det vi dagligen ägnar oss åt.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <section className="bg-secondary-1 ">
-          <div className=" flex py-12 md:py-36 flex-col items-center bg-secondary-1">
+          <div className="flex py-12 md:py-36 flex-col items-center bg-secondary-1">
             <h2 className="uppercase pb-12  font-bold z-10">
               {title ?? "Våra områden"}
             </h2>
@@ -201,8 +229,8 @@ export default function About({ title, intro, year, timelinedesc }) {
                 <p className="md:text-center text-justify mx-6  max-w-readable">
                   Vi har inom automation- och energibranschen erfarenhet från
                   t.ex utveckling av värmepumpar, vätgasapplikationer och
-                  kommunikationsmoduler för ett antal olika
-                  kommunikationsprotokoll.
+                  kommunikations-moduler för ett antal olika
+                  kommunikations-protokoll.
                 </p>
               </div>
               <div className="relative bg-primary-l1  py-5  p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 text-left">
@@ -262,11 +290,13 @@ export default function About({ title, intro, year, timelinedesc }) {
           >
             <path d="M421.826 160.477C471.755 126.93 678.13 -214.715 793.93 218.741L925.002 817.123C889.402 798.642 690.75 720.452 623.34 720.58C585.484 720.653 441.778 744.102 386.97 690.384C323.032 627.718 187.334 715.236 108.94 675.524C30.5467 635.813 8.99995 540.034 6.10496 482.81C3.20998 425.586 -12.535 333.532 28.8689 287.866C61.992 251.333 149.194 273.838 240.777 249.781C332.36 225.725 371.896 194.023 421.826 160.477Z" />
           </svg>
+          <div className="max-w-full">
+            <TimelineComponent />
+          </div>
 
-          <TimelineComponent />
           <div
             data-aos="fade-up"
-            className="md:hidden mx-6 flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
+            className="z-10 md:hidden mx-6 flex flex-col text-center items-center border-2 border-dashed border-secondary-d1 max-w-readable "
           >
             <h2 className=" md:hidden text-center uppercase font-extrabold my-4 px-3 border-b-2  border-primary-d1 ">
               nu
@@ -304,7 +334,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   <Image
                     className="w-40 h-40 relative lg:absolute"
                     alt="karlatornet"
-                    src="/images/bro2.JPG"
+                    src="/images/broklippt.JPG"
                     layout="fill"
                     objectFit="cover"
                   />
@@ -339,12 +369,12 @@ export default function About({ title, intro, year, timelinedesc }) {
             <div className=" md:hidden relative pt-12 flex flex-col h-full w-full">
               <div className=" grid  grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 place-items-center w-full h-full lg:justify-items-end ">
                 <div className=" w-auto max-h-full min-w-full h-60 md:h-96 lg:h-[36rem] py-5 bg-secondary-1 ">
-                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start mx-5  p-4 lg:p-8 xl:p-12">
-                    <h4 className="font-bold uppercase mx-6 tracking-wider">
+                  <div className="text-center lg:text-left md:max-w-readable lg:max-w-readable flex flex-col gap-4 align-top lg:place-self-start   p-4 lg:p-8 xl:p-12">
+                    <h4 className="font-bold uppercase tracking-wider">
                       {title ?? "Vårt Kvalitetsarbete"}
                     </h4>
 
-                    <p className="p1 text-justify mx-6">
+                    <p className="p1 text-justify ">
                       {intro ??
                         "Vi vill ha nöjda kunder och en förutsättning för detta är rätt konsult på rätt plats, detta är självklarheter för oss."}
                     </p>

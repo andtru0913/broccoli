@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { verify } from "../tokens";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
   const pageId = career;
@@ -32,32 +33,32 @@ export async function getServerSideProps(context) {
 export default function Career({ admin, pageString, pageName }) {
   const data = [
     {
-      icon_svg: <FaHandshake size={90} />,
+      icon_svg: "/images/handshake.svg",
       title: "Kollektivavtal",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-primary-1",
     },
     {
-      icon_svg: <BiHealth size={90} />,
+      icon_svg: "/images/heart.svg",
       title: "Företagshälsovård",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-primary-l2",
     },
     {
-      icon_svg: <FaRunning size={90} />,
+      icon_svg: "/images/runner.svg",
       title: "Friskvård",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-secondary-d1",
     },
 
     {
-      icon_svg: <GiSmartphone size={90} />,
+      icon_svg: "/images/smartphone.svg",
       title: "Företagstelefon",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-primary-l2",
     },
     {
-      icon_svg: <GiPartyFlags size={90} />,
+      icon_svg: "/images/flags.svg",
       title: "Aktiviteter",
       text: "Great place to work even with competitive environment. Spent 2 years in a very demanding but empowerful environment. Great iniziatives to promote team working ",
       color: "bg-primary-1",
@@ -148,7 +149,12 @@ export default function Career({ admin, pageString, pageName }) {
                     key={i}
                     className={` flex flex-col items-center w-screen md:w-full  p-8 md:p-10 lg:p-15  ${data.color}`}
                   >
-                    {data.icon_svg}
+                    <Image
+                      alt="icon"
+                      width={80}
+                      height={80}
+                      src={data.icon_svg}
+                    />
                     <h4 className="uppercase text-lg pt-5 px-8 ">
                       {data.title}
                     </h4>
@@ -165,7 +171,7 @@ export default function Career({ admin, pageString, pageName }) {
         encType={"multipart/form-data"}
       >
         <div className="  flex flex-col ">
-          <div id="linkForm" className=" w-full  md:p-12">
+          <div id="linkForm" className=" w-full bg-secondary-1 md:p-12">
             <input type={"hidden"} name={"pagetitle"} value={pageName} />
             <input type={"hidden"} name={"redirect"} value={"../posts"} />
             {/**title */}
