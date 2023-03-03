@@ -180,7 +180,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                 data-aos="fade-right"
                 data-aos-once="true"
               >
-                Vilka är Broccoli
+                Vad erbjuder Broccoli
               </h3>
               <p
                 className="max-w-readable py-2"
