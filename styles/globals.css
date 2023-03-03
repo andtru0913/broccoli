@@ -91,7 +91,34 @@
 */
 
   /* #region  /**=========== Typography =========== */
-
+  .fc-header-toolbar > .fc-toolbar-chunk > .fc-toolbar-title,
+  .fc-toolbar,
+  .fc-toolbar-title,
+  #fc-toolbar-title {
+    @apply text-base font-medium md:text-2xl;
+  }
+  .fc-header-toolbar > .fc-toolbar-chunk > .fc-today-button,
+  .fc-toolbar,
+  .fc-today-button,
+  .fc-button,
+  .fc-button-primary,
+  #fc-today-button {
+    @apply p-1 border-none text-sm md:text-base md:px-4 md:py-2;
+  }
+  .fc-header-toolbar > .fc-toolbar-chunk > .fc-today-button,
+  .fc-header-toolbar > .fc-toolbar-chunk > .fc-button-group > .fc-prev-button,
+  .fc-header-toolbar > .fc-toolbar-chunk > .fc-button-group > .fc-next-button,
+  .fc-toolbar,
+  .fc-button-group,
+  .fc-today-button,
+  .fc-button,
+  .fc-button-primary,
+  .fc-prev-button,
+  .fc-next-button,
+  #fc-prev-button,
+  #fc-next-button #fc-today-button {
+    @apply p-1 border-none text-sm  md:text-base md:px-4 md:py-2;
+  }
   .h0 {
     @apply text-3xl md:text-6xl;
   }

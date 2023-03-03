@@ -59,101 +59,16 @@ const Page = ({
       createCard: (
         <div className="flex justify-center">
           <div id="createCard" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill w-1/3 p-5 m-2 ">
-              <div className=" flex flex-row justify-between">
-                <h1> Skapa kort</h1>
-                <div className="absolute top-0 right-0 p-3 hover:text-muted">
-                  <XMark />
-                </div>
-              </div>
-              <form action="../../api/admin/createCard" method="POST">
-                <div className="flex flex-col gap-2 py-4">
-                  <input
-                    className="title p-2 rounded"
-                    type="text"
-                    name="title"
-                    placeholder="Rubrik"
-                  />
-                  <textarea
-                    className="description p-2  rounded "
-                    rows="3"
-                    name="description"
-                    placeholder="Text"
-                  ></textarea>
-                  <input
-                    className="requirements p-2 rounded"
-                    type="text"
-                    name="requirements"
-                    placeholder="Requirements"
-                  />
-                  <input
-                    className="location  p-2 rounded"
-                    type="text"
-                    name="location"
-                    placeholder="Location"
-                  />
-                  <div className="flex flex-row gap-2 ">
-                    <div className="flex flex-col w-full">
-                      <label>Startdatum</label>
-                      <input
-                        className="startdate  p-2 rounded"
-                        type="date"
-                        name="startdate"
-                        placeholder="Startdate"
-                      />
-                    </div>
-                    <div className="flex flex-col w-full">
-                      <label>Slutdatum</label>
-                      <input
-                        className="enddate  p-2 rounded"
-                        type="date"
-                        name="enddate"
-                        placeholder="Enddate"
-                      />
-                    </div>
-                  </div>
-
-                  <input
-                    className="contact  p-2 rounded"
-                    type="text"
-                    name="contact"
-                    placeholder="Contact"
-                  />
-                  <input
-                    className="exjobbare  p-2 rounded"
-                    type="text"
-                    name="exjobbare"
-                    placeholder="Exjobbare"
-                  />
-                  <input type="hidden" name="pageId" value={page.id} />
-                  <input type="hidden" name="redirect" value={redirect} />
-                  <button
-                    className="shadow btn btn-create"
-                    id="createCardSubmit"
-                    type="submit"
-                  >
-                    Skapa
+            <div className="z-40 fixed w-screen px-2 md:inset-1/4 md:w-2/4 top-40 h-screen ">
+              <div className="bg-secondary-1  flex flex-col gap-4 text-left text-color-base overflow-y-scroll h-2/3 md:h-2/4 ">
+                <div className="sticky top-0 flex flex-row justify-between bg-secondary-d1 ">
+                  <h1 className="p-5"> Skapa kort</h1>
+                  <button className="uppercase font-bold hover:bg-secondary-1 bg-secondary-d1 p-5 ">
+                    <XMark />
                   </button>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      ),
-      modifyCard: (
-        <div className="flex justify-center">
-          <div id="modifyCard" className={`window-pop ${popHide}`}>
-            <div className="relative bg-fill w-1/3 p-5 m-2 ">
-              <div className=" flex flex-row justify-between">
-                <h1> Ändra kort</h1>
-              </div>
-              <div className="absolute top-0 right-0 p-3 hover:text-muted">
-                <XMark />
-              </div>
-              <div className="flex flex-col gap-2 w-full ">
-                <form action="../../api/admin/modifyCard" method="POST">
-                  <div className="flex flex-col gap-2 py-2">
-                    <input className="id p-2" type="hidden" name="id" />
+                <form action="../../api/admin/createCard" method="POST">
+                  <div className="flex flex-col gap-2 px-2 pb-2 md:px-5 md:pb-5">
                     <input
                       className="title p-2 rounded"
                       type="text"
@@ -211,23 +126,112 @@ const Page = ({
                       name="exjobbare"
                       placeholder="Exjobbare"
                     />
+                    <input type="hidden" name="pageId" value={page.id} />
                     <input type="hidden" name="redirect" value={redirect} />
+                    <button
+                      className="shadow btn btn-create"
+                      id="createCardSubmit"
+                      type="submit"
+                    >
+                      Skapa
+                    </button>
                   </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      modifyCard: (
+        <div className="flex justify-center">
+          <div id="modifyCard" className={`window-pop ${popHide}`}>
+            <div className="z-40 fixed w-screen px-2 md:inset-1/4 md:w-2/4 top-40 h-screen ">
+              <div className="bg-secondary-1  flex flex-col gap-4 text-left text-color-base overflow-y-scroll h-2/3 md:h-2/4 ">
+                <div className="sticky top-0 flex flex-row justify-between bg-secondary-d1 ">
+                  <h1 className="p-5"> Skapa kort</h1>
+                  <button className="uppercase font-bold hover:bg-secondary-1 bg-secondary-d1 p-5 ">
+                    <XMark />
+                  </button>
+                </div>
+                <div className="flex flex-col gap-2 w-full px-2 pb-2 md:px-5 md:pb-5">
+                  <form action="../../api/admin/modifyCard" method="POST">
+                    <div className="flex flex-col gap-2 ">
+                      <input className="id p-2" type="hidden" name="id" />
+                      <input
+                        className="title p-2 rounded"
+                        type="text"
+                        name="title"
+                        placeholder="Rubrik"
+                      />
+                      <textarea
+                        className="description p-2  rounded "
+                        rows="3"
+                        name="description"
+                        placeholder="Text"
+                      ></textarea>
+                      <input
+                        className="requirements p-2 rounded"
+                        type="text"
+                        name="requirements"
+                        placeholder="Requirements"
+                      />
+                      <input
+                        className="location  p-2 rounded"
+                        type="text"
+                        name="location"
+                        placeholder="Location"
+                      />
+                      <div className="flex flex-col md:flex-row gap-2 ">
+                        <div className="flex flex-col w-full">
+                          <label>Startdatum</label>
+                          <input
+                            className="startdate  p-2 rounded"
+                            type="date"
+                            name="startdate"
+                            placeholder="Startdate"
+                          />
+                        </div>
+                        <div className="flex flex-col w-full">
+                          <label>Slutdatum</label>
+                          <input
+                            className="enddate  p-2 rounded"
+                            type="date"
+                            name="enddate"
+                            placeholder="Enddate"
+                          />
+                        </div>
+                      </div>
 
-                  <button
-                    className="shadow btn btn-modify w-full"
-                    type="submit"
-                  >
-                    Ändra kort
-                  </button>
-                </form>
-                <form action="../../api/admin/deleteCard" method="POST">
-                  <input className="id" type="hidden" name="id" />
-                  <input type="hidden" name="redirect" value={redirect} />
-                  <button className="btn btn-delete w-full" type="submit">
-                    Radera kort
-                  </button>
-                </form>
+                      <input
+                        className="contact  p-2 rounded"
+                        type="text"
+                        name="contact"
+                        placeholder="Contact"
+                      />
+                      <input
+                        className="exjobbare  p-2 rounded"
+                        type="text"
+                        name="exjobbare"
+                        placeholder="Exjobbare"
+                      />
+                      <input type="hidden" name="redirect" value={redirect} />
+                    </div>
+
+                    <button
+                      className="shadow btn btn-modify w-full mt-2"
+                      type="submit"
+                    >
+                      Ändra kort
+                    </button>
+                  </form>
+                  <form action="../../api/admin/deleteCard" method="POST">
+                    <input className="id" type="hidden" name="id" />
+                    <input type="hidden" name="redirect" value={redirect} />
+                    <button className="btn btn-delete w-full" type="submit">
+                      Radera kort
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -307,7 +311,7 @@ const Page = ({
           }}
           className="fixed top-20 left-0 z-30 btn btn-primary border border-base"
         >
-          Edit page{" "}
+          Edit page
         </button>
       ),
     };

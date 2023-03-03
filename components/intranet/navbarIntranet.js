@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import * as React from "react";
 import ActiveLink from "../activeLink";
 import ThemedImage from "../themedImage";
@@ -15,7 +15,6 @@ const NavbarIntranet = ({ admin, notifications }) => {
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [isRed, setIsRed] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
-
 
   const parsedNotificationsRef = useRef(parsedNotifications);
   useEffect(() => {
@@ -49,7 +48,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
         JSON.stringify(notificationCookies)
       );
     } else {
-        setNotificationOpen(true);
+      setNotificationOpen(true);
     }
   };
   const hamburgerLine =
@@ -106,7 +105,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
               </ul>
             </div>
             <div className=" ">
-              <div className="absolute top-28 right-4 bg-fill rounded-full ">
+              <div className="absolute top-28 right-4 bg-fill rounded-full  shadow shadow-secondary-d2">
                 <button
                   className={` block cursor-pointer group 
                  `}
@@ -228,6 +227,63 @@ const NavbarIntranet = ({ admin, notifications }) => {
                 );
               })}
             </ul>
+            <div className=" ">
+              <div className="absolute z-20 top-6 right-4 bg-fill rounded-full shadow shadow-secondary-d2">
+                <button
+                  className={` block cursor-pointer group 
+                 `}
+                  onClick={openNotification}
+                >
+                  <div
+                    className={` w-full text-xs font-medium p-2 uppercase opacity-80 transition-all duration-200 hover:text-primary-d1
+                        ${
+                          notificationOpen
+                            ? " opacity-50 group-hover:opacity-100 text-primary-d1"
+                            : "opacity-50 group-hover:opacity-100 "
+                        } `}
+                  >
+                    <HiBell size={20} />
+                  </div>
+                </button>
+
+                <div
+                  className={` p-1 rounded-full absolute bottom-4 left-2 ${
+                    isRed ? "bg-red-500" : "bg-transparent"
+                  }`}
+                ></div>
+              </div>
+            </div>
+
+            <div
+              className={` ${
+                notificationOpen
+                  ? "z-20 px-2 fixed  right-0  top-20   flex  flex-col  w-screen min-h-1/3 rounded-lg min-h-[30%]  duration-500 ease-in-out bg-fill-1"
+                  : "z-20 px-2 fixed  -right-full  top-20 flex  flex-col  w-screen rounded-lg h-1/3 duration-500 ease-in-out"
+              }
+                 `}
+            >
+              {parsedNotifications.map((data) => {
+                return (
+                  <UpcomingNotifications
+                    key={data.notification.id}
+                    title={data.notification.title}
+                    date={data.notification.startDate}
+                    description={data.notification.text}
+                    author={data.notification.author}
+                  />
+                );
+              })}
+              {/*  current notifications here!  */}
+            </div>
+
+            <div
+              className={` ${
+                notificationOpen
+                  ? "z-0 fixed right-0 top-0 w-screen backdrop-blur-sm h-screen bg-black/60  duration-500 ease-in-out"
+                  : " duration-500 ease-in-out"
+              }
+                 `}
+            ></div>
           </nav>
         </>
       </header>
