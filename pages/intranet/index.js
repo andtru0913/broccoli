@@ -183,9 +183,9 @@ export default function Home({
                 <h2 className="   uppercase font-bold mb-3 z-10 flex justify-center md:justify-start md:pl-5">
                   Kommande event
                 </h2>
-                {JSON.parse(events).map((data) => {
+                {JSON.parse(events).map((data, i) => {
                   return (
-                    <a href="intranet/fullcalender">
+                    <a key={i} href="intranet/fullcalender">
                       <UpcomingEvent
                         key={data.id}
                         title={data.title}
