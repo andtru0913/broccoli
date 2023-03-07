@@ -5,7 +5,6 @@ import List from "../userlist";
 import ReactDOM from "react-dom/client";
 import { HiXMark } from "react-icons/hi2";
 import { useState } from "react";
-import ActiveLink from "../activeLink";
 
 const Component = ({ user, allEvents, setIscoming }) => {
   const popHide = "pop-hide";
@@ -263,7 +262,11 @@ const Calender = ({ user, allEvents, cal }) => {
                   </button>
                 </form>
                 <div className="pt-2">
-                  <form action="../../api/admin/deleteEvent" method="POST">
+                  <form action="../../api/admin/deleteEvent" method="POST" onSubmit={function (e) {
+                    if (!confirm("Är du säker?")) {
+                      e.preventDefault()
+                    }
+                  }}>
                     <input
                       type={"hidden"}
                       name={"redirect"}

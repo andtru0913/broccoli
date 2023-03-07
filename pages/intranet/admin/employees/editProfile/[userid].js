@@ -1,4 +1,4 @@
-import {verify} from "../../../../../tokens";
+  import {verify} from "../../../../../tokens";
 import {getNotifications, getUserinfo} from "../../../../../Database";
 import LayoutIntranet from "../../../../../components/layout/layoutIntranet";
 import ProfilePicture from "../../../../../components/ProfilePicture";
@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         userString: JSON.stringify(userString),
-        notifications: JSON.stringify(await notifications),
+        notifications: JSON.stringify(notifications),
       },
     };
   }
@@ -37,7 +37,8 @@ const profile = ({ userString, notifications }) => {
       <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
         <div className="relative bg-secondary-1">
           <div>
-            <form action="../../api/editProfile" method="POST">
+            <form action="../../../../api/editProfile" method="POST" encType={"multipart/form-data"}>
+              <input type={"hidden"} value={`../intranet/admin/employees/editProfile/${user.id}`} name={"redirect"}/>
               <div className=" grid  grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1  h-full  md:px-12 bg-secondary-1  overflow-hidden">
                 <div className=" relative col-span-1 pt-12 pl-2 ">
                   <svg

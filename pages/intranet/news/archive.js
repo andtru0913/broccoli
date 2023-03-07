@@ -64,7 +64,11 @@ export default function Home({ admin, notifications, news }) {
                       {admin ?
                           <>
                             <td>
-                              <form className={"flex flex-row items-center"} method={"POST"} action={"../../api/admin/deleteNews"}>
+                              <form className={"flex flex-row items-center"} method={"POST"} action={"../../api/admin/deleteNews"} onSubmit={function (e) {
+                                if (!confirm("Är du säker?")) {
+                                  e.preventDefault()
+                                }
+                              }}>
                                 <input type={"hidden"} name={"id"} value={item.id} />
                                 <input type={"hidden"} name={"redirect"} value={"../../intranet/news/archive"} />
                                 <button className={"mx-auto"} type={"submit"}>Radera</button>

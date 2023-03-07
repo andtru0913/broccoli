@@ -1,6 +1,6 @@
 import formidable from 'formidable';
 import fs from 'fs';
-import {editProfile} from "../../Database";
+import {editProfile, isAdmin} from "../../Database";
 import {verify} from "../../tokens";
 
 export default async function handler(req, res) {
@@ -14,28 +14,30 @@ export default async function handler(req, res) {
                     maxFileSize: Infinity
                 });
                 form.parse(req, async (err, fields, files) => {
-                    if (err || await verify(cookies) === fields.id) {
-                        res.status(500).json({error: err || "Token mismatch"});
-                    }
-                    try {
-                        if(!!files.file.originalFilename) {
-                            const data = fs.readFileSync(files.file.filepath)
-                            const newFilename = `${fields.id}.${files.file.originalFilename.split(".").pop()}`
-                            fs.writeFileSync(`./public/uploads/profiles/${newFilename}`, data)
-                            await editProfile(fields.id, fields.username, fields.password, fields.email, fields.address, fields.privatenumber, fields.worknumber, newFilename, fields.description, !!fields.birthdate?new Date(fields.birthdate):null)
-                        } else {
-                            await editProfile(fields.id, fields.username, fields.password, fields.email, fields.address, fields.privatenumber, fields.worknumber, null, fields.description, !!fields.birthdate?new Date(fields.birthdate):null)
+                    let user = await verify(cookies)
+                    if (!err && (user === fields.id || await isAdmin(user))) {
+                        try {
+                            if(!!files.file.originalFilename) {
+                                const data = fs.readFileSync(files.file.filepath)
+                                const newFilename = `${fields.id}.${files.file.originalFilename.split(".").pop()}`
+                                fs.writeFileSync(`./public/uploads/profiles/${newFilename}`, data)
+                                await editProfile(fields.id, fields.username, fields.password, fields.email, fields.address, fields.privatenumber, fields.worknumber, newFilename, fields.description, !!fields.birthdate?new Date(fields.birthdate):null)
+                            } else {
+                                await editProfile(fields.id, fields.username, fields.password, fields.email, fields.address, fields.privatenumber, fields.worknumber, null, fields.description, !!fields.birthdate?new Date(fields.birthdate):null)
+                            }
+                            res.redirect(302, fields.redirect);
+                        } catch(e) {
+                            res.status(500).json({ error: e.message });
                         }
-                        res.redirect(302, '../intranet/profile');
-                    } catch(e) {
-                        res.status(500).json({ error: e });
+                    } else {
+                        res.status(500).json({error: err || "Unauthorized"});
                     }
                 });
             } else {
                 res.status(403).send("Token not found")
             }
         } catch (e) {
-            res.status(500).json({ error: e });
+            res.status(500).json({ error: e.message });
         }
     }
 }

@@ -12,7 +12,7 @@ const Page = ({
   redirect,
   buttonName,
   children,
-    cardTitle
+  cardTitle
 }) => {
   let admin = {};
   const popHide = "pop-hide";

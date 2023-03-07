@@ -4,10 +4,8 @@ import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent, {
-  timelineContentClasses,
 } from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import { BiNews } from "react-icons/bi";
 
 const NewsSection = ({ id, title, author, date, file, admin, link }) => {
@@ -59,6 +57,11 @@ const NewsSection = ({ id, title, author, date, file, admin, link }) => {
                         className={"flex flex-row "}
                         method={"POST"}
                         action={"../../api/admin/deleteNews"}
+                        onSubmit={function (e) {
+                          if (!confirm("Är du säker?")) {
+                            e.preventDefault()
+                          }
+                        }}
                       >
                         <input type={"hidden"} name={"id"} value={id} />
                         <input
