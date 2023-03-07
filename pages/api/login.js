@@ -12,11 +12,12 @@ export default async function handler(req, res) {
     } else {
         const query = await login(req.body.username, req.body.password)
         if (!!query) {
-            res.setHeader('Set-Cookie', serialize('token', JSON.stringify(await getToken(query)), { path: '/' }));
+            const token = await getToken(query);
+            res.setHeader('Set-Cookie', serialize('token', JSON.stringify(token), { path: '/' }));
             if (!!req.body.redirect) {
                 res.redirect(302, '../intranet/')
             } else {
-                res.status(200).send(await getToken(query))
+                res.status(200).send(token)
             }
         } else {
             res.status(401).json({ error: 'Wrong username or password' })
