@@ -579,7 +579,7 @@ export async function modifyUser(
   assignment,
   role
 ) {
-  if (password !== undefined) {
+  if (!!password) {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     await prisma.user.update({
@@ -597,7 +597,7 @@ export async function modifyUser(
         privatenumber: privatenumber,
         worknumber: worknumber,
         company: company,
-        admin: admin !== undefined ? admin : false,
+        admin: !!admin,
         salt: salt,
         assignment: assignment,
         role: role,
@@ -618,7 +618,7 @@ export async function modifyUser(
         privatenumber: privatenumber,
         worknumber: worknumber,
         company: company,
-        admin: admin !== undefined,
+        admin: !!admin,
         assignment: assignment,
         role: role,
       },
@@ -658,7 +658,6 @@ export async function getUserEvents(id) {
 }
 
 export async function createNews(title, filename, date, author) {
-  console.log(author);
   await prisma.news.create({
     data: {
       title: title,

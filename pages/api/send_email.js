@@ -1,7 +1,6 @@
 import { SMTPClient } from 'emailjs';
 import formidable from "formidable";
 
-
 export default async function handler(req, res) {
     const form = new formidable.IncomingForm({
         maxFileSize: Infinity,
@@ -32,22 +31,35 @@ export default async function handler(req, res) {
                 tsl: true,
                 port: 587
             });
+
             let text = ""
             text += fields.freetext + "\n\nHälsningar: "
             text += fields.first + " " + fields.last + "\nEmail: "
             text += fields.email + "\nTelefon: "
             text += fields.phone + "\n"
-            client.send(
-                {
-                    text: text,
-                    from: 'intresse@broccoli.se',
-                    to: 'intresse@broccoli.se',
-                    subject: `Intresseanmälan hos '${fields.pagetitle}'`,
-                    attachment: attachments
-                },
-                (err, _) => {
-                    if (!!err) {throw Error}
-                })
+
+            // Wrap email sending in a Promise
+            const emailPromise = new Promise((resolve, reject) => {
+                client.send(
+                    {
+                        text: text,
+                        from: 'intresse@broccoli.se',
+                        to: 'intresse@broccoli.se',
+                        subject: `Intresseanmälan hos '${fields.pagetitle}'`,
+                        attachment: attachments
+                    },
+                    (err, _) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );
+            });
+
+            // Send confirmation email
+            await emailPromise;
             client.send(
                 {
                     text: "Tack för din intresseanmälan till Broccoli, vi svarar inom kort! \n\n" + text,
@@ -56,14 +68,17 @@ export default async function handler(req, res) {
                     subject: `Intresseanmälan till Broccoli`,
                 },
                 (err, _) => {
-                    if (!!err) {throw Error}
-                })
+                    if (err) {
+                        console.log(err);
+                    }
+                }
+            );
+
             res.redirect(302, `${fields.redirect}`);
-            } catch (e) {
-                res.status(500).send("Something went wrong, mail not sent");
-            }
+        } catch (e) {
+            res.status(500).send("Something went wrong, mail not sent");
         }
-    )
+    });
 }
 
 export const config = {

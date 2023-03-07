@@ -203,23 +203,6 @@ export default function Home({ user, notifications }) {
                   </button>
                 </div>
               </form>
-
-              <form
-                onSubmit={function () {
-                  if (!confirm("Är du säker?")) {
-                    document
-                      .getElementById("modifyuser")
-                      .getElementsByClassName("id")[1].value = "";
-                  }
-                }}
-                action="../../../api/deleteUser"
-                method="POST"
-              >
-                <input className="id" type="hidden" name="id" />
-                <button className="btn btn-delete  w-full mt-2 " type="submit">
-                  Radera anställd
-                </button>
-              </form>
             </div>
             <div
               id="createuser"
@@ -358,6 +341,13 @@ export default function Home({ user, notifications }) {
             <div className="layout py-12  flex flex-col">
               <div className="grid grid-cols-1 gap-4 md:hidden">
                 {user.map((u, i) => (
+                    <a key={i} href={`./employees/${u.id}`}>
+                      <div className="grid grid-flow-row gap-4 items-left text-sm p-4 rounded-lg shadow bg-skin-primary">
+                        <h4>{u.username}</h4>
+                      </div>
+                    </a>
+                ))}
+                {/*user.map((u, i) => (
                   <div
                     key={i}
                     onClick={function () {
@@ -397,7 +387,7 @@ export default function Home({ user, notifications }) {
                   >
                     <h4>{u.username}</h4>
                   </div>
-                ))}
+                ))*/}
                 <div className="flex justify-self-start">
                   <button
                     className=" btn btn-create m-1 "
@@ -458,7 +448,7 @@ export default function Home({ user, notifications }) {
                       </tr>
                     </thead>
                     <tbody className="">
-                      {user.map((u, i) => (
+                      {/*user.map((u, i) => (
                         <tr
                           className="border-b border-primary-1"
                           key={i}
@@ -537,6 +527,44 @@ export default function Home({ user, notifications }) {
                             {String(u.admin)}
                           </td>
                         </tr>
+                      ))*/}
+                      {user.map((u, i) => (
+                              <tr key={i} onClick={() => window.location.href = `./employees/${u.id}`} className="border-b border-primary-1">
+
+                                <td className="text-sm text-skin-muted px-6 pt-6   whitespace-nowrap">
+                                  {u.username}
+                                </td>
+                                <td className=" sticky left-0 bg-secondary-l1 text-sm text-skin-muted px-6 pt-6 whitespace-nowrap">
+                                  {u.firstname}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.lastname}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.email}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.address}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.privatenumber}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.worknumber}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.company}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.assignment}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {u.role}
+                                </td>
+                                <td className="text-sm text-skin-muted px-6 pt-6  whitespace-nowrap">
+                                  {String(u.admin)}
+                                </td>
+                              </tr>
                       ))}
                     </tbody>
                   </table>

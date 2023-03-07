@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
       return {
         props: {
           userString: JSON.stringify(userString),
-              notifications: JSON.stringify(await notifications),
+          notifications: JSON.stringify(await notifications),
         },
       };
     }
@@ -54,7 +54,7 @@ const profile = ({ userString, notifications }) => {
             </div>
 
             <div className=" md:pr-16 pl-2 mt-8 md:col-span-2 row-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible ">
-              <h2 className="  font-bold uppercase align-middle">Din profil</h2>
+              <h2 className="  font-bold uppercase align-middle">${user.firstname}s profil</h2>
               {/**Profile Information */}
               <div className="grid grid-rows-6 cols-2  ">
                 <div className="flex flex-row ">
@@ -146,7 +146,7 @@ const profile = ({ userString, notifications }) => {
                 </div>
                 <div className="flex flex-row row-span-2">
                   {/* Description */}
-                  <div className="flex flex-col w-full overflow-y-scroll mt-4  mr-2 md:mr:0 ">
+                  <div className="flex flex-col w-full overflow-y-auto mt-4  mr-2 md:mr:0 ">
                     <p className="text-base pb-1 uppercase font-semibold ">
                       Beskrivning
                     </p>
@@ -168,12 +168,26 @@ const profile = ({ userString, notifications }) => {
               </div>
               <div className="flex justify-end mb-20 md:mb-12 ">
                 <a
-                  href="./editProfile"
+                  href={`./editProfile/${user.id}`}
                   className="btn btn-modify my-4 md:mx-0 mx-6 "
                 >
                   Redigera
                 </a>
               </div>
+              <form className={"flex justify-end mb-0 md:mb-12 "}
+                  onSubmit={function (e) {
+                    if (!confirm("Är du säker?")) {
+                      e.preventDefault()
+                    }
+                  }}
+                  action="../../../api/deleteUser"
+                  method="POST"
+              >
+                <input type="hidden" name="id" value={user.id} />
+                <button className="btn mx-6 btn-delete" type="submit">
+                  Radera anställd
+                </button>
+              </form>
             </div>
           </div>
         </div>
