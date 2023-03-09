@@ -14,11 +14,7 @@ export default async function handler(req, res) {
                     .catch(e => {
                         throw e
                     })
-                if(!!req.body.redirect) {
-                    res.redirect(302, req.body.redirect);
-                } else {
-                    res.redirect(200, "Done!");
-                }
+                res.redirect(302, req.body.redirect);
             } else {
                 res.status(400).send("Bad request");
             }

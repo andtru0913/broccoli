@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     try {
-        if (await checkAdmin(JSON.parse(req.cookies['token'] || null))) {
+        if (await checkAdmin(req.cookies['token'])) {
             const start = new Date()
             const end = new Date(req.body.date)
             if (req.body.title !== "" && req.body.text !== "" && req.body.date !== "" && start < end) {
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
                     .catch(e => {
                         throw e
                     })
-                res.redirect(302, req.body.redirect);
+                res.status(200).send("Done!")
             } else {
                 res.status(400).send("Bad request")
             }
@@ -24,5 +24,9 @@ export default async function handler(req, res) {
     } catch {
         res.status(500).send("Internal server error")
     }
-
+    if(!!req.body.redirect) {
+        res.redirect(302, req.body.redirect);
+    } else {
+        res.redirect(200, "Done!");
+    }
 }

@@ -7,11 +7,12 @@ export default async function handler(req, res) {
     res.redirect(404, "../intranet");
   }
   try {
-    if (await checkAdmin(JSON.parse(req.cookies['token'] || null))) {
+    if (await checkAdmin(req.cookies['token'])) {
       const allUsers = (await getAllUsers()).map(u => u.email)
       let end = new Date(req.body.end);
       let start = new Date(req.body.start);
       if (req.body.title !== "" && start <= end) {
+
         await createEvent(
             req.body.title,
             req.body.description,
@@ -77,7 +78,7 @@ export default async function handler(req, res) {
               }
             }
         );
-          res.redirect(302, req.body.redirect);
+          res.status(200).send("Done!");
       }
     } else {
       res.status(401).json({ error: "Unauthorized" });
