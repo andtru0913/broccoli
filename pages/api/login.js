@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         if (!!req.body.redirect) {
             res.redirect(302, '../intranet')
         } else {
-            res.status(403).json({ error: 'Not a POST request' })
+            res.status(403).json({ error: `Not a POST request, received a ${req.method} request` })
         }
     } else {
         const query = await login(req.body.username, req.body.password)
