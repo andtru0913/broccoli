@@ -9,11 +9,9 @@ export default async function handler(req, res) {
         const token = JSON.parse(req.cookies["token"])
         const userid = await verify(token)
         const result = JSON.stringify(await getUserinfo(userid))
-        res.status(200).send(result)
+        res.status(200).send(await verify(token))
     } catch (e) {
-        const token = JSON.parse(req.cookies["token"])
-        const userid = await verify(token)
-        res.status(500).json({ error: e.message, userid: userid, token: token })
+        res.status(500).json({ error: e.message })
     }
 
 }
