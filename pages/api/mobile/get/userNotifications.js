@@ -1,5 +1,5 @@
-import {getNotifications} from "../../../Database";
-import {checkUser, verify} from "../../../tokens";
+import {getNotifications} from "../../../../Database";
+import {checkUser, verify} from "../../../../tokens";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {

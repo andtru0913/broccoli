@@ -1,5 +1,5 @@
-import {getEvents} from "../../../Database";
-import {checkUser} from "../../../tokens";
+import {getUserEvents} from "../../../../Database";
+import {checkUser, verify} from "../../../../tokens";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
@@ -7,7 +7,9 @@ export default async function handler(req, res) {
     }
     try {
         if (await checkUser(req.cookies['token'])) {
-                res.status(200).send((await getEvents(undefined)))
+            if(!!req.body.userid) {
+            } else
+                res.status(200).send(await getUserEvents(verify(req.cookies['token'])))
         } else {
             res.status(401).json({ error: 'Unauthorized' })
         }
