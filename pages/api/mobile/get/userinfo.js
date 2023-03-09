@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         const result = JSON.stringify(await getUserinfo(await verify(JSON.parse(req.cookies["token"]))))
         res.status(200).send(result)
     } catch (e) {
-        res.status(500).json({ error: e })
+        res.status(500).json({ error: e.message })
     }
 
 }
