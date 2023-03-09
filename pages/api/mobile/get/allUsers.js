@@ -2,9 +2,6 @@ import {getAllUsersEmail} from "../../../../Database";
 import {checkAdmin} from "../../../../tokens";
 
 export default async function handler(req, res) {
-    if(req.method !== 'POST') {
-        res.redirect(302, '../intranet')
-    }
     try {
         if (await checkAdmin(req.cookies['token'])) {
                 res.status(200).send((await getAllUsersEmail()))

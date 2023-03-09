@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     if (req.method !== "POST") {
         res.redirect(302, "../intranet");
     }
-    const [user, user_id] = await Promise.all([JSON.parse(await checkUser(req.cookies['token'])), verify(JSON.parse(req.cookies['token']))])
+    const [user, user_id] = await Promise.all([JSON.parse(await checkUser(JSON.parse(req.cookies['token'] || null))), verify(JSON.parse(req.cookies['token']))])
 
     try {
         if (!!req.body.eventid) {

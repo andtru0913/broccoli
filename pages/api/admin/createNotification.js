@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet')
     }
     try {
-        if (await checkAdmin(req.cookies['token'])) {
+        if (await checkAdmin(JSON.parse(req.cookies['token'] || null))) {
             const start = new Date()
             const end = new Date(req.body.date)
             if (req.body.title !== "" && req.body.text !== "" && req.body.date !== "" && start < end) {

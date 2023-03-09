@@ -7,9 +7,7 @@ export default async function handler(req, res) {
     }
     try {
         if (await checkUser(req.cookies['token'])) {
-            if(!!req.body.userid) {
-            } else
-                res.status(200).send(await getNotifications(verify(req.cookies['token'])))
+            res.status(200).send(await getNotifications(verify(req.cookies['token'])))
         } else {
             res.status(401).json({ error: 'Unauthorized' })
         }

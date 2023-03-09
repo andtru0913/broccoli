@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     if(req.method !== 'POST') {
         res.redirect(302, '../intranet')
     }
-    if (await checkAdmin(req.cookies['token']) && req.body.id !== "") {
+    if (await checkAdmin(JSON.parse(req.cookies['token'] || null)) && req.body.id !== "") {
         let event = (await getEvents(req.body.id))[0];
         let start = new Date(event.start)
         let end = new Date(event.end)

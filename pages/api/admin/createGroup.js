@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if(req.method !== 'POST') {
         res.redirect(302, '../intranet')
     }
-    if (await checkAdmin(req.cookies['token'])) {
+    if (await checkAdmin(JSON.parse(req.cookies['token'] || null))) {
         if (req.body.name !== "") {
             await createGroup(req.body.name)
                 .catch(e => {

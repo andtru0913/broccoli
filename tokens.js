@@ -29,11 +29,11 @@ export async function verify(token) {
 }
 
 export async function checkAdmin(token) {
-    const user_id = await verify(JSON.parse(token || null))
+    const user_id = await verify(token)
     return !!user_id ? await isAdmin(user_id) : false
 }
 
 export async function checkUser(token) {
-    const user_id = await verify(JSON.parse(token || null))
+    const user_id = await verify(token)
     return !!user_id ? await isUser(user_id) : false
 }

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         res.redirect(302, '../intranet');
     } else {
         try {
-            if(await checkAdmin(req.cookies["token"])) {
+            if(await checkAdmin(JSON.parse(req.cookies['token'] || null))) {
                 const form = new formidable.IncomingForm({
                     maxFileSize: Infinity
                 });

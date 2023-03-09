@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.redirect(302, "../intranet");
   }
-  if ((await checkAdmin(req.cookies["token"])) && req.body.title !== "") {
+  if (await checkAdmin(JSON.parse(req.cookies['token'] || null)) && req.body.title !== "") {
     await updateCard(
       req.body.id,
       req.body.title,

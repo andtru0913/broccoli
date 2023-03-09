@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     res.redirect(404, "../intranet");
   }
   try {
-    if (await checkAdmin(req.cookies["token"])) {
+    if (await checkAdmin(JSON.parse(req.cookies['token'] || null))) {
       const allUsers = (await getAllUsers()).map(u => u.email)
       let end = new Date(req.body.end);
       let start = new Date(req.body.start);
