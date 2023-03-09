@@ -1,5 +1,5 @@
-import {getAllUsersEmail, getUserinfo} from "../../../../Database";
-import {checkAdmin} from "../../../../tokens";
+import {getUserinfo} from "../../../../Database";
+import {verify} from "../../../../tokens";
 
 export default async function handler(req, res) {
     if(req.method !== 'POST') {
