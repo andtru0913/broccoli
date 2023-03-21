@@ -1,10 +1,14 @@
 import LayoutIntranet from "../../../../components/layout/layoutIntranet";
-import { getAllUsers, getNotifications, getUserinfo } from "../../../../Database";
+import {
+  getAllUsers,
+  getNotifications,
+  getUserinfo,
+} from "../../../../Database";
 import { verify } from "../../../../tokens";
 
 export async function getServerSideProps(context) {
   const user_id = await verify(
-      JSON.parse(context.req.cookies["token"] || null)
+    JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserinfo(user_id);
 
@@ -45,13 +49,15 @@ export default function Home({ user, notifications }) {
       ></div>
       <main className="">
         <div className=" layout md:py-20 py-12 bg-secondary-l1">
-          <h1 className="text-center font-bold uppercase">Anställda</h1>
+          <h1 className=" text-center font-bold uppercase ">Anställda</h1>
           <div className=" flex flex-1 flex-col lg:flex-row justify-center">
             <div
               id="modifyuser"
-              className={`${popHide} z-50 p-8 rounded flex flex-col bg-secondary-1 w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`${popHide} z-50 p-8 rounded flex flex-col bg-secondary-1 w-screen sm:w-96 h-2/3 overflow-y-scroll fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
             >
-              <h3 className="text-skin-base uppercase m-1"> Ändra anställd</h3>
+              <h3 className="text-skin-base uppercase m-1 z-20">
+                Ändra anställd
+              </h3>
               <svg
                 className="absolute right-0 bottom-1/4 z-0 fill-secondary-l1 "
                 width="384"
@@ -69,6 +75,9 @@ export default function Home({ user, notifications }) {
               >
                 <input className="id " type="hidden" name="id" />
                 <input type="hidden" name="redirect" />
+                <label for="username" className="text-xs text-muted mx-1">
+                  Användarnamn
+                </label>
                 <input
                   className="username m-1 p-1"
                   type="text"
@@ -99,12 +108,18 @@ export default function Home({ user, notifications }) {
                     placeholder="Nytt lösenord"
                   />
                 </div>
+                <label for="firstname" className="text-xs text-muted mx-1">
+                  Förnamn
+                </label>
                 <input
                   className="firstname m-1 p-1 "
                   type="text"
                   name="firstname"
                   placeholder="Förnamn"
                 />
+                <label for="lastname" className="text-xs text-muted mx-1">
+                  Efternamn
+                </label>
                 <input
                   className="lastname m-1 p-1"
                   type="text"
@@ -143,44 +158,63 @@ export default function Home({ user, notifications }) {
                     <label htmlFor="none">Vill ej ange</label>
                   </div>
                 </div>
+                <label for="email" className="text-xs text-muted mx-1">
+                  E-post
+                </label>
                 <input
                   className="email m-1 p-1"
                   type="text"
                   name="email"
-                  placeholder="Email"
+                  placeholder="E-post"
                 />
+                <label for="address" className="text-xs text-muted mx-1">
+                  Address
+                </label>
                 <input
                   className="address m-1 p-1"
                   type="text"
                   name="address"
                   placeholder="Address"
                 />
+                <label for="privatenumber" className="text-xs text-muted mx-1">
+                  Privattelefon
+                </label>
                 <input
                   className="privatenumber m-1 p-1"
-                  type="text"
+                  type="tel"
                   name="privatenumber"
                   placeholder="Privattelefon"
                 />
+                <label for="worknumber" className="text-xs text-muted mx-1">
+                  Arbetstelefon
+                </label>
                 <input
                   className="worknumber m-1 p-1"
-                  type="text"
+                  type="tel"
                   name="worknumber"
                   placeholder="Arbetstelefon"
                 />
-
+                <label for="company" className="text-xs text-muted mx-1">
+                  Bolag
+                </label>
                 <input
                   className="company m-1 p-1"
                   type="text"
                   name="company"
                   placeholder="Bolag"
                 />
+                <label for="assignment" className="text-xs text-muted mx-1">
+                  Uppdrag
+                </label>
                 <input
                   className="assignment m-1 p-1"
                   type="text"
                   name="assignment"
                   placeholder="Uppdrag"
                 />
-
+                <label for="role" className="text-xs text-muted mx-1">
+                  Roll
+                </label>
                 <input
                   className="role m-1 p-1"
                   type="text"
@@ -223,9 +257,9 @@ export default function Home({ user, notifications }) {
             </div>
             <div
               id="createuser"
-              className={`${popHide} z-50  p-8 rounded flex flex-col bg-secondary-1 w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`${popHide} z-50  p-8 rounded flex flex-col bg-secondary-1 w-screen sm:w-96 h-2/3 overflow-y-scroll fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
             >
-              <h3 className={"text-skin-base uppercase m-1 "}>
+              <h3 className={"text-skin-base uppercase m-1 z-20"}>
                 Lägg till anställd
               </h3>
               <svg
@@ -540,23 +574,20 @@ export default function Home({ user, notifications }) {
                       ))}
                     </tbody>
                   </table>
-
-                  <div className="flex justify-center my-2 mt-6">
-                    <button
-                      className=" btn btn-create"
-                      onClick={function () {
-                        document
-                          .getElementById("popup")
-                          .classList.remove(popHide);
-                        document
-                          .getElementById("createuser")
-                          .classList.remove(popHide);
-                      }}
-                    >
-                      Lägg till anställd
-                    </button>
-                  </div>
                 </div>
+              </div>
+              <div className="hidden md:flex justify-center my-2 mt-6">
+                <button
+                  className=" btn btn-create"
+                  onClick={function () {
+                    document.getElementById("popup").classList.remove(popHide);
+                    document
+                      .getElementById("createuser")
+                      .classList.remove(popHide);
+                  }}
+                >
+                  Lägg till anställd
+                </button>
               </div>
             </div>
           </div>

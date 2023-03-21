@@ -3,7 +3,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import List from "../userlist";
 import ReactDOM from "react-dom/client";
-import { HiXMark } from "react-icons/hi2";
+import { HiXMark, HiOutlineCheckCircle } from "react-icons/hi2";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
 import ActiveLink from "../activeLink";
 
@@ -116,6 +117,11 @@ const Component = ({ user, allEvents, setIscoming }) => {
 const Calender = ({ user, allEvents, cal }) => {
   const popHide = "pop-hide" || "";
   const [iscoming, setIscoming] = useState(undefined);
+  const [isDropOpen, setDropOpen] = useState(false);
+
+  const openDropDown = () => {
+    setDropOpen(!isDropOpen);
+  };
   return (
     <div className="flex justify-center bg-scondary-1">
       <div
@@ -258,7 +264,10 @@ const Calender = ({ user, allEvents, cal }) => {
                       />
                     </div>
                   </div>
-                  <button className="shadow btn btn-modify" type="submit">
+                  <button
+                    className="shadow btn btn-modify w-full"
+                    type="submit"
+                  >
                     Ändra händelse
                   </button>
                 </form>
@@ -274,7 +283,7 @@ const Calender = ({ user, allEvents, cal }) => {
                       type="hidden"
                       name="id"
                     />
-                    <button className="btn btn-delete" type="submit">
+                    <button className="btn btn-delete w-full" type="submit">
                       Radera händelse
                     </button>
                   </form>
@@ -282,7 +291,15 @@ const Calender = ({ user, allEvents, cal }) => {
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="flex flex-row h-auto gap-2 p-4 md:pr-0 items-center md:items-start justify-center">
+              <div className="flex flex-col h-auto w-full p-4 md:pr-0 items-center md:items-start justify-center">
+                <button
+                  onClick={openDropDown}
+                  className=" relative flex flex-row w-full place-items-center justify-between btn border border-primary-1 hover:btn-create"
+                >
+                  <p>Svara</p>
+                  {isDropOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}
+                </button>
+                <div></div>
                 <form action="../../api/joinEvent" method="POST">
                   <input className="eventid" type="hidden" name="eventid" />
                   <input
@@ -290,7 +307,7 @@ const Calender = ({ user, allEvents, cal }) => {
                     name="redirect"
                     value={"../intranet/calendar"}
                   />
-                  <button className=" btn btn-create" type="Submit">
+                  <button className=" btn btn-create w-full" type="Submit">
                     Kommer
                   </button>
                 </form>
@@ -302,7 +319,7 @@ const Calender = ({ user, allEvents, cal }) => {
                     name="redirect"
                     value={"../intranet/calendar"}
                   />
-                  <button className="btn btn-delete" type="Submit">
+                  <button className="btn btn-delete w-full" type="Submit">
                     Kommer inte
                   </button>
                 </form>

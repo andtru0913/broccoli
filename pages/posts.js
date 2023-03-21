@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 import { verify } from "../tokens";
 export async function getServerSideProps(context) {
   const pageId = posts;
-  const pageName = "posts";
+  const pageName = "posts2";
   const user_id = await verify(
     JSON.parse(context.req.cookies["token"] || null)
   );
