@@ -272,7 +272,9 @@ export default function Home({ feed, genderCount }) {
             </div>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3 ">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
-                <h2 className="font-bold uppercase mx-3">Relationer</h2>
+                <h2 className="font-bold uppercase mx-3 h4 md:h2">
+                  Relationer
+                </h2>
 
                 <p className="text-justify mx-3">
                   På Broccoli arbetar vi inkluderande, visar ömsesidig respekt
@@ -285,7 +287,7 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative ">
                 <div className=" relative bg-secondary-d1 p-8 md:p-4 lg:p-8 2xl:p-20 flex  flex-col w-full flex-1 gap-8 h-full text-left z-20">
-                  <h2 className=" shrink font-bold uppercase mx-3">
+                  <h2 className=" shrink font-bold uppercase mx-3 h4 md:h2">
                     Professionalism
                   </h2>
 
@@ -301,7 +303,7 @@ export default function Home({ feed, genderCount }) {
               </div>
               <div className="relative rounded">
                 <div className="relative bg-primary-1 p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left  ">
-                  <h2 className="font-bold uppercase mx-3">
+                  <h2 className="font-bold uppercase mx-3 h4 md:h2">
                     Hållbar utveckling
                   </h2>
                   <p className="text-justify mx-3">
@@ -337,26 +339,23 @@ export default function Home({ feed, genderCount }) {
         </svg>
 
         <section className="relative">
-          <div className="  lg:py-60 bg-secondary-l1  ">
+          <div className="  lg:py-52 bg-secondary-l1  ">
             <div className="relative bg-transparent z-20">
-              <h1 className=" uppercase font-bold text-center ">
+              <h1 className=" uppercase font-bold text-center">
                 Följ oss på Instagram
               </h1>
             </div>
 
-            <div className="relative py-9 flex flex-1 gap-10 align-middle justify-center  items-center flex-col lg:flex lg:flex-row md:grid md:grid-cols-2 z-20">
+            <div className="relative px-3 py-9 flex flex-wrap md:grid md:grid-cols-2 lg:grid-cols-4 justify-items-center justify-center gap-3 z-10">
               {insta_images &&
                 insta_images.slice(0, 4).map((image) => (
-                  <div
-                    className=" relative  shadow-lg shadow-skin-shadow p-0 m-0 w-96 h-96 lg:w-[400px] lg:h-[400px]"
-                    key={image.id}
-                  >
+                  <div className="basis-80" key={image.id}>
                     <a href={image.permalink}>
                       <Image
                         loader={() => `${image.media_url}&w=${400}&h=${400}`}
                         width={400}
                         height={400}
-                        className="overflow-hidden bg-cover bg-center w-full h-full transition-all ease-in-out hover:scale-105 "
+                        className="bg-cover max-w-full h-auto align-middle  "
                         src={image.media_url}
                         alt={"image"}
                         unoptimized
@@ -380,7 +379,9 @@ export default function Home({ feed, genderCount }) {
 
         <section className="relative ">
           <div className="pt-12 lg:p-0 flex flex-col items-center bg-secondary-l1  ">
-            <h1 className=" uppercase font-bold z-20 ">Broccoligården</h1>
+            <h1 className=" uppercase font-bold z-20 h4 md:h1">
+              Broccoligården
+            </h1>
 
             <div className=" flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted mt-8 z-20">
               <div className="hidden lg:flex relative w-full max-h-full bg-cover z-20">
@@ -408,7 +409,7 @@ export default function Home({ feed, genderCount }) {
                       ta ett dopp.
                     </p>
 
-                    <div className="flex flex-row lg:flex-col justify-center items-start gap-4 h-auto pt-0 text-center lg:text-left">
+                    <div className="flex flex-wrap justify-center items-start gap-4 h-auto pt-0 text-center lg:text-left">
                       <div className="flex flex-col lg:flex-row items-center text-inverted gap-4 ">
                         <FaBed size={30} />
                         <p className="font-bold ">37 bäddar</p>

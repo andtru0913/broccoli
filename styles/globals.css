@@ -266,7 +266,7 @@
     display: none !important;
   }
   .window-pop {
-    @apply z-50 fixed top-0 text-base h-screen md:top-1/4 flex flex-col w-full md:items-center  md:h-auto;
+    @apply z-40 fixed top-10 text-base h-4/5 md:top-1/4 flex flex-col w-screen sm:w-96 md:items-center  md:h-auto;
   }
   .MuiTimelineItem-root {
     padding: 0px;

@@ -4,7 +4,7 @@ import ActiveLink from "../activeLink";
 import ThemedImage from "../themedImage";
 import MENU_LIST from "./navItems";
 
-const NavBar = () => {
+const NavBar = ({ admin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openmenu = () => setIsOpen(!isOpen);
   const hamburgerLine =

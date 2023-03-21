@@ -84,7 +84,7 @@ export default function About({ title, intro, year, timelinedesc }) {
                   height={"800"}
                   width={"1000"}
                   className=" "
-                  src="/images/about.svg"
+                  src="/images/group.svg"
                 ></Image>
               </div>
             </div>
