@@ -42,7 +42,7 @@ export default function Exjobb({ admin, pagestring, pageName, click }) {
         buttonName="Skicka ansökan"
       >
         <div className=" bg-secondary-1 w-full pt-40 sm:pt-0">
-          <div className="flex flex-row justify-center relative z-40">
+          <div className="flex flex-row justify-center relative z-20">
             <div className=" text-justify py-8 px-4">
               <a onClick={click} href="#linkForm">
                 <h3

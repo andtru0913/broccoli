@@ -146,6 +146,7 @@ const Page = ({
                   <form action="../../api/admin/modifyCard" method="POST">
                     <div className="flex flex-col gap-2 ">
                       <input className="id p-2" type="hidden" name="id" />
+
                       <input
                         className="title p-2 rounded"
                         type="text"
@@ -358,6 +359,7 @@ const Page = ({
       <div className=" ">{children}</div>
       <section className="relative bg-secondary-d1 ">
         <Cardsection
+          key={1}
           title={cardTitle}
           authentication={authentication}
           page={page}

@@ -111,7 +111,7 @@ export default function Home({ feed, genderCount }) {
             <div className=" pt-12  flex flex-col justify-center ">
               <div className=" p-4  lg:col-span-2 flex flex-col items-center gap-2 ">
                 <div className=" lg:max-w-readable flex justify-center pb-8 z-20  ">
-                  <h2 className="text-center font-bold uppercase ">
+                  <h2 className="text-center font-bold uppercase h4 md:h2 ">
                     Hos broccoli jobbar ingenjörer med olika inriktningar
                   </h2>
                 </div>
@@ -123,7 +123,7 @@ export default function Home({ feed, genderCount }) {
                     data-aos-once="true"
                   >
                     <div className="relative  mb-2 mt-4">
-                      <div className=" w-20 h-20 relative">
+                      <div className=" w-16 h-16 md:w-20 md:h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/computerBlack.png"
                           img_path_dark="/images/darkMode/computerWhite.png"
@@ -131,7 +131,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
 
-                    <div className="bg-primary-1 py-4 px-6 mx-2 ">
+                    <div className="bg-primary-1 py-2 px-4 md:py-4 md:px-6 mx-2 ">
                       <p className="font-medium">Data</p>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ export default function Home({ feed, genderCount }) {
                     data-aos-once="true"
                   >
                     <div className="relative mb-2 mt-4">
-                      <div className=" w-20 h-20 relative">
+                      <div className="w-16 h-16 md:w-20 md:h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/webbBlack.png"
                           img_path_dark="/images/darkMode/webbWhite.png"
@@ -150,7 +150,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
 
-                    <div className="bg-primary-1 py-4 px-6 mx-2">
+                    <div className="bg-primary-1  py-2 px-4 md:py-4 md:px-6 mx-2">
                       <p className="font-medium">Mjukvara</p>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ export default function Home({ feed, genderCount }) {
                     data-aos-once="true"
                   >
                     <div className="relative  mb-2 mt-4">
-                      <div className=" w-20 h-20 relative ">
+                      <div className="w-16 h-16 md:w-20 md:h-20 relative ">
                         <ThemedImage
                           img_path_light="/images/lightMode/circuitBlack.png"
                           img_path_dark="/images/darkMode/circuitWhite.png"
@@ -169,7 +169,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
 
-                    <div className="bg-primary-1 py-4 px-6 mx-2">
+                    <div className="bg-primary-1  py-2 px-4 md:py-4 md:px-6 mx-2">
                       <p className="font-medium">Elektronik</p>
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function Home({ feed, genderCount }) {
                     data-aos-once="true"
                   >
                     <div className="relative mt-4 mb-2">
-                      <div className=" w-20 h-20 relative">
+                      <div className="w-16 h-16 md:w-20 md:h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/armBlack.png"
                           img_path_dark="/images/darkMode/armWhite.png"
@@ -188,7 +188,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
 
-                    <div className="bg-primary-1 py-4 px-6 mx-2">
+                    <div className="bg-primary-1  py-2 px-4 md:py-4 md:px-6 mx-2">
                       <p className="font-medium">Mekatronik</p>
                     </div>
                   </div>
@@ -199,7 +199,7 @@ export default function Home({ feed, genderCount }) {
                     data-aos-once="true"
                   >
                     <div className="relative mt-4 mb-2">
-                      <div className=" w-20 h-20 relative">
+                      <div className=" w-16 h-16 md:w-20 md:h-20 relative">
                         <ThemedImage
                           img_path_light="/images/lightMode/fysikBlack.png"
                           img_path_dark="/images/darkMode/fysikWhite.png"
@@ -207,7 +207,7 @@ export default function Home({ feed, genderCount }) {
                       </div>
                     </div>
 
-                    <div className="bg-primary-1 py-4 px-6 mx-2">
+                    <div className="bg-primary-1  py-2 px-4 md:py-4 md:px-6 mx-2">
                       <p className="font-medium">Teknisk Fysik</p>
                     </div>
                   </div>
@@ -230,7 +230,9 @@ export default function Home({ feed, genderCount }) {
         <section className="relative ">
           <div className=" py-12 lg:py-14 xl:py-48  flex flex-col justify-center bg-secondary-l1 -z-20 ">
             <div className="  text-center z-20 ">
-              <h1 className="uppercase font-bold ">Att jobba hos broccoli</h1>
+              <h1 className="uppercase font-bold h2 md:h1 px-2">
+                Att jobba hos broccoli
+              </h1>
             </div>
             <div className="layout grid grid-cols-1 lg:grid lg:grid-cols-2 gap-6 lg:gap-12 lg:pt-12 ">
               <div className="flex flex-col items-center gap-12 md:pt-12 lg:pt-0 z-20">
@@ -268,7 +270,9 @@ export default function Home({ feed, genderCount }) {
         <section className="relative  ">
           <div className=" py-12 lg:py-14 text-center  bg-secondary-l1  ">
             <div className="relative z-20 bg-transparent">
-              <h1 className=" uppercase font-bold  ">Våra kärnvärden</h1>
+              <h1 className=" uppercase font-bold h2 md:h1 ">
+                Våra kärnvärden
+              </h1>
             </div>
             <div className="grid grid-cols-1 grid-flow-row  md:grid-cols-3 w-full py-8 cursor-default  h-2/3 ">
               <div className="relative  bg-tertiary-1 text-inverted p-8 md:p-4 lg:p-8 2xl:p-20 flex flex-col w-full flex-1 gap-8 z-20 h-full text-left ">
@@ -341,7 +345,7 @@ export default function Home({ feed, genderCount }) {
         <section className="relative">
           <div className="  lg:py-52 bg-secondary-l1  ">
             <div className="relative bg-transparent z-20">
-              <h1 className=" uppercase font-bold text-center">
+              <h1 className=" uppercase font-bold text-center h2 md:h1">
                 Följ oss på Instagram
               </h1>
             </div>
@@ -357,7 +361,7 @@ export default function Home({ feed, genderCount }) {
                         height={400}
                         className="bg-cover max-w-full h-auto align-middle  "
                         src={image.media_url}
-                        alt={"image"}
+                        alt={image.media_url}
                         unoptimized
                       />
                     </a>
@@ -379,10 +383,6 @@ export default function Home({ feed, genderCount }) {
 
         <section className="relative ">
           <div className="pt-12 lg:p-0 flex flex-col items-center bg-secondary-l1  ">
-            <h1 className=" uppercase font-bold z-20 h4 md:h1">
-              Broccoligården
-            </h1>
-
             <div className=" flex flex-col lg:flex-row bg-tertiary-1 w-full text-inverted mt-8 z-20">
               <div className="hidden lg:flex relative w-full max-h-full bg-cover z-20">
                 {/**image gallery */}

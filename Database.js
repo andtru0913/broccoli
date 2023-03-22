@@ -371,7 +371,8 @@ export async function createCard(
   location,
   startdate,
   enddate,
-  contact
+  contact,
+  exjobbare
 ) {
   await prisma.card.create({
     data: {
@@ -382,6 +383,7 @@ export async function createCard(
       startdate: startdate,
       enddate: enddate,
       contact: contact,
+      exjobbare: exjobbare,
       page: {
         connect: {
           id: pageId,
@@ -463,7 +465,8 @@ export async function updateCard(
   location,
   startdate,
   enddate,
-  contact
+  contact,
+  exjobbare
 ) {
   return await prisma.card.update({
     where: {
@@ -477,6 +480,7 @@ export async function updateCard(
       startdate: startdate,
       enddate: enddate,
       contact: contact,
+      exjobbare: exjobbare,
     },
   });
 }
@@ -964,8 +968,8 @@ export async function getNotifications(userid) {
           author: {
             select: {
               firstname: true,
-              lastname: true
-            }
+              lastname: true,
+            },
           },
         },
       },

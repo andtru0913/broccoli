@@ -44,8 +44,8 @@ const Card = ({
       </div>
       {showModal == id ? (
         <>
-          <div className="fixed top-0 left-0 z-30 bg-black/40 w-screen h-screen "></div>
-          <div className="z-40 fixed w-screen px-2 md:inset-1/4 md:w-2/4 top-40 h-screen ">
+          <div className="fixed top-0 left-0 z-30 bg-black/40 w-screen h-screen"></div>
+          <div className=" fixed z-40 w-screen px-2 md:inset-1/4 md:w-2/4 top-40 h-screen ">
             <div className="bg-secondary-1  flex flex-col gap-4 text-left text-color-base overflow-y-scroll h-2/3 md:h-2/4 ">
               <div className="sticky top-0 flex flex-row justify-between bg-secondary-d1 border-b-2 border-secondary-d2">
                 <h2 className="p-8 uppercase ">{title}</h2>

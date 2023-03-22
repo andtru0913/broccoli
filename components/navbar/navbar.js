@@ -62,7 +62,7 @@ const NavBar = ({ admin }) => {
         <div className="text-lg flex justify-start">
           <Link href="/">
             <a className="">
-              <div className="relative h-auto w-20 md:h-5 py-0 mx-4 flex md:w-48 lg:h-10">
+              <div className="relative h-5 w-20 md:h-5 py-0 mx-4 flex md:w-48 lg:h-10 ">
                 <ThemedImage
                   img_path_light="/images/lightMode/BroccoliBlack.png"
                   img_path_dark="/images/darkMode/BroccoliWhite.png"

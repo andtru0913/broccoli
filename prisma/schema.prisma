@@ -68,7 +68,7 @@ model Card {
   requirements  String?
   location      String?
   contact       String?
-  exjobbare String?
+  exjobbare     String?
   page          Page    @relation(fields: [pageID], references: [id])
   pageID        String  @db.ObjectId
   
