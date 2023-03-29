@@ -61,26 +61,6 @@ const profile = ({ userString, notifications }) => {
       };
     });
   };
-  const create = (form) => {
-    try {
-      fetch("../api/editProfile"),
-        {
-          body: JSON.stringify(data),
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-        };
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleSubmit = async (data) => {
-    console.log(data);
-    try {
-      create(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
