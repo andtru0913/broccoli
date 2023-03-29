@@ -1,36 +1,37 @@
-import {getNotifications, getUserinfo} from "../../../../Database";
+import { getNotifications, getUserinfo } from "../../../../Database";
 import LayoutIntranet from "../../../../components/layout/layoutIntranet";
 import ProfilePicture from "../../../../components/ProfilePicture";
-import {verify} from "../../../../tokens";
+import { verify } from "../../../../tokens";
 export async function getServerSideProps(context) {
   const user_id = await verify(
-      JSON.parse(context.req.cookies["token"] || null)
+    JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserinfo(user_id);
   if (!context.params.userid || !user.admin) {
     return {
-        redirect: {
-          permanent: false,
-          destination: "/intranet",
-        },
-        props: {},
-      }
+      redirect: {
+        permanent: false,
+        destination: "/intranet",
+      },
+      props: {},
+    };
   } else {
     const [userString, notifications] = await Promise.all([
       getUserinfo(context.params.userid),
       getNotifications(user.id),
     ]);
-      return {
-        props: {
-          userString: JSON.stringify(userString),
-          notifications: JSON.stringify(await notifications),
-        },
-      };
-    }
+    return {
+      props: {
+        userString: JSON.stringify(userString),
+        notifications: JSON.stringify(await notifications),
+      },
+    };
+  }
 }
 
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
+
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
@@ -47,6 +48,7 @@ const profile = ({ userString, notifications }) => {
               >
                 <path d="M-44.0344 254.118C-49.6575 195.249 -196.249 -116.979 101.387 -79.973L503.761 -1.50977C482.005 26.0719 375.757 188.448 355.905 252.598C344.757 288.623 316.518 433.246 267.67 467.135C210.686 506.668 223.748 665.422 176.438 726.495C129.129 787.567 64.5561 775.547 28.9269 758.877C-6.70237 742.206 -67.2963 725.933 -82.805 671.058C-95.2119 627.157 -55.7542 551.868 -43.2952 456.607C-30.8362 361.347 -38.4113 312.988 -44.0344 254.118Z" />
               </svg>
+
               {/**Profile image */}
               <div className="relative flex justify-center w-56 h-64 md:top-16 md:ml-10 z-10">
                 <ProfilePicture image={user.image} />
@@ -54,7 +56,10 @@ const profile = ({ userString, notifications }) => {
             </div>
 
             <div className=" md:pr-16 pl-2 mt-8 md:col-span-2 row-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible ">
-              <h2 className="  font-bold uppercase align-middle">${user.firstname}s profil</h2>
+              <h2 className="  font-bold uppercase align-middle">
+                {user.firstname}s profil
+              </h2>
+
               {/**Profile Information */}
               <div className="grid grid-rows-6 cols-2  ">
                 <div className="flex flex-row ">
@@ -174,14 +179,15 @@ const profile = ({ userString, notifications }) => {
                   Redigera
                 </a>
               </div>
-              <form className={"flex justify-end mb-0 md:mb-12 "}
-                  onSubmit={function (e) {
-                    if (!confirm("Är du säker?")) {
-                      e.preventDefault()
-                    }
-                  }}
-                  action="../../../api/deleteUser"
-                  method="POST"
+              <form
+                className={"flex justify-end mb-0 md:mb-12 "}
+                onSubmit={function (e) {
+                  if (!confirm("Är du säker?")) {
+                    e.preventDefault();
+                  }
+                }}
+                action="../../../api/deleteUser"
+                method="POST"
               >
                 <input type="hidden" name="id" value={user.id} />
                 <button className="btn mx-6 btn-delete" type="submit">

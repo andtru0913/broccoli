@@ -2,9 +2,13 @@ import LayoutIntranet from "../../components/layout/layoutIntranet";
 import { getNotifications, getUserProfile } from "../../Database";
 import ProfilePicture from "../../components/ProfilePicture";
 import { verify } from "../../tokens";
+import { useState } from "react";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
-  const user_id = await verify(JSON.parse(context.req.cookies["token"] || null))
+  const user_id = await verify(
+    JSON.parse(context.req.cookies["token"] || null)
+  );
   const user = await getUserProfile(user_id);
   return !user
     ? {
@@ -14,24 +18,85 @@ export async function getServerSideProps(context) {
         },
         props: {},
       }
-      :
-      {
+    : {
         props: {
           userString: JSON.stringify(user),
-          notifications: JSON.stringify(await getNotifications(user.id))
-        }
-      }
+          notifications: JSON.stringify(await getNotifications(user.id)),
+        },
+      };
 }
 
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
+
+  const [img, setImg] = useState(user.image ?? "siluette.jpg");
+  const [file, setFile] = useState();
+  const [formData, setFormData] = useState({
+    id: user.id,
+    username: "",
+    password: "",
+    email: "",
+    address: "",
+    privatenumber: "",
+    worknumber: "",
+    image: undefined,
+    description: "",
+    birthdate: undefined,
+  });
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setFile(base64);
+  };
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+  const create = (form) => {
+    try {
+      fetch("../api/editProfile"),
+        {
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleSubmit = async (data) => {
+    console.log(data);
+    try {
+      create(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
       <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
         <div className="relative bg-secondary-1">
           <div>
-            <form action="../../api/editProfile" method="POST" encType={"multipart/form-data"}>
-              <input type={"hidden"} value={'../intranet/profile'} name={"redirect"}/>
+            <form
+              action="../api/editProfile"
+              method="POST"
+              encType={"multipart/form-data"}
+            >
+              <input
+                type={"hidden"}
+                value={"../intranet/profile"}
+                name={"redirect"}
+              />
               <div className=" grid  grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1  h-full  md:px-12 bg-secondary-1  overflow-hidden">
                 <div className=" relative col-span-1 pt-12 pl-2 ">
                   <svg
@@ -47,7 +112,13 @@ const profile = ({ userString, notifications }) => {
 
                   <div className=" mr-10 mt-16   justify-center flex flex-col">
                     <div className="w-56 h-64 mb-6 self-center relative z-10 ">
-                      <ProfilePicture image={user.image} />
+                      <Image
+                        layout="fill"
+                        className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
+                        src={file ?? "/images/silhouette.jpg"}
+                        alt={"Profile picture not found"}
+                        priority={true}
+                      />
                     </div>
                     <div className="relative flex flex-wrap flex-col md:flex-row  items-end z-10 ">
                       <div className="flex flex-1 flex-col p-2 items-center  w-fit">
@@ -55,11 +126,18 @@ const profile = ({ userString, notifications }) => {
                           Ladda upp en profilbild
                         </p>
                         <input
+                          onChange={(e) => {
+                            uploadImage(e);
+                          }}
                           className="form-control w-1/2  block px-3 py-1.5  text-base font-normal text-muted  solid focus:text-muted focus:border-dashed hover:border-dashed"
+                          accept="image/*"
                           type="file"
                           name="file"
                         />
                         <input
+                          onChange={(e) =>
+                            setFormData({ ...form, id: e.target.value })
+                          }
                           className="id"
                           type="hidden"
                           name="id"
@@ -85,9 +163,16 @@ const profile = ({ userString, notifications }) => {
                         Födelsedatum
                       </label>
                       <input
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            birthdate: e.target.value,
+                          })
+                        }
                         className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                         type="Date"
                         name="birthdate"
+                        value={formData.birthdate}
                       />
                     </div>
                   </div>
@@ -101,6 +186,9 @@ const profile = ({ userString, notifications }) => {
                         Mail
                       </label>
                       <input
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
                         className="email text-sm p-2 border   appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
                         type="text"
                         name="email"
@@ -117,6 +205,9 @@ const profile = ({ userString, notifications }) => {
                       </label>
 
                       <input
+                        onChange={(e) =>
+                          setFormData({ ...formData, username: e.target.value })
+                        }
                         className="username text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                         type="text"
                         name="username"
@@ -136,6 +227,12 @@ const profile = ({ userString, notifications }) => {
                         Privatnummer
                       </label>
                       <input
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            privatenumber: e.target.value,
+                          })
+                        }
                         className="privatenumber text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                         type="text"
                         name="privatenumber"
@@ -151,6 +248,12 @@ const profile = ({ userString, notifications }) => {
                         Jobbnummer
                       </label>
                       <input
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            worknumber: e.target.value,
+                          })
+                        }
                         className="worknumber text-sm p-2 border    appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
                         type="text"
                         name="worknumber"
@@ -169,6 +272,12 @@ const profile = ({ userString, notifications }) => {
                         Beskrivning
                       </label>
                       <textarea
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            description: e.target.value,
+                          })
+                        }
                         className="description text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-d1 autofill:focus:bg-primary-d2"
                         name="description"
                         placeholder="Beskriv lite om dig själv"
@@ -220,6 +329,9 @@ const profile = ({ userString, notifications }) => {
                         />
                       </div>
                       <input
+                        onChange={(e) =>
+                          setFormData({ ...formData, passowrd: e.target.value })
+                        }
                         id="changePassText"
                         disabled={true}
                         className="password p-2    mb-2"

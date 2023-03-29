@@ -136,6 +136,7 @@ export default function Home({
                 objectFit="cover"
                 alt="Siluette of Gothenburg"
                 className="absolute top-0 -z-20"
+                priority={true}
               />
 
               {/**  <svg

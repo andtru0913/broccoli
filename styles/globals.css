@@ -182,7 +182,7 @@
   }
 
   .btn-delete {
-    @apply bg-primary-l2 text-base;
+    @apply bg-red-400 text-base;
   }
   .btn-modify {
     @apply bg-primary-d2 text-inverted;

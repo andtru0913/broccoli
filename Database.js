@@ -129,6 +129,23 @@ export async function getUserProfile(userid) {
   }
 }
 
+export async function getUserImage(userid) {
+  if (userid === undefined) return null;
+  try {
+    const query = await prisma.user.findMany({
+      where: {
+        id: userid,
+      },
+      select: {
+        image: true,
+      },
+    });
+    return query[0];
+  } catch (e) {
+    return null;
+  }
+}
+
 export async function getAllUsers() {
   return await prisma.user.findMany({
     select: {
