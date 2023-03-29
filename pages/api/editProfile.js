@@ -12,7 +12,6 @@ export default async function handler(req, res) {
       let cookies = JSON.parse(req.cookies["token"] || null);
       if (!!cookies) {
         const result = await asyncParse(req);
-        console.log(result);
         let user = await verify(cookies);
         if (!result.err && (user === result.id || (await isAdmin(user)))) {
           try {

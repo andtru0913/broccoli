@@ -13,7 +13,7 @@ const ProfilePicture = ({ image }) => {
     <Image
       layout="fill"
       className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
-      src={`/uploads/profiles/${image}?${Date.now()}`}
+      src={image}
       alt={"Profile picture not found"}
     />
   );
