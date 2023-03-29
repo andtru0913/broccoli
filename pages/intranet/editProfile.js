@@ -26,23 +26,10 @@ export async function getServerSideProps(context) {
       };
 }
 
-const profile = ({ userString, notifications }) => {
+const Profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
 
-  const [img, setImg] = useState(user.image ?? "siluette.jpg");
   const [file, setFile] = useState();
-  const [formData, setFormData] = useState({
-    id: user.id,
-    username: "",
-    password: "",
-    email: "",
-    address: "",
-    privatenumber: "",
-    worknumber: "",
-    image: undefined,
-    description: "",
-    birthdate: undefined,
-  });
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -115,9 +102,6 @@ const profile = ({ userString, notifications }) => {
                           name="file"
                         />
                         <input
-                          onChange={(e) =>
-                            setFormData({ ...form, id: e.target.value })
-                          }
                           className="id"
                           type="hidden"
                           name="id"
@@ -143,16 +127,9 @@ const profile = ({ userString, notifications }) => {
                         Födelsedatum
                       </label>
                       <input
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            birthdate: e.target.value,
-                          })
-                        }
                         className="adress text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                         type="Date"
                         name="birthdate"
-                        value={formData.birthdate}
                       />
                     </div>
                   </div>
@@ -166,9 +143,6 @@ const profile = ({ userString, notifications }) => {
                         Mail
                       </label>
                       <input
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
                         className="email text-sm p-2 border   appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
                         type="text"
                         name="email"
@@ -185,9 +159,6 @@ const profile = ({ userString, notifications }) => {
                       </label>
 
                       <input
-                        onChange={(e) =>
-                          setFormData({ ...formData, username: e.target.value })
-                        }
                         className="username text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                         type="text"
                         name="username"
@@ -207,12 +178,6 @@ const profile = ({ userString, notifications }) => {
                         Privatnummer
                       </label>
                       <input
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            privatenumber: e.target.value,
-                          })
-                        }
                         className="privatenumber text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-1 autofill:focus:bg-primary-1"
                         type="text"
                         name="privatenumber"
@@ -228,12 +193,6 @@ const profile = ({ userString, notifications }) => {
                         Jobbnummer
                       </label>
                       <input
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            worknumber: e.target.value,
-                          })
-                        }
                         className="worknumber text-sm p-2 border    appearance-none  leading-tight focus:border-dashed hover:border-dashed  "
                         type="text"
                         name="worknumber"
@@ -252,12 +211,6 @@ const profile = ({ userString, notifications }) => {
                         Beskrivning
                       </label>
                       <textarea
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            description: e.target.value,
-                          })
-                        }
                         className="description text-sm p-2 border   appearance-none  leading-tight hover:border-dashed autofill:bg-primary-d1 autofill:focus:bg-primary-d2"
                         name="description"
                         placeholder="Beskriv lite om dig själv"
@@ -309,9 +262,6 @@ const profile = ({ userString, notifications }) => {
                         />
                       </div>
                       <input
-                        onChange={(e) =>
-                          setFormData({ ...formData, passowrd: e.target.value })
-                        }
                         id="changePassText"
                         disabled={true}
                         className="password p-2    mb-2"
@@ -345,4 +295,4 @@ const profile = ({ userString, notifications }) => {
   );
 };
 
-export default profile;
+export default Profile;

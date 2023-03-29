@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       let cookies = JSON.parse(req.cookies["token"] || null);
       if (!!cookies) {
         const result = await asyncParse(req);
-
+        console.log(result);
         let user = await verify(cookies);
         if (!result.err && (user === result.id || (await isAdmin(user)))) {
           try {
@@ -22,25 +22,29 @@ export default async function handler(req, res) {
                 result.fields.username,
                 result.fields.password,
                 result.fields.email,
-                result.address,
+                result.fields.address,
                 result.fields.privatenumber,
                 result.fields.worknumber,
                 result.data,
                 result.fields.description,
-                !!result.birthdate ? new Date(result.birthdate) : null
+                !!result.fields.birthdate
+                  ? new Date(result.fields.birthdate)
+                  : null
               );
             } else {
               await editProfile(
-                result.id,
-                result.username,
-                result.password,
-                result.email,
-                result.address,
-                result.privatenumber,
-                result.worknumber,
+                result.fields.id,
+                result.fields.username,
+                result.fields.password,
+                result.fields.email,
+                result.fields.address,
+                result.fields.privatenumber,
+                result.fields.worknumber,
                 null,
-                result.description,
-                !!result.birthdate ? new Date(result.birthdate) : null
+                result.fields.description,
+                !!result.fields.birthdate
+                  ? new Date(result.fields.birthdate)
+                  : null
               );
             }
             res.redirect(302, result.fields.redirect);
@@ -71,19 +75,6 @@ const asyncParse = (req) =>
       resolve({ fields, data });
     });
   });
-export const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const data = fs.readFileSync(file);
-
-    data.onload = () => {
-      resolve(data.result);
-    };
-
-    data.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
 
 export const config = {
   api: {
