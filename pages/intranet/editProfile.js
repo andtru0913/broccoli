@@ -32,7 +32,6 @@ const Profile = ({ userString, notifications }) => {
   const [file, setFile] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(user.image);
   const uploadImage = async (e) => {
     setLoading(true);
     const tmp = e.target.files[0];
