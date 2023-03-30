@@ -6,8 +6,8 @@ export default async function handler(req, res) {
     res.status(400).send("Not a POST");
   }
   const [user, user_id] = await Promise.all([
-    JSON.parse(await checkUser(JSON.parse(req.cookies["token"] || null))),
-    verify(JSON.parse(req.cookies["token"])),
+    JSON.parse(await checkUser(req.cookies["token"])),
+    verify(req.cookies["token"]),
   ]);
   try {
     if (!!req.body.eventid) {
