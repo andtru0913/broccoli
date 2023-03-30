@@ -29,26 +29,14 @@ export async function getServerSideProps(context) {
 
 const Profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
-  const [file, setFile] = useState();
-  const [base64File, setBase64File] = useState("/images/silhouette.jpg");
+  const [file, setFile] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const dataURL = `data:image/png;base64, ${user.image}`;
-
-  const uploadImageNEW = async (e) => {
-    setLoading(true);
-    const file = e.target.files[0];
-
-    const base64 = await convertBase64(file).then(() => {
-      setBase64File(base64);
-      setIsLoaded(true);
-      setLoading(false);
-    });
-  };
+  console.log(user.image);
   const uploadImage = async (e) => {
     setLoading(true);
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
+    const tmp = e.target.files[0];
+    const base64 = await convertBase64(tmp);
     setFile(base64);
     setIsLoaded(true);
     setLoading(false);

@@ -35,22 +35,10 @@ export async function getServerSideProps(context) {
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
 
-  const [file, setFile] = useState();
-  const [base64File, setBase64File] = useState("/images/silhouette.jpg");
+  const [file, setFile] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const dataURL = `data:image/png;base64, ${user.image}`;
 
-  const uploadImageNEW = async (e) => {
-    setLoading(true);
-    const file = e.target.files[0];
-
-    const base64 = await convertBase64(file).then(() => {
-      setBase64File(base64);
-      setIsLoaded(true);
-      setLoading(false);
-    });
-  };
   const uploadImage = async (e) => {
     setLoading(true);
     const file = e.target.files[0];
@@ -104,7 +92,7 @@ const profile = ({ userString, notifications }) => {
                     <div className="w-56 h-64 mb-6 self-center relative z-10 ">
                       {loading ? (
                         <div className="w-full h-full flex justify-center  items-center ">
-                          <div class="w-24 h-24 p-5  rounded-full flex items-center justify-center">
+                          <div className="w-24 h-24 p-5  rounded-full flex items-center justify-center">
                             <Image
                               className="animate-spin"
                               width={40}
@@ -136,6 +124,7 @@ const profile = ({ userString, notifications }) => {
 
                         <input
                           onChange={(e) => {
+                            e.preventDefault;
                             uploadImage(e);
                           }}
                           className="form-control w-1/2  block px-3 py-1.5  text-base font-normal text-muted  solid focus:text-muted focus:border-dashed hover:border-dashed"

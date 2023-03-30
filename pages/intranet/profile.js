@@ -49,6 +49,7 @@ const profile = ({ userString, notifications }) => {
 
             <div className=" md:pr-16 pl-2 mt-8 md:col-span-2 row-span-2 flex flex-col  overflow-y-scroll lg:overflow-visible ">
               <h2 className="  font-bold uppercase align-middle">Din profil</h2>
+              <p className="overflow-scroll">{user.image}</p>
               {/**Profile Information */}
               <div className="grid grid-rows-6 cols-2  ">
                 <div className="flex flex-row ">
