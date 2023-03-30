@@ -25,7 +25,6 @@ export async function getServerSideProps(context) {
 
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
-  const dataURL = `data:image/png;base64, ${user.image}`;
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin}>
       <section className="">
@@ -44,7 +43,7 @@ const profile = ({ userString, notifications }) => {
               </svg>
               {/**Profile image */}
               <div className="relative flex justify-center w-56 h-64 md:top-16 md:ml-10 z-10">
-                <ProfilePicture image={dataURL} />
+                <ProfilePicture image={user.image} />
               </div>
             </div>
 

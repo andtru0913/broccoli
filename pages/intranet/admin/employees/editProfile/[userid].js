@@ -2,6 +2,8 @@ import { verify } from "../../../../../tokens";
 import { getNotifications, getUserinfo } from "../../../../../Database";
 import LayoutIntranet from "../../../../../components/layout/layoutIntranet";
 import ProfilePicture from "../../../../../components/ProfilePicture";
+import { useState } from "react";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
   const user_id = await verify(
@@ -32,7 +34,44 @@ export async function getServerSideProps(context) {
 
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
+
+  const [file, setFile] = useState();
+  const [base64File, setBase64File] = useState("/images/silhouette.jpg");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dataURL = `data:image/png;base64, ${user.image}`;
+
+  const uploadImageNEW = async (e) => {
+    setLoading(true);
+    const file = e.target.files[0];
+
+    const base64 = await convertBase64(file).then(() => {
+      setBase64File(base64);
+      setIsLoaded(true);
+      setLoading(false);
+    });
+  };
+  const uploadImage = async (e) => {
+    setLoading(true);
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setFile(base64);
+    setIsLoaded(true);
+    setLoading(false);
+  };
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
       <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
@@ -45,7 +84,7 @@ const profile = ({ userString, notifications }) => {
             >
               <input
                 type={"hidden"}
-                value={`../intranet/admin/employees/editProfile/${user.id}`}
+                value={`../intranet/admin/employees/${user.id}`}
                 name={"redirect"}
               />
               <div className=" grid  grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1  h-full  md:px-12 bg-secondary-1  overflow-hidden">
@@ -63,7 +102,25 @@ const profile = ({ userString, notifications }) => {
 
                   <div className=" mr-10 mt-16   justify-center flex flex-col">
                     <div className="w-56 h-64 mb-6 self-center relative z-10 ">
-                      <ProfilePicture image={dataURL} />
+                      {loading ? (
+                        <div className="w-full h-full flex justify-center  items-center ">
+                          <div class="w-24 h-24 p-5  rounded-full flex items-center justify-center">
+                            <Image
+                              className="animate-spin"
+                              width={40}
+                              height={40}
+                              alt="broccoli"
+                              src={"/images/broccoli.png"}
+                            />
+                          </div>
+                        </div>
+                      ) : isLoaded ? (
+                        <ProfilePicture image={file} />
+                      ) : (
+                        <ProfilePicture
+                          image={user.image ?? "/images/silhouette.jpg"}
+                        />
+                      )}
                     </div>
                     <div className="relative flex flex-wrap flex-col md:flex-row  items-end z-10 ">
                       <div className="flex flex-1 flex-col p-2 items-center  w-fit">
@@ -71,7 +128,18 @@ const profile = ({ userString, notifications }) => {
                           Ladda upp en profilbild
                         </p>
                         <input
-                          className="form-control w-1/2  block px-3 py-1.5  text-base font-normal text-muted  solid    focus:text-muted focus:border-dashed hover:border-dashed"
+                          className="base64"
+                          type="hidden"
+                          name="base64"
+                          value={file}
+                        />
+
+                        <input
+                          onChange={(e) => {
+                            uploadImage(e);
+                          }}
+                          className="form-control w-1/2  block px-3 py-1.5  text-base font-normal text-muted  solid focus:text-muted focus:border-dashed hover:border-dashed"
+                          accept="image/*"
                           type="file"
                           name="file"
                         />

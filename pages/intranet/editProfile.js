@@ -112,7 +112,7 @@ const Profile = ({ userString, notifications }) => {
                         <ProfilePicture image={file} />
                       ) : (
                         <ProfilePicture
-                          image={dataURL ?? "/images/silhouette.jpg"}
+                          image={user.image ?? "/images/silhouette.jpg"}
                         />
                       )}
                     </div>
@@ -121,9 +121,16 @@ const Profile = ({ userString, notifications }) => {
                         <p className="text-base pb-2 uppercase font-semibold ">
                           Ladda upp en profilbild
                         </p>
+                        <input
+                          className="base64"
+                          type="hidden"
+                          name="base64"
+                          value={file}
+                        />
 
                         <input
                           onChange={(e) => {
+                            e.preventDefault;
                             uploadImage(e);
                           }}
                           className="form-control w-1/2  block px-3 py-1.5  text-base font-normal text-muted  solid focus:text-muted focus:border-dashed hover:border-dashed"
