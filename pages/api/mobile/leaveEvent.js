@@ -1,5 +1,5 @@
-import { leaveEvent } from "../../Database";
-import { checkUser, verify } from "../../tokens";
+import { leaveEvent } from "../../../Database";
+import { checkUser, verify } from "../../../tokens";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

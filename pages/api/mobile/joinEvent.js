@@ -1,5 +1,5 @@
-import { joinEvent } from "../../Database";
-import { checkUser, verify } from "../../tokens";
+import { joinEvent } from "../../../Database";
+import { checkUser, verify } from "../../../tokens";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(400).send("not a post");
