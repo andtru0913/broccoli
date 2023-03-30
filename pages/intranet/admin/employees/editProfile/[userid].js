@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-const profile = ({ userString, notifications }) => {
+const Profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
 
   const [file, setFile] = useState("");
@@ -326,4 +326,4 @@ const profile = ({ userString, notifications }) => {
   );
 };
 
-export default profile;
+export default Profile;
