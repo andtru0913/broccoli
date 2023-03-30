@@ -998,22 +998,7 @@ export async function getNotifications(userid) {
       },
     },
   });
-  result.map((data) => {
-    data.notification.startDate = new Date(
-      data.notification.startDate
-    ).toLocaleString("default", {
-      year: "numeric",
-      day: "numeric",
-      month: "long",
-    });
-    data.notification.endDate = new Date(
-      data.notification.endDate
-    ).toLocaleString("default", {
-      year: "numeric",
-      day: "numeric",
-      month: "long",
-    });
-  });
+
   return result;
 }
 
