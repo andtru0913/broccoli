@@ -22,9 +22,5 @@ export default async function handler(req, res) {
   } catch {
     res.status(500).send("Internal server error");
   }
-  if (!!req.body.redirect) {
-    res.redirect(302, req.body.redirect);
-  } else {
-    res.status(200).send("Done!");
-  }
+  res.status(200).send("Done!");
 }

@@ -12,7 +12,6 @@ export default async function handler(req, res) {
     if (!!req.body.eventid) {
       if (!!user) {
         await joinEvent(user_id, req.body.eventid);
-        res.status(200).send("Done");
       } else {
         res.status(400).send("Unauthorized");
       }
@@ -22,4 +21,5 @@ export default async function handler(req, res) {
   } catch {
     res.status(500).send("Internal server error");
   }
+  res.status(200).send("Done");
 }
