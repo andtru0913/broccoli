@@ -10,6 +10,7 @@ export async function getServerSideProps(context) {
     JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserProfile(user_id);
+
   return !user
     ? {
         redirect: {
@@ -28,13 +29,35 @@ export async function getServerSideProps(context) {
 
 const Profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
-
   const [file, setFile] = useState();
+  const [base64File, setBase64File] = useState("/images/silhouette.jpg");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const dataURL = `data:image/png;base64, ${user.image}`;
+  console.log(user.image);
 
+  const uploadImageNEW = async (e) => {
+    setLoading(true);
+    const file = e.target.files[0];
+    console.log(file);
+    const base64 = await convertBase64(file).then(() => {
+      console.log("is it done??" + isLoaded);
+      console.log("is it still loading ? " + loading);
+      setBase64File(base64);
+      setIsLoaded(true);
+      setLoading(false);
+    });
+
+    console.log(base64);
+    console.log(base64File);
+  };
   const uploadImage = async (e) => {
+    setLoading(true);
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
     setFile(base64);
+    setIsLoaded(true);
+    setLoading(false);
   };
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -79,19 +102,34 @@ const Profile = ({ userString, notifications }) => {
 
                   <div className=" mr-10 mt-16   justify-center flex flex-col">
                     <div className="w-56 h-64 mb-6 self-center relative z-10 ">
-                      <Image
-                        layout="fill"
-                        className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
-                        src={file ?? "/images/silhouette.jpg"}
-                        alt={"Profile picture not found"}
-                        priority={true}
-                      />
+                      {console.log("whats the loading status?" + loading)}
+                      {console.log("whats the is it loaded status?" + isLoaded)}
+                      {loading ? (
+                        <div className="w-full h-full flex justify-center  items-center ">
+                          <div class="w-24 h-24 p-5  rounded-full flex items-center justify-center">
+                            <Image
+                              className="animate-spin"
+                              width={40}
+                              height={40}
+                              alt="broccoli"
+                              src={"/images/broccoli.png"}
+                            />
+                          </div>
+                        </div>
+                      ) : isLoaded ? (
+                        <ProfilePicture image={file} />
+                      ) : (
+                        <ProfilePicture
+                          image={dataURL ?? "/images/silhouette.jpg"}
+                        />
+                      )}
                     </div>
                     <div className="relative flex flex-wrap flex-col md:flex-row  items-end z-10 ">
                       <div className="flex flex-1 flex-col p-2 items-center  w-fit">
                         <p className="text-base pb-2 uppercase font-semibold ">
                           Ladda upp en profilbild
                         </p>
+
                         <input
                           onChange={(e) => {
                             uploadImage(e);

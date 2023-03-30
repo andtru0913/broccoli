@@ -11,48 +11,48 @@ export default async function handler(req, res) {
     try {
       let cookies = JSON.parse(req.cookies["token"] || null);
       if (!!cookies) {
-        const result = await asyncParse(req);
-        let user = await verify(cookies);
-        if (!result.err && (user === result.id || (await isAdmin(user)))) {
-          try {
-            if (!!result.data) {
-              await editProfile(
-                result.fields.id,
-                result.fields.username,
-                result.fields.password,
-                result.fields.email,
-                result.fields.address,
-                result.fields.privatenumber,
-                result.fields.worknumber,
-                result.data,
-                result.fields.description,
-                !!result.fields.birthdate
-                  ? new Date(result.fields.birthdate)
-                  : null
-              );
-            } else {
-              await editProfile(
-                result.fields.id,
-                result.fields.username,
-                result.fields.password,
-                result.fields.email,
-                result.fields.address,
-                result.fields.privatenumber,
-                result.fields.worknumber,
-                null,
-                result.fields.description,
-                !!result.fields.birthdate
-                  ? new Date(result.fields.birthdate)
-                  : null
-              );
+        const form = new formidable.IncomingForm({
+          maxFileSize: Infinity,
+        });
+        form.parse(req, async (err, fields, files) => {
+          let user = await verify(cookies);
+          if (!err && (user === fields.id || (await isAdmin(user)))) {
+            try {
+              if (!!fields.base64) {
+                await editProfile(
+                  fields.id,
+                  fields.username,
+                  fields.password,
+                  fields.email,
+                  fields.address,
+                  fields.privatenumber,
+                  fields.worknumber,
+                  fields.base64,
+                  fields.description,
+                  !!fields.birthdate ? new Date(fields.birthdate) : null
+                );
+              } else {
+                await editProfile(
+                  fields.id,
+                  fields.username,
+                  fields.password,
+                  fields.email,
+                  fields.address,
+                  fields.privatenumber,
+                  fields.worknumber,
+                  null,
+                  fields.description,
+                  !!fields.birthdate ? new Date(fields.birthdate) : null
+                );
+              }
+              res.redirect(302, fields.redirect);
+            } catch (e) {
+              res.status(500).json({ error: e.message });
             }
-            res.redirect(302, result.fields.redirect);
-          } catch (e) {
-            res.status(500).json({ error: e.message });
+          } else {
+            res.status(500).json({ error: err || "Unauthorized" });
           }
-        } else {
-          res.status(500).json({ error: err || "Unauthorized" });
-        }
+        });
       } else {
         res.status(403).send("Token not found");
       }
@@ -62,7 +62,15 @@ export default async function handler(req, res) {
   }
 }
 
-const asyncParse = (req) =>
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+/** 
+ * 
+ * const asyncParse = (req) =>
   new Promise((resolve, reject) => {
     const form = new formidable.IncomingForm({
       maxFileSize: Infinity,
@@ -74,14 +82,11 @@ const asyncParse = (req) =>
       resolve({ fields, data });
     });
   });
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-/** 
+ * 
+ * 
+ * 
+ * 
+ * 
 import formidable from "formidable";
 import fs from "fs";
 import path from "path";
@@ -158,7 +163,44 @@ export const config = {
     bodyParser: false,
   },
 };
-
+if (!result.err && (user === result.id || (await isAdmin(user)))) {
+          try {
+            if (!!result.data) {
+              await editProfile(
+                result.fields.id,
+                result.fields.username,
+                result.fields.password,
+                result.fields.email,
+                result.fields.address,
+                result.fields.privatenumber,
+                result.fields.worknumber,
+                result.data,
+                result.fields.description,
+                !!result.fields.birthdate
+                  ? new Date(result.fields.birthdate)
+                  : null
+              );
+            } else {
+              await editProfile(
+                result.fields.id,
+                result.fields.username,
+                result.fields.password,
+                result.fields.email,
+                result.fields.address,
+                result.fields.privatenumber,
+                result.fields.worknumber,
+                null,
+                result.fields.description,
+                !!result.fields.birthdate
+                  ? new Date(result.fields.birthdate)
+                  : null
+              );
+            }
+            res.redirect(302, result.fields.redirect);
+          } catch (e) {
+            res.status(500).json({ error: e.message });
+          }
+        }
 */
 
 /**import formidable from 'formidable';

@@ -8,6 +8,7 @@ const ProfilePicture = ({ image }) => {
       className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
       src={"/images/silhouette.jpg"}
       alt={"silhouette"}
+      priority={true}
     />
   ) : (
     <Image
@@ -15,6 +16,7 @@ const ProfilePicture = ({ image }) => {
       className="select-none h-full md:w-full bg-cover bg-center rounded-sm"
       src={image}
       alt={"Profile picture not found"}
+      priority={true}
     />
   );
 };

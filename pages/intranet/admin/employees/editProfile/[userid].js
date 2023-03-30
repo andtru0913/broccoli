@@ -1,11 +1,11 @@
-  import {verify} from "../../../../../tokens";
-import {getNotifications, getUserinfo} from "../../../../../Database";
+import { verify } from "../../../../../tokens";
+import { getNotifications, getUserinfo } from "../../../../../Database";
 import LayoutIntranet from "../../../../../components/layout/layoutIntranet";
 import ProfilePicture from "../../../../../components/ProfilePicture";
 
 export async function getServerSideProps(context) {
   const user_id = await verify(
-      JSON.parse(context.req.cookies["token"] || null)
+    JSON.parse(context.req.cookies["token"] || null)
   );
   const user = await getUserinfo(user_id);
   if (!context.params.userid || !user.admin) {
@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
         destination: "/intranet",
       },
       props: {},
-    }
+    };
   } else {
     const [userString, notifications] = await Promise.all([
       getUserinfo(context.params.userid),
@@ -32,13 +32,22 @@ export async function getServerSideProps(context) {
 
 const profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
+  const dataURL = `data:image/png;base64, ${user.image}`;
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin || null}>
       <section className="bg-secondary-1 overflow-scroll lg:overflow-visible w-full ">
         <div className="relative bg-secondary-1">
           <div>
-            <form action="../../../../api/editProfile" method="POST" encType={"multipart/form-data"}>
-              <input type={"hidden"} value={`../intranet/admin/employees/editProfile/${user.id}`} name={"redirect"}/>
+            <form
+              action="../../../../api/editProfile"
+              method="POST"
+              encType={"multipart/form-data"}
+            >
+              <input
+                type={"hidden"}
+                value={`../intranet/admin/employees/editProfile/${user.id}`}
+                name={"redirect"}
+              />
               <div className=" grid  grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1  h-full  md:px-12 bg-secondary-1  overflow-hidden">
                 <div className=" relative col-span-1 pt-12 pl-2 ">
                   <svg
@@ -54,7 +63,7 @@ const profile = ({ userString, notifications }) => {
 
                   <div className=" mr-10 mt-16   justify-center flex flex-col">
                     <div className="w-56 h-64 mb-6 self-center relative z-10 ">
-                      <ProfilePicture image={user.image} />
+                      <ProfilePicture image={dataURL} />
                     </div>
                     <div className="relative flex flex-wrap flex-col md:flex-row  items-end z-10 ">
                       <div className="flex flex-1 flex-col p-2 items-center  w-fit">

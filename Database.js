@@ -85,6 +85,7 @@ export async function getUserinfo(userid) {
         description: true,
         role: true,
         company: true,
+        image: true,
         worknumber: true,
         privatenumber: true,
         assignment: true,
