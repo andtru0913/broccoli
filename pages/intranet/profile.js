@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
       };
 }
 
-const profile = ({ userString, notifications }) => {
+const Profile = ({ userString, notifications }) => {
   const user = JSON.parse(userString);
   return (
     <LayoutIntranet notifications={notifications} admin={user.admin}>
@@ -177,4 +177,4 @@ const profile = ({ userString, notifications }) => {
   );
 };
 
-export default profile;
+export default Profile;
