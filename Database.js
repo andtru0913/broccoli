@@ -950,18 +950,7 @@ export async function getAllNotifications() {
       endDate: "asc",
     },
   });
-  result.map((data) => {
-    data.startDate = new Date(data.startDate).toLocaleString("default", {
-      year: "numeric",
-      day: "numeric",
-      month: "long",
-    });
-    data.endDate = new Date(data.endDate).toLocaleString("default", {
-      year: "numeric",
-      day: "numeric",
-      month: "long",
-    });
-  });
+
   return result;
 }
 
