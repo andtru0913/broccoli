@@ -356,7 +356,9 @@ export default function Home({ feed, genderCount }) {
                   <div className="basis-80" key={image.id}>
                     <a href={image.permalink}>
                       <Image
-                        loader={() => `${image.media_url}&w=${400}&h=${400}`}
+                        loader={() =>
+                          `${image.media_url}&w=${400}&h=${400}${Date.now()}`
+                        }
                         width={400}
                         height={400}
                         className="bg-cover max-w-full h-auto align-middle  "
