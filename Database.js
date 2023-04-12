@@ -860,7 +860,11 @@ export async function createNotification(
       },
     });
     return await prisma.UserNotifications.createMany({
-      data: users.map((u) => ({ notificationId: result.id, userId: u })),
+      data: users.map((u) => ({
+        notificationId: result.id,
+        userId: u,
+        read: false,
+      })),
     });
   } else {
     let result = await prisma.notifications.create({
@@ -877,7 +881,7 @@ export async function createNotification(
       },
     });
     return await prisma.UserNotifications.create({
-      data: { notificationId: result.id, userId: users },
+      data: { notificationId: result.id, userId: users, read: false },
     });
   }
 }
@@ -900,7 +904,10 @@ export async function modifyNotification(notifId, title, text, enddate, users) {
       },
     });
     return await prisma.UserNotifications.createMany({
-      data: users.map((u) => ({ notificationId: result.id, userId: u })),
+      data: users.map((u) => ({
+        notificationId: result.id,
+        userId: u,
+      })),
     });
   } else {
     const result = await prisma.notifications.create({
@@ -920,6 +927,16 @@ export async function modifyNotification(notifId, title, text, enddate, users) {
       data: { notificationId: result.id, userId: users },
     });
   }
+}
+export async function readNotification(notifId) {
+  return await prisma.UserNotifications.update({
+    where: {
+      notifId: notifId,
+    },
+    data: {
+      read: true,
+    },
+  });
 }
 
 export async function getAllNotifications() {
@@ -965,6 +982,7 @@ export async function getNotifications(userid) {
       userId: userid,
     },
     select: {
+      read: true,
       notification: {
         select: {
           id: true,

@@ -122,4 +122,5 @@ model UserNotifications {
     userId          String   @db.ObjectId
     notification    Notifications @relation(fields: notificationId, references: [id])
     notificationId  String  @db.ObjectId
+    read            Boolean
 }
