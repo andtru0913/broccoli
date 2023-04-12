@@ -933,7 +933,7 @@ export async function readNotification(notificationId) {
     where: {
       notificationId: notificationId,
     },
-    update: {
+    data: {
       read: true,
     },
   });
