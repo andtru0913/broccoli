@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     } else {
       res.status(400).send("Bad request");
     }
-  } catch {
-    res.status(500).send("Internal server error");
+  } catch (e) {
+    res.status(500).send(e);
   }
 }
