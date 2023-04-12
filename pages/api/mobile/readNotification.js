@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   try {
     if (!!req.body.notificationid) {
       if (!!user) {
-        await readNotification(req.body.notificationid);
+        await readNotification(req.body.notificationid, user_id);
         res.status(200).send("Done");
       } else {
         res.status(400).send("Unauthorized");
