@@ -931,10 +931,14 @@ export async function modifyNotification(notifId, title, text, enddate, users) {
 export async function readNotification(notificationId, user_id) {
   let result = await prisma.UserNotifications.update({
     where: {
-      AND: {
-        userId: user_id,
-        notificationId: notificationId,
-      },
+      AND: [
+        {
+          userId: user_id,
+        },
+        {
+          notificationId: notificationId,
+        },
+      ],
     },
     data: {
       read: true,
