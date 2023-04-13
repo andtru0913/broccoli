@@ -146,6 +146,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
                     date={data.notification.startDate}
                     description={data.notification.text}
                     author={data.notification.author}
+                    read={data.read}
                   />
                 );
               })}
@@ -270,6 +271,7 @@ const NavbarIntranet = ({ admin, notifications }) => {
                     date={data.notification.startDate}
                     description={data.notification.text}
                     author={data.notification.author}
+                    read={data.read}
                   />
                 );
               })}
