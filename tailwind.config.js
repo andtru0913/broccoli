@@ -25,6 +25,7 @@ module.exports = {
 
   theme: {
     extend: {
+      fontFamily: { righteous: "Righteous" },
       animation: {
         fadeIn: "fadeIn 3s ease-in-out forwards",
         fadeInRight: "fadeInRight 1s ease-in-out forwards",

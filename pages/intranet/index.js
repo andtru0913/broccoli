@@ -11,6 +11,8 @@ import {
   getUserinfo,
   upcomingEvents,
 } from "../../Database";
+import { IoReturnUpBackOutline } from "react-icons/io";
+import { TbArrowBackUp } from "react-icons/tb";
 import { verify } from "../../tokens";
 
 export async function getServerSideProps(context) {
@@ -90,8 +92,14 @@ export default function Home({
               </a>
             </Link>
           </div>
-          <div className=" layout md:left-1/4 md:w-1/2 absolute top-1/4  shadow-lg  py-4 lg:py-12 bg-fill bg-opacity-70 lg:w-1/3 lg:left-1/3">
+          <div className="layout md:left-1/4 md:w-1/2 absolute top-1/4  shadow-lg  py-4 lg:py-12 bg-fill bg-opacity-70 lg:w-1/3 lg:left-1/3">
             <div className="flex flex-1 justify-center flex-col items-center  ">
+              <a href="/">
+                <div className="absolute p-2 top-0 left-0 text-xs flex flex-row gap-1">
+                  <TbArrowBackUp size={20} />
+                  <p>Till Hemsidan</p>
+                </div>
+              </a>
               <h1>Logga in</h1>
               <form
                 className="flex flex-col flex-1 lg:py-12 w-full lg:w-auto"
@@ -112,6 +120,9 @@ export default function Home({
                   name="password"
                   placeholder="Lösenord"
                 />
+                <a>
+                  <p className="px-2 text-xs cursor-pointer">Glömt lösenord?</p>
+                </a>
                 <button
                   className="shadow btn btn-primary focus:shadow-outline focus:outline-none text-inverted font-semibold p-2 m-2  rounded"
                   type="submit"

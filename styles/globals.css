@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -89,6 +90,9 @@
      --color-primary-d1: rgb(92, 150, 115); 
      --color-primary-d2: rgb(117, 188, 145);
 */
+  html {
+    font-family: Righteous;
+  }
 
   /* #region  /**=========== Typography =========== */
   .fc-header-toolbar > .fc-toolbar-chunk > .fc-toolbar-title,
