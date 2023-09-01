@@ -127,7 +127,7 @@ const Footer = () => {
                 <div className="flex flex-row  hover:text-secondary-d2">
                   <BsGlobe className="m-1 mr-3" size={20} />
 
-                  <a href="./intranet" className="hover:text-muted py-1 ">
+                  <a href="https://www.b93.se/intranet" className="hover:text-muted py-1 ">
                     <p className="text-sm hover:text-secondary-d2">Intranät</p>
                   </a>
                 </div>
